@@ -131,6 +131,7 @@ Public Class frmRetailIssueing
         lblCustNo.Text = ""
         lblNewBal.Text = ""
         lblOldBal.Text = ""
+        lbltotalbal.Text = ""
 
     End Sub
     Private Sub gvStockBf_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStockBf.CellClick
