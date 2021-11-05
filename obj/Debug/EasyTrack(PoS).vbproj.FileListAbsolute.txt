@@ -1,0 +1,666 @@
+K:\Daakye\FoodApplication\bin\Debug\EasyTrackPoS.mdf
+K:\Daakye\FoodApplication\bin\Debug\EasyTrackPoS_log.ldf
+K:\Daakye\FoodApplication\bin\Debug\PoS.mdf
+K:\Daakye\FoodApplication\bin\Debug\PoS_log.ldf
+K:\Daakye\FoodApplication\bin\Debug\EasyTrackPoS.exe.config
+K:\Daakye\FoodApplication\bin\Debug\EasyTrackPoS.exe.manifest
+K:\Daakye\FoodApplication\bin\Debug\EasyTrackPoS.application
+K:\Daakye\FoodApplication\bin\Debug\EasyTrackPoS.exe
+K:\Daakye\FoodApplication\bin\Debug\EasyTrackPoS.pdb
+K:\Daakye\FoodApplication\bin\Debug\EasyTrackPoS.xml
+K:\Daakye\FoodApplication\bin\Debug\BouncyCastle.Crypto.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.Dataviz.WinForms.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.Licensing.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.1.5.3.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuButton.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuCheckBox.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuCircleProgress.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuDatePicker.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuFormDock.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuGauge.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuGradientPanel.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuGroupBox.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuPages.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuPanel.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuProgressBar.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuRating.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuScrollBar.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuSeparator.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuShadowPanel.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuShapes.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuSlider.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuTextBox.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuToggleSwitch.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuToolTip.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuTransition.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuUserControl.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.Deprecated.dll
+K:\Daakye\FoodApplication\bin\Debug\FontAwesome.Sharp.dll
+K:\Daakye\FoodApplication\bin\Debug\Google.Protobuf.dll
+K:\Daakye\FoodApplication\bin\Debug\Guna.UI.dll
+K:\Daakye\FoodApplication\bin\Debug\Guna.UI2.dll
+K:\Daakye\FoodApplication\bin\Debug\K4os.Compression.LZ4.dll
+K:\Daakye\FoodApplication\bin\Debug\K4os.Compression.LZ4.Streams.dll
+K:\Daakye\FoodApplication\bin\Debug\K4os.Hash.xxHash.dll
+K:\Daakye\FoodApplication\bin\Debug\MySql.Data.dll
+K:\Daakye\FoodApplication\bin\Debug\Renci.SshNet.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Buffers.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Memory.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Numerics.Vectors.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+K:\Daakye\FoodApplication\bin\Debug\Ubiety.Dns.Core.dll
+K:\Daakye\FoodApplication\bin\Debug\Zstandard.Net.dll
+K:\Daakye\FoodApplication\bin\Debug\ShockwaveFlashObjects.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+K:\Daakye\FoodApplication\bin\Debug\stdole.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.Dataviz.WinForms.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.1.5.3.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuButton.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuCheckBox.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuCircleProgress.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuDatePicker.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuFormDock.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuGauge.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuGradientPanel.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuGroupBox.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuPages.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuPanel.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuProgressBar.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuRating.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuScrollBar.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuSeparator.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuShadowPanel.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuShapes.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuSlider.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuTextBox.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuToggleSwitch.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuToolTip.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuTransition.xml
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuUserControl.xml
+K:\Daakye\FoodApplication\bin\Debug\Google.Protobuf.pdb
+K:\Daakye\FoodApplication\bin\Debug\Google.Protobuf.xml
+K:\Daakye\FoodApplication\bin\Debug\K4os.Compression.LZ4.xml
+K:\Daakye\FoodApplication\bin\Debug\K4os.Compression.LZ4.Streams.xml
+K:\Daakye\FoodApplication\bin\Debug\K4os.Hash.xxHash.xml
+K:\Daakye\FoodApplication\bin\Debug\MySql.Data.xml
+K:\Daakye\FoodApplication\bin\Debug\Renci.SshNet.xml
+K:\Daakye\FoodApplication\bin\Debug\System.Buffers.xml
+K:\Daakye\FoodApplication\bin\Debug\System.Memory.xml
+K:\Daakye\FoodApplication\bin\Debug\System.Numerics.Vectors.xml
+K:\Daakye\FoodApplication\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.Dashboard.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.EasyTrackSplash.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmGoodsRecievedPerItem.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSalesCancelation.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmsalespdate.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSalesPerBrand.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSalesPerCashier.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmStockBalbyColour.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmStockBalNegative.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmStockBalpSize.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmsystemSetup.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmTakingStock.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmTouchSale.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmUserProfilemgmt.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmGoodsRecievedPerInvoice.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmRecieveGoodsPerCat.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.PfrmCustomer.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.PfrmInventoryMgmt.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.pfrmProductManagement.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.PfrmSalesMgmt.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.PfrmUserSetup.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProdReports.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSalesRecieptA5.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmStockBalPositive.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmStockBalpPline.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmStockBalZero.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmStockRptPerCat.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmAdjustStock.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmstockValOverall.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmStockValpCat.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmStockValpPline.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.SalesReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.StockValueReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCloseSalesMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCustomersMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmDeleteProduct.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmChangePrice.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCreateCustomerAccount.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCashierAccess.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmOders.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSalesReciept.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmPaySupplierBill.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmInventoryManagement.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.InventoryReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.Login.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmMain.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmModifyCustomerAccounts.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmModifyProduct.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmModifySupplier.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.Resources.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProdSetup.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProdCatCreation.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProdCreate.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProductline.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProductManagementMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.RecieveCustomerPayment.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmRecieveGoods.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmReviewPrices.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSales.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSalesManagement.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSalesMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSessionOpening.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.StockBalancesReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.StockRecievedReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSuppliersMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).vbproj.GenerateResource.cache
+K:\Daakye\FoodApplication\obj\Debug\EasyTrackPoS.exe.licenses
+K:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).vbproj.CoreCompileInputs.cache
+K:\Daakye\FoodApplication\obj\Debug\EasyTrackPoS.exe.manifest
+K:\Daakye\FoodApplication\obj\Debug\EasyTrackPoS.application
+K:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).vbproj.CopyComplete
+K:\Daakye\FoodApplication\obj\Debug\EasyTrackPoS.exe
+K:\Daakye\FoodApplication\obj\Debug\EasyTrackPoS.xml
+K:\Daakye\FoodApplication\obj\Debug\EasyTrackPoS.pdb
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSessionLedger.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmAdjustStockReport.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmAdjustStockReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmToCollected.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmTobeCollectedDelivery.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmTobeCollectedPreview.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\EasyTrackPoS.mdf
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\EasyTrackPoS_log.ldf
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\PoS.mdf
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\PoS_log.ldf
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\EasyTrackPoS.exe.config
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\EasyTrackPoS.exe.manifest
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\EasyTrackPoS.application
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\EasyTrackPoS.exe
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\EasyTrackPoS.pdb
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\EasyTrackPoS.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\AxShockwaveFlashObjects.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\BouncyCastle.Crypto.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.Dataviz.WinForms.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.Licensing.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.1.5.3.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuButton.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuCheckBox.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuCircleProgress.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuDatePicker.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuFormDock.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuGauge.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuGradientPanel.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuGroupBox.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuPages.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuPanel.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuProgressBar.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuRating.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuScrollBar.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuSeparator.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuShadowPanel.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuShapes.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuSlider.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuTextBox.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuToggleSwitch.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuToolTip.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuTransition.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuUserControl.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.Deprecated.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportSource.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.Shared.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.Windows.Forms.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\FontAwesome.Sharp.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Google.Protobuf.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Guna.UI2.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\K4os.Compression.LZ4.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\K4os.Compression.LZ4.Streams.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\K4os.Hash.xxHash.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\MySql.Data.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Renci.SshNet.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\System.Buffers.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\System.Memory.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\System.Numerics.Vectors.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Ubiety.Dns.Core.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Zstandard.Net.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\ShockwaveFlashObjects.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\stdole.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.Dataviz.WinForms.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.1.5.3.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuButton.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuCheckBox.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuCircleProgress.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuDatePicker.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuFormDock.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuGauge.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuGradientPanel.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuGroupBox.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuPages.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuPanel.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuProgressBar.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuRating.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuScrollBar.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuSeparator.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuShadowPanel.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuShapes.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuSlider.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuTextBox.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuToggleSwitch.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuToolTip.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuTransition.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Bunifu.UI.WinForms.BunifuUserControl.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Google.Protobuf.pdb
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Google.Protobuf.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\K4os.Compression.LZ4.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\K4os.Compression.LZ4.Streams.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\K4os.Hash.xxHash.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\MySql.Data.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\Renci.SshNet.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\System.Buffers.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\System.Memory.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\System.Numerics.Vectors.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\EasyTrack(PoS).vbproj.AssemblyReference.cache
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\EasyTrackPoS.exe.config
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.Dashboard.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.EasyTrackSplash.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmGoodsRecievedPerItem.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSalesCancelation.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmsalespdate.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSalesPerBrand.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSalesPerCashier.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmStockBalbyColour.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmStockBalNegative.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmStockBalpSize.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmsystemSetup.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmTakingStock.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmTobeCollectedDelivery.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmTobeCollectedPreview.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmTouchSale.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmUserProfilemgmt.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmGoodsRecievedPerInvoice.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmRecieveGoodsPerCat.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmToCollected.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.PfrmCustomer.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.PfrmInventoryMgmt.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.pfrmProductManagement.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.PfrmSalesMgmt.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.PfrmUserSetup.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmProdReports.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSalesRecieptA5.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmAdjustStockReport.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmAdjustStockReportMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmStockBalPositive.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmStockBalpPline.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmStockBalZero.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmStockRptPerCat.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmAdjustStock.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmstockValOverall.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmStockValpCat.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmStockValpPline.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.SalesReportMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.StockValueReportMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmCloseSalesMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmCustomersMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmDeleteProduct.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmChangePrice.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmCreateCustomerAccount.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmCashierAccess.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmOders.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSalesReciept.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSessionLedger.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmPaySupplierBill.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmReportMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmInventoryManagement.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.InventoryReportMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.Login.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmMain.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmModifyCustomerAccounts.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmModifyProduct.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmModifySupplier.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.Resources.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmProdSetup.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmProdCatCreation.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmProdCreate.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmProductline.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmProductManagementMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.RecieveCustomerPayment.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmRecieveGoods.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmReviewPrices.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSales.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSalesManagement.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSalesMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSessionOpening.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.StockBalancesReportMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.StockRecievedReportMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSupplierAccountMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmSuppliersMenu.resources
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\EasyTrack(PoS).vbproj.GenerateResource.cache
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\EasyTrackPoS.exe.licenses
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\EasyTrack(PoS).vbproj.CoreCompileInputs.cache
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\EasyTrackPoS.exe.manifest
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\EasyTrackPoS.application
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\EasyTrack(PoS).vbproj.CopyComplete
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\EasyTrackPoS.exe
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\EasyTrackPoS.xml
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\EasyTrackPoS.pdb
+K:\Daakye\CLIENTS\COASTAL RICE\COASTAL RICE\obj\Debug\HardSoft_PoS.frmPriceBand.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\EasyTrackPoS.mdf
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\EasyTrackPoS_log.ldf
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\PoS.mdf
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\PoS_log.ldf
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\EasyTrackPoS.exe.config
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\EasyTrackPoS.exe.manifest
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\EasyTrackPoS.application
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\EasyTrackPoS.exe
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\EasyTrackPoS.pdb
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\EasyTrackPoS.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\AxShockwaveFlashObjects.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\BouncyCastle.Crypto.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.Dataviz.WinForms.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.Licensing.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.1.5.3.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuButton.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuCheckBox.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuCircleProgress.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuDatePicker.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuFormDock.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuGauge.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuGradientPanel.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuGroupBox.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuPages.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuPanel.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuProgressBar.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuRating.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuScrollBar.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuSeparator.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuShadowPanel.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuShapes.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuSlider.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuTextBox.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuToggleSwitch.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuToolTip.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuTransition.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuUserControl.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.Deprecated.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportSource.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.Shared.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.Windows.Forms.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\FontAwesome.Sharp.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Google.Protobuf.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Guna.UI2.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\K4os.Compression.LZ4.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\K4os.Compression.LZ4.Streams.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\K4os.Hash.xxHash.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\MySql.Data.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Renci.SshNet.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Buffers.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Memory.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Numerics.Vectors.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Ubiety.Dns.Core.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Zstandard.Net.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\ShockwaveFlashObjects.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\stdole.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.Dataviz.WinForms.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.1.5.3.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuButton.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuCheckBox.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuCircleProgress.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuDatePicker.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuFormDock.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuGauge.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuGradientPanel.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuGroupBox.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuPages.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuPanel.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuProgressBar.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuRating.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuScrollBar.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuSeparator.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuShadowPanel.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuShapes.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuSlider.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuTextBox.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuToggleSwitch.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuToolTip.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuTransition.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Bunifu.UI.WinForms.BunifuUserControl.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Google.Protobuf.pdb
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Google.Protobuf.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\K4os.Compression.LZ4.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\K4os.Compression.LZ4.Streams.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\K4os.Hash.xxHash.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\MySql.Data.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Renci.SshNet.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Buffers.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Memory.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Numerics.Vectors.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.Dashboard.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.EasyTrackSplash.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmGoodsRecievedPerItem.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSalesCancelation.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmsalespdate.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSalesPerBrand.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSalesPerCashier.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmStockBalbyColour.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmStockBalNegative.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmStockBalpSize.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmsystemSetup.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmTakingStock.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmTobeCollectedDelivery.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmTobeCollectedPreview.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmTouchSale.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmUserProfilemgmt.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmGoodsRecievedPerInvoice.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmRecieveGoodsPerCat.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmToCollected.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.PfrmCustomer.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.PfrmInventoryMgmt.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.pfrmProductManagement.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.PfrmSalesMgmt.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.PfrmUserSetup.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmPriceBand.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmProdReports.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSalesRecieptA5.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmAdjustStockReport.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmAdjustStockReportMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmStockBalPositive.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmStockBalpPline.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmStockBalZero.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmStockRptPerCat.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmAdjustStock.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmstockValOverall.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmStockValpCat.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmStockValpPline.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.SalesReportMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.StockValueReportMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmCloseSalesMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmCustomersMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmDeleteProduct.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmChangePrice.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmCreateCustomerAccount.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmCashierAccess.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmOders.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSalesReciept.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSessionLedger.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmPaySupplierBill.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmReportMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmInventoryManagement.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.InventoryReportMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.Login.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmMain.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmModifyCustomerAccounts.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmModifyProduct.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmModifySupplier.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.Resources.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmProdSetup.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmProdCatCreation.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmProdCreate.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmProductline.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmProductManagementMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.RecieveCustomerPayment.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmRecieveGoods.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmReviewPrices.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSales.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSalesManagement.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSalesMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSessionOpening.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.StockBalancesReportMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.StockRecievedReportMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSuppliersMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\EasyTrack(PoS).vbproj.GenerateResource.cache
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\EasyTrackPoS.exe.licenses
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\EasyTrack(PoS).vbproj.CoreCompileInputs.cache
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\EasyTrackPoS.exe.manifest
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\EasyTrackPoS.application
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\EasyTrack(PoS).vbproj.CopyComplete
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\EasyTrackPoS.exe
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\EasyTrackPoS.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\EasyTrackPoS.pdb
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmCreateSupplierAccount.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmRecieptA4.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSupplierReportMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmSupplierReport.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmCustomerReport.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmCustomerReportMenu.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmClientReg.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\BarcodeStandard.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Drawing.Common.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Text.Encodings.Web.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Text.Json.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Threading.Tasks.Extensions.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.ValueTuple.dll
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Text.Encodings.Web.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Text.Json.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.Threading.Tasks.Extensions.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\bin\Debug\System.ValueTuple.xml
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmBarcodeGen.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmRetailIssueing.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\HardSoft_PoS.frmStockMovement.resources
+K:\Daakye\CLIENTS\COASTALRICE\COASTALRICE\obj\Debug\EasyTrack(PoS).vbproj.AssemblyReference.cache
+K:\Daakye\FoodApplication\bin\Debug\BarcodeStandard.dll
+K:\Daakye\FoodApplication\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Drawing.Common.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Text.Encodings.Web.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Text.Json.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Threading.Tasks.Extensions.dll
+K:\Daakye\FoodApplication\bin\Debug\System.ValueTuple.dll
+K:\Daakye\FoodApplication\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+K:\Daakye\FoodApplication\bin\Debug\System.Text.Encodings.Web.xml
+K:\Daakye\FoodApplication\bin\Debug\System.Text.Json.xml
+K:\Daakye\FoodApplication\bin\Debug\System.Threading.Tasks.Extensions.xml
+K:\Daakye\FoodApplication\bin\Debug\System.ValueTuple.xml
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmBarcodeGen.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmClientReg.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmRetailIssueing.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmPriceBand.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmRecieptA4.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCustomerReport.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCustomerReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmStockMovement.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSupplierReport.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSupplierReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCreateSupplierAccount.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.EasyTrackPoS.resources
+K:\Daakye\FoodApplication\bin\Debug\AxShockwaveFlashObjects.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportSource.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.Shared.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.Windows.Forms.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuLoader.dll
+K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuLoader.xml
+K:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).vbproj.AssemblyReference.cache

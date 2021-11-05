@@ -1,0 +1,139 @@
+D:\Visual Studio 2019\FoodApplication\bin\Debug\FoodApplication.exe.config
+D:\Visual Studio 2019\FoodApplication\bin\Debug\FoodApplication.exe
+D:\Visual Studio 2019\FoodApplication\bin\Debug\FoodApplication.pdb
+D:\Visual Studio 2019\FoodApplication\bin\Debug\FoodApplication.xml
+D:\Visual Studio 2019\FoodApplication\bin\Debug\BouncyCastle.Crypto.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\Google.Protobuf.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\Guna.UI2.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\K4os.Compression.LZ4.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\K4os.Hash.xxHash.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\MySql.Data.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\Renci.SshNet.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\System.Buffers.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\System.Memory.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\System.Numerics.Vectors.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\Ubiety.Dns.Core.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\Zstandard.Net.dll
+D:\Visual Studio 2019\FoodApplication\bin\Debug\Google.Protobuf.pdb
+D:\Visual Studio 2019\FoodApplication\bin\Debug\Google.Protobuf.xml
+D:\Visual Studio 2019\FoodApplication\bin\Debug\K4os.Compression.LZ4.xml
+D:\Visual Studio 2019\FoodApplication\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\Visual Studio 2019\FoodApplication\bin\Debug\K4os.Hash.xxHash.xml
+D:\Visual Studio 2019\FoodApplication\bin\Debug\MySql.Data.xml
+D:\Visual Studio 2019\FoodApplication\bin\Debug\Renci.SshNet.xml
+D:\Visual Studio 2019\FoodApplication\bin\Debug\System.Buffers.xml
+D:\Visual Studio 2019\FoodApplication\bin\Debug\System.Memory.xml
+D:\Visual Studio 2019\FoodApplication\bin\Debug\System.Numerics.Vectors.xml
+D:\Visual Studio 2019\FoodApplication\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.vbprojAssemblyReference.cache
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.Resources.resources
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.vbproj.GenerateResource.cache
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.vbproj.CoreCompileInputs.cache
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.vbproj.CopyComplete
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.exe
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.xml
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.pdb
+D:\Visual Studio 2019\FoodApplication\bin\Debug\FontAwesome.Sharp.dll
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.FormFood.resources
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.FormMain.resources
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.FormHome.resources
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.FormFoodAdd.resources
+D:\Visual Studio 2019\FoodApplication\obj\Debug\FoodApplication.FormPointofSales.resources
+K:\Daakye\FoodApplication\bin\Debug\AxShockwaveFlashObjects.dll
+K:\Daakye\FoodApplication\bin\Debug\BouncyCastle.Crypto.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportSource.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.Shared.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.Windows.Forms.dll
+K:\Daakye\FoodApplication\bin\Debug\FontAwesome.Sharp.dll
+K:\Daakye\FoodApplication\bin\Debug\Google.Protobuf.dll
+K:\Daakye\FoodApplication\bin\Debug\Guna.UI2.dll
+K:\Daakye\FoodApplication\bin\Debug\K4os.Compression.LZ4.dll
+K:\Daakye\FoodApplication\bin\Debug\K4os.Compression.LZ4.Streams.dll
+K:\Daakye\FoodApplication\bin\Debug\K4os.Hash.xxHash.dll
+K:\Daakye\FoodApplication\bin\Debug\MySql.Data.dll
+K:\Daakye\FoodApplication\bin\Debug\Renci.SshNet.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Buffers.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Memory.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Numerics.Vectors.dll
+K:\Daakye\FoodApplication\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+K:\Daakye\FoodApplication\bin\Debug\Ubiety.Dns.Core.dll
+K:\Daakye\FoodApplication\bin\Debug\Zstandard.Net.dll
+K:\Daakye\FoodApplication\bin\Debug\ShockwaveFlashObjects.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+K:\Daakye\FoodApplication\bin\Debug\stdole.dll
+K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+K:\Daakye\FoodApplication\bin\Debug\Google.Protobuf.pdb
+K:\Daakye\FoodApplication\bin\Debug\Google.Protobuf.xml
+K:\Daakye\FoodApplication\bin\Debug\K4os.Compression.LZ4.xml
+K:\Daakye\FoodApplication\bin\Debug\K4os.Compression.LZ4.Streams.xml
+K:\Daakye\FoodApplication\bin\Debug\K4os.Hash.xxHash.xml
+K:\Daakye\FoodApplication\bin\Debug\MySql.Data.xml
+K:\Daakye\FoodApplication\bin\Debug\Renci.SshNet.xml
+K:\Daakye\FoodApplication\bin\Debug\System.Buffers.xml
+K:\Daakye\FoodApplication\bin\Debug\System.Memory.xml
+K:\Daakye\FoodApplication\bin\Debug\System.Numerics.Vectors.xml
+K:\Daakye\FoodApplication\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+K:\Daakye\FoodApplication\obj\Debug\FoodApplication.vbproj.AssemblyReference.cache
+K:\Daakye\FoodApplication\obj\Debug\FoodApplication.vbproj.GenerateResource.cache
+K:\Daakye\FoodApplication\obj\Debug\FoodApplication.vbproj.CoreCompileInputs.cache
+K:\Daakye\FoodApplication\obj\Debug\FoodApplication.vbproj.CopyComplete
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.FormFoodAdd.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.FormHome.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.FormPointofSales.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.FormFood.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.Resources.resources
+K:\Daakye\FoodApplication\bin\Debug\EasyTrack(PoS).exe.config
+K:\Daakye\FoodApplication\bin\Debug\EasyTrack(PoS).exe
+K:\Daakye\FoodApplication\bin\Debug\EasyTrack(PoS).pdb
+K:\Daakye\FoodApplication\bin\Debug\EasyTrack(PoS).xml
+K:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).exe
+K:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).xml
+K:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).pdb
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.Accounts.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmAdjustStock.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCloseSalesMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCustomersMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmDeleteProduct.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.Form1.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmChangePrice.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCreateCustomerAccount.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmPaySupplierBill.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmInventoryManagement.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.Login.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmModifyCustomerAccounts.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmModifyProduct.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmModifySupplier.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProdSetup.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProdCatCreation.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProdCreate.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProductline.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProductManagementMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.RecieveCustomerPayment.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmRecieveGoods.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmReviewPrices.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSales.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSalesManagement.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSalesMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSessionOpening.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSupplierAccountMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSuppliersMenu.resources
+K:\Daakye\FoodApplication\bin\Debug\PoS.mdf
+K:\Daakye\FoodApplication\bin\Debug\PoS_log.ldf
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.Grpt.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.InventoryReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.StockBalancesReportMenu.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.StockRecievedReportMenu.resources
