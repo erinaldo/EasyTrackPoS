@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmAdjustStock
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    Dim con As New SqlConnection(My.Settings.Poscon)
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
     Dim dr As SqlDataReader
@@ -377,29 +377,29 @@ Public Class frmAdjustStock
             Next
 
             For Each row As DataGridViewRow In gvStockBatch.Rows
-                        Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyRecieved,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyrecieved,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date)"
-                        cmd = New SqlCommand(quer, con)
-                        With cmd
-                            .Parameters.AddWithValue("@ItemCode", row.Cells(6).Value)
-                            .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
-                            .Parameters.AddWithValue("@tranxtype", "Adjust")
-                            .Parameters.AddWithValue("@tranxsource", "Adjust Stock")
-                            .Parameters.AddWithValue("@tranxgroup", row.Cells(4).Value)
-                            .Parameters.AddWithValue("@oldqty", row.Cells(2).Value)
-                            .Parameters.AddWithValue("@qtyrecieved", row.Cells(4).Value)
-                            .Parameters.AddWithValue("@Balance", row.Cells(4).Value)
-                            .Parameters.AddWithValue("@Rprice", row.Cells(3).Value)
-                            .Parameters.AddWithValue("@Cprice", row.Cells(3).Value)
-                            .Parameters.AddWithValue("@Ramt", row.Cells(5).Value)
-                            .Parameters.AddWithValue("@Camt", row.Cells(5).Value)
-                            .Parameters.AddWithValue("@Nar", txtnarration.Text)
-                            .Parameters.AddWithValue("@userid", activeuser.Text)
-                            .Parameters.AddWithValue("@Date", txtDate.Text)
-                            .Parameters.AddWithValue("@Time", lbltime.Text)
-                            .ExecuteNonQuery()
-                        End With
+                Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyRecieved,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyrecieved,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date)"
+                cmd = New SqlCommand(quer, con)
+                With cmd
+                    .Parameters.AddWithValue("@ItemCode", row.Cells(6).Value)
+                    .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
+                    .Parameters.AddWithValue("@tranxtype", "Adjust")
+                    .Parameters.AddWithValue("@tranxsource", "Adjust Stock")
+                    .Parameters.AddWithValue("@tranxgroup", "Adjust Stock")
+                    .Parameters.AddWithValue("@oldqty", row.Cells(2).Value)
+                    .Parameters.AddWithValue("@qtyrecieved", row.Cells(4).Value)
+                    .Parameters.AddWithValue("@Balance", row.Cells(4).Value)
+                    .Parameters.AddWithValue("@Rprice", row.Cells(3).Value)
+                    .Parameters.AddWithValue("@Cprice", row.Cells(3).Value)
+                    .Parameters.AddWithValue("@Ramt", row.Cells(5).Value)
+                    .Parameters.AddWithValue("@Camt", row.Cells(5).Value)
+                    .Parameters.AddWithValue("@Nar", txtnarration.Text)
+                    .Parameters.AddWithValue("@userid", activeuser.Text)
+                    .Parameters.AddWithValue("@Date", txtDate.Text)
+                    .Parameters.AddWithValue("@Time", lbltime.Text)
+                    .ExecuteNonQuery()
+                End With
 
-                    Next
+            Next
                 con.Close()
             'MsgBox("Successfully Adjusted Stock")
         Catch ex As Exception

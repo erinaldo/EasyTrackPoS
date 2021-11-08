@@ -52,7 +52,7 @@ Public Class StockBalancesReportMenu
         frmStockBalNegative.Show()
     End Sub
 
-    Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs) Handles Guna2PictureBox1.Click
+    Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs)
         Application.Exit()
     End Sub
 
@@ -76,6 +76,37 @@ Public Class StockBalancesReportMenu
             adp.Fill(dt, "ClientReg")
 
             Dim report As New rptInventPerItem
+            report.SetDataSource(dt)
+            frmSupplierReport.Show()
+            frmSupplierReport.CrystalReportViewer1.ReportSource = report
+            frmSupplierReport.CrystalReportViewer1.Refresh()
+            cmd.Dispose()
+            adp.Dispose()
+            con.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub Label12_Click(sender As Object, e As EventArgs) Handles Label12.Click
+        Try
+
+            If con.State = ConnectionState.Closed Then
+                con.Open()
+            End If
+            Dim query = "select * from inventoryledger"
+            cmd = New SqlCommand(query, con)
+            dt.Tables("inventoryledger").Rows.Clear()
+            adp.SelectCommand = cmd
+            adp.Fill(dt, "inventoryledger")
+
+            Dim sql = "select * from ClientReg"
+            dt.Tables("ClientReg").Rows.Clear()
+            cmd = New SqlCommand(sql, con)
+            adp.SelectCommand = cmd
+            adp.Fill(dt, "ClientReg")
+
+            Dim report As New rptInventLedgerPerItem
             report.SetDataSource(dt)
             frmSupplierReport.Show()
             frmSupplierReport.CrystalReportViewer1.ReportSource = report

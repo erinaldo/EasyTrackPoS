@@ -39,6 +39,14 @@ Partial Class frmAdjustStock
         Me.txtDate = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.gvStockBatch = New System.Windows.Forms.DataGridView()
+        Me.clItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clOldStock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clNewStock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StockCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdLine = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtItemAmount = New System.Windows.Forms.TextBox()
         Me.txtItemPrice = New System.Windows.Forms.TextBox()
         Me.txtNewStock = New System.Windows.Forms.TextBox()
@@ -73,14 +81,6 @@ Partial Class frmAdjustStock
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.clItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clOldStock = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clNewStock = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StockCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdLine = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.gvStockBatch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gvStock, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -226,6 +226,62 @@ Partial Class frmAdjustStock
         Me.gvStockBatch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gvStockBatch.Size = New System.Drawing.Size(547, 307)
         Me.gvStockBatch.TabIndex = 69
+        '
+        'clItemName
+        '
+        Me.clItemName.HeaderText = "Item Name"
+        Me.clItemName.Name = "clItemName"
+        Me.clItemName.ReadOnly = True
+        Me.clItemName.Width = 104
+        '
+        'Category
+        '
+        Me.Category.HeaderText = "Category"
+        Me.Category.Name = "Category"
+        Me.Category.ReadOnly = True
+        Me.Category.Width = 94
+        '
+        'clOldStock
+        '
+        Me.clOldStock.HeaderText = "Old Stock"
+        Me.clOldStock.Name = "clOldStock"
+        Me.clOldStock.ReadOnly = True
+        Me.clOldStock.Width = 96
+        '
+        'clPrice
+        '
+        Me.clPrice.HeaderText = "Price"
+        Me.clPrice.Name = "clPrice"
+        Me.clPrice.ReadOnly = True
+        Me.clPrice.Width = 65
+        '
+        'clNewStock
+        '
+        Me.clNewStock.HeaderText = "Adjustment"
+        Me.clNewStock.Name = "clNewStock"
+        Me.clNewStock.ReadOnly = True
+        Me.clNewStock.Width = 106
+        '
+        'clAmount
+        '
+        Me.clAmount.HeaderText = "Amount"
+        Me.clAmount.Name = "clAmount"
+        Me.clAmount.ReadOnly = True
+        Me.clAmount.Width = 83
+        '
+        'StockCode
+        '
+        Me.StockCode.HeaderText = "StockCode"
+        Me.StockCode.Name = "StockCode"
+        Me.StockCode.ReadOnly = True
+        Me.StockCode.Width = 103
+        '
+        'ProdLine
+        '
+        Me.ProdLine.HeaderText = "Productline"
+        Me.ProdLine.Name = "ProdLine"
+        Me.ProdLine.ReadOnly = True
+        Me.ProdLine.Width = 106
         '
         'txtItemAmount
         '
@@ -757,62 +813,6 @@ Partial Class frmAdjustStock
         Me.GroupBox3.TabIndex = 152
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "GroupBox3"
-        '
-        'clItemName
-        '
-        Me.clItemName.HeaderText = "Item Name"
-        Me.clItemName.Name = "clItemName"
-        Me.clItemName.ReadOnly = True
-        Me.clItemName.Width = 104
-        '
-        'Category
-        '
-        Me.Category.HeaderText = "Category"
-        Me.Category.Name = "Category"
-        Me.Category.ReadOnly = True
-        Me.Category.Width = 94
-        '
-        'clOldStock
-        '
-        Me.clOldStock.HeaderText = "Old Stock"
-        Me.clOldStock.Name = "clOldStock"
-        Me.clOldStock.ReadOnly = True
-        Me.clOldStock.Width = 96
-        '
-        'clPrice
-        '
-        Me.clPrice.HeaderText = "Price"
-        Me.clPrice.Name = "clPrice"
-        Me.clPrice.ReadOnly = True
-        Me.clPrice.Width = 65
-        '
-        'clNewStock
-        '
-        Me.clNewStock.HeaderText = "Adjustment"
-        Me.clNewStock.Name = "clNewStock"
-        Me.clNewStock.ReadOnly = True
-        Me.clNewStock.Width = 106
-        '
-        'clAmount
-        '
-        Me.clAmount.HeaderText = "Amount"
-        Me.clAmount.Name = "clAmount"
-        Me.clAmount.ReadOnly = True
-        Me.clAmount.Width = 83
-        '
-        'StockCode
-        '
-        Me.StockCode.HeaderText = "StockCode"
-        Me.StockCode.Name = "StockCode"
-        Me.StockCode.ReadOnly = True
-        Me.StockCode.Width = 103
-        '
-        'ProdLine
-        '
-        Me.ProdLine.HeaderText = "Productline"
-        Me.ProdLine.Name = "ProdLine"
-        Me.ProdLine.ReadOnly = True
-        Me.ProdLine.Width = 106
         '
         'frmAdjustStock
         '

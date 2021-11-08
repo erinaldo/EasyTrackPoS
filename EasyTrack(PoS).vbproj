@@ -499,6 +499,12 @@
       <DependentUpon>rptGoodsRecievedPerInvoice.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="InventoryMenu\rptInventLedgerPerItem.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptInventLedgerPerItem.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="InventoryMenu\rptRecievedGoodsPerCat.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1262,6 +1268,10 @@
     <EmbeddedResource Include="InventoryMenu\rptGoodsRecievedPerInvoice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptGoodsRecievedPerInvoice.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMenu\rptInventLedgerPerItem.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptInventLedgerPerItem.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryMenu\rptRecievedGoodsPerCat.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

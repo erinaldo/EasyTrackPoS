@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmRetailIssueing
-    Dim Con As New SqlConnection(My.Settings.PoSConnectionString)
+    Dim Con As New SqlConnection(My.Settings.Poscon)
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
     Dim dr As SqlDataReader
