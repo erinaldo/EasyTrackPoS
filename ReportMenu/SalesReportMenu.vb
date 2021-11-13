@@ -1,9 +1,13 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Globalization
 Public Class SalesReportMenu
     Dim con As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As New SqlCommand
     Dim da As New SqlDataAdapter
     Dim dt As New dsSalesTranx
+    Dim outto As Date
+    Dim outfrom As Date
+
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         Dim f2 As New frmReportMenu
         f2.Show()
@@ -11,12 +15,13 @@ Public Class SalesReportMenu
     End Sub
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+        DateTime.TryParseExact(dpDatefrom.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outfrom)
+        DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
         Try
-            Dim query = "select * from salestranx"
-            If con.State = ConnectionState.Closed Then
-                con.Open()
-            End If
+            Dim query = "select * from salestranx where datesold between @datefrom and @dateto"
             cmd = New SqlCommand(query, con)
+            cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
+            cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
             dt.Tables("salestranx").Rows.Clear()
             da.SelectCommand = cmd
             da.Fill(dt, "salestranx")
@@ -41,13 +46,14 @@ Public Class SalesReportMenu
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+        DateTime.TryParseExact(dpDatefrom.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outfrom)
+        DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
         Try
-            Dim query = "select * from salestranx"
-            If con.State = ConnectionState.Closed Then
-                con.Open()
-            End If
+            Dim query = "select * from salestranx where datesold between @datefrom and @dateto"
             cmd = New SqlCommand(query, con)
-            dt.Tables("ClientReg").Rows.Clear()
+            cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
+            cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
+            dt.Tables("salestranx").Rows.Clear()
             da.SelectCommand = cmd
             da.Fill(dt, "salestranx")
 

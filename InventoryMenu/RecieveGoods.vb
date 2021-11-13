@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmRecieveGoods
-    Dim Con As New SqlConnection(My.Settings.Poscon)
+    Dim Con As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
     Dim dr As SqlDataReader

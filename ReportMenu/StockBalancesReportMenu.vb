@@ -100,11 +100,11 @@ Public Class StockBalancesReportMenu
             adp.SelectCommand = cmd
             adp.Fill(dt, "inventoryledger")
 
-            Dim sql = "select * from ClientReg"
-            dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
-            adp.SelectCommand = cmd
-            adp.Fill(dt, "ClientReg")
+            'Dim sql = "select * from ClientReg"
+            'dt.Tables("ClientReg").Rows.Clear()
+            'cmd = New SqlCommand(sql, con)
+            'adp.SelectCommand = cmd
+            'adp.Fill(dt, "ClientReg")
 
             Dim report As New rptInventLedgerPerItem
             report.SetDataSource(dt)

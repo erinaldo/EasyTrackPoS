@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmAdjustStock
-    Dim con As New SqlConnection(My.Settings.Poscon)
+    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
     Dim dr As SqlDataReader
