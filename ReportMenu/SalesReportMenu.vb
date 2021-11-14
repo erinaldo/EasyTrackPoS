@@ -26,11 +26,11 @@ Public Class SalesReportMenu
             da.SelectCommand = cmd
             da.Fill(dt, "salestranx")
 
-            'Dim sql = "select * from ClientReg"
-            'dt.Tables("ClientReg").Rows.Clear()
-            'cmd = New SqlCommand(sql, con)
-            'da.SelectCommand = cmd
-            'da.Fill(dt, "ClientReg")
+            Dim sql = "select * from ClientReg"
+            dt.Tables("ClientReg").Rows.Clear()
+            cmd = New SqlCommand(sql, con)
+            da.SelectCommand = cmd
+            da.Fill(dt, "ClientReg")
 
             Dim report As New rptSalesPerDate
             report.SetDataSource(dt)

@@ -774,18 +774,20 @@ Public Class frmSales
                             'MsgBox("Customer Updated")
                             Con.Close()
 
+                          
                             For k = 0 To gvSales.RowCount - 1
                                 If Con.State = ConnectionState.Closed Then
                                     Con.Open()
                                 End If
-                                Dim query = "update StockMast set ProdQty = @newstock where ProdCode =" + gvSales.Rows(k).Cells(5).Value + ""
-                                cmd = New SqlCommand(query, Con)
-                                With cmd
-                                    .Parameters.AddWithValue("@newstock", (gvSales.Rows(k).Cells(8).Value))
-                                    .ExecuteNonQuery()
-                                End With
+                                Dim sqll = "Select * from StockMast where Prodcode='" + gvSales.Rows(k).Cells(5).Value + "'"
+                                cmd = New SqlCommand(sqll, Con)
+                                dr = cmd.ExecuteReader
+                                While dr.Read
 
-
+                                    Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - gvSales.Rows(k).Cells(1).Value & "' where Prodcode= " & gvSales.Rows(k).Cells(5).Value & ""
+                                    cmd = New SqlCommand(query, Con)
+                                    cmd.ExecuteNonQuery()
+                                End While
                             Next
                             For Each row As DataGridViewRow In gvSales.Rows
                                 Dim sql = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,qtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyIssued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@time,@date)"

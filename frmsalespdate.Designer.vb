@@ -23,8 +23,8 @@ Partial Class frmsalespdate
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.rptSalesPerDate1 = New HardSoft_PoS.rptSalesPerDate()
         Me.rptSalesPerDate2 = New HardSoft_PoS.rptSalesPerDate()
+        Me.rptSalesPerDate1 = New HardSoft_PoS.rptSalesPerDate()
         Me.SuspendLayout()
         '
         'CrystalReportViewer1
