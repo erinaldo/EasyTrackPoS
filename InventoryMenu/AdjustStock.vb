@@ -369,7 +369,12 @@ Public Class frmAdjustStock
                     Dim query = "update StockMast set Prodqty = @newstock where prodcode =" + gvStockBatch.Rows(k).Cells(6).Value + ""
                     cmd = New SqlCommand(query, con)
                     With cmd
-                        .Parameters.AddWithValue("@newstock", dr.Item("ProdQty") + gvStockBatch.Rows(k).Cells(4).Value)
+                        If ckReplace.Checked = True Then
+                            .Parameters.AddWithValue("@newstock", gvStockBatch.Rows(k).Cells(4).Value)
+                        Else
+                            .Parameters.AddWithValue("@newstock", dr.Item("ProdQty") + gvStockBatch.Rows(k).Cells(4).Value)
+                        End If
+
                         .ExecuteNonQuery()
                     End With
 

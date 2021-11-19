@@ -23,12 +23,12 @@ Partial Class frmSalesCancelation
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSalesCancelation))
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gvSalesReciepts = New System.Windows.Forms.DataGridView()
         Me.ItemCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -106,31 +106,31 @@ Partial Class frmSalesCancelation
         Me.gvSalesReciepts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.gvSalesReciepts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.gvSalesReciepts.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvSalesReciepts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvSalesReciepts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.gvSalesReciepts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gvSalesReciepts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemCode, Me.ItemName, Me.QtySold, Me.RPrice, Me.Amount, Me.RecieptNo, Me.NewQtySold, Me.NewAmount, Me.CancellationQty, Me.NewQty})
         Me.gvSalesReciepts.Location = New System.Drawing.Point(343, 275)
         Me.gvSalesReciepts.MultiSelect = False
         Me.gvSalesReciepts.Name = "gvSalesReciepts"
         Me.gvSalesReciepts.ReadOnly = True
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.Khaki
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvSalesReciepts.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Khaki
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvSalesReciepts.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.gvSalesReciepts.RowHeadersVisible = False
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gvSalesReciepts.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gvSalesReciepts.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.gvSalesReciepts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gvSalesReciepts.Size = New System.Drawing.Size(619, 271)
         Me.gvSalesReciepts.TabIndex = 0
@@ -245,14 +245,14 @@ Partial Class frmSalesCancelation
         Me.gvReciepts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.gvReciepts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.gvReciepts.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvReciepts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvReciepts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.gvReciepts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gvReciepts.Location = New System.Drawing.Point(12, 178)
         Me.gvReciepts.MultiSelect = False
@@ -260,8 +260,8 @@ Partial Class frmSalesCancelation
         Me.gvReciepts.ReadOnly = True
         Me.gvReciepts.RowHeadersVisible = False
         Me.gvReciepts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gvReciepts.RowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gvReciepts.RowsDefaultCellStyle = DataGridViewCellStyle5
         Me.gvReciepts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gvReciepts.Size = New System.Drawing.Size(325, 368)
         Me.gvReciepts.TabIndex = 3
@@ -674,7 +674,7 @@ Partial Class frmSalesCancelation
         Me.dpDate.Name = "dpDate"
         Me.dpDate.Size = New System.Drawing.Size(104, 32)
         Me.dpDate.TabIndex = 33
-        Me.dpDate.Value = New Date(2021, 10, 2, 0, 0, 0, 0)
+        Me.dpDate.Value = New Date(2021, 11, 18, 0, 0, 0, 0)
         '
         'GroupBox1
         '
@@ -933,8 +933,8 @@ Partial Class frmSalesCancelation
         Me.ckprintpreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ckprintpreview.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
         Me.ckprintpreview.BorderRadius = 12
-        Me.ckprintpreview.Checked = True
-        Me.ckprintpreview.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.ckprintpreview.Checked = False
+        Me.ckprintpreview.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
         Me.ckprintpreview.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckprintpreview.CustomCheckmarkImage = Nothing
         Me.ckprintpreview.Location = New System.Drawing.Point(517, 49)
@@ -1083,7 +1083,7 @@ Partial Class frmSalesCancelation
         Me.dpdateto.Name = "dpdateto"
         Me.dpdateto.Size = New System.Drawing.Size(122, 32)
         Me.dpdateto.TabIndex = 36
-        Me.dpdateto.Value = New Date(2021, 8, 29, 19, 31, 16, 0)
+        Me.dpdateto.Value = New Date(2021, 11, 18, 0, 0, 0, 0)
         '
         'Label9
         '

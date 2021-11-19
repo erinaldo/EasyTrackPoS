@@ -16,7 +16,6 @@ Public Class frmsalespdate
             adp.SelectCommand = cmd
             adp.Fill(dt, "salestranx")
 
-
             Dim report As New rptSalesPerDate
             report.SetDataSource(dt)
             CrystalReportViewer1.ReportSource = report

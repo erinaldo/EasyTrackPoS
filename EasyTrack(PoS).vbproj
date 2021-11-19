@@ -749,6 +749,12 @@
       <DependentUpon>rptInventPerItem.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ReportMenu\rptSalesperItem.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSalesperItem.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ReportMenu\rptStockBalbyPline.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1407,6 +1413,10 @@
     <EmbeddedResource Include="ReportMenu\rptInventPerItem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptInventPerItem.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportMenu\rptSalesperItem.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSalesperItem.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportMenu\rptStockBalbyPline.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Globalization
 Public Class frmSalesCancelation
     Dim con As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
@@ -18,7 +19,6 @@ Public Class frmSalesCancelation
         If con.State = ConnectionState.Closed Then
             con.Open()
         End If
-        MsgBox(dpDate.Value)
         Dim query = "select SalesPerson,RecieptId from RecieptConfig"
         cmd = New SqlCommand(query, con)
         Dim adapter As New SqlDataAdapter(cmd)
@@ -78,7 +78,8 @@ Public Class frmSalesCancelation
         WindowState = FormWindowState.Maximized
         Display()
         User()
-
+        'Dim milliseconds = CLng(DateTime.UtcNow.Subtract(New DateTime(1970, 1, 1)).TotalMilliseconds)
+        'MsgBox(milliseconds)
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
@@ -185,7 +186,7 @@ Public Class frmSalesCancelation
                 .Parameters.AddWithValue("@ItemCode", row.Cells(0).Value)
                 .Parameters.AddWithValue("@Itemname", row.Cells(1).Value)
                 .Parameters.AddWithValue("@QtySold", row.Cells(2).Value)
-                .Parameters.AddWithValue("@DateSold", lblDateSold.Text)
+                .Parameters.AddWithValue("@DateSold", CDate(lblDateSold.Text))
                 .Parameters.AddWithValue("@TimeSold", lblTimeSold.Text)
                 .Parameters.AddWithValue("@BuyerName", lblBuyerName.Text)
                 .Parameters.AddWithValue("@BuyerTel", lblBuyerTel.Text)
@@ -203,9 +204,10 @@ Public Class frmSalesCancelation
                 con.Open()
             End If
 
-            Dim sqll = "update Salestranx set QtySold = @newstock, Amount=@newamt where ItemCode =" + row.Cells(0).Value + " and RecieptNo=" + lblRecieptNo.Text + ""
+            Dim sqll = "update Salestranx set QtySold = @newstock, Amount=@newamt where ItemCode =@itemcode and RecieptNo=" + lblRecieptNo.Text + ""
             cmd = New SqlCommand(sqll, con)
             With cmd
+                .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = row.Cells(0).Value
                 .Parameters.AddWithValue("@newstock", row.Cells(6).Value)
                 .Parameters.AddWithValue("@newamt", row.Cells(7).Value)
                 .ExecuteNonQuery()
@@ -345,13 +347,17 @@ Public Class frmSalesCancelation
 
     Private Sub BunifuThinButton25_Click_1(sender As Object, e As EventArgs) Handles BunifuThinButton25.Click
         Try
+            Dim outto As Date
+            Dim outfrom As Date
+            DateTime.TryParseExact(dpDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outfrom)
+            DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
             If con.State = ConnectionState.Closed Then
                 con.Open()
             End If
             Dim query = "select SalesPerson,RecieptId from RecieptConfig where date between @date1 and @date2"
             cmd = New SqlCommand(query, con)
-            cmd.Parameters.Add("date1", SqlDbType.DateTime).Value = dpDate.Value
-            cmd.Parameters.Add("date2", SqlDbType.DateTime).Value = dpdateto.Value
+            cmd.Parameters.Add("date1", SqlDbType.DateTime).Value = outfrom
+            cmd.Parameters.Add("date2", SqlDbType.DateTime).Value = outto
             da = New SqlDataAdapter(cmd)
             Dim tbl As New DataTable()
             da.Fill(tbl)
@@ -503,4 +509,6 @@ Public Class frmSalesCancelation
             MsgBox(ex.ToString)
         End Try
     End Sub
+
+
 End Class

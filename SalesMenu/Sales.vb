@@ -7,8 +7,8 @@ Public Class frmSales
     Dim da As SqlDataAdapter
     Dim dt As New dsSalesTranx
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
-        Dim f2 As New frmSalesMenu
-        f2.Show()
+        'Dim f2 As New frmSalesMenu
+        'f2.Show()
         Me.Hide()
 
     End Sub
@@ -615,7 +615,7 @@ Public Class frmSales
                                 cmd = New SqlCommand(query, Con)
                                 With cmd
 
-                                    .Parameters.AddWithValue("@ItemCode", row.Cells(5).Value)
+                                    .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = row.Cells(5).Value
                                     .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
                                     .Parameters.AddWithValue("@ProdLine", row.Cells(7).Value)
                                     .Parameters.AddWithValue("@ProdCat", row.Cells(4).Value)
@@ -648,23 +648,29 @@ Public Class frmSales
                             'MsgBox("Record Saved")
                         End If
                     Finally
-
                         For k = 0 To gvSales.RowCount - 1
                             If Con.State = ConnectionState.Closed Then
                                 Con.Open()
                             End If
-                            Dim query = "update StockMast set ProdQty = @newstock where Prodcode =" + gvSales.Rows(k).Cells(5).Value + ""
-                            cmd = New SqlCommand(query, Con)
-                            With cmd
-                                .Parameters.AddWithValue("@newstock", (gvSales.Rows(k).Cells(8).Value))
-                                .ExecuteNonQuery()
-                            End With
+                            Dim sqll = "Select * from StockMast where Prodcode='" + gvSales.Rows(k).Cells(5).Value + "'"
+                            cmd = New SqlCommand(sqll, Con)
+                            dr = cmd.ExecuteReader
+                            While dr.Read
+
+                                Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - gvSales.Rows(k).Cells(1).Value & "' where Prodcode= @itemcode"
+                                cmd = New SqlCommand(query, Con)
+                                With cmd
+                                    .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = gvSales.Rows(k).Cells(5).Value
+                                    .ExecuteNonQuery()
+                                End With
+                                cmd.ExecuteNonQuery()
+                            End While
                         Next
                         For Each row As DataGridViewRow In gvSales.Rows
                             Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,qtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyIssued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@time,@date)"
                             cmd = New SqlCommand(quer, Con)
                             With cmd
-                                .Parameters.AddWithValue("@ItemCode", row.Cells(5).Value)
+                                .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = row.Cells(5).Value
                                 .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
                                 .Parameters.AddWithValue("@tranxtype", "Issued")
                                 .Parameters.AddWithValue("@tranxsource", "Sales")
@@ -713,7 +719,7 @@ Public Class frmSales
                     Else
                         Try
                             'reciept()
-                            Dim i As Integer
+                            'Dim i As Integer
 
                             For Each row As DataGridViewRow In gvSales.Rows
 
@@ -724,7 +730,7 @@ Public Class frmSales
                                 cmd = New SqlCommand(query, Con)
                                 With cmd
 
-                                    .Parameters.AddWithValue("@ItemCode", row.Cells(5).Value)
+                                    .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = row.Cells(5).Value
                                     .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
                                     .Parameters.AddWithValue("@ProdLine", row.Cells(7).Value)
                                     .Parameters.AddWithValue("@ProdCat", row.Cells(4).Value)
@@ -1023,8 +1029,7 @@ Public Class frmSales
         txtDiscName.Text = ""
     End Sub
 
-    Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs) Handles BunifuThinButton24.Click
-        frmSalesCancelation.Show()
+    Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs)
     End Sub
 
     Private Sub BunifuThinButton25_Click(sender As Object, e As EventArgs) Handles BunifuThinButton25.Click
@@ -1157,8 +1162,7 @@ Public Class frmSales
         FillSale(txtProdname.SelectedItem)
     End Sub
 
-    Private Sub BunifuThinButton26_Click(sender As Object, e As EventArgs) Handles BunifuThinButton26.Click
-        frmToCollected.Show()
+    Private Sub BunifuThinButton26_Click(sender As Object, e As EventArgs)
     End Sub
 
     Private Sub txtQty_MouseLeave(sender As Object, e As EventArgs) Handles txtQty.MouseLeave
