@@ -204,28 +204,88 @@ Public Class frmSales
             If Con.State = ConnectionState.Closed Then
                 Con.Open()
             End If
+            If cbCatSort.SelectedIndex = -1 And cbProdlineSort.SelectedIndex = -1 Then
+                Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
+                cmd = New SqlCommand(query, Con)
+                Dim adapter As New SqlDataAdapter(cmd)
+                Dim table As New DataTable()
+                adapter.Fill(table)
+                gvStock.DataSource = table
+                'Dim itemavailable As Boolean
+                'itemavailable = table.Rows(0)(0).ToString = ""
+                'If itemavailable Then
+                'Else
+                'If table.Rows(0)(0).ToString = txtProdname.Text And table.Rows.Count = 1 Then
+                'cbProdName.Text = table.Rows(0)(7).ToString()
+                'Else
+                'MsgBox("No Record")
+                ''txtProdName.Text = ""
+                'End If
+                'End If
 
-            Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-            cmd = New SqlCommand(query, Con)
-            Dim adapter As New SqlDataAdapter(cmd)
-            Dim table As New DataTable()
-            adapter.Fill(table)
-            gvStock.DataSource = table
-            'Dim itemavailable As Boolean
-            'itemavailable = table.Rows(0)(0).ToString = ""
-            'If itemavailable Then
-            'Else
-            'If table.Rows(0)(0).ToString = txtProdname.Text And table.Rows.Count = 1 Then
+            End If
+            If cbCatSort.SelectedIndex <> -1 And cbProdlineSort.SelectedIndex = -1 Then
+                Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodcat like '%" + cbCatSort.Text + "%'"
+                cmd = New SqlCommand(query, Con)
+                Dim adapter As New SqlDataAdapter(cmd)
+                Dim table As New DataTable()
+                adapter.Fill(table)
+                gvStock.DataSource = table
+                'Dim itemavailable As Boolean
+                'itemavailable = table.Rows(0)(0).ToString = ""
+                'If itemavailable Then
+                'Else
+                'If table.Rows(0)(0).ToString = txtProdname.Text And table.Rows.Count = 1 Then
+                'cbProdName.Text = table.Rows(0)(7).ToString()
+                'Else
+                'MsgBox("No Record")
+                ''txtProdName.Text = ""
+                'End If
+                'End If
 
+            End If
+            If cbCatSort.SelectedIndex = -1 And cbProdlineSort.SelectedIndex <> -1 Then
+                Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and Prodline like '%" + cbProdlineSort.Text + "%'"
+                cmd = New SqlCommand(query, Con)
+                Dim adapter As New SqlDataAdapter(cmd)
+                Dim table As New DataTable()
+                adapter.Fill(table)
+                gvStock.DataSource = table
+                'Dim itemavailable As Boolean
+                'itemavailable = table.Rows(0)(0).ToString = ""
+                'If itemavailable Then
+                'Else
+                'If table.Rows(0)(0).ToString = txtProdname.Text And table.Rows.Count = 1 Then
+                'cbProdName.Text = table.Rows(0)(7).ToString()
+                'Else
+                'MsgBox("No Record")
+                ''txtProdName.Text = ""
+                'End If
+                'End If
 
-            'cbProdName.Text = table.Rows(0)(7).ToString()
+            End If
 
-            'Else
-            'MsgBox("No Record")
-            ''txtProdName.Text = ""
+            If cbCatSort.SelectedIndex <> -1 And cbProdlineSort.SelectedIndex <> -1 Then
+                Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodcat like '%" + cbCatSort.Text + "%' and Prodline like '%" + cbProdlineSort.Text + "%'"
+                cmd = New SqlCommand(query, Con)
+                Dim adapter As New SqlDataAdapter(cmd)
+                Dim table As New DataTable()
+                adapter.Fill(table)
+                gvStock.DataSource = table
+                'Dim itemavailable As Boolean
+                'itemavailable = table.Rows(0)(0).ToString = ""
+                'If itemavailable Then
+                'Else
+                'If table.Rows(0)(0).ToString = txtProdname.Text And table.Rows.Count = 1 Then
+                'cbProdName.Text = table.Rows(0)(7).ToString()
+                'Else
+                'MsgBox("No Record")
+                ''txtProdName.Text = ""
+                'End If
+                'End If
 
-            'End If
-            'End If
+            End If
+
 
 
 
@@ -317,14 +377,15 @@ Public Class frmSales
         If txtQty.Text = "" Then
             Exit Sub
         End If
-        For Each row As DataGridViewRow In gvPriceBand.Rows
-            If row.Cells(1).Value = lblProdName.Text And row.Cells(3).Value <= CDbl(txtQty.Text) And row.Cells(4).Value >= CDbl(txtQty.Text) Then
-                txtPrice.Text = row.Cells(5).Value
-            Else
-                'txtPrice.Text = lblOPrice.Text
-            End If
-            'MsgBox(row.Cells(5).Value)
-        Next
+        'Price Bands
+        'For Each row As DataGridViewRow In gvPriceBand.Rows
+        '    If row.Cells(1).Value = lblProdName.Text And row.Cells(3).Value <= CDbl(txtQty.Text) And row.Cells(4).Value >= CDbl(txtQty.Text) Then
+        '        txtPrice.Text = row.Cells(5).Value
+        '    Else
+        '        'txtPrice.Text = lblOPrice.Text
+        '    End If
+        '    'MsgBox(row.Cells(5).Value)
+        'Next
 
         Dim amt As Decimal
         amt = Val(txtQty.Text) * Val(txtPrice.Text)
@@ -1394,12 +1455,12 @@ Public Class frmSales
 
     Private Sub cbCatSort_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cbCatSort.SelectionChangeCommitted
         Sortcat(cbCatSort.Text)
-        cbProdlineSort.SelectedIndex = -1
+        'cbProdlineSort.SelectedIndex = -1
     End Sub
 
     Private Sub cbProdlineSort_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cbProdlineSort.SelectionChangeCommitted
         Sortpline(cbProdlineSort.Text)
-        cbCatSort.SelectedIndex = -1
+        'cbCatSort.SelectedIndex = -1
     End Sub
 
     Private Sub BunifuThinButton29_Click(sender As Object, e As EventArgs) Handles BunifuThinButton29.Click
