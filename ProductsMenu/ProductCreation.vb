@@ -322,7 +322,7 @@ Public Class frmProdCreate
 
             End If
             Display()
-        clear()
+        'clear()
         con.Close()
         dr.Close()
         txtItemName.Select()

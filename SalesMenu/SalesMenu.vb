@@ -42,7 +42,7 @@ Public Class frmSalesMenu
             MsgBox("No Active Session in progress", vbCritical)
         Else
             frmCloseSalesMenu.Show()
-            Me.Hide()
+            'Me.Hide
         End If
 
 

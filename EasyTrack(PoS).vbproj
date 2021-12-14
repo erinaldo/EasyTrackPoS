@@ -366,6 +366,12 @@
     <Compile Include="frmGoodsRecievedPerItem.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmMessagingSetup.Designer.vb">
+      <DependentUpon>frmMessagingSetup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMessagingSetup.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmSalesCancelation.Designer.vb">
       <DependentUpon>frmSalesCancelation.vb</DependentUpon>
     </Compile>
@@ -529,6 +535,7 @@
       <DependentUpon>rptTobeCollected.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Module\SMSModule.vb" />
     <Compile Include="PfrmCustomer.Designer.vb">
       <DependentUpon>PfrmCustomer.vb</DependentUpon>
     </Compile>
@@ -713,6 +720,12 @@
     <Compile Include="ReportMenu\frmSupplierReportMenu.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReportMenu\PfrmReports.Designer.vb">
+      <DependentUpon>PfrmReports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReportMenu\PfrmReports.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReportMenu\rptAdjustStock.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -747,6 +760,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptInventPerItem.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportMenu\rptSalespercashierRoll.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSalespercashierRoll.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReportMenu\rptSalesperItem.vb">
@@ -1218,6 +1237,9 @@
     <EmbeddedResource Include="frmGoodsRecievedPerItem.resx">
       <DependentUpon>frmGoodsRecievedPerItem.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMessagingSetup.resx">
+      <DependentUpon>frmMessagingSetup.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSalesCancelation.resx">
       <DependentUpon>frmSalesCancelation.vb</DependentUpon>
     </EmbeddedResource>
@@ -1390,6 +1412,9 @@
     <EmbeddedResource Include="ReportMenu\frmSupplierReportMenu.resx">
       <DependentUpon>frmSupplierReportMenu.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportMenu\PfrmReports.resx">
+      <DependentUpon>PfrmReports.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportMenu\rptAdjustStock.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptAdjustStock.vb</LastGenOutput>
@@ -1413,6 +1438,10 @@
     <EmbeddedResource Include="ReportMenu\rptInventPerItem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptInventPerItem.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportMenu\rptSalespercashierRoll.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSalespercashierRoll.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportMenu\rptSalesperItem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

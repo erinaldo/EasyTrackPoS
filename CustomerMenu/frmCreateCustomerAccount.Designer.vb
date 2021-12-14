@@ -143,7 +143,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(-3, 230)
+        Me.Label3.Location = New System.Drawing.Point(6, 235)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(195, 21)
         Me.Label3.TabIndex = 109
@@ -471,7 +471,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gvStockMast.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.gvStockMast.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.gvStockMast.BackgroundColor = System.Drawing.Color.White
+        Me.gvStockMast.BackgroundColor = System.Drawing.Color.LightGray
         Me.gvStockMast.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvStockMast.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.gvStockMast.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None

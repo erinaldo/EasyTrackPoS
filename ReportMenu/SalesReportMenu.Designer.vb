@@ -33,6 +33,7 @@ Partial Class SalesReportMenu
         Me.dpDatefrom = New Bunifu.UI.WinForms.BunifuDatePicker()
         Me.dpdateto = New Bunifu.UI.WinForms.BunifuDatePicker()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -62,7 +63,7 @@ Partial Class SalesReportMenu
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(182, 297)
+        Me.Label3.Location = New System.Drawing.Point(177, 317)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(112, 32)
         Me.Label3.TabIndex = 119
@@ -132,7 +133,7 @@ Partial Class SalesReportMenu
         Me.dpDatefrom.Name = "dpDatefrom"
         Me.dpDatefrom.Size = New System.Drawing.Size(161, 32)
         Me.dpDatefrom.TabIndex = 128
-        Me.dpDatefrom.Value = New Date(2021, 11, 8, 0, 0, 0, 0)
+        Me.dpDatefrom.Value = New Date(2021, 12, 13, 0, 0, 0, 0)
         '
         'dpdateto
         '
@@ -158,17 +159,27 @@ Partial Class SalesReportMenu
         Me.dpdateto.Name = "dpdateto"
         Me.dpdateto.Size = New System.Drawing.Size(157, 32)
         Me.dpdateto.TabIndex = 129
-        Me.dpdateto.Value = New Date(2021, 11, 8, 0, 0, 0, 0)
+        Me.dpdateto.Value = New Date(2021, 12, 13, 0, 0, 0, 0)
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.Label4.Location = New System.Drawing.Point(176, 235)
+        Me.Label4.Location = New System.Drawing.Point(177, 265)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(111, 32)
         Me.Label4.TabIndex = 130
         Me.Label4.Text = "Per Item"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
+        Me.Label5.Location = New System.Drawing.Point(142, 215)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(204, 32)
+        Me.Label5.TabIndex = 118
+        Me.Label5.Text = "Per Cashier(Roll)"
         '
         'SalesReportMenu
         '
@@ -180,6 +191,7 @@ Partial Class SalesReportMenu
         Me.Controls.Add(Me.dpDatefrom)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
@@ -205,4 +217,5 @@ Partial Class SalesReportMenu
     Friend WithEvents dpDatefrom As Bunifu.UI.WinForms.BunifuDatePicker
     Friend WithEvents dpdateto As Bunifu.UI.WinForms.BunifuDatePicker
     Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
 End Class

@@ -892,10 +892,7 @@ Public Class frmTouchSale
                     cmd.ExecuteNonQuery()
                     MsgBox("Oder Status Updated")
                     con.Close()
-
-
                     DisplayOders()
-
                     MsgBox("StockMast Updated")
                     lblTotal.Text = ""
                     Clear()
@@ -948,10 +945,7 @@ Public Class frmTouchSale
                                 End With
                                 con.Close()
                                 MsgBox("You Reach")
-
-
                             Next
-
                         End If
 
                     Finally
@@ -987,9 +981,6 @@ Public Class frmTouchSale
                                 .Parameters.AddWithValue("@newstock", CInt(gvtouchsale.Rows(k).Cells(8).Value))
                                 .ExecuteNonQuery()
                             End With
-
-
-
                         Next
                         con.Close()
 
@@ -1001,9 +992,6 @@ Public Class frmTouchSale
                         lblTotal.Text = ""
                         Clear()
                         DisplayOders()
-
-
-
                         lblTotal.Text = ""
                     End Try
                 End If

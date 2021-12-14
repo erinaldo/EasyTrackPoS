@@ -79,7 +79,7 @@ Partial Class frmSalesMenu
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(270, 175)
+        Me.Label2.Location = New System.Drawing.Point(270, 217)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(55, 32)
         Me.Label2.TabIndex = 102
@@ -94,6 +94,7 @@ Partial Class frmSalesMenu
         Me.Label3.Size = New System.Drawing.Size(119, 32)
         Me.Label3.TabIndex = 103
         Me.Label3.Text = "Expenses"
+        Me.Label3.Visible = False
         '
         'Label4
         '
@@ -173,7 +174,7 @@ Partial Class frmSalesMenu
         '
         Me.PictureBox3.Enabled = False
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(223, 172)
+        Me.PictureBox3.Location = New System.Drawing.Point(223, 214)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(41, 42)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -190,6 +191,7 @@ Partial Class frmSalesMenu
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox4.TabIndex = 148
         Me.PictureBox4.TabStop = False
+        Me.PictureBox4.Visible = False
         '
         'PictureBox5
         '
@@ -212,6 +214,7 @@ Partial Class frmSalesMenu
         Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox6.TabIndex = 151
         Me.PictureBox6.TabStop = False
+        Me.PictureBox6.Visible = False
         '
         'Label6
         '
@@ -223,6 +226,7 @@ Partial Class frmSalesMenu
         Me.Label6.Size = New System.Drawing.Size(82, 32)
         Me.Label6.TabIndex = 150
         Me.Label6.Text = "Oders"
+        Me.Label6.Visible = False
         '
         'StatusStrip1
         '

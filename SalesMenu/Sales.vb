@@ -6,11 +6,11 @@ Public Class frmSales
     Dim builder As SqlCommandBuilder
     Dim da As SqlDataAdapter
     Dim dt As New dsSalesTranx
+    Dim tbl As DataTable
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
         'Dim f2 As New frmSalesMenu
         'f2.Show()
         Me.Hide()
-
     End Sub
 
     Private Sub frmSales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -242,7 +242,6 @@ Public Class frmSales
                 ''txtProdName.Text = ""
                 'End If
                 'End If
-
             End If
             If cbCatSort.SelectedIndex = -1 And cbProdlineSort.SelectedIndex <> -1 Then
                 Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and Prodline like '%" + cbProdlineSort.Text + "%'"
@@ -285,10 +284,6 @@ Public Class frmSales
                 'End If
 
             End If
-
-
-
-
             Con.Close()
         Catch ex As Exception
 
@@ -312,8 +307,6 @@ Public Class frmSales
         Catch ex As Exception
             'MsgBox(ex.ToString)
         End Try
-
-
     End Sub
     Private Sub Display()
         If Con.State = ConnectionState.Closed Then
@@ -327,18 +320,11 @@ Public Class frmSales
         da.Fill(tbl)
         gvStock.DataSource = tbl
         Con.Close()
-
-
-
     End Sub
 
     Private Sub cbProdName_TextUpdate(sender As Object, e As EventArgs) Handles cbProdName.TextUpdate
         'Feel(txtProdname.Text)
-
     End Sub
-
-
-
     Private Sub gvStock_CellClick(sender As Object, e As DataGridViewCellEventArgs)
         Try
             Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
@@ -351,20 +337,15 @@ Public Class frmSales
             txtCat.Text = row.Cells(5).Value.ToString()
             txtSize.Text = row.Cells(3).Value.ToString()
             txtColour.Text = row.Cells(4).Value.ToString()
-
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
-
         ''txtProdName.Text = ""
-
-
     End Sub
     Private Sub ShowBand()
         If Con.State = ConnectionState.Closed Then
             Con.Open()
         End If
-
         Dim query = "select * from PriceBand"
         cmd = New SqlCommand(query, Con)
         Dim adapter As New SqlDataAdapter(cmd)
@@ -408,24 +389,18 @@ Public Class frmSales
     End Sub
 
     Private Sub txtCashPaid_TextChanged(sender As Object, e As EventArgs) Handles txtCashPaid.TextChanged
-
         Dim CashPaid As Double = 0
         Dim change As Double = 0
         change = Val(txtCashPaid.Text) - Val(lblPayable.Text)
         lblChange.Text = change
-
-
-
     End Sub
 
     Private Sub reciept()
-
         Con.Open()
         Dim sql = "insert into Recieptconfig(Salesperson,recieptid,date) values('" + Activeuser.Text + "','" + lblRecieptNo.Text + "','" + lblDate.Text + "') "
         cmd = New SqlCommand(sql, Con)
         cmd.ExecuteNonQuery()
         Con.Close()
-
     End Sub
     Private Sub ShowConfig()
         If Con.State = ConnectionState.Closed Then
@@ -441,7 +416,6 @@ Public Class frmSales
         If table.Rows.Count() = 0 Then
             lblRecieptNo.Text = "10001"
         Else
-
             Dim index = table.Rows.Count() - 1
             Dim reciept = table.Rows(index)(0).ToString
             nextreciept = reciept + 1
@@ -459,7 +433,6 @@ Public Class frmSales
                     lblRecieptNo.Text = nextreciept
                 Case Else
                     lblRecieptNo.Text = nextreciept
-
             End Select
         End If
 
@@ -480,7 +453,6 @@ Public Class frmSales
     End Sub
 
     Private Sub cbSaleType_DropDownClosed(sender As Object, e As EventArgs) Handles cbSaleType.DropDownClosed
-
         If (cbSaleType.SelectedIndex = 1) Then
             txtBuyerName.Enabled = False
             txtCashPaid.Enabled = False
@@ -490,7 +462,6 @@ Public Class frmSales
             cbCreditCustName.Visible = True
             lblCreditCust.Visible = True
             txtCashPaid.Text = 0
-
         ElseIf (cbSaleType.SelectedIndex = 0) Then
             cbPaymode.Enabled = True
             txtBuyerName.Enabled = True
@@ -600,7 +571,8 @@ Public Class frmSales
             txtSize.Text = row.Cells(3).Value.ToString()
             txtColour.Text = row.Cells(5).Value.ToString()
             lblOPrice.Text = row.Cells(2).Value.ToString()
-            lblProdName.Text = row.Cells(0).Value.ToString() + "-" + txtProdline.Text + ""
+            lblProdName.Text = row.Cells(0).Value.ToString()
+            '+ "-" + txtProdline.Text + ""
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -645,6 +617,26 @@ Public Class frmSales
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
         ShowConfig()
+        ''Send sms Message
+        If tksendsms.Checked = True Then
+            Try
+                Dim que = " SELECT fromemail, mailsubject,body,fromsms,smsbody,smsapikey  FROM Emailconfig"
+                cmd = New SqlCommand(que, Con)
+                da = New SqlDataAdapter(cmd)
+                tbl = New DataTable
+                da.Fill(tbl)
+                If tbl.Rows.Count = 0 Then
+                    MsgBox("Reconfigure Sms and try again")
+                Else
+                    Sendsms(tbl.Rows(0)(5).ToString, tbl.Rows(0)(3).ToString, txtBuyerTel.Text, tbl.Rows(0)(4).ToString + "")
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+
+
+        End If
+
         If Val(txtCashPaid.Text) < Val(lblPayable.Text) And cbSaleType.SelectedIndex = 0 Then
             MsgBox("Cash paid not enough", vbCritical)
             Exit Sub
@@ -905,7 +897,19 @@ Public Class frmSales
                 MsgBox(ex.ToString)
             End Try
         End If
+        If tksendsms.Checked = True Then
+            Dim que = " SELECT fromemail, mailsubject,body,fromsms,smsbody,smsapikey  FROM Emailconfig"
+            cmd = New SqlCommand(que, Con)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable
+            da.Fill(tbl)
+            If tbl.Rows.Count = 0 Then
+                MsgBox("Reconfigure Sms and try again")
+            Else
+                Sendsms(tbl.Rows(0)(5).ToString, tbl.Rows(0)(3).ToString, txtBuyerTel.Text, tbl.Rows(0)(4).ToString + "")
+            End If
 
+        End If
         ShowConfig()
         txtProdname.Focus()
     End Sub
@@ -1134,8 +1138,12 @@ Public Class frmSales
                     payable += gvSales.Rows(k).Cells(12).Value
                     DiscAmt += gvSales.Rows(k).Cells(11).Value
                 Next
+                If txtPerDisc.Text = "" Then
+                Else
+                    lblPayable.Text = Val(lblTotal.Text) - (Val(lblTotal.Text) * (Val(txtPerDisc.Text) / 100))
+                End If
                 lblTotal.Text = sum
-                lblPayable.Text = payable
+                'lblPayable.Text = payable
                 lblDiscAmt.Text = DiscAmt
                 MsgBox("Discount Added")
 
@@ -1174,12 +1182,17 @@ Public Class frmSales
                     payable += gvSales.Rows(k).Cells(12).Value
                     DiscAmt += gvSales.Rows(k).Cells(11).Value
                 Next
+                If txtCashDisc.Text = "" Then
+                Else
+                    lblPayable.Text = Val(lblTotal.Text) - Val(txtCashDisc.Text)
+                End If
                 lblTotal.Text = sum
-                lblPayable.Text = payable
+                'lblPayable.Text = payable
                 lblDiscAmt.Text = Math.Round(DiscAmt)
                 MsgBox("Discount Added")
             End If
         End If
+
         lbldiscCode.Text = ""
         txtDiscName.Text = ""
 
@@ -1524,5 +1537,9 @@ Public Class frmSales
             txtProdname.Items.Add(dr(1))
         End While
         Con.Close()
+    End Sub
+
+    Private Sub txtPerDisc_TextChanged(sender As Object, e As EventArgs) Handles txtPerDisc.TextChanged
+
     End Sub
 End Class

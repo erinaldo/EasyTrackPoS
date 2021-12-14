@@ -664,3 +664,5 @@ K:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.Windows.Forms.dll
 K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuLoader.dll
 K:\Daakye\FoodApplication\bin\Debug\Bunifu.UI.WinForms.BunifuLoader.xml
 K:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).vbproj.AssemblyReference.cache
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmMessagingSetup.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.PfrmReports.resources

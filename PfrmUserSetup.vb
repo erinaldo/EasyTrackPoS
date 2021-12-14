@@ -18,7 +18,7 @@
         WindowState = FormWindowState.Maximized
     End Sub
 
-    Private Sub BunifuButton3_Click(sender As Object, e As EventArgs) Handles BunifuButton3.Click
+    Private Sub BunifuButton3_Click(sender As Object, e As EventArgs) Handles BunifuButton3.Click, BunifuButton3.Click
         With frmUserProfilemgmt
             .TopLevel = False
             PUserProfile.Controls.Add(frmUserProfilemgmt)
@@ -42,5 +42,16 @@
         frmMain.Show()
         Me.Hide()
 
+    End Sub
+
+    Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles BunifuButton4.Click
+        Dim f2 As New frmMessagingSetup
+        With f2
+            .TopLevel = False
+            PUserProfile.Controls.Add(f2)
+            .BringToFront()
+            .Show()
+
+        End With
     End Sub
 End Class
