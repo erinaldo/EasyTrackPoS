@@ -4,6 +4,7 @@ Public Class StockBalancesReportMenu
     Dim cmd As New SqlCommand
     Dim adp As New SqlDataAdapter
     Dim dt As New dsInventory
+    Dim ds As New dscustomer
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         Dim f2 As New InventoryReportMenu
         f2.Show()
@@ -108,6 +109,37 @@ Public Class StockBalancesReportMenu
 
             Dim report As New rptInventLedgerPerItem
             report.SetDataSource(dt)
+            frmSupplierReport.Show()
+            frmSupplierReport.CrystalReportViewer1.ReportSource = report
+            frmSupplierReport.CrystalReportViewer1.Refresh()
+            cmd.Dispose()
+            adp.Dispose()
+            con.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub Label13_Click(sender As Object, e As EventArgs) Handles Label13.Click
+        Try
+
+            If con.State = ConnectionState.Closed Then
+                con.Open()
+            End If
+            Dim query = "select * from Customerledger"
+            cmd = New SqlCommand(query, con)
+            ds.Tables("Customerledger").Rows.Clear()
+            adp.SelectCommand = cmd
+            adp.Fill(ds, "Customerledger")
+
+            'Dim sql = "select * from ClientReg"
+            'dt.Tables("ClientReg").Rows.Clear()
+            'cmd = New SqlCommand(sql, con)
+            'adp.SelectCommand = cmd
+            'adp.Fill(dt, "ClientReg")
+
+            Dim report As New rptGoodsIssuePerCust
+            report.SetDataSource(ds)
             frmSupplierReport.Show()
             frmSupplierReport.CrystalReportViewer1.ReportSource = report
             frmSupplierReport.CrystalReportViewer1.Refresh()

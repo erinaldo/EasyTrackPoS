@@ -499,6 +499,12 @@
       <DependentUpon>rptGoodsIssued.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="InventoryMenu\rptGoodsIssuePerCust.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptGoodsIssuePerCust.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="InventoryMenu\rptGoodsRecievedPerInvoice.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -612,6 +618,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsInventory.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportMenu\dsStockMast.vb">
+      <DependentUpon>dsStockMast.xsd</DependentUpon>
     </Compile>
     <Compile Include="ReportMenu\dsSupplier.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -760,6 +769,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptInventPerItem.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportMenu\rptPriceChangelog.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPriceChangelog.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReportMenu\rptSalespercashierRoll.vb">
@@ -1299,6 +1314,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptGoodsIssued.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMenu\rptGoodsIssuePerCust.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptGoodsIssuePerCust.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryMenu\rptGoodsRecievedPerInvoice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptGoodsRecievedPerInvoice.vb</LastGenOutput>
@@ -1438,6 +1457,10 @@
     <EmbeddedResource Include="ReportMenu\rptInventPerItem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptInventPerItem.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportMenu\rptPriceChangelog.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPriceChangelog.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportMenu\rptSalespercashierRoll.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

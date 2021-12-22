@@ -9,10 +9,6 @@ Public Class frmTouchSale
     Private WithEvents lblPrice As New Label
     Dim dt As New dsSalesTranx
 
-
-
-
-
     Sub LoadCatbtn()
         flbtnCat.AutoScroll = True
         flbtnCat.Controls.Clear()
@@ -34,9 +30,6 @@ Public Class frmTouchSale
             Button.Cursor = Cursors.Hand
 
             AddHandler Button.Click, AddressOf Button_click
-
-
-
 
         End While
         dr.Close()
@@ -175,7 +168,7 @@ Public Class frmTouchSale
     End Sub
 
     Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs) Handles Guna2PictureBox1.Click
-        Application.Exit()
+        Me.Hide()
     End Sub
     Sub LoadOder()
         Dim nextoder As String

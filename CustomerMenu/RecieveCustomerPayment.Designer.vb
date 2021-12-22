@@ -49,8 +49,6 @@ Partial Class RecieveCustomerPayment
         Me.lblCustID = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -60,8 +58,6 @@ Partial Class RecieveCustomerPayment
         Me.txtdiscount = New System.Windows.Forms.TextBox()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
-        CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -354,8 +350,6 @@ Partial Class RecieveCustomerPayment
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.Teal
         Me.Panel1.Controls.Add(Me.BunifuThinButton22)
-        Me.Panel1.Controls.Add(Me.Guna2PictureBox2)
-        Me.Panel1.Controls.Add(Me.Guna2PictureBox1)
         Me.Panel1.Controls.Add(Me.Label9)
         Me.Panel1.Controls.Add(Me.PictureBox2)
         Me.Panel1.Location = New System.Drawing.Point(0, -1)
@@ -383,41 +377,12 @@ Partial Class RecieveCustomerPayment
         Me.BunifuThinButton22.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton22.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton22.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton22.Location = New System.Drawing.Point(660, 9)
+        Me.BunifuThinButton22.Location = New System.Drawing.Point(609, 3)
         Me.BunifuThinButton22.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton22.Name = "BunifuThinButton22"
         Me.BunifuThinButton22.Size = New System.Drawing.Size(155, 46)
         Me.BunifuThinButton22.TabIndex = 151
         Me.BunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Guna2PictureBox2
-        '
-        Me.Guna2PictureBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2PictureBox2.Image = CType(resources.GetObject("Guna2PictureBox2.Image"), System.Drawing.Image)
-        Me.Guna2PictureBox2.ImageRotate = 0!
-        Me.Guna2PictureBox2.Location = New System.Drawing.Point(775, 5)
-        Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
-        Me.Guna2PictureBox2.ShadowDecoration.Parent = Me.Guna2PictureBox2
-        Me.Guna2PictureBox2.Size = New System.Drawing.Size(40, 27)
-        Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.Guna2PictureBox2.TabIndex = 143
-        Me.Guna2PictureBox2.TabStop = False
-        Me.Guna2PictureBox2.Visible = False
-        '
-        'Guna2PictureBox1
-        '
-        Me.Guna2PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2PictureBox1.FillColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2PictureBox1.Image = CType(resources.GetObject("Guna2PictureBox1.Image"), System.Drawing.Image)
-        Me.Guna2PictureBox1.ImageRotate = 0!
-        Me.Guna2PictureBox1.Location = New System.Drawing.Point(807, 3)
-        Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.ShadowDecoration.Parent = Me.Guna2PictureBox1
-        Me.Guna2PictureBox1.Size = New System.Drawing.Size(43, 32)
-        Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.Guna2PictureBox1.TabIndex = 142
-        Me.Guna2PictureBox1.TabStop = False
-        Me.Guna2PictureBox1.Visible = False
         '
         'BunifuThinButton21
         '
@@ -505,6 +470,7 @@ Partial Class RecieveCustomerPayment
         Me.Label4.Size = New System.Drawing.Size(78, 21)
         Me.Label4.TabIndex = 153
         Me.Label4.Text = "Discount"
+        Me.Label4.Visible = False
         '
         'txtdiscount
         '
@@ -515,9 +481,11 @@ Partial Class RecieveCustomerPayment
         Me.txtdiscount.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.txtdiscount.Location = New System.Drawing.Point(148, 275)
         Me.txtdiscount.Name = "txtdiscount"
+        Me.txtdiscount.ReadOnly = True
         Me.txtdiscount.Size = New System.Drawing.Size(149, 29)
         Me.txtdiscount.TabIndex = 152
         Me.txtdiscount.Text = "0"
+        Me.txtdiscount.Visible = False
         '
         'RecieveCustomerPayment
         '
@@ -558,8 +526,6 @@ Partial Class RecieveCustomerPayment
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -591,8 +557,6 @@ Partial Class RecieveCustomerPayment
     Friend WithEvents cbCustName As ComboBox
     Friend WithEvents lblCustID As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel

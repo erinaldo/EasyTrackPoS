@@ -100,7 +100,7 @@ Public Class frmSales
                     If txtProdcode.Text = row.Cells(5).Value Then
                         row.Cells(1).Value += Val(txtQty.Text)
                         row.Cells(3).Value = row.Cells(1).Value * row.Cells(2).Value
-                        row.Cells(8).Value = Val(lblActualStock.Text) - row.Cells(1).Value
+                        row.Cells(8).Value = (Val(lblActualStock.Text) - Val(row.Cells(1).Value))
                         row.Cells(12).Value = row.Cells(3).Value
                         'For discount percentage
                         If row.Cells(13).Value = "%" Then
@@ -163,9 +163,8 @@ Public Class frmSales
                 Next
 
                 Dim a = Val(txtQty.Text)
-                Dim newstock As New Integer
                 Dim c = Val(lblActualStock.Text)
-                newstock = CInt(c - a)
+                Dim newstock = c - a
                 gvSales.Rows.Add(lblProdName.Text, txtQty.Text, txtPrice.Text, txtAmt.Text, txtCat.Text, txtProdcode.Text, txtSize.Text, txtProdline.Text, newstock, lblRecieptNo.Text, "0", "0", txtAmt.Text, "", txtColour.Text, lblActualStock.Text)
 
             End While

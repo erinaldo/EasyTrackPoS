@@ -81,7 +81,7 @@ Public Class frmChangePrice
 
     End Sub
 
-    Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs) Handles Guna2PictureBox1.Click
+    Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs)
         Application.Exit()
     End Sub
 
@@ -170,7 +170,7 @@ Public Class frmChangePrice
                 cmd = New SqlCommand(sql, con)
                 With cmd
                     .Parameters.AddWithValue("@ItemCode", row.Cells(10).Value)
-                    .Parameters.AddWithValue("@Itemname", Row.Cells(0).Value)
+                    .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
                     .Parameters.AddWithValue("@qty", row.Cells(1).Value)
                     .Parameters.AddWithValue("@oldrprice", row.Cells(2).Value)
                     .Parameters.AddWithValue("@newrprice", row.Cells(3).Value)
@@ -191,7 +191,7 @@ Public Class frmChangePrice
         Clear()
     End Sub
 
-    Private Sub Guna2PictureBox2_Click(sender As Object, e As EventArgs) Handles Guna2PictureBox2.Click
+    Private Sub Guna2PictureBox2_Click(sender As Object, e As EventArgs)
         If WindowState = FormWindowState.Normal Then
             WindowState = FormWindowState.Maximized
         ElseIf WindowState = FormWindowState.Maximized Then

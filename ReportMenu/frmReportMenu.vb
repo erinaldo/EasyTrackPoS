@@ -19,11 +19,11 @@
         Me.Hide()
     End Sub
 
-    Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs) Handles Guna2PictureBox1.Click
+    Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs) 
         Application.Exit()
     End Sub
 
-    Private Sub Guna2PictureBox2_Click(sender As Object, e As EventArgs) Handles Guna2PictureBox2.Click
+    Private Sub Guna2PictureBox2_Click(sender As Object, e As EventArgs) 
 
     End Sub
 

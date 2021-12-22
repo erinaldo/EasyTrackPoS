@@ -83,11 +83,11 @@ Partial Class SalesReportMenu
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(192, 439)
+        Me.Label1.Location = New System.Drawing.Point(154, 417)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(96, 32)
+        Me.Label1.Size = New System.Drawing.Size(171, 32)
         Me.Label1.TabIndex = 117
-        Me.Label1.Text = "Overall"
+        Me.Label1.Text = "Price Change "
         '
         'PictureBox1
         '

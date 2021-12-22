@@ -167,4 +167,10 @@ Public Class frmMain
         f1.Show()
         Me.Hide()
     End Sub
+
+    Private Sub Label7_Click_1(sender As Object, e As EventArgs) Handles Label7.Click
+        Dim f1 As New frmTouchSale
+        f1.Show()
+        'Me.Hide()
+    End Sub
 End Class

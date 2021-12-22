@@ -37,6 +37,7 @@ Partial Class StockBalancesReportMenu
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -75,7 +76,7 @@ Partial Class StockBalancesReportMenu
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(582, 379)
+        Me.Label1.Location = New System.Drawing.Point(561, 379)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(96, 32)
         Me.Label1.TabIndex = 106
@@ -186,6 +187,16 @@ Partial Class StockBalancesReportMenu
         Me.Label12.TabIndex = 145
         Me.Label12.Text = "Stock Movement Per Item"
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
+        Me.Label13.Location = New System.Drawing.Point(513, 445)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(210, 32)
+        Me.Label13.TabIndex = 106
+        Me.Label13.Text = "Customer Ledger"
+        '
         'StockBalancesReportMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -202,6 +213,7 @@ Partial Class StockBalancesReportMenu
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "StockBalancesReportMenu"
@@ -229,4 +241,5 @@ Partial Class StockBalancesReportMenu
     Friend WithEvents Label11 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents Label12 As Label
+    Friend WithEvents Label13 As Label
 End Class

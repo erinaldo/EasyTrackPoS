@@ -562,6 +562,41 @@ Update Order Option
 Used to sort self-referenced table's rows
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsStockMast">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.ClientRegDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.StockMastDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.ClientRegRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.StockMastRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.ClientRegRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.StockMastRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsSupplier">
 <summary>
 Represents a strongly typed in-memory cache of data.
@@ -707,41 +742,6 @@ Update Order Option
 Used to sort self-referenced table's rows
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsStockMast">
-<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
-</member>
-<member name="T:HardSoft_PoS.dsStockMast.ClientRegDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:HardSoft_PoS.dsStockMast.StockMastDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:HardSoft_PoS.dsStockMast.ClientRegRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:HardSoft_PoS.dsStockMast.StockMastRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:HardSoft_PoS.dsStockMast.ClientRegRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:HardSoft_PoS.dsStockMast.StockMastRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
 <member name="T:HardSoft_PoS.dsStockMastTableAdapters.ClientRegTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -812,6 +812,11 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsSalesTranx.PriceChangeLogDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsSalesTranx.ClientRegRow">
 <summary>
 Represents strongly named DataRow class.
@@ -823,6 +828,11 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsSalesTranx.SessionLedgerRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.PriceChangeLogRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -842,6 +852,11 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsSalesTranx.PriceChangeLogRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.ClientRegTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -853,6 +868,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.SessionLedgerTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.PriceChangeLogTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
