@@ -126,6 +126,8 @@ Partial Class frmSales
         Me.lblOPrice = New System.Windows.Forms.Label()
         Me.gvPriceBand = New Bunifu.UI.WinForms.BunifuDataGridView()
         Me.gbsell = New System.Windows.Forms.GroupBox()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.tksendsms = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.ckprint = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.Label28 = New System.Windows.Forms.Label()
@@ -155,8 +157,7 @@ Partial Class frmSales
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.tksendsms = New Bunifu.UI.WinForms.BunifuCheckBox()
-        Me.Label36 = New System.Windows.Forms.Label()
+        Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
@@ -1424,6 +1425,73 @@ Partial Class frmSales
         Me.gbsell.TabStop = False
         Me.gbsell.Text = "Sell"
         '
+        'Label36
+        '
+        Me.Label36.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label36.AutoSize = True
+        Me.Label36.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label36.Location = New System.Drawing.Point(242, 505)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(85, 21)
+        Me.Label36.TabIndex = 145
+        Me.Label36.Text = "Send SMS"
+        '
+        'tksendsms
+        '
+        Me.tksendsms.AllowBindingControlAnimation = True
+        Me.tksendsms.AllowBindingControlColorChanges = False
+        Me.tksendsms.AllowBindingControlLocation = True
+        Me.tksendsms.AllowCheckBoxAnimation = False
+        Me.tksendsms.AllowCheckmarkAnimation = True
+        Me.tksendsms.AllowOnHoverStates = True
+        Me.tksendsms.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tksendsms.AutoCheck = True
+        Me.tksendsms.BackColor = System.Drawing.Color.Transparent
+        Me.tksendsms.BackgroundImage = CType(resources.GetObject("tksendsms.BackgroundImage"), System.Drawing.Image)
+        Me.tksendsms.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tksendsms.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
+        Me.tksendsms.BorderRadius = 12
+        Me.tksendsms.Checked = True
+        Me.tksendsms.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.tksendsms.Cursor = System.Windows.Forms.Cursors.Default
+        Me.tksendsms.CustomCheckmarkImage = Nothing
+        Me.tksendsms.Location = New System.Drawing.Point(222, 508)
+        Me.tksendsms.MinimumSize = New System.Drawing.Size(17, 17)
+        Me.tksendsms.Name = "tksendsms"
+        Me.tksendsms.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.tksendsms.OnCheck.BorderRadius = 12
+        Me.tksendsms.OnCheck.BorderThickness = 2
+        Me.tksendsms.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
+        Me.tksendsms.OnCheck.CheckmarkColor = System.Drawing.Color.White
+        Me.tksendsms.OnCheck.CheckmarkThickness = 2
+        Me.tksendsms.OnDisable.BorderColor = System.Drawing.Color.LightGray
+        Me.tksendsms.OnDisable.BorderRadius = 12
+        Me.tksendsms.OnDisable.BorderThickness = 2
+        Me.tksendsms.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tksendsms.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
+        Me.tksendsms.OnDisable.CheckmarkThickness = 2
+        Me.tksendsms.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tksendsms.OnHoverChecked.BorderRadius = 12
+        Me.tksendsms.OnHoverChecked.BorderThickness = 2
+        Me.tksendsms.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tksendsms.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
+        Me.tksendsms.OnHoverChecked.CheckmarkThickness = 2
+        Me.tksendsms.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tksendsms.OnHoverUnchecked.BorderRadius = 12
+        Me.tksendsms.OnHoverUnchecked.BorderThickness = 1
+        Me.tksendsms.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tksendsms.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
+        Me.tksendsms.OnUncheck.BorderRadius = 12
+        Me.tksendsms.OnUncheck.BorderThickness = 1
+        Me.tksendsms.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tksendsms.Size = New System.Drawing.Size(17, 17)
+        Me.tksendsms.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
+        Me.tksendsms.TabIndex = 144
+        Me.tksendsms.ThreeState = False
+        Me.tksendsms.ToolTipText = Nothing
+        '
         'Label34
         '
         Me.Label34.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
@@ -2069,72 +2137,11 @@ Partial Class frmSales
         Me.PictureBox3.TabStop = False
         Me.PictureBox3.Visible = False
         '
-        'tksendsms
+        'NotifyIcon1
         '
-        Me.tksendsms.AllowBindingControlAnimation = True
-        Me.tksendsms.AllowBindingControlColorChanges = False
-        Me.tksendsms.AllowBindingControlLocation = True
-        Me.tksendsms.AllowCheckBoxAnimation = False
-        Me.tksendsms.AllowCheckmarkAnimation = True
-        Me.tksendsms.AllowOnHoverStates = True
-        Me.tksendsms.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tksendsms.AutoCheck = True
-        Me.tksendsms.BackColor = System.Drawing.Color.Transparent
-        Me.tksendsms.BackgroundImage = CType(resources.GetObject("tksendsms.BackgroundImage"), System.Drawing.Image)
-        Me.tksendsms.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tksendsms.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
-        Me.tksendsms.BorderRadius = 12
-        Me.tksendsms.Checked = True
-        Me.tksendsms.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
-        Me.tksendsms.Cursor = System.Windows.Forms.Cursors.Default
-        Me.tksendsms.CustomCheckmarkImage = Nothing
-        Me.tksendsms.Location = New System.Drawing.Point(222, 508)
-        Me.tksendsms.MinimumSize = New System.Drawing.Size(17, 17)
-        Me.tksendsms.Name = "tksendsms"
-        Me.tksendsms.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
-        Me.tksendsms.OnCheck.BorderRadius = 12
-        Me.tksendsms.OnCheck.BorderThickness = 2
-        Me.tksendsms.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
-        Me.tksendsms.OnCheck.CheckmarkColor = System.Drawing.Color.White
-        Me.tksendsms.OnCheck.CheckmarkThickness = 2
-        Me.tksendsms.OnDisable.BorderColor = System.Drawing.Color.LightGray
-        Me.tksendsms.OnDisable.BorderRadius = 12
-        Me.tksendsms.OnDisable.BorderThickness = 2
-        Me.tksendsms.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
-        Me.tksendsms.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
-        Me.tksendsms.OnDisable.CheckmarkThickness = 2
-        Me.tksendsms.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.tksendsms.OnHoverChecked.BorderRadius = 12
-        Me.tksendsms.OnHoverChecked.BorderThickness = 2
-        Me.tksendsms.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.tksendsms.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
-        Me.tksendsms.OnHoverChecked.CheckmarkThickness = 2
-        Me.tksendsms.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.tksendsms.OnHoverUnchecked.BorderRadius = 12
-        Me.tksendsms.OnHoverUnchecked.BorderThickness = 1
-        Me.tksendsms.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
-        Me.tksendsms.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
-        Me.tksendsms.OnUncheck.BorderRadius = 12
-        Me.tksendsms.OnUncheck.BorderThickness = 1
-        Me.tksendsms.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
-        Me.tksendsms.Size = New System.Drawing.Size(17, 17)
-        Me.tksendsms.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
-        Me.tksendsms.TabIndex = 144
-        Me.tksendsms.ThreeState = False
-        Me.tksendsms.ToolTipText = Nothing
-        '
-        'Label36
-        '
-        Me.Label36.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label36.AutoSize = True
-        Me.Label36.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label36.Location = New System.Drawing.Point(242, 505)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(85, 21)
-        Me.Label36.TabIndex = 145
-        Me.Label36.Text = "Send SMS"
+        Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
+        Me.NotifyIcon1.Text = "Stock Check"
+        Me.NotifyIcon1.Visible = True
         '
         'frmSales
         '
@@ -2310,4 +2317,5 @@ Partial Class frmSales
     Friend WithEvents ckprintpreview As Bunifu.UI.WinForms.BunifuCheckBox
     Friend WithEvents Label36 As Label
     Friend WithEvents tksendsms As Bunifu.UI.WinForms.BunifuCheckBox
+    Friend WithEvents NotifyIcon1 As NotifyIcon
 End Class

@@ -352,9 +352,10 @@ Public Class frmTouchSale
             da.Fill(table)
             gvOderDetails.DataSource = table
             For Each row As DataGridViewRow In gvOderDetails.Rows
-                dr.Close()
-                Dim query = "Select * from StockMast where Prodcode='" + row.Cells(1).Value + "'"
+                'dr.Close()
+                Dim query = "Select * from StockMast where Prodcode=@itemcode"
                 cmd = New SqlCommand(query, con)
+                cmd.Parameters.AddWithValue("@itemcode", SqlDbType.NVarChar).Value = row.Cells(1).Value
                 dr = cmd.ExecuteReader
                 While dr.Read
                     lblWaiter.Text = row.Cells(10).Value
@@ -378,8 +379,9 @@ Public Class frmTouchSale
                 gvOderDetails.DataSource = table
                 For Each row As DataGridViewRow In gvOderDetails.Rows
                     dr.Close()
-                    Dim query = "Select * from StockMast where Prodcode='" + row.Cells(1).Value + "'"
+                    Dim query = "Select * from StockMast where Prodcode=@itemcode"
                     cmd = New SqlCommand(query, con)
+                    cmd.Parameters.AddWithValue("@itemcode", SqlDbType.NVarChar).Value = row.Cells(1).Value
                     dr = cmd.ExecuteReader
                     While dr.Read
                         lblWaiter.Text = row.Cells(10).Value
@@ -1003,5 +1005,9 @@ Public Class frmTouchSale
         ShowConfig()
 
         'frmSalesReciept.Hide()
+    End Sub
+
+    Private Sub gvOders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvOders.CellDoubleClick
+
     End Sub
 End Class

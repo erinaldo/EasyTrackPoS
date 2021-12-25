@@ -492,12 +492,22 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsInventory.StockMastDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsInventory.ClientRegRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsInventory.InventoryLedgerRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.StockMastRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -512,12 +522,22 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsInventory.StockMastRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsInventoryTableAdapters.ClientRegTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsInventoryTableAdapters.InventoryLedgerTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.StockMastTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

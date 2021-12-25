@@ -191,11 +191,11 @@ Partial Class StockBalancesReportMenu
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.Label13.Location = New System.Drawing.Point(513, 445)
+        Me.Label13.Location = New System.Drawing.Point(517, 445)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(210, 32)
+        Me.Label13.Size = New System.Drawing.Size(161, 32)
         Me.Label13.TabIndex = 106
-        Me.Label13.Text = "Customer Ledger"
+        Me.Label13.Text = "Stock Checks"
         '
         'StockBalancesReportMenu
         '

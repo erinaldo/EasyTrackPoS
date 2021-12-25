@@ -14,6 +14,7 @@ Public Class frmSales
     End Sub
 
     Private Sub frmSales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        StockCheck()
         Display()
         ckCashDisc.Checked = True
         txtCashDisc.Enabled = True
@@ -744,14 +745,16 @@ Public Class frmSales
                         Con.Close()
                         'MsgBox("StockMast Updated")
                         reciept()
-
-                        If ckA5Paper.Checked = True Then
-                            PrintRecieptA5(lblRecieptNo.Text)
-                        ElseIf ckrollPaper.Checked = True Then
-                            RollReciept(lblRecieptNo.Text)
-                        ElseIf ckA4.Checked = True Then
-                            PrintRecieptA4(lblRecieptNo.Text)
+                        If ckprintpreview.Checked = True Or ckprint.Checked = True Then
+                            If ckA5Paper.Checked = True Then
+                                PrintRecieptA5(lblRecieptNo.Text)
+                            ElseIf ckrollPaper.Checked = True Then
+                                RollReciept(lblRecieptNo.Text)
+                            ElseIf ckA4.Checked = True Then
+                                PrintRecieptA4(lblRecieptNo.Text)
+                            End If
                         End If
+
 
                         lblTotal.Text = ""
                         clear()
@@ -875,14 +878,16 @@ Public Class frmSales
                             ShowConfig()
                             'MsgBox("StockMast Updated")
                             reciept()
-
-                            If ckA5Paper.Checked = True Then
-                                PrintRecieptA5(lblRecieptNo.Text)
-                            ElseIf ckrollPaper.Checked = True Then
-                                RollReciept(lblRecieptNo.Text)
-                            ElseIf ckA4.Checked = True Then
-                                PrintRecieptA4(lblRecieptNo.Text)
+                            If ckprintpreview.Checked = True Or ckprint.Checked = True Then
+                                If ckA5Paper.Checked = True Then
+                                    PrintRecieptA5(lblRecieptNo.Text)
+                                ElseIf ckrollPaper.Checked = True Then
+                                    RollReciept(lblRecieptNo.Text)
+                                ElseIf ckA4.Checked = True Then
+                                    PrintRecieptA4(lblRecieptNo.Text)
+                                End If
                             End If
+
                             gvSales.Rows.Clear()
                             lblTotal.Text = ""
                             clear()
@@ -1538,7 +1543,25 @@ Public Class frmSales
         Con.Close()
     End Sub
 
-    Private Sub txtPerDisc_TextChanged(sender As Object, e As EventArgs) Handles txtPerDisc.TextChanged
+    Public Sub StockCheck()
 
+        If Con.State = ConnectionState.Closed Then
+            Con.Open()
+        End If
+        Dim query = "select * from Stockmast where prodqty<=leastqtyreminder"
+        cmd = New SqlCommand(query, Con)
+        da = New SqlDataAdapter(cmd)
+        tbl = New DataTable()
+        da.Fill(tbl)
+        If tbl.Rows.Count = 0 Then
+        Else
+            For k = 0 To tbl.Rows.Count - 1
+                NotifyIcon1.Visible = True
+                NotifyIcon1.BalloonTipIcon = ToolTipIcon.Info
+                NotifyIcon1.BalloonTipText = tbl.Rows(k)(1).ToString + " " + "is below its normal stock level. Kindly restock"
+                NotifyIcon1.BalloonTipTitle = "Stock Check"
+                NotifyIcon1.ShowBalloonTip(20)
+            Next
+        End If
     End Sub
 End Class

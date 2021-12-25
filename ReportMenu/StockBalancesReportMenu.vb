@@ -126,11 +126,11 @@ Public Class StockBalancesReportMenu
             If con.State = ConnectionState.Closed Then
                 con.Open()
             End If
-            Dim query = "select * from Customerledger"
+            Dim query = "select * from Stockmast where prodqty<=leastqtyreminder"
             cmd = New SqlCommand(query, con)
-            ds.Tables("Customerledger").Rows.Clear()
+            dt.Tables("Stockmast").Rows.Clear()
             adp.SelectCommand = cmd
-            adp.Fill(ds, "Customerledger")
+            adp.Fill(dt, "Stockmast")
 
             'Dim sql = "select * from ClientReg"
             'dt.Tables("ClientReg").Rows.Clear()
@@ -138,8 +138,8 @@ Public Class StockBalancesReportMenu
             'adp.SelectCommand = cmd
             'adp.Fill(dt, "ClientReg")
 
-            Dim report As New rptGoodsIssuePerCust
-            report.SetDataSource(ds)
+            Dim report As New rptStockChecks
+            report.SetDataSource(dt)
             frmSupplierReport.Show()
             frmSupplierReport.CrystalReportViewer1.ReportSource = report
             frmSupplierReport.CrystalReportViewer1.Refresh()
