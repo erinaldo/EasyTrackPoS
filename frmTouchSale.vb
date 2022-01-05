@@ -8,6 +8,8 @@ Public Class frmTouchSale
     Dim query As String
     Private WithEvents lblPrice As New Label
     Dim dt As New dsSalesTranx
+    Dim ds As New dsTouchReciepts
+    Dim tbl As DataTable
 
     Sub LoadCatbtn()
         flbtnCat.AutoScroll = True
@@ -29,7 +31,7 @@ Public Class frmTouchSale
             flbtnCat.Controls.Add(Button)
             Button.Cursor = Cursors.Hand
 
-            AddHandler Button.Click, AddressOf Button_click
+            AddHandler Button.DoubleClick, AddressOf Button_click
 
         End While
         dr.Close()
@@ -53,14 +55,12 @@ Public Class frmTouchSale
             cmd = New SqlCommand(quer, con)
         End If
 
-
-
         dr = cmd.ExecuteReader
         While dr.Read
             Dim Btn = New Button
             Btn.Width = 125
             Btn.Height = 60
-            Btn.Text = dr.Item("ProdName").ToString
+            Btn.Text = dr.Item("itemname").ToString
             Btn.FlatStyle = FlatStyle.Flat
             Btn.BackColor = Color.FromArgb(255, 107, 107)
             Btn.ForeColor = Color.White
@@ -78,7 +78,7 @@ Public Class frmTouchSale
 
             Btn.Controls.Add(lblPrice)
 
-            AddHandler Btn.Click, AddressOf Item_dgv
+            AddHandler Btn.MouseDown, AddressOf Item_dgv
 
         End While
         dr.Close()
@@ -101,56 +101,127 @@ Public Class frmTouchSale
         action = "btnCategory"
         LoadItems()
     End Sub
-    Public Sub Item_dgv(sender As Object, e As EventArgs)
 
-        Dim qty As Integer = 1
-        'Dim amt As Double
-        lblProdCode.Text = sender.tag.ToString
+    Private Sub Item_dgv(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
+        Try
+            If e.Clicks = 2 Then
+                'MessageBox.Show("The button was double-clicked.")
+                Dim qty As Double = 1
+                'Dim amt As Double
+                lblProdCode.Text = sender.tag.ToString
 
-        If con.State = ConnectionState.Closed Then
-            con.Open()
-        End If
-
-        Dim query = "Select * from StockMast where Prodcode='" + sender.tag.ToString + "'"
-        cmd = New SqlCommand(query, con)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            lblCat.Text = dr.Item("ProdCat")
-            lblActualStock.Text = dr.Item("ProdQty")
-            For Each row As DataGridViewRow In gvtouchsale.Rows
-                If lblProdCode.Text = row.Cells(0).Value Then
-                    row.Cells(3).Value += 1
-                    row.Cells(4).Value = row.Cells(3).Value * row.Cells(2).Value
-                    row.Cells(10).Value -= 1
-                    Try
-                        Dim sum As Decimal
-                        For k = 0 To gvtouchsale.RowCount - 1
-                            sum += gvtouchsale.Rows(k).Cells(4).Value
-
-                        Next
-                        lblTotal.Text = sum
-                    Catch ex As Exception
-                        MsgBox(ex.ToString)
-                    End Try
-                    dr.Close()
-                    con.Close()
-                    Exit Sub
-
+                If con.State = ConnectionState.Closed Then
+                    con.Open()
                 End If
 
-            Next
+                Dim query = "Select * from StockMast where Prodcode='" + sender.tag.ToString + "'"
+                cmd = New SqlCommand(query, con)
+                dr = cmd.ExecuteReader
+                While dr.Read
+                    lblCat.Text = dr.Item("ProdCat")
+                    lblActualStock.Text = dr.Item("ProdQty")
+                    For Each row As DataGridViewRow In gvtouchsale.Rows
+                        If lblProdCode.Text = row.Cells(0).Value Then
+                            row.Cells(3).Value += 1
+                            row.Cells(4).Value = row.Cells(3).Value * row.Cells(2).Value
+                            row.Cells(10).Value -= 1
+                            Try
+                                Dim sum As Decimal
+                                For k = 0 To gvtouchsale.RowCount - 1
+                                    sum += gvtouchsale.Rows(k).Cells(4).Value
+                                Next
+                                lblTotal.Text = sum
+                            Catch ex As Exception
+                                MsgBox(ex.ToString)
+                            End Try
+                            dr.Close()
+                            con.Close()
+                            Exit Sub
+                        End If
 
-            gvtouchsale.Rows.Add(dr.Item("ProdCode").ToString, dr.Item("ProdName").ToString, dr.Item("RetailPrice").ToString, qty, dr.Item("RetailPrice").ToString, lblDayOder.Text, "Pending", dr.Item("ProdCat").ToString, dr.Item("Prodline").ToString, lblRecieptNo.Text, dr.Item("ProdQty") - one.Text, dr.Item("ProdQty"), lblOderNo.Text)
+                    Next
+                    gvtouchsale.Rows.Add(dr.Item("ProdCode").ToString, dr.Item("Itemname").ToString, dr.Item("RetailPrice").ToString, qty, dr.Item("RetailPrice").ToString, lblDayOder.Text, "Pending", dr.Item("ProdCat").ToString, dr.Item("Prodline").ToString, lblRecieptNo.Text, dr.Item("ProdQty") - one.Text, dr.Item("ProdQty"), lblOderNo.Text)
+                End While
 
-        End While
+                dr.Close()
+                con.Close()
+            End If
+            If e.Clicks = 1 Then
+                'MessageBox.Show("The button was double-clicked.")
+                Dim qty As Double = 1
+                'Dim amt As Double
+                lblProdCode.Text = sender.tag.ToString
 
-        dr.Close()
-        con.Close()
+                If con.State = ConnectionState.Closed Then
+                    con.Open()
+                End If
 
+                Dim query = "Select * from StockMast where Prodcode='" + sender.tag.ToString + "'"
+                cmd = New SqlCommand(query, con)
+                dr = cmd.ExecuteReader
+                While dr.Read
+                    lblItemName.Text = dr.Item("itemname")
+                    lblCat.Text = dr.Item("ProdCat")
+                    lblprodline.Text = dr.Item("Prodline")
+                    lblActualStock.Text = dr.Item("ProdQty")
+                    txtPrice.Text = dr.Item("RetailPrice").ToString
+                End While
+            End If
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
 
     End Sub
+    'Public Sub Item_dgv(sender As Object, e As EventArgs)
+
+    '    Dim qty As Double = 1
+    '    'Dim amt As Double
+    '    lblProdCode.Text = sender.tag.ToString
+
+    '    If con.State = ConnectionState.Closed Then
+    '        con.Open()
+    '    End If
+
+    '    Dim query = "Select * from StockMast where Prodcode='" + sender.tag.ToString + "'"
+    '    cmd = New SqlCommand(query, con)
+    '    dr = cmd.ExecuteReader
+    '    While dr.Read
+    '        lblCat.Text = dr.Item("ProdCat")
+    '        lblActualStock.Text = dr.Item("ProdQty")
+    '        For Each row As DataGridViewRow In gvtouchsale.Rows
+    '            If lblProdCode.Text = row.Cells(0).Value Then
+    '                row.Cells(3).Value += 1
+    '                row.Cells(4).Value = row.Cells(3).Value * row.Cells(2).Value
+    '                row.Cells(10).Value -= 1
+    '                Try
+    '                    Dim sum As Decimal
+    '                    For k = 0 To gvtouchsale.RowCount - 1
+    '                        sum += gvtouchsale.Rows(k).Cells(4).Value
+    '                    Next
+    '                    lblTotal.Text = sum
+    '                Catch ex As Exception
+    '                    MsgBox(ex.ToString)
+    '                End Try
+    '                dr.Close()
+    '                con.Close()
+    '                Exit Sub
+    '            End If
+
+    '        Next
+    '        gvtouchsale.Rows.Add(dr.Item("ProdCode").ToString, dr.Item("ProdName").ToString, dr.Item("RetailPrice").ToString, qty, dr.Item("RetailPrice").ToString, lblDayOder.Text, "Pending", dr.Item("ProdCat").ToString, dr.Item("Prodline").ToString, lblRecieptNo.Text, dr.Item("ProdQty") - one.Text, dr.Item("ProdQty"), lblOderNo.Text)
+    '    End While
+
+    '    dr.Close()
+    '    con.Close()
+
+
+    'End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If lblOderSale.Text <> "odersale" Then
+            Update_Oder()
+            Exit Sub
+        End If
         If cbWaiter.Text = "" Then
             MsgBox("Choose Waiter Odering")
         Else
@@ -169,6 +240,30 @@ Public Class frmTouchSale
 
     Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs) Handles Guna2PictureBox1.Click
         Me.Hide()
+    End Sub
+    Public Sub Update_Oder()
+        If con.State = ConnectionState.Closed Then
+            con.Open()
+        End If
+        For Each row As DataGridViewRow In gvtouchsale.Rows
+            Dim qu = "update odertranx set ItemCode=@itemcode,ItemName=@itemname,Price=@price,Oderqty=@oderqty,OderAmt=@oderamt,DayOderNo='" + lblDayOder.Text + "',OderStatus=@oderstatus,Category=@category,Prodline=@prodline,WaiterName='" + cbWaiter.Text + "' where Oderno=@dayoderno"
+            cmd = New SqlCommand(qu, con)
+            With cmd
+                .Parameters.AddWithValue("@ItemCode", row.Cells(0).Value)
+                .Parameters.AddWithValue("@ItemName", row.Cells(1).Value)
+                .Parameters.AddWithValue("@Price", row.Cells(2).Value)
+                .Parameters.AddWithValue("@Oderqty", row.Cells(3).Value)
+                .Parameters.AddWithValue("@OderAmt", row.Cells(4).Value)
+                .Parameters.AddWithValue("@OderStatus", "Pending")
+                .Parameters.AddWithValue("@Category", row.Cells(7).Value)
+                .Parameters.AddWithValue("@Prodline", row.Cells(8).Value)
+                .Parameters.AddWithValue("@dayoderno", lblDayOder.Text)
+                .ExecuteNonQuery()
+            End With
+        Next
+
+        MsgBox("Oder Updated Succefull")
+        LoadOder()
     End Sub
     Sub LoadOder()
         Dim nextoder As String
@@ -210,7 +305,7 @@ Public Class frmTouchSale
         If con.State = ConnectionState.Closed Then
             con.Open()
         End If
-        Dim sql = "insert into OdersConfig values('" + lblDayOder.Text + "','" + tsUser.Text + "','" + cbWaiter.Text + "','" + lblOderNo.Text + "') "
+        Dim sql = "insert into OdersConfig(dayoderno,salesperson,waiter,oderno) values('" + lblDayOder.Text + "','" + tsUser.Text + "','" + cbWaiter.Text + "','" + lblOderNo.Text + "') "
         cmd = New SqlCommand(sql, con)
         cmd.ExecuteNonQuery()
         con.Close()
@@ -251,10 +346,10 @@ Public Class frmTouchSale
             End If
             Dim query = "select * from OdersConfig where concat(OderNo,Waiter) like '%" + valuetosearch + "%'"
             cmd = New SqlCommand(query, con)
-            Dim adapter As New SqlDataAdapter(cmd)
-            Dim table As New DataTable()
-            adapter.Fill(table)
-            gvOders.DataSource = table
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
+            gvOders.DataSource = tbl
             con.Close()
         Catch ex As Exception
             'MsgBox(ex.ToString)
@@ -278,7 +373,7 @@ Public Class frmTouchSale
     End Sub
     Sub Clear()
         lblDayOder.Text = ""
-        cbWaiter.Text = ""
+        cbWaiter.SelectedIndex = -1
         lblCreditCust.Text = ""
         lblProdCode.Text = ""
         txtBuyerName.Text = ""
@@ -286,8 +381,8 @@ Public Class frmTouchSale
         lblPrice.Text = ""
         lblOldBal.Text = ""
         lblCustNo.Text = ""
-        cbWaiterSearch.Text = ""
-        cbWaiter.Text = ""
+        cbWaiterSearch.SelectedIndex = -1
+        cbWaiter.SelectedIndex = -1
         txtCashPaid.Text = ""
         txtCat.Text = ""
         lblCustNo.Text = ""
@@ -295,7 +390,7 @@ Public Class frmTouchSale
         'lblActualStock.Text = ""
         lblNewBal.Text = ""
         lblOldBal.Text = ""
-        cbCreditCustName.Text = ""
+        cbCreditCustName.SelectedIndex = -1
         txtCat.Text = ""
         'txtProdline.Text = ""
 
@@ -335,6 +430,7 @@ Public Class frmTouchSale
 
     Private Sub cbWaiterSearch_DropDownClosed(sender As Object, e As EventArgs) Handles cbWaiterSearch.DropDownClosed
         txtSearchWaiterOder.Text = cbWaiterSearch.Text
+        MsgBox(cbWaiterSearch.Text)
     End Sub
 
     Private Sub txtSearchWaiterOder_TextChanged(sender As Object, e As EventArgs) Handles txtSearchWaiterOder.TextChanged
@@ -400,13 +496,22 @@ Public Class frmTouchSale
         Dim row As DataGridViewRow = gvOders.Rows(e.RowIndex)
         lblOderNo.Text = row.Cells(0).Value.ToString()
         lblOderSale.Text = row.Cells(3).Value.ToString()
-        LoadOderSale()
+        If con.State = ConnectionState.Closed Then
+            con.Open()
+        End If
+        Dim queryy = ("Select * from OderTranx where OderNo like '%" + lblOderSale.Text + "%'")
+        cmd = New SqlCommand(queryy, con)
+        da = New SqlDataAdapter(cmd)
+        Dim table As New DataTable()
+        da.Fill(table)
+        gvOderDetails.DataSource = table
+        'LoadOderSale()
     End Sub
     Sub Reciept()
         If con.State = ConnectionState.Closed Then
             con.Open()
         End If
-        Dim sql = "insert into Recieptconfig values('" + tsUser.Text + "','" + lblRecieptNo.Text + "','" + lblWaiter.Text + "','" + lblDayOder.Text + "') "
+        Dim sql = "insert into Recieptconfig(salesperson,Recieptid,waitername,oderno,date) values('" + tsUser.Text + "','" + lblRecieptNo.Text + "','" + lblWaiter.Text + "','" + lblDayOder.Text + "','" + lbldate.Text + "') "
         cmd = New SqlCommand(sql, con)
         cmd.ExecuteNonQuery()
         con.Close()
@@ -587,8 +692,6 @@ Public Class frmTouchSale
                         Next
 
                         'frmSalesReciept.Show()
-
-
                         'MsgBox("Record Saved")
                     End If
                 Finally
@@ -780,7 +883,7 @@ Public Class frmTouchSale
         lbltime.Text = Date.Now.ToString("hh:mm:ss")
         lbldate.Text = Date.Now.ToString("dd-MMM-yy")
         cbPaymode.SelectedIndex = 0
-        cbWaiter.Text = ""
+        cbWaiter.SelectedIndex = -1
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -788,7 +891,7 @@ Public Class frmTouchSale
         lbldate.Text = Date.Now.ToString("dd-MMM-yy")
     End Sub
 
-    Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click
+    Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click, BunifuThinButton23.Click
         gvtouchsale.Rows.Clear()
     End Sub
 
@@ -862,15 +965,23 @@ Public Class frmTouchSale
                         If con.State = ConnectionState.Closed Then
                             con.Open()
                         End If
-                        Dim que = "update StockMast set ProdQty = @newstock where Prodcode =" + gvtouchsale.Rows(k).Cells(0).Value + ""
-                        cmd = New SqlCommand(que, con)
+                        Dim sqll = "Select * from StockMast where Prodcode=@itemcode"
+                        cmd = New SqlCommand(sqll, con)
                         With cmd
-                            .Parameters.AddWithValue("@newstock", gvtouchsale.Rows(k).Cells(10).Value)
+                            .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = gvtouchsale.Rows(k).Cells(0).Value
                             .ExecuteNonQuery()
                         End With
+                        dr = cmd.ExecuteReader
+                        While dr.Read
 
-                        con.Close()
-
+                            Dim quer = "update StockMast set prodqty = '" & dr.Item("ProdQty") - gvtouchsale.Rows(k).Cells(3).Value & "' where Prodcode= @itemcode"
+                            cmd = New SqlCommand(quer, con)
+                            With cmd
+                                .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = gvtouchsale.Rows(k).Cells(0).Value
+                                .ExecuteNonQuery()
+                            End With
+                            cmd.ExecuteNonQuery()
+                        End While
                     Next
 
                     If con.State = ConnectionState.Closed Then
@@ -1008,6 +1119,53 @@ Public Class frmTouchSale
     End Sub
 
     Private Sub gvOders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvOders.CellDoubleClick
+        Dim row As DataGridViewRow = gvOders.Rows(e.RowIndex)
+        lblOderNo.Text = row.Cells(0).Value.ToString()
+        lblOderSale.Text = row.Cells(3).Value.ToString()
+        LoadOderSale()
+    End Sub
 
+    Private Sub BunifuThinButton25_Click(sender As Object, e As EventArgs) Handles BunifuThinButton25.Click
+        ds.Tables("OderReciept").Rows.Clear()
+
+        For Each row As DataGridViewRow In gvOderDetails.Rows
+            ds.Tables("OderReciept").Rows.Add(row.Cells(2).Value, row.Cells(3).Value, row.Cells(4).Value)
+        Next
+        Dim report As New rptOderReciept
+        report.SetDataSource(ds)
+        frmSupplierReport.Show()
+        frmSupplierReport.CrystalReportViewer1.ReportSource = report
+        frmSupplierReport.CrystalReportViewer1.Refresh()
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        For Each row As DataGridViewRow In gvtouchsale.Rows
+            If lblProdCode.Text = row.Cells(0).Value Then
+                row.Cells(3).Value += Val(txtQty.Text)
+                row.Cells(4).Value = row.Cells(3).Value * row.Cells(2).Value
+                row.Cells(10).Value -= Val(txtQty.Text)
+                Try
+                    Dim sum As Double
+                    For k = 0 To gvtouchsale.RowCount - 1
+                        sum += gvtouchsale.Rows(k).Cells(4).Value
+                    Next
+                    lblTotal.Text = sum
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                End Try
+                dr.Close()
+                con.Close()
+                Exit Sub
+            End If
+
+        Next
+        gvtouchsale.Rows.Add(lblProdCode.Text, lblItemName.Text, txtPrice.Text, txtQty.Text, txtAmt.Text, lblDayOder.Text, "Pending", lblCat.Text, lblprodline.Text, lblRecieptNo.Text, one.Text, one.Text, lblOderNo.Text)
+        txtQty.Text = ""
+        txtPrice.Text = ""
+        txtAmt.Text = ""
+    End Sub
+
+    Private Sub txtQty_KeyUp(sender As Object, e As KeyEventArgs) Handles txtQty.KeyUp
+        txtAmt.Text = Val(txtPrice.Text) * Val(txtQty.Text)
     End Sub
 End Class

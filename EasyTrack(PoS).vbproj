@@ -1021,6 +1021,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSessionLedger.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SalesMenu\dsTouchReciepts.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTouchReciepts.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SalesMenu\dsTouchReciepts.vb">
+      <DependentUpon>dsTouchReciepts.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SalesMenu\frmCashierAccess.Designer.vb">
       <DependentUpon>frmCashierAccess.vb</DependentUpon>
     </Compile>
@@ -1044,6 +1052,13 @@
     </Compile>
     <Compile Include="SalesMenu\frmSessionLedger.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesMenu\Keypad.vb" />
+    <Compile Include="SalesMenu\rptOderReciept.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptOderReciept.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SalesMenu\rptSalesReciept.vb">
       <AutoGen>True</AutoGen>
@@ -1629,6 +1644,10 @@
     <EmbeddedResource Include="SalesMenu\frmSessionLedger.resx">
       <DependentUpon>frmSessionLedger.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SalesMenu\rptOderReciept.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptOderReciept.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SalesMenu\rptSalesReciept.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptSalesReciept.vb</LastGenOutput>
@@ -1849,6 +1868,17 @@
     </None>
     <None Include="SalesMenu\dsSessionLedger.xss">
       <DependentUpon>dsSessionLedger.xsd</DependentUpon>
+    </None>
+    <None Include="SalesMenu\dsTouchReciepts.xsc">
+      <DependentUpon>dsTouchReciepts.xsd</DependentUpon>
+    </None>
+    <None Include="SalesMenu\dsTouchReciepts.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTouchReciepts.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="SalesMenu\dsTouchReciepts.xss">
+      <DependentUpon>dsTouchReciepts.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

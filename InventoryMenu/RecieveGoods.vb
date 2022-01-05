@@ -420,7 +420,9 @@ Public Class frmRecieveGoods
                 MsgBox("Goods Recieved Successful")
                 Con.Close()
                 Display()
-                printreciept(txtinvoiceno.Text)
+                If ckprint.Checked = True Or tkPreview.Checked = True Then
+                    printreciept(txtinvoiceno.Text)
+                End If
                 gvStockBatch.Rows.Clear()
                 clear()
 
@@ -435,7 +437,11 @@ Public Class frmRecieveGoods
     End Sub
 
     Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click
-        gvStockBatch.Rows.Clear()
+        Dim ask As MsgBoxResult
+        ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
+        If ask = MsgBoxResult.Yes Then
+            gvStockBatch.Rows.Clear()
+        End If
     End Sub
     Public Sub FillGoods(valueTosearch As String)
         Try
@@ -556,9 +562,12 @@ Public Class frmRecieveGoods
             If ckprint.Checked = True Then
                 report.PrintToPrinter(1, True, 0, 0)
             End If
-            frmSupplierReport.Show()
-            frmSupplierReport.CrystalReportViewer1.ReportSource = report
-            frmSupplierReport.CrystalReportViewer1.Refresh()
+            If tkPreview.Checked = True Then
+                frmSupplierReport.Show()
+                frmSupplierReport.CrystalReportViewer1.ReportSource = report
+                frmSupplierReport.CrystalReportViewer1.Refresh()
+            End If
+
 
             cmd.Dispose()
             da.Dispose()

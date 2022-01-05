@@ -1,37 +1,28 @@
 ﻿Imports System.Data.SqlClient
-
 Public Class Login
-
     Dim con As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
+    Dim da As SqlDataAdapter
+    Dim tbl As DataTable
 
-    Private Sub cmdLogin_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub txtUsername_TextChanged(sender As Object, e As EventArgs) Handles txtUserID.TextChanged
-
-    End Sub
     Public Sub search(valuetosearch As String)
         Try
-
-
             If con.State = ConnectionState.Closed Then
                 con.Open()
             End If
             Dim query = "select * from UserProfiles where UserID like '%" + valuetosearch + "%'"
             cmd = New SqlCommand(query, con)
-            Dim adapter As New SqlDataAdapter(cmd)
-            Dim table As New DataTable()
-            adapter.Fill(table)
-            If table.Rows.Count = 0 Then
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
+            If tbl.Rows.Count = 0 Then
                 txtPassword.Text = ""
                 txtUserID.Text = ""
                 txtUserID.Focus()
             Else
-                lblID.Text = table.Rows(0)(0).ToString
-                lblusername.Text = table.Rows(0)(1).ToString
+                lblID.Text = tbl.Rows(0)(0).ToString
+                lblusername.Text = tbl.Rows(0)(1).ToString
             End If
             con.Close()
         Catch ex As Exception
@@ -51,8 +42,6 @@ Public Class Login
             If con.State = ConnectionState.Closed Then
                 con.Open()
             End If
-
-
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -61,7 +50,7 @@ Public Class Login
     Private Sub txtUsername_Validated(sender As Object, e As EventArgs) Handles txtUserID.Validated
         search(txtUserID.Text)
     End Sub
-    Private Sub Guna2PictureBox2_Click(sender As Object, e As EventArgs) 
+    Private Sub Guna2PictureBox2_Click(sender As Object, e As EventArgs)
         If WindowState = FormWindowState.Normal Then
             WindowState = FormWindowState.Maximized
         ElseIf WindowState = FormWindowState.Maximized Then
@@ -69,7 +58,7 @@ Public Class Login
         End If
     End Sub
 
-    Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs) 
+    Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs)
         Application.Exit()
     End Sub
 
@@ -112,9 +101,7 @@ Public Class Login
                 Else
                     MsgBox("Wrong Username or Password")
                     txtPassword.Text = ""
-
                     con.Close()
-
                 End If
 
             End If

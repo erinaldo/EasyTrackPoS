@@ -1453,8 +1453,8 @@ Partial Class frmSales
         Me.tksendsms.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.tksendsms.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
         Me.tksendsms.BorderRadius = 12
-        Me.tksendsms.Checked = True
-        Me.tksendsms.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.tksendsms.Checked = False
+        Me.tksendsms.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
         Me.tksendsms.Cursor = System.Windows.Forms.Cursors.Default
         Me.tksendsms.CustomCheckmarkImage = Nothing
         Me.tksendsms.Location = New System.Drawing.Point(222, 508)

@@ -945,7 +945,12 @@ Public Class frmSales
     End Sub
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
-        gvSales.Rows.Clear()
+        Dim ask As MsgBoxResult
+        ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
+        If ask = MsgBoxResult.Yes Then
+            gvSales.Rows.Clear()
+        End If
+
     End Sub
 
     Private Sub gvSales_RowsRemoved(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles gvSales.RowsRemoved

@@ -100,6 +100,8 @@ Partial Class frmRecieveGoods
         Me.txtPackVolume = New System.Windows.Forms.TextBox()
         Me.txtbaseQty = New System.Windows.Forms.TextBox()
         Me.txtPackSize = New System.Windows.Forms.TextBox()
+        Me.tkPreview = New Bunifu.UI.WinForms.BunifuCheckBox()
+        Me.Label16 = New System.Windows.Forms.Label()
         CType(Me.gvStockBatch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -897,7 +899,9 @@ Partial Class frmRecieveGoods
         Me.GroupBox3.BackColor = System.Drawing.Color.LightBlue
         Me.GroupBox3.Controls.Add(Me.lblOldBal)
         Me.GroupBox3.Controls.Add(Me.txtdate)
+        Me.GroupBox3.Controls.Add(Me.Label16)
         Me.GroupBox3.Controls.Add(Me.Label15)
+        Me.GroupBox3.Controls.Add(Me.tkPreview)
         Me.GroupBox3.Controls.Add(Me.lblCustNo)
         Me.GroupBox3.Controls.Add(Me.ckprint)
         Me.GroupBox3.Controls.Add(Me.Label6)
@@ -1034,7 +1038,7 @@ Partial Class frmRecieveGoods
         Me.BunifuThinButton26.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.BunifuThinButton26.BackColor = System.Drawing.Color.Plum
         Me.BunifuThinButton26.BackgroundImage = CType(resources.GetObject("BunifuThinButton26.BackgroundImage"), System.Drawing.Image)
-        Me.BunifuThinButton26.ButtonText = "Print Invoice"
+        Me.BunifuThinButton26.ButtonText = "Reprint"
         Me.BunifuThinButton26.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BunifuThinButton26.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BunifuThinButton26.ForeColor = System.Drawing.Color.SeaGreen
@@ -1043,10 +1047,10 @@ Partial Class frmRecieveGoods
         Me.BunifuThinButton26.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton26.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton26.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton26.Location = New System.Drawing.Point(273, 11)
+        Me.BunifuThinButton26.Location = New System.Drawing.Point(244, 11)
         Me.BunifuThinButton26.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton26.Name = "BunifuThinButton26"
-        Me.BunifuThinButton26.Size = New System.Drawing.Size(121, 33)
+        Me.BunifuThinButton26.Size = New System.Drawing.Size(89, 33)
         Me.BunifuThinButton26.TabIndex = 149
         Me.BunifuThinButton26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -1121,6 +1125,71 @@ Partial Class frmRecieveGoods
         Me.txtPackSize.ReadOnly = True
         Me.txtPackSize.Size = New System.Drawing.Size(76, 23)
         Me.txtPackSize.TabIndex = 208
+        '
+        'tkPreview
+        '
+        Me.tkPreview.AllowBindingControlAnimation = True
+        Me.tkPreview.AllowBindingControlColorChanges = False
+        Me.tkPreview.AllowBindingControlLocation = True
+        Me.tkPreview.AllowCheckBoxAnimation = False
+        Me.tkPreview.AllowCheckmarkAnimation = True
+        Me.tkPreview.AllowOnHoverStates = True
+        Me.tkPreview.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tkPreview.AutoCheck = True
+        Me.tkPreview.BackColor = System.Drawing.Color.Transparent
+        Me.tkPreview.BackgroundImage = CType(resources.GetObject("tkPreview.BackgroundImage"), System.Drawing.Image)
+        Me.tkPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tkPreview.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
+        Me.tkPreview.BorderRadius = 12
+        Me.tkPreview.Checked = False
+        Me.tkPreview.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
+        Me.tkPreview.Cursor = System.Windows.Forms.Cursors.Default
+        Me.tkPreview.CustomCheckmarkImage = Nothing
+        Me.tkPreview.Location = New System.Drawing.Point(352, 149)
+        Me.tkPreview.MinimumSize = New System.Drawing.Size(17, 17)
+        Me.tkPreview.Name = "tkPreview"
+        Me.tkPreview.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.tkPreview.OnCheck.BorderRadius = 12
+        Me.tkPreview.OnCheck.BorderThickness = 2
+        Me.tkPreview.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
+        Me.tkPreview.OnCheck.CheckmarkColor = System.Drawing.Color.White
+        Me.tkPreview.OnCheck.CheckmarkThickness = 2
+        Me.tkPreview.OnDisable.BorderColor = System.Drawing.Color.LightGray
+        Me.tkPreview.OnDisable.BorderRadius = 12
+        Me.tkPreview.OnDisable.BorderThickness = 2
+        Me.tkPreview.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tkPreview.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
+        Me.tkPreview.OnDisable.CheckmarkThickness = 2
+        Me.tkPreview.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tkPreview.OnHoverChecked.BorderRadius = 12
+        Me.tkPreview.OnHoverChecked.BorderThickness = 2
+        Me.tkPreview.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tkPreview.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
+        Me.tkPreview.OnHoverChecked.CheckmarkThickness = 2
+        Me.tkPreview.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tkPreview.OnHoverUnchecked.BorderRadius = 12
+        Me.tkPreview.OnHoverUnchecked.BorderThickness = 1
+        Me.tkPreview.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tkPreview.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
+        Me.tkPreview.OnUncheck.BorderRadius = 12
+        Me.tkPreview.OnUncheck.BorderThickness = 1
+        Me.tkPreview.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tkPreview.Size = New System.Drawing.Size(17, 17)
+        Me.tkPreview.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
+        Me.tkPreview.TabIndex = 150
+        Me.tkPreview.ThreeState = False
+        Me.tkPreview.ToolTipText = Nothing
+        '
+        'Label16
+        '
+        Me.Label16.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(372, 146)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(71, 21)
+        Me.Label16.TabIndex = 151
+        Me.Label16.Text = "Preview"
         '
         'frmRecieveGoods
         '
@@ -1235,4 +1304,6 @@ Partial Class frmRecieveGoods
     Friend WithEvents txtbaseQty As TextBox
     Friend WithEvents txtPackSize As TextBox
     Friend WithEvents PackVolume As DataGridViewTextBoxColumn
+    Friend WithEvents Label16 As Label
+    Friend WithEvents tkPreview As Bunifu.UI.WinForms.BunifuCheckBox
 End Class

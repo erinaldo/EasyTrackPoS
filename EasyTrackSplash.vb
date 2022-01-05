@@ -1,6 +1,6 @@
-﻿Imports System.Data.SqlClient
+﻿
 Public Class EasyTrackSplash
-    Dim Con As New SqlConnection(My.Settings.PoSConnectionString)
+
     Private Sub EasyTrackSplash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Start()
 
@@ -19,6 +19,5 @@ Public Class EasyTrackSplash
             Timer1.Enabled = False
         End If
     End Sub
-
 
 End Class

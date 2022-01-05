@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsTouchReciepts" targetNamespace="http://tempuri.org/dsTouchReciepts.xsd" xmlns:mstns="http://tempuri.org/dsTouchReciepts.xsd" xmlns="http://tempuri.org/dsTouchReciepts.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsTouchReciepts" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsTouchReciepts" msprop:Generator_UserDSName="dsTouchReciepts">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OderReciept" msprop:Generator_TableClassName="OderRecieptDataTable" msprop:Generator_TableVarName="tableOderReciept" msprop:Generator_TablePropName="OderReciept" msprop:Generator_RowDeletingName="OderRecieptRowDeleting" msprop:Generator_RowChangingName="OderRecieptRowChanging" msprop:Generator_RowEvHandlerName="OderRecieptRowChangeEventHandler" msprop:Generator_RowDeletedName="OderRecieptRowDeleted" msprop:Generator_UserTableName="OderReciept" msprop:Generator_RowChangedName="OderRecieptRowChanged" msprop:Generator_RowEvArgName="OderRecieptRowChangeEvent" msprop:Generator_RowClassName="OderRecieptRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Itemname" msprop:Generator_ColumnVarNameInTable="columnItemname" msprop:Generator_ColumnPropNameInRow="Itemname" msprop:Generator_ColumnPropNameInTable="ItemnameColumn" msprop:Generator_UserColumnName="Itemname" type="xs:string" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:string" minOccurs="0" />
+              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
