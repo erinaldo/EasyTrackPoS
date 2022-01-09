@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class StockBalancesReportMenu
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As New SqlCommand
     Dim adp As New SqlDataAdapter
     Dim dt As New dsInventory
@@ -61,18 +61,18 @@ Public Class StockBalancesReportMenu
         'frmStockMovement.Show()
         Try
 
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select * from inventoryledger"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("inventoryledger").Rows.Clear()
             adp.SelectCommand = cmd
             adp.Fill(dt, "inventoryledger")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
 
@@ -83,7 +83,7 @@ Public Class StockBalancesReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -92,18 +92,18 @@ Public Class StockBalancesReportMenu
     Private Sub Label12_Click(sender As Object, e As EventArgs) Handles Label12.Click
         Try
 
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select * from inventoryledger"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("inventoryledger").Rows.Clear()
             adp.SelectCommand = cmd
             adp.Fill(dt, "inventoryledger")
 
             'Dim sql = "select * from ClientReg"
             'dt.Tables("ClientReg").Rows.Clear()
-            'cmd = New SqlCommand(sql, con)
+            'cmd = New SqlCommand(sql, poscon)
             'adp.SelectCommand = cmd
             'adp.Fill(dt, "ClientReg")
 
@@ -114,7 +114,7 @@ Public Class StockBalancesReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -123,18 +123,18 @@ Public Class StockBalancesReportMenu
     Private Sub Label13_Click(sender As Object, e As EventArgs) Handles Label13.Click
         Try
 
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select * from Stockmast where prodqty<=leastqtyreminder"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("Stockmast").Rows.Clear()
             adp.SelectCommand = cmd
             adp.Fill(dt, "Stockmast")
 
             'Dim sql = "select * from ClientReg"
             'dt.Tables("ClientReg").Rows.Clear()
-            'cmd = New SqlCommand(sql, con)
+            'cmd = New SqlCommand(sql, poscon)
             'adp.SelectCommand = cmd
             'adp.Fill(dt, "ClientReg")
 
@@ -145,7 +145,7 @@ Public Class StockBalancesReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

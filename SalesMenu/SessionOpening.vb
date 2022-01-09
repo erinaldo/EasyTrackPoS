@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmSessionOpening
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         Dim f2 As New frmSalesMenu
@@ -23,28 +23,28 @@ Public Class frmSessionOpening
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim sql = "insert into Activesession values('" + tsUser.Text + "','" + txtOpeningSalesDate.Text + "','" + lblTime.Text + "','" + cbSessiontype.Text + "','" + txtShiftMembers.Text + "')"
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         cmd.ExecuteNonQuery()
-        con.Close()
+        Poscon.Close()
         MsgBox("Session Created Succesfully")
         frmSales.Show()
         Me.Hide()
 
-        con.Open()
+        Poscon.Open()
         Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, Poscon)
         Dim da As New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
         lblSessionID.Text = table.Rows(0)(0).ToString
         Dim query = "insert into SessionLedger(sessionId,Openedby,dateopened,Timeopened,sessionType,Sessionmembers) values('" + lblSessionID.Text + "','" + tsUser.Text + "','" + txtOpeningSalesDate.Text + "','" + lblTime.Text + "','" + cbSessiontype.Text + "','" + txtShiftMembers.Text + "')"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         cmd.ExecuteNonQuery()
-        con.Close()
+        Poscon.Close()
         Me.Hide()
 
 
@@ -57,31 +57,31 @@ Public Class frmSessionOpening
             MsgBox("Select Session Type")
             Exit Sub
         End If
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         If lblSessionID.Text = "#" Then
             Dim sql = "insert into Activesession values('" + tsUser.Text + "','" + txtOpeningSalesDate.Text + "','" + lblTime.Text + "','" + cbSessiontype.Text + "','" + txtShiftMembers.Text + "')"
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             cmd.ExecuteNonQuery()
-            con.Close()
+            Poscon.Close()
             MsgBox("Session Created Succesfully")
             'Dim f2 As New PfrmSalesMgmt
             'f2.Show()
             frmSales.Show()
             Me.Hide()
 
-            con.Open()
+            Poscon.Open()
             Dim que = "select * from ActiveSession"
-            cmd = New SqlCommand(que, con)
+            cmd = New SqlCommand(que, Poscon)
             Dim da As New SqlDataAdapter(cmd)
             Dim table As New DataTable
             da.Fill(table)
             lblSessionID.Text = table.Rows(0)(0).ToString
             Dim query = "insert into SessionLedger(sessionId,Openedby,dateopened,Timeopened,sessionType,Sessionmembers) values('" + lblSessionID.Text + "','" + tsUser.Text + "','" + txtOpeningSalesDate.Text + "','" + lblTime.Text + "','" + cbSessiontype.Text + "','" + txtShiftMembers.Text + "')"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             cmd.ExecuteNonQuery()
-            con.Close()
+            Poscon.Close()
             Me.Hide()
         Else
             MsgBox("Active Session Already in progress", vbCritical)

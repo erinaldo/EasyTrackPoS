@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmProdCreate
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
@@ -39,15 +39,15 @@ Public Class frmProdCreate
         Else
 
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim query = "insert into stockmast values('" & txtStockCode.Text & "','" + txtProdName.Text + "','" + cbProdLine.Text + "','" & cbSize.Text & "','" & cbColour.Text & "','" & cbCat.Text & "','" & txtQty.Text & "','" & txtRPrice.Text & "','" & txtWPrice.Text & "','" & txtItemName.Text & "','" & cbbrandName.Text & "')"
                 Dim cmd As SqlCommand
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 MsgBox("Product Saved Successfully")
-                con.Close()
+                Poscon.Close()
 
 
             Catch ex As Exception
@@ -71,11 +71,11 @@ Public Class frmProdCreate
     End Sub
     Public Sub Search(valuetosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select * from category where category like '%" + valuetosearch + "%'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             Dim adapter As New SqlDataAdapter(cmd)
             Dim tbl As New DataTable()
             adapter.Fill(tbl)
@@ -86,7 +86,7 @@ Public Class frmProdCreate
                 lblcat.Text = tbl.Rows(0)(0).ToString
             End If
 
-            con.Close()
+            Poscon.Close()
 
         Catch ex As Exception
             'MsgBox(ex.ToString)
@@ -96,12 +96,12 @@ Public Class frmProdCreate
     End Sub
     Public Sub Search1(valuetosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim query = "select * from productline where productline like '%" + valuetosearch + "%'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             Dim adapter As New SqlDataAdapter(cmd)
             Dim tbl As New DataTable()
             adapter.Fill(tbl)
@@ -112,7 +112,7 @@ Public Class frmProdCreate
                 lblProdline.Text = tbl.Rows(0)(0).ToString
             End If
 
-            con.Close()
+            Poscon.Close()
 
         Catch ex As Exception
             'MsgBox(ex.ToString)
@@ -121,19 +121,19 @@ Public Class frmProdCreate
 
     End Sub
     Private Sub Display()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim query = "select * from StockMast"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()
         adapter.Fill(tbl)
         gvStockMastBf.DataSource = tbl
 
         lblProdCount.Text = gvStockMastBf.Rows.Count()
-        con.Close()
+        Poscon.Close()
     End Sub
     Private Sub ProductManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Display()
@@ -261,17 +261,17 @@ Public Class frmProdCreate
             MsgBox("Fill all important fields")
             Exit Sub
         Else
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim qu = "select * from Stockmast where ProdName= '" + txtProdName.Text + "' and ItemName='" + txtItemName.Text + "' and ProdCat='" + cbCat.Text + "' "
-            cmd = New SqlCommand(qu, con)
+            cmd = New SqlCommand(qu, Poscon)
             dr = cmd.ExecuteReader
             If (dr.Read = True) Then
                 MsgBox("Item Name already exists")
                 dr.Close()
-                con.Close()
+                Poscon.Close()
                 cbItemCodeType.SelectedIndex = 0
                 Exit Sub
             End If
@@ -279,12 +279,12 @@ Public Class frmProdCreate
             Try
                 dr.Close()
 
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
 
                 Dim sql = "select * from StockMast where ProdCode like '%" + txtStockCode.Text + "%'"
-                cmd = New SqlCommand(sql, con)
+                cmd = New SqlCommand(sql, Poscon)
                 Dim adapter As New SqlDataAdapter(cmd)
                 Dim table As New DataTable()
                 adapter.Fill(table)
@@ -298,17 +298,17 @@ Public Class frmProdCreate
                 If table.Rows.Count() = 0 Then
                     Dim query = "insert into stockmast(prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyReminder,distributorprice,packsize,baseqty,Packprice) values('" & txtStockCode.Text & "','" + txtProdName.Text + "','" + cbProdLine.Text + "','" & cbSize.Text & "','" & cbColour.Text & "','" & cbCat.Text & "','" & txtQty.Text & "','" & txtRPrice.Text & "','" & txtWPrice.Text & "','" & txtItemName.Text & "','" & cbbrandName.Text & "','" & cbUnique.Text & "','" & txtLeastQty.Text & "','" + txtWPrice.Text + "','" + txtpacksize.Text + "','" + txtbaseqty.Text + "','" + txtpackprice.Text + "')"
                     Dim cmd As SqlCommand
-                    cmd = New SqlCommand(query, con)
+                    cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()
                     'MsgBox("Product Saved Successfully")
-                    con.Close()
+                    Poscon.Close()
                     'ElseIf table.Rows.Count() = 1 Then
                     '    Dim query = "update Stockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + txtProdName.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',ProdQty='" + txtQty.Text + "',RetailPrice='" + txtRPrice.Text + "',WholesalePrice='" + txtWPrice.Text + "',Itemname='" + txtItemName.Text + "',BrandName='" + cbbrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "',Packprice='" + txtpackprice.Text + "' where Prodcode =" + txtStockCode.Text + ""
                     '    Dim cmd As SqlCommand
-                    '    cmd = New SqlCommand(query, con)
+                    '    cmd = New SqlCommand(query, poscon)
                     '    cmd.ExecuteNonQuery()
                     '    MsgBox("Product Successfully updated")
-                    '    con.Close()
+                    '    poscon.Close()
                     'Else
                     '    MsgBox("Contact Admin")
                 End If
@@ -323,7 +323,7 @@ Public Class frmProdCreate
             End If
             Display()
         'clear()
-        con.Close()
+        Poscon.Close()
         dr.Close()
         txtItemName.Select()
         'cbItemCodeType.SelectedIndex = 1
@@ -398,12 +398,12 @@ Public Class frmProdCreate
 
     Public Sub Feel(valueTosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim query = "select * from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             Dim adapter As New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             adapter.Fill(table)
@@ -423,7 +423,7 @@ Public Class frmProdCreate
 
 
 
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
 
         End Try
@@ -488,43 +488,43 @@ Public Class frmProdCreate
     End Sub
 
     Private Sub cbCat_Click(sender As Object, e As EventArgs) Handles cbCat.Click
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         cbCat.Items.Clear()
         Dim sqll = "select * from Category"
-        cmd = New SqlCommand(sqll, con)
+        cmd = New SqlCommand(sqll, Poscon)
         dr = cmd.ExecuteReader
         While dr.Read
             cbCat.Items.Add(dr(1))
         End While
-        con.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub cbProdLine_Click(sender As Object, e As EventArgs) Handles cbProdLine.Click
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         cbProdLine.Items.Clear()
         Dim query = "select * from Productline"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         dr = cmd.ExecuteReader
         While dr.Read
             cbProdLine.Items.Add(dr(1))
         End While
-        con.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub cbbrandName_Enter(sender As Object, e As EventArgs) Handles cbbrandName.Enter
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         cbColour.Items.Clear()
         txtItemName.Items.Clear()
         cbbrandName.Items.Clear()
         cbSearchProdCreate.Items.Clear()
         Dim sql = "select * from Stockmast"
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         dr = cmd.ExecuteReader
         While dr.Read
             cbColour.Items.Add(dr(4))
@@ -532,7 +532,7 @@ Public Class frmProdCreate
             cbbrandName.Items.Add(dr(11))
             cbSearchProdCreate.Items.Add(dr(1))
         End While
-        con.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub txtRPrice_TextChanged(sender As Object, e As EventArgs) Handles txtRPrice.TextChanged

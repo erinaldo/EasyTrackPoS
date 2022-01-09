@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmCreateCustomerAccount
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim dr As SqlDataReader
     Dim da As SqlDataAdapter
@@ -32,41 +32,41 @@ Public Class frmCreateCustomerAccount
         txtCustBal.Text = ""
     End Sub
     Private Sub Display()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim query = "select Customername,currentbalance,EmailAddress,businesslocation from Customer"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         Dim tbl As New DataTable()
         da = New SqlDataAdapter(cmd)
         da.Fill(tbl)
         gvStockMast.DataSource = tbl
 
         'lblProdCount.Text = gvStockMast.Rows.Count()
-        con.Close()
+        Poscon.Close()
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs)
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim sql = "select * from Customer where IDcardnumber= '" + txtIdCardNo.Text + "' "
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         dr = cmd.ExecuteReader
         If txtIdCardNo.Text = "" Then
             MsgBox("Enter New Customer ID")
-            con.Close()
+            Poscon.Close()
         ElseIf (dr.Read = True) Then
             MsgBox("Customer Already Exists, Enter a new Customer")
-            con.Close()
+            Poscon.Close()
             clear()
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim query = "insert into customer values('" + txtName.Text + "','" + txtEmailAddress.Text + "','" + txtBusDigAddress.Text + "','" + txtResDigAddress.Text + "','" + txtResLocation.Text + "','" + txtBusLocation.Text + "','" + txtCreditLimit.Text + "','" + cbIDCardType.Text + "','" + txtIdCardNo.Text + "','" + txtCustBal.Text + "')"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 'MsgBox("Customer Saved Succesfully")
                 clear()
@@ -83,27 +83,27 @@ Public Class frmCreateCustomerAccount
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs)
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim sql = "select * from Customer where IDcardnumber= '" + txtIdCardNo.Text + "' "
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         dr = cmd.ExecuteReader
         If txtIdCardNo.Text = "" Then
             MsgBox("Enter New Customer ID")
-            con.Close()
+            Poscon.Close()
         ElseIf (dr.Read = True) Then
             MsgBox("Customer Already Exists, Enter a new Customer")
-            con.Close()
+            Poscon.Close()
             clear()
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim query = "insert into customer values('" + txtName.Text + "','" + txtEmailAddress.Text + "','" + txtBusDigAddress.Text + "','" + txtResDigAddress.Text + "','" + txtResLocation.Text + "','" + txtBusLocation.Text + "','" + txtCreditLimit.Text + "','" + cbIDCardType.Text + "','" + txtIdCardNo.Text + "','" + txtCustBal.Text + "')"
 
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 'MsgBox("Customer Saved Succesfully")
                 clear()
@@ -114,27 +114,27 @@ Public Class frmCreateCustomerAccount
     End Sub
 
     Private Sub BunifuThinButton21_Click_1(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim sql = "select * from Customer where IDcardnumber= '" + txtIdCardNo.Text + "' "
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         dr = cmd.ExecuteReader
         If txtIdCardNo.Text = "" Then
             MsgBox("Enter New Customer ID")
-            con.Close()
+            Poscon.Close()
         ElseIf (dr.Read = True) Then
             MsgBox("Customer Already Exists, Enter a new Customer")
-            con.Close()
+            Poscon.Close()
             clear()
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim query = "insert into customer(Customername,Emailaddress,Businessdigitaladdress,residentialdigitaladdress,residentaillocation,businesslocation,creditlimit,idcardtype,idcardnumber,currentbalance) values('" + txtName.Text + "','" + txtEmailAddress.Text + "','" + txtBusDigAddress.Text + "','" + txtResDigAddress.Text + "','" + txtResLocation.Text + "','" + txtBusLocation.Text + "','" + txtCreditLimit.Text + "','" + cbIDCardType.Text + "','" + txtIdCardNo.Text + "','" + txtCustBal.Text + "')"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 'MsgBox("Customer Saved Succesfully")
                 clear()

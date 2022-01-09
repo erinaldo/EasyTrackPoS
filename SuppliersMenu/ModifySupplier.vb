@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmModifySupplier
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim poscon As New SqlConnection(My.Settings.PoSConnectionString)
     Dim da As SqlDataAdapter
     Dim cmd As SqlCommand
     Private Sub Label2_Click(sender As Object, e As EventArgs)
@@ -11,31 +11,31 @@ Public Class frmModifySupplier
 
     End Sub
     Private Sub Display()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
         Dim query = "select * from Supplier"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, poscon)
         da = New SqlDataAdapter(cmd)
         Dim tbl As New DataTable
         da.Fill(tbl)
         gvcust.DataSource = tbl
-        con.Close()
+        poscon.Close()
     End Sub
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
         If lblCustID.Text = "" Then
             MsgBox("Select Supplier To Edit")
             Exit Sub
         End If
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
 
         Dim query = ("update Supplier set SupplierName='" + txtName.Text + "', SupplierContact= '" + txtEmailAdd.Text + "',BusinessDigitalAddress= '" + txtBusDigAdd.Text + "',Location= '" + txtBussLocation.Text + "',Idtype= '" + cbCardType.Text + "' where Supplierno='" + lblCustID.Text + "'")
-        Dim cmd As New SqlCommand(query, con)
+        Dim cmd As New SqlCommand(query, poscon)
         cmd.ExecuteNonQuery()
         MsgBox("Supplier Updated Successfully")
-        con.Close()
+        poscon.Close()
         Display()
 
         Clear()
@@ -67,13 +67,13 @@ Public Class frmModifySupplier
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
         Dim query = "delete from Supplier where Supplierno='" + lblCustID.Text + "' "
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, poscon)
         cmd.ExecuteNonQuery()
-        con.Close()
+        poscon.Close()
         Clear()
         Display()
 

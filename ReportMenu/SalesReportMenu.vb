@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Globalization
 Public Class SalesReportMenu
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As New SqlCommand
     Dim da As New SqlDataAdapter
     Dim dt As New dsSalesTranx
@@ -19,7 +19,7 @@ Public Class SalesReportMenu
         DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
         Try
             Dim query = "select * from salestranx where datesold between @datefrom and @dateto"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
             cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
             dt.Tables("salestranx").Rows.Clear()
@@ -28,12 +28,12 @@ Public Class SalesReportMenu
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
             'Dim sqll = "select expenses,cashcounted from Sessionledger where dateclosed between @datefrom and @dateto"
-            'cmd = New SqlCommand(query, con)
+            'cmd = New SqlCommand(query, poscon)
             'cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
             'cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
             'dt.Tables("Sessionledger").Rows.Clear()
@@ -47,7 +47,7 @@ Public Class SalesReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             da.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -58,7 +58,7 @@ Public Class SalesReportMenu
         DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
         Try
             Dim query = "select * from salestranx where datesold between @datefrom and @dateto"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
             cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
             dt.Tables("salestranx").Rows.Clear()
@@ -67,7 +67,7 @@ Public Class SalesReportMenu
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
@@ -78,7 +78,7 @@ Public Class SalesReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             da.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -89,7 +89,7 @@ Public Class SalesReportMenu
         DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
         Try
             Dim query = "select * from salestranx where datesold between @datefrom and @dateto"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
             cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
             dt.Tables("salestranx").Rows.Clear()
@@ -98,7 +98,7 @@ Public Class SalesReportMenu
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
@@ -109,7 +109,7 @@ Public Class SalesReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             da.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -120,7 +120,7 @@ Public Class SalesReportMenu
         DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
         Try
             Dim query = "select * from salestranx where datesold between @datefrom and @dateto"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
             cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
             dt.Tables("salestranx").Rows.Clear()
@@ -129,7 +129,7 @@ Public Class SalesReportMenu
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
@@ -140,7 +140,7 @@ Public Class SalesReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             da.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -151,7 +151,7 @@ Public Class SalesReportMenu
         DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
         Try
             Dim query = "select * from Pricechangelog where date between @datefrom and @dateto"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
             cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
             dt.Tables("Pricechangelog").Rows.Clear()
@@ -160,7 +160,7 @@ Public Class SalesReportMenu
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
@@ -171,7 +171,7 @@ Public Class SalesReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             da.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

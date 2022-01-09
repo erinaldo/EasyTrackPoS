@@ -1,14 +1,14 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmOders
-    Dim Con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
     Private Sub Display()
-        Con.Open()
+        Poscon.Open()
         Dim query = "select * from StockMast"
         Dim adapter As SqlDataAdapter
         Dim cmd As SqlCommand
-        cmd = New SqlCommand(query, Con)
+        cmd = New SqlCommand(query, Poscon)
         adapter = New SqlDataAdapter(cmd)
         Dim builder As New SqlCommandBuilder
         builder = New SqlCommandBuilder(adapter)
@@ -16,7 +16,7 @@ Public Class frmOders
         ds = New DataSet
         adapter.Fill(ds)
         gvStock.DataSource = ds.Tables(0)
-        Con.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub frmOders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -61,9 +61,9 @@ Public Class frmOders
     End Sub
 
     Public Sub Search(valueTosearch As String)
-        Con.Open()
+        Poscon.Open()
         Dim query = "select * from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-        cmd = New SqlCommand(query, Con)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim table As New DataTable()
         adapter.Fill(table)
@@ -76,7 +76,7 @@ Public Class frmOders
 
         End If
 
-        Con.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub txtProdname_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtProdname.KeyPress

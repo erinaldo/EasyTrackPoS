@@ -1,37 +1,37 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmChangePrice
-    Dim con = New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim  New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim dr As SqlDataReader
     Dim da As SqlDataAdapter
     Private Sub frmChangePrice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         cbItemName.Items.Clear()
         Dim sql = "select * from Stockmast"
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         dr = cmd.ExecuteReader
         While dr.Read
             cbItemName.Items.Add(dr(1))
         End While
-        con.Close()
+        Poscon.Close()
         Timer1.Enabled = True
         Display()
     End Sub
     Private Sub Display()
-        If con.state = ConnectionState.Closed Then
-            con.open
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim query = "select prodname,Retailprice,Prodqty,Wholesaleprice,prodcode,packprice,packsize,baseqty from StockMast"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         da = New SqlDataAdapter(cmd)
         Dim tbl As New DataTable
         da.Fill(tbl)
         gvStockguna.DataSource = tbl
-        con.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs)
@@ -86,9 +86,9 @@ Public Class frmChangePrice
     End Sub
 
     Public Sub Search(valueTosearch As String)
-        con.Open()
+        Poscon.Open()
         Dim query = "select prodname,Retailprice,Prodqty,Wholesaleprice,prodcode,packprice,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim table As New DataTable()
         adapter.Fill(table)
@@ -111,7 +111,7 @@ Public Class frmChangePrice
 
         End If
 
-        con.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub cbProdLine_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbChangepriceSrch.KeyPress
@@ -148,12 +148,12 @@ Public Class frmChangePrice
             Exit Sub
         Else
             ' Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             For Each row As DataGridViewRow In gvPriceBatch.Rows
                 Dim query = ("update Stockmast set RetailPrice=@Rprice, WholesalePrice= @Wprice,Packprice= @pckprice where Prodcode= '" + row.Cells(10).Value + "'")
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 With cmd
                     .Parameters.AddWithValue("@rprice", row.Cells(3).Value)
                     .Parameters.AddWithValue("@wprice", row.Cells(5).Value)
@@ -162,12 +162,12 @@ Public Class frmChangePrice
                 End With
             Next
 
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             For Each row As DataGridViewRow In gvPriceBatch.Rows
                 Dim sql = "insert into Pricechangelog(ItemCode,ItemName,Qty,oldrprice,newrprice,newramt,date,time,activeuser,oldpackprice,newpackprice) values(@itemcode,@itemname,@qty,@oldrprice,@newrprice,@newramt,'" + lblDate.Text + "','" + lbltime.Text + "','" + lbluser.Text + "',@oldpackprice,@newpackprice)"
-                cmd = New SqlCommand(sql, con)
+                cmd = New SqlCommand(sql, Poscon)
                 With cmd
                     .Parameters.AddWithValue("@ItemCode", row.Cells(10).Value)
                     .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
@@ -182,7 +182,7 @@ Public Class frmChangePrice
             Next
             MsgBox("Product Updated Successfully")
             gvPriceBatch.Rows.Clear()
-            con.close()
+            Poscon.Close()
             'Catch ex As Exception
             'MsgBox(ex.Message)
             ' End Try
@@ -199,47 +199,47 @@ Public Class frmChangePrice
         End If
     End Sub
     Private Sub ShowBand()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim query = "select * from PriceBand"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()
         adapter.Fill(tbl)
         gvPriceBand.DataSource = tbl
-        con.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
 
 
 
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim sql = "select * from PriceBand where PriceBand= '" + txtBandName.Text + "' "
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         dr = cmd.ExecuteReader
         If txtBandName.Text = "" Then
             MsgBox("Enter New PriceBand")
-            con.Close()
+            Poscon.Close()
         ElseIf (dr.Read = True) Then
             MsgBox("PriceBand Already Exists, Enter a new Band")
-            con.Close()
+            Poscon.Close()
             Clear()
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim query = "Insert into PriceBand values('" + lblBandCode.Text + "','" + cbItemName.Text + "','" + txtBandName.Text + "','" + txtFromQty.Text + "','" + txtToQty.Text + "','" + txtBandPrice.Text + "')"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 MsgBox("Succesfully Created")
-                con.Close()
+                Poscon.Close()
                 Display()
 
             Catch ex As Exception

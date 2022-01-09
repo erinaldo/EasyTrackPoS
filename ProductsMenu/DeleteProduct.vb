@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmDeleteProduct
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    ' Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
     Dim builder As SqlCommandBuilder
@@ -14,12 +14,12 @@ Public Class frmDeleteProduct
 
     End Sub
     Private Sub Feel(valueTosearch As String)
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim query = "select * from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-            Dim cmd = New SqlCommand(query, con)
-            Dim adapter As New SqlDataAdapter(cmd)
+        Dim cmd = New SqlCommand(query, Poscon)
+        Dim adapter As New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             adapter.Fill(table)
             gvStock.DataSource = table
@@ -31,36 +31,36 @@ Public Class frmDeleteProduct
                 MsgBox("No Record")
             End If
 
-            con.Close()
+        Poscon.Close()
 
 
     End Sub
     Private Sub Display()
 
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim query = "select * from StockMast"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()
         adapter.Fill(tbl)
         gvStockguna.DataSource = tbl
-        con.Close()
+        Poscon.Close()
 
     End Sub
     Private Sub filtercat()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         'Dim query = "select * from stockmast where prodcat ='" + cbCat.SelectedItem + "'"
-        'cmd = New SqlCommand(query, con)
+        'cmd = New SqlCommand(query, poscon)
         da = New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()
         da.Fill(tbl)
         gvStock.DataSource = ds.Tables(0)
-        con.Close()
+        Poscon.Close()
 
     End Sub
 
@@ -82,15 +82,15 @@ Public Class frmDeleteProduct
             MsgBox("Select a Product")
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim query = "delete from Stockmast where Prodcode= " + txtItemNo.Text + " "
-                    Dim cmd As New SqlCommand(query, con)
-                    cmd.ExecuteNonQuery()
+                Dim cmd As New SqlCommand(query, Poscon)
+                cmd.ExecuteNonQuery()
                     MsgBox("Product Deleted Successfully")
-                    con.Close()
-                    Display()
+                Poscon.Close()
+                Display()
 
 
             Catch ex As Exception
@@ -198,10 +198,10 @@ Public Class frmDeleteProduct
 
     Public Sub Search(valueTosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
                 Dim query = "select * from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 Dim adapter As New SqlDataAdapter(cmd)
                 Dim table As New DataTable()
                 adapter.Fill(table)
@@ -224,10 +224,10 @@ Public Class frmDeleteProduct
 
                 End If
 
-                con.Close()
+                Poscon.Close()
             Else
                 Dim query = "select * from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 Dim adapter As New SqlDataAdapter(cmd)
                 Dim table As New DataTable()
                 adapter.Fill(table)
@@ -250,7 +250,7 @@ Public Class frmDeleteProduct
 
                 End If
 
-                con.Close()
+                Poscon.Close()
 
             End If
 
@@ -270,14 +270,14 @@ Public Class frmDeleteProduct
             MsgBox("Select a Product")
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim query = "delete from Stockmast where Prodcode= " + txtItemNo.Text + " "
-                Dim cmd As New SqlCommand(query, con)
+                Dim cmd As New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 MsgBox("Product Deleted Successfully")
-                con.Close()
+                Poscon.Close()
                 Display()
 
 

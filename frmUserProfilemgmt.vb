@@ -1,16 +1,16 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmUserProfilemgmt
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim adapter As SqlDataAdapter
     Private Sub Button1_Click(sender As Object, e As EventArgs)
         Try
-            con.Open()
+            Poscon.Open()
             Dim query = "insert into UserProfiles values('" & txtName.Text & "','" + txtUserId.Text + "','" + txtUserpassword.Text + "','" & cbUsertype.Text & "','" & cbUsergroup.Text & "','" & cbUsergroup.SelectedIndex.ToString & "')"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             cmd.ExecuteNonQuery()
             MsgBox("Product Saved Successfully")
-            con.Close()
+            Poscon.Close()
             Display()
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -18,10 +18,10 @@ Public Class frmUserProfilemgmt
     End Sub
     Private Sub Display()
 
-        con.Open()
+        Poscon.Open()
         Dim query = "select id,Username,userid,usergroup,usertype,usergroupid from UserProfiles"
 
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         adapter = New SqlDataAdapter(cmd)
         Dim builder As New SqlCommandBuilder
         builder = New SqlCommandBuilder(adapter)
@@ -29,7 +29,7 @@ Public Class frmUserProfilemgmt
         ds = New DataSet
         adapter.Fill(ds)
         gvUserProfiles.DataSource = ds.Tables(0)
-        con.Close()
+        Poscon.Close()
     End Sub
     Private Sub Clear()
         txtName.Text = ""
@@ -46,13 +46,13 @@ Public Class frmUserProfilemgmt
             MsgBox("Fill all fields")
         Else
             Try
-                con.Open()
+                Poscon.Open()
                 Dim query = "insert into UserProfiles values('" & txtName.Text & "','" + txtUserId.Text + "','" + txtUserpassword.Text + "','" & cbUsertype.Text & "','" & cbUsergroup.Text & "','" & cbUsergroup.SelectedIndex.ToString & "')"
                 Dim cmd As SqlCommand
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 MsgBox("User Saved Successfully")
-                con.Close()
+                Poscon.Close()
                 Display()
             Catch ex As Exception
                 MsgBox(ex.ToString)
@@ -89,14 +89,14 @@ Public Class frmUserProfilemgmt
             MsgBox("Select a User")
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim query = "delete from Userprofiles where id= " + lbluserid.Text + " "
-                Dim cmd As New SqlCommand(query, con)
+                Dim cmd As New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 MsgBox("User Deleted Successfully")
-                con.Close()
+                Poscon.Close()
                 Display()
 
 

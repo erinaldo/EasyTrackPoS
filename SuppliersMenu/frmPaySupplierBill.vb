@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmPaySupplierBill
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim dr As SqlDataReader
     Dim da As SqlDataAdapter
@@ -31,24 +31,24 @@ Public Class frmPaySupplierBill
                 MsgBox("Select a Supplier")
                 Exit Sub
             Else
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
 
                 Dim query = "insert into Supplierpayments(SupplierName,oldBalance,DatePaid,AmtPaid,NewBalance,Paymode,Recievedby,Narration,InvoiceNo) values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtDatePaid.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + txtInvoiceNo.Text + "') "
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
 
                 Dim quer = "update Supplier set Balance = " + lblNewBal.Text + " where supplierNo =" + lblSuppNo.Text + ""
-                cmd = New SqlCommand(quer, con)
+                cmd = New SqlCommand(quer, Poscon)
                 cmd.ExecuteNonQuery()
 
 
                 Dim sql = "insert into SupplierLedger(SupplierName,oldBal,DatePaid,AmtPaid,NewBal,Paymentmode,Recievedby,Narration,invoiceno,Timepaid) values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtDatePaid.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + txtInvoiceNo.Text + "','" + lblTime.Text + "') "
-                cmd = New SqlCommand(sql, con)
+                cmd = New SqlCommand(sql, Poscon)
                 cmd.ExecuteNonQuery()
 
-                con.Close()
+                Poscon.Close()
                 MsgBox("Payment Saved")
             End If
 
@@ -64,17 +64,17 @@ Public Class frmPaySupplierBill
     Private Sub frmPaySupplierBill_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Enabled = True
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             cbCustName.Items.Clear()
             Dim query = ("select * from Supplier")
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dr = cmd.ExecuteReader
             While dr.Read
                 cbCustName.Items.Add(dr(1))
             End While
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -102,11 +102,11 @@ Public Class frmPaySupplierBill
     End Sub
     Public Sub Suppliers(valuetosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select * from supplier where concat(suppliername,IDNumber) like '%" + valuetosearch + "%'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim tbl As New DataTable()
             da.Fill(tbl)
@@ -118,7 +118,7 @@ Public Class frmPaySupplierBill
             End If
 
 
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmPriceBand
-    Dim con = New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim  New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim dr As SqlDataReader
     Dim da As SqlDataAdapter
@@ -17,30 +17,30 @@ Public Class frmPriceBand
             MsgBox("Fill All Fields", vbCritical)
             Exit Sub
         End If
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim sql = "select * from PriceBand where PriceBand= '" + txtBandName.Text + "' "
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         dr = cmd.ExecuteReader
         If txtBandName.Text = "" Then
             MsgBox("Enter New PriceBand")
-            con.Close()
+            Poscon.Close()
         ElseIf (dr.Read = True) Then
             MsgBox("PriceBand Already Exists, Enter a new Band")
-            con.Close()
+            Poscon.Close()
             Clear()
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim query = "Insert into PriceBand values('" + lblBandCode.Text + "','" + cbItemName.Text + "','" + txtBandName.Text + "','" + txtFromQty.Text + "','" + txtToQty.Text + "','" + txtBandPrice.Text + "')"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 MsgBox("Succesfully Created")
-                con.Close()
+                Poscon.Close()
 
 
             Catch ex As Exception
@@ -53,40 +53,40 @@ Public Class frmPriceBand
         Clear()
     End Sub
     Private Sub ShowBand()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim query = "select * from PriceBand"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()
         adapter.Fill(tbl)
         gvPriceBand.DataSource = tbl
-        con.Close()
+        Poscon.Close()
     End Sub
     Private Sub ShowBandItem()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim query = "select * from PriceBand where ItemName='" + cbItemName.Text + "' "
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()
         adapter.Fill(tbl)
         gvPriceBand.DataSource = tbl
-        con.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub frmPriceBand_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ShowBand()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         cbItemName.Items.Clear()
         Dim sql = "select * from Stockmast"
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         da = New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()
         da.Fill(tbl)
@@ -96,7 +96,7 @@ Public Class frmPriceBand
             cbItemName.Items.Add(dr(1))
 
         End While
-        con.Close()
+        Poscon.Close()
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
     End Sub
@@ -119,11 +119,11 @@ Public Class frmPriceBand
 
     End Sub
     Private Sub BandDet()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim sql = "select * from Stockmast Where Prodname='" + cbItemName.Text + "'"
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         da = New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()
         da.Fill(tbl)
@@ -168,15 +168,15 @@ Public Class frmPriceBand
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim sql = "delete from PriceBand where PriceBand= '" + txtBandName.Text + "' "
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         cmd.ExecuteNonQuery()
         ShowBand()
-        con.close
+        Poscon.Close()
         Clear()
 
     End Sub

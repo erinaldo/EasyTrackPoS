@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
 Public Class frmClientReg
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim dr As SqlDataReader
     Dim da As SqlDataAdapter
@@ -25,11 +25,11 @@ Public Class frmClientReg
     Public Sub search()
         Try
             'Dim arrimage As Byte
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select * from ClientReg"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             Dim adapter As New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             adapter.Fill(table)
@@ -49,7 +49,7 @@ Public Class frmClientReg
 
             End If
             showimage()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -59,21 +59,21 @@ Public Class frmClientReg
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
 
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim ms As New MemoryStream
             pbClientLogo.Image.Save(ms, pbClientLogo.Image.RawFormat)
 
             Dim query = "update ClientReg Set Companyname='" + txtClientName.Text + "',location= '" + TxtLocation.Text + "',termsoftrade='" + txttermsoftrade.Text + "',branchname='" + txtBranchName.Text + "',branchcontact='" + txtBranchTel.Text + "',companydealings='" + txtBusinessDesc.Text + "',tradingname='" + txtTradingName.Text + "',companycontact='" + txtCompanyContact.Text + "',companylogo=@img"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             With cmd
                 .Parameters.Add("@img", SqlDbType.Image).Value = ms.ToArray()
                 .ExecuteNonQuery()
             End With
             MsgBox("Company details Successfully updated")
-            con.Close()
+            Poscon.Close()
             search()
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -82,7 +82,7 @@ Public Class frmClientReg
     End Sub
     Sub showimage()
         Dim quer = "select companylogo from clientreg"
-        cmd = New SqlCommand(quer, con)
+        cmd = New SqlCommand(quer, Poscon)
         'dr = cmd.ExecuteReader
         'dr.Read()
         'Try

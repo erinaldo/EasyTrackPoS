@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmRecieveGoods
-    Dim Con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
     Dim dr As SqlDataReader
@@ -12,53 +12,53 @@ Public Class frmRecieveGoods
         Timer1.Enabled = True
         Display()
         Try
-            If Con.State = ConnectionState.Closed Then
-                Con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             cbSearchItem.Items.Clear()
             Dim sql = "select * from Stockmast"
-            cmd = New SqlCommand(sql, Con)
+            cmd = New SqlCommand(sql, Poscon)
             dr = cmd.ExecuteReader
             While dr.Read
                 cbSearchItem.Items.Add(dr(1))
             End While
-            Con.Close()
+            Poscon.Close()
 
-            If Con.State = ConnectionState.Closed Then
-                Con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             cbSuppName.Items.Clear()
             Dim query = ("select * from Supplier")
-            cmd = New SqlCommand(query, Con)
+            cmd = New SqlCommand(query, Poscon)
             dr = cmd.ExecuteReader
             While dr.Read
                 cbSuppName.Items.Add(dr(1))
             End While
-            Con.Close()
+            Poscon.Close()
 
-            If Con.State = ConnectionState.Closed Then
-                Con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             cbCatSort.Items.Clear()
             Dim sqll = "select category from Category"
-            cmd = New SqlCommand(sqll, Con)
+            cmd = New SqlCommand(sqll, Poscon)
             dr = cmd.ExecuteReader
             While dr.Read
                 cbCatSort.Items.Add(dr(0))
             End While
-            Con.Close()
+            Poscon.Close()
 
-            If Con.State = ConnectionState.Closed Then
-                Con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             cbCatSort.Items.Clear()
             Dim pli = "select productline from productline"
-            cmd = New SqlCommand(pli, Con)
+            cmd = New SqlCommand(pli, Poscon)
             dr = cmd.ExecuteReader
             While dr.Read
                 cbCatSort.Items.Add(dr(0))
             End While
-            Con.Close()
+            Poscon.Close()
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -69,11 +69,11 @@ Public Class frmRecieveGoods
     End Sub
     Private Sub Display()
 
-        If Con.State = ConnectionState.Closed Then
-            Con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim que = "select * from userlogs"
-        cmd = New SqlCommand(que, Con)
+        cmd = New SqlCommand(que, Poscon)
         da = New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -84,28 +84,28 @@ Public Class frmRecieveGoods
             tsuser.Text = table.Rows(index)(1).ToString
         End If
 
-        Con.Close()
+        Poscon.Close()
 
-        If Con.State = ConnectionState.Closed Then
-            Con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast"
-        cmd = New SqlCommand(query, Con)
+        cmd = New SqlCommand(query, Poscon)
         da = New SqlDataAdapter(cmd)
         Dim tbl As New DataTable
         da.Fill(tbl)
         gvStockBf.DataSource = tbl
-        Con.Close()
+        Poscon.Close()
 
     End Sub
 
     Public Sub Suppliers(valuetosearch As String)
         Try
-            If Con.State = ConnectionState.Closed Then
-                Con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select * from supplier where concat(suppliername,IDNumber) like '%" + valuetosearch + "%'"
-            cmd = New SqlCommand(query, Con)
+            cmd = New SqlCommand(query, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim tbl As New DataTable()
             da.Fill(tbl)
@@ -116,7 +116,7 @@ Public Class frmRecieveGoods
                 Dim newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
                 lblNewBal.Text = newbal
             End If
-            Con.Close()
+            Poscon.Close()
         Catch ex As Exception
             'MsgBox(ex.ToString)
         End Try
@@ -152,11 +152,11 @@ Public Class frmRecieveGoods
             Try
                 Dim i As Integer
                 For i = 0 To gvStockBatch.RowCount - 1
-                    If Con.State = ConnectionState.Closed Then
-                        Con.Open()
+                    If Poscon.State = ConnectionState.Closed Then
+                        Poscon.Open()
                     End If
                     Dim query = "insert into recievestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyRecieved,dateRecieved,time,Recievedby,itemcat,Suppliername) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "')"
-                    cmd = New SqlCommand(query, Con)
+                    cmd = New SqlCommand(query, Poscon)
                     With cmd
                         .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
                         .Parameters.AddWithValue("@Price", CDbl(gvStockBatch.Rows(i).Cells(2).Value))
@@ -170,23 +170,23 @@ Public Class frmRecieveGoods
                     End With
 
                 Next
-                Con.Close()
+                Poscon.Close()
                 MsgBox("Record Saved")
 
             Finally
                 For k = 0 To gvStockBatch.RowCount - 1
-                    If Con.State = ConnectionState.Closed Then
-                        Con.Open()
+                    If Poscon.State = ConnectionState.Closed Then
+                        Poscon.Open()
                     End If
                     Dim query = "update StockMast set Prodqty = '" & gvStockBatch.Rows(k).Cells(4).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & ""
-                    cmd = New SqlCommand(query, Con)
+                    cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()
 
 
                 Next
 
                 MsgBox("StockMast Updated")
-                Con.Close()
+                Poscon.Close()
                 Display()
                 gvStockBatch.Rows.Clear()
                 clear()
@@ -262,26 +262,26 @@ Public Class frmRecieveGoods
     End Sub
     Public Sub Search(valueTosearch As String)
         Try
-            If Con.State = ConnectionState.Closed Then
-                Con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             If cbCatSort.SelectedIndex = -1 Then
                 Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-                cmd = New SqlCommand(query, Con)
+                cmd = New SqlCommand(query, Poscon)
                 Dim adapter As New SqlDataAdapter(cmd)
                 Dim table As New DataTable()
                 adapter.Fill(table)
                 gvStockBf.DataSource = table
             Else
                 Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'"
-                cmd = New SqlCommand(query, Con)
+                cmd = New SqlCommand(query, Poscon)
                 Dim adapter As New SqlDataAdapter(cmd)
                 Dim table As New DataTable()
                 adapter.Fill(table)
                 gvStockBf.DataSource = table
             End If
 
-            Con.Close()
+            Poscon.Close()
         Catch ex As Exception
             'MsgBox(ex.ToString)
         End Try
@@ -341,11 +341,11 @@ Public Class frmRecieveGoods
             Try
                 Dim i As Integer
                 For i = 0 To gvStockBatch.RowCount - 1
-                    If Con.State = ConnectionState.Closed Then
-                        Con.Open()
+                    If Poscon.State = ConnectionState.Closed Then
+                        Poscon.Open()
                     End If
                     Dim query = "insert into recievestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyRecieved,dateRecieved,time,Recievedby,itemcat,SupplierName,SupplierID,PackVolume) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume)"
-                    cmd = New SqlCommand(query, Con)
+                    cmd = New SqlCommand(query, Poscon)
                     With cmd
                         .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
                         .Parameters.AddWithValue("@Price", (gvStockBatch.Rows(i).Cells(2).Value))
@@ -359,15 +359,15 @@ Public Class frmRecieveGoods
 
                     End With
                 Next
-                If Con.State = ConnectionState.Closed Then
-                    Con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim sql = "insert into SupplierLedger (invoiceno,dateRecieved,timerecieved,Recievedby,SupplierName,SupplierNo,GoodsAmt) values('" + txtinvoiceno.Text + "','" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "','" + cbSuppName.Text + "','" + lblCustNo.Text + "','" + lblTotal.Text + "')"
-                cmd = New SqlCommand(sql, Con)
+                cmd = New SqlCommand(sql, Poscon)
                 cmd.ExecuteNonQuery()
                 For Each row As DataGridViewRow In gvStockBatch.Rows
                     Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyRecieved,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date,suppliername,qtyissued) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyrecieved,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date,'" + cbSuppName.Text + "',@qtyissued)"
-                    cmd = New SqlCommand(quer, Con)
+                    cmd = New SqlCommand(quer, Poscon)
                     With cmd
                         .Parameters.AddWithValue("@ItemCode", row.Cells(6).Value)
                         .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
@@ -391,34 +391,34 @@ Public Class frmRecieveGoods
                     'MsgBox("Succesfully Wrintten into ledger")
                 Next
 
-                Con.Close()
+                Poscon.Close()
                 'MsgBox("Record Saved")
 
             Finally
 
                 For k = 0 To gvStockBatch.RowCount - 1
-                    If Con.State = ConnectionState.Closed Then
-                        Con.Open()
+                    If Poscon.State = ConnectionState.Closed Then
+                        Poscon.Open()
                     End If
                     Dim sqll = "Select * from StockMast where Prodcode='" + gvStockBatch.Rows(k).Cells(6).Value + "'"
-                    cmd = New SqlCommand(sqll, Con)
+                    cmd = New SqlCommand(sqll, Poscon)
                     dr = cmd.ExecuteReader
                     While dr.Read
 
                         Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") + gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & ""
-                        cmd = New SqlCommand(query, Con)
+                        cmd = New SqlCommand(query, Poscon)
                         cmd.ExecuteNonQuery()
                     End While
                 Next
 
-                If Con.State = ConnectionState.Closed Then
-                    Con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim sql = "update Supplier set Balance = '" & lblNewBal.Text & "' where SupplierNo= " & lblCustNo.Text & ""
-                cmd = New SqlCommand(sql, Con)
+                cmd = New SqlCommand(sql, Poscon)
                 cmd.ExecuteNonQuery()
                 MsgBox("Goods Recieved Successful")
-                Con.Close()
+                Poscon.Close()
                 Display()
                 If ckprint.Checked = True Or tkPreview.Checked = True Then
                     printreciept(txtinvoiceno.Text)
@@ -445,12 +445,12 @@ Public Class frmRecieveGoods
     End Sub
     Public Sub FillGoods(valueTosearch As String)
         Try
-            If Con.State = ConnectionState.Closed Then
-                Con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-            cmd = New SqlCommand(query, Con)
+            cmd = New SqlCommand(query, Poscon)
             Dim adapter As New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             adapter.Fill(table)
@@ -469,7 +469,7 @@ Public Class frmRecieveGoods
             Dim b = Val(txtbaseQty.Text)
             pckvol = a * b
             txtPackVolume.Text = pckvol
-            Con.Close()
+            Poscon.Close()
         Catch ex As Exception
             clear()
         End Try
@@ -479,16 +479,16 @@ Public Class frmRecieveGoods
         Suppliers(cbSuppName.Text)
     End Sub
     Sub Sort(valuetosearch As String)
-        If Con.State = ConnectionState.Closed Then
-            Con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where ProdCat like '%" + valuetosearch + "%'"
-        cmd = New SqlCommand(query, Con)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim table As New DataTable()
         adapter.Fill(table)
         gvStockBf.DataSource = table
-        Con.Close()
+        Poscon.Close()
 
     End Sub
 
@@ -543,17 +543,17 @@ Public Class frmRecieveGoods
     Private Sub printreciept(valuetosearch As String)
         Try
             Dim query = "select * from Recievestock where InvoiceNo ='" + valuetosearch + "'"
-            If Con.State = ConnectionState.Closed Then
-                Con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             dt.Tables("Recievestock").Rows.Clear()
-            cmd = New SqlCommand(query, Con)
+            cmd = New SqlCommand(query, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "Recievestock")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, Con)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
@@ -571,7 +571,7 @@ Public Class frmRecieveGoods
 
             cmd.Dispose()
             da.Dispose()
-            Con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

@@ -1,17 +1,17 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmsalespdate
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As New SqlCommand
     Dim adp As New SqlDataAdapter
     Dim dt As New dsSalesTranx
     Private Sub CrystalReportViewer1_Load(sender As Object, e As EventArgs) Handles CrystalReportViewer1.Load
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim query = "select * from salestranx"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("salestranx").Rows.Clear()
             adp.SelectCommand = cmd
             adp.Fill(dt, "salestranx")
@@ -22,7 +22,7 @@ Public Class frmsalespdate
             CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

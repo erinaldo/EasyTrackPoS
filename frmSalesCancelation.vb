@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Globalization
 Public Class frmSalesCancelation
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim  As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
@@ -16,27 +16,27 @@ Public Class frmSalesCancelation
 
     Private Sub Display()
 
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim query = "select SalesPerson,RecieptId from RecieptConfig"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()
         adapter.Fill(tbl)
         gvReciepts.DataSource = tbl
-        con.Close()
+        Poscon.Close()
 
     End Sub
 
     Private Sub LoadReciepts(RecieptNo As String)
         gvSalesReciepts.Rows.Clear()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         lblRecieptNo.Text = txtRecieptNo.Text
         Dim query = "Select * from SalesTranx where RecieptNo='" + RecieptNo + "'"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         dr = cmd.ExecuteReader
 
         While dr.Read
@@ -68,7 +68,7 @@ Public Class frmSalesCancelation
         End While
 
         dr.Close()
-        con.Close()
+        Poscon.Close()
 
     End Sub
 
@@ -119,18 +119,18 @@ Public Class frmSalesCancelation
             lblProdCode.Text = row.Cells(0).Value.ToString()
             lblRecieptNo.Text = row.Cells(5).Value.ToString()
 
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim quer = "Select * from StockMast where Prodcode='" + lblProdCode.Text + "'"
-            cmd = New SqlCommand(quer, con)
+            cmd = New SqlCommand(quer, Poscon)
             dr = cmd.ExecuteReader
             While dr.Read
                 lblActualStock.Text = dr.Item("ProdQty")
 
             End While
-            con.Close()
+            Poscon.Close()
 
         Catch ex As Exception
 
@@ -175,12 +175,12 @@ Public Class frmSalesCancelation
                     row.Cells(k).Value = 0
                 End If
             Next
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "insert into cancellationlog (ItemCode,ItemName,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,QtyCancelled,Price,Cancelledby,RecieptNo,DateCancelled,TimeCancelled) values(@ItemCode,@ItemName,@QtySold,@DateSold,@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,'" + ActiveUser.Text + "', '" + lblRecieptNo.Text + "','" + lblDate.Text + "','" + lblTime.Text + "')"
             Dim cmd As New SqlCommand
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             With cmd
 
                 .Parameters.AddWithValue("@ItemCode", row.Cells(0).Value)
@@ -200,12 +200,12 @@ Public Class frmSalesCancelation
 
         For Each row As DataGridViewRow In gvSalesReciepts.Rows
 
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim sqll = "update Salestranx set QtySold = @newstock, Amount=@newamt where ItemCode =@itemcode and RecieptNo=" + lblRecieptNo.Text + ""
-            cmd = New SqlCommand(sqll, con)
+            cmd = New SqlCommand(sqll, Poscon)
             With cmd
                 .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = row.Cells(0).Value
                 .Parameters.AddWithValue("@newstock", row.Cells(6).Value)
@@ -217,10 +217,10 @@ Public Class frmSalesCancelation
 
 
             Dim query = "update StockMast set ProdQty = @newstock where Prodcode =" + row.Cells(0).Value + ""
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             With cmd
                 Dim sql = "Select * from StockMast where ProdCode='" + row.Cells(0).Value + "'"
-                cmd = New SqlCommand(sql, con)
+                cmd = New SqlCommand(sql, Poscon)
                 dr = cmd.ExecuteReader
                 While dr.Read
 
@@ -240,7 +240,7 @@ Public Class frmSalesCancelation
             PrintRecieptA4(txtRecieptNo.Text)
         End If
         gvSalesReciepts.Rows.Clear()
-        con.Close()
+        Poscon.Close()
     End Sub
     Private Sub ckA4_Click(sender As Object, e As EventArgs) Handles ckA4.Click
         If ckA4.Checked = True Then
@@ -277,16 +277,16 @@ Public Class frmSalesCancelation
     End Sub
     Public Sub SearchRecieptNo(valuetosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select SalesPerson,RecieptId from RecieptConfig where concat(SalesPerson,RecieptId,date) like '%" + valuetosearch + "%'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             Dim adapter As New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             adapter.Fill(table)
             gvReciepts.DataSource = table
-            con.Close()
+            Poscon.Close()
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -308,7 +308,7 @@ Public Class frmSalesCancelation
 
     Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs) Handles BunifuThinButton24.Click
         Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, Poscon)
         da = New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -351,28 +351,28 @@ Public Class frmSalesCancelation
             Dim outfrom As Date
             DateTime.TryParseExact(dpDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outfrom)
             DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select SalesPerson,RecieptId from RecieptConfig where date between @date1 and @date2"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             cmd.Parameters.Add("date1", SqlDbType.DateTime).Value = outfrom
             cmd.Parameters.Add("date2", SqlDbType.DateTime).Value = outto
             da = New SqlDataAdapter(cmd)
             Dim tbl As New DataTable()
             da.Fill(tbl)
             gvReciepts.DataSource = tbl
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
     Public Sub User()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim que = "select * from userlogs"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, Poscon)
         Dim da As New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -384,29 +384,29 @@ Public Class frmSalesCancelation
             ActiveUser.Text = table.Rows(index)(1).ToString
         End If
 
-        con.Close()
+        Poscon.Close()
     End Sub
 
     Sub RollReciept(valuetosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim que = "select * from recieptconfig"
-            cmd = New SqlCommand(que, con)
+            cmd = New SqlCommand(que, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable
             da.Fill(table)
             Dim query = "select * from SalesTranx where recieptno='" + valuetosearch + "'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("salesTranx").Rows.Clear()
             da.SelectCommand = cmd
             da.Fill(dt, "salesTranx")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
@@ -422,7 +422,7 @@ Public Class frmSalesCancelation
             End If
             cmd.Dispose()
             da.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -430,24 +430,24 @@ Public Class frmSalesCancelation
 
     Sub PrintRecieptA4(valuetosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim que = "select * from recieptconfig"
-            cmd = New SqlCommand(que, con)
+            cmd = New SqlCommand(que, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable
             da.Fill(table)
             Dim query = "select * from SalesTranx where recieptno='" + valuetosearch + "'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("salesTranx").Rows.Clear()
             da.SelectCommand = cmd
             da.Fill(dt, "salesTranx")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
@@ -464,31 +464,31 @@ Public Class frmSalesCancelation
 
             cmd.Dispose()
             da.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
     Sub PrintRecieptA5(valuetosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim que = "select * from recieptconfig"
-            cmd = New SqlCommand(que, con)
+            cmd = New SqlCommand(que, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable
             da.Fill(table)
             Dim query = "select * from SalesTranx where recieptno='" + valuetosearch + "'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("salesTranx").Rows.Clear()
             da.SelectCommand = cmd
             da.Fill(dt, "salesTranx")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
@@ -504,7 +504,7 @@ Public Class frmSalesCancelation
             End If
             cmd.Dispose()
             da.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

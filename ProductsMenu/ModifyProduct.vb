@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmModifyProduct
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim poscon As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim dr As SqlDataReader
     Dim da As SqlDataAdapter
@@ -13,16 +13,16 @@ Public Class frmModifyProduct
         LoadCatPline()
     End Sub
     Private Sub Display()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
         Dim query = "select * from StockMast"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, poscon)
         da = New SqlDataAdapter(cmd)
         Dim tbl As New DataTable
         da.Fill(tbl)
         gvStock.DataSource = tbl
-        con.Close()
+        poscon.Close()
 
 
     End Sub
@@ -84,14 +84,14 @@ Public Class frmModifyProduct
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If poscon.State = ConnectionState.Closed Then
+                poscon.Open()
             End If
             Dim query = "update Stockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "' where Prodcode =" + txtStockCode.Text + ""
-            Dim cmd As New SqlCommand(query, con)
+            Dim cmd As New SqlCommand(query, poscon)
             cmd.ExecuteNonQuery()
             MsgBox("Product Updated Successfully")
-            con.Close()
+            poscon.Close()
             Display()
             clear()
 
@@ -156,42 +156,42 @@ Public Class frmModifyProduct
 
     End Sub
     Sub LoadCatPline()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
         cbProdLine.Items.Clear()
         Dim query = "select * from Productline"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, poscon)
         dr = cmd.ExecuteReader
         While dr.Read
             cbProdLine.Items.Add(dr(1))
         End While
-        con.Close()
+        poscon.Close()
 
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
         cbCat.Items.Clear()
         Dim sqll = "select * from Category"
-        cmd = New SqlCommand(sqll, con)
+        cmd = New SqlCommand(sqll, poscon)
         dr = cmd.ExecuteReader
         While dr.Read
             cbCat.Items.Add(dr(1))
         End While
-        con.Close()
+        poscon.Close()
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
 
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If poscon.State = ConnectionState.Closed Then
+                poscon.Open()
             End If
             Dim query = "update Stockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "' where Prodcode =" + txtStockCode.Text + ""
-            Dim cmd As New SqlCommand(query, con)
+            Dim cmd As New SqlCommand(query, poscon)
             cmd.ExecuteNonQuery()
             'MsgBox("Product Updated Successfully")
-            con.Close()
+            poscon.Close()
             Display()
             clear()
 
@@ -205,16 +205,16 @@ Public Class frmModifyProduct
     End Sub
     Public Sub Search(valueTosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If poscon.State = ConnectionState.Closed Then
+                poscon.Open()
             End If
             Dim query = "select * from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             da.Fill(table)
             gvStock.DataSource = table
-            con.Close()
+            poscon.Close()
 
         Catch ex As Exception
 

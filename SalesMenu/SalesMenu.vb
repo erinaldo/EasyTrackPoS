@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmSalesMenu
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim poscon As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
@@ -18,7 +18,7 @@ Public Class frmSalesMenu
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
 
         Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, poscon)
         da = New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -34,7 +34,7 @@ Public Class frmSalesMenu
 
     Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
         Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, poscon)
         da = New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -51,7 +51,7 @@ Public Class frmSalesMenu
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
         Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, poscon)
         da = New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)

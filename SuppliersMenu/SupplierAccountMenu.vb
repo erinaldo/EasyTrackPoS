@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmCreateSupplierAccount
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    ' Dim  As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim dr As SqlDataReader
     Dim da As SqlDataAdapter
@@ -19,27 +19,27 @@ Public Class frmCreateSupplierAccount
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim sql = "select * from Supplier where IDnumber= '" + txtIdCardNo.Text + "' "
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         dr = cmd.ExecuteReader
         If txtIdCardNo.Text = "" Then
             MsgBox("Enter New Supplier ID")
-            con.Close()
+            Poscon.Close()
         ElseIf (dr.Read = True) Then
             MsgBox("Supplier Already Exists, Enter a new Supplier")
-            con.Close()
+            Poscon.Close()
 
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim query = "insert into supplier values('" + txtName.Text + "','" + txtEmailAddress.Text + "','" + txtBusDigAddress.Text + "','" + txtBusLocation.Text + "','" + cbIDCardType.Text + "','" + txtIdCardNo.Text + "','" + txtCustBal.Text + "')"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 MsgBox("Supplier Saved Succesfully")
                 Clear()
@@ -51,19 +51,19 @@ Public Class frmCreateSupplierAccount
         Display()
     End Sub
     Private Sub Display()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim query = "select * from Supplier"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         Dim tbl As New DataTable()
         da = New SqlDataAdapter(cmd)
         da.Fill(tbl)
         gvStockMast.DataSource = tbl
 
         'lblProdCount.Text = gvStockMast.Rows.Count()
-        con.Close()
+        Poscon.Close()
     End Sub
     Sub Clear()
         txtBusDigAddress.Text = ""

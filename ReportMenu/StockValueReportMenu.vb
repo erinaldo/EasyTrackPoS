@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class StockValueReportMenu
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim  As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As New SqlCommand
     Dim adp As New SqlDataAdapter
     Dim dt As New dsStockMast
@@ -26,17 +26,17 @@ Public Class StockValueReportMenu
     Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
         Try
             Dim query = "select * from Stockmast"
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("Stockmast").Rows.Clear()
             adp.SelectCommand = cmd
             adp.Fill(dt, "Stockmast")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
 
@@ -47,7 +47,7 @@ Public Class StockValueReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -56,17 +56,17 @@ Public Class StockValueReportMenu
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
         Try
             Dim query = "select * from Stockmast"
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("Stockmast").Rows.Clear()
             adp.SelectCommand = cmd
             adp.Fill(dt, "Stockmast")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
 
@@ -77,7 +77,7 @@ Public Class StockValueReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -86,17 +86,17 @@ Public Class StockValueReportMenu
     Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
         Try
             Dim query = "select * from Stockmast"
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("Stockmast").Rows.Clear()
             adp.SelectCommand = cmd
             adp.Fill(dt, "Stockmast")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
 
@@ -107,7 +107,7 @@ Public Class StockValueReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

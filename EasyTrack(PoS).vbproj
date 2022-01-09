@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F49B7D96-10D9-498E-85E8-D1A648498992}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>HardSoft_PoS.Login</StartupObject>
+    <StartupObject>HardSoft_PoS.frmMain</StartupObject>
     <RootNamespace>HardSoft_PoS</RootNamespace>
     <AssemblyName>EasyTrackPoS</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -1041,6 +1041,12 @@
     <Compile Include="SalesMenu\frmOders.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SalesMenu\frmProForma.Designer.vb">
+      <DependentUpon>frmProForma.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SalesMenu\frmProForma.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SalesMenu\frmSalesReciept.Designer.vb">
       <DependentUpon>frmSalesReciept.vb</DependentUpon>
     </Compile>
@@ -1637,6 +1643,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SalesMenu\frmOders.resx">
       <DependentUpon>frmOders.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesMenu\frmProForma.resx">
+      <DependentUpon>frmProForma.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesMenu\frmSalesReciept.resx">
       <DependentUpon>frmSalesReciept.vb</DependentUpon>

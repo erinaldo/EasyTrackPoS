@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmRecieptA4
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As New SqlCommand
     Dim adp As New SqlDataAdapter
     Dim dt As New dsSalesTranx
@@ -8,9 +8,9 @@ Public Class frmRecieptA4
         Try
             ' reciept()
             dt.EnforceConstraints = False
-            con.Open()
+            Poscon.Open()
             Dim que = "select * from recieptconfig"
-            cmd = New SqlCommand(que, con)
+            cmd = New SqlCommand(que, Poscon)
             Dim da As New SqlDataAdapter(cmd)
             Dim table As New DataTable
             da.Fill(table)
@@ -25,13 +25,13 @@ Public Class frmRecieptA4
             Dim query = "select * from SalesTranx where recieptno='" + table.Rows(table.Rows.Count() - 1)(2).ToString + "'"
             'itemname,qtySold,amount,Retailprice
 
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             adp.SelectCommand = cmd
 
             adp.Fill(dt, "salesTranx")
 
             Dim sql = "select * from ClientReg"
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
 
@@ -42,24 +42,24 @@ Public Class frmRecieptA4
             CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
     Private Sub reciept()
 
-        con.Open()
+        Poscon.Open()
         Dim sql = "insert into Recieptconfig(Salesperson,recieptid) values('" + frmSales.Activeuser.Text + "','" + frmSales.lblRecieptNo.Text + "') "
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         cmd.ExecuteNonQuery()
-        con.Close()
+        Poscon.Close()
 
     End Sub
     Private Sub ShowConfig()
-        con.Open()
+        Poscon.Open()
         Dim que = "select * from recieptconfig"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, Poscon)
         Dim da As New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -69,6 +69,6 @@ Public Class frmRecieptA4
             Dim index = table.Rows.Count() - 1
             Dim reciept = table.Rows(index)(0).ToString
         End If
-        con.Close()
+        Poscon.Close()
     End Sub
 End Class

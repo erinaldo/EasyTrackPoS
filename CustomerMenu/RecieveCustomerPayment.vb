@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class RecieveCustomerPayment
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim dr As SqlDataReader
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
@@ -16,16 +16,16 @@ Public Class RecieveCustomerPayment
 
         Timer1.Enabled = True
         Try
-            con.Open()
+            Poscon.Open()
             Dim query = ("select * from Customer")
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             Dim adp As New SqlDataAdapter(cmd)
             Dim tbl As New DataTable
             adp.Fill(tbl)
             cbCustName.DataSource = tbl
             cbCustName.DisplayMember = "CustomerName"
             cbCustName.ValueMember = "IDCardNumber"
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -40,11 +40,11 @@ Public Class RecieveCustomerPayment
     End Sub
     Public Sub search(valuetosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select * from customer where concat(customername,emailaddress) like '%" + valuetosearch + "%'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             Dim adapter As New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             adapter.Fill(table)
@@ -54,7 +54,7 @@ Public Class RecieveCustomerPayment
                 lblCustID.Text = table.Rows(0)(9).ToString()
             End If
 
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -101,24 +101,24 @@ Public Class RecieveCustomerPayment
             If cbCustName.Text = "" Then
                 MsgBox("Select a Credit Customer")
             Else
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
 
                 Dim query = "insert into customerpayment values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtDatePaid.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbType.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + lblTime.Text + "') "
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
 
                 Dim quer = "update Customer set CurrentBalance = " + lblNewBal.Text + " where IDCardNumber =" + lblCustID.Text + ""
-                cmd = New SqlCommand(quer, con)
+                cmd = New SqlCommand(quer, Poscon)
                 cmd.ExecuteNonQuery()
 
                 Dim sql = "insert into customerledger(CustomerName,Oldbal,datepaid,amtpaid,newbal,paymenttype,paymentmode,REcievedby,narration,timepaid) values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtDatePaid.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbType.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + lblTime.Text + "') "
-                cmd = New SqlCommand(sql, con)
+                cmd = New SqlCommand(sql, Poscon)
                 cmd.ExecuteNonQuery()
 
 
-                con.Close()
+                Poscon.Close()
                 MsgBox("Payment Saved")
             End If
 
@@ -155,26 +155,26 @@ Public Class RecieveCustomerPayment
                 MsgBox("Select a Credit Customer")
                 Exit Sub
             Else
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
 
                 Dim query = "insert into customerpayment values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtdatepaid.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbType.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + lblTime.Text + "','" + txtdiscount.Text + "') "
                 Dim cmd As SqlCommand
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
 
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim sql = "Insert into CustomerLedger(CustomerName,oldbal,Newbal,AmtPaid,DatePaid,TimePaid,CustomerNo,RecievedBy,discount)Values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + lblNewBal.Text + "','" + txtAmtPaid.Text + "','" + txtdatepaid.Text + "','" + lblTime.Text + "','" + lblCustID.Text + "','" + txtRecievedBy.Text + "','" + txtdiscount.Text + "')"
-                cmd = New SqlCommand(sql, con)
+                cmd = New SqlCommand(sql, Poscon)
                 cmd.ExecuteNonQuery()
 
                 Dim quer = "update Customer set CurrentBalance = " + lblNewBal.Text + " where IDCardNumber =" + lblCustID.Text + ""
-                cmd = New SqlCommand(quer, con)
+                cmd = New SqlCommand(quer, Poscon)
                 cmd.ExecuteNonQuery()
-                con.Close()
+                Poscon.Close()
                 MsgBox("Payment Saved")
             End If
 
@@ -191,11 +191,11 @@ Public Class RecieveCustomerPayment
         Application.Exit()
     End Sub
     Public Sub User()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim que = "select * from userlogs"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, Poscon)
         Dim da As New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -207,7 +207,7 @@ Public Class RecieveCustomerPayment
             txtRecievedBy.Text = table.Rows(index)(1).ToString
         End If
 
-        con.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click

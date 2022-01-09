@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Public Class PfrmSalesMgmt
 
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim poscon As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
 
@@ -32,7 +32,7 @@ Public Class PfrmSalesMgmt
 
     Private Sub BunifuButton1_Click(sender As Object, e As EventArgs) Handles btnOpenSession.Click
         Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, poscon)
         da = New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -52,7 +52,7 @@ Public Class PfrmSalesMgmt
 
     Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles BunifuButton2.Click
         Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, poscon)
         da = New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -94,7 +94,7 @@ Public Class PfrmSalesMgmt
 
     Private Sub BunifuButton7_Click(sender As Object, e As EventArgs) Handles BunifuButton7.Click
         Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, poscon)
         da = New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)

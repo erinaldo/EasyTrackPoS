@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmAdjustStock
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim poscon As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
     Dim dr As SqlDataReader
@@ -14,38 +14,38 @@ Public Class frmAdjustStock
 
         User()
         cbSearchItem.Focus()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
         cbSearchItem.Items.Clear()
         Dim sql = "select * from Stockmast"
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, poscon)
         dr = cmd.ExecuteReader
         While dr.Read
             cbSearchItem.Items.Add(dr(1))
         End While
-        con.Close()
+        poscon.Close()
 
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
         cbCatSort.Items.Clear()
         Dim sqll = "select category from Category"
-        cmd = New SqlCommand(sqll, con)
+        cmd = New SqlCommand(sqll, poscon)
         dr = cmd.ExecuteReader
         While dr.Read
             cbCatSort.Items.Add(dr(0))
         End While
-        con.Close()
+        poscon.Close()
         Clear()
     End Sub
 
     Private Sub User()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
         Dim que = "select * from userlogs"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, poscon)
         da = New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -57,21 +57,21 @@ Public Class frmAdjustStock
             activeuser.Text = table.Rows(index)(1).ToString
         End If
 
-        con.Close()
+        poscon.Close()
     End Sub
 
     Private Sub Display()
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If poscon.State = ConnectionState.Closed Then
+                poscon.Open()
             End If
             Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, poscon)
             da = New SqlDataAdapter(cmd)
             Dim tbl As New DataTable
             da.Fill(tbl)
             gvStockBf.DataSource = tbl
-            con.Close()
+            poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -116,16 +116,16 @@ Public Class frmAdjustStock
         Try
 
             For k = 0 To gvStockBatch.RowCount - 1
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If poscon.State = ConnectionState.Closed Then
+                    poscon.Open()
                 End If
                 Dim i As Integer
                 For i = 0 To gvStockBatch.RowCount - 1
-                    If con.State = ConnectionState.Closed Then
-                        con.Open()
+                    If poscon.State = ConnectionState.Closed Then
+                        poscon.Open()
                     End If
                     Dim que = "insert into AdjustStock (ProdLine,ItemName,ItemCat,OldQty,AdjustmentQty,DateAdjusted,AdjustedBy,Price,Narration,time) values(@Prodline,@Itemname,@ItemCat,@oldqty,@AdjustmentQty,'" + txtDate.Text + "','" + activeuser.Text + "',@Price,'" + txtnarration.Text + "','" + lbltime.Text + "')"
-                    cmd = New SqlCommand(que, con)
+                    cmd = New SqlCommand(que, poscon)
                     With cmd
                         .Parameters.AddWithValue("@Prodline", gvStockBatch.Rows(i).Cells(7).Value)
                         .Parameters.AddWithValue("@itemname", gvStockBatch.Rows(i).Cells(0).Value)
@@ -139,19 +139,19 @@ Public Class frmAdjustStock
 
                 Next
                 ' MsgBox("Record Saved")
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If poscon.State = ConnectionState.Closed Then
+                    poscon.Open()
                 End If
 
                 Dim query = "update StockMast set Prodqty = @newstock where prodcode =" + gvStockBatch.Rows(k).Cells(6).Value + ""
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, poscon)
                 With cmd
                     .Parameters.AddWithValue("@newstock", gvStockBatch.Rows(k).Cells(4).Value)
                     .ExecuteNonQuery()
                 End With
                 For Each row As DataGridViewRow In gvStockBatch.Rows
                     Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyRecieved,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date,qtyissued) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyrecieved,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date,@qtyissued)"
-                    cmd = New SqlCommand(quer, con)
+                    cmd = New SqlCommand(quer, poscon)
                     With cmd
                         .Parameters.AddWithValue("@ItemCode", row.Cells(6).Value)
                         .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
@@ -179,7 +179,7 @@ Public Class frmAdjustStock
                     'MsgBox("Succesfully Wrintten into ledger")
                 Next
             Next
-            con.Close()
+            poscon.Close()
             MsgBox("Successfully Adjusted Stock")
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -279,26 +279,26 @@ Public Class frmAdjustStock
     End Sub
     Public Sub Search(valueTosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If poscon.State = ConnectionState.Closed Then
+                poscon.Open()
             End If
             If cbCatSort.SelectedIndex = -1 Then
                 Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, poscon)
                 Dim adapter As New SqlDataAdapter(cmd)
                 Dim table As New DataTable()
                 adapter.Fill(table)
                 gvStockBf.DataSource = table
             Else
                 Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, poscon)
                 Dim adapter As New SqlDataAdapter(cmd)
                 Dim table As New DataTable()
                 adapter.Fill(table)
                 gvStockBf.DataSource = table
             End If
 
-            con.Close()
+            poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -335,16 +335,16 @@ Public Class frmAdjustStock
         Try
 
 
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If poscon.State = ConnectionState.Closed Then
+                poscon.Open()
             End If
             Dim i As Integer
             For i = 0 To gvStockBatch.RowCount - 1
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If poscon.State = ConnectionState.Closed Then
+                    poscon.Open()
                 End If
                 Dim que = "insert into AdjustStock (ProdLine,ItemName,ItemCat,OldQty,AdjustmentQty,DateAdjusted,AdjustedBy,Price,Narration,time) values(@Prodline,@Itemname,@ItemCat,@oldqty,@AdjustmentQty,'" + txtDate.Text + "','" + activeuser.Text + "',@Price,'" + txtnarration.Text + "','" + lbltime.Text + "')"
-                cmd = New SqlCommand(que, con)
+                cmd = New SqlCommand(que, poscon)
                 With cmd
                     .Parameters.AddWithValue("@Prodline", gvStockBatch.Rows(i).Cells(7).Value)
                     .Parameters.AddWithValue("@itemname", gvStockBatch.Rows(i).Cells(0).Value)
@@ -359,15 +359,15 @@ Public Class frmAdjustStock
             Next
             ' MsgBox("Record Saved")
             For k = 0 To gvStockBatch.RowCount - 1
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If poscon.State = ConnectionState.Closed Then
+                    poscon.Open()
                 End If
                 Dim sqll = "Select * from StockMast where Prodcode='" + gvStockBatch.Rows(k).Cells(6).Value + "'"
-                cmd = New SqlCommand(sqll, con)
+                cmd = New SqlCommand(sqll, poscon)
                 dr = cmd.ExecuteReader
                 While dr.Read
                     Dim query = "update StockMast set Prodqty = @newstock where prodcode =" + gvStockBatch.Rows(k).Cells(6).Value + ""
-                    cmd = New SqlCommand(query, con)
+                    cmd = New SqlCommand(query, poscon)
                     With cmd
                         If ckReplace.Checked = True Then
                             .Parameters.AddWithValue("@newstock", gvStockBatch.Rows(k).Cells(4).Value)
@@ -383,7 +383,7 @@ Public Class frmAdjustStock
 
             For Each row As DataGridViewRow In gvStockBatch.Rows
                 Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyRecieved,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyrecieved,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date)"
-                cmd = New SqlCommand(quer, con)
+                cmd = New SqlCommand(quer, poscon)
                 With cmd
                     .Parameters.AddWithValue("@ItemCode", row.Cells(6).Value)
                     .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
@@ -405,7 +405,7 @@ Public Class frmAdjustStock
                 End With
 
             Next
-                con.Close()
+            poscon.Close()
             'MsgBox("Successfully Adjusted Stock")
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -416,26 +416,26 @@ Public Class frmAdjustStock
         gvStockBatch.Rows.Clear()
     End Sub
     Sub Sort(valuetosearch As String)
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
         Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where ProdCat like '%" + valuetosearch + "%'"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim table As New DataTable()
         adapter.Fill(table)
         gvStockBf.DataSource = table
-        con.Close()
+        poscon.Close()
 
     End Sub
     Public Sub FillItems(valueTosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If poscon.State = ConnectionState.Closed Then
+                poscon.Open()
             End If
 
             Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, poscon)
             Dim adapter As New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             adapter.Fill(table)
@@ -446,7 +446,7 @@ Public Class frmAdjustStock
             lblStockcode.Text = table.Rows(0)(0).ToString
             txtCat.Text = table.Rows(0)(5).ToString
             txtprodline.Text = table.Rows(0)(6).ToString
-            con.Close()
+            poscon.Close()
         Catch ex As Exception
 
         End Try

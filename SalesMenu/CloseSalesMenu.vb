@@ -1,13 +1,13 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmCloseSalesMenu
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Private Sub CloseSalesMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cbSalesType.SelectedIndex = 0
         Timer1.Enabled = True
-        con.Open()
+        Poscon.Open()
         Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, Poscon)
         Dim da As New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -16,7 +16,7 @@ Public Class frmCloseSalesMenu
             lblsessionID.Text = table.Rows(0)(0).ToString
         End If
 
-        con.Close()
+        Poscon.Close()
         'Dim morodate As DateTime
         'morodate = Convert.ToDateTime(lblDate.Text)
         'morodate = morodate.AddDays(1)
@@ -48,14 +48,14 @@ Public Class frmCloseSalesMenu
         If cbSalesType.SelectedIndex = 1 Or cbSalesType.SelectedItem = "Non-Sales Session" Then
             txtCashCounted.Text = "0"
             Try
-                con.Open()
+                Poscon.Open()
                 Dim query = "update SessionLedger set closedby='" + stUser.Text + "',dateclosed='" + lblDate.Text + "',Timeclosed='" + lblTime.Text + "',salesType='" + cbSalesType.Text + "',CashCounted='" + txtCashCounted.Text + "',Expenses='" + txtExpense.Text + "' where sessionid='" + lblsessionID.Text + "'"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 Dim quer = "delete from ActiveSession where SessionID= " + lblsessionID.Text + " "
-                cmd = New SqlCommand(quer, con)
+                cmd = New SqlCommand(quer, Poscon)
                 cmd.ExecuteNonQuery()
-                con.Close()
+                Poscon.Close()
                 MsgBox("Session Closed Succesfully")
                 Application.Exit()
             Catch ex As Exception
@@ -67,14 +67,14 @@ Public Class frmCloseSalesMenu
                 MsgBox("Enter Cash counted")
             Else
                 Try
-                    con.Open()
+                    Poscon.Open()
                     Dim query = "update SessionLedger set closedby='" + stUser.Text + "',dateclosed='" + lblDate.Text + "',Timeclosed='" + lblTime.Text + "',salesType='" + cbSalesType.Text + "',CashCounted='" + txtCashCounted.Text + "',Expenses='" + txtExpense.Text + "' where sessionid='" + lblsessionID.Text + "'"
-                    cmd = New SqlCommand(query, con)
+                    cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()
                     Dim quer = "delete from ActiveSession where SessionID= " + lblsessionID.Text + " "
-                    cmd = New SqlCommand(quer, con)
+                    cmd = New SqlCommand(quer, Poscon)
                     cmd.ExecuteNonQuery()
-                    con.Close()
+                    Poscon.Close()
                     MsgBox("Session Closed Succesfully")
                     Application.Exit()
                 Catch ex As Exception

@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmSupplierReport
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As New SqlCommand
     Dim adp As New SqlDataAdapter
     Dim dt As New dsSupplier

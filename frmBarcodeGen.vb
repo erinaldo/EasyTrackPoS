@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports BarcodeLib
 Public Class frmBarcodeGen
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim poscon As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
     Private ds As New dsGenerateBarcode
@@ -12,25 +12,25 @@ Public Class frmBarcodeGen
     End Sub
     Private Sub Display()
 
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
 
         Dim query = "select prodname,prodcode,Retailprice from StockMast"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()
         adapter.Fill(tbl)
         gvStockguna.DataSource = tbl
-        con.Close()
+        poscon.Close()
 
     End Sub
     Private Sub Feel(valueTosearch As String)
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
         Dim query = "select prodname,prodcode,Retailprice from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-        Dim cmd = New SqlCommand(query, con)
+        Dim cmd = New SqlCommand(query, poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim table As New DataTable()
         adapter.Fill(table)
@@ -41,7 +41,7 @@ Public Class frmBarcodeGen
             MsgBox("No Record")
         End If
 
-        con.Close()
+        poscon.Close()
 
 
     End Sub
@@ -110,11 +110,11 @@ Public Class frmBarcodeGen
         printBarcode(pbBarcode.Image, lblBarCode.Text)
     End Sub
     Private Sub SearchBarcode(valueTosearch As String)
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
         Dim query = "select prodname,prodcode,Retailprice from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-        Dim cmd = New SqlCommand(query, con)
+        Dim cmd = New SqlCommand(query, poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim table As New DataTable()
         adapter.Fill(table)
@@ -127,7 +127,7 @@ Public Class frmBarcodeGen
             'MsgBox("No Record")
         End If
 
-        con.Close()
+        poscon.Close()
 
 
     End Sub

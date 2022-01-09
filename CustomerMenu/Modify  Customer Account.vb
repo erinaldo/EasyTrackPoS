@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmModifyCustomerAccounts
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
 
         frmCustomersMenu.Show()
@@ -13,11 +13,11 @@ Public Class frmModifyCustomerAccounts
 
     End Sub
     Private Sub Display()
-        con.Open()
+        Poscon.Open()
         Dim query = "select * from Customer"
         Dim adapter As SqlDataAdapter
         Dim cmd As SqlCommand
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         adapter = New SqlDataAdapter(cmd)
         Dim builder As New SqlCommandBuilder
         builder = New SqlCommandBuilder(adapter)
@@ -27,18 +27,18 @@ Public Class frmModifyCustomerAccounts
 
         gvcust.DataSource = ds.Tables(0)
 
-        con.Close()
+        Poscon.Close()
     End Sub
     Dim key = ""
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
-        con.Open()
+        Poscon.Open()
         Dim query = ("update customer set CustomerName='" + txtName.Text + "', EmailAddress= '" + txtEmailAdd.Text + "',BusinessDigitalAddress= '" + txtBusDigAdd.Text + "',ResidentialDigitalAddress= '" + txtResDigAdd.Text + "',ResidentailLocation= '" + txtResLocation.Text + "',BusinessLocation= '" + txtBussLocation.Text + "',CreditLimit= '" + txtCardLimit.Text + "',Idcardtype= '" + cbCardType.Text + "',IdcardNumber= '" + txtCardNo.Text + "' where CustomerNo= " + txtCardNo.Text + "")
-        Dim cmd As New SqlCommand(query, con)
+        Dim cmd As New SqlCommand(query, Poscon)
         cmd.ExecuteNonQuery()
         MsgBox("Customer Updated Successfully")
-        con.Close()
+        Poscon.Close()
         Display()
         Clear()
     End Sub
@@ -48,15 +48,15 @@ Public Class frmModifyCustomerAccounts
             MsgBox("Select Customer To Edit")
             Exit Sub
         End If
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim query = ("update customer set CustomerName='" + txtName.Text + "', EmailAddress= '" + txtEmailAdd.Text + "',BusinessDigitalAddress= '" + txtBusDigAdd.Text + "',ResidentialDigitalAddress= '" + txtResDigAdd.Text + "',ResidentailLocation= '" + txtResLocation.Text + "',BusinessLocation= '" + txtBussLocation.Text + "',CreditLimit= '" + txtCardLimit.Text + "',Idcardtype= '" + cbCardType.Text + "',currentbalance= '" + txtCurrentBalance.Text + "' where Idcardnumber= " + txtCardNo.Text + "")
-        Dim cmd As New SqlCommand(query, con)
+        Dim cmd As New SqlCommand(query, Poscon)
         cmd.ExecuteNonQuery()
         MsgBox("Customer Updated Successfully")
-        con.Close()
+        Poscon.Close()
         Display()
 
         Clear()

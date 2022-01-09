@@ -173,4 +173,8 @@ Public Class frmMain
         f1.Show()
         'Me.Hide()
     End Sub
+
+    Private Sub BunifuButton6_Click(sender As Object, e As EventArgs) Handles BunifuButton6.Click
+        frmProForma.Show()
+    End Sub
 End Class

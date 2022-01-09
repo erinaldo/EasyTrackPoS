@@ -1,23 +1,26 @@
-﻿Imports MySql.Data.MySqlClient
+﻿'Imports MySql.Data.MySqlClient
+Imports System.Data.SqlClient
 Module CRUDFunction
     Public result As String
-    Public cmd As New MySqlCommand
-    Public da As New MySqlDataAdapter
+    Public cmd As New SqlCommand
+    Public da As New SqlDataAdapter
     Public dt As New DataTable
     Public ds As New DataSet
 
 #Region "Report"
     Public Sub reports(ByVal sql As String, ByVal rptname As String, ByVal crystalRpt As Object)
         Try
-            strcon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
 
             Dim reportname As String
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
             End With
             ds = New DataSet
-            da = New MySqlDataAdapter(sql, strcon)
+            da = New SqlDataAdapter(sql, Poscon)
             da.Fill(ds)
             reportname = rptname
             Dim reportdoc = "" 'As New CrystalDecisions.CrystalReports.Engine.ReportDocument
@@ -36,22 +39,24 @@ Module CRUDFunction
         Catch ex As Exception
             MsgBox(ex.Message & "No Crystal Reports have been Installed")
         Finally
-            If strcon.State = ConnectionState.Open Then
-                strcon.Close()
+            If Poscon.State = ConnectionState.Open Then
+                Poscon.Close()
                 da.Dispose()
             End If
         End Try
-        'con.Close()
+        'poscon.Close()
         'da.Dispose()
     End Sub
 
     'THIS METHOD IS FOR INSERTING DATA IN THE DATABASE
     Public Sub create(ByVal sql As String)
         Try
-            strcon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             'HOLDS THE DATA TO BE EXECUTED
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
                 'EXECUTE THE DATA
                 result = cmd.ExecuteNonQuery
@@ -62,20 +67,22 @@ Module CRUDFunction
                     MessageBox.Show("Data has been inserted in the database.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             End With
-            strcon.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
-            strcon.Close()
+            Poscon.Close()
         End Try
     End Sub
 
     Public Sub createLogged(ByVal sql As String)
         Try
-            strcon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             'HOLDS THE DATA TO BE EXECUTED
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
                 'EXECUTE THE DATA
                 result = cmd.ExecuteNonQuery
@@ -89,7 +96,7 @@ Module CRUDFunction
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
-            strcon.Close()
+            Poscon.Close()
         End Try
 
     End Sub
@@ -97,10 +104,12 @@ Module CRUDFunction
     '    'THIS METHOD IS FOR RETRIEVING DATA IN THE DATABASE
     Public Sub reload(ByVal sql As String, ByVal DTG As Object)
         Try
-            strcon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             dt = New DataTable
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
             End With
             da.SelectCommand = cmd
@@ -109,27 +118,29 @@ Module CRUDFunction
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
-            strcon.Close()
+            Poscon.Close()
             da.Dispose()
         End Try
     End Sub
 #End Region
     Public Sub reloadtxt(ByVal sql As String)
         Try
-            strcon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
             End With
             dt = New DataTable
-            da = New MySqlDataAdapter(sql, strcon)
+            da = New SqlDataAdapter(sql, Poscon)
             da.Fill(dt)
 
         Catch ex As Exception
             MsgBox(ex.Message & "reloadtxt")
         Finally
-            If strcon.State = ConnectionState.Open Then
-                strcon.Close()
+            If Poscon.State = ConnectionState.Open Then
+                Poscon.Close()
                 da.Dispose()
             End If
         End Try
@@ -138,9 +149,11 @@ Module CRUDFunction
     'THIS METHOD IS FOR UPDATING THE DATA IN THE DATABASE.
     Public Sub updates(ByVal sql As String)
         Try
-            strcon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
                 result = cmd.ExecuteNonQuery
                 If result = 0 Then
@@ -152,16 +165,18 @@ Module CRUDFunction
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
-            strcon.Close()
+            Poscon.Close()
         End Try
     End Sub
 
     'Mother UPDATE phone
     Public Sub StudentUpdatePhone(ByVal sql As String)
         Try
-            strcon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
                 result = cmd.ExecuteNonQuery
                 If result = 0 Then
@@ -173,45 +188,51 @@ Module CRUDFunction
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
-            strcon.Close()
+            Poscon.Close()
         End Try
     End Sub
 
     Public Sub UpdatePhone(ByVal sql As String)
         Try
-            strcon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
                 result = cmd.ExecuteNonQuery
             End With
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
-            strcon.Close()
+            Poscon.Close()
         End Try
     End Sub
     'INSERT SMS 
     Public Sub CreateSMS(ByVal sql As String)
         Try
-            strcon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
                 result = cmd.ExecuteNonQuery
             End With
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
-            strcon.Close()
+            Poscon.Close()
         End Try
     End Sub
 
     Public Sub updatesLogged(ByVal sql As String)
         Try
-            strcon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
                 result = cmd.ExecuteNonQuery
                 If result = 0 Then
@@ -223,7 +244,7 @@ Module CRUDFunction
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
-            strcon.Close()
+            Poscon.Close()
 
         End Try
 
@@ -231,9 +252,11 @@ Module CRUDFunction
     'THIS METHOD IS FOR DELETING THE DATA IN THE DATABASE
     Public Sub delete(ByVal sql As String)
         Try
-            strcon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
                 result = cmd.ExecuteNonQuery
                 If result = 0 Then
@@ -245,19 +268,21 @@ Module CRUDFunction
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
-            strcon.Close()
+            Poscon.Close()
         End Try
     End Sub
 
     Public Sub findRecords(sql As String, dtg As DataGridView)
         Try
-            strcon.Open()
-            cmd = New MySqlCommand
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            cmd = New SqlCommand
             With cmd
-                .Connection = strcon
+                .Connection = Poscon
                 .CommandText = sql
             End With
-            da = New MySqlDataAdapter
+            da = New SqlDataAdapter
             da.SelectCommand = cmd
             dt = New DataTable
             da.Fill(dt)
@@ -265,7 +290,7 @@ Module CRUDFunction
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
-            strcon.Close()
+            Poscon.Close()
             da.Dispose()
         End Try
     End Sub

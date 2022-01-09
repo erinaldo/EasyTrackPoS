@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class Login
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
@@ -8,11 +8,11 @@ Public Class Login
 
     Public Sub search(valuetosearch As String)
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select * from UserProfiles where UserID like '%" + valuetosearch + "%'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable()
             da.Fill(tbl)
@@ -24,7 +24,7 @@ Public Class Login
                 lblID.Text = tbl.Rows(0)(0).ToString
                 lblusername.Text = tbl.Rows(0)(1).ToString
             End If
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             'MsgBox(ex.ToString)
         End Try
@@ -39,8 +39,8 @@ Public Class Login
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Enabled = True
         Try
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -67,12 +67,12 @@ Public Class Login
             If (txtUserID.Text = "" Or txtPassword.Text = "") Then
                 MsgBox("Enter username and password")
             Else
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
 
                 Dim sql = "select * from UserProfiles where UserId= '" + txtUserID.Text + "' and Password='" + txtPassword.Text + "' "
-                cmd = New SqlCommand(sql, con)
+                cmd = New SqlCommand(sql, Poscon)
                 dr = cmd.ExecuteReader
                 If (dr.Read = True) Then
                     Dim userlevel As Integer
@@ -91,17 +91,17 @@ Public Class Login
                     End Select
                     dr.Close()
 
-                    If con.State = ConnectionState.Closed Then
-                        con.Open()
+                    If Poscon.State = ConnectionState.Closed Then
+                        Poscon.Open()
                     End If
                     Dim query = "insert into Userlogs(username,UserId,LoginTime,LoginDate) values('" + lblusername.Text + "','" + txtUserID.Text + "','" + lbltime.Text + "','" + lbldate.Text + "')"
-                    cmd = New SqlCommand(query, con)
+                    cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()
-                    con.Close()
+                    Poscon.Close()
                 Else
                     MsgBox("Wrong Username or Password")
                     txtPassword.Text = ""
-                    con.Close()
+                    Poscon.Close()
                 End If
 
             End If

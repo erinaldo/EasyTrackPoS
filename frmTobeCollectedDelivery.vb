@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmTobeCollectedDelivery
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
@@ -9,12 +9,12 @@ Public Class frmTobeCollectedDelivery
 
     Private Sub LoadReciepts(RecieptNo As String)
         gvSalesReciepts.Rows.Clear()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         lblRecieptNo.Text = txtRecieptNo.Text
         Dim query = "Select * from TobeCollected where RecieptNo='" + RecieptNo + "'"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         dr = cmd.ExecuteReader
 
         While dr.Read
@@ -46,7 +46,7 @@ Public Class frmTobeCollectedDelivery
         End While
 
         dr.Close()
-        con.Close()
+        Poscon.Close()
 
     End Sub
 
@@ -111,8 +111,8 @@ Public Class frmTobeCollectedDelivery
         End If
         For Each row As DataGridViewRow In gvSalesReciepts.Rows
 
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             For i = 5 To 6
                 If row.Cells(i).Value Is Nothing Then
@@ -127,16 +127,16 @@ Public Class frmTobeCollectedDelivery
             'Next
 
             Dim sqll = "update TobeCollected set QtyTobeCollected = @newstock where ItemCode =" + row.Cells(0).Value + " and RecieptNo=" + lblRecieptNo.Text + ""
-            cmd = New SqlCommand(sqll, con)
+            cmd = New SqlCommand(sqll, Poscon)
             With cmd
                 .Parameters.AddWithValue("@newstock", row.Cells(6).Value)
                 .ExecuteNonQuery()
             End With
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "insert into ToBeCollecteddeliverylog (ItemCode,ItemName,oldQtytobeCollected,DateCollected,BuyerName,BuyerTel,BuyerLoc,QtyTobeCollected,Price,salesperson,RecieptNo,DateToBeCollected,QtyCollected,timecollected,DeliveryID) values(@ItemCode,@ItemName,@oldQtytobecollected,@DateSold,@BuyerName,@BuyerTel,@BuyerLocation,@QtyTobeCollected,@Price,'" + ActiveUser.Text + "', '" + lblRecieptNo.Text + "','" + dpDate.Text + "',@QtyCollected,'" + lblTimeSold.Text + "','" + lblDeliveryReciept.Text + "')"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             With cmd
 
                 .Parameters.AddWithValue("@ItemCode", row.Cells(0).Value)
@@ -157,7 +157,7 @@ Public Class frmTobeCollectedDelivery
         TobeColDelReciept()
         MsgBox("Successfully Delivered")
         gvSalesReciepts.Rows.Clear()
-        con.Close()
+        Poscon.Close()
         Clear()
     End Sub
 
@@ -176,7 +176,7 @@ Public Class frmTobeCollectedDelivery
 
         Try
             Dim query = "select * from TobeCollecteddeliverylog where DeliveryId='" + lblDeliveryReciept.Text + "' and RecieptNo='" + lblRecieptNo.Text + "'"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("TobeCollecteddeliverylog").Rows.Clear()
             da = New SqlDataAdapter
             da.SelectCommand = cmd
@@ -184,7 +184,7 @@ Public Class frmTobeCollectedDelivery
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             da = New SqlDataAdapter
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
@@ -206,13 +206,13 @@ Public Class frmTobeCollectedDelivery
 
 
     Private Sub ShowConfig()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         ' Dim recieptcount As String
         'Dim nextreciept As String
         Dim que = "select Deliveryid from tobecollecteddeliverylog"
-        cmd = New SqlCommand(que, con)
+        cmd = New SqlCommand(que, Poscon)
         Dim da As New SqlDataAdapter(cmd)
         Dim table As New DataTable
         da.Fill(table)
@@ -224,7 +224,7 @@ Public Class frmTobeCollectedDelivery
             Dim reciept = table.Rows(index)(0).ToString
             lblDeliveryReciept.Text = reciept + 1
         End If
-        con.Close()
+        Poscon.Close()
     End Sub
     Private Sub Clear()
         lblItemName.Text = ""

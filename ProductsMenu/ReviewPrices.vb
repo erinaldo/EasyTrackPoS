@@ -1,17 +1,17 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmReviewPrices
-    Dim con = New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim  New SqlConnection(My.Settings.PoSConnectionString)
     Private Sub ReviewPrices_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Display()
     End Sub
 
     Private Sub Display()
-        con.Open()
+        Poscon.Open()
         Dim query = "select * from StockMast"
         Dim adapter As SqlDataAdapter
         Dim cmd As SqlCommand
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         adapter = New SqlDataAdapter(cmd)
         Dim builder As New SqlCommandBuilder
         builder = New SqlCommandBuilder(adapter)
@@ -19,7 +19,7 @@ Public Class frmReviewPrices
         ds = New DataSet
         adapter.Fill(ds)
         gvStock.DataSource = ds.Tables(0)
-        con.Close()
+        Poscon.Close()
     End Sub
     Dim key = 0
     Private Sub gvStock_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStock.CellClick
@@ -37,12 +37,12 @@ Public Class frmReviewPrices
             MsgBox("Enter New Prices")
         Else
             Try
-                con.open()
+                Poscon.Open()
                 Dim query = ("update Stockmast set RetailPrice='" + txtNewRPrice.Text + "', WholesalePrice= '" + txtNewWPrice.Text + "' where Prodcode= " + txtStockCode.Text + "")
-                Dim cmd As New SqlCommand(query, con)
+                Dim cmd As New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 MsgBox("Product Updated Successfully")
-                con.close()
+                Poscon.Close()
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try

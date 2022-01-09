@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmMessagingSetup
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim tbl As DataTable
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
@@ -12,11 +12,11 @@ Public Class frmMessagingSetup
         txtsmsapikey.Enabled = False
         Try
             'Dim arrimage As Byte
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select * from Emailconfig"
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable()
             da.Fill(tbl)
@@ -31,7 +31,7 @@ Public Class frmMessagingSetup
                 txtsmsmessage.Text = tbl.Rows(0)(5).ToString()
             End If
 
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -39,12 +39,12 @@ Public Class frmMessagingSetup
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim sql = "update emailconfig set fromemail='" + txtemailaddress.Text + "',Mailsubject='" + txtemailheader.Text + "',Body='" + txtmessage.Text + "',fromsms='" + txtsmsid.Text + "',smsbody='" + txtsmsmessage.Text + "',smsapikey='" + txtsmsapikey.Text + "'"
         With cmd
-            .Connection = con
+            .Connection = Poscon
             .CommandText = sql
             'EXECUTE THE DATA
             result = cmd.ExecuteNonQuery
@@ -55,7 +55,7 @@ Public Class frmMessagingSetup
                 MessageBox.Show("Data has been inserted in the database.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End With
-        con.Close()
+        Poscon.Close()
         search()
     End Sub
 End Class

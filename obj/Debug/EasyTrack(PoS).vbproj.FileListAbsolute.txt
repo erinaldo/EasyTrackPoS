@@ -666,3 +666,4 @@ K:\Daakye\FoodApplication\obj\Debug\EasyTrackPoS.exe
 K:\Daakye\FoodApplication\obj\Debug\EasyTrackPoS.xml
 K:\Daakye\FoodApplication\obj\Debug\EasyTrackPoS.pdb
 K:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).vbproj.AssemblyReference.cache
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProForma.resources

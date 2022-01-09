@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class PfrmInventoryMgmt
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As New SqlCommand
     Dim adp As New SqlDataAdapter
     Dim dt As New dscustomer
@@ -62,15 +62,15 @@ Public Class PfrmInventoryMgmt
     Private Sub BunifuButton5_Click(sender As Object, e As EventArgs) Handles BunifuButton5.Click
         Try
             Dim query = "select * from issuestock"
-            con.Open()
-            cmd = New SqlCommand(query, con)
+            Poscon.Open()
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("issuestock").Rows.Clear()
             adp.SelectCommand = cmd
             adp.Fill(dt, "issuestock")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
 
@@ -81,7 +81,7 @@ Public Class PfrmInventoryMgmt
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -90,15 +90,15 @@ Public Class PfrmInventoryMgmt
     Private Sub BunifuButton6_Click(sender As Object, e As EventArgs) Handles BunifuButton6.Click
         Try
             Dim query = "select * from issuestock"
-            con.Open()
-            cmd = New SqlCommand(query, con)
+            Poscon.Open()
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("issuestock").Rows.Clear()
             adp.SelectCommand = cmd
             adp.Fill(dt, "issuestock")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
 
@@ -109,7 +109,7 @@ Public Class PfrmInventoryMgmt
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

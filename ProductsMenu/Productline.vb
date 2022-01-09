@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmProductline
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
     Dim builder As SqlCommandBuilder
@@ -14,30 +14,30 @@ Public Class frmProductline
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim sql = "select * from Productline where Productline= '" + txtProdline.Text + "' "
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         dr = cmd.ExecuteReader
         If txtProdline.Text = "" Then
             MsgBox("Enter New Productline")
-            con.Close()
+            Poscon.Close()
         ElseIf (dr.Read = True) Then
             MsgBox("Productline Already Exists, Enter a new Productline")
-            con.Close()
+            Poscon.Close()
             clear()
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim query = "Insert into Productline values('" + txtProdline.Text + "')"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 'MsgBox("Succesfully Created")
-                con.Close()
+                Poscon.Close()
                 Display()
 
             Catch ex As Exception
@@ -49,18 +49,18 @@ Public Class frmProductline
     End Sub
 
     Private Sub Display()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim query = "select * from Productline"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         adapter = New SqlDataAdapter(cmd)
         builder = New SqlCommandBuilder(adapter)
         Dim ds
         ds = New DataSet
         adapter.Fill(ds)
         gvStock.DataSource = ds.Tables(0)
-        con.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub clear()
@@ -77,12 +77,12 @@ Public Class frmProductline
             MsgBox("Select a Productline")
         Else
             Try
-                con.Open()
+                Poscon.Open()
                 Dim query = "delete from Productline where Id= " + key + " "
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 'MsgBox("Productline Deleted Successfully")
-                con.Close()
+                Poscon.Close()
                 clear()
                 Display()
             Catch ex As Exception

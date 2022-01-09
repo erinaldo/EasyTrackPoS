@@ -1,23 +1,23 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmCustomerReportMenu
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As New SqlCommand
     Dim adp As New SqlDataAdapter
     Dim dt As New dscustomer
     Private Sub BunifuButton1_Click(sender As Object, e As EventArgs) Handles BunifuButton1.Click
         Try
             Dim query = "select * from CustomerLedger"
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             dt.Tables("CustomerLedger").Rows.Clear()
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "CustomerLedger")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("clientreg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
             Dim report As New rptCustomerSales
@@ -27,7 +27,7 @@ Public Class frmCustomerReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -41,16 +41,16 @@ Public Class frmCustomerReportMenu
     Private Sub btnOpenSession_Click(sender As Object, e As EventArgs) Handles btnOpenSession.Click
         Try
             Dim query = "select * from Customerpayment"
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             dt.Tables("customerpayment").Rows.Clear()
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "Customerpayment")
 
             Dim sql = "select * from ClientReg"
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             dt.Tables("clientreg").Rows.Clear()
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
@@ -61,7 +61,7 @@ Public Class frmCustomerReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -70,17 +70,17 @@ Public Class frmCustomerReportMenu
     Private Sub BunifuButton3_Click(sender As Object, e As EventArgs) Handles BunifuButton3.Click
         Try
             Dim query = "select * from Customer"
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             dt.Tables("customer").Rows.Clear()
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "Customer")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("clientreg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
             Dim report As New rptCustomerInfo
@@ -90,7 +90,7 @@ Public Class frmCustomerReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -99,17 +99,17 @@ Public Class frmCustomerReportMenu
     Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles BunifuButton2.Click
         Try
             Dim query = "select * from Customer"
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             dt.Tables("Customer").Rows.Clear()
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "Customer")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("clientreg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
             Dim report As New rptCustomerBalance
@@ -119,7 +119,7 @@ Public Class frmCustomerReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -128,17 +128,17 @@ Public Class frmCustomerReportMenu
     Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles BunifuButton4.Click
         Try
             Dim query = "select * from issuestock"
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             dt.Tables("Customer").Rows.Clear()
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "issuestock")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("clientreg").Rows.Clear()
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
             Dim report As New rptCustomerSummPDate
@@ -148,7 +148,7 @@ Public Class frmCustomerReportMenu
             frmSupplierReport.CrystalReportViewer1.Refresh()
             cmd.Dispose()
             adp.Dispose()
-            con.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

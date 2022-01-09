@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmTobeCollectedPreview
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
@@ -13,12 +13,12 @@ Public Class frmTobeCollectedPreview
     End Sub
     Private Sub TobeColDelReciept()
         dt.EnforceConstraints = False
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim sql = "select * from ClientReg"
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         da = New SqlDataAdapter
         da.SelectCommand = cmd
         da.Fill(dt, "ClientReg")
@@ -33,6 +33,6 @@ Public Class frmTobeCollectedPreview
         'report.PrintToPrinter(1, True, 0, 0)
         cmd.Dispose()
         da.Dispose()
-        con.Close()
+        Poscon.Close()
     End Sub
 End Class

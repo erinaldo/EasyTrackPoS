@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmProdCatCreation
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim poscon As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
     Dim adapter As SqlDataAdapter
@@ -11,46 +11,46 @@ Public Class frmProdCatCreation
         Display()
     End Sub
     Private Sub Display()
-        con.Close()
-        con.Open()
+        poscon.Close()
+        poscon.Open()
         Dim query = "select * from Category"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, poscon)
         adapter = New SqlDataAdapter(cmd)
         builder = New SqlCommandBuilder(adapter)
         ds = New DataSet
         adapter.Fill(ds)
         gvStock.DataSource = ds.Tables(0)
-        con.Close()
+        poscon.Close()
     End Sub
     Private Sub clear()
         txtCat.Text = ""
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If poscon.State = ConnectionState.Closed Then
+            poscon.Open()
         End If
 
         Dim sql = "select * from category where category= '" + txtCat.Text + "' "
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, poscon)
         dr = cmd.ExecuteReader
         If txtCat.Text = "" Then
             MsgBox("Enter New Category")
-            con.Close()
+            poscon.Close()
         ElseIf (dr.Read = True) Then
             MsgBox("Category Already Exists, Enter a new Category")
-            con.Close()
+            poscon.Close()
             clear()
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If poscon.State = ConnectionState.Closed Then
+                    poscon.Open()
                 End If
                 Dim query = "Insert into category values('" + txtCat.Text + "')"
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, poscon)
                 cmd.ExecuteNonQuery()
                 'MsgBox("Succesfully Created")
-                con.Close()
+                poscon.Close()
                 Display()
 
             Catch ex As Exception
@@ -71,14 +71,14 @@ Public Class frmProdCatCreation
             MsgBox("Select a Category")
         Else
             Try
-                If con.State = ConnectionState.Closed Then
-                    con.Open()
+                If poscon.State = ConnectionState.Closed Then
+                    poscon.Open()
                 End If
                 Dim query = "delete from Category where Id= " + key + " "
-                cmd = New SqlCommand(query, con)
+                cmd = New SqlCommand(query, poscon)
                 cmd.ExecuteNonQuery()
                 MsgBox("Product Deleted Successfully")
-                con.Close()
+                poscon.Close()
                 clear()
                 Display()
             Catch ex As Exception

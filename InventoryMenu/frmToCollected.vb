@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmToCollected
-    Dim con As New SqlConnection(My.Settings.PoSConnectionString)
+    'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
@@ -14,12 +14,12 @@ Public Class frmToCollected
 
     Private Sub LoadReciepts(RecieptNo As String)
         gvSalesReciepts.Rows.Clear()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         lblRecieptNo.Text = txtRecieptNo.Text
         Dim query = "Select * from SalesTranx where RecieptNo='" + RecieptNo + "'"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         dr = cmd.ExecuteReader
 
         While dr.Read
@@ -51,32 +51,32 @@ Public Class frmToCollected
         End While
 
         dr.Close()
-        con.Close()
+        Poscon.Close()
 
     End Sub
 
     Private Sub Display()
 
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim query = "select SalesPerson,RecieptId from SalesTranx"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()
         adapter.Fill(tbl)
         'gvReciepts.DataSource = tbl
-        con.Close()
+        Poscon.Close()
 
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim query = "select * from TobeCollected where RecieptNo='" + txtRecieptNo.Text + "'"
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim table As New DataTable()
         adapter.Fill(table)
@@ -171,12 +171,12 @@ Public Class frmToCollected
             'row.Cells(k).Value = 0
             'End If
             'Next
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "insert into ToBeCollected (ItemCode,ItemName,QtySold,DateSold,BuyerName,BuyerTel,BuyerLoc,QtyCollected,QtyTobeCollected,Price,salesperson,RecieptNo,DateToBeCollected) values(@ItemCode,@ItemName,@QtySold,@DateSold,@BuyerName,@BuyerTel,@BuyerLocation,@QtyCollected,@QtyTobeCollected,@Price,'" + ActiveUser.Text + "', '" + lblRecieptNo.Text + "','" + dpDate.Text + "')"
             Dim cmd As New SqlCommand
-            cmd = New SqlCommand(query, con)
+            cmd = New SqlCommand(query, Poscon)
             With cmd
 
                 .Parameters.AddWithValue("@ItemCode", row.Cells(0).Value)
@@ -199,7 +199,7 @@ Public Class frmToCollected
         MsgBox("Item Collected Successfully")
         TobeColReciept(lblRecieptNo.Text)
         gvSalesReciepts.Rows.Clear()
-        con.Close()
+        Poscon.Close()
         clear()
     End Sub
     Sub clear()
@@ -217,20 +217,20 @@ Public Class frmToCollected
     End Sub
     Private Sub TobeColReciept(RecieptNo As String)
         'dt.EnforceConstraints = False
-        If con.State = ConnectionState.Closed Then
-            con.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
 
         Dim query = "select * from TobeCollected where recieptno='" + RecieptNo + "'"
         dt.Tables("TobeCollected").Rows.Clear()
-        cmd = New SqlCommand(query, con)
+        cmd = New SqlCommand(query, Poscon)
         da = New SqlDataAdapter
         da.SelectCommand = cmd
         da.Fill(dt, "TobeCollected")
 
         Dim sql = "select * from ClientReg"
         dt.Tables("ClientReg").Rows.Clear()
-        cmd = New SqlCommand(sql, con)
+        cmd = New SqlCommand(sql, Poscon)
         da = New SqlDataAdapter
         da.SelectCommand = cmd
         da.Fill(dt, "ClientReg")
@@ -248,7 +248,7 @@ Public Class frmToCollected
         ' report.PrintToPrinter(1, True, 0, 0)
         cmd.Dispose()
         da.Dispose()
-        con.Close()
+        Poscon.Close()
     End Sub
     Private Sub EditCollected()
         For Each row As DataGridViewRow In gvSalesReciepts.Rows
@@ -258,11 +258,11 @@ Public Class frmToCollected
                     row.Cells(7).Value = 0
                 End If
             Next
-            If con.State = ConnectionState.Closed Then
-                con.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim sql = "update TobeCollected set QtyTobeCollected = @newstock, QtyCollected=@QtyCollected where ItemCode =" + row.Cells(0).Value + " and RecieptNo=" + lblRecieptNo.Text + ""
-            cmd = New SqlCommand(sql, con)
+            cmd = New SqlCommand(sql, Poscon)
             With cmd
                 .Parameters.AddWithValue("@newstock", row.Cells(6).Value)
                 .Parameters.AddWithValue("@QtyCollected", row.Cells(7).Value)
