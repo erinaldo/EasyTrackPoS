@@ -589,20 +589,21 @@ Public Class frmSales
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation from proformainvoices where invoiceno like '%" + lblProformaInvoice.Text + "%'")
+            Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,discountrate,discountamount,totaldiscount,amountpayable from proformainvoices where invoiceno like '%" + lblProformaInvoice.Text + "%'")
             cmd = New SqlCommand(queryy, Poscon)
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable()
             da.Fill(tbl)
             If tbl.Rows.Count = 0 Then
-                MsgBox("Empty")
+                MsgBox("ProForma Empty")
                 Exit Sub
             End If
             txtBuyerName.Text = tbl.Rows(0)(9).ToString
             txtBuyerTel.Text = tbl.Rows(0)(10).ToString
             cbLocation.Text = tbl.Rows(0)(11).ToString
+            lblPayable.Text = tbl.Rows(0)(15).ToString
             For k = 0 To tbl.Rows.Count - 1
-                gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, "0", 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
+                gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, tbl.Rows(k)(12).ToString, tbl.Rows(k)(13).ToString, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
             Next
             Poscon.Close()
         End If
