@@ -52,8 +52,8 @@ Public Class frmSales
         clear()
         cbSaleType.SelectedIndex = 0
         txtProdname.Focus()
-
-
+        cbSaleslist.SelectedIndex = 0
+        cbPaymode.SelectedIndex = 0
     End Sub
     Private Sub clear()
         txtCashPaid.Text = ""
@@ -205,83 +205,22 @@ Public Class frmSales
                 Poscon.Open()
             End If
             If cbCatSort.SelectedIndex = -1 And cbProdlineSort.SelectedIndex = -1 Then
-                Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-                cmd = New SqlCommand(query, Poscon)
-                Dim adapter As New SqlDataAdapter(cmd)
-                Dim table As New DataTable()
-                adapter.Fill(table)
-                gvStock.DataSource = table
-                'Dim itemavailable As Boolean
-                'itemavailable = table.Rows(0)(0).ToString = ""
-                'If itemavailable Then
-                'Else
-                'If table.Rows(0)(0).ToString = txtProdname.Text And table.Rows.Count = 1 Then
-                'cbProdName.Text = table.Rows(0)(7).ToString()
-                'Else
-                'MsgBox("No Record")
-                ''txtProdName.Text = ""
-                'End If
-                'End If
-
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'", gvStock)
             End If
             If cbCatSort.SelectedIndex <> -1 And cbProdlineSort.SelectedIndex = -1 Then
-                Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodcat like '%" + cbCatSort.Text + "%'"
-                cmd = New SqlCommand(query, Poscon)
-                Dim adapter As New SqlDataAdapter(cmd)
-                Dim table As New DataTable()
-                adapter.Fill(table)
-                gvStock.DataSource = table
-                'Dim itemavailable As Boolean
-                'itemavailable = table.Rows(0)(0).ToString = ""
-                'If itemavailable Then
-                'Else
-                'If table.Rows(0)(0).ToString = txtProdname.Text And table.Rows.Count = 1 Then
-                'cbProdName.Text = table.Rows(0)(7).ToString()
-                'Else
-                'MsgBox("No Record")
-                ''txtProdName.Text = ""
-                'End If
-                'End If
+
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodcat like '%" + cbCatSort.Text + "%'", gvStock)
+
             End If
             If cbCatSort.SelectedIndex = -1 And cbProdlineSort.SelectedIndex <> -1 Then
-                Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and Prodline like '%" + cbProdlineSort.Text + "%'"
-                cmd = New SqlCommand(query, Poscon)
-                Dim adapter As New SqlDataAdapter(cmd)
-                Dim table As New DataTable()
-                adapter.Fill(table)
-                gvStock.DataSource = table
-                'Dim itemavailable As Boolean
-                'itemavailable = table.Rows(0)(0).ToString = ""
-                'If itemavailable Then
-                'Else
-                'If table.Rows(0)(0).ToString = txtProdname.Text And table.Rows.Count = 1 Then
-                'cbProdName.Text = table.Rows(0)(7).ToString()
-                'Else
-                'MsgBox("No Record")
-                ''txtProdName.Text = ""
-                'End If
-                'End If
+
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and Prodline like '%" + cbProdlineSort.Text + "%'", gvStock)
 
             End If
 
             If cbCatSort.SelectedIndex <> -1 And cbProdlineSort.SelectedIndex <> -1 Then
-                Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodcat like '%" + cbCatSort.Text + "%' and Prodline like '%" + cbProdlineSort.Text + "%'"
-                cmd = New SqlCommand(query, Poscon)
-                Dim adapter As New SqlDataAdapter(cmd)
-                Dim table As New DataTable()
-                adapter.Fill(table)
-                gvStock.DataSource = table
-                'Dim itemavailable As Boolean
-                'itemavailable = table.Rows(0)(0).ToString = ""
-                'If itemavailable Then
-                'Else
-                'If table.Rows(0)(0).ToString = txtProdname.Text And table.Rows.Count = 1 Then
-                'cbProdName.Text = table.Rows(0)(7).ToString()
-                'Else
-                'MsgBox("No Record")
-                ''txtProdName.Text = ""
-                'End If
-                'End If
+
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodcat like '%" + cbCatSort.Text + "%' and Prodline like '%" + cbProdlineSort.Text + "%'", gvStock)
 
             End If
             Poscon.Close()
@@ -296,9 +235,9 @@ Public Class frmSales
             End If
             Dim query = "select * from customer where concat(customername,Customerno) like '%" + valuetosearch + "%'"
             cmd = New SqlCommand(query, Poscon)
-            Dim adapter As New SqlDataAdapter(cmd)
-            Dim tbl As New DataTable()
-            adapter.Fill(tbl)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
             lblOldBal.Text = tbl.Rows(0)(10).ToString
             lblCustNo.Text = tbl.Rows(0)(0).ToString
             Dim newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
@@ -309,17 +248,16 @@ Public Class frmSales
         End Try
     End Sub
     Private Sub Display()
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
+        If cbSaleslist.SelectedIndex = 0 Or cbSaleslist.SelectedIndex = -1 Then
+            reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
         End If
-        Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast"
-        ''ProdName,ProdQty,retailprice,Prodsize,ItemNo,ProdCat,ProdColour,Prodline,ProdCode
-        cmd = New SqlCommand(query, Poscon)
-        da = New SqlDataAdapter(cmd)
-        Dim tbl As New DataTable
-        da.Fill(tbl)
-        gvStock.DataSource = tbl
-        Poscon.Close()
+        If cbSaleslist.SelectedIndex = 1 Then
+            reload("select * from Packages", gvStock)
+        End If
+        If cbSaleslist.SelectedIndex = 2 Then
+            reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
+        End If
+
     End Sub
 
     Private Sub cbProdName_TextUpdate(sender As Object, e As EventArgs) Handles cbProdName.TextUpdate
@@ -589,7 +527,7 @@ Public Class frmSales
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,discountrate,discountamount,totaldiscount,amountpayable from proformainvoices where invoiceno like '%" + lblProformaInvoice.Text + "%'")
+            Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,amountpayable from proformainvoices where invoiceno like '%" + lblProformaInvoice.Text + "%'")
             cmd = New SqlCommand(queryy, Poscon)
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable()
@@ -601,9 +539,9 @@ Public Class frmSales
             txtBuyerName.Text = tbl.Rows(0)(9).ToString
             txtBuyerTel.Text = tbl.Rows(0)(10).ToString
             cbLocation.Text = tbl.Rows(0)(11).ToString
-            lblPayable.Text = tbl.Rows(0)(15).ToString
+            ' lblPayable.Text = tbl.Rows(0)(15).ToString
             For k = 0 To tbl.Rows.Count - 1
-                gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, tbl.Rows(k)(12).ToString, tbl.Rows(k)(13).ToString, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
+                gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, 0, 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
             Next
             Poscon.Close()
         End If

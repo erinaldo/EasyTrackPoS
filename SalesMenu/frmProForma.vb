@@ -16,10 +16,6 @@ Public Class frmProForma
     Private Sub frmSales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         StockCheck()
         Display()
-        ckCashDisc.Checked = True
-        txtCashDisc.Enabled = True
-        ckPerDisc.Checked = False
-        txtPerDisc.Enabled = False
 
         If poscon.State = ConnectionState.Closed Then
             poscon.Open()
@@ -101,14 +97,14 @@ Public Class frmProForma
                         row.Cells(8).Value = (Val(lblActualStock.Text) - Val(row.Cells(1).Value))
                         row.Cells(12).Value = row.Cells(3).Value
                         'For discount percentage
-                        If row.Cells(13).Value = "%" Then
-                            Dim Discprice As Decimal
-                            Discprice = (Val(txtPerDisc.Text) / 100) * row.Cells(3).Value
-                            row.Cells(10).Value = txtPerDisc.Text
-                            row.Cells(11).Value = Discprice
-                            row.Cells(12).Value = row.Cells(3).Value - Discprice
+                        'If row.Cells(13).Value = "%" Then
+                        '    Dim Discprice As Decimal
+                        '    Discprice = (Val(txtPerDisc.Text) / 100) * row.Cells(3).Value
+                        '    row.Cells(10).Value = txtPerDisc.Text
+                        '    row.Cells(11).Value = Discprice
+                        '    row.Cells(12).Value = row.Cells(3).Value - Discprice
 
-                        End If
+                        'End If
                         'for Money Discount
                         'If row.Cells(13).Value = "$" Then
                         'Dim Discprice As Decimal
@@ -119,22 +115,22 @@ Public Class frmProForma
 
                         'End If
 
-                        If ckPerDisc.Checked = True Then
-                            For k = 0 To gvSales.RowCount - 1
-                                If row.Cells(10).Value = "" Then
-                                    row.Cells(12).Value = row.Cells(3).Value
-                                    row.Cells(11).Value = 0
-                                End If
-                                sum += gvSales.Rows(k).Cells(3).Value
-                                payable += gvSales.Rows(k).Cells(12).Value
-                                DiscAmt += gvSales.Rows(k).Cells(11).Value
-                            Next
-                            lblTotal.Text = sum
-                            lblPayable.Text = payable
-                            lblDiscAmt.Text = DiscAmt
-                        End If
+                        'If ckPerDisc.Checked = True Then
+                        '    For k = 0 To gvSales.RowCount - 1
+                        '        If row.Cells(10).Value = "" Then
+                        '            row.Cells(12).Value = row.Cells(3).Value
+                        '            row.Cells(11).Value = 0
+                        '        End If
+                        '        sum += gvSales.Rows(k).Cells(3).Value
+                        '        payable += gvSales.Rows(k).Cells(12).Value
+                        '        DiscAmt += gvSales.Rows(k).Cells(11).Value
+                        '    Next
+                        '    lblTotal.Text = sum
+                        '    lblPayable.Text = payable
+                        '    lblDiscAmt.Text = DiscAmt
+                        'End If
 
-                        poscon.Close()
+                        Poscon.Close()
                         clear()
                         dr.Close()
 
@@ -150,7 +146,7 @@ Public Class frmProForma
                             Next
                             lblTotal.Text = sum
                             lblPayable.Text = payable
-                            lblDiscAmt.Text = DiscAmt
+                            'lblDiscAmt.Text = DiscAmt
                         Catch ex As Exception
                             MsgBox(ex.ToString)
                         End Try
@@ -188,6 +184,7 @@ Public Class frmProForma
 
 
     End Sub
+
     Public Sub Feel(valueTosearch As String)
         Try
             If poscon.State = ConnectionState.Closed Then
@@ -280,6 +277,7 @@ Public Class frmProForma
     End Sub
 
     Private Sub Display()
+        reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvProformaInvoice)
         reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
     End Sub
 
@@ -490,7 +488,7 @@ Public Class frmProForma
             Next
             lblTotal.Text = sum
             lblPayable.Text = payable
-            lblDiscAmt.Text = discamt
+            'lblDiscAmt.Text = discamt
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -549,7 +547,7 @@ Public Class frmProForma
             Next
             lblTotal.Text = sum
             lblPayable.Text = payable
-            lblDiscAmt.Text = discamt
+            'lblDiscAmt.Text = discamt
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -557,243 +555,17 @@ Public Class frmProForma
 
     Private Sub gvSales_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvSales.CellClick
         Dim row As DataGridViewRow = gvSales.Rows(e.RowIndex)
-        txtDiscName.Text = row.Cells(0).Value.ToString()
         lbldiscCode.Text = row.Cells(5).Value.ToString()
     End Sub
 
-    Private Sub BunifuCheckBox2_Click(sender As Object, e As EventArgs) Handles ckPerDisc.Click
-        If ckPerDisc.Checked = False Then
-            ckCashDisc.Checked = True
-            txtCashDisc.Enabled = True
-        Else
-            ckCashDisc.Checked = False
-            txtCashDisc.Enabled = False
-        End If
-
-        If ckCashDisc.Checked = False Then
-            txtCashDisc.Enabled = False
-            txtPerDisc.Enabled = True
-        Else
-            txtCashDisc.Enabled = True
-            txtPerDisc.Enabled = False
-        End If
-
-    End Sub
-
-    Private Sub BunifuCheckBox1_Click(sender As Object, e As EventArgs) Handles ckCashDisc.Click
-        If ckCashDisc.Checked = False Then
-            ckPerDisc.Checked = True
-
-        Else
-            ckPerDisc.Checked = False
-
-        End If
-
-        If ckPerDisc.Checked = False Then
-            txtPerDisc.Enabled = False
-            txtCashDisc.Enabled = True
-        Else
-            txtPerDisc.Enabled = True
-            txtCashDisc.Enabled = False
-        End If
-
-    End Sub
-
-    Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click
-
-        If lbldiscCode.Text = "" Then
-            MsgBox("Select Item to Discount")
-            Exit Sub
-        End If
-
-
-        Dim sum As Decimal = 0
-        Dim payable As Decimal = 0
-        Dim DiscAmt As Decimal = 0
-        If ckPerDisc.Checked = True Then
-            For Each row As DataGridViewRow In gvSales.Rows
-
-                If lbldiscCode.Text = row.Cells(5).Value Then
-                    If row.Cells(10).Value = 0 Then
-                        Dim Discprice As Decimal
-                        Discprice = (Val(txtPerDisc.Text) / 100) * row.Cells(3).Value
-                        row.Cells(10).Value = txtPerDisc.Text
-                        row.Cells(11).Value = Discprice
-                        row.Cells(12).Value = row.Cells(3).Value - Discprice
-                        row.Cells(13).Value = "%"
-                    Else
-                        MsgBox("Discount Already Added", vbCritical)
-                        lbldiscCode.Text = ""
-                        txtDiscName.Text = ""
-                        Exit Sub
-                    End If
-                End If
-            Next
-            For k = 0 To gvSales.RowCount - 1
-                If gvSales.Rows(k).Cells(10).ToString = "" Then
-                    gvSales.Rows(k).Cells(12).Value = gvSales.Rows(k).Cells(3).Value
-                    gvSales.Rows(k).Cells(11).Value = "0"
-                End If
-                sum += gvSales.Rows(k).Cells(3).Value
-                payable += gvSales.Rows(k).Cells(12).Value
-                DiscAmt += gvSales.Rows(k).Cells(11).Value
-            Next
-            lblTotal.Text = sum
-            lblPayable.Text = payable
-            lblDiscAmt.Text = DiscAmt
-            MsgBox("Discount Added")
-
-        End If
-        If ckCashDisc.Checked = True Then
-            For Each row As DataGridViewRow In gvSales.Rows
-                If lbldiscCode.Text = row.Cells(5).Value Then
-                    If row.Cells(10).Value = 0 Then
-                        Dim Discprice As Decimal
-                        Discprice = row.Cells(3).Value - Val(txtCashDisc.Text)
-                        row.Cells(10).Value = txtCashDisc.Text
-                        row.Cells(12).Value = Discprice
-                        row.Cells(11).Value = row.Cells(3).Value - Discprice
-                        row.Cells(13).Value = "$"
-                    Else
-
-                        MsgBox("Discount Already Added", vbCritical)
-                        lbldiscCode.Text = ""
-                        txtDiscName.Text = ""
-                        Exit Sub
-                    End If
-                End If
-
-            Next
-            For k = 0 To gvSales.RowCount - 1
-                If gvSales.Rows(k).Cells(10).Value = "" Then
-                    gvSales.Rows(k).Cells(12).Value = gvSales.Rows(k).Cells(3).Value
-                    gvSales.Rows(k).Cells(11).Value = "0"
-                End If
-                sum += gvSales.Rows(k).Cells(3).Value
-                payable += gvSales.Rows(k).Cells(12).Value
-                DiscAmt += gvSales.Rows(k).Cells(11).Value
-            Next
-            lblTotal.Text = sum
-            lblPayable.Text = payable
-            lblDiscAmt.Text = DiscAmt
-            MsgBox("Discount Added")
-        End If
-
-        lbldiscCode.Text = ""
-        txtDiscName.Text = ""
-    End Sub
-
-    Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs)
-    End Sub
-
-    Private Sub BunifuThinButton25_Click(sender As Object, e As EventArgs) Handles BunifuThinButton25.Click
-        If gvSales.Rows.Count = 0 Then
-            MsgBox("Make a sale to Discount")
-            Exit Sub
-        End If
-
-        Dim sum As Decimal = 0
-        Dim payable As Decimal = 0
-        Dim DiscAmt As Decimal = 0
-
-        If ckPerDisc.Checked = True Then
-            Dim ask As MsgBoxResult
-            ask = MsgBox("Would you like to discount Cart by " + txtPerDisc.Text + "%?", MsgBoxStyle.YesNo, "")
-            If ask = MsgBoxResult.Yes Then
-                For Each row As DataGridViewRow In gvSales.Rows
-
-                    If True Then
-                        If row.Cells(10).Value = 0 Then
-                            Dim Discprice As Decimal
-                            Discprice = (Val(txtPerDisc.Text) / 100) * row.Cells(3).Value
-                            row.Cells(10).Value = txtPerDisc.Text
-                            row.Cells(11).Value = Discprice
-                            row.Cells(12).Value = row.Cells(3).Value - Discprice
-                            row.Cells(13).Value = "%"
-                        Else
-                            MsgBox("Discount Already Added", vbCritical)
-                            lbldiscCode.Text = ""
-                            txtDiscName.Text = ""
-                            Exit Sub
-                        End If
-                    End If
-                Next
-                For k = 0 To gvSales.RowCount - 1
-                    If gvSales.Rows(k).Cells(10).ToString = "" Then
-                        gvSales.Rows(k).Cells(12).Value = gvSales.Rows(k).Cells(3).Value
-                        gvSales.Rows(k).Cells(11).Value = "0"
-                    End If
-                    sum += gvSales.Rows(k).Cells(3).Value
-                    payable += gvSales.Rows(k).Cells(12).Value
-                    DiscAmt += gvSales.Rows(k).Cells(11).Value
-                Next
-                If txtPerDisc.Text = "" Then
-                Else
-                    lblPayable.Text = Val(lblTotal.Text) - (Val(lblTotal.Text) * (Val(txtPerDisc.Text) / 100))
-                End If
-                lblTotal.Text = sum
-                'lblPayable.Text = payable
-                lblDiscAmt.Text = DiscAmt
-                MsgBox("Discount Added")
-
-            End If
-        End If
-        If ckCashDisc.Checked = True Then
-            Dim ask As MsgBoxResult
-            ask = MsgBox("Would you like to discount Cart by ¢" + txtCashDisc.Text + "?", MsgBoxStyle.YesNo, "")
-            If ask = MsgBoxResult.Yes Then
-                For Each row As DataGridViewRow In gvSales.Rows
-                    If True Then
-
-                        If row.Cells(10).Value = 0 Then
-                            Dim Discprice As Decimal
-                            Discprice = row.Cells(3).Value - Val(txtCashDisc.Text)
-                            row.Cells(10).Value = txtCashDisc.Text
-                            row.Cells(11).Value = Val(row.Cells(3).Value - Discprice) / Val(gvSales.Rows.Count)
-                            row.Cells(12).Value = row.Cells(3).Value - row.Cells(11).Value
-                            row.Cells(13).Value = "$"
-                        Else
-
-                            MsgBox("Discount Already Added", vbCritical)
-                            lbldiscCode.Text = ""
-                            txtDiscName.Text = ""
-                            Exit Sub
-                        End If
-                    End If
-
-                Next
-                For k = 0 To gvSales.RowCount - 1
-                    If gvSales.Rows(k).Cells(10).Value = "" Then
-                        gvSales.Rows(k).Cells(12).Value = gvSales.Rows(k).Cells(3).Value
-                        gvSales.Rows(k).Cells(11).Value = "0"
-                    End If
-                    sum += gvSales.Rows(k).Cells(3).Value
-                    payable += gvSales.Rows(k).Cells(12).Value
-                    DiscAmt += gvSales.Rows(k).Cells(11).Value
-                Next
-                If txtCashDisc.Text = "" Then
-                Else
-                    lblPayable.Text = Val(lblTotal.Text) - Val(txtCashDisc.Text)
-                End If
-                lblTotal.Text = sum
-                'lblPayable.Text = payable
-                lblDiscAmt.Text = Math.Round(DiscAmt)
-                MsgBox("Discount Added")
-            End If
-        End If
-
-        lbldiscCode.Text = ""
-        txtDiscName.Text = ""
-
-    End Sub
     Public Sub FillSale(valueTosearch As String)
         Try
-            If poscon.State = ConnectionState.Closed Then
-                poscon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-            cmd = New SqlCommand(query, poscon)
+            cmd = New SqlCommand(query, Poscon)
             Dim adapter As New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             adapter.Fill(table)
@@ -812,7 +584,7 @@ Public Class frmProForma
             txtColour.Text = table.Rows(0)(5).ToString
 
 
-            poscon.Close()
+            Poscon.Close()
         Catch ex As Exception
 
         End Try
@@ -897,24 +669,24 @@ Public Class frmProForma
 
     Sub RollReciept(valuetosearch As String)
         Try
-            If poscon.State = ConnectionState.Closed Then
-                poscon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim que = "select * from recieptconfig"
-            cmd = New SqlCommand(que, poscon)
+            cmd = New SqlCommand(que, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable
             da.Fill(table)
             Dim query = "select * from SalesTranx where recieptno='" + valuetosearch + "'"
-            cmd = New SqlCommand(query, poscon)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("salesTranx").Rows.Clear()
             da.SelectCommand = cmd
             da.Fill(dt, "salesTranx")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, poscon)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
@@ -930,7 +702,7 @@ Public Class frmProForma
             End If
             cmd.Dispose()
             da.Dispose()
-            poscon.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -938,24 +710,24 @@ Public Class frmProForma
 
     Sub PrintRecieptA4(valuetosearch As String)
         Try
-            If poscon.State = ConnectionState.Closed Then
-                poscon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim que = "select * from recieptconfig"
-            cmd = New SqlCommand(que, poscon)
+            cmd = New SqlCommand(que, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable
             da.Fill(table)
             Dim query = "select * from SalesTranx where recieptno='" + valuetosearch + "'"
-            cmd = New SqlCommand(query, poscon)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("salesTranx").Rows.Clear()
             da.SelectCommand = cmd
             da.Fill(dt, "salesTranx")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, poscon)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
@@ -972,31 +744,31 @@ Public Class frmProForma
 
             cmd.Dispose()
             da.Dispose()
-            poscon.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
     Sub PrintRecieptA5(valuetosearch As String)
         Try
-            If poscon.State = ConnectionState.Closed Then
-                poscon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
 
             Dim que = "select * from recieptconfig"
-            cmd = New SqlCommand(que, poscon)
+            cmd = New SqlCommand(que, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable
             da.Fill(table)
             Dim query = "select * from SalesTranx where recieptno='" + valuetosearch + "'"
-            cmd = New SqlCommand(query, poscon)
+            cmd = New SqlCommand(query, Poscon)
             dt.Tables("salesTranx").Rows.Clear()
             da.SelectCommand = cmd
             da.Fill(dt, "salesTranx")
 
             Dim sql = "select * from ClientReg"
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, poscon)
+            cmd = New SqlCommand(sql, Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
@@ -1012,37 +784,27 @@ Public Class frmProForma
             End If
             cmd.Dispose()
             da.Dispose()
-            poscon.Close()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
     Sub Sortcat(valuetosearch As String)
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where ProdCat like '%" + valuetosearch + "%'"
-        cmd = New SqlCommand(query, poscon)
+        cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim table As New DataTable()
         adapter.Fill(table)
         gvStock.DataSource = table
-        poscon.Close()
+        Poscon.Close()
 
     End Sub
 
     Sub Sortpline(valuetosearch As String)
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
-        End If
-        Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where prodline like '%" + valuetosearch + "%'"
-        cmd = New SqlCommand(query, poscon)
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim table As New DataTable()
-        adapter.Fill(table)
-        gvStock.DataSource = table
-        poscon.Close()
-
+        reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where prodline like '%" + valuetosearch + "%'", gvStock)
     End Sub
 
     Private Sub BunifuThinButton28_Click(sender As Object, e As EventArgs) Handles BunifuThinButton28.Click
@@ -1072,56 +834,56 @@ Public Class frmProForma
     End Sub
 
     Private Sub cbProdlineSort_Click(sender As Object, e As EventArgs) Handles cbProdlineSort.Click
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         cbProdlineSort.Items.Clear()
         Dim pli = "select productline from productline"
-        cmd = New SqlCommand(pli, poscon)
+        cmd = New SqlCommand(pli, Poscon)
         dr = cmd.ExecuteReader
         While dr.Read
             cbProdlineSort.Items.Add(dr(0))
         End While
-        poscon.Close()
+        Poscon.Close()
     End Sub
 
     Private Sub cbCatSort_Click(sender As Object, e As EventArgs) Handles cbCatSort.Click
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         cbCatSort.Items.Clear()
         Dim sqll = "select category from Category"
-        cmd = New SqlCommand(sqll, poscon)
+        cmd = New SqlCommand(sqll, Poscon)
         dr = cmd.ExecuteReader
         While dr.Read
             cbCatSort.Items.Add(dr(0))
         End While
-        poscon.Close()
+        Poscon.Close()
     End Sub
 
 
 
     Private Sub txtProdname_Enter(sender As Object, e As EventArgs) Handles txtProdname.Enter
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         txtProdname.Items.Clear()
         Dim query = "select * from Stockmast"
-        cmd = New SqlCommand(query, poscon)
+        cmd = New SqlCommand(query, Poscon)
         dr = cmd.ExecuteReader
         While dr.Read
             txtProdname.Items.Add(dr(1))
         End While
-        poscon.Close()
+        Poscon.Close()
     End Sub
 
     Public Sub StockCheck()
 
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim query = "select * from Stockmast where prodqty<=leastqtyreminder"
-        cmd = New SqlCommand(query, poscon)
+        cmd = New SqlCommand(query, Poscon)
         da = New SqlDataAdapter(cmd)
         tbl = New DataTable()
         da.Fill(tbl)
@@ -1143,7 +905,7 @@ Public Class frmProForma
             Poscon.Open()
         End If
         For Each row As DataGridViewRow In gvSales.Rows
-            Dim query = "insert into ProformaInvoices (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,RetailPrice,Amount,Soldby,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount,Invoiceno) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,@DateSold,@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@RetailPrice,@Amount,'" + Activeuser.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "','" + lblRecieptNo.Text + "')"
+            Dim query = "insert into ProformaInvoices (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,RetailPrice,Amount,Soldby,AmountPayable,Invoiceno) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,@DateSold,@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@RetailPrice,@Amount,'" + Activeuser.Text + "',@Amtpayable,'" + lblRecieptNo.Text + "')"
             cmd = New SqlCommand(query, Poscon)
             With cmd
 
@@ -1161,8 +923,7 @@ Public Class frmProForma
                 .Parameters.AddWithValue("@BuyerLocation", cbLocation.Text)
                 .Parameters.AddWithValue("@RetailPrice", row.Cells(2).Value)
                 .Parameters.AddWithValue("@Amount", row.Cells(3).Value)
-                .Parameters.AddWithValue("@Discount", row.Cells(10).Value)
-                .Parameters.AddWithValue("@DiscAmt", row.Cells(11).Value)
+
                 .Parameters.AddWithValue("@AmtPayable", value:=(lblPayable.Text))
                 .ExecuteNonQuery()
             End With
@@ -1172,6 +933,7 @@ Public Class frmProForma
         MsgBox("Sucess")
         ShowConfig()
         clear()
+        Display()
     End Sub
 
     Public Sub ShowConfig()
@@ -1211,6 +973,36 @@ Public Class frmProForma
 
         Poscon.Close()
 
+
+    End Sub
+
+    Private Sub txtPrice_KeyUp(sender As Object, e As KeyEventArgs) Handles txtPrice.KeyUp
+
+    End Sub
+
+    Private Sub gvProformaInvoice_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvProformaInvoice.CellClick
+        Dim row As DataGridViewRow = gvProformaInvoice.Rows(e.RowIndex)
+        lblProformainvoice.Text = row.Cells(0).Value.ToString()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+        Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,amountpayable from proformainvoices where invoiceno like '%" + lblProformaInvoice.Text + "%'")
+        cmd = New SqlCommand(queryy, Poscon)
+        da = New SqlDataAdapter(cmd)
+        tbl = New DataTable()
+        da.Fill(tbl)
+        If tbl.Rows.Count = 0 Then
+            MsgBox("ProForma Empty")
+            Exit Sub
+        End If
+        txtBuyerName.Text = tbl.Rows(0)(9).ToString
+        txtBuyerTel.Text = tbl.Rows(0)(10).ToString
+        cbLocation.Text = tbl.Rows(0)(11).ToString
+        ' lblPayable.Text = tbl.Rows(0)(15).ToString
+        For k = 0 To tbl.Rows.Count - 1
+            gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, 0, 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
+        Next
+        Poscon.Close()
 
     End Sub
 End Class
