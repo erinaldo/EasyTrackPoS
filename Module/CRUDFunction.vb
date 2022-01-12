@@ -5,8 +5,9 @@ Module CRUDFunction
     Public result As String
     Public cmd As New SqlCommand
     Public da As New SqlDataAdapter
-    Public dt As New DataTable
+    Public tbl As New DataTable
     Public ds As New DataSet
+    Public dr As SqlDataReader
 
 #Region "Report"
     Public Sub reports(ByVal sql As String, ByVal rptname As String, ByVal crystalRpt As Object)
@@ -80,6 +81,40 @@ Module CRUDFunction
             Poscon.Close()
         End Try
     End Sub
+    Public Sub ComboFeed(ByVal sql As String, combo As ComboBox, row As Integer)
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+        With cmd
+            .Connection = Poscon
+            .CommandText = sql
+            dr = cmd.ExecuteReader
+            combo.Items.Clear()
+            While dr.Read
+                combo.Items.Add(dr(row))
+
+            End While
+
+        End With
+        Poscon.Close()
+    End Sub
+    Public Sub Reader(ByVal sql As String, combo As ComboBox, row As Integer)
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+        With cmd
+            .Connection = Poscon
+            .CommandText = sql
+            dr = cmd.ExecuteReader
+            combo.Items.Clear()
+            While dr.Read
+                combo.Items.Add(dr(row))
+
+            End While
+
+        End With
+        Poscon.Close()
+    End Sub
 
     Public Sub createLogged(ByVal sql As String)
         Try
@@ -113,14 +148,14 @@ Module CRUDFunction
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            dt = New DataTable
+            tbl = New DataTable
             With cmd
                 .Connection = Poscon
                 .CommandText = sql
             End With
             da.SelectCommand = cmd
-            da.Fill(dt)
-            DTG.DataSource = dt
+            da.Fill(tbl)
+            DTG.DataSource = tbl
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
@@ -138,9 +173,9 @@ Module CRUDFunction
                 .Connection = Poscon
                 .CommandText = sql
             End With
-            dt = New DataTable
+            tbl = New DataTable
             da = New SqlDataAdapter(sql, Poscon)
-            da.Fill(dt)
+            da.Fill(tbl)
 
         Catch ex As Exception
             MsgBox(ex.Message & "reloadtxt")
@@ -290,9 +325,9 @@ Module CRUDFunction
             End With
             da = New SqlDataAdapter
             da.SelectCommand = cmd
-            dt = New DataTable
-            da.Fill(dt)
-            dtg.DataSource = dt
+            tbl = New DataTable
+            da.Fill(tbl)
+            dtg.DataSource = tbl
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally

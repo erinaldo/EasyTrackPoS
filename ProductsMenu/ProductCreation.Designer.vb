@@ -173,6 +173,7 @@ Partial Class frmProdCreate
         Me.cbProdLine.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.cbProdLine.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cbProdLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbProdLine.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbProdLine.Font = New System.Drawing.Font("Segoe UI", 11.25!)
         Me.cbProdLine.FormattingEnabled = True
         Me.cbProdLine.Location = New System.Drawing.Point(153, 75)
@@ -334,6 +335,7 @@ Partial Class frmProdCreate
         Me.cbCat.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.cbCat.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cbCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbCat.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbCat.Font = New System.Drawing.Font("Segoe UI", 11.25!)
         Me.cbCat.FormattingEnabled = True
         Me.cbCat.Location = New System.Drawing.Point(152, 180)
@@ -347,6 +349,7 @@ Partial Class frmProdCreate
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.cbSize.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.cbSize.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbSize.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbSize.Font = New System.Drawing.Font("Segoe UI", 11.25!)
         Me.cbSize.FormattingEnabled = True
         Me.cbSize.Location = New System.Drawing.Point(152, 218)
@@ -360,6 +363,7 @@ Partial Class frmProdCreate
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.cbColour.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.cbColour.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbColour.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbColour.Font = New System.Drawing.Font("Segoe UI", 11.25!)
         Me.cbColour.FormattingEnabled = True
         Me.cbColour.Location = New System.Drawing.Point(152, 253)
@@ -371,6 +375,7 @@ Partial Class frmProdCreate
         '
         Me.cbUnique.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.cbUnique.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbUnique.Font = New System.Drawing.Font("Segoe UI", 11.25!)
         Me.cbUnique.FormattingEnabled = True
         Me.cbUnique.Location = New System.Drawing.Point(152, 292)
@@ -582,6 +587,7 @@ Partial Class frmProdCreate
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.txtItemName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.txtItemName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.txtItemName.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.txtItemName.Font = New System.Drawing.Font("Segoe UI", 11.25!)
         Me.txtItemName.FormattingEnabled = True
         Me.txtItemName.Location = New System.Drawing.Point(153, 143)
@@ -596,6 +602,7 @@ Partial Class frmProdCreate
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.cbbrandName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.cbbrandName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbbrandName.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbbrandName.Font = New System.Drawing.Font("Segoe UI", 11.25!)
         Me.cbbrandName.FormattingEnabled = True
         Me.cbbrandName.Location = New System.Drawing.Point(153, 109)

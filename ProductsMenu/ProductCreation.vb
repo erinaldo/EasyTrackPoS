@@ -321,7 +321,10 @@ Public Class frmProdCreate
                 End Try
 
             End If
-            Display()
+        Display()
+        txtRPrice.Text = ""
+        txtbaseqty.Text = 1
+        txtpacksize.Text = 1
         'clear()
         Poscon.Close()
         dr.Close()

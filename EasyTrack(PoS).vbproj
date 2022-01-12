@@ -578,6 +578,12 @@
     <Compile Include="PfrmUserSetup.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ProductsMenu\frmPackSingles.Designer.vb">
+      <DependentUpon>frmPackSingles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProductsMenu\frmPackSingles.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ProductsMenu\frmPriceBand.Designer.vb">
       <DependentUpon>frmPriceBand.vb</DependentUpon>
     </Compile>
@@ -1394,6 +1400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PfrmUserSetup.resx">
       <DependentUpon>PfrmUserSetup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductsMenu\frmPackSingles.resx">
+      <DependentUpon>frmPackSingles.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductsMenu\frmPriceBand.resx">
       <DependentUpon>frmPriceBand.vb</DependentUpon>

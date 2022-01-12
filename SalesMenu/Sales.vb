@@ -78,9 +78,9 @@ Public Class frmSales
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-        Dim sum As Double = 0
-        Dim payable As Double = 0
-        Dim DiscAmt As Double = 0
+        Dim sum As Decimal = 0
+        Dim payable As Decimal = 0
+        Dim DiscAmt As Decimal = 0
         If lblProdName.Text = "" Or txtQty.Text = "" Or txtPrice.Text = "" Then
             MsgBox("Select Item or Input Quantity", vbCritical)
         Else
@@ -105,7 +105,7 @@ Public Class frmSales
                         row.Cells(12).Value = row.Cells(3).Value
                         'For discount percentage
                         If row.Cells(13).Value = "%" Then
-                            Dim Discprice As Double
+                            Dim Discprice As Decimal
                             Discprice = (Val(txtPerDisc.Text) / 100) * row.Cells(3).Value
                             row.Cells(10).Value = txtPerDisc.Text
                             row.Cells(11).Value = Discprice
@@ -281,21 +281,21 @@ Public Class frmSales
         ''txtProdName.Text = ""
     End Sub
     Private Sub ShowBand()
-        Try
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            Dim query = "select * from PriceBand"
-            cmd = New SqlCommand(query, Poscon)
-            Dim adapter As New SqlDataAdapter(cmd)
-            Dim tbl As New DataTable()
-            adapter.Fill(tbl)
-            gvPriceBand.DataSource = tbl
-            Poscon.Close()
-        Catch ex As Exception
-            MsgBox(ex.Message, ex.ToString)
-        End Try
-
+        'Try
+        '    If Poscon.State = ConnectionState.Closed Then
+        '        Poscon.Open()
+        '    End If
+        '    Dim query = "select * from PriceBand"
+        '    cmd = New SqlCommand(query, Poscon)
+        '    Dim adapter As New SqlDataAdapter(cmd)
+        '    Dim tbl As New DataTable()
+        '    adapter.Fill(tbl)
+        '    gvPriceBand.DataSource = tbl
+        '    Poscon.Close()
+        'Catch ex As Exception
+        '    MsgBox(ex.Message, ex.ToString)
+        'End Try
+        reload("select * from PriceBand", gvPriceBand)
     End Sub
     Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
         If txtQty.Text = "" Then
@@ -311,7 +311,7 @@ Public Class frmSales
         '    'MsgBox(row.Cells(5).Value)
         'Next
 
-        Dim amt As Double
+        Dim amt As Decimal
         amt = Val(txtQty.Text) * Val(txtPrice.Text)
         txtAmt.Text = amt
     End Sub
@@ -332,19 +332,20 @@ Public Class frmSales
     End Sub
 
     Private Sub txtCashPaid_TextChanged(sender As Object, e As EventArgs) Handles txtCashPaid.TextChanged
-        Dim CashPaid As Double = 0
-        Dim change As Double = 0
+        Dim CashPaid As Decimal = 0
+        Dim change As Decimal = 0
         change = Val(txtCashPaid.Text) - Val(lblPayable.Text)
         lblChange.Text = change
     End Sub
 
     Private Sub reciept()
         Try
-            Poscon.Open()
-            Dim sql = "insert into Recieptconfig(Salesperson,recieptid,date) values('" + Activeuser.Text + "','" + lblRecieptNo.Text + "','" + lblDate.Text + "') "
-            cmd = New SqlCommand(sql, Poscon)
-            cmd.ExecuteNonQuery()
-            Poscon.Close()
+            create("insert into Recieptconfig(Salesperson,recieptid,date) values('" + Activeuser.Text + "','" + lblRecieptNo.Text + "','" + lblDate.Text + "') ")
+            'Poscon.Open()
+            'Dim sql = "insert into Recieptconfig(Salesperson,recieptid,date) values('" + Activeuser.Text + "','" + lblRecieptNo.Text + "','" + lblDate.Text + "') "
+            'cmd = New SqlCommand(sql, Poscon)
+            'cmd.ExecuteNonQuery()
+            'Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.Message, ex.ToString)
         End Try
@@ -439,7 +440,7 @@ Public Class frmSales
     End Sub
 
     Private Sub lblTotal_TextChanged(sender As Object, e As EventArgs) Handles lblTotal.TextChanged
-        Dim newbal As New Double
+        Dim newbal As New Decimal
         newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
         lblNewBal.Text = newbal
     End Sub

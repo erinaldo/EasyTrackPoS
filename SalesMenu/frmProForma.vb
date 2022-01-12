@@ -834,47 +834,50 @@ Public Class frmProForma
     End Sub
 
     Private Sub cbProdlineSort_Click(sender As Object, e As EventArgs) Handles cbProdlineSort.Click
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        cbProdlineSort.Items.Clear()
-        Dim pli = "select productline from productline"
-        cmd = New SqlCommand(pli, Poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            cbProdlineSort.Items.Add(dr(0))
-        End While
-        Poscon.Close()
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'cbProdlineSort.Items.Clear()
+        'Dim pli = "select productline from productline"
+        'cmd = New SqlCommand(pli, Poscon)
+        'dr = cmd.ExecuteReader
+        'While dr.Read
+        '    cbProdlineSort.Items.Add(dr(0))
+        'End While
+        'Poscon.Close()
+        ComboFeed("select productline from productline", cbProdlineSort, 0)
     End Sub
 
     Private Sub cbCatSort_Click(sender As Object, e As EventArgs) Handles cbCatSort.Click
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        cbCatSort.Items.Clear()
-        Dim sqll = "select category from Category"
-        cmd = New SqlCommand(sqll, Poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            cbCatSort.Items.Add(dr(0))
-        End While
-        Poscon.Close()
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'cbCatSort.Items.Clear()
+        'Dim sqll = "select category from Category"
+        'cmd = New SqlCommand(sqll, Poscon)
+        'dr = cmd.ExecuteReader
+        'While dr.Read
+        '    cbCatSort.Items.Add(dr(0))
+        'End While
+        'Poscon.Close()
+        ComboFeed("select category from Category", cbCatSort, 0)
     End Sub
 
 
 
     Private Sub txtProdname_Enter(sender As Object, e As EventArgs) Handles txtProdname.Enter
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        txtProdname.Items.Clear()
-        Dim query = "select * from Stockmast"
-        cmd = New SqlCommand(query, Poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            txtProdname.Items.Add(dr(1))
-        End While
-        Poscon.Close()
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'txtProdname.Items.Clear()
+        'Dim query = "select * from Stockmast"
+        'cmd = New SqlCommand(query, Poscon)
+        'dr = cmd.ExecuteReader
+        'While dr.Read
+        '    txtProdname.Items.Add(dr(1))
+        'End While
+        'Poscon.Close()
+        ComboFeed("select * from Stockmast", txtProdname, 0)
     End Sub
 
     Public Sub StockCheck()
