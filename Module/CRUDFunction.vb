@@ -82,21 +82,26 @@ Module CRUDFunction
         End Try
     End Sub
     Public Sub ComboFeed(ByVal sql As String, combo As ComboBox, row As Integer)
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        With cmd
-            .Connection = Poscon
-            .CommandText = sql
-            dr = cmd.ExecuteReader
-            combo.Items.Clear()
-            While dr.Read
-                combo.Items.Add(dr(row))
+        Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            With cmd
+                .Connection = Poscon
+                .CommandText = sql
+                dr = cmd.ExecuteReader
+                combo.Items.Clear()
+                While dr.Read
+                    combo.Items.Add(dr(row))
 
-            End While
+                End While
 
-        End With
-        Poscon.Close()
+            End With
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
     End Sub
     Public Sub Reader(ByVal sql As String, combo As ComboBox, row As Integer)
         If Poscon.State = ConnectionState.Closed Then

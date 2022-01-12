@@ -30,10 +30,10 @@ Partial Class SalesReportMenu
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.dpDatefrom = New Bunifu.UI.WinForms.BunifuDatePicker()
-        Me.dpdateto = New Bunifu.UI.WinForms.BunifuDatePicker()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.dpdateto = New System.Windows.Forms.DateTimePicker()
+        Me.dpdatefrom = New System.Windows.Forms.DateTimePicker()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -109,58 +109,6 @@ Partial Class SalesReportMenu
         Me.Panel1.Size = New System.Drawing.Size(529, 82)
         Me.Panel1.TabIndex = 127
         '
-        'dpDatefrom
-        '
-        Me.dpDatefrom.BackColor = System.Drawing.Color.Transparent
-        Me.dpDatefrom.BorderColor = System.Drawing.Color.Silver
-        Me.dpDatefrom.BorderRadius = 1
-        Me.dpDatefrom.Color = System.Drawing.Color.Silver
-        Me.dpDatefrom.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin
-        Me.dpDatefrom.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left
-        Me.dpDatefrom.DisabledColor = System.Drawing.Color.Gray
-        Me.dpDatefrom.DisplayWeekNumbers = False
-        Me.dpDatefrom.DPHeight = 0
-        Me.dpDatefrom.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
-        Me.dpDatefrom.FillDatePicker = False
-        Me.dpDatefrom.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.dpDatefrom.ForeColor = System.Drawing.Color.Black
-        Me.dpDatefrom.Icon = CType(resources.GetObject("dpDatefrom.Icon"), System.Drawing.Image)
-        Me.dpDatefrom.IconColor = System.Drawing.Color.Gray
-        Me.dpDatefrom.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right
-        Me.dpDatefrom.LeftTextMargin = 5
-        Me.dpDatefrom.Location = New System.Drawing.Point(61, 106)
-        Me.dpDatefrom.MinimumSize = New System.Drawing.Size(4, 32)
-        Me.dpDatefrom.Name = "dpDatefrom"
-        Me.dpDatefrom.Size = New System.Drawing.Size(161, 32)
-        Me.dpDatefrom.TabIndex = 128
-        Me.dpDatefrom.Value = New Date(2021, 12, 13, 0, 0, 0, 0)
-        '
-        'dpdateto
-        '
-        Me.dpdateto.BackColor = System.Drawing.Color.Transparent
-        Me.dpdateto.BorderColor = System.Drawing.Color.Silver
-        Me.dpdateto.BorderRadius = 1
-        Me.dpdateto.Color = System.Drawing.Color.Silver
-        Me.dpdateto.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin
-        Me.dpdateto.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left
-        Me.dpdateto.DisabledColor = System.Drawing.Color.Gray
-        Me.dpdateto.DisplayWeekNumbers = False
-        Me.dpdateto.DPHeight = 0
-        Me.dpdateto.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
-        Me.dpdateto.FillDatePicker = False
-        Me.dpdateto.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.dpdateto.ForeColor = System.Drawing.Color.Black
-        Me.dpdateto.Icon = CType(resources.GetObject("dpdateto.Icon"), System.Drawing.Image)
-        Me.dpdateto.IconColor = System.Drawing.Color.Gray
-        Me.dpdateto.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right
-        Me.dpdateto.LeftTextMargin = 5
-        Me.dpdateto.Location = New System.Drawing.Point(294, 106)
-        Me.dpdateto.MinimumSize = New System.Drawing.Size(4, 32)
-        Me.dpdateto.Name = "dpdateto"
-        Me.dpdateto.Size = New System.Drawing.Size(157, 32)
-        Me.dpdateto.TabIndex = 129
-        Me.dpdateto.Value = New Date(2021, 12, 13, 0, 0, 0, 0)
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -181,14 +129,32 @@ Partial Class SalesReportMenu
         Me.Label5.TabIndex = 118
         Me.Label5.Text = "Per Cashier(Roll)"
         '
+        'dpdateto
+        '
+        Me.dpdateto.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpdateto.Location = New System.Drawing.Point(274, 117)
+        Me.dpdateto.Name = "dpdateto"
+        Me.dpdateto.Size = New System.Drawing.Size(180, 27)
+        Me.dpdateto.TabIndex = 131
+        Me.dpdateto.Value = New Date(2022, 1, 12, 0, 0, 0, 0)
+        '
+        'dpdatefrom
+        '
+        Me.dpdatefrom.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpdatefrom.Location = New System.Drawing.Point(53, 117)
+        Me.dpdatefrom.Name = "dpdatefrom"
+        Me.dpdatefrom.Size = New System.Drawing.Size(180, 27)
+        Me.dpdatefrom.TabIndex = 132
+        Me.dpdatefrom.Value = New Date(2022, 1, 12, 0, 0, 0, 0)
+        '
         'SalesReportMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(522, 480)
-        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.dpdatefrom)
         Me.Controls.Add(Me.dpdateto)
-        Me.Controls.Add(Me.dpDatefrom)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label5)
@@ -214,8 +180,8 @@ Partial Class SalesReportMenu
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents dpDatefrom As Bunifu.UI.WinForms.BunifuDatePicker
-    Friend WithEvents dpdateto As Bunifu.UI.WinForms.BunifuDatePicker
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents dpdateto As DateTimePicker
+    Friend WithEvents dpdatefrom As DateTimePicker
 End Class

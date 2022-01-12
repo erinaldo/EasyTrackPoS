@@ -48,7 +48,6 @@ Partial Class frmMain
         Me.BunifuButton7 = New Bunifu.UI.WinForms.BunifuButton.BunifuButton()
         Me.BunifuButton8 = New Bunifu.UI.WinForms.BunifuButton.BunifuButton()
         Me.BunifuButton9 = New Bunifu.UI.WinForms.BunifuButton.BunifuButton()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -961,15 +960,6 @@ Partial Class frmMain
         Me.BunifuButton9.TextPadding = New System.Windows.Forms.Padding(0)
         Me.BunifuButton9.UseDefaultRadiusAndThickness = True
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(728, 141)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 186
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -977,7 +967,6 @@ Partial Class frmMain
         Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(855, 558)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BunifuButton9)
         Me.Controls.Add(Me.BunifuButton8)
         Me.Controls.Add(Me.BunifuButton7)
@@ -1021,5 +1010,4 @@ Partial Class frmMain
     Friend WithEvents BunifuButton7 As Bunifu.UI.WinForms.BunifuButton.BunifuButton
     Friend WithEvents BunifuButton8 As Bunifu.UI.WinForms.BunifuButton.BunifuButton
     Friend WithEvents BunifuButton9 As Bunifu.UI.WinForms.BunifuButton.BunifuButton
-    Friend WithEvents Button1 As Button
 End Class

@@ -1563,4 +1563,8 @@ Public Class frmSales
             reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
         End If
     End Sub
+
+    Private Sub BunifuThinButton24_Click_1(sender As Object, e As EventArgs)
+
+    End Sub
 End Class
