@@ -317,6 +317,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dscustomer.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CustomerMenu\rptCustomerReciept.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCustomerReciept.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomerMenu\rptInvoicesPerCustomer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1272,6 +1278,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomerMenu\rptCustomerReciept.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCustomerReciept.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerMenu\rptInvoicesPerCustomer.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptInvoicesPerCustomer.vb</LastGenOutput>

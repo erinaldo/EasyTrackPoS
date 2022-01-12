@@ -56,6 +56,11 @@ Partial Class RecieveCustomerPayment
         Me.txtdatepaid = New Bunifu.UI.WinForms.BunifuDatePicker()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtdiscount = New System.Windows.Forms.TextBox()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.ckprint = New Bunifu.UI.WinForms.BunifuCheckBox()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.ckprintpreview = New Bunifu.UI.WinForms.BunifuCheckBox()
+        Me.lblpaymentid = New System.Windows.Forms.Label()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -349,6 +354,7 @@ Partial Class RecieveCustomerPayment
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.Teal
+        Me.Panel1.Controls.Add(Me.lblpaymentid)
         Me.Panel1.Controls.Add(Me.BunifuThinButton22)
         Me.Panel1.Controls.Add(Me.Label9)
         Me.Panel1.Controls.Add(Me.PictureBox2)
@@ -487,11 +493,154 @@ Partial Class RecieveCustomerPayment
         Me.txtdiscount.Text = "0"
         Me.txtdiscount.Visible = False
         '
+        'Label34
+        '
+        Me.Label34.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label34.AutoSize = True
+        Me.Label34.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label34.Location = New System.Drawing.Point(549, 329)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(47, 21)
+        Me.Label34.TabIndex = 155
+        Me.Label34.Text = "Print"
+        '
+        'ckprint
+        '
+        Me.ckprint.AllowBindingControlAnimation = True
+        Me.ckprint.AllowBindingControlColorChanges = False
+        Me.ckprint.AllowBindingControlLocation = True
+        Me.ckprint.AllowCheckBoxAnimation = False
+        Me.ckprint.AllowCheckmarkAnimation = True
+        Me.ckprint.AllowOnHoverStates = True
+        Me.ckprint.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ckprint.AutoCheck = True
+        Me.ckprint.BackColor = System.Drawing.Color.Transparent
+        Me.ckprint.BackgroundImage = CType(resources.GetObject("ckprint.BackgroundImage"), System.Drawing.Image)
+        Me.ckprint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ckprint.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
+        Me.ckprint.BorderRadius = 12
+        Me.ckprint.Checked = True
+        Me.ckprint.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.ckprint.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ckprint.CustomCheckmarkImage = Nothing
+        Me.ckprint.Location = New System.Drawing.Point(529, 332)
+        Me.ckprint.MinimumSize = New System.Drawing.Size(17, 17)
+        Me.ckprint.Name = "ckprint"
+        Me.ckprint.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.ckprint.OnCheck.BorderRadius = 12
+        Me.ckprint.OnCheck.BorderThickness = 2
+        Me.ckprint.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
+        Me.ckprint.OnCheck.CheckmarkColor = System.Drawing.Color.White
+        Me.ckprint.OnCheck.CheckmarkThickness = 2
+        Me.ckprint.OnDisable.BorderColor = System.Drawing.Color.LightGray
+        Me.ckprint.OnDisable.BorderRadius = 12
+        Me.ckprint.OnDisable.BorderThickness = 2
+        Me.ckprint.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckprint.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
+        Me.ckprint.OnDisable.CheckmarkThickness = 2
+        Me.ckprint.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckprint.OnHoverChecked.BorderRadius = 12
+        Me.ckprint.OnHoverChecked.BorderThickness = 2
+        Me.ckprint.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckprint.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
+        Me.ckprint.OnHoverChecked.CheckmarkThickness = 2
+        Me.ckprint.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckprint.OnHoverUnchecked.BorderRadius = 12
+        Me.ckprint.OnHoverUnchecked.BorderThickness = 1
+        Me.ckprint.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckprint.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
+        Me.ckprint.OnUncheck.BorderRadius = 12
+        Me.ckprint.OnUncheck.BorderThickness = 1
+        Me.ckprint.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckprint.Size = New System.Drawing.Size(17, 17)
+        Me.ckprint.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
+        Me.ckprint.TabIndex = 154
+        Me.ckprint.ThreeState = False
+        Me.ckprint.ToolTipText = Nothing
+        '
+        'Label35
+        '
+        Me.Label35.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label35.AutoSize = True
+        Me.Label35.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label35.Location = New System.Drawing.Point(630, 328)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(112, 21)
+        Me.Label35.TabIndex = 157
+        Me.Label35.Text = "Print Preview"
+        '
+        'ckprintpreview
+        '
+        Me.ckprintpreview.AllowBindingControlAnimation = True
+        Me.ckprintpreview.AllowBindingControlColorChanges = False
+        Me.ckprintpreview.AllowBindingControlLocation = True
+        Me.ckprintpreview.AllowCheckBoxAnimation = False
+        Me.ckprintpreview.AllowCheckmarkAnimation = True
+        Me.ckprintpreview.AllowOnHoverStates = True
+        Me.ckprintpreview.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ckprintpreview.AutoCheck = True
+        Me.ckprintpreview.BackColor = System.Drawing.Color.Transparent
+        Me.ckprintpreview.BackgroundImage = CType(resources.GetObject("ckprintpreview.BackgroundImage"), System.Drawing.Image)
+        Me.ckprintpreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ckprintpreview.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
+        Me.ckprintpreview.BorderRadius = 12
+        Me.ckprintpreview.Checked = False
+        Me.ckprintpreview.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
+        Me.ckprintpreview.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ckprintpreview.CustomCheckmarkImage = Nothing
+        Me.ckprintpreview.Location = New System.Drawing.Point(610, 331)
+        Me.ckprintpreview.MinimumSize = New System.Drawing.Size(17, 17)
+        Me.ckprintpreview.Name = "ckprintpreview"
+        Me.ckprintpreview.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.ckprintpreview.OnCheck.BorderRadius = 12
+        Me.ckprintpreview.OnCheck.BorderThickness = 2
+        Me.ckprintpreview.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
+        Me.ckprintpreview.OnCheck.CheckmarkColor = System.Drawing.Color.White
+        Me.ckprintpreview.OnCheck.CheckmarkThickness = 2
+        Me.ckprintpreview.OnDisable.BorderColor = System.Drawing.Color.LightGray
+        Me.ckprintpreview.OnDisable.BorderRadius = 12
+        Me.ckprintpreview.OnDisable.BorderThickness = 2
+        Me.ckprintpreview.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckprintpreview.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
+        Me.ckprintpreview.OnDisable.CheckmarkThickness = 2
+        Me.ckprintpreview.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckprintpreview.OnHoverChecked.BorderRadius = 12
+        Me.ckprintpreview.OnHoverChecked.BorderThickness = 2
+        Me.ckprintpreview.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckprintpreview.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
+        Me.ckprintpreview.OnHoverChecked.CheckmarkThickness = 2
+        Me.ckprintpreview.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckprintpreview.OnHoverUnchecked.BorderRadius = 12
+        Me.ckprintpreview.OnHoverUnchecked.BorderThickness = 1
+        Me.ckprintpreview.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckprintpreview.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
+        Me.ckprintpreview.OnUncheck.BorderRadius = 12
+        Me.ckprintpreview.OnUncheck.BorderThickness = 1
+        Me.ckprintpreview.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckprintpreview.Size = New System.Drawing.Size(17, 17)
+        Me.ckprintpreview.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
+        Me.ckprintpreview.TabIndex = 156
+        Me.ckprintpreview.ThreeState = False
+        Me.ckprintpreview.ToolTipText = Nothing
+        '
+        'lblpaymentid
+        '
+        Me.lblpaymentid.AutoSize = True
+        Me.lblpaymentid.Location = New System.Drawing.Point(342, 24)
+        Me.lblpaymentid.Name = "lblpaymentid"
+        Me.lblpaymentid.Size = New System.Drawing.Size(45, 13)
+        Me.lblpaymentid.TabIndex = 152
+        Me.lblpaymentid.Text = "Label12"
+        '
         'RecieveCustomerPayment
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(857, 495)
+        Me.Controls.Add(Me.Label35)
+        Me.Controls.Add(Me.ckprintpreview)
+        Me.Controls.Add(Me.Label34)
+        Me.Controls.Add(Me.ckprint)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtdiscount)
         Me.Controls.Add(Me.txtdatepaid)
@@ -565,4 +714,9 @@ Partial Class RecieveCustomerPayment
     Friend WithEvents txtdatepaid As Bunifu.UI.WinForms.BunifuDatePicker
     Friend WithEvents Label4 As Label
     Friend WithEvents txtdiscount As TextBox
+    Friend WithEvents Label34 As Label
+    Friend WithEvents ckprint As Bunifu.UI.WinForms.BunifuCheckBox
+    Friend WithEvents Label35 As Label
+    Friend WithEvents ckprintpreview As Bunifu.UI.WinForms.BunifuCheckBox
+    Friend WithEvents lblpaymentid As Label
 End Class

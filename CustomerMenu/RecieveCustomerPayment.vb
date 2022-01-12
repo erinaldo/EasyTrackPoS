@@ -4,6 +4,7 @@ Public Class RecieveCustomerPayment
     'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim dr As SqlDataReader
+    Dim dt As New dscustomer
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
         Dim f2 As New frmCustomersMenu
         f2.Show()
@@ -12,7 +13,7 @@ Public Class RecieveCustomerPayment
     End Sub
     Private Sub RecieveCustomerPayment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         User()
-
+        recieptno()
 
         Timer1.Enabled = True
         Try
@@ -175,7 +176,9 @@ Public Class RecieveCustomerPayment
                 cmd = New SqlCommand(quer, Poscon)
                 cmd.ExecuteNonQuery()
                 Poscon.Close()
+                PrintRecieptroll(lblpaymentid.Text)
                 MsgBox("Payment Saved")
+
             End If
 
 
@@ -221,5 +224,58 @@ Public Class RecieveCustomerPayment
         Dim b = Val(txtAmtPaid.Text)
         Dim c = Val(txtdiscount.Text)
         lblNewBal.Text = a - b - c
+    End Sub
+    Private Sub PrintRecieptroll(valuetosearch As String)
+        Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            Dim query = "select * from customerpayment where paymentid='" + valuetosearch + "'"
+            cmd = New SqlCommand(query, Poscon)
+            dt.Tables("customerpayment").Rows.Clear()
+            da.SelectCommand = cmd
+            da.Fill(dt, "customerpayment")
+
+            Dim sql = "select * from ClientReg"
+            dt.Tables("ClientReg").Rows.Clear()
+            cmd = New SqlCommand(sql, Poscon)
+            da.SelectCommand = cmd
+            da.Fill(dt, "ClientReg")
+
+            Dim report As New rptCustomerReciept
+            report.SetDataSource(dt)
+            If ckprint.Checked = True Then
+                report.PrintToPrinter(1, True, 0, 0)
+            End If
+            If ckprintpreview.Checked = True Then
+                frmSupplierReport.Show()
+                frmSupplierReport.CrystalReportViewer1.ReportSource = report
+                frmSupplierReport.CrystalReportViewer1.Refresh()
+            End If
+            cmd.Dispose()
+            da.Dispose()
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+    Public Sub recieptno()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+        Dim que = "select paymentid from customerpayment"
+        cmd = New SqlCommand(que, Poscon)
+        da = New SqlDataAdapter(cmd)
+        Dim table As New DataTable
+        da.Fill(table)
+        If table.Rows.Count = 0 Then
+            lblpaymentid.Text = 1
+        Else
+
+            Dim index = table.Rows.Count() - 1
+            lblpaymentid.Text = Val(table.Rows(0)(0).ToString) + 1
+        End If
+
+        Poscon.Close()
     End Sub
 End Class
