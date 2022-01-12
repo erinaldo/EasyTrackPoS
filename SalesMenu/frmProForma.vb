@@ -708,7 +708,7 @@ Public Class frmProForma
         End Try
     End Sub
 
-    Sub PrintRecieptA4(valuetosearch As String)
+    Private Sub PrintA4(valuetosearch As String)
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
@@ -807,15 +807,15 @@ Public Class frmProForma
         reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where prodline like '%" + valuetosearch + "%'", gvStock)
     End Sub
 
-    Private Sub BunifuThinButton28_Click(sender As Object, e As EventArgs) Handles BunifuThinButton28.Click
-        If ckA5Paper.Checked = True Then
-            PrintRecieptA5(txtReprintNo.Text)
-        ElseIf ckrollPaper.Checked = True Then
-            RollReciept(txtReprintNo.Text)
-        ElseIf ckA4.Checked = True Then
-            PrintRecieptA4(txtReprintNo.Text)
-        End If
-    End Sub
+    'Private Sub BunifuThinButton28_Click(sender As Object, e As EventArgs) Handles BunifuThinButton28.Click
+    '    If ckA5Paper.Checked = True Then
+    '        PrintRecieptA5(txtReprintNo.Text)
+    '    ElseIf ckrollPaper.Checked = True Then
+    '        RollReciept(txtReprintNo.Text)
+    '    ElseIf ckA4.Checked = True Then
+    '        PrintRecieptA4(txtReprintNo.Text)
+    '    End If
+    'End Sub
 
     Private Sub cbCatSort_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cbCatSort.SelectionChangeCommitted
         Sortcat(cbCatSort.Text)
@@ -930,10 +930,48 @@ Public Class frmProForma
 
         Next
         create("insert into proformaconfig(Invoiceno,Customername,Amount,date,Attendee,Status)values('" + lblRecieptNo.Text + "','" + txtBuyerName.Text + "','" + lblPayable.Text + "','" + lblDate.Text + "','" + Activeuser.Text + "','" + "Pending" + "')")
-        MsgBox("Sucess")
+        'reports("select * from Proformainvoices", "rptproformaa4", frmSupplierReport.CrystalReportViewer1)
+        'MsgBox("Sucess")
+        PrintA4()
         ShowConfig()
         clear()
         Display()
+    End Sub
+    Private Sub PrintA4()
+        'Try
+        If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+
+            Dim query = "select * from Proformainvoices where invoiceno='" + lblRecieptNo.Text + "'"
+            cmd = New SqlCommand(query, Poscon)
+            dt.Tables("Proformainvoices").Rows.Clear()
+            da.SelectCommand = cmd
+            da.Fill(dt, "Proformainvoices")
+        DataGridView1.DataSource = dt.Tables("Proformainvoices")
+        Dim sql = "select * from ClientReg"
+            dt.Tables("ClientReg").Rows.Clear()
+            cmd = New SqlCommand(sql, Poscon)
+            da.SelectCommand = cmd
+            da.Fill(dt, "ClientReg")
+
+            Dim report As New rptProformaA4
+            report.SetDataSource(dt)
+        If ckprint.Checked = True Then
+            report.PrintToPrinter(1, True, 0, 0)
+        End If
+        'If ckprintpreview.Checked = True Then
+        frmSupplierReport.Show()
+            frmSupplierReport.CrystalReportViewer1.ReportSource = report
+            frmSupplierReport.CrystalReportViewer1.Refresh()
+            'End If
+
+            cmd.Dispose()
+            da.Dispose()
+            Poscon.Close()
+        'Catch ex As Exception
+        '    MsgBox(ex.ToString)
+        'End Try
     End Sub
 
     Public Sub ShowConfig()

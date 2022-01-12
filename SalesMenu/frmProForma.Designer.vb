@@ -24,6 +24,9 @@ Partial Class frmProForma
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProForma))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -33,11 +36,9 @@ Partial Class frmProForma
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ckprintpreview = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.gbsell = New System.Windows.Forms.GroupBox()
+        Me.gvProformaInvoice = New Bunifu.UI.WinForms.BunifuDataGridView()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.ckprint = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.Label28 = New System.Windows.Forms.Label()
@@ -100,6 +101,7 @@ Partial Class frmProForma
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblProformainvoice = New System.Windows.Forms.Label()
         Me.lblRecieptNo = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
@@ -135,9 +137,9 @@ Partial Class frmProForma
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.gvPriceBand = New Bunifu.UI.WinForms.BunifuDataGridView()
-        Me.gvProformaInvoice = New Bunifu.UI.WinForms.BunifuDataGridView()
-        Me.lblProformainvoice = New System.Windows.Forms.Label()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.gbsell.SuspendLayout()
+        CType(Me.gvProformaInvoice, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         CType(Me.gvStock, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -150,7 +152,7 @@ Partial Class frmProForma
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.gvPriceBand, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.gvProformaInvoice, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ckprintpreview
@@ -241,6 +243,72 @@ Partial Class frmProForma
         Me.gbsell.TabIndex = 143
         Me.gbsell.TabStop = False
         Me.gbsell.Text = "Sell"
+        '
+        'gvProformaInvoice
+        '
+        Me.gvProformaInvoice.AllowCustomTheming = True
+        Me.gvProformaInvoice.AllowUserToAddRows = False
+        Me.gvProformaInvoice.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        Me.gvProformaInvoice.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.gvProformaInvoice.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gvProformaInvoice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.gvProformaInvoice.BackgroundColor = System.Drawing.Color.White
+        Me.gvProformaInvoice.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.gvProformaInvoice.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.gvProformaInvoice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvProformaInvoice.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.gvProformaInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.gvProformaInvoice.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.gvProformaInvoice.CurrentTheme.AlternatingRowsStyle.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.gvProformaInvoice.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black
+        Me.gvProformaInvoice.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.gvProformaInvoice.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        Me.gvProformaInvoice.CurrentTheme.BackColor = System.Drawing.Color.White
+        Me.gvProformaInvoice.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.gvProformaInvoice.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue
+        Me.gvProformaInvoice.CurrentTheme.HeaderStyle.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gvProformaInvoice.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.gvProformaInvoice.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.gvProformaInvoice.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White
+        Me.gvProformaInvoice.CurrentTheme.Name = Nothing
+        Me.gvProformaInvoice.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.gvProformaInvoice.CurrentTheme.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gvProformaInvoice.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black
+        Me.gvProformaInvoice.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.gvProformaInvoice.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gvProformaInvoice.DefaultCellStyle = DataGridViewCellStyle3
+        Me.gvProformaInvoice.EnableHeadersVisualStyles = False
+        Me.gvProformaInvoice.GridColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.gvProformaInvoice.HeaderBackColor = System.Drawing.Color.DodgerBlue
+        Me.gvProformaInvoice.HeaderBgColor = System.Drawing.Color.Empty
+        Me.gvProformaInvoice.HeaderForeColor = System.Drawing.Color.White
+        Me.gvProformaInvoice.Location = New System.Drawing.Point(6, 26)
+        Me.gvProformaInvoice.Name = "gvProformaInvoice"
+        Me.gvProformaInvoice.ReadOnly = True
+        Me.gvProformaInvoice.RowHeadersVisible = False
+        Me.gvProformaInvoice.RowTemplate.Height = 40
+        Me.gvProformaInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.gvProformaInvoice.Size = New System.Drawing.Size(305, 297)
+        Me.gvProformaInvoice.TabIndex = 148
+        Me.gvProformaInvoice.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
         '
         'Label34
         '
@@ -1159,6 +1227,15 @@ Partial Class frmProForma
         Me.Panel1.Size = New System.Drawing.Size(1269, 69)
         Me.Panel1.TabIndex = 144
         '
+        'lblProformainvoice
+        '
+        Me.lblProformainvoice.AutoSize = True
+        Me.lblProformainvoice.Location = New System.Drawing.Point(964, 38)
+        Me.lblProformainvoice.Name = "lblProformainvoice"
+        Me.lblProformainvoice.Size = New System.Drawing.Size(32, 13)
+        Me.lblProformainvoice.TabIndex = 126
+        Me.lblProformainvoice.Text = "100#"
+        '
         'lblRecieptNo
         '
         Me.lblRecieptNo.AutoSize = True
@@ -1278,6 +1355,7 @@ Partial Class frmProForma
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.BackColor = System.Drawing.Color.PowderBlue
+        Me.GroupBox1.Controls.Add(Me.DataGridView1)
         Me.GroupBox1.Controls.Add(Me.Label35)
         Me.GroupBox1.Controls.Add(Me.ckprintpreview)
         Me.GroupBox1.Controls.Add(Me.Label31)
@@ -1676,80 +1754,13 @@ Partial Class frmProForma
         Me.gvPriceBand.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
         Me.gvPriceBand.Visible = False
         '
-        'gvProformaInvoice
+        'DataGridView1
         '
-        Me.gvProformaInvoice.AllowCustomTheming = True
-        Me.gvProformaInvoice.AllowUserToAddRows = False
-        Me.gvProformaInvoice.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        Me.gvProformaInvoice.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.gvProformaInvoice.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gvProformaInvoice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.gvProformaInvoice.BackgroundColor = System.Drawing.Color.White
-        Me.gvProformaInvoice.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.gvProformaInvoice.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.gvProformaInvoice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvProformaInvoice.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.gvProformaInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gvProformaInvoice.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.gvProformaInvoice.CurrentTheme.AlternatingRowsStyle.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.gvProformaInvoice.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black
-        Me.gvProformaInvoice.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.gvProformaInvoice.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        Me.gvProformaInvoice.CurrentTheme.BackColor = System.Drawing.Color.White
-        Me.gvProformaInvoice.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.gvProformaInvoice.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue
-        Me.gvProformaInvoice.CurrentTheme.HeaderStyle.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gvProformaInvoice.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White
-        Me.gvProformaInvoice.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.gvProformaInvoice.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White
-        Me.gvProformaInvoice.CurrentTheme.Name = Nothing
-        Me.gvProformaInvoice.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White
-        Me.gvProformaInvoice.CurrentTheme.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gvProformaInvoice.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black
-        Me.gvProformaInvoice.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.gvProformaInvoice.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gvProformaInvoice.DefaultCellStyle = DataGridViewCellStyle3
-        Me.gvProformaInvoice.EnableHeadersVisualStyles = False
-        Me.gvProformaInvoice.GridColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.gvProformaInvoice.HeaderBackColor = System.Drawing.Color.DodgerBlue
-        Me.gvProformaInvoice.HeaderBgColor = System.Drawing.Color.Empty
-        Me.gvProformaInvoice.HeaderForeColor = System.Drawing.Color.White
-        Me.gvProformaInvoice.Location = New System.Drawing.Point(6, 26)
-        Me.gvProformaInvoice.Name = "gvProformaInvoice"
-        Me.gvProformaInvoice.ReadOnly = True
-        Me.gvProformaInvoice.RowHeadersVisible = False
-        Me.gvProformaInvoice.RowTemplate.Height = 40
-        Me.gvProformaInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvProformaInvoice.Size = New System.Drawing.Size(305, 297)
-        Me.gvProformaInvoice.TabIndex = 148
-        Me.gvProformaInvoice.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
-        '
-        'lblProformainvoice
-        '
-        Me.lblProformainvoice.AutoSize = True
-        Me.lblProformainvoice.Location = New System.Drawing.Point(964, 38)
-        Me.lblProformainvoice.Name = "lblProformainvoice"
-        Me.lblProformainvoice.Size = New System.Drawing.Size(32, 13)
-        Me.lblProformainvoice.TabIndex = 126
-        Me.lblProformainvoice.Text = "100#"
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(157, 348)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(240, 150)
+        Me.DataGridView1.TabIndex = 148
         '
         'frmProForma
         '
@@ -1770,6 +1781,7 @@ Partial Class frmProForma
         Me.Text = "frmProForma"
         Me.gbsell.ResumeLayout(False)
         Me.gbsell.PerformLayout()
+        CType(Me.gvProformaInvoice, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.gvStock, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1786,7 +1798,7 @@ Partial Class frmProForma
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         CType(Me.gvPriceBand, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.gvProformaInvoice, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1893,4 +1905,5 @@ Partial Class frmProForma
     Friend WithEvents gvPriceBand As Bunifu.UI.WinForms.BunifuDataGridView
     Friend WithEvents gvProformaInvoice As Bunifu.UI.WinForms.BunifuDataGridView
     Friend WithEvents lblProformainvoice As Label
+    Friend WithEvents DataGridView1 As DataGridView
 End Class

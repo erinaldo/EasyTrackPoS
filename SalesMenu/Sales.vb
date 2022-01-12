@@ -244,7 +244,7 @@ Public Class frmSales
             lblNewBal.Text = newbal
             Poscon.Close()
         Catch ex As Exception
-            'MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Private Sub Display()
@@ -276,21 +276,26 @@ Public Class frmSales
             txtSize.Text = row.Cells(3).Value.ToString()
             txtColour.Text = row.Cells(4).Value.ToString()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
         ''txtProdName.Text = ""
     End Sub
     Private Sub ShowBand()
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim query = "select * from PriceBand"
-        cmd = New SqlCommand(query, Poscon)
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim tbl As New DataTable()
-        adapter.Fill(tbl)
-        gvPriceBand.DataSource = tbl
-        Poscon.Close()
+        Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            Dim query = "select * from PriceBand"
+            cmd = New SqlCommand(query, Poscon)
+            Dim adapter As New SqlDataAdapter(cmd)
+            Dim tbl As New DataTable()
+            adapter.Fill(tbl)
+            gvPriceBand.DataSource = tbl
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message, ex.ToString)
+        End Try
+
     End Sub
     Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
         If txtQty.Text = "" Then
@@ -306,7 +311,7 @@ Public Class frmSales
         '    'MsgBox(row.Cells(5).Value)
         'Next
 
-        Dim amt As Decimal
+        Dim amt As Double
         amt = Val(txtQty.Text) * Val(txtPrice.Text)
         txtAmt.Text = amt
     End Sub
@@ -334,48 +339,56 @@ Public Class frmSales
     End Sub
 
     Private Sub reciept()
-        Poscon.Open()
-        Dim sql = "insert into Recieptconfig(Salesperson,recieptid,date) values('" + Activeuser.Text + "','" + lblRecieptNo.Text + "','" + lblDate.Text + "') "
-        cmd = New SqlCommand(sql, Poscon)
-        cmd.ExecuteNonQuery()
-        Poscon.Close()
+        Try
+            Poscon.Open()
+            Dim sql = "insert into Recieptconfig(Salesperson,recieptid,date) values('" + Activeuser.Text + "','" + lblRecieptNo.Text + "','" + lblDate.Text + "') "
+            cmd = New SqlCommand(sql, Poscon)
+            cmd.ExecuteNonQuery()
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message, ex.ToString)
+        End Try
+
     End Sub
     Private Sub ShowConfig()
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim recieptcount As String
-        Dim nextreciept As String
-        Dim que = "select * from recieptconfig"
-        cmd = New SqlCommand(que, Poscon)
-        Dim da As New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        If table.Rows.Count() = 0 Then
-            lblRecieptNo.Text = "10001"
-        Else
-            Dim index = table.Rows.Count() - 1
-            Dim reciept = table.Rows(index)(0).ToString
-            nextreciept = reciept + 1
-            recieptcount = nextreciept.Count.ToString
-            Select Case recieptcount
-                Case "1"
-                    lblRecieptNo.Text = "1000" + nextreciept
-                Case "2"
-                    lblRecieptNo.Text = "100" + nextreciept
-                Case "3"
-                    lblRecieptNo.Text = "10" + nextreciept
-                Case "4"
-                    lblRecieptNo.Text = "1" + nextreciept
-                Case "5"
-                    lblRecieptNo.Text = nextreciept
-                Case Else
-                    lblRecieptNo.Text = nextreciept
-            End Select
-        End If
+        Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            Dim recieptcount As String
+            Dim nextreciept As String
+            Dim que = "select * from recieptconfig"
+            cmd = New SqlCommand(que, Poscon)
+            Dim da As New SqlDataAdapter(cmd)
+            Dim table As New DataTable
+            da.Fill(table)
+            If table.Rows.Count() = 0 Then
+                lblRecieptNo.Text = "10001"
+            Else
+                Dim index = table.Rows.Count() - 1
+                Dim reciept = table.Rows(index)(0).ToString
+                nextreciept = reciept + 1
+                recieptcount = nextreciept.Count.ToString
+                Select Case recieptcount
+                    Case "1"
+                        lblRecieptNo.Text = "1000" + nextreciept
+                    Case "2"
+                        lblRecieptNo.Text = "100" + nextreciept
+                    Case "3"
+                        lblRecieptNo.Text = "10" + nextreciept
+                    Case "4"
+                        lblRecieptNo.Text = "1" + nextreciept
+                    Case "5"
+                        lblRecieptNo.Text = nextreciept
+                    Case Else
+                        lblRecieptNo.Text = nextreciept
+                End Select
+            End If
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message, ex.ToString)
+        End Try
 
-
-        Poscon.Close()
 
 
     End Sub
@@ -426,7 +439,7 @@ Public Class frmSales
     End Sub
 
     Private Sub lblTotal_TextChanged(sender As Object, e As EventArgs) Handles lblTotal.TextChanged
-        Dim newbal As New Decimal
+        Dim newbal As New Double
         newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
         lblNewBal.Text = newbal
     End Sub
@@ -707,7 +720,9 @@ Public Class frmSales
                             End With
 
                         Next
-                        updates("update Proformaconfig set Status='" + "Sold" + "' where invoiceno='" + lblProformaInvoice.Text + "'")
+                        If lblProformaInvoice.Text <> "100#" Then
+                            updates("update Proformaconfig set Status='" + "Sold" + "' where invoiceno='" + lblProformaInvoice.Text + "'")
+                        End If
                         Poscon.Close()
                         'MsgBox("StockMast Updated")
                         reciept()
@@ -1322,7 +1337,7 @@ Public Class frmSales
         End Try
     End Sub
 
-    Sub PrintRecieptA4(valuetosearch As String)
+    Private Sub PrintRecieptA4(valuetosearch As String)
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()

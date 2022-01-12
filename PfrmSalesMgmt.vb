@@ -31,38 +31,48 @@ Public Class PfrmSalesMgmt
     End Sub
 
     Private Sub BunifuButton1_Click(sender As Object, e As EventArgs) Handles btnOpenSession.Click
-        Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, poscon)
-        da = New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        If table.Rows.Count() = 0 Then
-            Dim f2 As New frmSessionOpening
-            With f2
-                .TopLevel = False
-                PCreateProd.Controls.Add(f2)
-                .BringToFront()
-                .Show()
+        Try
+            Dim que = "select * from ActiveSession"
+            cmd = New SqlCommand(que, Poscon)
+            da = New SqlDataAdapter(cmd)
+            Dim table As New DataTable
+            da.Fill(table)
+            If table.Rows.Count() = 0 Then
+                Dim f2 As New frmSessionOpening
+                With f2
+                    .TopLevel = False
+                    PCreateProd.Controls.Add(f2)
+                    .BringToFront()
+                    .Show()
 
-            End With
-        Else
-            MsgBox("Active Session in progress, Please close current session to open a new one", vbCritical)
-        End If
+                End With
+            Else
+                MsgBox("Active Session in progress, Please close current session to open a new one", vbCritical)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, ex.ToString)
+        End Try
+
     End Sub
 
     Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles BunifuButton2.Click
-        Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, poscon)
-        da = New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        If table.Rows.Count() = 0 Then
-            MsgBox("NO Active Session. Please open a new session to continue", vbCritical)
-        Else
-            Dim f2 As New frmSales
-            f2.Show()
+        Try
+            Dim que = "select * from ActiveSession"
+            cmd = New SqlCommand(que, Poscon)
+            da = New SqlDataAdapter(cmd)
+            Dim table As New DataTable
+            da.Fill(table)
+            If table.Rows.Count() = 0 Then
+                MsgBox("NO Active Session. Please open a new session to continue", vbCritical)
+            Else
+                Dim f2 As New frmSales
+                f2.Show()
 
-        End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, ex.ToString)
+        End Try
+
     End Sub
 
     Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles BunifuButton4.Click
@@ -93,23 +103,28 @@ Public Class PfrmSalesMgmt
     End Sub
 
     Private Sub BunifuButton7_Click(sender As Object, e As EventArgs) Handles BunifuButton7.Click
-        Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, poscon)
-        da = New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        If table.Rows.Count() = 0 Then
-            MsgBox("No Active Session in progress", vbCritical)
-        Else
-            Dim f2 As New frmCloseSalesMenu
-            With f2
-                .TopLevel = False
-                PCreateProd.Controls.Add(f2)
-                .BringToFront()
-                .Show()
+        Try
+            Dim que = "select * from ActiveSession"
+            cmd = New SqlCommand(que, Poscon)
+            da = New SqlDataAdapter(cmd)
+            Dim table As New DataTable
+            da.Fill(table)
+            If table.Rows.Count() = 0 Then
+                MsgBox("No Active Session in progress", vbCritical)
+            Else
+                Dim f2 As New frmCloseSalesMenu
+                With f2
+                    .TopLevel = False
+                    PCreateProd.Controls.Add(f2)
+                    .BringToFront()
+                    .Show()
 
-            End With
-        End If
+                End With
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, ex.ToString)
+        End Try
+
 
     End Sub
 

@@ -1,5 +1,6 @@
 ﻿'Imports MySql.Data.MySqlClient
 Imports System.Data.SqlClient
+Imports CrystalDecisions.CrystalReports.Engine.ReportDocument
 Module CRUDFunction
     Public result As String
     Public cmd As New SqlCommand
@@ -9,6 +10,7 @@ Module CRUDFunction
 
 #Region "Report"
     Public Sub reports(ByVal sql As String, ByVal rptname As String, ByVal crystalRpt As Object)
+        '
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
@@ -25,10 +27,13 @@ Module CRUDFunction
             reportname = rptname
             Dim reportdoc = "" 'As New CrystalDecisions.CrystalReports.Engine.ReportDocument
             Dim strReportPath As String
-            strReportPath = Application.StartupPath & "\report\" & reportname & ".rpt"
+            strReportPath = Application.StartupPath & "\SalesMenu\" & reportname & ".rpt"
+            '    "K:\Daakye\FoodApplication\SalesMenu\rptProformaA4.rpt"
+
             With reportdoc
-                ' .Load(strReportPath)
-                ' .SetDataSource(ds.Tables(0))
+                '.Load(strReportPath)
+                '.SetDataSource(ds.Tables(0))
+
             End With
             With crystalRpt
                 .ShowRefreshButton = False
@@ -36,6 +41,7 @@ Module CRUDFunction
                 .ShowGroupTreeButton = False
                 .ReportSource = reportdoc
             End With
+            frmSupplierReport.Show()
         Catch ex As Exception
             MsgBox(ex.Message & "No Crystal Reports have been Installed")
         Finally
@@ -64,7 +70,7 @@ Module CRUDFunction
                 If result = 0 Then
                     MessageBox.Show("Data is failed to insert.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
-                    MessageBox.Show("Data has been inserted in the database.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    'MessageBox.Show("Data has been inserted in the database.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             End With
             Poscon.Close()
@@ -159,7 +165,7 @@ Module CRUDFunction
                 If result = 0 Then
                     MessageBox.Show("Data is failed to updated", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
-                    MessageBox.Show("Data has been updated in the database.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    'MessageBox.Show("Data has been updated in the database.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             End With
         Catch ex As Exception

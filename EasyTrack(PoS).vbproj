@@ -1066,6 +1066,12 @@
       <DependentUpon>rptOderReciept.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SalesMenu\rptProformaA4.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptProformaA4.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SalesMenu\rptSalesReciept.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1656,6 +1662,10 @@
     <EmbeddedResource Include="SalesMenu\rptOderReciept.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptOderReciept.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesMenu\rptProformaA4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProformaA4.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesMenu\rptSalesReciept.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
