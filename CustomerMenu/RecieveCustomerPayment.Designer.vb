@@ -48,6 +48,7 @@ Partial Class RecieveCustomerPayment
         Me.cbCustName = New System.Windows.Forms.ComboBox()
         Me.lblCustID = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblpaymentid = New System.Windows.Forms.Label()
         Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -60,7 +61,6 @@ Partial Class RecieveCustomerPayment
         Me.ckprint = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.ckprintpreview = New Bunifu.UI.WinForms.BunifuCheckBox()
-        Me.lblpaymentid = New System.Windows.Forms.Label()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -363,6 +363,15 @@ Partial Class RecieveCustomerPayment
         Me.Panel1.Size = New System.Drawing.Size(860, 61)
         Me.Panel1.TabIndex = 148
         '
+        'lblpaymentid
+        '
+        Me.lblpaymentid.AutoSize = True
+        Me.lblpaymentid.Location = New System.Drawing.Point(342, 24)
+        Me.lblpaymentid.Name = "lblpaymentid"
+        Me.lblpaymentid.Size = New System.Drawing.Size(45, 13)
+        Me.lblpaymentid.TabIndex = 152
+        Me.lblpaymentid.Text = "Label12"
+        '
         'BunifuThinButton22
         '
         Me.BunifuThinButton22.ActiveBorderThickness = 1
@@ -622,15 +631,6 @@ Partial Class RecieveCustomerPayment
         Me.ckprintpreview.TabIndex = 156
         Me.ckprintpreview.ThreeState = False
         Me.ckprintpreview.ToolTipText = Nothing
-        '
-        'lblpaymentid
-        '
-        Me.lblpaymentid.AutoSize = True
-        Me.lblpaymentid.Location = New System.Drawing.Point(342, 24)
-        Me.lblpaymentid.Name = "lblpaymentid"
-        Me.lblpaymentid.Size = New System.Drawing.Size(45, 13)
-        Me.lblpaymentid.TabIndex = 152
-        Me.lblpaymentid.Text = "Label12"
         '
         'RecieveCustomerPayment
         '

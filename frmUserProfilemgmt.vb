@@ -5,11 +5,14 @@ Public Class frmUserProfilemgmt
     Dim adapter As SqlDataAdapter
     Private Sub Button1_Click(sender As Object, e As EventArgs)
         Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             Poscon.Open()
             Dim query = "insert into UserProfiles values('" & txtName.Text & "','" + txtUserId.Text + "','" + txtUserpassword.Text + "','" & cbUsertype.Text & "','" & cbUsergroup.Text & "','" & cbUsergroup.SelectedIndex.ToString & "')"
             cmd = New SqlCommand(query, Poscon)
             cmd.ExecuteNonQuery()
-            MsgBox("Product Saved Successfully")
+            MsgBox("User Saved Successfully")
             Poscon.Close()
             Display()
         Catch ex As Exception
@@ -46,7 +49,9 @@ Public Class frmUserProfilemgmt
             MsgBox("Fill all fields")
         Else
             Try
-                Poscon.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
+                End If
                 Dim query = "insert into UserProfiles values('" & txtName.Text & "','" + txtUserId.Text + "','" + txtUserpassword.Text + "','" & cbUsertype.Text & "','" & cbUsergroup.Text & "','" & cbUsergroup.SelectedIndex.ToString & "')"
                 Dim cmd As SqlCommand
                 cmd = New SqlCommand(query, Poscon)

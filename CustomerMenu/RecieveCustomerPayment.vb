@@ -16,20 +16,21 @@ Public Class RecieveCustomerPayment
         recieptno()
 
         Timer1.Enabled = True
-        Try
-            Poscon.Open()
-            Dim query = ("select * from Customer")
-            cmd = New SqlCommand(query, Poscon)
-            Dim adp As New SqlDataAdapter(cmd)
-            Dim tbl As New DataTable
-            adp.Fill(tbl)
-            cbCustName.DataSource = tbl
-            cbCustName.DisplayMember = "CustomerName"
-            cbCustName.ValueMember = "IDCardNumber"
-            Poscon.Close()
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+        'Try
+        '    Poscon.Open()
+        '    Dim query = ("select * from Customer")
+        '    cmd = New SqlCommand(query, Poscon)
+        '    Dim adp As New SqlDataAdapter(cmd)
+        '    Dim tbl As New DataTable
+        '    adp.Fill(tbl)
+        '    cbCustName.DataSource = tbl
+        '    cbCustName.DisplayMember = "CustomerName"
+        '    cbCustName.ValueMember = "IDCardNumber"
+        '    Poscon.Close()
+        'Catch ex As Exception
+        '    MsgBox(ex.ToString)
+        'End Try
+        ComboFeed("select customername from Customer", cbCustName, 0)
 
         cbCustName.Text = ""
         lblCustBal.Text = 0
@@ -156,37 +157,17 @@ Public Class RecieveCustomerPayment
                 MsgBox("Select a Credit Customer")
                 Exit Sub
             Else
-                If Poscon.State = ConnectionState.Closed Then
-                    Poscon.Open()
-                End If
 
-                Dim query = "insert into customerpayment values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtdatepaid.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbType.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + lblTime.Text + "','" + txtdiscount.Text + "') "
-                Dim cmd As SqlCommand
-                cmd = New SqlCommand(query, Poscon)
-                cmd.ExecuteNonQuery()
-
-                If Poscon.State = ConnectionState.Closed Then
-                    Poscon.Open()
-                End If
-                Dim sql = "Insert into CustomerLedger(CustomerName,oldbal,Newbal,AmtPaid,DatePaid,TimePaid,CustomerNo,RecievedBy,discount)Values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + lblNewBal.Text + "','" + txtAmtPaid.Text + "','" + txtdatepaid.Text + "','" + lblTime.Text + "','" + lblCustID.Text + "','" + txtRecievedBy.Text + "','" + txtdiscount.Text + "')"
-                cmd = New SqlCommand(sql, Poscon)
-                cmd.ExecuteNonQuery()
-
-                Dim quer = "update Customer set CurrentBalance = " + lblNewBal.Text + " where IDCardNumber =" + lblCustID.Text + ""
-                cmd = New SqlCommand(quer, Poscon)
-                cmd.ExecuteNonQuery()
-                Poscon.Close()
-                PrintRecieptroll(lblpaymentid.Text)
+                create("insert into customerpayment(Customername,oldbal,datepaid,amtpaid,newbal,paymenttype,paymentmode,recievedby,narration,timerecieved,discount) values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtdatepaid.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbType.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + lblTime.Text + "','" + txtdiscount.Text + "') ")
+                create("Insert into CustomerLedger(CustomerName,oldbal,Newbal,AmtPaid,DatePaid,TimePaid,CustomerNo,RecievedBy,discount)Values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + lblNewBal.Text + "','" + txtAmtPaid.Text + "','" + txtdatepaid.Text + "','" + lblTime.Text + "','" + lblCustID.Text + "','" + txtRecievedBy.Text + "','" + txtdiscount.Text + "')")
+                updates("update Customer set CurrentBalance = " + lblNewBal.Text + " where IDCardNumber =" + lblCustID.Text + "")
+                PrintRecieptroll()
                 MsgBox("Payment Saved")
-
             End If
-
-
+            recieptno()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
-
-
         clear()
     End Sub
 
@@ -225,33 +206,43 @@ Public Class RecieveCustomerPayment
         Dim c = Val(txtdiscount.Text)
         lblNewBal.Text = a - b - c
     End Sub
-    Private Sub PrintRecieptroll(valuetosearch As String)
+    Private Sub PrintRecieptroll()
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim query = "select * from customerpayment where paymentid='" + valuetosearch + "'"
-            cmd = New SqlCommand(query, Poscon)
-            dt.Tables("customerpayment").Rows.Clear()
-            da.SelectCommand = cmd
-            da.Fill(dt, "customerpayment")
 
-            Dim sql = "select * from ClientReg"
-            dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, Poscon)
-            da.SelectCommand = cmd
-            da.Fill(dt, "ClientReg")
+            cmd = New SqlCommand("select Paymentid from customerpayment", Poscon)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
+            If tbl.Rows.Count() = 0 Then
+            Else
+                Dim index = tbl.Rows.Count() - 1
+                Dim query = "select * from customerpayment where paymentid='" + tbl.Rows(index)(0).ToString + "'"
+                cmd = New SqlCommand(query, Poscon)
+                dt.Tables("customerpayment").Rows.Clear()
+                da.SelectCommand = cmd
+                da.Fill(dt, "customerpayment")
 
-            Dim report As New rptCustomerReciept
-            report.SetDataSource(dt)
-            If ckprint.Checked = True Then
-                report.PrintToPrinter(1, True, 0, 0)
+                Dim sql = "select * from ClientReg"
+                dt.Tables("ClientReg").Rows.Clear()
+                cmd = New SqlCommand(sql, Poscon)
+                da.SelectCommand = cmd
+                da.Fill(dt, "ClientReg")
+
+                Dim report As New rptCustomerReciept
+                report.SetDataSource(dt)
+                If ckprint.Checked = True Then
+                    report.PrintToPrinter(1, True, 0, 0)
+                End If
+                If ckprintpreview.Checked = True Then
+                    frmSupplierReport.Show()
+                    frmSupplierReport.CrystalReportViewer1.ReportSource = report
+                    frmSupplierReport.CrystalReportViewer1.Refresh()
+                End If
             End If
-            If ckprintpreview.Checked = True Then
-                frmSupplierReport.Show()
-                frmSupplierReport.CrystalReportViewer1.ReportSource = report
-                frmSupplierReport.CrystalReportViewer1.Refresh()
-            End If
+
             cmd.Dispose()
             da.Dispose()
             Poscon.Close()

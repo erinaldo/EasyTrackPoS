@@ -698,7 +698,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>q/vQCQrx/ro35hVg3hLdF8aTfcMAdD9FtpVBbx4q3Y0=</dsig:DigestValue>
+        <dsig:DigestValue>2co294SKAGCENuyG1Eu3DgTA5tqf80Fk2+VgNpM63Mg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1020,7 +1020,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>2WhoRDYjP6OJfKKWzjiL8YYrTL74cj65prZmOdjV9Yo=</dsig:DigestValue>
+      <dsig:DigestValue>HdFDgj6JquI6HJ3lKiZAV6Qq5LgPxQ0eg1zbslDdvzA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="PoS_log.ldf" size="786432" writeableType="applicationData">
@@ -1029,7 +1029,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>eKXdlcRTUVtZMpaKf2KEYBU1YyjbBj1SC381FBC6RBE=</dsig:DigestValue>
+      <dsig:DigestValue>He1jjXeROp+xhRrcF620H+uNcI2xNX43PXXysT5OoBI=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

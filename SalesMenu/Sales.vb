@@ -1196,22 +1196,22 @@ Public Class frmSales
 
             Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
             cmd = New SqlCommand(query, Poscon)
-            Dim adapter As New SqlDataAdapter(cmd)
-            Dim table As New DataTable()
-            adapter.Fill(table)
-            gvStock.DataSource = table
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
+            gvStock.DataSource = tbl
+            'reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'", gvStock)
 
-
-            cbProdName.Text = table.Rows(0)(0).ToString
-            lblProdName.Text = table.Rows(0)(0).ToString
+            cbProdName.Text = tbl.Rows(0)(0).ToString
+            lblProdName.Text = tbl.Rows(0)(0).ToString
             'lblProdName.Text = table.Rows(0)(0).ToString + " " + "(" + txtProdline.Text + ")"
-            txtPrice.Text = table.Rows(0)(2).ToString
-            lblActualStock.Text = table.Rows(0)(1).ToString
-            txtProdcode.Text = table.Rows(0)(7).ToString
-            txtProdline.Text = table.Rows(0)(6).ToString
-            txtCat.Text = table.Rows(0)(4).ToString
-            txtSize.Text = table.Rows(0)(3).ToString
-            txtColour.Text = table.Rows(0)(5).ToString
+            txtPrice.Text = tbl.Rows(0)(2).ToString
+            lblActualStock.Text = tbl.Rows(0)(1).ToString
+            txtProdcode.Text = tbl.Rows(0)(7).ToString
+            txtProdline.Text = tbl.Rows(0)(6).ToString
+            txtCat.Text = tbl.Rows(0)(4).ToString
+            txtSize.Text = tbl.Rows(0)(3).ToString
+            txtColour.Text = tbl.Rows(0)(5).ToString
 
 
             Poscon.Close()

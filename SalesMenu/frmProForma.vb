@@ -926,7 +926,6 @@ Public Class frmProForma
                 .Parameters.AddWithValue("@BuyerLocation", cbLocation.Text)
                 .Parameters.AddWithValue("@RetailPrice", row.Cells(2).Value)
                 .Parameters.AddWithValue("@Amount", row.Cells(3).Value)
-
                 .Parameters.AddWithValue("@AmtPayable", value:=(lblPayable.Text))
                 .ExecuteNonQuery()
             End With
@@ -941,30 +940,30 @@ Public Class frmProForma
         Display()
     End Sub
     Private Sub PrintA4()
-        'Try
-        If Poscon.State = ConnectionState.Closed Then
+        Try
+            If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
 
-            Dim query = "select * from Proformainvoices where invoiceno='" + lblRecieptNo.Text + "'"
-            cmd = New SqlCommand(query, Poscon)
+            cmd = New SqlCommand("select * from Proformainvoices", Poscon)
+            'where invoiceno='" + lblRecieptNo.Text + "'
             dt.Tables("Proformainvoices").Rows.Clear()
             da.SelectCommand = cmd
             da.Fill(dt, "Proformainvoices")
-        DataGridView1.DataSource = dt.Tables("Proformainvoices")
-        Dim sql = "select * from ClientReg"
+
+
             dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, Poscon)
+            cmd = New SqlCommand("select * from ClientReg", Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
             Dim report As New rptProformaA4
             report.SetDataSource(dt)
-        If ckprint.Checked = True Then
-            report.PrintToPrinter(1, True, 0, 0)
-        End If
-        'If ckprintpreview.Checked = True Then
-        frmSupplierReport.Show()
+            'If ckprint.Checked = True Then
+            'report.PrintToPrinter(1, True, 0, 0)
+            ' End If
+            'If ckprintpreview.Checked = True Then
+            frmSupplierReport.Show()
             frmSupplierReport.CrystalReportViewer1.ReportSource = report
             frmSupplierReport.CrystalReportViewer1.Refresh()
             'End If
@@ -972,9 +971,9 @@ Public Class frmProForma
             cmd.Dispose()
             da.Dispose()
             Poscon.Close()
-        'Catch ex As Exception
-        '    MsgBox(ex.ToString)
-        'End Try
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
     Public Sub ShowConfig()
