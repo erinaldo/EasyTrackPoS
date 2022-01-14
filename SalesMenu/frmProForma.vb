@@ -5,7 +5,7 @@ Public Class frmProForma
     Dim cmd As SqlCommand
     Dim builder As SqlCommandBuilder
     Dim da As SqlDataAdapter
-    Dim dt As New dsSalesTranx
+    Dim dt As New dsproforma
     Dim tbl As DataTable
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
         'Dim f2 As New frmSalesMenu
@@ -941,36 +941,44 @@ Public Class frmProForma
     End Sub
     Private Sub PrintA4()
         Try
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-
-            cmd = New SqlCommand("select * from Proformainvoices", Poscon)
-            'where invoiceno='" + lblRecieptNo.Text + "'
-            dt.Tables("Proformainvoices").Rows.Clear()
-            da.SelectCommand = cmd
-            da.Fill(dt, "Proformainvoices")
-
-
-            dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand("select * from ClientReg", Poscon)
-            da.SelectCommand = cmd
-            da.Fill(dt, "ClientReg")
-
+            'If Poscon.State = ConnectionState.Closed Then
+            '    Poscon.Open()
+            'End If
+            For Each row As DataGridViewRow In gvSales.Rows
+                dt.Tables("Proforma").Rows.Add(row.Cells(0).Value, row.Cells(1).Value, row.Cells(2).Value, row.Cells(3).Value)
+            Next
             Dim report As New rptProformaA4
             report.SetDataSource(dt)
-            'If ckprint.Checked = True Then
-            'report.PrintToPrinter(1, True, 0, 0)
-            ' End If
-            'If ckprintpreview.Checked = True Then
             frmSupplierReport.Show()
             frmSupplierReport.CrystalReportViewer1.ReportSource = report
             frmSupplierReport.CrystalReportViewer1.Refresh()
-            'End If
 
-            cmd.Dispose()
-            da.Dispose()
-            Poscon.Close()
+            'cmd = New SqlCommand("select * from Proformainvoices", Poscon)
+            ''where invoiceno='" + lblRecieptNo.Text + "'
+            'dt.Tables("Proformainvoices").Rows.Clear()
+            'da.SelectCommand = cmd
+            'da.Fill(dt, "Proformainvoices")
+
+
+            ''dt.Tables("ClientReg").Rows.Clear()
+            ''cmd = New SqlCommand("select * from ClientReg", Poscon)
+            ''da.SelectCommand = cmd
+            ''da.Fill(dt, "ClientReg")
+
+            'Dim report As New rptProformaA4
+            'report.SetDataSource(dt)
+            ''If ckprint.Checked = True Then
+            ''report.PrintToPrinter(1, True, 0, 0)
+            '' End If
+            ''If ckprintpreview.Checked = True Then
+            'frmSupplierReport.Show()
+            'frmSupplierReport.CrystalReportViewer1.ReportSource = report
+            'frmSupplierReport.CrystalReportViewer1.Refresh()
+            ''End If
+
+            'cmd.Dispose()
+            'da.Dispose()
+            'Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -1013,10 +1021,6 @@ Public Class frmProForma
 
         Poscon.Close()
 
-
-    End Sub
-
-    Private Sub txtPrice_KeyUp(sender As Object, e As KeyEventArgs) Handles txtPrice.KeyUp
 
     End Sub
 

@@ -167,6 +167,106 @@ Update Order Option
 Used to sort self-referenced table's rows
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsproforma">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaInvoicesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaConfigDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaInvoicesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaConfigRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaInvoicesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaConfigRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproformaTableAdapters.ProformaInvoicesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproformaTableAdapters.ProformaConfigTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dsproforma,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dsproforma,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dsproforma,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dsproforma)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsAdjustStock">
 <summary>
 Represents a strongly typed in-memory cache of data.
@@ -497,6 +597,11 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsInventory.ProformaInvoicesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsInventory.ClientRegRow">
 <summary>
 Represents strongly named DataRow class.
@@ -508,6 +613,11 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsInventory.StockMastRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.ProformaInvoicesRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -527,6 +637,11 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsInventory.ProformaInvoicesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsInventoryTableAdapters.ClientRegTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -538,6 +653,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsInventoryTableAdapters.StockMastTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.ProformaInvoicesTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -837,11 +957,6 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsSalesTranx.ProformaInvoicesDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
 <member name="T:HardSoft_PoS.dsSalesTranx.ClientRegRow">
 <summary>
 Represents strongly named DataRow class.
@@ -858,11 +973,6 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsSalesTranx.PriceChangeLogRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:HardSoft_PoS.dsSalesTranx.ProformaInvoicesRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -887,11 +997,6 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsSalesTranx.ProformaInvoicesRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
 <member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.ClientRegTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -908,11 +1013,6 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.PriceChangeLogTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.ProformaInvoicesTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

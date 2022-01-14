@@ -317,6 +317,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dscustomer.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CustomerMenu\dsproforma.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsproforma.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerMenu\dsproforma.vb">
+      <DependentUpon>dsproforma.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CustomerMenu\rptCustomerReciept.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1794,6 +1802,17 @@
     </None>
     <None Include="CustomerMenu\dscustomer.xss">
       <DependentUpon>dscustomer.xsd</DependentUpon>
+    </None>
+    <None Include="CustomerMenu\dsproforma.xsc">
+      <DependentUpon>dsproforma.xsd</DependentUpon>
+    </None>
+    <None Include="CustomerMenu\dsproforma.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsproforma.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="CustomerMenu\dsproforma.xss">
+      <DependentUpon>dsproforma.xsd</DependentUpon>
     </None>
     <None Include="dsAdjustStock.xsc">
       <DependentUpon>dsAdjustStock.xsd</DependentUpon>
