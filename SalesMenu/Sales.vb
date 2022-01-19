@@ -38,9 +38,9 @@ Public Class frmSales
         Poscon.Close()
 
 
-        ckrollPaper.Checked = True
-        ckA5Paper.Checked = False
-        ckA4.Checked = False
+        'ckrollPaper.Checked = True
+        'ckA5Paper.Checked = False
+        'ckA4.Checked = False
         ShowConfig()
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized

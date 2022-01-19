@@ -1948,8 +1948,8 @@ Partial Class frmSales
         Me.ckA5Paper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ckA5Paper.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
         Me.ckA5Paper.BorderRadius = 12
-        Me.ckA5Paper.Checked = True
-        Me.ckA5Paper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.ckA5Paper.Checked = False
+        Me.ckA5Paper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
         Me.ckA5Paper.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckA5Paper.CustomCheckmarkImage = Nothing
         Me.ckA5Paper.Location = New System.Drawing.Point(13, 562)
@@ -2003,8 +2003,8 @@ Partial Class frmSales
         Me.ckrollPaper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ckrollPaper.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
         Me.ckrollPaper.BorderRadius = 12
-        Me.ckrollPaper.Checked = True
-        Me.ckrollPaper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.ckrollPaper.Checked = False
+        Me.ckrollPaper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
         Me.ckrollPaper.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckrollPaper.CustomCheckmarkImage = Nothing
         Me.ckrollPaper.Location = New System.Drawing.Point(13, 537)
