@@ -374,7 +374,7 @@ Partial Class frmCustomerReportMenu
         Me.btnOpenSession.IdleIconLeftImage = CType(resources.GetObject("btnOpenSession.IdleIconLeftImage"), System.Drawing.Image)
         Me.btnOpenSession.IdleIconRightImage = Nothing
         Me.btnOpenSession.IndicateFocus = False
-        Me.btnOpenSession.Location = New System.Drawing.Point(458, 109)
+        Me.btnOpenSession.Location = New System.Drawing.Point(475, 109)
         Me.btnOpenSession.Name = "btnOpenSession"
         Me.btnOpenSession.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.btnOpenSession.OnDisabledState.BorderRadius = 1
@@ -408,7 +408,7 @@ Partial Class frmCustomerReportMenu
         Me.btnOpenSession.OnPressedState.ForeColor = System.Drawing.Color.White
         Me.btnOpenSession.OnPressedState.IconLeftImage = Nothing
         Me.btnOpenSession.OnPressedState.IconRightImage = Nothing
-        Me.btnOpenSession.Size = New System.Drawing.Size(269, 66)
+        Me.btnOpenSession.Size = New System.Drawing.Size(282, 66)
         Me.btnOpenSession.TabIndex = 182
         Me.btnOpenSession.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.btnOpenSession.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center

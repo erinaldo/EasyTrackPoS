@@ -129,15 +129,25 @@ Public Class frmCustomerReportMenu
     End Sub
 
     Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles BunifuButton4.Click
+        DateTime.TryParseExact(dpdatefrom.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outfrom)
+        DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
+
         Try
-            Dim query = "select * from issuestock"
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            dt.Tables("Customer").Rows.Clear()
+            Dim query = "select * from issuestock where dateissued between @datefrom and @dateto "
             cmd = New SqlCommand(query, Poscon)
+            cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
+            cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
+
+            dt.Tables("Issuestock").Rows.Clear()
+
             adp.SelectCommand = cmd
             adp.Fill(dt, "issuestock")
+
+            dt.Tables("range").Rows.Clear()
+            dt.Tables("range").Rows.Add(dpdatefrom.Value, dpdateto.Value)
 
             Dim sql = "select * from ClientReg"
             dt.Tables("clientreg").Rows.Clear()
@@ -173,6 +183,8 @@ Public Class frmCustomerReportMenu
             adp.SelectCommand = cmd
             adp.Fill(dt, "Customerpayment")
 
+
+            dt.Tables("range").Rows.Clear()
             dt.Tables("range").Rows.Add(dpdatefrom.Value, dpdateto.Value)
 
             Dim sql = "select * from ClientReg"
