@@ -1168,4 +1168,6 @@ Public Class frmTouchSale
     Private Sub txtQty_KeyUp(sender As Object, e As KeyEventArgs) Handles txtQty.KeyUp
         txtAmt.Text = Val(txtPrice.Text) * Val(txtQty.Text)
     End Sub
+
+
 End Class

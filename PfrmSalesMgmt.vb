@@ -160,4 +160,9 @@ Public Class PfrmSalesMgmt
 
         End With
     End Sub
+
+    Private Sub BunifuButton9_Click(sender As Object, e As EventArgs) Handles BunifuButton9.Click
+        Dim f2 As New frmProForma
+        f2.Show()
+    End Sub
 End Class

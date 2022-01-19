@@ -14,7 +14,7 @@ Public Class frmProForma
     End Sub
 
     Private Sub frmSales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        StockCheck()
+        'StockCheck()
         Display()
 
         If poscon.State = ConnectionState.Closed Then
@@ -903,12 +903,21 @@ Public Class frmProForma
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If gvSales.Rows.Count = 0 Then
+            MsgBox("Please select items to make a proforma")
+            Exit Sub
+        End If
+        If txtBuyerName.Text = "" And txtBuyerTel.Text = "" Then
+            MsgBox("Please enter client information")
+            txtBuyerName.Focus()
+            Exit Sub
+        End If
         ShowConfig()
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
         For Each row As DataGridViewRow In gvSales.Rows
-            Dim query = "insert into ProformaInvoices (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,RetailPrice,Amount,Soldby,AmountPayable,Invoiceno) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,@DateSold,@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@RetailPrice,@Amount,'" + Activeuser.Text + "',@Amtpayable,'" + lblRecieptNo.Text + "')"
+            Dim query = "insert into ProformaInvoices (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,RetailPrice,Amount,Soldby,AmountPayable,Invoiceno,narration) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,@DateSold,@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@RetailPrice,@Amount,'" + Activeuser.Text + "',@Amtpayable,'" + lblRecieptNo.Text + "','" + txtNarration.Text + "')"
             cmd = New SqlCommand(query, Poscon)
             With cmd
 
@@ -937,48 +946,35 @@ Public Class frmProForma
         PrintA4()
         ShowConfig()
         clear()
+        gvSales.Rows.Clear()
         Display()
     End Sub
     Private Sub PrintA4()
         Try
-            'If Poscon.State = ConnectionState.Closed Then
-            '    Poscon.Open()
-            'End If
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             For Each row As DataGridViewRow In gvSales.Rows
-                dt.Tables("Proforma").Rows.Add(row.Cells(0).Value, row.Cells(1).Value, row.Cells(2).Value, row.Cells(3).Value)
+                dt.Tables("Proforma").Rows.Add(row.Cells(0).Value, row.Cells(1).Value, row.Cells(2).Value, row.Cells(3).Value, txtBuyerName.Text, txtBuyerTel.Text, cbLocation.Text, lblDate.Text, Activeuser.Text, txtNarration.Text)
             Next
+            dt.Tables("ClientReg").Rows.Clear()
+            cmd = New SqlCommand("select * from ClientReg", Poscon)
+            da.SelectCommand = cmd
+            da.Fill(dt, "ClientReg")
             Dim report As New rptProformaA4
             report.SetDataSource(dt)
-            frmSupplierReport.Show()
-            frmSupplierReport.CrystalReportViewer1.ReportSource = report
-            frmSupplierReport.CrystalReportViewer1.Refresh()
+            If ckprint.Checked = True Then
+                report.PrintToPrinter(1, True, 0, 0)
+            End If
+            If ckprintpreview.Checked = True Then
+                frmSupplierReport.Show()
+                frmSupplierReport.CrystalReportViewer1.ReportSource = report
+                frmSupplierReport.CrystalReportViewer1.Refresh()
+            End If
 
-            'cmd = New SqlCommand("select * from Proformainvoices", Poscon)
-            ''where invoiceno='" + lblRecieptNo.Text + "'
-            'dt.Tables("Proformainvoices").Rows.Clear()
-            'da.SelectCommand = cmd
-            'da.Fill(dt, "Proformainvoices")
-
-
-            ''dt.Tables("ClientReg").Rows.Clear()
-            ''cmd = New SqlCommand("select * from ClientReg", Poscon)
-            ''da.SelectCommand = cmd
-            ''da.Fill(dt, "ClientReg")
-
-            'Dim report As New rptProformaA4
-            'report.SetDataSource(dt)
-            ''If ckprint.Checked = True Then
-            ''report.PrintToPrinter(1, True, 0, 0)
-            '' End If
-            ''If ckprintpreview.Checked = True Then
-            'frmSupplierReport.Show()
-            'frmSupplierReport.CrystalReportViewer1.ReportSource = report
-            'frmSupplierReport.CrystalReportViewer1.Refresh()
-            ''End If
-
-            'cmd.Dispose()
-            'da.Dispose()
-            'Poscon.Close()
+            cmd.Dispose()
+            da.Dispose()
+            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -1025,28 +1021,95 @@ Public Class frmProForma
     End Sub
 
     Private Sub gvProformaInvoice_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvProformaInvoice.CellClick
-        Dim row As DataGridViewRow = gvProformaInvoice.Rows(e.RowIndex)
-        lblProformainvoice.Text = row.Cells(0).Value.ToString()
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
+        If gvSales.Rows.Count <> 0 Then
+            Dim ask As MsgBoxResult
+            ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
+            If ask = MsgBoxResult.Yes Then
+                gvSales.Rows.Clear()
+                Dim row As DataGridViewRow = gvProformaInvoice.Rows(e.RowIndex)
+                lblProformainvoice.Text = row.Cells(0).Value.ToString()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
+                End If
+                Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,amountpayable from proformainvoices where invoiceno like '%" + lblProformainvoice.Text + "%'")
+                cmd = New SqlCommand(queryy, Poscon)
+                da = New SqlDataAdapter(cmd)
+                tbl = New DataTable()
+                da.Fill(tbl)
+                If tbl.Rows.Count = 0 Then
+                    MsgBox("ProForma Empty")
+                    Exit Sub
+                End If
+                txtBuyerName.Text = tbl.Rows(0)(9).ToString
+                txtBuyerTel.Text = tbl.Rows(0)(10).ToString
+                cbLocation.Text = tbl.Rows(0)(11).ToString
+                ' lblPayable.Text = tbl.Rows(0)(15).ToString
+                For k = 0 To tbl.Rows.Count - 1
+                    gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, 0, 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
+                Next
+                Poscon.Close()
+            End If
+        Else
+            gvSales.Rows.Clear()
+            Dim row As DataGridViewRow = gvProformaInvoice.Rows(e.RowIndex)
+            lblProformainvoice.Text = row.Cells(0).Value.ToString()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,amountpayable from proformainvoices where invoiceno like '%" + lblProformainvoice.Text + "%'")
+            cmd = New SqlCommand(queryy, Poscon)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
+            If tbl.Rows.Count = 0 Then
+                MsgBox("ProForma Empty")
+                Exit Sub
+            End If
+            txtBuyerName.Text = tbl.Rows(0)(9).ToString
+            txtBuyerTel.Text = tbl.Rows(0)(10).ToString
+            cbLocation.Text = tbl.Rows(0)(11).ToString
+            ' lblPayable.Text = tbl.Rows(0)(15).ToString
+            For k = 0 To tbl.Rows.Count - 1
+                gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, 0, 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
+            Next
+            Poscon.Close()
         End If
-        Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,amountpayable from proformainvoices where invoiceno like '%" + lblProformaInvoice.Text + "%'")
-        cmd = New SqlCommand(queryy, Poscon)
-        da = New SqlDataAdapter(cmd)
-        tbl = New DataTable()
-        da.Fill(tbl)
-        If tbl.Rows.Count = 0 Then
-            MsgBox("ProForma Empty")
-            Exit Sub
-        End If
-        txtBuyerName.Text = tbl.Rows(0)(9).ToString
-        txtBuyerTel.Text = tbl.Rows(0)(10).ToString
-        cbLocation.Text = tbl.Rows(0)(11).ToString
-        ' lblPayable.Text = tbl.Rows(0)(15).ToString
-        For k = 0 To tbl.Rows.Count - 1
-            gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, 0, 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
-        Next
-        Poscon.Close()
+
+
+
+    End Sub
+
+    Private Sub BunifuThinButton28_Click(sender As Object, e As EventArgs) Handles BunifuThinButton28.Click
+        Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            cmd = New SqlCommand("select * from proformainvoices where invoiceno='" + lblRecieptNo.Text + "'", Poscon)
+            dt.Tables("proformainvoices").Rows.Clear()
+            da.SelectCommand = cmd
+            da.Fill(dt, "proformainvoices")
+
+            dt.Tables("ClientReg").Rows.Clear()
+            cmd = New SqlCommand("select * from ClientReg", Poscon)
+            da.SelectCommand = cmd
+            da.Fill(dt, "ClientReg")
+            Dim report As New rptProformaA4
+            report.SetDataSource(dt)
+            If ckprint.Checked = True Then
+                report.PrintToPrinter(1, True, 0, 0)
+            End If
+            If ckprintpreview.Checked = True Then
+                frmSupplierReport.Show()
+                frmSupplierReport.CrystalReportViewer1.ReportSource = report
+                frmSupplierReport.CrystalReportViewer1.Refresh()
+            End If
+
+            cmd.Dispose()
+            da.Dispose()
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
 
     End Sub
 End Class

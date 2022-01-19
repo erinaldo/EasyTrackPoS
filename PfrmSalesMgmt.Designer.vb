@@ -22,8 +22,6 @@ Partial Class PfrmSalesMgmt
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PfrmSalesMgmt))
-        Dim BorderEdges1 As Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges = New Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges()
         Dim BorderEdges2 As Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges = New Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges()
         Dim BorderEdges3 As Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges = New Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges()
         Dim BorderEdges4 As Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges = New Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges()
@@ -32,6 +30,9 @@ Partial Class PfrmSalesMgmt
         Dim BorderEdges7 As Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges = New Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges()
         Dim BorderEdges8 As Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges = New Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges()
         Dim BorderEdges9 As Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges = New Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges()
+        Dim BorderEdges10 As Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges = New Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PfrmSalesMgmt))
+        Dim BorderEdges1 As Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges = New Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges()
         Me.PCreateProd = New System.Windows.Forms.Panel()
         Me.tsuser = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -46,6 +47,7 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton4 = New Bunifu.UI.WinForms.BunifuButton.BunifuButton()
         Me.BunifuButton2 = New Bunifu.UI.WinForms.BunifuButton.BunifuButton()
         Me.btnOpenSession = New Bunifu.UI.WinForms.BunifuButton.BunifuButton()
+        Me.BunifuButton9 = New Bunifu.UI.WinForms.BunifuButton.BunifuButton()
         Me.PCreateProd.SuspendLayout()
         Me.tsuser.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -86,6 +88,7 @@ Partial Class PfrmSalesMgmt
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.BunifuButton9)
         Me.Panel1.Controls.Add(Me.BunifuButton1)
         Me.Panel1.Controls.Add(Me.BunifuButton3)
         Me.Panel1.Controls.Add(Me.BunifuButton8)
@@ -120,11 +123,11 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton1.ColorContrastOnClick = 45
         Me.BunifuButton1.ColorContrastOnHover = 45
         Me.BunifuButton1.Cursor = System.Windows.Forms.Cursors.Default
-        BorderEdges1.BottomLeft = True
-        BorderEdges1.BottomRight = True
-        BorderEdges1.TopLeft = True
-        BorderEdges1.TopRight = True
-        Me.BunifuButton1.CustomizableEdges = BorderEdges1
+        BorderEdges2.BottomLeft = True
+        BorderEdges2.BottomRight = True
+        BorderEdges2.TopLeft = True
+        BorderEdges2.TopRight = True
+        Me.BunifuButton1.CustomizableEdges = BorderEdges2
         Me.BunifuButton1.DialogResult = System.Windows.Forms.DialogResult.None
         Me.BunifuButton1.DisabledBorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton1.DisabledFillColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
@@ -150,7 +153,7 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton1.IdleIconLeftImage = CType(resources.GetObject("BunifuButton1.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton1.IdleIconRightImage = Nothing
         Me.BunifuButton1.IndicateFocus = False
-        Me.BunifuButton1.Location = New System.Drawing.Point(0, 495)
+        Me.BunifuButton1.Location = New System.Drawing.Point(0, 542)
         Me.BunifuButton1.Name = "BunifuButton1"
         Me.BunifuButton1.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton1.OnDisabledState.BorderRadius = 1
@@ -211,11 +214,11 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton3.ColorContrastOnClick = 45
         Me.BunifuButton3.ColorContrastOnHover = 45
         Me.BunifuButton3.Cursor = System.Windows.Forms.Cursors.Default
-        BorderEdges2.BottomLeft = True
-        BorderEdges2.BottomRight = True
-        BorderEdges2.TopLeft = True
-        BorderEdges2.TopRight = True
-        Me.BunifuButton3.CustomizableEdges = BorderEdges2
+        BorderEdges3.BottomLeft = True
+        BorderEdges3.BottomRight = True
+        BorderEdges3.TopLeft = True
+        BorderEdges3.TopRight = True
+        Me.BunifuButton3.CustomizableEdges = BorderEdges3
         Me.BunifuButton3.DialogResult = System.Windows.Forms.DialogResult.None
         Me.BunifuButton3.DisabledBorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton3.DisabledFillColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
@@ -241,7 +244,7 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton3.IdleIconLeftImage = CType(resources.GetObject("BunifuButton3.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton3.IdleIconRightImage = Nothing
         Me.BunifuButton3.IndicateFocus = False
-        Me.BunifuButton3.Location = New System.Drawing.Point(-1, 434)
+        Me.BunifuButton3.Location = New System.Drawing.Point(-1, 481)
         Me.BunifuButton3.Name = "BunifuButton3"
         Me.BunifuButton3.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton3.OnDisabledState.BorderRadius = 1
@@ -302,11 +305,11 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton8.ColorContrastOnClick = 45
         Me.BunifuButton8.ColorContrastOnHover = 45
         Me.BunifuButton8.Cursor = System.Windows.Forms.Cursors.Default
-        BorderEdges3.BottomLeft = True
-        BorderEdges3.BottomRight = True
-        BorderEdges3.TopLeft = True
-        BorderEdges3.TopRight = True
-        Me.BunifuButton8.CustomizableEdges = BorderEdges3
+        BorderEdges4.BottomLeft = True
+        BorderEdges4.BottomRight = True
+        BorderEdges4.TopLeft = True
+        BorderEdges4.TopRight = True
+        Me.BunifuButton8.CustomizableEdges = BorderEdges4
         Me.BunifuButton8.DialogResult = System.Windows.Forms.DialogResult.None
         Me.BunifuButton8.DisabledBorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton8.DisabledFillColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
@@ -393,11 +396,11 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton7.ColorContrastOnClick = 45
         Me.BunifuButton7.ColorContrastOnHover = 45
         Me.BunifuButton7.Cursor = System.Windows.Forms.Cursors.Default
-        BorderEdges4.BottomLeft = True
-        BorderEdges4.BottomRight = True
-        BorderEdges4.TopLeft = True
-        BorderEdges4.TopRight = True
-        Me.BunifuButton7.CustomizableEdges = BorderEdges4
+        BorderEdges5.BottomLeft = True
+        BorderEdges5.BottomRight = True
+        BorderEdges5.TopLeft = True
+        BorderEdges5.TopRight = True
+        Me.BunifuButton7.CustomizableEdges = BorderEdges5
         Me.BunifuButton7.DialogResult = System.Windows.Forms.DialogResult.None
         Me.BunifuButton7.DisabledBorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton7.DisabledFillColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
@@ -423,7 +426,7 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton7.IdleIconLeftImage = CType(resources.GetObject("BunifuButton7.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton7.IdleIconRightImage = Nothing
         Me.BunifuButton7.IndicateFocus = False
-        Me.BunifuButton7.Location = New System.Drawing.Point(1, 555)
+        Me.BunifuButton7.Location = New System.Drawing.Point(1, 602)
         Me.BunifuButton7.Name = "BunifuButton7"
         Me.BunifuButton7.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton7.OnDisabledState.BorderRadius = 1
@@ -484,11 +487,11 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton6.ColorContrastOnClick = 45
         Me.BunifuButton6.ColorContrastOnHover = 45
         Me.BunifuButton6.Cursor = System.Windows.Forms.Cursors.Default
-        BorderEdges5.BottomLeft = True
-        BorderEdges5.BottomRight = True
-        BorderEdges5.TopLeft = True
-        BorderEdges5.TopRight = True
-        Me.BunifuButton6.CustomizableEdges = BorderEdges5
+        BorderEdges6.BottomLeft = True
+        BorderEdges6.BottomRight = True
+        BorderEdges6.TopLeft = True
+        BorderEdges6.TopRight = True
+        Me.BunifuButton6.CustomizableEdges = BorderEdges6
         Me.BunifuButton6.DialogResult = System.Windows.Forms.DialogResult.None
         Me.BunifuButton6.DisabledBorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton6.DisabledFillColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
@@ -575,11 +578,11 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton5.ColorContrastOnClick = 45
         Me.BunifuButton5.ColorContrastOnHover = 45
         Me.BunifuButton5.Cursor = System.Windows.Forms.Cursors.Default
-        BorderEdges6.BottomLeft = True
-        BorderEdges6.BottomRight = True
-        BorderEdges6.TopLeft = True
-        BorderEdges6.TopRight = True
-        Me.BunifuButton5.CustomizableEdges = BorderEdges6
+        BorderEdges7.BottomLeft = True
+        BorderEdges7.BottomRight = True
+        BorderEdges7.TopLeft = True
+        BorderEdges7.TopRight = True
+        Me.BunifuButton5.CustomizableEdges = BorderEdges7
         Me.BunifuButton5.DialogResult = System.Windows.Forms.DialogResult.None
         Me.BunifuButton5.DisabledBorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton5.DisabledFillColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
@@ -666,11 +669,11 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton4.ColorContrastOnClick = 45
         Me.BunifuButton4.ColorContrastOnHover = 45
         Me.BunifuButton4.Cursor = System.Windows.Forms.Cursors.Default
-        BorderEdges7.BottomLeft = True
-        BorderEdges7.BottomRight = True
-        BorderEdges7.TopLeft = True
-        BorderEdges7.TopRight = True
-        Me.BunifuButton4.CustomizableEdges = BorderEdges7
+        BorderEdges8.BottomLeft = True
+        BorderEdges8.BottomRight = True
+        BorderEdges8.TopLeft = True
+        BorderEdges8.TopRight = True
+        Me.BunifuButton4.CustomizableEdges = BorderEdges8
         Me.BunifuButton4.DialogResult = System.Windows.Forms.DialogResult.None
         Me.BunifuButton4.DisabledBorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton4.DisabledFillColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
@@ -757,11 +760,11 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton2.ColorContrastOnClick = 45
         Me.BunifuButton2.ColorContrastOnHover = 45
         Me.BunifuButton2.Cursor = System.Windows.Forms.Cursors.Default
-        BorderEdges8.BottomLeft = True
-        BorderEdges8.BottomRight = True
-        BorderEdges8.TopLeft = True
-        BorderEdges8.TopRight = True
-        Me.BunifuButton2.CustomizableEdges = BorderEdges8
+        BorderEdges9.BottomLeft = True
+        BorderEdges9.BottomRight = True
+        BorderEdges9.TopLeft = True
+        BorderEdges9.TopRight = True
+        Me.BunifuButton2.CustomizableEdges = BorderEdges9
         Me.BunifuButton2.DialogResult = System.Windows.Forms.DialogResult.None
         Me.BunifuButton2.DisabledBorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton2.DisabledFillColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
@@ -848,11 +851,11 @@ Partial Class PfrmSalesMgmt
         Me.btnOpenSession.ColorContrastOnClick = 45
         Me.btnOpenSession.ColorContrastOnHover = 45
         Me.btnOpenSession.Cursor = System.Windows.Forms.Cursors.Default
-        BorderEdges9.BottomLeft = True
-        BorderEdges9.BottomRight = True
-        BorderEdges9.TopLeft = True
-        BorderEdges9.TopRight = True
-        Me.btnOpenSession.CustomizableEdges = BorderEdges9
+        BorderEdges10.BottomLeft = True
+        BorderEdges10.BottomRight = True
+        BorderEdges10.TopLeft = True
+        BorderEdges10.TopRight = True
+        Me.btnOpenSession.CustomizableEdges = BorderEdges10
         Me.btnOpenSession.DialogResult = System.Windows.Forms.DialogResult.None
         Me.btnOpenSession.DisabledBorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.btnOpenSession.DisabledFillColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
@@ -920,6 +923,97 @@ Partial Class PfrmSalesMgmt
         Me.btnOpenSession.TextPadding = New System.Windows.Forms.Padding(0)
         Me.btnOpenSession.UseDefaultRadiusAndThickness = True
         '
+        'BunifuButton9
+        '
+        Me.BunifuButton9.AllowAnimations = True
+        Me.BunifuButton9.AllowMouseEffects = True
+        Me.BunifuButton9.AllowToggling = False
+        Me.BunifuButton9.AnimationSpeed = 200
+        Me.BunifuButton9.AutoGenerateColors = False
+        Me.BunifuButton9.AutoRoundBorders = False
+        Me.BunifuButton9.AutoSizeLeftIcon = True
+        Me.BunifuButton9.AutoSizeRightIcon = True
+        Me.BunifuButton9.BackColor = System.Drawing.Color.Transparent
+        Me.BunifuButton9.BackColor1 = System.Drawing.Color.White
+        Me.BunifuButton9.BackgroundImage = CType(resources.GetObject("BunifuButton9.BackgroundImage"), System.Drawing.Image)
+        Me.BunifuButton9.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid
+        Me.BunifuButton9.ButtonText = "Proforma"
+        Me.BunifuButton9.ButtonTextMarginLeft = 0
+        Me.BunifuButton9.ColorContrastOnClick = 45
+        Me.BunifuButton9.ColorContrastOnHover = 45
+        Me.BunifuButton9.Cursor = System.Windows.Forms.Cursors.Default
+        BorderEdges1.BottomLeft = True
+        BorderEdges1.BottomRight = True
+        BorderEdges1.TopLeft = True
+        BorderEdges1.TopRight = True
+        Me.BunifuButton9.CustomizableEdges = BorderEdges1
+        Me.BunifuButton9.DialogResult = System.Windows.Forms.DialogResult.None
+        Me.BunifuButton9.DisabledBorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
+        Me.BunifuButton9.DisabledFillColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.BunifuButton9.DisabledForecolor = System.Drawing.Color.FromArgb(CType(CType(168, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(168, Byte), Integer))
+        Me.BunifuButton9.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed
+        Me.BunifuButton9.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BunifuButton9.ForeColor = System.Drawing.Color.Black
+        Me.BunifuButton9.IconLeft = CType(resources.GetObject("BunifuButton9.IconLeft"), System.Drawing.Image)
+        Me.BunifuButton9.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BunifuButton9.IconLeftCursor = System.Windows.Forms.Cursors.Default
+        Me.BunifuButton9.IconLeftPadding = New System.Windows.Forms.Padding(11, 3, 3, 3)
+        Me.BunifuButton9.IconMarginLeft = 11
+        Me.BunifuButton9.IconPadding = 10
+        Me.BunifuButton9.IconRight = Nothing
+        Me.BunifuButton9.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BunifuButton9.IconRightCursor = System.Windows.Forms.Cursors.Default
+        Me.BunifuButton9.IconRightPadding = New System.Windows.Forms.Padding(3, 3, 7, 3)
+        Me.BunifuButton9.IconSize = 35
+        Me.BunifuButton9.IdleBorderColor = System.Drawing.Color.White
+        Me.BunifuButton9.IdleBorderRadius = 1
+        Me.BunifuButton9.IdleBorderThickness = 1
+        Me.BunifuButton9.IdleFillColor = System.Drawing.Color.White
+        Me.BunifuButton9.IdleIconLeftImage = CType(resources.GetObject("BunifuButton9.IdleIconLeftImage"), System.Drawing.Image)
+        Me.BunifuButton9.IdleIconRightImage = Nothing
+        Me.BunifuButton9.IndicateFocus = False
+        Me.BunifuButton9.Location = New System.Drawing.Point(1, 425)
+        Me.BunifuButton9.Name = "BunifuButton9"
+        Me.BunifuButton9.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
+        Me.BunifuButton9.OnDisabledState.BorderRadius = 1
+        Me.BunifuButton9.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid
+        Me.BunifuButton9.OnDisabledState.BorderThickness = 1
+        Me.BunifuButton9.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.BunifuButton9.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(168, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(168, Byte), Integer))
+        Me.BunifuButton9.OnDisabledState.IconLeftImage = Nothing
+        Me.BunifuButton9.OnDisabledState.IconRightImage = Nothing
+        Me.BunifuButton9.onHoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.BunifuButton9.onHoverState.BorderRadius = 1
+        Me.BunifuButton9.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid
+        Me.BunifuButton9.onHoverState.BorderThickness = 1
+        Me.BunifuButton9.onHoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.BunifuButton9.onHoverState.ForeColor = System.Drawing.Color.White
+        Me.BunifuButton9.onHoverState.IconLeftImage = Nothing
+        Me.BunifuButton9.onHoverState.IconRightImage = Nothing
+        Me.BunifuButton9.OnIdleState.BorderColor = System.Drawing.Color.White
+        Me.BunifuButton9.OnIdleState.BorderRadius = 1
+        Me.BunifuButton9.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid
+        Me.BunifuButton9.OnIdleState.BorderThickness = 1
+        Me.BunifuButton9.OnIdleState.FillColor = System.Drawing.Color.White
+        Me.BunifuButton9.OnIdleState.ForeColor = System.Drawing.Color.Black
+        Me.BunifuButton9.OnIdleState.IconLeftImage = CType(resources.GetObject("BunifuButton9.OnIdleState.IconLeftImage"), System.Drawing.Image)
+        Me.BunifuButton9.OnIdleState.IconRightImage = Nothing
+        Me.BunifuButton9.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(144, Byte), Integer))
+        Me.BunifuButton9.OnPressedState.BorderRadius = 1
+        Me.BunifuButton9.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid
+        Me.BunifuButton9.OnPressedState.BorderThickness = 1
+        Me.BunifuButton9.OnPressedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(144, Byte), Integer))
+        Me.BunifuButton9.OnPressedState.ForeColor = System.Drawing.Color.White
+        Me.BunifuButton9.OnPressedState.IconLeftImage = Nothing
+        Me.BunifuButton9.OnPressedState.IconRightImage = Nothing
+        Me.BunifuButton9.Size = New System.Drawing.Size(219, 61)
+        Me.BunifuButton9.TabIndex = 185
+        Me.BunifuButton9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.BunifuButton9.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        Me.BunifuButton9.TextMarginLeft = 0
+        Me.BunifuButton9.TextPadding = New System.Windows.Forms.Padding(0)
+        Me.BunifuButton9.UseDefaultRadiusAndThickness = True
+        '
         'PfrmSalesMgmt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -959,4 +1053,5 @@ Partial Class PfrmSalesMgmt
     Friend WithEvents BunifuButton8 As Bunifu.UI.WinForms.BunifuButton.BunifuButton
     Friend WithEvents BunifuButton1 As Bunifu.UI.WinForms.BunifuButton.BunifuButton
     Friend WithEvents BunifuButton3 As Bunifu.UI.WinForms.BunifuButton.BunifuButton
+    Friend WithEvents BunifuButton9 As Bunifu.UI.WinForms.BunifuButton.BunifuButton
 End Class

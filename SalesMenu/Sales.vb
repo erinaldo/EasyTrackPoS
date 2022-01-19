@@ -75,9 +75,14 @@ Public Class frmSales
         txtSize.Text = ""
         txtBuyerName.Text = ""
         txtBuyerTel.Text = ""
+        lblProformaInvoice.Text = "100#"
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        If lblProformaInvoice.Text <> "100#" Then
+            MsgBox("You cannot add items to a proforma.")
+            Exit Sub
+        End If
         Dim sum As Decimal = 0
         Dim payable As Decimal = 0
         Dim DiscAmt As Decimal = 0
@@ -510,6 +515,7 @@ Public Class frmSales
     End Sub
 
     Private Sub gvStock_CellClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles gvStock.CellClick
+
         If cbSaleslist.SelectedIndex = 0 Or cbSaleslist.SelectedIndex = -1 Then
             Try
 
@@ -536,29 +542,69 @@ Public Class frmSales
 
         End If
         If cbSaleslist.SelectedIndex = 2 Then
-            Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
-            lblProformaInvoice.Text = row.Cells(0).Value.ToString()
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
+            If gvSales.Rows.Count <> 0 Then
+                Dim ask As MsgBoxResult
+                ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
+                If ask = MsgBoxResult.Yes Then
+                    gvSales.Rows.Clear()
+                    Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
+                    lblProformaInvoice.Text = row.Cells(0).Value.ToString()
+                    If Poscon.State = ConnectionState.Closed Then
+                        Poscon.Open()
+                    End If
+                    Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,amountpayable from proformainvoices where invoiceno like '%" + lblProformaInvoice.Text + "%'")
+                    cmd = New SqlCommand(queryy, Poscon)
+                    da = New SqlDataAdapter(cmd)
+                    tbl = New DataTable()
+                    da.Fill(tbl)
+                    If tbl.Rows.Count = 0 Then
+                        MsgBox("ProForma Empty")
+                        Exit Sub
+                    End If
+
+                    txtBuyerName.Text = tbl.Rows(0)(9).ToString
+                    txtBuyerTel.Text = tbl.Rows(0)(10).ToString
+                    cbLocation.Text = tbl.Rows(0)(11).ToString
+                    ' lblPayable.Text = tbl.Rows(0)(15).ToString
+
+                    For k = 0 To tbl.Rows.Count - 1
+                        gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, 0, 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
+                    Next
+                    Poscon.Close()
+                End If
+            Else
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
+                End If
+                Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
+                lblProformaInvoice.Text = row.Cells(0).Value.ToString()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
+                End If
+                Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,amountpayable from proformainvoices where invoiceno like '%" + lblProformaInvoice.Text + "%'")
+                cmd = New SqlCommand(queryy, Poscon)
+                da = New SqlDataAdapter(cmd)
+                tbl = New DataTable()
+                da.Fill(tbl)
+                If tbl.Rows.Count = 0 Then
+                    MsgBox("ProForma Empty")
+                    Exit Sub
+                End If
+
+                txtBuyerName.Text = tbl.Rows(0)(9).ToString
+                txtBuyerTel.Text = tbl.Rows(0)(10).ToString
+                cbLocation.Text = tbl.Rows(0)(11).ToString
+                ' lblPayable.Text = tbl.Rows(0)(15).ToString
+
+                For k = 0 To tbl.Rows.Count - 1
+                    gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, 0, 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
+                Next
+                Poscon.Close()
             End If
-            Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,amountpayable from proformainvoices where invoiceno like '%" + lblProformaInvoice.Text + "%'")
-            cmd = New SqlCommand(queryy, Poscon)
-            da = New SqlDataAdapter(cmd)
-            tbl = New DataTable()
-            da.Fill(tbl)
-            If tbl.Rows.Count = 0 Then
-                MsgBox("ProForma Empty")
-                Exit Sub
-            End If
-            txtBuyerName.Text = tbl.Rows(0)(9).ToString
-            txtBuyerTel.Text = tbl.Rows(0)(10).ToString
-            cbLocation.Text = tbl.Rows(0)(11).ToString
-            ' lblPayable.Text = tbl.Rows(0)(15).ToString
-            For k = 0 To tbl.Rows.Count - 1
-                gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, 0, 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
-            Next
-            Poscon.Close()
+
         End If
+
+
 
     End Sub
 
@@ -930,12 +976,16 @@ Public Class frmSales
         Dim ask As MsgBoxResult
         ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
         If ask = MsgBoxResult.Yes Then
+            lblProformaInvoice.Text = "100#"
             gvSales.Rows.Clear()
         End If
 
     End Sub
 
     Private Sub gvSales_RowsRemoved(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles gvSales.RowsRemoved
+        If gvSales.Rows.Count = 0 Then
+            lblProformaInvoice.Text = "100#"
+        End If
         Try
             Dim sum As Decimal = 0
             Dim payable As Decimal = 0

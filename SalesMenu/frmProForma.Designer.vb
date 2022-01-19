@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmProForma
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmProForma
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProForma))
@@ -137,7 +137,8 @@ Partial Class frmProForma
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.gvPriceBand = New Bunifu.UI.WinForms.BunifuDataGridView()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.txtNarration = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.gbsell.SuspendLayout()
         CType(Me.gvProformaInvoice, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -152,7 +153,6 @@ Partial Class frmProForma
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.gvPriceBand, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ckprintpreview
@@ -214,6 +214,8 @@ Partial Class frmProForma
         Me.gbsell.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbsell.BackColor = System.Drawing.Color.PaleGoldenrod
+        Me.gbsell.Controls.Add(Me.txtNarration)
+        Me.gbsell.Controls.Add(Me.Label3)
         Me.gbsell.Controls.Add(Me.gvProformaInvoice)
         Me.gbsell.Controls.Add(Me.Label34)
         Me.gbsell.Controls.Add(Me.ckprint)
@@ -239,7 +241,7 @@ Partial Class frmProForma
         Me.gbsell.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbsell.Location = New System.Drawing.Point(917, 128)
         Me.gbsell.Name = "gbsell"
-        Me.gbsell.Size = New System.Drawing.Size(324, 605)
+        Me.gbsell.Size = New System.Drawing.Size(324, 588)
         Me.gbsell.TabIndex = 143
         Me.gbsell.TabStop = False
         Me.gbsell.Text = "Sell"
@@ -306,7 +308,7 @@ Partial Class frmProForma
         Me.gvProformaInvoice.RowHeadersVisible = False
         Me.gvProformaInvoice.RowTemplate.Height = 40
         Me.gvProformaInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvProformaInvoice.Size = New System.Drawing.Size(305, 297)
+        Me.gvProformaInvoice.Size = New System.Drawing.Size(305, 222)
         Me.gvProformaInvoice.TabIndex = 148
         Me.gvProformaInvoice.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
         '
@@ -316,7 +318,7 @@ Partial Class frmProForma
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label34.AutoSize = True
         Me.Label34.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label34.Location = New System.Drawing.Point(166, 490)
+        Me.Label34.Location = New System.Drawing.Point(166, 473)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(47, 21)
         Me.Label34.TabIndex = 145
@@ -342,7 +344,7 @@ Partial Class frmProForma
         Me.ckprint.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
         Me.ckprint.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckprint.CustomCheckmarkImage = Nothing
-        Me.ckprint.Location = New System.Drawing.Point(146, 493)
+        Me.ckprint.Location = New System.Drawing.Point(146, 476)
         Me.ckprint.MinimumSize = New System.Drawing.Size(17, 17)
         Me.ckprint.Name = "ckprint"
         Me.ckprint.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
@@ -383,7 +385,7 @@ Partial Class frmProForma
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label28.AutoSize = True
         Me.Label28.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.Location = New System.Drawing.Point(33, 567)
+        Me.Label28.Location = New System.Drawing.Point(33, 550)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(78, 21)
         Me.Label28.TabIndex = 143
@@ -409,7 +411,7 @@ Partial Class frmProForma
         Me.ckA4.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
         Me.ckA4.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckA4.CustomCheckmarkImage = Nothing
-        Me.ckA4.Location = New System.Drawing.Point(13, 570)
+        Me.ckA4.Location = New System.Drawing.Point(13, 553)
         Me.ckA4.MinimumSize = New System.Drawing.Size(17, 17)
         Me.ckA4.Name = "ckA4"
         Me.ckA4.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
@@ -446,10 +448,10 @@ Partial Class frmProForma
         '
         'lblPayable
         '
-        Me.lblPayable.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblPayable.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblPayable.AutoSize = True
         Me.lblPayable.Font = New System.Drawing.Font("Segoe UI", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPayable.Location = New System.Drawing.Point(233, 347)
+        Me.lblPayable.Location = New System.Drawing.Point(229, 259)
         Me.lblPayable.Name = "lblPayable"
         Me.lblPayable.Size = New System.Drawing.Size(34, 40)
         Me.lblPayable.TabIndex = 138
@@ -457,10 +459,10 @@ Partial Class frmProForma
         '
         'Label29
         '
-        Me.Label29.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label29.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label29.AutoSize = True
         Me.Label29.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(152, 362)
+        Me.Label29.Location = New System.Drawing.Point(148, 274)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(75, 21)
         Me.Label29.TabIndex = 139
@@ -483,7 +485,7 @@ Partial Class frmProForma
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.Location = New System.Drawing.Point(33, 543)
+        Me.Label25.Location = New System.Drawing.Point(33, 526)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(78, 21)
         Me.Label25.TabIndex = 129
@@ -495,7 +497,7 @@ Partial Class frmProForma
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(33, 518)
+        Me.Label15.Location = New System.Drawing.Point(33, 501)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(84, 21)
         Me.Label15.TabIndex = 128
@@ -521,7 +523,7 @@ Partial Class frmProForma
         Me.ckA5Paper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
         Me.ckA5Paper.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckA5Paper.CustomCheckmarkImage = Nothing
-        Me.ckA5Paper.Location = New System.Drawing.Point(13, 546)
+        Me.ckA5Paper.Location = New System.Drawing.Point(13, 529)
         Me.ckA5Paper.MinimumSize = New System.Drawing.Size(17, 17)
         Me.ckA5Paper.Name = "ckA5Paper"
         Me.ckA5Paper.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
@@ -558,33 +560,30 @@ Partial Class frmProForma
         '
         'txtBuyerName
         '
-        Me.txtBuyerName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtBuyerName.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtBuyerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtBuyerName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuyerName.Location = New System.Drawing.Point(147, 387)
+        Me.txtBuyerName.Location = New System.Drawing.Point(143, 299)
         Me.txtBuyerName.Name = "txtBuyerName"
         Me.txtBuyerName.Size = New System.Drawing.Size(157, 27)
         Me.txtBuyerName.TabIndex = 16
         '
         'txtBuyerTel
         '
-        Me.txtBuyerTel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtBuyerTel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtBuyerTel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtBuyerTel.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuyerTel.Location = New System.Drawing.Point(148, 420)
+        Me.txtBuyerTel.Location = New System.Drawing.Point(144, 332)
         Me.txtBuyerTel.Name = "txtBuyerTel"
         Me.txtBuyerTel.Size = New System.Drawing.Size(157, 27)
         Me.txtBuyerTel.TabIndex = 18
         '
         'cbLocation
         '
-        Me.cbLocation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbLocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbLocation.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbLocation.FormattingEnabled = True
-        Me.cbLocation.Location = New System.Drawing.Point(148, 453)
+        Me.cbLocation.Location = New System.Drawing.Point(144, 365)
         Me.cbLocation.Name = "cbLocation"
         Me.cbLocation.Size = New System.Drawing.Size(158, 29)
         Me.cbLocation.TabIndex = 22
@@ -609,7 +608,7 @@ Partial Class frmProForma
         Me.ckrollPaper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
         Me.ckrollPaper.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckrollPaper.CustomCheckmarkImage = Nothing
-        Me.ckrollPaper.Location = New System.Drawing.Point(13, 521)
+        Me.ckrollPaper.Location = New System.Drawing.Point(13, 504)
         Me.ckrollPaper.MinimumSize = New System.Drawing.Size(17, 17)
         Me.ckrollPaper.Name = "ckrollPaper"
         Me.ckrollPaper.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
@@ -650,7 +649,7 @@ Partial Class frmProForma
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(11, 495)
+        Me.Label14.Location = New System.Drawing.Point(11, 478)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(106, 15)
         Me.Label14.TabIndex = 125
@@ -675,7 +674,7 @@ Partial Class frmProForma
         Me.BunifuThinButton21.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton21.IdleForecolor = System.Drawing.Color.DarkRed
         Me.BunifuThinButton21.IdleLineColor = System.Drawing.Color.Maroon
-        Me.BunifuThinButton21.Location = New System.Drawing.Point(144, 521)
+        Me.BunifuThinButton21.Location = New System.Drawing.Point(144, 504)
         Me.BunifuThinButton21.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton21.Name = "BunifuThinButton21"
         Me.BunifuThinButton21.Size = New System.Drawing.Size(160, 68)
@@ -684,10 +683,10 @@ Partial Class frmProForma
         '
         'lblTotal
         '
-        Me.lblTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTotal.AutoSize = True
         Me.lblTotal.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(71, 355)
+        Me.lblTotal.Location = New System.Drawing.Point(67, 267)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(25, 30)
         Me.lblTotal.TabIndex = 1
@@ -695,11 +694,10 @@ Partial Class frmProForma
         '
         'Label11
         '
-        Me.Label11.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(12, 389)
+        Me.Label11.Location = New System.Drawing.Point(8, 301)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(133, 21)
         Me.Label11.TabIndex = 17
@@ -707,11 +705,10 @@ Partial Class frmProForma
         '
         'Label12
         '
-        Me.Label12.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label12.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(23, 422)
+        Me.Label12.Location = New System.Drawing.Point(19, 334)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(80, 21)
         Me.Label12.TabIndex = 19
@@ -719,11 +716,10 @@ Partial Class frmProForma
         '
         'Label13
         '
-        Me.Label13.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label13.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(23, 456)
+        Me.Label13.Location = New System.Drawing.Point(19, 368)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(76, 21)
         Me.Label13.TabIndex = 21
@@ -731,10 +727,10 @@ Partial Class frmProForma
         '
         'Label2
         '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(24, 361)
+        Me.Label2.Location = New System.Drawing.Point(20, 273)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(52, 21)
         Me.Label2.TabIndex = 104
@@ -1355,7 +1351,6 @@ Partial Class frmProForma
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.BackColor = System.Drawing.Color.PowderBlue
-        Me.GroupBox1.Controls.Add(Me.DataGridView1)
         Me.GroupBox1.Controls.Add(Me.Label35)
         Me.GroupBox1.Controls.Add(Me.ckprintpreview)
         Me.GroupBox1.Controls.Add(Me.Label31)
@@ -1754,13 +1749,27 @@ Partial Class frmProForma
         Me.gvPriceBand.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
         Me.gvPriceBand.Visible = False
         '
-        'DataGridView1
+        'txtNarration
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(157, 348)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(240, 150)
-        Me.DataGridView1.TabIndex = 148
+        Me.txtNarration.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtNarration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtNarration.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNarration.Location = New System.Drawing.Point(22, 411)
+        Me.txtNarration.Multiline = True
+        Me.txtNarration.Name = "txtNarration"
+        Me.txtNarration.Size = New System.Drawing.Size(296, 59)
+        Me.txtNarration.TabIndex = 149
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(18, 389)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(81, 19)
+        Me.Label3.TabIndex = 150
+        Me.Label3.Text = "Narration"
         '
         'frmProForma
         '
@@ -1798,7 +1807,6 @@ Partial Class frmProForma
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         CType(Me.gvPriceBand, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1905,5 +1913,6 @@ Partial Class frmProForma
     Friend WithEvents gvPriceBand As Bunifu.UI.WinForms.BunifuDataGridView
     Friend WithEvents gvProformaInvoice As Bunifu.UI.WinForms.BunifuDataGridView
     Friend WithEvents lblProformainvoice As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents txtNarration As TextBox
+    Friend WithEvents Label3 As Label
 End Class

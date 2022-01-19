@@ -175,7 +175,7 @@ Public Class frmMain
     End Sub
 
     Private Sub BunifuButton6_Click(sender As Object, e As EventArgs) Handles BunifuButton6.Click
-        frmProForma.Show()
+        MsgBox("Contact your Service Providers")
     End Sub
 
 
