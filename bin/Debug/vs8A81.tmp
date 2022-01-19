@@ -1,0 +1,1181 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+EasyTrackPoS
+</name>
+</assembly>
+<members>
+<member name="T:HardSoft_PoS.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:HardSoft_PoS.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:HardSoft_PoS.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.ClientRegDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.IssueStockDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.CustomerPaymentDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.CustomerLedgerDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.CustomerDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.RangeDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.ClientRegRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.IssueStockRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.CustomerPaymentRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.CustomerLedgerRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.CustomerRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.RangeRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.ClientRegRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.IssueStockRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.CustomerPaymentRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.CustomerLedgerRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.CustomerRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomer.RangeRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomerTableAdapters.ClientRegTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomerTableAdapters.IssueStockTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomerTableAdapters.CustomerPaymentTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomerTableAdapters.CustomerLedgerTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomerTableAdapters.CustomerTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomerTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dscustomerTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dscustomer,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dscustomerTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dscustomer,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dscustomerTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dscustomer,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dscustomerTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dscustomerTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dscustomer)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomerTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dscustomerTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaInvoicesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaConfigDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ClientRegDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaInvoicesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaConfigRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ClientRegRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaInvoicesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaConfigRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ClientRegRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproforma.ProformaRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproformaTableAdapters.ProformaInvoicesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproformaTableAdapters.ProformaConfigTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproformaTableAdapters.ClientRegTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dsproforma,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dsproforma,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dsproforma,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dsproforma)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsproformaTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsAdjustStock">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsAdjustStock.AdjustStockDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsAdjustStock.AdjustStockRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsAdjustStock.AdjustStockRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsAdjustStockTableAdapters.AdjustStockTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsAdjustStockTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsAdjustStockTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dsAdjustStock,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsAdjustStockTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dsAdjustStock,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsAdjustStockTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dsAdjustStock,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsAdjustStockTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsAdjustStockTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dsAdjustStock)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsAdjustStockTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsAdjustStockTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGenerateBarcode">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGenerateBarcode.dtBarcodeDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGenerateBarcode.dtBarcodeRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGenerateBarcode.dtBarcodeRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecieved">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecieved.IssueStockDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecieved.ClientRegDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecieved.RecieveStockDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecieved.IssueStockRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecieved.ClientRegRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecieved.RecieveStockRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecieved.IssueStockRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecieved.ClientRegRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecieved.RecieveStockRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecievedTableAdapters.IssueStockTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecievedTableAdapters.ClientRegTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecievedTableAdapters.RecieveStockTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecievedTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsGoodsRecievedTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dsGoodsRecieved,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsGoodsRecievedTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dsGoodsRecieved,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsGoodsRecievedTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dsGoodsRecieved,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsGoodsRecievedTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsGoodsRecievedTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dsGoodsRecieved)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecievedTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsGoodsRecievedTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedDeliveryLogDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.ClientRegDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.dtTobeCollectedDelDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedDeliveryLogRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.ClientRegRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.dtTobeCollectedDelRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedDeliveryLogRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.ClientRegRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.dtTobeCollectedDelRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.ToBeCollectedTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.ToBeCollectedDeliveryLogTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.ClientRegTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsTobeCollectedTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dsTobeCollected,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsTobeCollectedTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dsTobeCollected,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsTobeCollectedTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dsTobeCollected,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsTobeCollectedTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsTobeCollectedTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dsTobeCollected)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.ClientRegDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.InventoryLedgerDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.StockMastDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.ProformaInvoicesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.ClientRegRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.InventoryLedgerRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.StockMastRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.ProformaInvoicesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.ClientRegRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.InventoryLedgerRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.StockMastRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.ProformaInvoicesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.ClientRegTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.InventoryLedgerTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.StockMastTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.ProformaInvoicesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsInventoryTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dsInventory,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsInventoryTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dsInventory,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsInventoryTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dsInventory,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsInventoryTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsInventoryTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dsInventory)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.ClientRegDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.StockMastDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.ClientRegRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.StockMastRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.ClientRegRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.StockMastRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.SupplierDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.supplierLedgerDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.SupplierPaymentsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.RecieveStockDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.ClientRegDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.SupplierRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.supplierLedgerRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.SupplierPaymentsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.RecieveStockRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.ClientRegRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.SupplierRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.supplierLedgerRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.SupplierPaymentsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.RecieveStockRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplier.ClientRegRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplierTableAdapters.SupplierTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplierTableAdapters.supplierLedgerTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplierTableAdapters.SupplierPaymentsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplierTableAdapters.RecieveStockTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplierTableAdapters.ClientRegTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplierTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSupplierTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dsSupplier,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSupplierTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dsSupplier,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSupplierTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dsSupplier,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSupplierTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSupplierTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dsSupplier)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplierTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSupplierTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMastTableAdapters.ClientRegTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMastTableAdapters.StockMastTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMastTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsStockMastTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dsStockMast,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsStockMastTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dsStockMast,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsStockMastTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dsStockMast,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsStockMastTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsStockMastTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dsStockMast)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMastTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMastTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.ClientRegDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.SalesTranxDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.SessionLedgerDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.PriceChangeLogDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.ClientRegRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.SalesTranxRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.SessionLedgerRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.PriceChangeLogRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.ClientRegRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.SalesTranxRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.SessionLedgerRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.PriceChangeLogRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.ClientRegTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.SalesTranxTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.SessionLedgerTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.PriceChangeLogTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSalesTranxTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dsSalesTranx,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSalesTranxTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dsSalesTranx,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSalesTranxTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dsSalesTranx,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSalesTranxTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSalesTranxTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dsSalesTranx)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSessionLedger">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSessionLedger.SessionLedgerDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSessionLedger.SessionLedgerRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSessionLedger.SessionLedgerRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSessionLedgerTableAdapters.SessionLedgerTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSessionLedgerTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSessionLedgerTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dsSessionLedger,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSessionLedgerTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dsSessionLedger,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSessionLedgerTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dsSessionLedger,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSessionLedgerTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsSessionLedgerTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dsSessionLedger)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSessionLedgerTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSessionLedgerTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTouchReciepts">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTouchReciepts.OderRecieptDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTouchReciepts.OderRecieptRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTouchReciepts.OderRecieptRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+</members>
+</doc>

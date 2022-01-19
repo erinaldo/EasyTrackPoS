@@ -1,9 +1,12 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Globalization
 Public Class frmCustomerReportMenu
     'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As New SqlCommand
     Dim adp As New SqlDataAdapter
     Dim dt As New dscustomer
+    Dim outto As Date
+    Dim outfrom As Date
     Private Sub BunifuButton1_Click(sender As Object, e As EventArgs) Handles BunifuButton1.Click
         Try
             Dim query = "select * from CustomerLedger"
@@ -142,6 +145,42 @@ Public Class frmCustomerReportMenu
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
             Dim report As New rptCustomerSummPDate
+            report.SetDataSource(dt)
+            frmSupplierReport.Show()
+            frmSupplierReport.CrystalReportViewer1.ReportSource = report
+            frmSupplierReport.CrystalReportViewer1.Refresh()
+            cmd.Dispose()
+            adp.Dispose()
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub BunifuButton5_Click(sender As Object, e As EventArgs) Handles BunifuButton5.Click
+        DateTime.TryParseExact(dpdatefrom.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outfrom)
+        DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
+
+        Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            Dim query = "select * from Customerpayment where datepaid between @datefrom and @dateto"
+            cmd = New SqlCommand(query, Poscon)
+            cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
+            cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
+            dt.Tables("Customerpayment").Rows.Clear()
+            adp.SelectCommand = cmd
+            adp.Fill(dt, "Customerpayment")
+
+            dt.Tables("range").Rows.Add(dpdatefrom.Value, dpdateto.Value)
+
+            Dim sql = "select * from ClientReg"
+            dt.Tables("clientreg").Rows.Clear()
+            cmd = New SqlCommand(sql, Poscon)
+            adp.SelectCommand = cmd
+            adp.Fill(dt, "ClientReg")
+            Dim report As New rptCustomerPaymentsperDate
             report.SetDataSource(dt)
             frmSupplierReport.Show()
             frmSupplierReport.CrystalReportViewer1.ReportSource = report
