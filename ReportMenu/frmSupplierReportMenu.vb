@@ -122,4 +122,33 @@ Public Class frmSupplierReportMenu
         frmReportMenu.Show()
         Me.Hide()
     End Sub
+
+    Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles BunifuButton4.Click
+        Try
+
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            Dim query = "select * from RecieveStock"
+            cmd = New SqlCommand(query, Poscon)
+            adp.SelectCommand = cmd
+            adp.Fill(dt, "recieveStock")
+
+            Dim sql = "select * from ClientReg"
+            cmd = New SqlCommand(sql, Poscon)
+            adp.SelectCommand = cmd
+            adp.Fill(dt, "ClientReg")
+
+            Dim report As New rptGoodsRecievedPerDate
+            report.SetDataSource(dt)
+            frmSupplierReport.Show()
+            frmSupplierReport.CrystalReportViewer1.ReportSource = report
+            frmSupplierReport.CrystalReportViewer1.Refresh()
+            cmd.Dispose()
+            adp.Dispose()
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
 End Class

@@ -1281,6 +1281,12 @@
     <Compile Include="ReportMenu\StockRecievedReportMenu.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SuppliersMenu\rptGoodsRecievedPerDate.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptGoodsRecievedPerDate.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SuppliersMenu\SupplierAccountMenu.Designer.vb">
       <DependentUpon>SupplierAccountMenu.vb</DependentUpon>
     </Compile>
@@ -1796,6 +1802,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportMenu\StockRecievedReportMenu.resx">
       <DependentUpon>StockRecievedReportMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuppliersMenu\rptGoodsRecievedPerDate.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptGoodsRecievedPerDate.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SuppliersMenu\SupplierAccountMenu.resx">
       <DependentUpon>SupplierAccountMenu.vb</DependentUpon>
