@@ -532,6 +532,7 @@ Public Class frmSales
                 lblOPrice.Text = row.Cells(2).Value.ToString()
                 lblProdName.Text = row.Cells(0).Value.ToString()
                 '+ "-" + txtProdline.Text + ""
+                txtQty.Focus()
             Catch ex As Exception
                 MsgBox(ex.ToString)
             End Try
@@ -539,7 +540,7 @@ Public Class frmSales
             ''txtProdName.Text = ""
         End If
         If cbSaleslist.SelectedIndex = 1 Then
-
+            txtCashPaid.Focus()
         End If
         If cbSaleslist.SelectedIndex = 2 Then
             If gvSales.Rows.Count <> 0 Then
@@ -572,6 +573,7 @@ Public Class frmSales
                     Next
                     Poscon.Close()
                 End If
+                txtCashPaid.Focus()
             Else
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
@@ -601,7 +603,7 @@ Public Class frmSales
                 Next
                 Poscon.Close()
             End If
-
+            txtCashPaid.Focus()
         End If
 
 

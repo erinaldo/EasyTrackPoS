@@ -34,6 +34,8 @@ Partial Class frmSupplierReportMenu
         Me.BunifuButton3 = New Bunifu.UI.WinForms.BunifuButton.BunifuButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BunifuButton4 = New Bunifu.UI.WinForms.BunifuButton.BunifuButton()
+        Me.dpdatefrom = New System.Windows.Forms.DateTimePicker()
+        Me.dpdateto = New System.Windows.Forms.DateTimePicker()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -503,12 +505,32 @@ Partial Class frmSupplierReportMenu
         Me.BunifuButton4.TextPadding = New System.Windows.Forms.Padding(0)
         Me.BunifuButton4.UseDefaultRadiusAndThickness = True
         '
+        'dpdatefrom
+        '
+        Me.dpdatefrom.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpdatefrom.Location = New System.Drawing.Point(177, 38)
+        Me.dpdatefrom.Name = "dpdatefrom"
+        Me.dpdatefrom.Size = New System.Drawing.Size(180, 27)
+        Me.dpdatefrom.TabIndex = 192
+        Me.dpdatefrom.Value = New Date(2022, 1, 12, 0, 0, 0, 0)
+        '
+        'dpdateto
+        '
+        Me.dpdateto.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpdateto.Location = New System.Drawing.Point(398, 38)
+        Me.dpdateto.Name = "dpdateto"
+        Me.dpdateto.Size = New System.Drawing.Size(180, 27)
+        Me.dpdateto.TabIndex = 191
+        Me.dpdateto.Value = New Date(2022, 1, 12, 0, 0, 0, 0)
+        '
         'frmSupplierReportMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(782, 396)
+        Me.Controls.Add(Me.dpdatefrom)
+        Me.Controls.Add(Me.dpdateto)
         Me.Controls.Add(Me.BunifuButton4)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BunifuButton3)
@@ -529,4 +551,6 @@ Partial Class frmSupplierReportMenu
     Friend WithEvents BunifuButton3 As Bunifu.UI.WinForms.BunifuButton.BunifuButton
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BunifuButton4 As Bunifu.UI.WinForms.BunifuButton.BunifuButton
+    Friend WithEvents dpdatefrom As DateTimePicker
+    Friend WithEvents dpdateto As DateTimePicker
 End Class

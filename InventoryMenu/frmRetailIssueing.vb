@@ -11,55 +11,10 @@ Public Class frmRetailIssueing
         Timer1.Enabled = True
         Display()
         Try
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            cbSearchItem.Items.Clear()
-            Dim sql = "select * from Stockmast"
-            cmd = New SqlCommand(sql, Poscon)
-            dr = cmd.ExecuteReader
-            While dr.Read
-                cbSearchItem.Items.Add(dr(1))
-
-            End While
-            Poscon.Close()
-
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            cbSuppName.Items.Clear()
-            Dim query = ("select * from customer")
-            cmd = New SqlCommand(query, Poscon)
-            dr = cmd.ExecuteReader
-            While dr.Read
-                cbSuppName.Items.Add(dr(1))
-            End While
-            Poscon.Close()
-
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            cbCatSort.Items.Clear()
-            Dim sqll = "select category from Category"
-            cmd = New SqlCommand(sqll, Poscon)
-            dr = cmd.ExecuteReader
-            While dr.Read
-                cbCatSort.Items.Add(dr(0))
-            End While
-            Poscon.Close()
-
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            cbCatSort.Items.Clear()
-            Dim pli = "select productline from productline"
-            cmd = New SqlCommand(pli, Poscon)
-            dr = cmd.ExecuteReader
-            While dr.Read
-                cbCatSort.Items.Add(dr(0))
-            End While
-            Poscon.Close()
-
+            ComboFeed("select * from Stockmast", cbSearchItem, 1)
+            ComboFeed("select * from customer", cbSuppName, 1)
+            ComboFeed("select category from Category", cbCatSort, 0)
+            ComboFeed("select productline from productline", cbCatSort, 0)
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -89,18 +44,7 @@ Public Class frmRetailIssueing
         End If
 
         Poscon.Close()
-
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast"
-        cmd = New SqlCommand(query, Poscon)
-        da = New SqlDataAdapter(cmd)
-        Dim tbl As New DataTable
-        da.Fill(tbl)
-        gvStockBf.DataSource = tbl
-        Poscon.Close()
-
+        reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast", gvStockBf)
     End Sub
 
     Private Sub txtQtyRecieved_TextChanged(sender As Object, e As EventArgs) Handles txtQtyRecieved.TextChanged
@@ -146,6 +90,7 @@ Public Class frmRetailIssueing
             txtbaseQty.Text = row.Cells(6).Value.ToString()
             lblpackprice.Text = row.Cells(4).Value.ToString()
             txtPackVolume.Text = Val(txtPackSize.Text * txtbaseQty.Text)
+            txtQtyRecieved.Focus()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -305,9 +250,8 @@ Public Class frmRetailIssueing
                     Dim query = "insert into customerpayment(Customername,oldbal,datepaid,amtpaid,newbal,Paymentmode,Recievedby) values('" + cbSuppName.Text + "','" + lblOldBal.Text + "','" + txtdate.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbPaymentMode.Text + "','" + tsuser.Text + "') "
                     cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()
+                    ' create("insert into customerpayment(Customername,oldbal,datepaid,amtpaid,newbal,Paymentmode,Recievedby) values('" + cbSuppName.Text + "','" + lblOldBal.Text + "','" + txtdate.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbPaymentMode.Text + "','" + tsuser.Text + "') ")
                 End If
-                Poscon.Close()
-                'MsgBox("Record Saved")
             Finally
                 For k = 0 To gvStockBatch.RowCount - 1
                     If Poscon.State = ConnectionState.Closed Then
@@ -318,6 +262,7 @@ Public Class frmRetailIssueing
                     dr = cmd.ExecuteReader
                     While dr.Read
 
+                        ' updates("update StockMast set prodqty = '" & dr.Item("ProdQty") - gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & "")
                         Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & ""
                         cmd = New SqlCommand(query, Poscon)
                         cmd.ExecuteNonQuery()

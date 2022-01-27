@@ -5,8 +5,8 @@ Public Class SalesReportMenu
     Dim cmd As New SqlCommand
     Dim da As New SqlDataAdapter
     Dim dt As New dsSalesTranx
-    Dim outto As Date
-    Dim outfrom As Date
+    'Dim outto As Date
+    'Dim outfrom As Date
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         Dim f2 As New frmReportMenu

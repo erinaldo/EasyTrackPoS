@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F49B7D96-10D9-498E-85E8-D1A648498992}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>HardSoft_PoS.frmMain</StartupObject>
+    <StartupObject>HardSoft_PoS.Login</StartupObject>
     <RootNamespace>HardSoft_PoS</RootNamespace>
     <AssemblyName>EasyTrackPoS</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -571,6 +571,30 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Module\SMSModule.vb" />
+    <Compile Include="Pages\CustomerReport.Designer.vb">
+      <DependentUpon>CustomerReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CustomerReport.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\InventoryReport.Designer.vb">
+      <DependentUpon>InventoryReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InventoryReport.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\SalesReport.Designer.vb">
+      <DependentUpon>SalesReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SalesReport.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\SupplierReport.Designer.vb">
+      <DependentUpon>SupplierReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SupplierReport.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="PfrmCustomer.Designer.vb">
       <DependentUpon>PfrmCustomer.vb</DependentUpon>
     </Compile>
@@ -762,6 +786,12 @@
       <DependentUpon>frmSupplierReportMenu.vb</DependentUpon>
     </Compile>
     <Compile Include="ReportMenu\frmSupplierReportMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportMenu\NewReport.Designer.vb">
+      <DependentUpon>NewReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReportMenu\NewReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ReportMenu\PfrmReports.Designer.vb">
@@ -1423,6 +1453,18 @@
       <LastGenOutput>rptTobeCollected.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="Pages\CustomerReport.resx">
+      <DependentUpon>CustomerReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\InventoryReport.resx">
+      <DependentUpon>InventoryReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SalesReport.resx">
+      <DependentUpon>SalesReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SupplierReport.resx">
+      <DependentUpon>SupplierReport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PfrmCustomer.resx">
       <DependentUpon>PfrmCustomer.vb</DependentUpon>
     </EmbeddedResource>
@@ -1513,6 +1555,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportMenu\frmSupplierReportMenu.resx">
       <DependentUpon>frmSupplierReportMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportMenu\NewReport.resx">
+      <DependentUpon>NewReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportMenu\PfrmReports.resx">
       <DependentUpon>PfrmReports.vb</DependentUpon>

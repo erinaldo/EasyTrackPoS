@@ -7,8 +7,8 @@
     End Sub
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-        Dim f2 As New StockRecievedReportMenu
-        f2.Show()
+        ' Dim f2 As New StockRecievedReportMenu
+        StockRecievedReportMenu.Show()
         Me.Hide()
 
     End Sub

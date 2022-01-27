@@ -32,7 +32,8 @@ Public Class RecieveCustomerPayment
         'End Try
         ComboFeed("select customername from Customer", cbCustName, 0)
 
-        cbCustName.Text = ""
+        cbCustName.SelectedIndex = -1
+        cbPaymentMode.SelectedIndex = 0
         lblCustBal.Text = 0
         'search("")
         clear()

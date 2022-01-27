@@ -8,6 +8,8 @@ Module CRUDFunction
     Public tbl As New DataTable
     Public ds As New DataSet
     Public dr As SqlDataReader
+    Public outto As Date
+    Public outfrom As Date
 
 #Region "Report"
     Public Sub reports(ByVal sql As String, ByVal rptname As String, ByVal crystalRpt As Object)

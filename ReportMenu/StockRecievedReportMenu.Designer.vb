@@ -137,6 +137,7 @@ Partial Class StockRecievedReportMenu
         'dpFrom
         '
         Me.dpFrom.BackColor = System.Drawing.Color.Transparent
+        Me.dpFrom.BorderColor = System.Drawing.Color.Silver
         Me.dpFrom.BorderRadius = 1
         Me.dpFrom.Color = System.Drawing.Color.Silver
         Me.dpFrom.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin
@@ -157,11 +158,12 @@ Partial Class StockRecievedReportMenu
         Me.dpFrom.Name = "dpFrom"
         Me.dpFrom.Size = New System.Drawing.Size(169, 32)
         Me.dpFrom.TabIndex = 131
-        Me.dpFrom.Value = New Date(2021, 8, 16, 11, 6, 0, 0)
+        Me.dpFrom.Value = New Date(2022, 1, 23, 0, 0, 0, 0)
         '
         'dpto
         '
         Me.dpto.BackColor = System.Drawing.Color.Transparent
+        Me.dpto.BorderColor = System.Drawing.Color.Silver
         Me.dpto.BorderRadius = 1
         Me.dpto.Color = System.Drawing.Color.Silver
         Me.dpto.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin

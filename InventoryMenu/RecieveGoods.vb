@@ -255,6 +255,7 @@ Public Class frmRecieveGoods
             Dim b = Val(txtbaseQty.Text)
             pckvol = a * b
             txtPackVolume.Text = pckvol
+            txtQtyRecieved.Focus()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
