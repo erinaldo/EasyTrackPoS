@@ -16,7 +16,7 @@
     End Sub
 
     Private Sub btnPline_Click(sender As Object, e As EventArgs)
-        Dim f2 As New frmProductline
+        Dim f2 As New frmPackages
         With f2
             .TopLevel = False
             PCreateProd.Controls.Add(f2)
@@ -81,7 +81,7 @@
     End Sub
 
     Private Sub BunifuButton8_Click(sender As Object, e As EventArgs) Handles BunifuButton8.Click
-        Dim f2 As New frmProductline
+        Dim f2 As New frmPackages
         With f2
             .TopLevel = False
             PCreateProd.Controls.Add(f2)

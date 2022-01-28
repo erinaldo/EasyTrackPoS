@@ -22,9 +22,7 @@ Public Class frmProdCatCreation
         gvStock.DataSource = ds.Tables(0)
         poscon.Close()
     End Sub
-    Private Sub clear()
-        txtCat.Text = ""
-    End Sub
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If poscon.State = ConnectionState.Closed Then
@@ -62,46 +60,43 @@ Public Class frmProdCatCreation
         dr.Close()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        clear()
-    End Sub
-    Dim key = ""
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        If key = "" Then
-            MsgBox("Select a Category")
-        Else
-            Try
-                If poscon.State = ConnectionState.Closed Then
-                    poscon.Open()
-                End If
-                Dim query = "delete from Category where Id= " + key + " "
-                cmd = New SqlCommand(query, poscon)
-                cmd.ExecuteNonQuery()
-                MsgBox("Product Deleted Successfully")
-                poscon.Close()
-                clear()
-                Display()
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
-        End If
 
-    End Sub
+    'Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    '    If key = "" Then
+    '        MsgBox("Select a Category")
+    '    Else
+    '        Try
+    '            If poscon.State = ConnectionState.Closed Then
+    '                poscon.Open()
+    '            End If
+    '            Dim query = "delete from Category where Id= " + key + " "
+    '            cmd = New SqlCommand(query, poscon)
+    '            cmd.ExecuteNonQuery()
+    '            MsgBox("Product Deleted Successfully")
+    '            poscon.Close()
+    '            clear()
+    '            Display()
+    '        Catch ex As Exception
+    '            MsgBox(ex.Message)
+    '        End Try
+    '    End If
 
-    Private Sub gvStock_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStock.CellContentClick
-        Try
-            Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
-            txtCat.Text = row.Cells(1).Value.ToString()
-            If txtCat.Text = "" Then
-                key = ""
-            Else
-                key = row.Cells(0).Value.ToString
-            End If
-        Catch ex As Exception
+    'End Sub
 
-        End Try
+    'Private Sub gvStock_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStock.CellContentClick
+    '    Try
+    '        Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
+    '        txtCat.Text = row.Cells(1).Value.ToString()
+    '        If txtCat.Text = "" Then
+    '            key = ""
+    '        Else
+    '            key = row.Cells(0).Value.ToString
+    '        End If
+    '    Catch ex As Exception
 
-    End Sub
+    '    End Try
+
+    'End Sub
 
     Private Sub txtCat_TextChanged(sender As Object, e As EventArgs) Handles txtCat.TextChanged
 
@@ -121,24 +116,97 @@ Public Class frmProdCatCreation
 
     End Sub
 
-    Private Sub gvStock_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStock.CellClick
-        Try
-            Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
-            txtCat.Text = row.Cells(1).Value.ToString()
-            If txtCat.Text = "" Then
-                key = ""
-            Else
-                key = row.Cells(0).Value.ToString
-            End If
-        Catch ex As Exception
 
-        End Try
+
+
+
+    'Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    '    If Poscon.State = ConnectionState.Closed Then
+    '        Poscon.Open()
+    '    End If
+
+    '    Dim sql = "select * from Productline where Productline= '" + txtProdline.Text + "' "
+    '    cmd = New SqlCommand(sql, Poscon)
+    '    dr = cmd.ExecuteReader
+    '    If txtProdline.Text = "" Then
+    '        MsgBox("Enter New Productline")
+    '        Poscon.Close()
+    '    ElseIf (dr.Read = True) Then
+    '        MsgBox("Productline Already Exists, Enter a new Productline")
+    '        Poscon.Close()
+    '        clear()
+    '    Else
+    '        Try
+    '            If Poscon.State = ConnectionState.Closed Then
+    '                Poscon.Open()
+    '            End If
+    '            Dim query = "Insert into Productline values('" + txtProdline.Text + "')"
+    '            cmd = New SqlCommand(query, Poscon)
+    '            cmd.ExecuteNonQuery()
+    '            'MsgBox("Succesfully Created")
+    '            Poscon.Close()
+    '            Display()
+
+    '        Catch ex As Exception
+    '            MsgBox(ex.Message)
+    '        End Try
+
+    '    End If
+    '    clear()
+    'End Sub
+
+
+
+    Private Sub clear()
+        txtProdline.Text = ""
+    End Sub
+
+    Private Sub frmProductline_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Display()
 
     End Sub
 
-    Private Sub txtCat_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCat.KeyDown
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        'If key = "" Then
+        '    MsgBox("Select a Productline")
+        'Else
+        '    Try
+        '        Poscon.Open()
+        '        Dim query = "delete from Productline where Id= " + key + " "
+        '        cmd = New SqlCommand(query, Poscon)
+        '        cmd.ExecuteNonQuery()
+        '        'MsgBox("Productline Deleted Successfully")
+        '        Poscon.Close()
+        '        clear()
+        '        Display()
+        '    Catch ex As Exception
+        '        MsgBox(ex.Message)
+        '    End Try
+        'End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        clear()
+
+    End Sub
+
+    Private Sub gvStock_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStock.CellClick
+        'Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
+        'txtProdline.Text = row.Cells(1).Value.ToString()
+        'If txtProdline.Text = "" Then
+        '    key = ""
+        'Else
+        '    key = row.Cells(0).Value.ToString
+        'End If
+    End Sub
+
+    Private Sub txtProdline_KeyDown(sender As Object, e As KeyEventArgs) Handles txtProdline.KeyDown
         If e.KeyCode = Keys.Enter Then
             Button3_Click(Nothing, Nothing)
         End If
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+
     End Sub
 End Class

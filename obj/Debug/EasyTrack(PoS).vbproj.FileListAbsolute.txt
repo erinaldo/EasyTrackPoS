@@ -643,7 +643,6 @@ K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.Resources.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProdSetup.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProdCatCreation.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProdCreate.resources
-K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProductline.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProductManagementMenu.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.RecieveCustomerPayment.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmRecieveGoods.resources
@@ -673,3 +672,4 @@ K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.InventoryReport.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.SalesReport.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.CustomerReport.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.SupplierReport.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmPackages.resources

@@ -1239,10 +1239,10 @@
     <Compile Include="ProductsMenu\ProductCreation.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductsMenu\Productline.Designer.vb">
-      <DependentUpon>Productline.vb</DependentUpon>
+    <Compile Include="ProductsMenu\Packages.Designer.vb">
+      <DependentUpon>Packages.vb</DependentUpon>
     </Compile>
-    <Compile Include="ProductsMenu\Productline.vb">
+    <Compile Include="ProductsMenu\Packages.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProductsMenu\ProductManagementMenu.Designer.vb">
@@ -1811,8 +1811,8 @@
     <EmbeddedResource Include="ProductsMenu\ProductCreation.resx">
       <DependentUpon>ProductCreation.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductsMenu\Productline.resx">
-      <DependentUpon>Productline.vb</DependentUpon>
+    <EmbeddedResource Include="ProductsMenu\Packages.resx">
+      <DependentUpon>Packages.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductsMenu\ProductManagementMenu.resx">
       <DependentUpon>ProductManagementMenu.vb</DependentUpon>

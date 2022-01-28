@@ -34,7 +34,7 @@ Public Class frmProdCreate
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
-        If txtStockCode.Text = "" Or txtRPrice.Text = "" Or cbProdLine.Text = "" Or txtProdname.Text = "" Or cbCat.Text = "" Then
+        If txtStockCode.Text = "" Or txtRPrice.Text = "" Or cbProdLine.SelectedIndex = -1 Or txtProdName.Text = "" Or cbCat.SelectedIndex = -1 Then
             MsgBox("Fill all important fields")
         Else
 
@@ -42,7 +42,7 @@ Public Class frmProdCreate
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim query = "insert into stockmast values('" & txtStockCode.Text & "','" + txtProdName.Text + "','" + cbProdLine.Text + "','" & cbSize.Text & "','" & cbColour.Text & "','" & cbCat.Text & "','" & txtQty.Text & "','" & txtRPrice.Text & "','" & txtWPrice.Text & "','" & txtItemName.Text & "','" & cbbrandName.Text & "')"
+                Dim query = "insert into stockmast(Prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyremainder,packsize,baseqty,packprice) values('" & txtStockCode.Text & "','" + txtProdName.Text + "','" + cbProdLine.Text + "','" & cbSize.Text & "','" & cbColour.Text & "','" & cbCat.Text & "','" & txtQty.Text & "','" & txtRPrice.Text & "','" & txtWPrice.Text & "','" & txtItemName.Text & "','" & cbbrandName.Text & "')"
                 Dim cmd As SqlCommand
                 cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
@@ -58,8 +58,12 @@ Public Class frmProdCreate
         Display()
     End Sub
     Sub ItemName()
-        txtProdName.Text = txtItemName.Text + " " + cbColour.Text + " " + cbUnique.Text + " " + cbSize.Text
 
+        If Val(txtbaseqty.Text) * Val(txtpacksize.Text) > 1 Then
+            txtProdName.Text = txtItemName.Text + " " + cbColour.Text + " " + cbUnique.Text + " " + cbSize.Text + " " + txtpacksize.Text + "x" + "" + txtbaseqty.Text
+            Exit Sub
+        End If
+        txtProdName.Text = txtItemName.Text + " " + cbColour.Text + " " + cbUnique.Text + " " + cbSize.Text
     End Sub
 
     Private Sub ComboBox7_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbItemCodeType.SelectedIndexChanged
@@ -121,19 +125,19 @@ Public Class frmProdCreate
 
     End Sub
     Private Sub Display()
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
 
-        Dim query = "select * from StockMast"
-        cmd = New SqlCommand(query, Poscon)
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim tbl As New DataTable()
-        adapter.Fill(tbl)
-        gvStockMastBf.DataSource = tbl
-
+        'Dim query = "select * from StockMast"
+        'cmd = New SqlCommand(query, Poscon)
+        'Dim adapter As New SqlDataAdapter(cmd)
+        'Dim tbl As New DataTable()
+        'adapter.Fill(tbl)
+        'gvStockMastBf.DataSource = tbl
+        reload("select * from StockMast", gvStockMastBf)
         lblProdCount.Text = gvStockMastBf.Rows.Count()
-        Poscon.Close()
+        'Poscon.Close()
     End Sub
     Private Sub ProductManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Display()
@@ -257,7 +261,7 @@ Public Class frmProdCreate
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
 
-        If txtStockCode.Text = "" Or cbProdLine.Text = "" Or txtProdName.Text = "" Or cbCat.Text = "" Then
+        If txtStockCode.Text = "" Or cbProdLine.SelectedIndex = -1 Or txtProdName.Text = "" Or cbCat.SelectedIndex = -1 Then
             MsgBox("Fill all important fields")
             Exit Sub
         Else
@@ -435,26 +439,6 @@ Public Class frmProdCreate
     Private Sub cbSearchProdCreate_KeyUp(sender As Object, e As KeyEventArgs) Handles cbSearchProdCreate.KeyUp
         Feel(cbSearchProdCreate.Text)
     End Sub
-
-    Private Sub txtItemName_Validated_1(sender As Object, e As EventArgs) Handles txtItemName.Validated
-        ItemName()
-    End Sub
-
-    Private Sub txtItemName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtItemName.SelectedIndexChanged
-        ItemName()
-    End Sub
-
-    Private Sub cbSize_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSize.SelectedIndexChanged
-        ItemName()
-    End Sub
-
-    Private Sub cbColour_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbColour.SelectedIndexChanged
-        ItemName()
-    End Sub
-    Public Sub loadCatPline()
-
-    End Sub
-
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
         ProductManagement_Load(e, e)
     End Sub
@@ -491,31 +475,33 @@ Public Class frmProdCreate
     End Sub
 
     Private Sub cbCat_Click(sender As Object, e As EventArgs) Handles cbCat.Click
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        cbCat.Items.Clear()
-        Dim sqll = "select * from Category"
-        cmd = New SqlCommand(sqll, Poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            cbCat.Items.Add(dr(1))
-        End While
-        Poscon.Close()
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'cbCat.Items.Clear()
+        'Dim sqll = "select * from Category"
+        'cmd = New SqlCommand(sqll, Poscon)
+        'dr = cmd.ExecuteReader
+        'While dr.Read
+        '    cbCat.Items.Add(dr(1))
+        'End While
+        'Poscon.Close()
+        ComboFeed("select * from Category", cbCat, 1)
     End Sub
 
     Private Sub cbProdLine_Click(sender As Object, e As EventArgs) Handles cbProdLine.Click
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        cbProdLine.Items.Clear()
-        Dim query = "select * from Productline"
-        cmd = New SqlCommand(query, Poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            cbProdLine.Items.Add(dr(1))
-        End While
-        Poscon.Close()
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'cbProdLine.Items.Clear()
+        'Dim query = "select * from Productline"
+        'cmd = New SqlCommand(query, Poscon)
+        'dr = cmd.ExecuteReader
+        'While dr.Read
+        '    cbProdLine.Items.Add(dr(1))
+        'End While
+        'Poscon.Close()
+        ComboFeed("select * from Productline", cbProdLine, 1)
     End Sub
 
     Private Sub cbbrandName_Enter(sender As Object, e As EventArgs) Handles cbbrandName.Enter
@@ -539,15 +525,44 @@ Public Class frmProdCreate
     End Sub
 
     Private Sub txtRPrice_TextChanged(sender As Object, e As EventArgs) Handles txtRPrice.TextChanged
-
-    End Sub
-
-    Private Sub txtRPrice_Validated(sender As Object, e As EventArgs) Handles txtRPrice.Validated
         Dim packprice As Decimal
         Dim a = Val(txtpacksize.Text)
         Dim b = Val(txtbaseqty.Text)
         Dim c = Val(txtRPrice.Text)
         packprice = a * b * c
         txtpackprice.Text = packprice
+    End Sub
+
+    Private Sub txtpackprice_TextChanged(sender As Object, e As EventArgs) Handles txtpackprice.TextChanged
+        Dim rprice As Decimal
+        Dim a = Val(txtpacksize.Text)
+        Dim b = Val(txtbaseqty.Text)
+        Dim c = Val(txtpackprice.Text)
+        rprice = c / (a * b)
+        txtRPrice.Text = rprice
+    End Sub
+
+    Private Sub txtbaseqty_TextChanged(sender As Object, e As EventArgs) Handles txtbaseqty.TextChanged
+        ItemName()
+    End Sub
+
+    Private Sub txtItemName_TextChanged(sender As Object, e As EventArgs) Handles txtItemName.TextChanged
+        ItemName()
+    End Sub
+
+    Private Sub cbSize_TextChanged(sender As Object, e As EventArgs) Handles cbSize.TextChanged
+        ItemName()
+    End Sub
+
+    Private Sub cbColour_TextChanged(sender As Object, e As EventArgs) Handles cbColour.TextChanged
+        ItemName()
+    End Sub
+
+    Private Sub cbUnique_TextChanged(sender As Object, e As EventArgs) Handles cbUnique.TextChanged
+        ItemName()
+    End Sub
+
+    Private Sub txtpacksize_TextChanged(sender As Object, e As EventArgs) Handles txtpacksize.TextChanged
+        ItemName()
     End Sub
 End Class

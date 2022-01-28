@@ -302,7 +302,7 @@ Public Class frmProForma
         ''txtProdName.Text = ""
     End Sub
     Private Sub ShowBand()
-        reload("select * from PriceBand", gvPriceBand)
+        'reload("select * from PriceBand", gvPriceBand)
     End Sub
     Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
         If txtQty.Text = "" Then
@@ -604,14 +604,14 @@ Public Class frmProForma
         If txtQty.Text = "" Then
             Exit Sub
         End If
-        For Each row As DataGridViewRow In gvPriceBand.Rows
-            If row.Cells(1).Value = lblProdName.Text And row.Cells(3).Value <= CDbl(txtQty.Text) And row.Cells(4).Value >= CDbl(txtQty.Text) Then
-                txtPrice.Text = row.Cells(5).Value
-            Else
-                'txtPrice.Text = lblOPrice.Text
-            End If
-            'MsgBox(row.Cells(5).Value)
-        Next
+        'For Each row As DataGridViewRow In gvPriceBand.Rows
+        '    If row.Cells(1).Value = lblProdName.Text And row.Cells(3).Value <= CDbl(txtQty.Text) And row.Cells(4).Value >= CDbl(txtQty.Text) Then
+        '        txtPrice.Text = row.Cells(5).Value
+        '    Else
+        '        'txtPrice.Text = lblOPrice.Text
+        '    End If
+        '    'MsgBox(row.Cells(5).Value)
+        'Next
 
         Dim amt As Decimal
         amt = Val(txtQty.Text) * Val(txtPrice.Text)

@@ -44,7 +44,7 @@ Public Class frmRetailIssueing
         End If
 
         Poscon.Close()
-        reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast", gvStockBf)
+        reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where baseqty*packsize<>1", gvStockBf)
     End Sub
 
     Private Sub txtQtyRecieved_TextChanged(sender As Object, e As EventArgs) Handles txtQtyRecieved.TextChanged
@@ -373,34 +373,37 @@ Public Class frmRetailIssueing
                 Poscon.Open()
             End If
             If cbCatSort.SelectedIndex = -1 Then
-                Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-                cmd = New SqlCommand(query, Poscon)
-                Dim adapter As New SqlDataAdapter(cmd)
-                Dim table As New DataTable()
-                adapter.Fill(table)
-                gvStockBf.DataSource = table
+                'Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
+                'cmd = New SqlCommand(query, Poscon)
+                'Dim adapter As New SqlDataAdapter(cmd)
+                'Dim table As New DataTable()
+                'adapter.Fill(table)
+                'gvStockBf.DataSource = table
+                reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and baseqty*packsize<>1", gvStockBf)
             Else
-                Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'"
-                cmd = New SqlCommand(query, Poscon)
-                Dim adapter As New SqlDataAdapter(cmd)
-                Dim table As New DataTable()
-                adapter.Fill(table)
-                gvStockBf.DataSource = table
+                'Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'"
+                'cmd = New SqlCommand(query, Poscon)
+                'Dim adapter As New SqlDataAdapter(cmd)
+                'Dim table As New DataTable()
+                'adapter.Fill(table)
+                'gvStockBf.DataSource = table
+                reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "' and baseqty*packsize<>1 ", gvStockBf)
             End If
 
             Poscon.Close()
         Catch ex As Exception
-            ' MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
     Sub Sort(valuetosearch As String)
-        Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where ProdCat like '%" + valuetosearch + "%'"
-        cmd = New SqlCommand(query, Poscon)
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim table As New DataTable()
-        adapter.Fill(table)
-        gvStockBf.DataSource = table
+        'Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where ProdCat like '%" + valuetosearch + "%'"
+        'cmd = New SqlCommand(query, Poscon)
+        'Dim adapter As New SqlDataAdapter(cmd)
+        'Dim table As New DataTable()
+        'adapter.Fill(table)
+        'gvStockBf.DataSource = table
+        reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where ProdCat like '%" + valuetosearch + "%' and baseqty*packsize<>1", gvStockBf)
     End Sub
     Private Sub ShowConfigs()
         If Poscon.State = ConnectionState.Closed Then
@@ -478,7 +481,7 @@ Public Class frmRetailIssueing
                 Poscon.Open()
             End If
 
-            Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
+            Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and baseqty*packsize<>1"
             cmd = New SqlCommand(query, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable()

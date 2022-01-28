@@ -41,7 +41,7 @@ Public Class frmDeleteProduct
             Poscon.Open()
         End If
 
-        Dim query = "select * from StockMast"
+        Dim query = "select * from StockMast where prodqty=0"
         cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim tbl As New DataTable()

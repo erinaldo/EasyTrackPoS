@@ -33,7 +33,7 @@ Partial Class frmCreateCustomerAccount
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtEmailAddress = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtBusDigAddress = New System.Windows.Forms.TextBox()
+        Me.txtContact = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtResLocation = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -56,6 +56,8 @@ Partial Class frmCreateCustomerAccount
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.gvStockMast = New Bunifu.UI.WinForms.BunifuDataGridView()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,7 +95,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label13.Location = New System.Drawing.Point(64, 119)
+        Me.Label13.Location = New System.Drawing.Point(109, 117)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(56, 21)
         Me.Label13.TabIndex = 105
@@ -118,7 +120,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(34, 179)
+        Me.Label2.Location = New System.Drawing.Point(68, 179)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(117, 21)
         Me.Label2.TabIndex = 107
@@ -143,23 +145,23 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(6, 235)
+        Me.Label3.Location = New System.Drawing.Point(109, 239)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(195, 21)
+        Me.Label3.Size = New System.Drawing.Size(69, 21)
         Me.Label3.TabIndex = 109
-        Me.Label3.Text = "Business Digital Address"
+        Me.Label3.Text = "Contact"
         '
-        'txtBusDigAddress
+        'txtContact
         '
-        Me.txtBusDigAddress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.txtContact.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.txtBusDigAddress.BackColor = System.Drawing.Color.White
-        Me.txtBusDigAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtBusDigAddress.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtBusDigAddress.Location = New System.Drawing.Point(218, 231)
-        Me.txtBusDigAddress.Name = "txtBusDigAddress"
-        Me.txtBusDigAddress.Size = New System.Drawing.Size(282, 29)
-        Me.txtBusDigAddress.TabIndex = 108
+        Me.txtContact.BackColor = System.Drawing.Color.White
+        Me.txtContact.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtContact.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.txtContact.Location = New System.Drawing.Point(218, 231)
+        Me.txtContact.Name = "txtContact"
+        Me.txtContact.Size = New System.Drawing.Size(282, 29)
+        Me.txtContact.TabIndex = 108
         '
         'Label4
         '
@@ -451,10 +453,10 @@ Partial Class frmCreateCustomerAccount
         Me.BunifuThinButton21.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.Location = New System.Drawing.Point(94, 667)
+        Me.BunifuThinButton21.Location = New System.Drawing.Point(129, 673)
         Me.BunifuThinButton21.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.BunifuThinButton21.Name = "BunifuThinButton21"
-        Me.BunifuThinButton21.Size = New System.Drawing.Size(261, 71)
+        Me.BunifuThinButton21.Size = New System.Drawing.Size(267, 71)
         Me.BunifuThinButton21.TabIndex = 143
         Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -527,6 +529,30 @@ Partial Class frmCreateCustomerAccount
         Me.gvStockMast.TabIndex = 145
         Me.gvStockMast.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ComboBox1.Font = New System.Drawing.Font("Segoe UI", 14.25!)
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"Branch Customer", "Credit Customer"})
+        Me.ComboBox1.Location = New System.Drawing.Point(218, 631)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(282, 33)
+        Me.ComboBox1.TabIndex = 147
+        '
+        'Label12
+        '
+        Me.Label12.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label12.Location = New System.Drawing.Point(48, 639)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(121, 21)
+        Me.Label12.TabIndex = 146
+        Me.Label12.Text = "Customer type"
+        '
         'frmCreateCustomerAccount
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -534,6 +560,8 @@ Partial Class frmCreateCustomerAccount
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(963, 771)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.gvStockMast)
         Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.Panel1)
@@ -552,7 +580,7 @@ Partial Class frmCreateCustomerAccount
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtResLocation)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.txtBusDigAddress)
+        Me.Controls.Add(Me.txtContact)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtEmailAddress)
         Me.Controls.Add(Me.Label13)
@@ -580,7 +608,7 @@ Partial Class frmCreateCustomerAccount
     Friend WithEvents Label2 As Label
     Friend WithEvents txtEmailAddress As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents txtBusDigAddress As TextBox
+    Friend WithEvents txtContact As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents txtResLocation As TextBox
     Friend WithEvents Label5 As Label
@@ -603,4 +631,6 @@ Partial Class frmCreateCustomerAccount
     Friend WithEvents BunifuThinButton22 As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents Label11 As Label
     Friend WithEvents lbltotal As Label
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Label12 As Label
 End Class

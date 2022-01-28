@@ -1245,7 +1245,7 @@ Partial Class frmSales
         '
         Me.cbSaleslist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbSaleslist.FormattingEnabled = True
-        Me.cbSaleslist.Items.AddRange(New Object() {"Products", "Packages ", "Pro-Forma Invoices"})
+        Me.cbSaleslist.Items.AddRange(New Object() {"Products", "Packages ", "Pro-Forma Invoices", "Pack Items Only", "Single Items Only"})
         Me.cbSaleslist.Location = New System.Drawing.Point(15, 136)
         Me.cbSaleslist.Name = "cbSaleslist"
         Me.cbSaleslist.Size = New System.Drawing.Size(296, 28)

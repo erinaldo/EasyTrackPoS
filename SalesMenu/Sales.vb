@@ -253,15 +253,28 @@ Public Class frmSales
         End Try
     End Sub
     Private Sub Display()
-        If cbSaleslist.SelectedIndex = 0 Or cbSaleslist.SelectedIndex = -1 Then
-            reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
-        End If
-        If cbSaleslist.SelectedIndex = 1 Then
-            reload("select * from Packages", gvStock)
-        End If
-        If cbSaleslist.SelectedIndex = 2 Then
-            reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
-        End If
+        'If cbSaleslist.SelectedIndex = 0 Or cbSaleslist.SelectedIndex = -1 Then
+        '    reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
+        'End If
+        'If cbSaleslist.SelectedIndex = 1 Then
+        '    reload("select * from Packages", gvStock)
+        'End If
+        'If cbSaleslist.SelectedIndex = 2 Then
+        '    reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
+        'End If
+        Select Case cbSaleslist.SelectedIndex
+            Case 0
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
+            Case 1
+                reload("select * from Packages", gvStock)
+            Case 2
+                reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
+            Case 3
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where baseqty*packsize<>1", gvStock)
+            Case 4
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where baseqty*packsize=1", gvStock)
+
+        End Select
 
     End Sub
 
@@ -515,39 +528,65 @@ Public Class frmSales
     End Sub
 
     Private Sub gvStock_CellClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles gvStock.CellClick
+        Select Case cbSaleslist.SelectedIndex
+            Case 0
+                Try
 
-        If cbSaleslist.SelectedIndex = 0 Or cbSaleslist.SelectedIndex = -1 Then
-            Try
+                    Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
+                    cbProdName.Text = row.Cells(0).Value.ToString()
+                    'lblProdName.Text = row.Cells(0).Value.ToString()
+                    txtPrice.Text = row.Cells(2).Value.ToString()
+                    lblActualStock.Text = row.Cells(1).Value.ToString()
+                    txtProdcode.Text = row.Cells(7).Value.ToString()
+                    txtProdline.Text = row.Cells(6).Value.ToString()
+                    txtCat.Text = row.Cells(4).Value.ToString()
+                    txtSize.Text = row.Cells(3).Value.ToString()
+                    txtColour.Text = row.Cells(5).Value.ToString()
+                    lblOPrice.Text = row.Cells(2).Value.ToString()
+                    lblProdName.Text = row.Cells(0).Value.ToString()
+                    '+ "-" + txtProdline.Text + ""
+                    txtQty.Focus()
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                End Try
+            Case 1
+                txtCashPaid.Focus()
+            Case 2
+                If gvSales.Rows.Count <> 0 Then
+                    Dim ask As MsgBoxResult
+                    ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
+                    If ask = MsgBoxResult.Yes Then
+                        gvSales.Rows.Clear()
+                        Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
+                        lblProformaInvoice.Text = row.Cells(0).Value.ToString()
+                        If Poscon.State = ConnectionState.Closed Then
+                            Poscon.Open()
+                        End If
+                        Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,amountpayable from proformainvoices where invoiceno like '%" + lblProformaInvoice.Text + "%'")
+                        cmd = New SqlCommand(queryy, Poscon)
+                        da = New SqlDataAdapter(cmd)
+                        tbl = New DataTable()
+                        da.Fill(tbl)
+                        If tbl.Rows.Count = 0 Then
+                            MsgBox("ProForma Empty")
+                            Exit Sub
+                        End If
 
-                Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
-                cbProdName.Text = row.Cells(0).Value.ToString()
-                'lblProdName.Text = row.Cells(0).Value.ToString()
-                txtPrice.Text = row.Cells(2).Value.ToString()
-                lblActualStock.Text = row.Cells(1).Value.ToString()
-                txtProdcode.Text = row.Cells(7).Value.ToString()
-                txtProdline.Text = row.Cells(6).Value.ToString()
-                txtCat.Text = row.Cells(4).Value.ToString()
-                txtSize.Text = row.Cells(3).Value.ToString()
-                txtColour.Text = row.Cells(5).Value.ToString()
-                lblOPrice.Text = row.Cells(2).Value.ToString()
-                lblProdName.Text = row.Cells(0).Value.ToString()
-                '+ "-" + txtProdline.Text + ""
-                txtQty.Focus()
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
+                        txtBuyerName.Text = tbl.Rows(0)(9).ToString
+                        txtBuyerTel.Text = tbl.Rows(0)(10).ToString
+                        cbLocation.Text = tbl.Rows(0)(11).ToString
+                        ' lblPayable.Text = tbl.Rows(0)(15).ToString
 
-            ''txtProdName.Text = ""
-        End If
-        If cbSaleslist.SelectedIndex = 1 Then
-            txtCashPaid.Focus()
-        End If
-        If cbSaleslist.SelectedIndex = 2 Then
-            If gvSales.Rows.Count <> 0 Then
-                Dim ask As MsgBoxResult
-                ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
-                If ask = MsgBoxResult.Yes Then
-                    gvSales.Rows.Clear()
+                        For k = 0 To tbl.Rows.Count - 1
+                            gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, 0, 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
+                        Next
+                        Poscon.Close()
+                    End If
+                    txtCashPaid.Focus()
+                Else
+                    If Poscon.State = ConnectionState.Closed Then
+                        Poscon.Open()
+                    End If
                     Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
                     lblProformaInvoice.Text = row.Cells(0).Value.ToString()
                     If Poscon.State = ConnectionState.Closed Then
@@ -574,38 +613,50 @@ Public Class frmSales
                     Poscon.Close()
                 End If
                 txtCashPaid.Focus()
-            Else
-                If Poscon.State = ConnectionState.Closed Then
-                    Poscon.Open()
-                End If
-                Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
-                lblProformaInvoice.Text = row.Cells(0).Value.ToString()
-                If Poscon.State = ConnectionState.Closed Then
-                    Poscon.Open()
-                End If
-                Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,amountpayable from proformainvoices where invoiceno like '%" + lblProformaInvoice.Text + "%'")
-                cmd = New SqlCommand(queryy, Poscon)
-                da = New SqlDataAdapter(cmd)
-                tbl = New DataTable()
-                da.Fill(tbl)
-                If tbl.Rows.Count = 0 Then
-                    MsgBox("ProForma Empty")
-                    Exit Sub
-                End If
+            Case 3
+                Try
 
-                txtBuyerName.Text = tbl.Rows(0)(9).ToString
-                txtBuyerTel.Text = tbl.Rows(0)(10).ToString
-                cbLocation.Text = tbl.Rows(0)(11).ToString
-                ' lblPayable.Text = tbl.Rows(0)(15).ToString
+                    Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
+                    cbProdName.Text = row.Cells(0).Value.ToString()
+                    'lblProdName.Text = row.Cells(0).Value.ToString()
+                    txtPrice.Text = row.Cells(2).Value.ToString()
+                    lblActualStock.Text = row.Cells(1).Value.ToString()
+                    txtProdcode.Text = row.Cells(7).Value.ToString()
+                    txtProdline.Text = row.Cells(6).Value.ToString()
+                    txtCat.Text = row.Cells(4).Value.ToString()
+                    txtSize.Text = row.Cells(3).Value.ToString()
+                    txtColour.Text = row.Cells(5).Value.ToString()
+                    lblOPrice.Text = row.Cells(2).Value.ToString()
+                    lblProdName.Text = row.Cells(0).Value.ToString()
+                    '+ "-" + txtProdline.Text + ""
+                    txtQty.Focus()
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                End Try
+            Case 4
+                Try
 
-                For k = 0 To tbl.Rows.Count - 1
-                    gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, 0, 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
-                Next
-                Poscon.Close()
-            End If
-            txtCashPaid.Focus()
-        End If
+                    Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
+                    cbProdName.Text = row.Cells(0).Value.ToString()
+                    'lblProdName.Text = row.Cells(0).Value.ToString()
+                    txtPrice.Text = row.Cells(2).Value.ToString()
+                    lblActualStock.Text = row.Cells(1).Value.ToString()
+                    txtProdcode.Text = row.Cells(7).Value.ToString()
+                    txtProdline.Text = row.Cells(6).Value.ToString()
+                    txtCat.Text = row.Cells(4).Value.ToString()
+                    txtSize.Text = row.Cells(3).Value.ToString()
+                    txtColour.Text = row.Cells(5).Value.ToString()
+                    lblOPrice.Text = row.Cells(2).Value.ToString()
+                    lblProdName.Text = row.Cells(0).Value.ToString()
+                    '+ "-" + txtProdline.Text + ""
+                    txtQty.Focus()
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                End Try
 
+            Case Else
+
+        End Select
 
 
     End Sub
@@ -1472,30 +1523,31 @@ Public Class frmSales
         End Try
     End Sub
     Sub Sortcat(valuetosearch As String)
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where ProdCat like '%" + valuetosearch + "%'"
-        cmd = New SqlCommand(query, Poscon)
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim table As New DataTable()
-        adapter.Fill(table)
-        gvStock.DataSource = table
-        Poscon.Close()
-
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where ProdCat like '%" + valuetosearch + "%'"
+        'cmd = New SqlCommand(query, Poscon)
+        'Dim adapter As New SqlDataAdapter(cmd)
+        'Dim table As New DataTable()
+        'adapter.Fill(table)
+        'gvStock.DataSource = table
+        'Poscon.Close()
+        reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where ProdCat like '%" + valuetosearch + "%'", gvStock)
     End Sub
 
     Sub Sortpline(valuetosearch As String)
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where prodline like '%" + valuetosearch + "%'"
-        cmd = New SqlCommand(query, Poscon)
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim table As New DataTable()
-        adapter.Fill(table)
-        gvStock.DataSource = table
-        Poscon.Close()
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where prodline like '%" + valuetosearch + "%'"
+        'cmd = New SqlCommand(query, Poscon)
+        'Dim adapter As New SqlDataAdapter(cmd)
+        'Dim table As New DataTable()
+        'adapter.Fill(table)
+        'gvStock.DataSource = table
+        'Poscon.Close()
+        reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where prodline like '%" + valuetosearch + "%'", gvStock)
 
     End Sub
 
@@ -1526,60 +1578,64 @@ Public Class frmSales
     End Sub
 
     Private Sub cbProdlineSort_Click(sender As Object, e As EventArgs) Handles cbProdlineSort.Click
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        cbProdlineSort.Items.Clear()
-        Dim pli = "select productline from productline"
-        cmd = New SqlCommand(pli, Poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            cbProdlineSort.Items.Add(dr(0))
-        End While
-        Poscon.Close()
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'cbProdlineSort.Items.Clear()
+        'Dim pli = "select productline from productline"
+        'cmd = New SqlCommand(pli, Poscon)
+        'dr = cmd.ExecuteReader
+        'While dr.Read
+        '    cbProdlineSort.Items.Add(dr(0))
+        'End While
+        'Poscon.Close()
+        ComboFeed("select productline from productline", cbProdlineSort, 0)
     End Sub
 
     Private Sub cbCatSort_Click(sender As Object, e As EventArgs) Handles cbCatSort.Click
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        cbCatSort.Items.Clear()
-        Dim sqll = "select category from Category"
-        cmd = New SqlCommand(sqll, Poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            cbCatSort.Items.Add(dr(0))
-        End While
-        Poscon.Close()
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'cbCatSort.Items.Clear()
+        'Dim sqll = "select category from Category"
+        'cmd = New SqlCommand(sqll, Poscon)
+        'dr = cmd.ExecuteReader
+        'While dr.Read
+        '    cbCatSort.Items.Add(dr(0))
+        'End While
+        'Poscon.Close()
+        ComboFeed("select category from Category", cbCatSort, 0)
     End Sub
 
     Private Sub cbCreditCustName_Click(sender As Object, e As EventArgs) Handles cbCreditCustName.Click
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        cbCreditCustName.Items.Clear()
-        Dim sql = "select * from Customer"
-        cmd = New SqlCommand(sql, Poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            cbCreditCustName.Items.Add(dr(1))
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'cbCreditCustName.Items.Clear()
+        'Dim sql = "select * from Customer"
+        'cmd = New SqlCommand(sql, Poscon)
+        'dr = cmd.ExecuteReader
+        'While dr.Read
+        '    cbCreditCustName.Items.Add(dr(1))
 
-        End While
-        Poscon.Close()
+        'End While
+        'Poscon.Close()
+        ComboFeed("select * from Customer", cbCreditCustName, 1)
     End Sub
 
     Private Sub txtProdname_Enter(sender As Object, e As EventArgs) Handles txtProdname.Enter
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        txtProdname.Items.Clear()
-        Dim query = "select * from Stockmast"
-        cmd = New SqlCommand(query, Poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            txtProdname.Items.Add(dr(1))
-        End While
-        Poscon.Close()
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'txtProdname.Items.Clear()
+        'Dim query = "select * from Stockmast"
+        'cmd = New SqlCommand(query, Poscon)
+        'dr = cmd.ExecuteReader
+        'While dr.Read
+        '    txtProdname.Items.Add(dr(1))
+        'End While
+        'Poscon.Close()
+        ComboFeed("select * from Stockmast", txtProdname, 1)
     End Sub
 
     Public Sub StockCheck()
@@ -1605,15 +1661,28 @@ Public Class frmSales
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSaleslist.SelectedIndexChanged
-        If cbSaleslist.SelectedIndex = 0 Or cbSaleslist.SelectedIndex = -1 Then
-            reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
-        End If
-        If cbSaleslist.SelectedIndex = 1 Then
-            reload("select * from Packages", gvStock)
-        End If
-        If cbSaleslist.SelectedIndex = 2 Then
-            reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
-        End If
+        'If cbSaleslist.SelectedIndex = 0 Or cbSaleslist.SelectedIndex = -1 Then
+        '    reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
+        'End If
+        'If cbSaleslist.SelectedIndex = 1 Then
+        '    reload("select * from Packages", gvStock)
+        'End If
+        'If cbSaleslist.SelectedIndex = 2 Then
+        '    reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
+        'End If
+        Select Case cbSaleslist.SelectedIndex
+            Case 0
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
+            Case 1
+                reload("select * from Packages", gvStock)
+            Case 2
+                reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
+            Case 3
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where baseqty*packsize<>1", gvStock)
+            Case 4
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where baseqty*packsize=1", gvStock)
+
+        End Select
     End Sub
 
     Private Sub BunifuThinButton24_Click_1(sender As Object, e As EventArgs)
