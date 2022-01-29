@@ -39,19 +39,19 @@ Partial Class NewReport
         Me.BunifuButton3 = New Bunifu.UI.WinForms.BunifuButton.BunifuButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.BunifuDatePicker1 = New Bunifu.UI.WinForms.BunifuDatePicker()
-        Me.dpto = New Bunifu.UI.WinForms.BunifuDatePicker()
+        Me.dpdatefrom = New Bunifu.UI.WinForms.BunifuDatePicker()
+        Me.dpdateto = New Bunifu.UI.WinForms.BunifuDatePicker()
         Me.BunifuPages1 = New Bunifu.UI.WinForms.BunifuPages()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.InventoryReport1 = New HardSoft_PoS.InventoryReport()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.SalesReport1 = New HardSoft_PoS.SalesReport()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.CustomerReport1 = New HardSoft_PoS.CustomerReport()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.SupplierReport1 = New HardSoft_PoS.SupplierReport()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.InventoryReport1 = New HardSoft_PoS.InventoryReport()
-        Me.SalesReport1 = New HardSoft_PoS.SalesReport()
-        Me.CustomerReport1 = New HardSoft_PoS.CustomerReport()
-        Me.SupplierReport1 = New HardSoft_PoS.SupplierReport()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -84,8 +84,8 @@ Partial Class NewReport
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.CrystalReportViewer1)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.BunifuDatePicker1)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.dpto)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.dpdatefrom)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.dpdateto)
         Me.SplitContainer1.Panel2.Controls.Add(Me.BunifuPages1)
         Me.SplitContainer1.Size = New System.Drawing.Size(800, 386)
         Me.SplitContainer1.SplitterDistance = 143
@@ -660,57 +660,57 @@ Partial Class NewReport
         Me.CrystalReportViewer1.Size = New System.Drawing.Size(643, 240)
         Me.CrystalReportViewer1.TabIndex = 135
         '
-        'BunifuDatePicker1
+        'dpdatefrom
         '
-        Me.BunifuDatePicker1.BackColor = System.Drawing.Color.Transparent
-        Me.BunifuDatePicker1.BorderColor = System.Drawing.Color.Transparent
-        Me.BunifuDatePicker1.BorderRadius = 1
-        Me.BunifuDatePicker1.Color = System.Drawing.Color.Transparent
-        Me.BunifuDatePicker1.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin
-        Me.BunifuDatePicker1.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left
-        Me.BunifuDatePicker1.DisabledColor = System.Drawing.Color.Transparent
-        Me.BunifuDatePicker1.DisplayWeekNumbers = False
-        Me.BunifuDatePicker1.DPHeight = 0
-        Me.BunifuDatePicker1.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
-        Me.BunifuDatePicker1.FillDatePicker = False
-        Me.BunifuDatePicker1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.BunifuDatePicker1.ForeColor = System.Drawing.Color.Black
-        Me.BunifuDatePicker1.Icon = CType(resources.GetObject("BunifuDatePicker1.Icon"), System.Drawing.Image)
-        Me.BunifuDatePicker1.IconColor = System.Drawing.Color.Gray
-        Me.BunifuDatePicker1.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right
-        Me.BunifuDatePicker1.LeftTextMargin = 5
-        Me.BunifuDatePicker1.Location = New System.Drawing.Point(174, 10)
-        Me.BunifuDatePicker1.MinimumSize = New System.Drawing.Size(4, 32)
-        Me.BunifuDatePicker1.Name = "BunifuDatePicker1"
-        Me.BunifuDatePicker1.Size = New System.Drawing.Size(169, 32)
-        Me.BunifuDatePicker1.TabIndex = 134
-        Me.BunifuDatePicker1.Value = New Date(2022, 1, 23, 13, 48, 0, 0)
+        Me.dpdatefrom.BackColor = System.Drawing.Color.Transparent
+        Me.dpdatefrom.BorderColor = System.Drawing.Color.Transparent
+        Me.dpdatefrom.BorderRadius = 1
+        Me.dpdatefrom.Color = System.Drawing.Color.Transparent
+        Me.dpdatefrom.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin
+        Me.dpdatefrom.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left
+        Me.dpdatefrom.DisabledColor = System.Drawing.Color.Transparent
+        Me.dpdatefrom.DisplayWeekNumbers = False
+        Me.dpdatefrom.DPHeight = 0
+        Me.dpdatefrom.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
+        Me.dpdatefrom.FillDatePicker = False
+        Me.dpdatefrom.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.dpdatefrom.ForeColor = System.Drawing.Color.Black
+        Me.dpdatefrom.Icon = CType(resources.GetObject("dpdatefrom.Icon"), System.Drawing.Image)
+        Me.dpdatefrom.IconColor = System.Drawing.Color.Gray
+        Me.dpdatefrom.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right
+        Me.dpdatefrom.LeftTextMargin = 5
+        Me.dpdatefrom.Location = New System.Drawing.Point(174, 10)
+        Me.dpdatefrom.MinimumSize = New System.Drawing.Size(4, 32)
+        Me.dpdatefrom.Name = "dpdatefrom"
+        Me.dpdatefrom.Size = New System.Drawing.Size(169, 32)
+        Me.dpdatefrom.TabIndex = 134
+        Me.dpdatefrom.Value = New Date(2022, 1, 29, 14, 24, 2, 0)
         '
-        'dpto
+        'dpdateto
         '
-        Me.dpto.BackColor = System.Drawing.Color.Transparent
-        Me.dpto.BorderColor = System.Drawing.Color.Silver
-        Me.dpto.BorderRadius = 1
-        Me.dpto.Color = System.Drawing.Color.Silver
-        Me.dpto.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin
-        Me.dpto.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left
-        Me.dpto.DisabledColor = System.Drawing.Color.Gray
-        Me.dpto.DisplayWeekNumbers = False
-        Me.dpto.DPHeight = 0
-        Me.dpto.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
-        Me.dpto.FillDatePicker = False
-        Me.dpto.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.dpto.ForeColor = System.Drawing.Color.Black
-        Me.dpto.Icon = CType(resources.GetObject("dpto.Icon"), System.Drawing.Image)
-        Me.dpto.IconColor = System.Drawing.Color.Gray
-        Me.dpto.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right
-        Me.dpto.LeftTextMargin = 5
-        Me.dpto.Location = New System.Drawing.Point(406, 10)
-        Me.dpto.MinimumSize = New System.Drawing.Size(4, 32)
-        Me.dpto.Name = "dpto"
-        Me.dpto.Size = New System.Drawing.Size(169, 32)
-        Me.dpto.TabIndex = 133
-        Me.dpto.Value = New Date(2022, 1, 23, 13, 48, 0, 0)
+        Me.dpdateto.BackColor = System.Drawing.Color.Transparent
+        Me.dpdateto.BorderColor = System.Drawing.Color.Silver
+        Me.dpdateto.BorderRadius = 1
+        Me.dpdateto.Color = System.Drawing.Color.Silver
+        Me.dpdateto.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin
+        Me.dpdateto.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left
+        Me.dpdateto.DisabledColor = System.Drawing.Color.Gray
+        Me.dpdateto.DisplayWeekNumbers = False
+        Me.dpdateto.DPHeight = 0
+        Me.dpdateto.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
+        Me.dpdateto.FillDatePicker = False
+        Me.dpdateto.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.dpdateto.ForeColor = System.Drawing.Color.Black
+        Me.dpdateto.Icon = CType(resources.GetObject("dpdateto.Icon"), System.Drawing.Image)
+        Me.dpdateto.IconColor = System.Drawing.Color.Gray
+        Me.dpdateto.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right
+        Me.dpdateto.LeftTextMargin = 5
+        Me.dpdateto.Location = New System.Drawing.Point(406, 10)
+        Me.dpdateto.MinimumSize = New System.Drawing.Size(4, 32)
+        Me.dpdateto.Name = "dpdateto"
+        Me.dpdateto.Size = New System.Drawing.Size(169, 32)
+        Me.dpdateto.TabIndex = 133
+        Me.dpdateto.Value = New Date(2022, 1, 23, 13, 48, 0, 0)
         '
         'BunifuPages1
         '
@@ -762,6 +762,14 @@ Partial Class NewReport
         Me.TabPage1.Text = "Inventory"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'InventoryReport1
+        '
+        Me.InventoryReport1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.InventoryReport1.Location = New System.Drawing.Point(3, 3)
+        Me.InventoryReport1.Name = "InventoryReport1"
+        Me.InventoryReport1.Size = New System.Drawing.Size(636, 57)
+        Me.InventoryReport1.TabIndex = 0
+        '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.SalesReport1)
@@ -772,6 +780,14 @@ Partial Class NewReport
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Sales"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'SalesReport1
+        '
+        Me.SalesReport1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SalesReport1.Location = New System.Drawing.Point(3, 3)
+        Me.SalesReport1.Name = "SalesReport1"
+        Me.SalesReport1.Size = New System.Drawing.Size(636, 57)
+        Me.SalesReport1.TabIndex = 0
         '
         'TabPage3
         '
@@ -784,6 +800,14 @@ Partial Class NewReport
         Me.TabPage3.Text = "Customer"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
+        'CustomerReport1
+        '
+        Me.CustomerReport1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CustomerReport1.Location = New System.Drawing.Point(3, 3)
+        Me.CustomerReport1.Name = "CustomerReport1"
+        Me.CustomerReport1.Size = New System.Drawing.Size(636, 57)
+        Me.CustomerReport1.TabIndex = 0
+        '
         'TabPage4
         '
         Me.TabPage4.Controls.Add(Me.SupplierReport1)
@@ -794,6 +818,14 @@ Partial Class NewReport
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Supplier"
         Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'SupplierReport1
+        '
+        Me.SupplierReport1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SupplierReport1.Location = New System.Drawing.Point(3, 3)
+        Me.SupplierReport1.Name = "SupplierReport1"
+        Me.SupplierReport1.Size = New System.Drawing.Size(636, 57)
+        Me.SupplierReport1.TabIndex = 0
         '
         'TabPage5
         '
@@ -814,38 +846,6 @@ Partial Class NewReport
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(793, 46)
         Me.Panel1.TabIndex = 1
-        '
-        'InventoryReport1
-        '
-        Me.InventoryReport1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.InventoryReport1.Location = New System.Drawing.Point(3, 3)
-        Me.InventoryReport1.Name = "InventoryReport1"
-        Me.InventoryReport1.Size = New System.Drawing.Size(636, 57)
-        Me.InventoryReport1.TabIndex = 0
-        '
-        'SalesReport1
-        '
-        Me.SalesReport1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SalesReport1.Location = New System.Drawing.Point(3, 3)
-        Me.SalesReport1.Name = "SalesReport1"
-        Me.SalesReport1.Size = New System.Drawing.Size(636, 57)
-        Me.SalesReport1.TabIndex = 0
-        '
-        'CustomerReport1
-        '
-        Me.CustomerReport1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CustomerReport1.Location = New System.Drawing.Point(3, 3)
-        Me.CustomerReport1.Name = "CustomerReport1"
-        Me.CustomerReport1.Size = New System.Drawing.Size(636, 57)
-        Me.CustomerReport1.TabIndex = 0
-        '
-        'SupplierReport1
-        '
-        Me.SupplierReport1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SupplierReport1.Location = New System.Drawing.Point(3, 3)
-        Me.SupplierReport1.Name = "SupplierReport1"
-        Me.SupplierReport1.Size = New System.Drawing.Size(636, 57)
-        Me.SupplierReport1.TabIndex = 0
         '
         'NewReport
         '
@@ -874,8 +874,8 @@ Partial Class NewReport
     Friend WithEvents BunifuPages1 As Bunifu.UI.WinForms.BunifuPages
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents BunifuDatePicker1 As Bunifu.UI.WinForms.BunifuDatePicker
-    Friend WithEvents dpto As Bunifu.UI.WinForms.BunifuDatePicker
+    Friend WithEvents dpdatefrom As Bunifu.UI.WinForms.BunifuDatePicker
+    Friend WithEvents dpdateto As Bunifu.UI.WinForms.BunifuDatePicker
     Friend WithEvents Panel1 As Panel
     Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents Label1 As Label

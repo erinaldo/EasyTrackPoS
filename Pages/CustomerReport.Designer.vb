@@ -72,7 +72,7 @@ Partial Class CustomerReport
         Me.cbReport.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbReport.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbReport.FormattingEnabled = True
-        Me.cbReport.Items.AddRange(New Object() {"Customer Info", "Customer Payments", "Customer Goods", "Customer Ledger"})
+        Me.cbReport.Items.AddRange(New Object() {"Customer Info", "Customer Payments", "Customer Payments Summary", "Customer Goods Recieved Summary", "Customer Ledger", "Customer Balances"})
         Me.cbReport.Location = New System.Drawing.Point(53, 29)
         Me.cbReport.Name = "cbReport"
         Me.cbReport.Size = New System.Drawing.Size(467, 29)
