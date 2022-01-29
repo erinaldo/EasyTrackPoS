@@ -111,6 +111,8 @@ Partial Class frmPackages
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
+        Me.txtPackageName = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         CType(Me.gvSales, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -794,7 +796,7 @@ Partial Class frmPackages
         Me.gvPackages.RowHeadersVisible = False
         Me.gvPackages.RowTemplate.Height = 40
         Me.gvPackages.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvPackages.Size = New System.Drawing.Size(305, 429)
+        Me.gvPackages.Size = New System.Drawing.Size(305, 366)
         Me.gvPackages.TabIndex = 148
         Me.gvPackages.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
         '
@@ -840,7 +842,7 @@ Partial Class frmPackages
         Me.lblTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTotal.AutoSize = True
         Me.lblTotal.Font = New System.Drawing.Font("Segoe UI", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(91, 465)
+        Me.lblTotal.Location = New System.Drawing.Point(102, 408)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(40, 47)
         Me.lblTotal.TabIndex = 1
@@ -851,6 +853,8 @@ Partial Class frmPackages
         Me.gbsell.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbsell.BackColor = System.Drawing.Color.PaleGoldenrod
+        Me.gbsell.Controls.Add(Me.txtPackageName)
+        Me.gbsell.Controls.Add(Me.Label12)
         Me.gbsell.Controls.Add(Me.gvPackages)
         Me.gbsell.Controls.Add(Me.lbldiscCode)
         Me.gbsell.Controls.Add(Me.BunifuThinButton21)
@@ -869,7 +873,7 @@ Partial Class frmPackages
         Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(33, 465)
+        Me.Label2.Location = New System.Drawing.Point(44, 408)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(52, 21)
         Me.Label2.TabIndex = 104
@@ -1152,6 +1156,27 @@ Partial Class frmPackages
         Me.Label24.TabIndex = 113
         Me.Label24.Text = "Label24"
         '
+        'txtPackageName
+        '
+        Me.txtPackageName.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtPackageName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPackageName.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPackageName.Location = New System.Drawing.Point(10, 485)
+        Me.txtPackageName.Name = "txtPackageName"
+        Me.txtPackageName.Size = New System.Drawing.Size(285, 31)
+        Me.txtPackageName.TabIndex = 149
+        '
+        'Label12
+        '
+        Me.Label12.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(6, 461)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(128, 21)
+        Me.Label12.TabIndex = 150
+        Me.Label12.Text = "Package Name:"
+        '
         'frmPackages
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1271,4 +1296,6 @@ Partial Class frmPackages
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label23 As Label
     Friend WithEvents Label24 As Label
+    Friend WithEvents txtPackageName As TextBox
+    Friend WithEvents Label12 As Label
 End Class

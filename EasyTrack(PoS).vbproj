@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F49B7D96-10D9-498E-85E8-D1A648498992}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>HardSoft_PoS.Login</StartupObject>
+    <StartupObject>HardSoft_PoS.frmMain</StartupObject>
     <RootNamespace>HardSoft_PoS</RootNamespace>
     <AssemblyName>EasyTrackPoS</AssemblyName>
     <FileAlignment>512</FileAlignment>

@@ -266,7 +266,7 @@ Public Class frmSales
             Case 0
                 reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
             Case 1
-                reload("select * from Packages", gvStock)
+                reload("select * from Packagesconfig", gvStock)
             Case 2
                 reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
             Case 3
@@ -1674,7 +1674,7 @@ Public Class frmSales
             Case 0
                 reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
             Case 1
-                reload("select * from Packages", gvStock)
+                reload("select * from Packagesconfig", gvStock)
             Case 2
                 reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
             Case 3
