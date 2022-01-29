@@ -72,7 +72,7 @@ Partial Class SupplierReport
         Me.cbReport.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbReport.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbReport.FormattingEnabled = True
-        Me.cbReport.Items.AddRange(New Object() {"Supplier Info", "Supplier Goods", "Supplier Payments", "Supplier Balances"})
+        Me.cbReport.Items.AddRange(New Object() {"Supplier Info", "Supplier Goods Recieved Summary", "Supplier Payments", "Supplier Balances", "Supplier Goods"})
         Me.cbReport.Location = New System.Drawing.Point(53, 29)
         Me.cbReport.Name = "cbReport"
         Me.cbReport.Size = New System.Drawing.Size(467, 29)
