@@ -160,6 +160,7 @@ Partial Class frmSales
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblProformaInvoice = New System.Windows.Forms.Label()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.lblPackageid = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
@@ -2085,6 +2086,7 @@ Partial Class frmSales
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.Peru
+        Me.Panel1.Controls.Add(Me.lblPackageid)
         Me.Panel1.Controls.Add(Me.BunifuThinButton27)
         Me.Panel1.Controls.Add(Me.PictureBox5)
         Me.Panel1.Controls.Add(Me.PictureBox4)
@@ -2176,6 +2178,16 @@ Partial Class frmSales
         Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
         Me.NotifyIcon1.Text = "Stock Check"
         Me.NotifyIcon1.Visible = True
+        '
+        'lblPackageid
+        '
+        Me.lblPackageid.AutoSize = True
+        Me.lblPackageid.Location = New System.Drawing.Point(869, 26)
+        Me.lblPackageid.Name = "lblPackageid"
+        Me.lblPackageid.Size = New System.Drawing.Size(32, 13)
+        Me.lblPackageid.TabIndex = 136
+        Me.lblPackageid.Text = "100#"
+        Me.lblPackageid.Visible = False
         '
         'frmSales
         '
@@ -2354,4 +2366,5 @@ Partial Class frmSales
     Friend WithEvents NotifyIcon1 As NotifyIcon
     Friend WithEvents cbSaleslist As ComboBox
     Friend WithEvents lblProformaInvoice As Label
+    Friend WithEvents lblPackageid As Label
 End Class

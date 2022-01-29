@@ -36,20 +36,13 @@ Public Class frmPackages
 
         Poscon.Close()
 
-
-
-
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
         Timer1.Enabled = True
 
-
         ShowBand()
         clear()
-
         txtProdname.Focus()
-
-
     End Sub
         Private Sub clear()
 
@@ -654,11 +647,18 @@ Public Class frmPackages
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If txtPackageName.Text = "" Then
+            MsgBox("kindly Enter Package Name")
+            txtPackageName.Focus()
+            Exit Sub
+        End If
+        create("insert into packagesconfig (packagename,packagetotal)values('" + txtPackageName.Text + "','" + lblTotal.Text + "')")
+        ShowConfig()
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
         For Each row As DataGridViewRow In gvSales.Rows
-            Dim query = "insert into Packages (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,PackageName,RetailPrice,Amount,AmountPayable,packageno) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,@PackageName,@RetailPrice,@Amount,@Amtpayable,'" + lblRecieptNo.Text + "')"
+            Dim query = "insert into Packages (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,PackageName,RetailPrice,Amount,AmountPayable,packageid) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,@PackageName,@RetailPrice,@Amount,@Amtpayable,'" + lblRecieptNo.Text + "')"
             cmd = New SqlCommand(query, Poscon)
             With cmd
                 .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = row.Cells(5).Value
@@ -675,7 +675,8 @@ Public Class frmPackages
                 .ExecuteNonQuery()
             End With
         Next
-        create("insert into packagesconfig (packageno,packagename,packagetotal)values('" + lblRecieptNo.Text + "','" + txtPackageName.Text + "','" + lblTotal.Text + "')")
+        ShowConfig()
+        clear()
         MsgBox("success")
     End Sub
 
@@ -690,7 +691,7 @@ Public Class frmPackages
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,buyername,buyertel,buyerlocation,amountpayable from proformainvoices where invoiceno like '%" + lblProformainvoice.Text + "%'")
+                Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,packagename,amountpayable from Packages where packageid like '%" + lblProformainvoice.Text + "%'")
                 cmd = New SqlCommand(queryy, Poscon)
                 da = New SqlDataAdapter(cmd)
                 tbl = New DataTable()
@@ -713,7 +714,7 @@ Public Class frmPackages
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,packagename,amountpayable from Packages where Packageno like '%" + lblProformainvoice.Text + "%'")
+            Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,packagename,amountpayable from Packages where packageid like '%" + lblProformainvoice.Text + "%'")
             cmd = New SqlCommand(queryy, Poscon)
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable()
@@ -723,6 +724,7 @@ Public Class frmPackages
                 Exit Sub
             End If
 
+            ' lblPayable.Text = tbl.Rows(0)(15).ToString
             For k = 0 To tbl.Rows.Count - 1
                 gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, 0, 0, tbl.Rows(k)(3).ToString, 0, tbl.Rows(k)(8).ToString, 0)
             Next
@@ -734,7 +736,7 @@ Public Class frmPackages
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
-        Dim que = "select ID from Packagesconfig"
+        Dim que = "select packageID from Packagesconfig"
         cmd = New SqlCommand(que, Poscon)
         da = New SqlDataAdapter(cmd)
         tbl = New DataTable
@@ -743,7 +745,7 @@ Public Class frmPackages
             lblRecieptNo.Text = 1
         Else
             Dim index = tbl.Rows.Count() - 1
-            lblRecieptNo.Text = "PACK" + tbl.Rows(index)(0).ToString
+            lblRecieptNo.Text = tbl.Rows(index)(0).ToString
 
         End If
         Poscon.Close()

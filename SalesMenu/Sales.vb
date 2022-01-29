@@ -550,7 +550,62 @@ Public Class frmSales
                     MsgBox(ex.ToString)
                 End Try
             Case 1
-                txtCashPaid.Focus()
+                If gvSales.Rows.Count <> 0 Then
+                    Dim ask As MsgBoxResult
+                    ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
+                    If ask = MsgBoxResult.Yes Then
+                        gvSales.Rows.Clear()
+                        Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
+                        lblPackageid.Text = row.Cells(0).Value.ToString()
+                        If Poscon.State = ConnectionState.Closed Then
+                            Poscon.Open()
+                        End If
+                        Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,Packagename,amountpayable from Packages where packageid like '%" + lblPackageid.Text + "%'")
+                        cmd = New SqlCommand(queryy, Poscon)
+                        da = New SqlDataAdapter(cmd)
+                        tbl = New DataTable()
+                        da.Fill(tbl)
+                        If tbl.Rows.Count = 0 Then
+                            MsgBox("Package Empty")
+                            Exit Sub
+                        End If
+
+                        lblProdName.Text = tbl.Rows(0)(9).ToString
+
+                        ' lblPayable.Text = tbl.Rows(0)(15).ToString
+
+                        For k = 0 To tbl.Rows.Count - 1
+                            gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, "", 0, tbl.Rows(k)(3).ToString, "", tbl.Rows(k)(8).ToString, 0)
+                        Next
+                        Poscon.Close()
+                    End If
+                    txtCashPaid.Focus()
+                Else
+                    Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
+                    lblPackageid.Text = row.Cells(0).Value.ToString()
+                    If Poscon.State = ConnectionState.Closed Then
+                        Poscon.Open()
+                    End If
+                    Dim queryy = ("Select Itemname,qtysold,retailprice,amount,prodcat,itemcode,itemsize,prodline,Itemcolour,Packagename,amountpayable from Packages where packageid like '%" + lblPackageid.Text + "%'")
+                    cmd = New SqlCommand(queryy, Poscon)
+                    da = New SqlDataAdapter(cmd)
+                    tbl = New DataTable()
+                    da.Fill(tbl)
+                    If tbl.Rows.Count = 0 Then
+                        MsgBox("Package Empty")
+                        Exit Sub
+                    End If
+
+                    lblProdName.Text = tbl.Rows(0)(9).ToString
+
+                    ' lblPayable.Text = tbl.Rows(0)(15).ToString
+
+                    For k = 0 To tbl.Rows.Count - 1
+                        gvSales.Rows.Add(tbl.Rows(k)(0).ToString, tbl.Rows(k)(1).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(4).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(7).ToString, 0, lblRecieptNo.Text, "", 0, tbl.Rows(k)(3).ToString, "", tbl.Rows(k)(8).ToString, 0)
+                    Next
+                    Poscon.Close()
+
+                End If
             Case 2
                 If gvSales.Rows.Count <> 0 Then
                     Dim ask As MsgBoxResult
@@ -1061,9 +1116,14 @@ Public Class frmSales
     End Sub
 
     Private Sub gvSales_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvSales.CellClick
-        Dim row As DataGridViewRow = gvSales.Rows(e.RowIndex)
-        txtDiscName.Text = row.Cells(0).Value.ToString()
-        lbldiscCode.Text = row.Cells(5).Value.ToString()
+        Try
+            Dim row As DataGridViewRow = gvSales.Rows(e.RowIndex)
+            txtDiscName.Text = row.Cells(0).Value.ToString()
+            lbldiscCode.Text = row.Cells(5).Value.ToString()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
     End Sub
 
     Private Sub BunifuCheckBox2_Click(sender As Object, e As EventArgs) Handles ckPerDisc.Click
