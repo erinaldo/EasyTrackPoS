@@ -691,14 +691,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EasyTrackPoS.exe" size="6769064">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EasyTrackPoS.exe" size="6719400">
       <assemblyIdentity name="EasyTrackPoS" version="1.0.0.1" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fW5TjZ1FUvZg42JDB5oknydbnbb+/AqYiZbm8MG45CY=</dsig:DigestValue>
+        <dsig:DigestValue>mudvJq3lmsY+D4xm02M/ru+eOeEmAV5XiMxiZTjKThA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

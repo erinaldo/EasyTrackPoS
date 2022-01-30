@@ -668,8 +668,8 @@ K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmProForma.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmPackSingles.resources
 K:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).vbproj.AssemblyReference.cache
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.NewReport.resources
-K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.InventoryReport.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.SalesReport.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.CustomerReport.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.SupplierReport.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmPackages.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.StockBalancesReport.resources

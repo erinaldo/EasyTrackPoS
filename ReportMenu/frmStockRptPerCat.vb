@@ -12,7 +12,7 @@ Public Class frmStockRptPerCat
             cmd = New SqlCommand(query, Poscon)
             adp.SelectCommand = cmd
             adp.Fill(dt, "StockMast")
-            Dim report As New rptStockPerCat
+            Dim report As New rptStockTakingSheet
             report.SetDataSource(dt)
             rvStockPerCat.ReportSource = report
             rvStockPerCat.Refresh()

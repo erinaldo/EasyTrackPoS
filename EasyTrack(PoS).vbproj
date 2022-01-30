@@ -577,10 +577,10 @@
     <Compile Include="Pages\CustomerReport.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\InventoryReport.Designer.vb">
-      <DependentUpon>InventoryReport.vb</DependentUpon>
+    <Compile Include="Pages\StockBalancesReport.Designer.vb">
+      <DependentUpon>StockBalancesReport.vb</DependentUpon>
     </Compile>
-    <Compile Include="Pages\InventoryReport.vb">
+    <Compile Include="Pages\StockBalancesReport.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Pages\SalesReport.Designer.vb">
@@ -872,12 +872,6 @@
       <DependentUpon>rptStockBalZero.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ReportMenu\rptStockLedgerPerCat.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptStockLedgerPerCat.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ReportMenu\rptStockMovementPItem.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1026,12 +1020,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptStockBalbyColor.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="rptTakeStock.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptTakeStock.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="rptToBeCollectedDelivery.vb">
@@ -1269,12 +1257,6 @@
     <Compile Include="ProductsMenu\ReviewPrices.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\Sales Reciept.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Sales Reciept.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="SalesMenu\Sales.Designer.vb">
       <DependentUpon>Sales.vb</DependentUpon>
     </Compile>
@@ -1456,8 +1438,8 @@
     <EmbeddedResource Include="Pages\CustomerReport.resx">
       <DependentUpon>CustomerReport.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\InventoryReport.resx">
-      <DependentUpon>InventoryReport.vb</DependentUpon>
+    <EmbeddedResource Include="Pages\StockBalancesReport.resx">
+      <DependentUpon>StockBalancesReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\SalesReport.resx">
       <DependentUpon>SalesReport.vb</DependentUpon>
@@ -1610,10 +1592,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptStockBalZero.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportMenu\rptStockLedgerPerCat.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptStockLedgerPerCat.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="ReportMenu\rptStockMovementPItem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptStockMovementPItem.vb</LastGenOutput>
@@ -1711,10 +1689,6 @@
     <EmbeddedResource Include="Reports\rptStockBalbyColor.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptStockBalbyColor.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="rptTakeStock.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptTakeStock.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptToBeCollectedDelivery.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1825,10 +1799,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProductsMenu\ReviewPrices.resx">
       <DependentUpon>ReviewPrices.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Sales Reciept.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Sales Reciept.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesMenu\Sales.resx">
       <DependentUpon>Sales.vb</DependentUpon>

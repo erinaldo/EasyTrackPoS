@@ -43,15 +43,15 @@ Partial Class NewReport
         Me.dpdateto = New Bunifu.UI.WinForms.BunifuDatePicker()
         Me.BunifuPages1 = New Bunifu.UI.WinForms.BunifuPages()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.InventoryReport1 = New HardSoft_PoS.InventoryReport()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.SalesReport1 = New HardSoft_PoS.SalesReport()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.CustomerReport1 = New HardSoft_PoS.CustomerReport()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.SupplierReport1 = New HardSoft_PoS.SupplierReport()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.InventoryReport1 = New HardSoft_PoS.StockBalancesReport()
+        Me.SalesReport1 = New HardSoft_PoS.SalesReport()
+        Me.CustomerReport1 = New HardSoft_PoS.CustomerReport()
+        Me.SupplierReport1 = New HardSoft_PoS.SupplierReport()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -73,6 +73,7 @@ Partial Class NewReport
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.BackColor = System.Drawing.Color.White
         Me.SplitContainer1.Panel1.Controls.Add(Me.BunifuButton6)
         Me.SplitContainer1.Panel1.Controls.Add(Me.BunifuButton5)
         Me.SplitContainer1.Panel1.Controls.Add(Me.BunifuButton2)
@@ -87,8 +88,8 @@ Partial Class NewReport
         Me.SplitContainer1.Panel2.Controls.Add(Me.dpdatefrom)
         Me.SplitContainer1.Panel2.Controls.Add(Me.dpdateto)
         Me.SplitContainer1.Panel2.Controls.Add(Me.BunifuPages1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(800, 386)
-        Me.SplitContainer1.SplitterDistance = 143
+        Me.SplitContainer1.Size = New System.Drawing.Size(819, 469)
+        Me.SplitContainer1.SplitterDistance = 146
         Me.SplitContainer1.TabIndex = 0
         '
         'BunifuButton6
@@ -105,7 +106,7 @@ Partial Class NewReport
         Me.BunifuButton6.BackColor1 = System.Drawing.Color.White
         Me.BunifuButton6.BackgroundImage = CType(resources.GetObject("BunifuButton6.BackgroundImage"), System.Drawing.Image)
         Me.BunifuButton6.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid
-        Me.BunifuButton6.ButtonText = "System"
+        Me.BunifuButton6.ButtonText = "Stock Value"
         Me.BunifuButton6.ButtonTextMarginLeft = 0
         Me.BunifuButton6.ColorContrastOnClick = 45
         Me.BunifuButton6.ColorContrastOnHover = 45
@@ -140,7 +141,7 @@ Partial Class NewReport
         Me.BunifuButton6.IdleIconLeftImage = CType(resources.GetObject("BunifuButton6.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton6.IdleIconRightImage = Nothing
         Me.BunifuButton6.IndicateFocus = False
-        Me.BunifuButton6.Location = New System.Drawing.Point(-6, 295)
+        Me.BunifuButton6.Location = New System.Drawing.Point(-6, 368)
         Me.BunifuButton6.Name = "BunifuButton6"
         Me.BunifuButton6.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton6.OnDisabledState.BorderRadius = 1
@@ -174,7 +175,7 @@ Partial Class NewReport
         Me.BunifuButton6.OnPressedState.ForeColor = System.Drawing.Color.White
         Me.BunifuButton6.OnPressedState.IconLeftImage = Nothing
         Me.BunifuButton6.OnPressedState.IconRightImage = Nothing
-        Me.BunifuButton6.Size = New System.Drawing.Size(194, 46)
+        Me.BunifuButton6.Size = New System.Drawing.Size(206, 62)
         Me.BunifuButton6.TabIndex = 174
         Me.BunifuButton6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuButton6.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
@@ -231,7 +232,7 @@ Partial Class NewReport
         Me.BunifuButton5.IdleIconLeftImage = CType(resources.GetObject("BunifuButton5.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton5.IdleIconRightImage = Nothing
         Me.BunifuButton5.IndicateFocus = False
-        Me.BunifuButton5.Location = New System.Drawing.Point(0, 240)
+        Me.BunifuButton5.Location = New System.Drawing.Point(-5, 301)
         Me.BunifuButton5.Name = "BunifuButton5"
         Me.BunifuButton5.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton5.OnDisabledState.BorderRadius = 1
@@ -265,7 +266,7 @@ Partial Class NewReport
         Me.BunifuButton5.OnPressedState.ForeColor = System.Drawing.Color.White
         Me.BunifuButton5.OnPressedState.IconLeftImage = Nothing
         Me.BunifuButton5.OnPressedState.IconRightImage = Nothing
-        Me.BunifuButton5.Size = New System.Drawing.Size(188, 49)
+        Me.BunifuButton5.Size = New System.Drawing.Size(188, 61)
         Me.BunifuButton5.TabIndex = 173
         Me.BunifuButton5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuButton5.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
@@ -356,7 +357,7 @@ Partial Class NewReport
         Me.BunifuButton2.OnPressedState.ForeColor = System.Drawing.Color.White
         Me.BunifuButton2.OnPressedState.IconLeftImage = Nothing
         Me.BunifuButton2.OnPressedState.IconRightImage = Nothing
-        Me.BunifuButton2.Size = New System.Drawing.Size(185, 44)
+        Me.BunifuButton2.Size = New System.Drawing.Size(176, 52)
         Me.BunifuButton2.TabIndex = 172
         Me.BunifuButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuButton2.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
@@ -413,7 +414,7 @@ Partial Class NewReport
         Me.BunifuButton1.IdleIconLeftImage = CType(resources.GetObject("BunifuButton1.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton1.IdleIconRightImage = Nothing
         Me.BunifuButton1.IndicateFocus = False
-        Me.BunifuButton1.Location = New System.Drawing.Point(0, 192)
+        Me.BunifuButton1.Location = New System.Drawing.Point(0, 222)
         Me.BunifuButton1.Name = "BunifuButton1"
         Me.BunifuButton1.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton1.OnDisabledState.BorderRadius = 1
@@ -447,7 +448,7 @@ Partial Class NewReport
         Me.BunifuButton1.OnPressedState.ForeColor = System.Drawing.Color.White
         Me.BunifuButton1.OnPressedState.IconLeftImage = Nothing
         Me.BunifuButton1.OnPressedState.IconRightImage = Nothing
-        Me.BunifuButton1.Size = New System.Drawing.Size(179, 42)
+        Me.BunifuButton1.Size = New System.Drawing.Size(188, 60)
         Me.BunifuButton1.TabIndex = 171
         Me.BunifuButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuButton1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
@@ -469,7 +470,7 @@ Partial Class NewReport
         Me.BunifuButton4.BackColor1 = System.Drawing.Color.White
         Me.BunifuButton4.BackgroundImage = CType(resources.GetObject("BunifuButton4.BackgroundImage"), System.Drawing.Image)
         Me.BunifuButton4.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid
-        Me.BunifuButton4.ButtonText = "Inventory "
+        Me.BunifuButton4.ButtonText = "Stock Balances"
         Me.BunifuButton4.ButtonTextMarginLeft = 0
         Me.BunifuButton4.ColorContrastOnClick = 45
         Me.BunifuButton4.ColorContrastOnHover = 45
@@ -504,7 +505,7 @@ Partial Class NewReport
         Me.BunifuButton4.IdleIconLeftImage = CType(resources.GetObject("BunifuButton4.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton4.IdleIconRightImage = Nothing
         Me.BunifuButton4.IndicateFocus = False
-        Me.BunifuButton4.Location = New System.Drawing.Point(3, 95)
+        Me.BunifuButton4.Location = New System.Drawing.Point(-6, 82)
         Me.BunifuButton4.Name = "BunifuButton4"
         Me.BunifuButton4.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton4.OnDisabledState.BorderRadius = 1
@@ -538,7 +539,7 @@ Partial Class NewReport
         Me.BunifuButton4.OnPressedState.ForeColor = System.Drawing.Color.White
         Me.BunifuButton4.OnPressedState.IconLeftImage = Nothing
         Me.BunifuButton4.OnPressedState.IconRightImage = Nothing
-        Me.BunifuButton4.Size = New System.Drawing.Size(180, 42)
+        Me.BunifuButton4.Size = New System.Drawing.Size(206, 55)
         Me.BunifuButton4.TabIndex = 169
         Me.BunifuButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuButton4.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
@@ -595,7 +596,7 @@ Partial Class NewReport
         Me.BunifuButton3.IdleIconLeftImage = CType(resources.GetObject("BunifuButton3.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton3.IdleIconRightImage = Nothing
         Me.BunifuButton3.IndicateFocus = False
-        Me.BunifuButton3.Location = New System.Drawing.Point(3, 143)
+        Me.BunifuButton3.Location = New System.Drawing.Point(3, 159)
         Me.BunifuButton3.Name = "BunifuButton3"
         Me.BunifuButton3.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton3.OnDisabledState.BorderRadius = 1
@@ -629,7 +630,7 @@ Partial Class NewReport
         Me.BunifuButton3.OnPressedState.ForeColor = System.Drawing.Color.White
         Me.BunifuButton3.OnPressedState.IconLeftImage = Nothing
         Me.BunifuButton3.OnPressedState.IconRightImage = Nothing
-        Me.BunifuButton3.Size = New System.Drawing.Size(180, 43)
+        Me.BunifuButton3.Size = New System.Drawing.Size(148, 57)
         Me.BunifuButton3.TabIndex = 170
         Me.BunifuButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuButton3.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
@@ -640,10 +641,10 @@ Partial Class NewReport
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(23, 21)
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(23, 10)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(97, 21)
+        Me.Label1.Size = New System.Drawing.Size(105, 21)
         Me.Label1.TabIndex = 136
         Me.Label1.Text = "Date Ranges"
         '
@@ -657,7 +658,7 @@ Partial Class NewReport
         Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(7, 143)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(643, 240)
+        Me.CrystalReportViewer1.Size = New System.Drawing.Size(659, 323)
         Me.CrystalReportViewer1.TabIndex = 135
         '
         'dpdatefrom
@@ -710,7 +711,7 @@ Partial Class NewReport
         Me.dpdateto.Name = "dpdateto"
         Me.dpdateto.Size = New System.Drawing.Size(169, 32)
         Me.dpdateto.TabIndex = 133
-        Me.dpdateto.Value = New Date(2022, 1, 23, 13, 48, 0, 0)
+        Me.dpdateto.Value = New Date(2022, 1, 29, 0, 0, 0, 0)
         '
         'BunifuPages1
         '
@@ -731,7 +732,7 @@ Partial Class NewReport
         Me.BunifuPages1.PageName = "TabPage4"
         Me.BunifuPages1.PageTitle = "Supplier"
         Me.BunifuPages1.SelectedIndex = 0
-        Me.BunifuPages1.Size = New System.Drawing.Size(650, 89)
+        Me.BunifuPages1.Size = New System.Drawing.Size(666, 89)
         Me.BunifuPages1.TabIndex = 0
         Animation1.AnimateOnlyDifferences = False
         Animation1.BlindCoeff = CType(resources.GetObject("Animation1.BlindCoeff"), System.Drawing.PointF)
@@ -762,14 +763,6 @@ Partial Class NewReport
         Me.TabPage1.Text = "Inventory"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'InventoryReport1
-        '
-        Me.InventoryReport1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.InventoryReport1.Location = New System.Drawing.Point(3, 3)
-        Me.InventoryReport1.Name = "InventoryReport1"
-        Me.InventoryReport1.Size = New System.Drawing.Size(636, 57)
-        Me.InventoryReport1.TabIndex = 0
-        '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.SalesReport1)
@@ -780,14 +773,6 @@ Partial Class NewReport
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Sales"
         Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'SalesReport1
-        '
-        Me.SalesReport1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SalesReport1.Location = New System.Drawing.Point(3, 3)
-        Me.SalesReport1.Name = "SalesReport1"
-        Me.SalesReport1.Size = New System.Drawing.Size(636, 57)
-        Me.SalesReport1.TabIndex = 0
         '
         'TabPage3
         '
@@ -800,32 +785,16 @@ Partial Class NewReport
         Me.TabPage3.Text = "Customer"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
-        'CustomerReport1
-        '
-        Me.CustomerReport1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CustomerReport1.Location = New System.Drawing.Point(3, 3)
-        Me.CustomerReport1.Name = "CustomerReport1"
-        Me.CustomerReport1.Size = New System.Drawing.Size(636, 57)
-        Me.CustomerReport1.TabIndex = 0
-        '
         'TabPage4
         '
         Me.TabPage4.Controls.Add(Me.SupplierReport1)
         Me.TabPage4.Location = New System.Drawing.Point(4, 4)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(642, 63)
+        Me.TabPage4.Size = New System.Drawing.Size(658, 63)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Supplier"
         Me.TabPage4.UseVisualStyleBackColor = True
-        '
-        'SupplierReport1
-        '
-        Me.SupplierReport1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SupplierReport1.Location = New System.Drawing.Point(3, 3)
-        Me.SupplierReport1.Name = "SupplierReport1"
-        Me.SupplierReport1.Size = New System.Drawing.Size(636, 57)
-        Me.SupplierReport1.TabIndex = 0
         '
         'TabPage5
         '
@@ -844,14 +813,46 @@ Partial Class NewReport
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Panel1.Location = New System.Drawing.Point(5, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(793, 46)
+        Me.Panel1.Size = New System.Drawing.Size(812, 46)
         Me.Panel1.TabIndex = 1
+        '
+        'InventoryReport1
+        '
+        Me.InventoryReport1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.InventoryReport1.Location = New System.Drawing.Point(3, 3)
+        Me.InventoryReport1.Name = "InventoryReport1"
+        Me.InventoryReport1.Size = New System.Drawing.Size(636, 57)
+        Me.InventoryReport1.TabIndex = 0
+        '
+        'SalesReport1
+        '
+        Me.SalesReport1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SalesReport1.Location = New System.Drawing.Point(3, 3)
+        Me.SalesReport1.Name = "SalesReport1"
+        Me.SalesReport1.Size = New System.Drawing.Size(636, 57)
+        Me.SalesReport1.TabIndex = 0
+        '
+        'CustomerReport1
+        '
+        Me.CustomerReport1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CustomerReport1.Location = New System.Drawing.Point(3, 3)
+        Me.CustomerReport1.Name = "CustomerReport1"
+        Me.CustomerReport1.Size = New System.Drawing.Size(636, 57)
+        Me.CustomerReport1.TabIndex = 0
+        '
+        'SupplierReport1
+        '
+        Me.SupplierReport1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SupplierReport1.Location = New System.Drawing.Point(3, 3)
+        Me.SupplierReport1.Name = "SupplierReport1"
+        Me.SupplierReport1.Size = New System.Drawing.Size(652, 57)
+        Me.SupplierReport1.TabIndex = 0
         '
         'NewReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(819, 533)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Name = "NewReport"
@@ -888,7 +889,7 @@ Partial Class NewReport
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents TabPage4 As TabPage
     Friend WithEvents TabPage5 As TabPage
-    Friend WithEvents InventoryReport1 As InventoryReport
+    Friend WithEvents InventoryReport1 As StockBalancesReport
     Friend WithEvents SalesReport1 As SalesReport
     Friend WithEvents CustomerReport1 As CustomerReport
     Friend WithEvents SupplierReport1 As SupplierReport

@@ -72,7 +72,7 @@ Partial Class SalesReport
         Me.cbReport.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbReport.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbReport.FormattingEnabled = True
-        Me.cbReport.Items.AddRange(New Object() {"Sales Per Type", "Sales Per Cashier", "Sales Per Date", "Sales W/Discount"})
+        Me.cbReport.Items.AddRange(New Object() {"Sales Per Cashier", "Sales Per Cashier", "Sales Per Date", "Sales W/Discount"})
         Me.cbReport.Location = New System.Drawing.Point(53, 29)
         Me.cbReport.Name = "cbReport"
         Me.cbReport.Size = New System.Drawing.Size(467, 29)
