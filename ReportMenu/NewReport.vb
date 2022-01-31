@@ -16,7 +16,7 @@
     End Sub
 
     Private Sub BunifuButton6_Click(sender As Object, e As EventArgs) Handles BunifuButton6.Click
-        BunifuPages1.SetPage("system")
+        BunifuPages1.SetPage("StockValue")
     End Sub
 
     Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles BunifuButton2.Click

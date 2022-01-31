@@ -52,6 +52,7 @@ Partial Class NewReport
         Me.SalesReport1 = New HardSoft_PoS.SalesReport()
         Me.CustomerReport1 = New HardSoft_PoS.CustomerReport()
         Me.SupplierReport1 = New HardSoft_PoS.SupplierReport()
+        Me.StockValueReport1 = New HardSoft_PoS.StockValueReport()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -61,6 +62,7 @@ Partial Class NewReport
         Me.TabPage2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.TabPage4.SuspendLayout()
+        Me.TabPage5.SuspendLayout()
         Me.SuspendLayout()
         '
         'SplitContainer1
@@ -727,10 +729,10 @@ Partial Class NewReport
         Me.BunifuPages1.Location = New System.Drawing.Point(3, 48)
         Me.BunifuPages1.Multiline = True
         Me.BunifuPages1.Name = "BunifuPages1"
-        Me.BunifuPages1.Page = Me.TabPage4
-        Me.BunifuPages1.PageIndex = 3
-        Me.BunifuPages1.PageName = "TabPage4"
-        Me.BunifuPages1.PageTitle = "Supplier"
+        Me.BunifuPages1.Page = Me.TabPage5
+        Me.BunifuPages1.PageIndex = 4
+        Me.BunifuPages1.PageName = "TabPage5"
+        Me.BunifuPages1.PageTitle = "StockValue"
         Me.BunifuPages1.SelectedIndex = 0
         Me.BunifuPages1.Size = New System.Drawing.Size(666, 89)
         Me.BunifuPages1.TabIndex = 0
@@ -758,7 +760,7 @@ Partial Class NewReport
         Me.TabPage1.Location = New System.Drawing.Point(4, 4)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(642, 63)
+        Me.TabPage1.Size = New System.Drawing.Size(658, 63)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Inventory"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -769,7 +771,7 @@ Partial Class NewReport
         Me.TabPage2.Location = New System.Drawing.Point(4, 4)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(642, 63)
+        Me.TabPage2.Size = New System.Drawing.Size(658, 63)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Sales"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -780,7 +782,7 @@ Partial Class NewReport
         Me.TabPage3.Location = New System.Drawing.Point(4, 4)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(642, 63)
+        Me.TabPage3.Size = New System.Drawing.Size(658, 63)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Customer"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -798,12 +800,13 @@ Partial Class NewReport
         '
         'TabPage5
         '
+        Me.TabPage5.Controls.Add(Me.StockValueReport1)
         Me.TabPage5.Location = New System.Drawing.Point(4, 4)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(642, 63)
+        Me.TabPage5.Size = New System.Drawing.Size(658, 63)
         Me.TabPage5.TabIndex = 4
-        Me.TabPage5.Text = "System"
+        Me.TabPage5.Text = "StockValue"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
         'Panel1
@@ -821,7 +824,7 @@ Partial Class NewReport
         Me.InventoryReport1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.InventoryReport1.Location = New System.Drawing.Point(3, 3)
         Me.InventoryReport1.Name = "InventoryReport1"
-        Me.InventoryReport1.Size = New System.Drawing.Size(636, 57)
+        Me.InventoryReport1.Size = New System.Drawing.Size(652, 57)
         Me.InventoryReport1.TabIndex = 0
         '
         'SalesReport1
@@ -829,7 +832,7 @@ Partial Class NewReport
         Me.SalesReport1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SalesReport1.Location = New System.Drawing.Point(3, 3)
         Me.SalesReport1.Name = "SalesReport1"
-        Me.SalesReport1.Size = New System.Drawing.Size(636, 57)
+        Me.SalesReport1.Size = New System.Drawing.Size(652, 57)
         Me.SalesReport1.TabIndex = 0
         '
         'CustomerReport1
@@ -837,7 +840,7 @@ Partial Class NewReport
         Me.CustomerReport1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CustomerReport1.Location = New System.Drawing.Point(3, 3)
         Me.CustomerReport1.Name = "CustomerReport1"
-        Me.CustomerReport1.Size = New System.Drawing.Size(636, 57)
+        Me.CustomerReport1.Size = New System.Drawing.Size(652, 57)
         Me.CustomerReport1.TabIndex = 0
         '
         'SupplierReport1
@@ -847,6 +850,14 @@ Partial Class NewReport
         Me.SupplierReport1.Name = "SupplierReport1"
         Me.SupplierReport1.Size = New System.Drawing.Size(652, 57)
         Me.SupplierReport1.TabIndex = 0
+        '
+        'StockValueReport1
+        '
+        Me.StockValueReport1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.StockValueReport1.Location = New System.Drawing.Point(3, 3)
+        Me.StockValueReport1.Name = "StockValueReport1"
+        Me.StockValueReport1.Size = New System.Drawing.Size(652, 57)
+        Me.StockValueReport1.TabIndex = 0
         '
         'NewReport
         '
@@ -867,6 +878,7 @@ Partial Class NewReport
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage4.ResumeLayout(False)
+        Me.TabPage5.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -893,4 +905,5 @@ Partial Class NewReport
     Friend WithEvents SalesReport1 As SalesReport
     Friend WithEvents CustomerReport1 As CustomerReport
     Friend WithEvents SupplierReport1 As SupplierReport
+    Friend WithEvents StockValueReport1 As StockValueReport
 End Class

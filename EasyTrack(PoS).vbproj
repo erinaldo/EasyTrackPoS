@@ -589,6 +589,12 @@
     <Compile Include="Pages\SalesReport.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Pages\StockValueReport.Designer.vb">
+      <DependentUpon>StockValueReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StockValueReport.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Pages\SupplierReport.Designer.vb">
       <DependentUpon>SupplierReport.vb</DependentUpon>
     </Compile>
@@ -1443,6 +1449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\SalesReport.resx">
       <DependentUpon>SalesReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\StockValueReport.resx">
+      <DependentUpon>StockValueReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\SupplierReport.resx">
       <DependentUpon>SupplierReport.vb</DependentUpon>

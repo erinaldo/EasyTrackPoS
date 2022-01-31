@@ -673,3 +673,4 @@ K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.CustomerReport.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.SupplierReport.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmPackages.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.StockBalancesReport.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.StockValueReport.resources
