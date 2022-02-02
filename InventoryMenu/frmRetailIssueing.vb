@@ -215,6 +215,7 @@ Public Class frmRetailIssueing
                         .ExecuteNonQuery()
                     End With
                 Next
+
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
@@ -222,29 +223,44 @@ Public Class frmRetailIssueing
                 cmd = New SqlCommand(sql, Poscon)
                 cmd.ExecuteNonQuery()
                 For Each row As DataGridViewRow In gvStockBatch.Rows
-                    Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date,qtyrecieved,Customername) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyissued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date,@qtyrecieved,'" + cbSuppName.Text + "')"
-                    cmd = New SqlCommand(quer, Poscon)
-                    With cmd
-                        .Parameters.AddWithValue("@ItemCode", row.Cells(6).Value)
-                        .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
-                        .Parameters.AddWithValue("@tranxtype", "Issued")
-                        .Parameters.AddWithValue("@tranxsource", "Issued Stock")
-                        .Parameters.AddWithValue("@tranxgroup", row.Cells(4).Value)
-                        .Parameters.AddWithValue("@oldqty", row.Cells(1).Value)
-                        .Parameters.AddWithValue("@qtyIssued", row.Cells(3).Value)
-                        .Parameters.AddWithValue("@qtyrecieved", "0")
-                        .Parameters.AddWithValue("@Balance", row.Cells(4).Value)
-                        .Parameters.AddWithValue("@Rprice", row.Cells(2).Value)
-                        .Parameters.AddWithValue("@Cprice", row.Cells(2).Value)
-                        .Parameters.AddWithValue("@Ramt", row.Cells(5).Value)
-                        .Parameters.AddWithValue("@Camt", row.Cells(5).Value)
-                        .Parameters.AddWithValue("@Nar", txtNarration.Text)
-                        .Parameters.AddWithValue("@userid", tsuser.Text)
-                        .Parameters.AddWithValue("@Date", txtdate.Text)
-                        .Parameters.AddWithValue("@Time", tstime.Text)
-                        .ExecuteNonQuery()
-                    End With
-                    'MsgBox("Succesfully Wrintten into ledger")
+                    Dim sqll = "Select * from StockMast where Prodcode='" + row.Cells(6).Value + "'"
+                    cmd = New SqlCommand(sqll, Poscon)
+                    dr = cmd.ExecuteReader
+                    While dr.Read
+
+                        Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date,qtyrecieved,Customername) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyissued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date,@qtyrecieved,'" + cbSuppName.Text + "')"
+                        cmd = New SqlCommand(quer, Poscon)
+                        With cmd
+                            .Parameters.AddWithValue("@ItemCode", row.Cells(6).Value)
+                            .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
+                            .Parameters.AddWithValue("@tranxtype", "Issued")
+                            .Parameters.AddWithValue("@tranxsource", "Issued Stock")
+                            .Parameters.AddWithValue("@tranxgroup", row.Cells(4).Value)
+                            .Parameters.AddWithValue("@oldqty", dr.Item("ProdQty"))
+                            .Parameters.AddWithValue("@qtyIssued", row.Cells(3).Value)
+                            .Parameters.AddWithValue("@qtyrecieved", "0")
+                            .Parameters.AddWithValue("@Balance", dr.Item("ProdQty") - row.Cells(3).Value)
+                            .Parameters.AddWithValue("@Rprice", row.Cells(2).Value)
+                            .Parameters.AddWithValue("@Cprice", row.Cells(2).Value)
+                            .Parameters.AddWithValue("@Ramt", row.Cells(5).Value)
+                            .Parameters.AddWithValue("@Camt", row.Cells(5).Value)
+                            .Parameters.AddWithValue("@Nar", txtNarration.Text)
+                            .Parameters.AddWithValue("@userid", tsuser.Text)
+                            .Parameters.AddWithValue("@Date", txtdate.Text)
+                            .Parameters.AddWithValue("@Time", tstime.Text)
+                            .ExecuteNonQuery()
+                        End With
+                        'MsgBox("Succesfully Wrintten into ledger")
+                    End While
+                    cmd = New SqlCommand("Select * from StockMast where Prodcode='" + row.Cells(6).Value + "'", Poscon)
+                    dr = cmd.ExecuteReader
+                    While dr.Read
+
+                        'updates("update StockMast set prodqty = '" & dr.Item("ProdQty") - gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & "")
+                        Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - row.Cells(3).Value & "' where Prodcode= " & row.Cells(6).Value & ""
+                        cmd = New SqlCommand(query, Poscon)
+                        cmd.ExecuteNonQuery()
+                    End While
                 Next
                 If Val(txtAmtPaid.Text) > 0 Then
                     Dim query = "insert into customerpayment(Customername,oldbal,datepaid,amtpaid,newbal,Paymentmode,Recievedby) values('" + cbSuppName.Text + "','" + lblOldBal.Text + "','" + txtdate.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbPaymentMode.Text + "','" + tsuser.Text + "') "
@@ -253,21 +269,21 @@ Public Class frmRetailIssueing
                     ' create("insert into customerpayment(Customername,oldbal,datepaid,amtpaid,newbal,Paymentmode,Recievedby) values('" + cbSuppName.Text + "','" + lblOldBal.Text + "','" + txtdate.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbPaymentMode.Text + "','" + tsuser.Text + "') ")
                 End If
             Finally
-                For k = 0 To gvStockBatch.RowCount - 1
-                    If Poscon.State = ConnectionState.Closed Then
-                        Poscon.Open()
-                    End If
-                    Dim sqll = "Select * from StockMast where Prodcode='" + gvStockBatch.Rows(k).Cells(6).Value + "'"
-                    cmd = New SqlCommand(sqll, Poscon)
-                    dr = cmd.ExecuteReader
-                    While dr.Read
+                'For k = 0 To gvStockBatch.RowCount - 1
+                '    If Poscon.State = ConnectionState.Closed Then
+                '        Poscon.Open()
+                '    End If
+                '    Dim sqll = "Select * from StockMast where Prodcode='" + gvStockBatch.Rows(k).Cells(6).Value + "'"
+                '    cmd = New SqlCommand(sqll, Poscon)
+                '    dr = cmd.ExecuteReader
+                '    While dr.Read
 
-                        ' updates("update StockMast set prodqty = '" & dr.Item("ProdQty") - gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & "")
-                        Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & ""
-                        cmd = New SqlCommand(query, Poscon)
-                        cmd.ExecuteNonQuery()
-                    End While
-                Next
+                '        ' updates("update StockMast set prodqty = '" & dr.Item("ProdQty") - gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & "")
+                '        Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & ""
+                '        cmd = New SqlCommand(query, Poscon)
+                '        cmd.ExecuteNonQuery()
+                '    End While
+                'Next
 
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()

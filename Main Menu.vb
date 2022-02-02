@@ -134,6 +134,8 @@ Public Class frmMain
     End Sub
 
     Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles BunifuButton4.Click
+        'Dim f2 As New NewReport
+        'f2.Show()
         frmReportMenu.Show()
         Me.Hide()
     End Sub

@@ -1,7 +1,11 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Globalization
 Public Class CustomerReport
     Dim dt As New dscustomer
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        DateTime.TryParseExact(NewReport.dpdatefrom.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outfrom)
+        DateTime.TryParseExact(NewReport.dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
+
         Dim selectedindex = cbReport.SelectedIndex
         Select Case selectedindex
             Case 0

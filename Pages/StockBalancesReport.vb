@@ -238,6 +238,34 @@ Public Class StockBalancesReport
                 Catch ex As Exception
                     MsgBox(ex.ToString)
                 End Try
+            Case 9
+                Try
+
+                    If Poscon.State = ConnectionState.Closed Then
+                        Poscon.Open()
+                    End If
+                    Dim query = "select * from inventoryledger"
+                    cmd = New SqlCommand(query, Poscon)
+                    dt.Tables("inventoryledger").Rows.Clear()
+                    da.SelectCommand = cmd
+                    da.Fill(dt, "inventoryledger")
+
+                    'Dim sql = "select * from ClientReg"
+                    'dt.Tables("ClientReg").Rows.Clear()
+                    'cmd = New SqlCommand(sql, poscon)
+                    'adp.SelectCommand = cmd
+                    'adp.Fill(dt, "ClientReg")
+
+                    Dim report As New rptInventLedgerPerItem
+                    report.SetDataSource(dt)
+                    NewReport.CrystalReportViewer1.ReportSource = report
+                    NewReport.CrystalReportViewer1.Refresh()
+                    cmd.Dispose()
+                    da.Dispose()
+                    Poscon.Close()
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                End Try
             Case Else
                 MsgBox("Kindly Choose a Report to View")
         End Select

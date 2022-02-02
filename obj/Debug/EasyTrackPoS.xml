@@ -767,6 +767,16 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsStockMast.PriceChangeLogDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.InventoryLedgerDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsStockMast.ClientRegRow">
 <summary>
 Represents strongly named DataRow class.
@@ -777,12 +787,32 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsStockMast.PriceChangeLogRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.InventoryLedgerRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsStockMast.ClientRegRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsStockMast.StockMastRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.PriceChangeLogRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.InventoryLedgerRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -953,6 +983,16 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsStockMastTableAdapters.StockMastTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMastTableAdapters.PriceChangeLogTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMastTableAdapters.InventoryLedgerTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

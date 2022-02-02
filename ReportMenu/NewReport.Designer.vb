@@ -867,7 +867,9 @@ Partial Class NewReport
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Name = "NewReport"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "NewReport"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         Me.SplitContainer1.Panel2.PerformLayout()

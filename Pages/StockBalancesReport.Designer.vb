@@ -36,7 +36,7 @@ Partial Class StockBalancesReport
         Me.cbReport.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbReport.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbReport.FormattingEnabled = True
-        Me.cbReport.Items.AddRange(New Object() {"StockTaking Sheet", "Stock Checks", "Stock Balances Per Category", "Stock Balances Per Brand", "Stock Balances Per Size", "Stock Balances Per Colour", "Positive Stock", "Negative Stock", "Zero Stock", "", ""})
+        Me.cbReport.Items.AddRange(New Object() {"StockTaking Sheet", "Stock Checks", "Stock Balances Per Category", "Stock Balances Per Brand", "Stock Balances Per Size", "Stock Balances Per Colour", "Positive Stock", "Negative Stock", "Zero Stock", "Stock Movement Per Item", ""})
         Me.cbReport.Location = New System.Drawing.Point(54, 32)
         Me.cbReport.Name = "cbReport"
         Me.cbReport.Size = New System.Drawing.Size(467, 29)
