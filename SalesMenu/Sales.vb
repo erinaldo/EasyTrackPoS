@@ -370,45 +370,65 @@ Public Class frmSales
 
     End Sub
     Private Sub ShowConfig()
-        Try
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            Dim recieptcount As String
-            Dim nextreciept As String
-            Dim que = "select * from recieptconfig"
-            cmd = New SqlCommand(que, Poscon)
-            Dim da As New SqlDataAdapter(cmd)
-            Dim table As New DataTable
-            da.Fill(table)
-            If table.Rows.Count() = 0 Then
-                lblRecieptNo.Text = "10001"
-            Else
-                Dim index = table.Rows.Count() - 1
-                Dim reciept = table.Rows(index)(0).ToString
-                nextreciept = reciept + 1
-                recieptcount = nextreciept.Count.ToString
-                Select Case recieptcount
-                    Case "1"
-                        lblRecieptNo.Text = "1000" + nextreciept
-                    Case "2"
-                        lblRecieptNo.Text = "100" + nextreciept
-                    Case "3"
-                        lblRecieptNo.Text = "10" + nextreciept
-                    Case "4"
-                        lblRecieptNo.Text = "1" + nextreciept
-                    Case "5"
-                        lblRecieptNo.Text = nextreciept
-                    Case Else
-                        lblRecieptNo.Text = nextreciept
-                End Select
-            End If
-            Poscon.Close()
-        Catch ex As Exception
-            MsgBox(ex.Message, ex.ToString)
-        End Try
+        'Try
+        '    If Poscon.State = ConnectionState.Closed Then
+        '        Poscon.Open()
+        '    End If
+        '    Dim recieptcount As String
+        '    Dim nextreciept As String
+        '    cmd = New SqlCommand("select * from recieptconfig", Poscon)
+        '    Dim da As New SqlDataAdapter(cmd)
+        '    Dim table As New DataTable
+        '    da.Fill(table)
+        '    If table.Rows.Count() = 0 Then
+        '        lblRecieptNo.Text = "10001"
+        '    Else
+        '        Dim index = table.Rows.Count() - 1
+        '        Dim reciept = table.Rows(index)(0).ToString
+        '        nextreciept = reciept + 1
+        '        recieptcount = nextreciept.Count.ToString
+        '        Select Case recieptcount
+        '            Case "1"
+        '                lblRecieptNo.Text = "1000" + nextreciept
+        '            Case "2"
+        '                lblRecieptNo.Text = "100" + nextreciept
+        '            Case "3"
+        '                lblRecieptNo.Text = "10" + nextreciept
+        '            Case "4"
+        '                lblRecieptNo.Text = "1" + nextreciept
+        '            Case "5"
+        '                lblRecieptNo.Text = "A" + nextreciept
+        '            Case Else
+        '                lblRecieptNo.Text = "A" + nextreciept
+        '        End Select
+        '    End If
+        '    Poscon.Close()
+        'Catch ex As Exception
+        '    MsgBox(ex.Message, ex.ToString)
+        'End Try
 
+        Newshowconfig()
 
+    End Sub
+    Public Sub Newshowconfig()
+        Dim digit As Integer
+        Dim result As String
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+        cmd = New SqlCommand("select max(Recieptid) from recieptconfig", Poscon)
+        result = cmd.ExecuteScalar.ToString
+
+        If String.IsNullOrEmpty(result) Then
+            result = "ET000000"
+            lblRecieptNo.Text = result
+        Else
+            result = result.Substring(3)
+            Int32.TryParse(result, digit)
+            digit = digit + 1
+            result = "ET" + digit.ToString("D6")
+            lblRecieptNo.Text = result
+        End If
 
     End Sub
 
@@ -1746,6 +1766,10 @@ Public Class frmSales
     End Sub
 
     Private Sub BunifuThinButton24_Click_1(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub lblRecieptNo_Click(sender As Object, e As EventArgs) Handles lblRecieptNo.Click
 
     End Sub
 End Class

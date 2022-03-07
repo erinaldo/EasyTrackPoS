@@ -5,31 +5,16 @@ Public Class frmCloseSalesMenu
     Private Sub CloseSalesMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cbSalesType.SelectedIndex = 0
         Timer1.Enabled = True
-        Poscon.Open()
-        Dim que = "select * from ActiveSession"
-        cmd = New SqlCommand(que, Poscon)
-        Dim da As New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        If table.Rows.Count = 0 Then
-        Else
-            lblsessionID.Text = table.Rows(0)(0).ToString
-        End If
 
-        Poscon.Close()
-        'Dim morodate As DateTime
-        'morodate = Convert.ToDateTime(lblDate.Text)
-        'morodate = morodate.AddDays(1)
-        'lblnextdate.Text = morodate.ToString("dd-MMM-yy")
+        Display()
+
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
+        lblnextdate.Text = DateAdd(DateInterval.Day, 1, Date.Parse(lblDate.Text))
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         lblTime.Text = Date.Now.ToString("hh:mm:ss")
-        lblDate.Text = Date.Now.ToString("dd/MMM/yy")
-
-
 
     End Sub
 
@@ -48,8 +33,10 @@ Public Class frmCloseSalesMenu
         If cbSalesType.SelectedIndex = 1 Or cbSalesType.SelectedItem = "Non-Sales Session" Then
             txtCashCounted.Text = "0"
             Try
-                Poscon.Open()
-                Dim query = "update SessionLedger set closedby='" + stUser.Text + "',dateclosed='" + lblDate.Text + "',Timeclosed='" + lblTime.Text + "',salesType='" + cbSalesType.Text + "',CashCounted='" + txtCashCounted.Text + "',Expenses='" + txtExpense.Text + "' where sessionid='" + lblsessionID.Text + "'"
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
+                End If
+                Dim query = "update SessionLedger set closedby='" + stUser.Text + "',dateclosed=convert(datetime,'" + lblDate.Text + "',105),Timeclosed='" + lblTime.Text + "',salesType='" + cbSalesType.Text + "',CashCounted='" + txtCashCounted.Text + "',Expenses='" + txtExpense.Text + "',NextSessiondate=convert(datetime,'" + lblnextdate.Text + "',105) where sessionid='" + lblsessionID.Text + "'"
                 cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 Dim quer = "delete from ActiveSession where SessionID= " + lblsessionID.Text + " "
@@ -67,8 +54,10 @@ Public Class frmCloseSalesMenu
                 MsgBox("Enter Cash counted")
             Else
                 Try
-                    Poscon.Open()
-                    Dim query = "update SessionLedger set closedby='" + stUser.Text + "',dateclosed='" + lblDate.Text + "',Timeclosed='" + lblTime.Text + "',salesType='" + cbSalesType.Text + "',CashCounted='" + txtCashCounted.Text + "',Expenses='" + txtExpense.Text + "' where sessionid='" + lblsessionID.Text + "'"
+                    If Poscon.State = ConnectionState.Closed Then
+                        Poscon.Open()
+                    End If
+                    Dim query = "update SessionLedger set closedby='" + stUser.Text + "',dateclosed=convert(datetime,'" + lblDate.Text + "',105),Timeclosed='" + lblTime.Text + "',salesType='" + cbSalesType.Text + "',CashCounted='" + txtCashCounted.Text + "',Expenses='" + txtExpense.Text + "',NextSessiondate=convert(datetime,'" + lblnextdate.Text + "',105) where sessionid='" + lblsessionID.Text + "'"
                     cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()
                     Dim quer = "delete from ActiveSession where SessionID= " + lblsessionID.Text + " "
@@ -105,5 +94,38 @@ Public Class frmCloseSalesMenu
         ElseIf cbSalesType.SelectedItem = "Sales Session" Or cbSalesType.SelectedIndex = 0 Then
             txtCashCounted.Enabled = True
         End If
+    End Sub
+
+    Private Sub frmCloseSalesMenu_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
+        ' Dim morodate As Date
+        'morodate = Convert.ToDateTime(lblDate.Text)
+        ' MsgBox(lblDate.Text)
+        'morodate = Date.Parse(lblDate.Text)
+        lblnextdate.Text = DateAdd(DateInterval.Day, 1, Date.Parse(lblDate.Text))
+    End Sub
+    Private Sub Display()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+        cmd = New SqlCommand("select * from ActiveSession", Poscon)
+        da = New SqlDataAdapter(cmd)
+        tbl = New DataTable
+        da.Fill(tbl)
+        If tbl.Rows.Count = 0 Then
+        Else
+            lblsessionID.Text = tbl.Rows(0)(0).ToString
+        End If
+        cmd = New SqlCommand("select convert(datetime,dateopened,103) from Sessionledger", Poscon)
+        da = New SqlDataAdapter(cmd)
+        tbl = New DataTable
+        da.Fill(tbl)
+        ' DataGridView1.DataSource = tbl
+        If tbl.Rows.Count = 0 Then
+        Else
+            Dim index = tbl.Rows.Count - 1
+            'MsgBox(Date.Parse(tbl.Rows(index)(0).ToString))
+            lblDate.Text = Date.Parse(tbl.Rows(index)(0).ToString)
+        End If
+        Poscon.Close()
     End Sub
 End Class

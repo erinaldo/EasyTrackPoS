@@ -261,7 +261,6 @@ Public Class frmTouchSale
                 .ExecuteNonQuery()
             End With
         Next
-
         MsgBox("Oder Updated Succefull")
         LoadOder()
     End Sub
@@ -301,7 +300,7 @@ Public Class frmTouchSale
         End If
 
     End Sub
-    Sub oder()
+    Sub Oder()
         If con.State = ConnectionState.Closed Then
             con.Open()
         End If
@@ -309,7 +308,7 @@ Public Class frmTouchSale
         cmd = New SqlCommand(sql, con)
         cmd.ExecuteNonQuery()
         con.Close()
-        MsgBox("Oder Succeful")
+        MsgBox("Oder Successful")
         'gvtouchsale.Rows.Clear()
         'Clear()
         LoadOder()
@@ -319,7 +318,7 @@ Public Class frmTouchSale
             con.Open()
         End If
         For Each row As DataGridViewRow In gvtouchsale.Rows
-            Dim qu = "insert into odertranx (OderNo,ItemCode,ItemName,Price,Oderqty,OderAmt,DayOderNo,OderStatus,Category,Prodline,WaiterName) values('" + lblOderNo.Text + "',@ItemCode,@ItemName,@Price,@Oderqty,@OderAmt,'" + lblDayOder.Text + "',@Oderstatus,@Category,@Prodline,'" + cbWaiter.Text + "')"
+            Dim qu = "insert into odertranx (OderNo,ItemCode,ItemName,Price,Oderqty,OderAmt,DayOderNo,OderStatus,Category,Prodline,WaiterName) values('" + lblOderNo.Text + "',@ItemCode,@ItemName,@Price,@Oderqty,@OderAmt,'" + lblDayOder.Text + "',@Oderstatus,@Category,@Prodline,'" + cbWaiter.Text + "') ON DUPLICATE KEY update ItemCode=@itemcodeu,ItemName=@itemnameu,Price=@priceu,Oderqty=@oderqtyu,OderAmt=@oderamtu,OderStatus=@oderstatusu,Category=@categoryu,Prodline=@prodlineu,WaiterName='" + cbWaiter.Text + "' where Oderno=@dayoderno"
             cmd = New SqlCommand(qu, con)
             With cmd
 
@@ -331,6 +330,18 @@ Public Class frmTouchSale
                 .Parameters.AddWithValue("@OderStatus", "Pending")
                 .Parameters.AddWithValue("@Category", row.Cells(7).Value)
                 .Parameters.AddWithValue("@Prodline", row.Cells(8).Value)
+
+                'Update
+                .Parameters.AddWithValue("@ItemCodeu", row.Cells(0).Value)
+                .Parameters.AddWithValue("@ItemNameu", row.Cells(1).Value)
+                .Parameters.AddWithValue("@Priceu", row.Cells(2).Value)
+                .Parameters.AddWithValue("@Oderqtyu", row.Cells(3).Value)
+                .Parameters.AddWithValue("@OderAmtu", row.Cells(4).Value)
+                .Parameters.AddWithValue("@OderStatusu", "Pending")
+                .Parameters.AddWithValue("@Categoryu", row.Cells(7).Value)
+                .Parameters.AddWithValue("@Prodlineu", row.Cells(8).Value)
+                .Parameters.AddWithValue("@dayodernou", lblDayOder.Text)
+
                 .ExecuteNonQuery()
             End With
         Next
@@ -411,27 +422,11 @@ Public Class frmTouchSale
         SearchWaiters(txtSearchWaiterOder.Text)
     End Sub
     Sub LoadWaiterNames()
-        If con.State = ConnectionState.Closed Then
-            con.Open()
-        End If
-        Dim queryy = ("Select * from Waiters")
-        cmd = New SqlCommand(queryy, con)
-        Dim adp As New SqlDataAdapter(cmd)
-        Dim tbl As New DataTable
-        adp.Fill(tbl)
-        cbWaiter.DataSource = tbl
-        cbWaiter.DisplayMember = "WaiterName"
-        ' cbWaiter.ValueMember = "WaiterId"
-        cbWaiterSearch.DataSource = tbl
-        cbWaiterSearch.DisplayMember = "WaiterName"
-        ' cbWaiterSearch.ValueMember = "WaiterId"
-        con.Close()
+        ComboFeed("Select waitername from Waiters", cbWaiter, 0)
+        ComboFeed("Select waitername from Waiters", cbWaiterSearch, 0)
     End Sub
 
-    Private Sub cbWaiterSearch_DropDownClosed(sender As Object, e As EventArgs) Handles cbWaiterSearch.DropDownClosed
-        txtSearchWaiterOder.Text = cbWaiterSearch.Text
-        MsgBox(cbWaiterSearch.Text)
-    End Sub
+
 
     Private Sub txtSearchWaiterOder_TextChanged(sender As Object, e As EventArgs) Handles txtSearchWaiterOder.TextChanged
         SearchWaiters(txtSearchWaiterOder.Text)
@@ -1084,7 +1079,7 @@ Public Class frmTouchSale
                             Dim cmdd As New SqlCommand
                             cmdd = New SqlCommand(query, con)
                             With cmdd
-                                .Parameters.AddWithValue("@newstock", CInt(gvtouchsale.Rows(k).Cells(8).Value))
+                                .Parameters.AddWithValue("@newstock", gvtouchsale.Rows(k).Cells(8).Value)
                                 .ExecuteNonQuery()
                             End With
                         Next
@@ -1169,5 +1164,7 @@ Public Class frmTouchSale
         txtAmt.Text = Val(txtPrice.Text) * Val(txtQty.Text)
     End Sub
 
-
+    Private Sub cbWaiterSearch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbWaiterSearch.SelectedIndexChanged
+        SearchWaiters(cbWaiterSearch.Text)
+    End Sub
 End Class

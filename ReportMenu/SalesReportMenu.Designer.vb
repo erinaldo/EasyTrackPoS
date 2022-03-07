@@ -63,11 +63,11 @@ Partial Class SalesReportMenu
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(177, 317)
+        Me.Label3.Location = New System.Drawing.Point(139, 317)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(112, 32)
+        Me.Label3.Size = New System.Drawing.Size(220, 32)
         Me.Label3.TabIndex = 119
-        Me.Label3.Text = "Per Date"
+        Me.Label3.Text = "Cancellation Sales"
         '
         'Label2
         '

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmCloseSalesMenu
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmCloseSalesMenu
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCloseSalesMenu))
@@ -45,9 +45,11 @@ Partial Class frmCloseSalesMenu
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtExpense = New System.Windows.Forms.TextBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Timer1
@@ -70,11 +72,11 @@ Partial Class frmCloseSalesMenu
         Me.lblDate.AutoSize = True
         Me.lblDate.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.lblDate.ForeColor = System.Drawing.Color.White
-        Me.lblDate.Location = New System.Drawing.Point(669, 0)
+        Me.lblDate.Location = New System.Drawing.Point(656, 0)
         Me.lblDate.Name = "lblDate"
-        Me.lblDate.Size = New System.Drawing.Size(68, 32)
+        Me.lblDate.Size = New System.Drawing.Size(48, 32)
         Me.lblDate.TabIndex = 114
-        Me.lblDate.Text = "Date"
+        Me.lblDate.Text = "///"
         '
         'lblTime
         '
@@ -225,10 +227,11 @@ Partial Class frmCloseSalesMenu
         Me.lblnextdate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblnextdate.AutoSize = True
         Me.lblnextdate.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.lblnextdate.Location = New System.Drawing.Point(677, 74)
+        Me.lblnextdate.Location = New System.Drawing.Point(612, 75)
         Me.lblnextdate.Name = "lblnextdate"
-        Me.lblnextdate.Size = New System.Drawing.Size(0, 32)
+        Me.lblnextdate.Size = New System.Drawing.Size(48, 32)
         Me.lblnextdate.TabIndex = 124
+        Me.lblnextdate.Text = "///"
         '
         'Panel1
         '
@@ -267,12 +270,22 @@ Partial Class frmCloseSalesMenu
         Me.txtExpense.Size = New System.Drawing.Size(161, 36)
         Me.txtExpense.TabIndex = 126
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(531, 227)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(91, 76)
+        Me.DataGridView1.TabIndex = 128
+        Me.DataGridView1.Visible = False
+        '
         'frmCloseSalesMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(805, 454)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtExpense)
         Me.Controls.Add(Me.lblnextdate)
@@ -294,6 +307,7 @@ Partial Class frmCloseSalesMenu
         Me.StatusStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -320,4 +334,5 @@ Partial Class frmCloseSalesMenu
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label5 As Label
     Friend WithEvents txtExpense As TextBox
+    Friend WithEvents DataGridView1 As DataGridView
 End Class

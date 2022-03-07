@@ -32,6 +32,9 @@ Public Class PfrmSalesMgmt
 
     Private Sub BunifuButton1_Click(sender As Object, e As EventArgs) Handles btnOpenSession.Click
         Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             Dim que = "select * from ActiveSession"
             cmd = New SqlCommand(que, Poscon)
             da = New SqlDataAdapter(cmd)
@@ -57,6 +60,9 @@ Public Class PfrmSalesMgmt
 
     Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles BunifuButton2.Click
         Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             Dim que = "select * from ActiveSession"
             cmd = New SqlCommand(que, Poscon)
             da = New SqlDataAdapter(cmd)
@@ -104,6 +110,9 @@ Public Class PfrmSalesMgmt
 
     Private Sub BunifuButton7_Click(sender As Object, e As EventArgs) Handles BunifuButton7.Click
         Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             Dim que = "select * from ActiveSession"
             cmd = New SqlCommand(que, Poscon)
             da = New SqlDataAdapter(cmd)
@@ -122,7 +131,7 @@ Public Class PfrmSalesMgmt
                 End With
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
 

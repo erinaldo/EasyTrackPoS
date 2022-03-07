@@ -32,6 +32,12 @@ Public Class SalesReportMenu
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
+
+            dt.Tables("cancellationlog").Rows.Clear()
+            cmd = New SqlCommand("select * from cancellationlog", Poscon)
+            da.SelectCommand = cmd
+            da.Fill(dt, "cancellationlog")
+
             'Dim sqll = "select expenses,cashcounted from Sessionledger where dateclosed between @datefrom and @dateto"
             'cmd = New SqlCommand(query, poscon)
             'cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom

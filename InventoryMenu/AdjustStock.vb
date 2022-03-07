@@ -65,13 +65,14 @@ Public Class frmAdjustStock
             If poscon.State = ConnectionState.Closed Then
                 poscon.Open()
             End If
-            Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast"
-            cmd = New SqlCommand(query, poscon)
-            da = New SqlDataAdapter(cmd)
-            Dim tbl As New DataTable
-            da.Fill(tbl)
-            gvStockBf.DataSource = tbl
-            poscon.Close()
+            'Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast"
+            'cmd = New SqlCommand(query, poscon)
+            'da = New SqlDataAdapter(cmd)
+            'Dim tbl As New DataTable
+            'da.Fill(tbl)
+            'gvStockBf.DataSource = tbl
+            'Poscon.Close()
+            reload("select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast", gvStockBf)
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -238,7 +239,7 @@ Public Class frmAdjustStock
             lblStockcode.Text = row.Cells(0).Value.ToString()
             txtCat.Text = row.Cells(5).Value.ToString()
             txtprodline.Text = row.Cells(6).Value.ToString()
-
+            txtNewStock.Focus()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

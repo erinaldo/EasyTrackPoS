@@ -162,7 +162,12 @@ Public Class RecieveCustomerPayment
                 create("insert into customerpayment(Customername,oldbal,datepaid,amtpaid,newbal,paymenttype,paymentmode,recievedby,narration,timerecieved,discount) values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtdatepaid.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbType.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + lblTime.Text + "','" + txtdiscount.Text + "') ")
                 create("Insert into CustomerLedger(CustomerName,oldbal,Newbal,AmtPaid,DatePaid,TimePaid,CustomerNo,RecievedBy,discount)Values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + lblNewBal.Text + "','" + txtAmtPaid.Text + "','" + txtdatepaid.Text + "','" + lblTime.Text + "','" + lblCustID.Text + "','" + txtRecievedBy.Text + "','" + txtdiscount.Text + "')")
                 updates("update Customer set CurrentBalance = " + lblNewBal.Text + " where IDCardNumber =" + lblCustID.Text + "")
-                PrintRecieptroll()
+                If tkroll.Checked = True Then
+                    PrintRecieptroll()
+                End If
+                If tkA5.Checked = True Then
+                    A4()
+                End If
                 MsgBox("Payment Saved")
             End If
             recieptno()
@@ -233,6 +238,50 @@ Public Class RecieveCustomerPayment
                 da.Fill(dt, "ClientReg")
 
                 Dim report As New rptCustomerReciept
+                report.SetDataSource(dt)
+                If ckprint.Checked = True Then
+                    report.PrintToPrinter(1, True, 0, 0)
+                End If
+                If ckprintpreview.Checked = True Then
+                    frmSupplierReport.Show()
+                    frmSupplierReport.CrystalReportViewer1.ReportSource = report
+                    frmSupplierReport.CrystalReportViewer1.Refresh()
+                End If
+            End If
+
+            cmd.Dispose()
+            da.Dispose()
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+    Sub A4()
+        Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+
+            cmd = New SqlCommand("select Paymentid from customerpayment", Poscon)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
+            If tbl.Rows.Count() = 0 Then
+            Else
+                Dim index = tbl.Rows.Count() - 1
+                Dim query = "select * from customerpayment where paymentid='" + tbl.Rows(index)(0).ToString + "'"
+                cmd = New SqlCommand(query, Poscon)
+                dt.Tables("customerpayment").Rows.Clear()
+                da.SelectCommand = cmd
+                da.Fill(dt, "customerpayment")
+
+                Dim sql = "select * from ClientReg"
+                dt.Tables("ClientReg").Rows.Clear()
+                cmd = New SqlCommand(sql, Poscon)
+                da.SelectCommand = cmd
+                da.Fill(dt, "ClientReg")
+
+                Dim report As New rptCustomerRecieptA5
                 report.SetDataSource(dt)
                 If ckprint.Checked = True Then
                     report.PrintToPrinter(1, True, 0, 0)

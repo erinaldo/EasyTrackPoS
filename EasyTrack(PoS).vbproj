@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F49B7D96-10D9-498E-85E8-D1A648498992}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>HardSoft_PoS.frmMain</StartupObject>
+    <StartupObject>HardSoft_PoS.PfrmSalesMgmt</StartupObject>
     <RootNamespace>HardSoft_PoS</RootNamespace>
     <AssemblyName>EasyTrackPoS</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -338,6 +338,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptCustomerReciept.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomerMenu\rptCustomerRecieptA5.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCustomerRecieptA5.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomerMenu\rptInvoicesPerCustomer.vb">
@@ -1326,6 +1332,10 @@
     <EmbeddedResource Include="CustomerMenu\rptCustomerReciept.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCustomerReciept.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerMenu\rptCustomerRecieptA5.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCustomerRecieptA5.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerMenu\rptInvoicesPerCustomer.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

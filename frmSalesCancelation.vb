@@ -204,7 +204,7 @@ Public Class frmSalesCancelation
                 Poscon.Open()
             End If
 
-            Dim sqll = "update Salestranx set QtySold = @newstock, Amount=@newamt where ItemCode =@itemcode and RecieptNo=" + lblRecieptNo.Text + ""
+            Dim sqll = "update Salestranx set QtySold = @newstock, Amount=@newamt where ItemCode =@itemcode and RecieptNo='" + lblRecieptNo.Text + "'"
             cmd = New SqlCommand(sqll, Poscon)
             With cmd
                 .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = row.Cells(0).Value

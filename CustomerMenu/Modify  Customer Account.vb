@@ -13,7 +13,9 @@ Public Class frmModifyCustomerAccounts
 
     End Sub
     Private Sub Display()
-        Poscon.Open()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
         Dim query = "select * from Customer"
         Dim adapter As SqlDataAdapter
         Dim cmd As SqlCommand

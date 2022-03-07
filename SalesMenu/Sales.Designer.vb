@@ -154,13 +154,13 @@ Partial Class frmSales
         Me.Label14 = New System.Windows.Forms.Label()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblPackageid = New System.Windows.Forms.Label()
         Me.BunifuThinButton27 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblProformaInvoice = New System.Windows.Forms.Label()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
-        Me.lblPackageid = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
@@ -771,7 +771,6 @@ Partial Class frmSales
         Me.lblRecieptNo.Size = New System.Drawing.Size(32, 13)
         Me.lblRecieptNo.TabIndex = 126
         Me.lblRecieptNo.Text = "100#"
-        Me.lblRecieptNo.Visible = False
         '
         'gvStock
         '
@@ -1611,8 +1610,8 @@ Partial Class frmSales
         Me.ckA4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ckA4.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
         Me.ckA4.BorderRadius = 12
-        Me.ckA4.Checked = True
-        Me.ckA4.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.ckA4.Checked = False
+        Me.ckA4.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
         Me.ckA4.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckA4.CustomCheckmarkImage = Nothing
         Me.ckA4.Location = New System.Drawing.Point(13, 586)
@@ -2004,8 +2003,8 @@ Partial Class frmSales
         Me.ckrollPaper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ckrollPaper.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
         Me.ckrollPaper.BorderRadius = 12
-        Me.ckrollPaper.Checked = False
-        Me.ckrollPaper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
+        Me.ckrollPaper.Checked = True
+        Me.ckrollPaper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
         Me.ckrollPaper.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckrollPaper.CustomCheckmarkImage = Nothing
         Me.ckrollPaper.Location = New System.Drawing.Point(13, 537)
@@ -2102,6 +2101,16 @@ Partial Class frmSales
         Me.Panel1.Size = New System.Drawing.Size(1269, 69)
         Me.Panel1.TabIndex = 131
         '
+        'lblPackageid
+        '
+        Me.lblPackageid.AutoSize = True
+        Me.lblPackageid.Location = New System.Drawing.Point(869, 26)
+        Me.lblPackageid.Name = "lblPackageid"
+        Me.lblPackageid.Size = New System.Drawing.Size(32, 13)
+        Me.lblPackageid.TabIndex = 136
+        Me.lblPackageid.Text = "100#"
+        Me.lblPackageid.Visible = False
+        '
         'BunifuThinButton27
         '
         Me.BunifuThinButton27.ActiveBorderThickness = 1
@@ -2178,16 +2187,6 @@ Partial Class frmSales
         Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
         Me.NotifyIcon1.Text = "Stock Check"
         Me.NotifyIcon1.Visible = True
-        '
-        'lblPackageid
-        '
-        Me.lblPackageid.AutoSize = True
-        Me.lblPackageid.Location = New System.Drawing.Point(869, 26)
-        Me.lblPackageid.Name = "lblPackageid"
-        Me.lblPackageid.Size = New System.Drawing.Size(32, 13)
-        Me.lblPackageid.TabIndex = 136
-        Me.lblPackageid.Text = "100#"
-        Me.lblPackageid.Visible = False
         '
         'frmSales
         '

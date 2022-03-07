@@ -25,6 +25,12 @@ Public Class SalesReport
                 da.SelectCommand = cmd
                 da.Fill(dt, "ClientReg")
 
+
+                dt.Tables("cancellationlog").Rows.Clear()
+                cmd = New SqlCommand("select * from cancellationlog", Poscon)
+                da.SelectCommand = cmd
+                da.Fill(dt, "cancellationlog")
+
                 Dim report As New rptSalesPerDate
                 report.SetDataSource(dt)
                 NewReport.CrystalReportViewer1.ReportSource = report

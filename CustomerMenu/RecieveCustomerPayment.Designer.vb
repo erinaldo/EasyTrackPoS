@@ -61,6 +61,10 @@ Partial Class RecieveCustomerPayment
         Me.ckprint = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.ckprintpreview = New Bunifu.UI.WinForms.BunifuCheckBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.tkroll = New Bunifu.UI.WinForms.BunifuCheckBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.tkA5 = New Bunifu.UI.WinForms.BunifuCheckBox()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -419,10 +423,10 @@ Partial Class RecieveCustomerPayment
         Me.BunifuThinButton21.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.Location = New System.Drawing.Point(537, 355)
+        Me.BunifuThinButton21.Location = New System.Drawing.Point(593, 355)
         Me.BunifuThinButton21.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton21.Name = "BunifuThinButton21"
-        Me.BunifuThinButton21.Size = New System.Drawing.Size(233, 88)
+        Me.BunifuThinButton21.Size = New System.Drawing.Size(177, 88)
         Me.BunifuThinButton21.TabIndex = 149
         Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -632,11 +636,145 @@ Partial Class RecieveCustomerPayment
         Me.ckprintpreview.ThreeState = False
         Me.ckprintpreview.ToolTipText = Nothing
         '
+        'Label12
+        '
+        Me.Label12.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(519, 369)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(40, 21)
+        Me.Label12.TabIndex = 159
+        Me.Label12.Text = "Roll"
+        '
+        'tkroll
+        '
+        Me.tkroll.AllowBindingControlAnimation = True
+        Me.tkroll.AllowBindingControlColorChanges = False
+        Me.tkroll.AllowBindingControlLocation = True
+        Me.tkroll.AllowCheckBoxAnimation = False
+        Me.tkroll.AllowCheckmarkAnimation = True
+        Me.tkroll.AllowOnHoverStates = True
+        Me.tkroll.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tkroll.AutoCheck = True
+        Me.tkroll.BackColor = System.Drawing.Color.Transparent
+        Me.tkroll.BackgroundImage = CType(resources.GetObject("tkroll.BackgroundImage"), System.Drawing.Image)
+        Me.tkroll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tkroll.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
+        Me.tkroll.BorderRadius = 12
+        Me.tkroll.Checked = False
+        Me.tkroll.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
+        Me.tkroll.Cursor = System.Windows.Forms.Cursors.Default
+        Me.tkroll.CustomCheckmarkImage = Nothing
+        Me.tkroll.Location = New System.Drawing.Point(499, 372)
+        Me.tkroll.MinimumSize = New System.Drawing.Size(17, 17)
+        Me.tkroll.Name = "tkroll"
+        Me.tkroll.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.tkroll.OnCheck.BorderRadius = 12
+        Me.tkroll.OnCheck.BorderThickness = 2
+        Me.tkroll.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
+        Me.tkroll.OnCheck.CheckmarkColor = System.Drawing.Color.White
+        Me.tkroll.OnCheck.CheckmarkThickness = 2
+        Me.tkroll.OnDisable.BorderColor = System.Drawing.Color.LightGray
+        Me.tkroll.OnDisable.BorderRadius = 12
+        Me.tkroll.OnDisable.BorderThickness = 2
+        Me.tkroll.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tkroll.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
+        Me.tkroll.OnDisable.CheckmarkThickness = 2
+        Me.tkroll.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tkroll.OnHoverChecked.BorderRadius = 12
+        Me.tkroll.OnHoverChecked.BorderThickness = 2
+        Me.tkroll.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tkroll.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
+        Me.tkroll.OnHoverChecked.CheckmarkThickness = 2
+        Me.tkroll.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tkroll.OnHoverUnchecked.BorderRadius = 12
+        Me.tkroll.OnHoverUnchecked.BorderThickness = 1
+        Me.tkroll.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tkroll.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
+        Me.tkroll.OnUncheck.BorderRadius = 12
+        Me.tkroll.OnUncheck.BorderThickness = 1
+        Me.tkroll.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tkroll.Size = New System.Drawing.Size(17, 17)
+        Me.tkroll.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
+        Me.tkroll.TabIndex = 158
+        Me.tkroll.ThreeState = False
+        Me.tkroll.ToolTipText = Nothing
+        '
+        'Label14
+        '
+        Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(524, 399)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(30, 21)
+        Me.Label14.TabIndex = 161
+        Me.Label14.Text = "A5"
+        '
+        'tkA5
+        '
+        Me.tkA5.AllowBindingControlAnimation = True
+        Me.tkA5.AllowBindingControlColorChanges = False
+        Me.tkA5.AllowBindingControlLocation = True
+        Me.tkA5.AllowCheckBoxAnimation = False
+        Me.tkA5.AllowCheckmarkAnimation = True
+        Me.tkA5.AllowOnHoverStates = True
+        Me.tkA5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tkA5.AutoCheck = True
+        Me.tkA5.BackColor = System.Drawing.Color.Transparent
+        Me.tkA5.BackgroundImage = CType(resources.GetObject("tkA5.BackgroundImage"), System.Drawing.Image)
+        Me.tkA5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tkA5.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
+        Me.tkA5.BorderRadius = 12
+        Me.tkA5.Checked = True
+        Me.tkA5.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.tkA5.Cursor = System.Windows.Forms.Cursors.Default
+        Me.tkA5.CustomCheckmarkImage = Nothing
+        Me.tkA5.Location = New System.Drawing.Point(500, 402)
+        Me.tkA5.MinimumSize = New System.Drawing.Size(17, 17)
+        Me.tkA5.Name = "tkA5"
+        Me.tkA5.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.tkA5.OnCheck.BorderRadius = 12
+        Me.tkA5.OnCheck.BorderThickness = 2
+        Me.tkA5.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
+        Me.tkA5.OnCheck.CheckmarkColor = System.Drawing.Color.White
+        Me.tkA5.OnCheck.CheckmarkThickness = 2
+        Me.tkA5.OnDisable.BorderColor = System.Drawing.Color.LightGray
+        Me.tkA5.OnDisable.BorderRadius = 12
+        Me.tkA5.OnDisable.BorderThickness = 2
+        Me.tkA5.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tkA5.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
+        Me.tkA5.OnDisable.CheckmarkThickness = 2
+        Me.tkA5.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tkA5.OnHoverChecked.BorderRadius = 12
+        Me.tkA5.OnHoverChecked.BorderThickness = 2
+        Me.tkA5.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tkA5.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
+        Me.tkA5.OnHoverChecked.CheckmarkThickness = 2
+        Me.tkA5.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tkA5.OnHoverUnchecked.BorderRadius = 12
+        Me.tkA5.OnHoverUnchecked.BorderThickness = 1
+        Me.tkA5.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tkA5.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
+        Me.tkA5.OnUncheck.BorderRadius = 12
+        Me.tkA5.OnUncheck.BorderThickness = 1
+        Me.tkA5.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.tkA5.Size = New System.Drawing.Size(17, 17)
+        Me.tkA5.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
+        Me.tkA5.TabIndex = 160
+        Me.tkA5.ThreeState = False
+        Me.tkA5.ToolTipText = Nothing
+        '
         'RecieveCustomerPayment
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(857, 495)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.tkA5)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.tkroll)
         Me.Controls.Add(Me.Label35)
         Me.Controls.Add(Me.ckprintpreview)
         Me.Controls.Add(Me.Label34)
@@ -719,4 +857,8 @@ Partial Class RecieveCustomerPayment
     Friend WithEvents Label35 As Label
     Friend WithEvents ckprintpreview As Bunifu.UI.WinForms.BunifuCheckBox
     Friend WithEvents lblpaymentid As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents tkroll As Bunifu.UI.WinForms.BunifuCheckBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents tkA5 As Bunifu.UI.WinForms.BunifuCheckBox
 End Class

@@ -1062,6 +1062,11 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsSalesTranx.CancellationLogDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsSalesTranx.ClientRegRow">
 <summary>
 Represents strongly named DataRow class.
@@ -1078,6 +1083,11 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsSalesTranx.PriceChangeLogRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranx.CancellationLogRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -1102,6 +1112,11 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsSalesTranx.CancellationLogRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.ClientRegTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -1118,6 +1133,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.PriceChangeLogTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.CancellationLogTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

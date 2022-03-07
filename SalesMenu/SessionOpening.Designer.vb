@@ -43,9 +43,11 @@ Partial Class frmSessionOpening
         Me.lblSessionID = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PictureBox1
@@ -178,6 +180,7 @@ Partial Class frmSessionOpening
         Me.txtOpeningSalesDate.Font = New System.Drawing.Font("Segoe UI Semibold", 20.25!, System.Drawing.FontStyle.Bold)
         Me.txtOpeningSalesDate.Location = New System.Drawing.Point(278, 221)
         Me.txtOpeningSalesDate.Name = "txtOpeningSalesDate"
+        Me.txtOpeningSalesDate.ReadOnly = True
         Me.txtOpeningSalesDate.Size = New System.Drawing.Size(235, 43)
         Me.txtOpeningSalesDate.TabIndex = 121
         '
@@ -268,11 +271,21 @@ Partial Class frmSessionOpening
         Me.BunifuThinButton21.TabIndex = 125
         Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(569, 165)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(94, 63)
+        Me.DataGridView1.TabIndex = 126
+        Me.DataGridView1.Visible = False
+        '
         'frmSessionOpening
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(686, 390)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.lblSessionID)
         Me.Controls.Add(Me.StatusStrip1)
@@ -292,6 +305,7 @@ Partial Class frmSessionOpening
         Me.StatusStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -316,4 +330,5 @@ Partial Class frmSessionOpening
     Friend WithEvents lblSessionID As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents DataGridView1 As DataGridView
 End Class
