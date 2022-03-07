@@ -66,6 +66,7 @@ Public Class frmRecieveGoods
         cbSuppName.SelectedItem = -1
         cbSearchItem.Focus()
         txtdate.Text = Date.Now.ToString("dd-MMM-yy")
+        'Newshowconfig()
     End Sub
     Private Sub Display()
 
@@ -75,27 +76,28 @@ Public Class frmRecieveGoods
         Dim que = "select * from userlogs"
         cmd = New SqlCommand(que, Poscon)
         da = New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        Dim index = table.Rows.Count() - 1
-        If table.Rows.Count = 0 Then
+        tbl = New DataTable
+        da.Fill(tbl)
+        Dim index = tbl.Rows.Count() - 1
+        If tbl.Rows.Count = 0 Then
 
         Else
-            tsuser.Text = table.Rows(index)(1).ToString
+            tsuser.Text = tbl.Rows(index)(1).ToString
         End If
 
         Poscon.Close()
 
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast"
-        cmd = New SqlCommand(query, Poscon)
-        da = New SqlDataAdapter(cmd)
-        Dim tbl As New DataTable
-        da.Fill(tbl)
-        gvStockBf.DataSource = tbl
-        Poscon.Close()
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast"
+        'cmd = New SqlCommand(query, Poscon)
+        'da = New SqlDataAdapter(cmd)
+        'Dim tbl As New DataTable
+        'da.Fill(tbl)
+        'gvStockBf.DataSource = tbl
+        'Poscon.Close()
+        reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast", gvStockBf)
 
     End Sub
 
@@ -267,24 +269,26 @@ Public Class frmRecieveGoods
                 Poscon.Open()
             End If
             If cbCatSort.SelectedIndex = -1 Then
-                Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-                cmd = New SqlCommand(query, Poscon)
-                Dim adapter As New SqlDataAdapter(cmd)
-                Dim table As New DataTable()
-                adapter.Fill(table)
-                gvStockBf.DataSource = table
+                'Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
+                'cmd = New SqlCommand(query, Poscon)
+                'Dim adapter As New SqlDataAdapter(cmd)
+                'Dim table As New DataTable()
+                'adapter.Fill(table)
+                'gvStockBf.DataSource = table
+                reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'", gvStockBf)
             Else
-                Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'"
-                cmd = New SqlCommand(query, Poscon)
-                Dim adapter As New SqlDataAdapter(cmd)
-                Dim table As New DataTable()
-                adapter.Fill(table)
-                gvStockBf.DataSource = table
+                'Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'"
+                'cmd = New SqlCommand(query, Poscon)
+                'Dim adapter As New SqlDataAdapter(cmd)
+                'Dim table As New DataTable()
+                'adapter.Fill(table)
+                'gvStockBf.DataSource = table
+                reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'", gvStockBf)
             End If
 
             Poscon.Close()
         Catch ex As Exception
-            'MsgBox(ex.ToString)
+            MsgBox(ex.ToString)
         End Try
 
     End Sub
@@ -336,10 +340,17 @@ Public Class frmRecieveGoods
             MsgBox("Fill Item Cart")
             Exit Sub
         End If
-        If txtinvoiceno.Text = "" Or gvStockBatch.Rows.Count = 0 Then
+        If txtinvoiceno.Text = "" Then
             MsgBox("Fill in invoice number")
-        Else
-            Try
+            Dim ask As MsgBoxResult
+            ask = MsgBox("Would you like to Save without invoice number?", MsgBoxStyle.YesNo, "")
+            If ask = MsgBoxResult.Yes Then
+                Newshowconfig()
+            Else
+                Exit Sub
+            End If
+        End If
+        Try
                 Dim i As Integer
                 For i = 0 To gvStockBatch.RowCount - 1
                     If Poscon.State = ConnectionState.Closed Then
@@ -393,9 +404,9 @@ Public Class frmRecieveGoods
                 Next
 
                 Poscon.Close()
-                'MsgBox("Record Saved")
+            'MsgBox("Record Saved")
 
-            Finally
+        Finally
 
                 For k = 0 To gvStockBatch.RowCount - 1
                     If Poscon.State = ConnectionState.Closed Then
@@ -428,8 +439,30 @@ Public Class frmRecieveGoods
                 clear()
 
             End Try
-        End If
+        'Newshowconfig()
         cbSuppName.SelectedIndex = -1
+    End Sub
+    Public Sub Newshowconfig()
+        'Dim digit As Integer
+        'Dim result As String
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'cmd = New SqlCommand("select max(Goodsid) from RecieveStock", Poscon)
+        'result = cmd.ExecuteScalar.ToString
+
+        'If String.IsNullOrEmpty(result) Then
+        '    result = "ETR001"
+        '    txtinvoiceno.Text = result
+        'Else
+        '    result = result.Substring(0)
+        '    Int32.TryParse(result, digit)
+        '    digit = digit + 1
+        '    result = "ETR" + digit.ToString("D3")
+        '    txtinvoiceno.Text = result
+        'End If
+        txtinvoiceno.Text = "SRV" + Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss")
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick

@@ -64,7 +64,7 @@ Public Class frmSessionOpening
             Poscon.Open()
         End If
         If lblSessionID.Text = "#" Then
-            Dim sql = "insert into Activesession values('" + tsUser.Text + "','" + txtOpeningSalesDate.Text + "','" + lblTime.Text + "','" + cbSessiontype.Text + "','" + txtShiftMembers.Text + "')"
+            Dim sql = "insert into Activesession values('" + tsUser.Text + "',convert(datetime,'" + txtOpeningSalesDate.Text + "',105),'" + lblTime.Text + "','" + cbSessiontype.Text + "','" + txtShiftMembers.Text + "')"
             cmd = New SqlCommand(sql, Poscon)
             cmd.ExecuteNonQuery()
             Poscon.Close()
@@ -93,9 +93,6 @@ Public Class frmSessionOpening
 
         End If
 
-
-
-
     End Sub
     Private Sub Display()
         cmd = New SqlCommand("select nextsessiondate from Sessionledger", Poscon)
@@ -104,17 +101,23 @@ Public Class frmSessionOpening
         da.Fill(tbl)
         DataGridView1.DataSource = tbl
         If tbl.Rows.Count = 0 Then
+
             txtOpeningSalesDate.Text = Date.Now.ToString("dd/MM/yyyy")
-            MsgBox(tbl.Rows(0)(0).ToString)
+            'MsgBox(tbl.Rows(0)(0).ToString)
+
         Else
-            Dim Index = tbl.Rows.Count - 1
-            MsgBox(tbl.Rows(Index)(0).ToString)
+                Dim Index = tbl.Rows.Count - 1
+            'MsgBox(tbl.Rows(Index)(0).ToString)
             txtOpeningSalesDate.Text = Date.Parse(tbl.Rows(Index)(0).ToString)
         End If
         Poscon.Close()
     End Sub
 
     Private Sub frmSessionOpening_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
-        Display()
+        Dim ask As MsgBoxResult
+        ask = MsgBox("Kindly make sure your Computers date is correct before opening this session. Do you wish to proceed?", MsgBoxStyle.YesNo, "")
+        If ask = MsgBoxResult.Yes Then
+            Display()
+        End If
     End Sub
 End Class

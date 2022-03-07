@@ -24,7 +24,9 @@ Public Class frmRetailIssueing
         clear()
         ShowConfig()
         txtdate.Text = Date.Now.ToString("dd-MMM-yy")
-
+        MsgBox(Date.Now.ToString("ss") + Date.Now.ToString("mm") + Date.Now.ToString("HH"))
+        MsgBox(Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss"))
+        Newshowconfig()
     End Sub
     Private Sub Display()
 
@@ -389,20 +391,10 @@ Public Class frmRetailIssueing
                 Poscon.Open()
             End If
             If cbCatSort.SelectedIndex = -1 Then
-                'Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-                'cmd = New SqlCommand(query, Poscon)
-                'Dim adapter As New SqlDataAdapter(cmd)
-                'Dim table As New DataTable()
-                'adapter.Fill(table)
-                'gvStockBf.DataSource = table
+
                 reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and baseqty*packsize<>1", gvStockBf)
             Else
-                'Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'"
-                'cmd = New SqlCommand(query, Poscon)
-                'Dim adapter As New SqlDataAdapter(cmd)
-                'Dim table As New DataTable()
-                'adapter.Fill(table)
-                'gvStockBf.DataSource = table
+
                 reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "' and baseqty*packsize<>1 ", gvStockBf)
             End If
 
@@ -413,72 +405,89 @@ Public Class frmRetailIssueing
 
     End Sub
     Sub Sort(valuetosearch As String)
-        'Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where ProdCat like '%" + valuetosearch + "%'"
-        'cmd = New SqlCommand(query, Poscon)
-        'Dim adapter As New SqlDataAdapter(cmd)
-        'Dim table As New DataTable()
-        'adapter.Fill(table)
-        'gvStockBf.DataSource = table
+
         reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where ProdCat like '%" + valuetosearch + "%' and baseqty*packsize<>1", gvStockBf)
     End Sub
-    Private Sub ShowConfigs()
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim que = "select IssueId from Issueconfig"
-        cmd = New SqlCommand(que, Poscon)
-        Dim da As New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        If table.Rows.Count() = 0 Then
-            txtinvoiceno.Text = "2100001"
-        Else
+    'Private Sub ShowConfigs()
+    '    If Poscon.State = ConnectionState.Closed Then
+    '        Poscon.Open()
+    '    End If
+    '    Dim que = "select IssueId from Issueconfig"
+    '    cmd = New SqlCommand(que, Poscon)
+    '    Dim da As New SqlDataAdapter(cmd)
+    '    Dim table As New DataTable
+    '    da.Fill(table)
+    '    If table.Rows.Count() = 0 Then
+    '        txtinvoiceno.Text = "2100001"
+    '    Else
 
-            Dim index = table.Rows.Count() - 1
-            Dim reciept = table.Rows(index)(0).ToString
-            txtinvoiceno.Text = reciept + 1
-        End If
-        Poscon.Close()
-    End Sub
+    '        Dim index = table.Rows.Count() - 1
+    '        Dim reciept = table.Rows(index)(0).ToString
+    '        txtinvoiceno.Text = reciept + 1
+    '    End If
+    '    Poscon.Close()
+    'End Sub
     Private Sub ShowConfig()
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim recieptcount As String
-        Dim nextreciept As String
-        Dim que = "select issuecount from Issueconfig"
-        cmd = New SqlCommand(que, Poscon)
-        Dim da As New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        If table.Rows.Count() = 0 Then
-            txtinvoiceno.Text = "210001"
-        Else
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'Dim recieptcount As String
+        'Dim nextreciept As String
+        'Dim que = "select issuecount from Issueconfig"
+        'cmd = New SqlCommand(que, Poscon)
+        'da = New SqlDataAdapter(cmd)
+        'tbl = New DataTable
+        'da.Fill(tbl)
+        'If tbl.Rows.Count() = 0 Then
+        '    txtinvoiceno.Text = "210001"
+        'Else
 
-            Dim index = table.Rows.Count() - 1
-            Dim reciept = table.Rows(index)(0).ToString
-            nextreciept = reciept + 1
-            recieptcount = nextreciept.Count.ToString
-            Select Case recieptcount
-                Case "1"
-                    txtinvoiceno.Text = "21000" + nextreciept
-                Case "2"
-                    txtinvoiceno.Text = "2100" + nextreciept
-                Case "3"
-                    txtinvoiceno.Text = "210" + nextreciept
-                Case "4"
-                    txtinvoiceno.Text = "21" + nextreciept
-                Case "5"
-                    txtinvoiceno.Text = nextreciept
-                Case Else
-                    txtinvoiceno.Text = nextreciept
+        '    Dim index = tbl.Rows.Count() - 1
+        '    Dim reciept = tbl.Rows(index)(0).ToString
+        '    nextreciept = reciept + 1
+        '    recieptcount = nextreciept.Count.ToString
+        '    Select Case recieptcount
+        '        Case "1"
+        '            txtinvoiceno.Text = "21000" + nextreciept
+        '        Case "2"
+        '            txtinvoiceno.Text = "2100" + nextreciept
+        '        Case "3"
+        '            txtinvoiceno.Text = "210" + nextreciept
+        '        Case "4"
+        '            txtinvoiceno.Text = "21" + nextreciept
+        '        Case "5"
+        '            txtinvoiceno.Text = nextreciept
+        '        Case Else
+        '            txtinvoiceno.Text = nextreciept
 
-            End Select
-        End If
+        '    End Select
+        'End If
 
 
-        Poscon.Close()
+        'Poscon.Close()
+        Newshowconfig()
 
+    End Sub
+    Public Sub Newshowconfig()
+        'Dim digit As Integer
+        'Dim result As String
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'cmd = New SqlCommand("select max(Recieptid) from recieptconfig", Poscon)
+        'result = cmd.ExecuteScalar.ToString
+
+        'If String.IsNullOrEmpty(result) Then
+        '    result = "ET000000"
+        '    txtinvoiceno.Text = result
+        'Else
+        '    result = result.Substring(3)
+        '    Int32.TryParse(result, digit)
+        '    digit = digit + 1
+        '    result = "ET" + digit.ToString("D6")
+        '    txtinvoiceno.Text = result
+        'End If
+        txtinvoiceno.Text = "SIV" + Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss")
 
     End Sub
     Private Sub reciept()

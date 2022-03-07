@@ -53,7 +53,7 @@ Public Class PfrmSalesMgmt
                 MsgBox("Active Session in progress, Please close current session to open a new one", vbCritical)
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub

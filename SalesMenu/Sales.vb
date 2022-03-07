@@ -16,6 +16,7 @@ Public Class frmSales
     Private Sub frmSales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         StockCheck()
         Display()
+        SessionCheck()
         ckCashDisc.Checked = True
         txtCashDisc.Enabled = True
         ckPerDisc.Checked = False
@@ -26,13 +27,13 @@ Public Class frmSales
         End If
         Dim que = "select * from userlogs"
         cmd = New SqlCommand(que, Poscon)
-        Dim da As New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        If table.Rows.Count = 0 Then
+        da = New SqlDataAdapter(cmd)
+        tbl = New DataTable
+        da.Fill(tbl)
+        If tbl.Rows.Count = 0 Then
         Else
-            Dim index = table.Rows.Count() - 1
-            Activeuser.Text = table.Rows(index)(1).ToString
+            Dim index = tbl.Rows.Count() - 1
+            Activeuser.Text = tbl.Rows(index)(1).ToString
         End If
 
         Poscon.Close()
@@ -435,7 +436,7 @@ Public Class frmSales
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         lblTime.Text = Date.Now.ToString("hh:mm:ss")
-        lblDate.Text = Date.Now.ToString("dd-MMM-yy")
+        'lblDate.Text = Date.Now.ToString("dd-MMM-yy")
     End Sub
 
     Private Sub cbSaleType_TextChanged(sender As Object, e As EventArgs) Handles cbSaleType.TextChanged, cbCreditCustName.TextChanged
@@ -770,12 +771,38 @@ Public Class frmSales
             MsgBox(ex.ToString)
         End Try
     End Sub
+    Sub SessionCheck()
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+        cmd = New SqlCommand("select convert(datetime,dateopened,103) from Sessionledger", Poscon)
+        da = New SqlDataAdapter(cmd)
+        tbl = New DataTable
+        da.Fill(tbl)
+        DataGridView1.DataSource = tbl
+        If tbl.Rows.Count = 0 Then
+            lblDate.Text = Date.Now.ToString("dd/MM/yyyy")
+        Else
+            Dim index = tbl.Rows.Count - 1
+            'MsgBox(Date.Parse(tbl.Rows(index)(0).ToString))
+            lblDate.Text = Date.Parse(tbl.Rows(index)(0).ToString)
+        End If
+        Poscon.Close()
+    End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If Date.Parse(lblDate.Text) <> Date.Now.ToString("dd/MM/yyyy") Then
+            MsgBox("Date Conflict. Kindly adjust Computer Date to " + lblDate.Text + "")
+            Exit Sub
+        End If
+
         ShowConfig()
         ''Send sms Message
         If tksendsms.Checked = True Then
             Try
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
+                End If
                 Dim que = " SELECT fromemail, mailsubject,body,fromsms,smsbody,smsapikey  FROM Emailconfig"
                 cmd = New SqlCommand(que, Poscon)
                 da = New SqlDataAdapter(cmd)
@@ -820,7 +847,7 @@ Public Class frmSales
                                 If Poscon.State = ConnectionState.Closed Then
                                     Poscon.Open()
                                 End If
-                                Dim query = "insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,@DateSold,@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + Activeuser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "')"
+                                Dim query = "insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,convert(datetime,@DateSold,105),@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + Activeuser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "')"
                                 cmd = New SqlCommand(query, Poscon)
                                 With cmd
 
@@ -873,7 +900,7 @@ Public Class frmSales
                             End While
                         Next
                         For Each row As DataGridViewRow In gvSales.Rows
-                            Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,qtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyIssued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@time,@date)"
+                            Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,qtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyIssued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@time,convert(datetime,@Date,105))"
                             cmd = New SqlCommand(quer, Poscon)
                             With cmd
                                 .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = row.Cells(5).Value
@@ -937,7 +964,7 @@ Public Class frmSales
                                 If Poscon.State = ConnectionState.Closed Then
                                     Poscon.Open()
                                 End If
-                                Dim query = "insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,@DateSold,@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + Activeuser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "')"
+                                Dim query = "insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,convert(datetime,@DateSold,105),@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + Activeuser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "')"
                                 cmd = New SqlCommand(query, Poscon)
                                 With cmd
 
@@ -974,7 +1001,7 @@ Public Class frmSales
                             If Poscon.State = ConnectionState.Closed Then
                                 Poscon.Open()
                             End If
-                            Dim quer = "Insert into CustomerLedger(CustomerName,oldbal,Newbal,CreditRecieved,DateRecieved,TimeRecieved,CustomerNo)Values('" + cbCreditCustName.Text + "','" + lblOldBal.Text + "','" + lblNewBal.Text + "','" + lblTotal.Text + "','" + lblDate.Text + "','" + lblTime.Text + "','" + lblCustNo.Text + "')"
+                            Dim quer = "Insert into CustomerLedger(CustomerName,oldbal,Newbal,CreditRecieved,DateRecieved,TimeRecieved,CustomerNo)Values('" + cbCreditCustName.Text + "','" + lblOldBal.Text + "','" + lblNewBal.Text + "','" + lblTotal.Text + "',convert(datetime,'" + lblDate.Text + "',105),'" + lblTime.Text + "','" + lblCustNo.Text + "')"
                             cmd = New SqlCommand(quer, Poscon)
                             cmd.ExecuteNonQuery()
 
@@ -1007,7 +1034,7 @@ Public Class frmSales
                                 End While
                             Next
                             For Each row As DataGridViewRow In gvSales.Rows
-                                Dim sql = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,qtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyIssued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@time,@date)"
+                                Dim sql = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,qtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyIssued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@time,convert(datetime,@Date,105))"
                                 cmd = New SqlCommand(sql, Poscon)
                                 With cmd
                                     .Parameters.AddWithValue("@ItemCode", row.Cells(5).Value)
@@ -1476,6 +1503,7 @@ Public Class frmSales
 
     Private Sub txtBuyerTel_KeyDown(sender As Object, e As KeyEventArgs) Handles txtBuyerTel.KeyDown
         If e.KeyCode = Keys.Enter Then
+            SessionCheck()
             BunifuThinButton21_Click(Nothing, Nothing)
         End If
     End Sub
@@ -1603,30 +1631,12 @@ Public Class frmSales
         End Try
     End Sub
     Sub Sortcat(valuetosearch As String)
-        'If Poscon.State = ConnectionState.Closed Then
-        '    Poscon.Open()
-        'End If
-        'Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where ProdCat like '%" + valuetosearch + "%'"
-        'cmd = New SqlCommand(query, Poscon)
-        'Dim adapter As New SqlDataAdapter(cmd)
-        'Dim table As New DataTable()
-        'adapter.Fill(table)
-        'gvStock.DataSource = table
-        'Poscon.Close()
+
         reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where ProdCat like '%" + valuetosearch + "%'", gvStock)
     End Sub
 
     Sub Sortpline(valuetosearch As String)
-        'If Poscon.State = ConnectionState.Closed Then
-        '    Poscon.Open()
-        'End If
-        'Dim query = "select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where prodline like '%" + valuetosearch + "%'"
-        'cmd = New SqlCommand(query, Poscon)
-        'Dim adapter As New SqlDataAdapter(cmd)
-        'Dim table As New DataTable()
-        'adapter.Fill(table)
-        'gvStock.DataSource = table
-        'Poscon.Close()
+
         reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where prodline like '%" + valuetosearch + "%'", gvStock)
 
     End Sub
@@ -1658,63 +1668,22 @@ Public Class frmSales
     End Sub
 
     Private Sub cbProdlineSort_Click(sender As Object, e As EventArgs) Handles cbProdlineSort.Click
-        'If Poscon.State = ConnectionState.Closed Then
-        '    Poscon.Open()
-        'End If
-        'cbProdlineSort.Items.Clear()
-        'Dim pli = "select productline from productline"
-        'cmd = New SqlCommand(pli, Poscon)
-        'dr = cmd.ExecuteReader
-        'While dr.Read
-        '    cbProdlineSort.Items.Add(dr(0))
-        'End While
-        'Poscon.Close()
+
         ComboFeed("select productline from productline", cbProdlineSort, 0)
     End Sub
 
     Private Sub cbCatSort_Click(sender As Object, e As EventArgs) Handles cbCatSort.Click
-        'If Poscon.State = ConnectionState.Closed Then
-        '    Poscon.Open()
-        'End If
-        'cbCatSort.Items.Clear()
-        'Dim sqll = "select category from Category"
-        'cmd = New SqlCommand(sqll, Poscon)
-        'dr = cmd.ExecuteReader
-        'While dr.Read
-        '    cbCatSort.Items.Add(dr(0))
-        'End While
-        'Poscon.Close()
+
         ComboFeed("select category from Category", cbCatSort, 0)
     End Sub
 
     Private Sub cbCreditCustName_Click(sender As Object, e As EventArgs) Handles cbCreditCustName.Click
-        'If Poscon.State = ConnectionState.Closed Then
-        '    Poscon.Open()
-        'End If
-        'cbCreditCustName.Items.Clear()
-        'Dim sql = "select * from Customer"
-        'cmd = New SqlCommand(sql, Poscon)
-        'dr = cmd.ExecuteReader
-        'While dr.Read
-        '    cbCreditCustName.Items.Add(dr(1))
 
-        'End While
-        'Poscon.Close()
         ComboFeed("select * from Customer", cbCreditCustName, 1)
     End Sub
 
     Private Sub txtProdname_Enter(sender As Object, e As EventArgs) Handles txtProdname.Enter
-        'If Poscon.State = ConnectionState.Closed Then
-        '    Poscon.Open()
-        'End If
-        'txtProdname.Items.Clear()
-        'Dim query = "select * from Stockmast"
-        'cmd = New SqlCommand(query, Poscon)
-        'dr = cmd.ExecuteReader
-        'While dr.Read
-        '    txtProdname.Items.Add(dr(1))
-        'End While
-        'Poscon.Close()
+
         ComboFeed("select * from Stockmast", txtProdname, 1)
     End Sub
 
@@ -1765,11 +1734,11 @@ Public Class frmSales
         End Select
     End Sub
 
-    Private Sub BunifuThinButton24_Click_1(sender As Object, e As EventArgs)
-
+    Private Sub frmSales_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
+        SessionCheck()
     End Sub
 
-    Private Sub lblRecieptNo_Click(sender As Object, e As EventArgs) Handles lblRecieptNo.Click
-
+    Private Sub BunifuThinButton21_MouseEnter(sender As Object, e As EventArgs) Handles BunifuThinButton21.MouseEnter
+        SessionCheck()
     End Sub
 End Class
