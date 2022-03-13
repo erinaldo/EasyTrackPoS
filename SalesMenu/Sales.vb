@@ -1721,15 +1721,23 @@ Public Class frmSales
         'End If
         Select Case cbSaleslist.SelectedIndex
             Case 0
+                cbMultishops.Visible = False
                 reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
             Case 1
+                cbMultishops.Visible = False
                 reload("select * from Packagesconfig", gvStock)
             Case 2
+                cbMultishops.Visible = False
                 reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
             Case 3
+                cbMultishops.Visible = False
                 reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where baseqty*packsize<>1", gvStock)
             Case 4
+                cbMultishops.Visible = False
                 reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where baseqty*packsize=1", gvStock)
+            Case 5
+                cbMultishops.Visible = True
+                ComboFeed("select customername from customer where customertype='" + "Branch Customer" + "'", cbmultishops, 0)
 
         End Select
     End Sub
@@ -1740,5 +1748,9 @@ Public Class frmSales
 
     Private Sub BunifuThinButton21_MouseEnter(sender As Object, e As EventArgs) Handles BunifuThinButton21.MouseEnter
         SessionCheck()
+    End Sub
+
+    Private Sub cbMultishops_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbMultishops.SelectedIndexChanged
+        reload("select * from multishopstockmast where shopname='" + cbMultishops.Text + "'", gvStock)
     End Sub
 End Class
