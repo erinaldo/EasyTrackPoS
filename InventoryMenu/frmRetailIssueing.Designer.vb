@@ -99,6 +99,7 @@ Partial Class frmRetailIssueing
         Me.BunifuThinButton25 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.txtReprintInvoice = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.lblCustType = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -110,6 +111,7 @@ Partial Class frmRetailIssueing
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gvStockBf, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -117,6 +119,7 @@ Partial Class frmRetailIssueing
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblCustNo
@@ -500,7 +503,7 @@ Partial Class frmRetailIssueing
         Me.gvStockBf.RowTemplate.Height = 40
         Me.gvStockBf.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gvStockBf.ShowEditingIcon = False
-        Me.gvStockBf.Size = New System.Drawing.Size(558, 376)
+        Me.gvStockBf.Size = New System.Drawing.Size(548, 373)
         Me.gvStockBf.TabIndex = 179
         Me.gvStockBf.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
         '
@@ -1055,10 +1058,10 @@ Partial Class frmRetailIssueing
         Me.BunifuThinButton25.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton25.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton25.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton25.Location = New System.Drawing.Point(287, 9)
+        Me.BunifuThinButton25.Location = New System.Drawing.Point(287, 15)
         Me.BunifuThinButton25.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton25.Name = "BunifuThinButton25"
-        Me.BunifuThinButton25.Size = New System.Drawing.Size(88, 41)
+        Me.BunifuThinButton25.Size = New System.Drawing.Size(88, 33)
         Me.BunifuThinButton25.TabIndex = 202
         Me.BunifuThinButton25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -1077,6 +1080,7 @@ Partial Class frmRetailIssueing
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.GroupBox2.Controls.Add(Me.lblCustType)
         Me.GroupBox2.Controls.Add(Me.Label24)
         Me.GroupBox2.Controls.Add(Me.txtAmtPaid)
         Me.GroupBox2.Controls.Add(Me.lbltotalbal)
@@ -1097,6 +1101,18 @@ Partial Class frmRetailIssueing
         Me.GroupBox2.TabIndex = 203
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Customer"
+        '
+        'lblCustType
+        '
+        Me.lblCustType.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblCustType.AutoSize = True
+        Me.lblCustType.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.lblCustType.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCustType.Location = New System.Drawing.Point(202, 7)
+        Me.lblCustType.Name = "lblCustType"
+        Me.lblCustType.Size = New System.Drawing.Size(57, 15)
+        Me.lblCustType.TabIndex = 202
+        Me.lblCustType.Text = "CustType"
         '
         'Label24
         '
@@ -1309,11 +1325,20 @@ Partial Class frmRetailIssueing
         Me.BunifuThinButton21.TabIndex = 203
         Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(226, 388)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(240, 150)
+        Me.DataGridView1.TabIndex = 208
+        '
         'frmRetailIssueing
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1159, 671)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.Label19)
@@ -1360,6 +1385,7 @@ Partial Class frmRetailIssueing
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1446,4 +1472,6 @@ Partial Class frmRetailIssueing
     Friend WithEvents Label24 As Label
     Friend WithEvents Label25 As Label
     Friend WithEvents ckPreview As Bunifu.UI.WinForms.BunifuCheckBox
+    Friend WithEvents lblCustType As Label
+    Friend WithEvents DataGridView1 As DataGridView
 End Class

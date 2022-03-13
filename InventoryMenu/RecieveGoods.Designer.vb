@@ -965,7 +965,7 @@ Partial Class frmRecieveGoods
         Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(490, 86)
+        Me.Label15.Location = New System.Drawing.Point(375, 121)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(47, 21)
         Me.Label15.TabIndex = 151
@@ -1044,7 +1044,7 @@ Partial Class frmRecieveGoods
         Me.ckprint.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
         Me.ckprint.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckprint.CustomCheckmarkImage = Nothing
-        Me.ckprint.Location = New System.Drawing.Point(470, 89)
+        Me.ckprint.Location = New System.Drawing.Point(355, 124)
         Me.ckprint.MinimumSize = New System.Drawing.Size(17, 17)
         Me.ckprint.Name = "ckprint"
         Me.ckprint.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue

@@ -691,14 +691,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EasyTrackPoS.exe" size="6860712">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EasyTrackPoS.exe" size="6920616">
       <assemblyIdentity name="EasyTrackPoS" version="1.0.0.1" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>taFCrVc3J0Bs4tce0Jd2kc2DfGG1yR9ELpMhQoTT3To=</dsig:DigestValue>
+        <dsig:DigestValue>EiN0bGoZ044sMN53TrS75RxWTZpFyPSqi5I6Nfa6aEQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1002,7 +1002,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>VSNY6JS9KlMAxA9Dv1TQhaAcN55q8lF8c/xTOMfC/AU=</dsig:DigestValue>
+      <dsig:DigestValue>nX0SMXs1yww+LkgjdZBR/eaW5FDPuGkE/3E2VRNWcw0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="EasyTrackPoS_log.ldf" size="8388608" writeableType="applicationData">
@@ -1011,7 +1011,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>tchPqBynfA7VaBV/wRqFHCK1yjzJQjdWbSiI5JAYkPA=</dsig:DigestValue>
+      <dsig:DigestValue>r5225xPQuwMFXlqaJlsfWQdQJSa3wdphfVOHBUZyALw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="PoS.mdf" size="8388608" writeableType="applicationData">
@@ -1020,7 +1020,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Ad8o6ruQmyT8DGieHKbPlWcA+g6OwYz8oWSo5OaU+ds=</dsig:DigestValue>
+      <dsig:DigestValue>j0P3nWMughkb2/sY1cMNowhYkNF/I5cpHOqJoUrVnjc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="PoS_log.ldf" size="786432" writeableType="applicationData">
@@ -1029,7 +1029,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>52ywqxUqp6RYNayQTrJmzQyimVXJGySunm1+obGLGGs=</dsig:DigestValue>
+      <dsig:DigestValue>lGbopvjFaUfcfUnn2vEzhShjttbuvhPydBtbQ8tIGxo=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

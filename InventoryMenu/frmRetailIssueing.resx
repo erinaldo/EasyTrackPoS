@@ -268,18 +268,18 @@
   </data>
   <data name="BunifuThinButton25.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAFgAAAApCAYAAACx6+5QAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJiSURBVGhD7ZrPaxNRFIX9i9y5cufKXVbBhYKLgBL8QbRS
-        URoFF0VaxNRqlZZpxUg1VtNQSINK0GpK0IBaxVqLpChmoUWU0kXQxdHzZhwNGYM27608HxwITGYW3wx3
-        3rx7N+F9EYq7SLDjSLDjSLDjSLDjSLDjdBTcfDuD0vwF9E71IZHtwfZLe7B5cMd/H3qgj1TuGAoPzmFt
-        ZTrSH/NHwZXa6I8L7UXvzBmUXs2j9u4lGl8+QsB4oI/y8mOkZ4eNp8LD4UiPbYJ5N9L5k0jeOIXV9c/B
-        JUUn1prrSBeHkJw8itU3N1t8tgim3Pj4QRSe3wtOFf9Cpf4Uu670oLGUixbMJ1dyu4Olg/W5TTBrLsuC
-        6J7MXBbe3cFfgrlaYKFWzbVD89tXxCcOo754zRfMpQbfhsIeXnUamdl+XzDXc1xyCHssfVhB3DvgC46N
-        JlH/1AgOCRuwTGw5u9MXvHVot1nLCbvwq88I5g9hHwl2jAQ7RoIdI8GOkWDHSLBjJNgxoWB+cfDLQ9gl
-        FMwek9pB9gkFs9XB3XhhD+7tcI/HCPbuDCAzdzU4JGxQeHEf6fwJXzB7SLGx/arDFknlT6NcvegLZkZu
-        D2Ckcj04LLqhtFgxsyT0Ggpm2yiRPYKFxnLwN7ER2HaLje0Lh1FCwQx7SPGJQ9p83yCUm5jsQ+3JeOi0
-        RTCz8OyymY3wqreC08TfUH79yDy5v8tl2gQzLBeZUr+5G3wbqtscDbtAHCvjeFkqdzxyRi1S8M/wbnCp
-        se18wiyaldaw1caXGQcko/wxHQUr3UeCHUeCHUeCHUeCnaaI76YE6zaGm8SJAAAAAElFTkSuQmCC
+        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
+        IthwRLDRJPEbBR0XmPqA9UkAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="txtdate.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

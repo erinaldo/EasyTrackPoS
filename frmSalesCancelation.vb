@@ -16,17 +16,17 @@ Public Class frmSalesCancelation
 
     Private Sub Display()
 
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim query = "select SalesPerson,RecieptId from RecieptConfig"
-        cmd = New SqlCommand(query, Poscon)
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim tbl As New DataTable()
-        adapter.Fill(tbl)
-        gvReciepts.DataSource = tbl
-        Poscon.Close()
-
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
+        'Dim query = "select SalesPerson,RecieptId from RecieptConfig"
+        'cmd = New SqlCommand(query, Poscon)
+        'Dim adapter As New SqlDataAdapter(cmd)
+        'Dim tbl As New DataTable()
+        'adapter.Fill(tbl)
+        'gvReciepts.DataSource = tbl
+        'Poscon.Close()
+        reload("select SalesPerson,RecieptId from RecieptConfig", gvReciepts)
     End Sub
 
     Private Sub LoadReciepts(RecieptNo As String)
@@ -122,18 +122,15 @@ Public Class frmSalesCancelation
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-
             Dim quer = "Select * from StockMast where Prodcode='" + lblProdCode.Text + "'"
             cmd = New SqlCommand(quer, Poscon)
             dr = cmd.ExecuteReader
             While dr.Read
                 lblActualStock.Text = dr.Item("ProdQty")
-
             End While
             Poscon.Close()
-
         Catch ex As Exception
-
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -145,16 +142,12 @@ Public Class frmSalesCancelation
         b = Val(txtToBeCancelled.Text)
         c = a - b
         txtNewQtySold.Text = c
-
-
     End Sub
     Sub Clear()
         txtQtySold.Text = ""
         txtToBeCancelled.Text = ""
         lblProdCode.Text = ""
         lblItemName.Text = ""
-
-
     End Sub
 
     Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click

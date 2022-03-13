@@ -24,8 +24,7 @@ Public Class frmRetailIssueing
         clear()
         ShowConfig()
         txtdate.Text = Date.Now.ToString("dd-MMM-yy")
-        MsgBox(Date.Now.ToString("ss") + Date.Now.ToString("mm") + Date.Now.ToString("HH"))
-        MsgBox(Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss"))
+
         Newshowconfig()
     End Sub
     Private Sub Display()
@@ -172,6 +171,7 @@ Public Class frmRetailIssueing
                 lblNewBal.Text = newbal
                 Dim totbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
                 lbltotalbal.Text = totbal
+                lblcusttype.Text = tbl.Rows(0)(12).ToString
             End If
             Poscon.Close()
         Catch ex As Exception
@@ -225,8 +225,7 @@ Public Class frmRetailIssueing
                 cmd = New SqlCommand(sql, Poscon)
                 cmd.ExecuteNonQuery()
                 For Each row As DataGridViewRow In gvStockBatch.Rows
-                    Dim sqll = "Select * from StockMast where Prodcode='" + row.Cells(6).Value + "'"
-                    cmd = New SqlCommand(sqll, Poscon)
+                    cmd = New SqlCommand("Select * from StockMast where Prodcode='" + row.Cells(6).Value + "'", Poscon)
                     dr = cmd.ExecuteReader
                     While dr.Read
 
@@ -257,8 +256,6 @@ Public Class frmRetailIssueing
                     cmd = New SqlCommand("Select * from StockMast where Prodcode='" + row.Cells(6).Value + "'", Poscon)
                     dr = cmd.ExecuteReader
                     While dr.Read
-
-                        'updates("update StockMast set prodqty = '" & dr.Item("ProdQty") - gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & "")
                         Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - row.Cells(3).Value & "' where Prodcode= " & row.Cells(6).Value & ""
                         cmd = New SqlCommand(query, Poscon)
                         cmd.ExecuteNonQuery()
@@ -268,24 +265,10 @@ Public Class frmRetailIssueing
                     Dim query = "insert into customerpayment(Customername,oldbal,datepaid,amtpaid,newbal,Paymentmode,Recievedby) values('" + cbSuppName.Text + "','" + lblOldBal.Text + "','" + txtdate.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbPaymentMode.Text + "','" + tsuser.Text + "') "
                     cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()
-                    ' create("insert into customerpayment(Customername,oldbal,datepaid,amtpaid,newbal,Paymentmode,Recievedby) values('" + cbSuppName.Text + "','" + lblOldBal.Text + "','" + txtdate.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbPaymentMode.Text + "','" + tsuser.Text + "') ")
+
                 End If
             Finally
-                'For k = 0 To gvStockBatch.RowCount - 1
-                '    If Poscon.State = ConnectionState.Closed Then
-                '        Poscon.Open()
-                '    End If
-                '    Dim sqll = "Select * from StockMast where Prodcode='" + gvStockBatch.Rows(k).Cells(6).Value + "'"
-                '    cmd = New SqlCommand(sqll, Poscon)
-                '    dr = cmd.ExecuteReader
-                '    While dr.Read
 
-                '        ' updates("update StockMast set prodqty = '" & dr.Item("ProdQty") - gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & "")
-                '        Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & ""
-                '        cmd = New SqlCommand(query, Poscon)
-                '        cmd.ExecuteNonQuery()
-                '    End While
-                'Next
 
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
@@ -293,8 +276,61 @@ Public Class frmRetailIssueing
                 Dim sql = "update Customer set CurrentBalance = '" & lblNewBal.Text & "' where customerNo= " & lblCustNo.Text & ""
                 cmd = New SqlCommand(sql, Poscon)
                 cmd.ExecuteNonQuery()
-                'MsgBox("Goods Recieved Successful")
+
+
+                If lblCustType.Text = "Branch Customer" Then
+                    For Each row As DataGridViewRow In gvStockBatch.Rows
+                        cmd = New SqlCommand("Select * from multishopStockMast where Prodcode='" + row.Cells(6).Value + "' and shopname='" + cbSuppName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
+                        da = New SqlDataAdapter(cmd)
+                        tbl = New DataTable()
+                        da.Fill(tbl)
+                        If tbl.Rows.Count = 0 Then
+                            MsgBox("Write")
+                            cmd = New SqlCommand("Select * from StockMast where Prodcode='" + row.Cells(6).Value + "'", Poscon)
+                            dr = cmd.ExecuteReader()
+                            While dr.Read
+
+                                cmd = New SqlCommand("insert into Multishopstockmast (prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyReminder,distributorprice,packsize,baseqty,Packprice,Shopname,shopno) values (@prodcode,@prodname,@prodline,@prodsize,@prodcolour,@prodcat,@prodqty,@retailprice,@wholesaleprice,@itemname,@brandname,@uniqueid,@leastqtyReminder,@distributorprice,@packsize,@baseqty,@Packprice,'" + cbSuppName.Text + "','" + lblCustNo.Text + "')", Poscon)
+                                With cmd
+                                    .Parameters.AddWithValue("@prodcode", dr.Item("Prodcode"))
+                                    .Parameters.AddWithValue("@prodname", dr.Item("Prodname"))
+                                    .Parameters.AddWithValue("@prodline", dr.Item("Prodline"))
+                                    .Parameters.AddWithValue("@prodsize", dr.Item("Prodsize"))
+                                    .Parameters.AddWithValue("@prodcolour", dr.Item("Prodcolour"))
+                                    .Parameters.AddWithValue("@prodcat", dr.Item("Prodcat"))
+                                    .Parameters.AddWithValue("@prodqty", row.Cells(3).Value)
+                                    .Parameters.AddWithValue("@itemname", dr.Item("itemname"))
+                                    .Parameters.AddWithValue("@retailprice", dr.Item("Retailprice"))
+                                    .Parameters.AddWithValue("@wholesaleprice", dr.Item("Wholesaleprice"))
+                                    .Parameters.AddWithValue("@brandname", dr.Item("Brandname"))
+                                    .Parameters.AddWithValue("@uniqueid", dr.Item("uniqueid"))
+                                    .Parameters.AddWithValue("@leastqtyReminder", dr.Item("leastqtyreminder"))
+                                    .Parameters.AddWithValue("@distributorprice", dr.Item("distributorprice"))
+                                    .Parameters.AddWithValue("@packsize", dr.Item("packsize"))
+                                    .Parameters.AddWithValue("@baseqty", dr.Item("baseqty"))
+                                    .Parameters.AddWithValue("@Packprice", dr.Item("packprice"))
+                                    .ExecuteNonQuery()
+                                End With
+                            End While
+                        Else
+                            MsgBox("Update")
+                            cmd = New SqlCommand("Select * from multishopStockMast where Prodcode='" + row.Cells(6).Value + "' and shopname='" + cbSuppName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
+                            dr = cmd.ExecuteReader()
+                            While dr.Read
+                                cmd = New SqlCommand("update multishopstockmast set prodqty=@Prodqty where Prodcode= " & row.Cells(6).Value & " and shopname='" + cbSuppName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
+                                With cmd
+                                    .Parameters.AddWithValue("@prodcode", dr.Item("Prodcode"))
+                                    .Parameters.AddWithValue("@prodqty", dr.Item("ProdQty") + row.Cells(3).Value)
+                                    .ExecuteNonQuery()
+                                End With
+                            End While
+                        End If
+
+                    Next
+                    reload("select * from MultishopStockmast", DataGridView1)
+                End If
                 Poscon.Close()
+
                 Display()
                 reciept()
                 gvStockBatch.Rows.Clear()
@@ -303,6 +339,7 @@ Public Class frmRetailIssueing
                 End If
                 clear()
                 cbSuppName.SelectedItem = ""
+                lblCustType.Text = ""
             End Try
         End If
         ShowConfig()
@@ -405,7 +442,6 @@ Public Class frmRetailIssueing
 
     End Sub
     Sub Sort(valuetosearch As String)
-
         reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where ProdCat like '%" + valuetosearch + "%' and baseqty*packsize<>1", gvStockBf)
     End Sub
     'Private Sub ShowConfigs()
@@ -469,25 +505,25 @@ Public Class frmRetailIssueing
 
     End Sub
     Public Sub Newshowconfig()
-        'Dim digit As Integer
-        'Dim result As String
-        'If Poscon.State = ConnectionState.Closed Then
-        '    Poscon.Open()
-        'End If
-        'cmd = New SqlCommand("select max(Recieptid) from recieptconfig", Poscon)
-        'result = cmd.ExecuteScalar.ToString
+        Dim digit As Integer
+        Dim result As String
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+        cmd = New SqlCommand("select max(issuecount) from issueconfig", Poscon)
+        result = cmd.ExecuteScalar.ToString
 
-        'If String.IsNullOrEmpty(result) Then
-        '    result = "ET000000"
-        '    txtinvoiceno.Text = result
-        'Else
-        '    result = result.Substring(3)
-        '    Int32.TryParse(result, digit)
-        '    digit = digit + 1
-        '    result = "ET" + digit.ToString("D6")
-        '    txtinvoiceno.Text = result
-        'End If
-        txtinvoiceno.Text = "SIV" + Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss")
+        If String.IsNullOrEmpty(result) Then
+            result = "SIV00001"
+            txtinvoiceno.Text = result
+        Else
+            result = result.Substring(0)
+            Int32.TryParse(result, digit)
+            digit = digit + 1
+            result = "SIV" + digit.ToString("D5")
+            txtinvoiceno.Text = result
+        End If
+        'txtinvoiceno.Text = "SIV" + Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss")
 
     End Sub
     Private Sub reciept()

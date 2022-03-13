@@ -269,24 +269,10 @@ Public Class frmRecieveGoods
                 Poscon.Open()
             End If
             If cbCatSort.SelectedIndex = -1 Then
-                'Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-                'cmd = New SqlCommand(query, Poscon)
-                'Dim adapter As New SqlDataAdapter(cmd)
-                'Dim table As New DataTable()
-                'adapter.Fill(table)
-                'gvStockBf.DataSource = table
                 reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'", gvStockBf)
             Else
-                'Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'"
-                'cmd = New SqlCommand(query, Poscon)
-                'Dim adapter As New SqlDataAdapter(cmd)
-                'Dim table As New DataTable()
-                'adapter.Fill(table)
-                'gvStockBf.DataSource = table
                 reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'", gvStockBf)
             End If
-
-            Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -443,25 +429,25 @@ Public Class frmRecieveGoods
         cbSuppName.SelectedIndex = -1
     End Sub
     Public Sub Newshowconfig()
-        'Dim digit As Integer
-        'Dim result As String
-        'If Poscon.State = ConnectionState.Closed Then
-        '    Poscon.Open()
-        'End If
-        'cmd = New SqlCommand("select max(Goodsid) from RecieveStock", Poscon)
-        'result = cmd.ExecuteScalar.ToString
+        Dim digit As Integer
+        Dim result As String
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+        cmd = New SqlCommand("select max(Goodsid) from RecieveStock", Poscon)
+        result = cmd.ExecuteScalar.ToString
 
-        'If String.IsNullOrEmpty(result) Then
-        '    result = "ETR001"
-        '    txtinvoiceno.Text = result
-        'Else
-        '    result = result.Substring(0)
-        '    Int32.TryParse(result, digit)
-        '    digit = digit + 1
-        '    result = "ETR" + digit.ToString("D3")
-        '    txtinvoiceno.Text = result
-        'End If
-        txtinvoiceno.Text = "SRV" + Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss")
+        If String.IsNullOrEmpty(result) Then
+            result = "SIR0001"
+            txtinvoiceno.Text = result
+        Else
+            result = result.Substring(0)
+            Int32.TryParse(result, digit)
+            digit = digit + 1
+            result = "SIR" + digit.ToString("D4")
+            txtinvoiceno.Text = result
+        End If
+        'txtinvoiceno.Text = "SRV" + Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss")
 
     End Sub
 

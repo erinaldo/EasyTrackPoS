@@ -118,6 +118,7 @@ Partial Class frmSales
         Me.Colour = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OldQty = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.cbSaleslist = New System.Windows.Forms.ComboBox()
         Me.cbProdlineSort = New System.Windows.Forms.ComboBox()
         Me.BunifuThinButton29 = New Bunifu.Framework.UI.BunifuThinButton2()
@@ -161,7 +162,6 @@ Partial Class frmSales
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblProformaInvoice = New System.Windows.Forms.Label()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
@@ -169,6 +169,7 @@ Partial Class frmSales
         Me.GroupBox1.SuspendLayout()
         CType(Me.gvSales, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gvPriceBand, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbsell.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -176,7 +177,6 @@ Partial Class frmSales
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -1244,6 +1244,15 @@ Partial Class frmSales
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Items"
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(19, 444)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(277, 149)
+        Me.DataGridView1.TabIndex = 148
+        Me.DataGridView1.Visible = False
+        '
         'cbSaleslist
         '
         Me.cbSaleslist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -2191,14 +2200,6 @@ Partial Class frmSales
         Me.NotifyIcon1.Text = "Stock Check"
         Me.NotifyIcon1.Visible = True
         '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(19, 354)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(179, 239)
-        Me.DataGridView1.TabIndex = 148
-        '
         'frmSales
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2234,6 +2235,7 @@ Partial Class frmSales
         CType(Me.gvSales, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gvPriceBand, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbsell.ResumeLayout(False)
         Me.gbsell.PerformLayout()
@@ -2244,7 +2246,6 @@ Partial Class frmSales
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

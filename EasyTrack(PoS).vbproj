@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F49B7D96-10D9-498E-85E8-D1A648498992}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>HardSoft_PoS.PfrmSalesMgmt</StartupObject>
+    <StartupObject>HardSoft_PoS.frmMain</StartupObject>
     <RootNamespace>HardSoft_PoS</RootNamespace>
     <AssemblyName>EasyTrackPoS</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -577,6 +577,18 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Module\SMSModule.vb" />
+    <Compile Include="MultiShop\frmMultishop.Designer.vb">
+      <DependentUpon>frmMultishop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MultiShop\frmMultishop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MultiShop\MultiShopIssueing.Designer.vb">
+      <DependentUpon>MultiShopIssueing.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MultiShop\MultiShopIssueing.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Pages\CustomerReport.Designer.vb">
       <DependentUpon>CustomerReport.vb</DependentUpon>
     </Compile>
@@ -1449,6 +1461,12 @@
     <EmbeddedResource Include="InventoryMenu\rptTobeCollected.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTobeCollected.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultiShop\frmMultishop.resx">
+      <DependentUpon>frmMultishop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultiShop\MultiShopIssueing.resx">
+      <DependentUpon>MultiShopIssueing.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="Pages\CustomerReport.resx">

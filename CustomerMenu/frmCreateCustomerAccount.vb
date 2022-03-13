@@ -133,7 +133,7 @@ Public Class frmCreateCustomerAccount
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim query = "insert into customer(Customername,Emailaddress,Businessdigitaladdress,residentialdigitaladdress,residentaillocation,businesslocation,creditlimit,idcardtype,idcardnumber,currentbalance) values('" + txtName.Text + "','" + txtEmailAddress.Text + "','" + txtContact.Text + "','" + txtResDigAddress.Text + "','" + txtResLocation.Text + "','" + txtBusLocation.Text + "','" + txtCreditLimit.Text + "','" + cbIDCardType.Text + "','" + txtIdCardNo.Text + "','" + txtCustBal.Text + "')"
+                Dim query = "insert into customer(Customername,Emailaddress,Businessdigitaladdress,residentialdigitaladdress,residentaillocation,businesslocation,creditlimit,idcardtype,idcardnumber,currentbalance,customertype) values('" + txtName.Text + "','" + txtEmailAddress.Text + "','" + txtContact.Text + "','" + txtResDigAddress.Text + "','" + txtResLocation.Text + "','" + txtBusLocation.Text + "','" + txtCreditLimit.Text + "','" + cbIDCardType.Text + "','" + txtIdCardNo.Text + "','" + txtCustBal.Text + "','" + cbCustType.Text + "')"
                 cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 'MsgBox("Customer Saved Succesfully")
