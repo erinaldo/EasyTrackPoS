@@ -41,6 +41,7 @@ Partial Class Login
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.lblBranch = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -213,12 +214,24 @@ Partial Class Login
         Me.BunifuThinButton21.TabIndex = 142
         Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'lblBranch
+        '
+        Me.lblBranch.AutoSize = True
+        Me.lblBranch.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.lblBranch.Location = New System.Drawing.Point(483, 87)
+        Me.lblBranch.Name = "lblBranch"
+        Me.lblBranch.Size = New System.Drawing.Size(63, 21)
+        Me.lblBranch.TabIndex = 143
+        Me.lblBranch.Text = "Branch"
+        Me.lblBranch.Visible = False
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(735, 461)
+        Me.Controls.Add(Me.lblBranch)
         Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.StatusStrip1)
@@ -259,4 +272,5 @@ Partial Class Login
     Friend WithEvents lblusername As ToolStripStatusLabel
     Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents lblBranch As Label
 End Class

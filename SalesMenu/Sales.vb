@@ -55,6 +55,7 @@ Public Class frmSales
         txtProdname.Focus()
         cbSaleslist.SelectedIndex = 0
         cbPaymode.SelectedIndex = 0
+        lblCustType.Text = ""
     End Sub
     Private Sub clear()
         txtCashPaid.Text = ""
@@ -246,6 +247,7 @@ Public Class frmSales
             da.Fill(tbl)
             lblOldBal.Text = tbl.Rows(0)(10).ToString
             lblCustNo.Text = tbl.Rows(0)(0).ToString
+            lblcusttype.Text = tbl.Rows(0)(12).ToString
             Dim newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
             lblNewBal.Text = newbal
             Poscon.Close()
@@ -439,9 +441,6 @@ Public Class frmSales
         'lblDate.Text = Date.Now.ToString("dd-MMM-yy")
     End Sub
 
-    Private Sub cbSaleType_TextChanged(sender As Object, e As EventArgs) Handles cbSaleType.TextChanged, cbCreditCustName.TextChanged
-        Search(cbCreditCustName.Text)
-    End Sub
 
     Private Sub cbSaleType_DropDownClosed(sender As Object, e As EventArgs) Handles cbSaleType.DropDownClosed
         If (cbSaleType.SelectedIndex = 1) Then
@@ -490,6 +489,9 @@ Public Class frmSales
 
     Private Sub cbCreditCustName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCreditCustName.SelectedIndexChanged
         Search(cbCreditCustName.Text)
+        If lblCustType.Text = "Branch Customer" Then
+            reload("select * from multishopstockmast where shopname='" + cbCreditCustName.Text + "'", gvStock)
+        End If
     End Sub
 
     Private Sub txtPrice_TextChanged(sender As Object, e As EventArgs) Handles txtPrice.TextChanged
@@ -796,6 +798,7 @@ Public Class frmSales
             Exit Sub
         End If
 
+
         ShowConfig()
         ''Send sms Message
         If tksendsms.Checked = True Then
@@ -964,7 +967,7 @@ Public Class frmSales
                                 If Poscon.State = ConnectionState.Closed Then
                                     Poscon.Open()
                                 End If
-                                Dim query = "insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,convert(datetime,@DateSold,105),@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + Activeuser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "')"
+                                Dim query = "insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount,customertype) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,convert(datetime,@DateSold,105),@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + Activeuser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "','" + lblcusttype.Text + "')"
                                 cmd = New SqlCommand(query, Poscon)
                                 With cmd
 
@@ -1015,24 +1018,39 @@ Public Class frmSales
                             End With
 
 
-                            'MsgBox("Customer Updated")
+
                             Poscon.Close()
+                            If lblcusttype.Text = "Branch Customer" Or cbCreditCustName.SelectedIndex <> -1 Or cbCreditCustName.Text <> "" Then
+                                For Each row As DataGridViewRow In gvStock.Rows
+                                    cmd = New SqlCommand("update multishopstockmast set prodqty=@Prodqty where Prodcode= @prodcode and shopname='" + cbCreditCustName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
+                                    With cmd
+                                        .Parameters.AddWithValue("@prodcode", row.Cells(5).Value)
+                                        .Parameters.AddWithValue("@prodqty", dr.Item("ProdQty") - row.Cells(1).Value)
+                                        .ExecuteNonQuery()
+                                    End With
 
 
-                            For k = 0 To gvSales.RowCount - 1
-                                If Poscon.State = ConnectionState.Closed Then
-                                    Poscon.Open()
-                                End If
-                                Dim sqll = "Select * from StockMast where Prodcode='" + gvSales.Rows(k).Cells(5).Value + "'"
-                                cmd = New SqlCommand(sqll, Poscon)
-                                dr = cmd.ExecuteReader
-                                While dr.Read
+                                Next
+                            End If
 
-                                    Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - gvSales.Rows(k).Cells(1).Value & "' where Prodcode= " & gvSales.Rows(k).Cells(5).Value & ""
-                                    cmd = New SqlCommand(query, Poscon)
-                                    cmd.ExecuteNonQuery()
-                                End While
-                            Next
+
+                            If lblcusttype.Text <> "Branch Customer" Then
+                                For k = 0 To gvSales.RowCount - 1
+                                    If Poscon.State = ConnectionState.Closed Then
+                                        Poscon.Open()
+                                    End If
+                                    Dim sqll = "Select * from StockMast where Prodcode='" + gvSales.Rows(k).Cells(5).Value + "'"
+                                    cmd = New SqlCommand(sqll, Poscon)
+                                    dr = cmd.ExecuteReader
+                                    While dr.Read
+
+                                        Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - gvSales.Rows(k).Cells(1).Value & "' where Prodcode= " & gvSales.Rows(k).Cells(5).Value & ""
+                                        cmd = New SqlCommand(query, Poscon)
+                                        cmd.ExecuteNonQuery()
+                                    End While
+                                Next
+                            End If
+
                             For Each row As DataGridViewRow In gvSales.Rows
                                 Dim sql = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,qtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyIssued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@time,convert(datetime,@Date,105))"
                                 cmd = New SqlCommand(sql, Poscon)
@@ -1721,24 +1739,24 @@ Public Class frmSales
         'End If
         Select Case cbSaleslist.SelectedIndex
             Case 0
-                cbMultishops.Visible = False
+
                 reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
             Case 1
-                cbMultishops.Visible = False
+
                 reload("select * from Packagesconfig", gvStock)
             Case 2
-                cbMultishops.Visible = False
+
                 reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
             Case 3
-                cbMultishops.Visible = False
+
                 reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where baseqty*packsize<>1", gvStock)
             Case 4
-                cbMultishops.Visible = False
-                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where baseqty*packsize=1", gvStock)
-            Case 5
-                cbMultishops.Visible = True
-                ComboFeed("select customername from customer where customertype='" + "Branch Customer" + "'", cbmultishops, 0)
 
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where baseqty*packsize=1", gvStock)
+                'Case 5
+                '    cbSaleType.SelectedIndex = 1
+                '    ComboFeed("select customername from customer where customertype='" + "Branch Customer" + "'", cbCreditCustName, 0)
+                '    reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopStockMast", gvStock)
         End Select
     End Sub
 
@@ -1750,7 +1768,24 @@ Public Class frmSales
         SessionCheck()
     End Sub
 
-    Private Sub cbMultishops_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbMultishops.SelectedIndexChanged
-        reload("select * from multishopstockmast where shopname='" + cbMultishops.Text + "'", gvStock)
+    Private Sub cbSaleType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSaleType.SelectedIndexChanged
+        If (cbSaleType.SelectedIndex = 1) Then
+            txtBuyerName.Enabled = False
+            txtCashPaid.Enabled = False
+            txtBuyerTel.Enabled = False
+            cbLocation.Enabled = False
+            cbPaymode.Enabled = False
+            cbCreditCustName.Visible = True
+            lblCreditCust.Visible = True
+            txtCashPaid.Text = 0
+        ElseIf (cbSaleType.SelectedIndex = 0) Then
+            cbPaymode.Enabled = True
+            txtBuyerName.Enabled = True
+            txtCashPaid.Enabled = True
+            txtBuyerTel.Enabled = True
+            cbLocation.Enabled = True
+            cbCreditCustName.Visible = False
+            lblCreditCust.Visible = False
+        End If
     End Sub
 End Class

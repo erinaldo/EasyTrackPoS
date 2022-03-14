@@ -181,7 +181,7 @@ Public Class frmMain
         MsgBox("Contact your Service Providers")
     End Sub
 
-    Private Sub BunifuButton10_Click(sender As Object, e As EventArgs) Handles BunifuButton10.Click
+    Private Sub BunifuButton10_Click(sender As Object, e As EventArgs)
 
     End Sub
 End Class

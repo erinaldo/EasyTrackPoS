@@ -114,4 +114,15 @@ Public Class PfrmInventoryMgmt
             MsgBox(ex.ToString)
         End Try
     End Sub
+
+    Private Sub BunifuButton7_Click(sender As Object, e As EventArgs) Handles BunifuButton7.Click
+        Dim f2 As New frmMultishop
+        With f2
+            .TopLevel = False
+            PCreateProd.Controls.Add(f2)
+            .BringToFront()
+            .Show()
+
+        End With
+    End Sub
 End Class

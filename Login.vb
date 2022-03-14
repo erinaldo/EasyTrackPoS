@@ -23,6 +23,7 @@ Public Class Login
             Else
                 lblID.Text = tbl.Rows(0)(0).ToString
                 lblusername.Text = tbl.Rows(0)(1).ToString
+                lblBranch.Text = tbl.Rows(0)(5).ToString
             End If
             Poscon.Close()
         Catch ex As Exception
@@ -94,7 +95,7 @@ Public Class Login
                     If Poscon.State = ConnectionState.Closed Then
                         Poscon.Open()
                     End If
-                    Dim query = "insert into Userlogs(username,UserId,LoginTime,LoginDate) values('" + lblusername.Text + "','" + txtUserID.Text + "','" + lbltime.Text + "','" + lbldate.Text + "')"
+                    Dim query = "insert into Userlogs(username,UserId,LoginTime,LoginDate,Branch) values('" + lblusername.Text + "','" + txtUserID.Text + "','" + lbltime.Text + "','" + lbldate.Text + "','" + lblbranch.Text + "')"
                     cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()
                     Poscon.Close()

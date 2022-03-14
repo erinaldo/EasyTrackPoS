@@ -162,7 +162,7 @@ Partial Class frmSales
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblProformaInvoice = New System.Windows.Forms.Label()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
-        Me.cbMultishops = New System.Windows.Forms.ComboBox()
+        Me.lblCustType = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
@@ -623,7 +623,7 @@ Partial Class frmSales
         Me.lblCreditCust.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblCreditCust.AutoSize = True
         Me.lblCreditCust.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCreditCust.Location = New System.Drawing.Point(27, 67)
+        Me.lblCreditCust.Location = New System.Drawing.Point(21, 67)
         Me.lblCreditCust.Name = "lblCreditCust"
         Me.lblCreditCust.Size = New System.Drawing.Size(133, 21)
         Me.lblCreditCust.TabIndex = 122
@@ -645,7 +645,7 @@ Partial Class frmSales
         Me.lblOldBal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblOldBal.AutoSize = True
         Me.lblOldBal.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblOldBal.Location = New System.Drawing.Point(84, 4)
+        Me.lblOldBal.Location = New System.Drawing.Point(99, 4)
         Me.lblOldBal.Name = "lblOldBal"
         Me.lblOldBal.Size = New System.Drawing.Size(50, 15)
         Me.lblOldBal.TabIndex = 104
@@ -1222,7 +1222,6 @@ Partial Class frmSales
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.BackColor = System.Drawing.Color.NavajoWhite
-        Me.GroupBox2.Controls.Add(Me.cbMultishops)
         Me.GroupBox2.Controls.Add(Me.DataGridView1)
         Me.GroupBox2.Controls.Add(Me.cbSaleslist)
         Me.GroupBox2.Controls.Add(Me.cbProdlineSort)
@@ -1415,6 +1414,7 @@ Partial Class frmSales
         Me.gbsell.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbsell.BackColor = System.Drawing.Color.PaleGoldenrod
+        Me.gbsell.Controls.Add(Me.lblCustType)
         Me.gbsell.Controls.Add(Me.Label36)
         Me.gbsell.Controls.Add(Me.tksendsms)
         Me.gbsell.Controls.Add(Me.Label34)
@@ -2202,14 +2202,16 @@ Partial Class frmSales
         Me.NotifyIcon1.Text = "Stock Check"
         Me.NotifyIcon1.Visible = True
         '
-        'cbMultishops
+        'lblCustType
         '
-        Me.cbMultishops.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbMultishops.FormattingEnabled = True
-        Me.cbMultishops.Location = New System.Drawing.Point(260, 136)
-        Me.cbMultishops.Name = "cbMultishops"
-        Me.cbMultishops.Size = New System.Drawing.Size(74, 28)
-        Me.cbMultishops.TabIndex = 212
+        Me.lblCustType.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblCustType.AutoSize = True
+        Me.lblCustType.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCustType.Location = New System.Drawing.Point(43, 5)
+        Me.lblCustType.Name = "lblCustType"
+        Me.lblCustType.Size = New System.Drawing.Size(55, 15)
+        Me.lblCustType.TabIndex = 146
+        Me.lblCustType.Text = "custtype"
         '
         'frmSales
         '
@@ -2391,5 +2393,5 @@ Partial Class frmSales
     Friend WithEvents lblProformaInvoice As Label
     Friend WithEvents lblPackageid As Label
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents cbMultishops As ComboBox
+    Friend WithEvents lblCustType As Label
 End Class

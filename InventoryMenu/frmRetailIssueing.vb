@@ -45,7 +45,8 @@ Public Class frmRetailIssueing
         End If
 
         Poscon.Close()
-        reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where baseqty*packsize<>1", gvStockBf)
+        reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast", gvStockBf)
+        'where baseqty*packsize<>1
     End Sub
 
     Private Sub txtQtyRecieved_TextChanged(sender As Object, e As EventArgs) Handles txtQtyRecieved.TextChanged
@@ -429,10 +430,12 @@ Public Class frmRetailIssueing
             End If
             If cbCatSort.SelectedIndex = -1 Then
 
-                reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and baseqty*packsize<>1", gvStockBf)
+                reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' ", gvStockBf)
+                'and baseqty*packsize<>1
             Else
 
-                reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "' and baseqty*packsize<>1 ", gvStockBf)
+                reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'  ", gvStockBf)
+                'and baseqty*packsize<>1
             End If
 
             Poscon.Close()
@@ -442,7 +445,8 @@ Public Class frmRetailIssueing
 
     End Sub
     Sub Sort(valuetosearch As String)
-        reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where ProdCat like '%" + valuetosearch + "%' and baseqty*packsize<>1", gvStockBf)
+        reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where ProdCat like '%" + valuetosearch + "%' ", gvStockBf)
+        'and baseqty*packsize<>1
     End Sub
     'Private Sub ShowConfigs()
     '    If Poscon.State = ConnectionState.Closed Then
