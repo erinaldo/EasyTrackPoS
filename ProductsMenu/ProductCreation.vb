@@ -300,7 +300,7 @@ Public Class frmProdCreate
                 'Exit Sub
                 'End If
                 If table.Rows.Count() = 0 Then
-                    Dim query = "insert into stockmast(prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyReminder,distributorprice,packsize,baseqty,Packprice) values('" & txtStockCode.Text & "','" + txtProdName.Text + "','" + cbProdLine.Text + "','" & cbSize.Text & "','" & cbColour.Text & "','" & cbCat.Text & "','" & txtQty.Text & "','" & txtRPrice.Text & "','" & txtWPrice.Text & "','" & txtItemName.Text & "','" & cbbrandName.Text & "','" & cbUnique.Text & "','" & txtLeastQty.Text & "','" + txtWPrice.Text + "','" + txtpacksize.Text + "','" + txtbaseqty.Text + "','" + txtpackprice.Text + "')"
+                    Dim query = "insert into stockmast(prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyReminder,distributorprice,packsize,baseqty,Packprice,costprice) values('" & txtStockCode.Text & "','" + txtProdName.Text + "','" + cbProdLine.Text + "','" & cbSize.Text & "','" & cbColour.Text & "','" & cbCat.Text & "','" & txtQty.Text & "','" & txtRPrice.Text & "','" & txtWPrice.Text & "','" & txtItemName.Text & "','" & cbbrandName.Text & "','" & cbUnique.Text & "','" & txtLeastQty.Text & "','" + txtWPrice.Text + "','" + txtpacksize.Text + "','" + txtbaseqty.Text + "','" + txtpackprice.Text + "','" + txtCPrice.Text + "')"
                     Dim cmd As SqlCommand
                     cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()

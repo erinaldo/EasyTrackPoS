@@ -1,5 +1,5 @@
 ﻿Imports System.Data.SqlClient
-Public Class frmOders
+Public Class frmSupplierOders
     'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand

@@ -626,7 +626,6 @@ K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmDeleteProduct.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmChangePrice.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCreateCustomerAccount.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCashierAccess.resources
-K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmOders.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSalesReciept.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSessionLedger.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.EasyTrackPoS.resources
@@ -676,3 +675,7 @@ K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.StockValueReport.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmMultishop.resources
 K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.MultiShopIssueing.resources
 K:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).vbproj.AssemblyReference.cache
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmSupplierOders.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCreateOder.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.SuppliersOders.resources
+K:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.RecieveOder.resources

@@ -21,18 +21,20 @@ Public Class frmUserProfilemgmt
     End Sub
     Private Sub Display()
 
-        Poscon.Open()
-        Dim query = "select id,Username,userid,usergroup,usertype,usergroupid from UserProfiles"
+        'Poscon.Open()
+        'Dim query = "select id,Username,userid,usergroup,usertype,usergroupid from UserProfiles"
 
-        cmd = New SqlCommand(query, Poscon)
-        adapter = New SqlDataAdapter(cmd)
-        Dim builder As New SqlCommandBuilder
-        builder = New SqlCommandBuilder(adapter)
-        Dim ds
-        ds = New DataSet
-        adapter.Fill(ds)
-        gvUserProfiles.DataSource = ds.Tables(0)
-        Poscon.Close()
+        'cmd = New SqlCommand(query, Poscon)
+        'adapter = New SqlDataAdapter(cmd)
+        'Dim builder As New SqlCommandBuilder
+        'builder = New SqlCommandBuilder(adapter)
+        'Dim ds
+        'ds = New DataSet
+        'adapter.Fill(ds)
+        'gvUserProfiles.DataSource = ds.Tables(0)
+        'Poscon.Close()
+        reload("select id,Username,userid,usergroup,usertype,usergroupid from UserProfiles", gvUserProfiles)
+        ComboFeed("select Customername from Customer where Customertype='" + "Branch Customer" + "'", ComboBox1, 0)
     End Sub
     Private Sub Clear()
         txtName.Text = ""
@@ -52,7 +54,7 @@ Public Class frmUserProfilemgmt
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim query = "insert into UserProfiles values('" & txtName.Text & "','" + txtUserId.Text + "','" + txtUserpassword.Text + "','" & cbUsertype.Text & "','" & cbUsergroup.Text & "','" & cbUsergroup.SelectedIndex.ToString & "')"
+                Dim query = "insert into UserProfiles(username,userid,password,usertype,usergroup,usergroupid,branch) values('" & txtName.Text & "','" + txtUserId.Text + "','" + txtUserpassword.Text + "','" & cbUsertype.Text & "','" & cbUsergroup.Text & "','" & cbUsergroup.SelectedIndex.ToString & "','" + ComboBox1.Text + "')"
                 Dim cmd As SqlCommand
                 cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
@@ -103,8 +105,6 @@ Public Class frmUserProfilemgmt
                 MsgBox("User Deleted Successfully")
                 Poscon.Close()
                 Display()
-
-
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try

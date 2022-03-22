@@ -589,6 +589,24 @@
     <Compile Include="MultiShop\MultiShopIssueing.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Odering System\frmCreateOder.Designer.vb">
+      <DependentUpon>frmCreateOder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Odering System\frmCreateOder.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Odering System\RecieveOder.Designer.vb">
+      <DependentUpon>RecieveOder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Odering System\RecieveOder.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Odering System\SupplierOders.Designer.vb">
+      <DependentUpon>SupplierOders.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Odering System\SupplierOders.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Pages\CustomerReport.Designer.vb">
       <DependentUpon>CustomerReport.vb</DependentUpon>
     </Compile>
@@ -1469,6 +1487,15 @@
       <DependentUpon>MultiShopIssueing.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="Odering System\frmCreateOder.resx">
+      <DependentUpon>frmCreateOder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Odering System\RecieveOder.resx">
+      <DependentUpon>RecieveOder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Odering System\SupplierOders.resx">
+      <DependentUpon>SupplierOders.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\CustomerReport.resx">
       <DependentUpon>CustomerReport.vb</DependentUpon>
     </EmbeddedResource>

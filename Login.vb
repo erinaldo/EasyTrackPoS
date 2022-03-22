@@ -11,7 +11,7 @@ Public Class Login
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim query = "select * from UserProfiles where UserID like '%" + valuetosearch + "%'"
+            Dim query = "select * from UserProfiles where UserID = '" + valuetosearch + "'"
             cmd = New SqlCommand(query, Poscon)
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable()
@@ -23,7 +23,7 @@ Public Class Login
             Else
                 lblID.Text = tbl.Rows(0)(0).ToString
                 lblusername.Text = tbl.Rows(0)(1).ToString
-                lblBranch.Text = tbl.Rows(0)(5).ToString
+                lblBranch.Text = tbl.Rows(0)(7).ToString
             End If
             Poscon.Close()
         Catch ex As Exception

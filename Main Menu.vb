@@ -181,7 +181,10 @@ Public Class frmMain
         MsgBox("Contact your Service Providers")
     End Sub
 
-    Private Sub BunifuButton10_Click(sender As Object, e As EventArgs)
 
+    Private Sub BunifuButton10_Click_1(sender As Object, e As EventArgs) Handles BunifuButton10.Click
+        Dim f1 As New SuppliersOders
+        f1.Show()
+        Me.Hide()
     End Sub
 End Class

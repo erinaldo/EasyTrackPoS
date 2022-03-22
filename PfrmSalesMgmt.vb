@@ -11,7 +11,7 @@ Public Class PfrmSalesMgmt
     End Sub
 
     Private Sub btnOders_Click(sender As Object, e As EventArgs)
-        Dim f2 As New frmOders
+        Dim f2 As New frmSupplierOders
         With f2
             .TopLevel = False
             PCreateProd.Controls.Add(f2)

@@ -4,7 +4,6 @@ Public Class frmMultishop
     'Dim poscon As New SqlConnection(My.Settings.PoSConnectionString)
     Dim dr As SqlDataReader
     Dim cmd As SqlCommand
-    Dim builder As SqlCommandBuilder
     Dim da As SqlDataAdapter
     Dim dt As New dsSalesTranx
     Dim tbl As DataTable
@@ -16,7 +15,7 @@ Public Class frmMultishop
 
     Private Sub frmSales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         StockCheck()
-        Display()
+
         SessionCheck()
         ckCashDisc.Checked = True
         txtCashDisc.Enabled = True
@@ -247,6 +246,9 @@ Public Class frmMultishop
         End Try
     End Sub
     Private Sub Display()
+        reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopstockmast where shopname='" + lblBranch.Text + "'", gvStock)
+        'cbSaleslist.Items.Clear()
+        'cbSaleslist.Items.Add(lblBranch.Text)
         ''If cbSaleslist.SelectedIndex = 0 Or cbSaleslist.SelectedIndex = -1 Then
         ''    reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
         ''End If
@@ -269,7 +271,8 @@ Public Class frmMultishop
         '        reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where baseqty*packsize=1", gvStock)
 
         'End Select
-
+        ' cbSaleslist.Items.Add(lblBranch.Text)
+        'ComboFeed("select Customername from Customer where customername='" + lblBranch.Text + "'", cbSaleslist, 0)
     End Sub
 
     Private Sub cbProdName_TextUpdate(sender As Object, e As EventArgs) Handles cbProdName.TextUpdate
@@ -432,14 +435,6 @@ Public Class frmMultishop
         'lblDate.Text = Date.Now.ToString("dd-MMM-yy")
     End Sub
 
-
-
-
-    Private Sub cbProdName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProdName.SelectedIndexChanged
-
-
-    End Sub
-
     Private Sub txtProdName_KeyUp(sender As Object, e As KeyEventArgs)
         Feel(txtProdname.Text)
 
@@ -452,11 +447,11 @@ Public Class frmMultishop
     End Sub
 
     Private Sub cbCreditCustName_DropDownClosed(sender As Object, e As EventArgs) Handles cbCreditCustName.DropDownClosed
-        Search(cbCreditCustName.Text)
+        'Search(cbCreditCustName.Text)
     End Sub
 
     Private Sub cbCreditCustName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCreditCustName.SelectedIndexChanged
-        Search(cbCreditCustName.Text)
+        Search(lblBranch.Text)
         If lblCustType.Text = "Branch Customer" Then
             reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopstockmast where shopname='" + lblBranch.Text + "'", gvStock)
         End If
@@ -469,12 +464,10 @@ Public Class frmMultishop
     End Sub
 
     Private Sub cbCreditCustName_TextUpdate(sender As Object, e As EventArgs) Handles cbCreditCustName.TextUpdate
-        Search(cbCreditCustName.Text)
+        'Search(cbCreditCustName.Text)
     End Sub
 
-    Private Sub txtQty_KeyUp(sender As Object, e As KeyEventArgs) Handles txtQty.KeyUp
 
-    End Sub
 
     Private Sub txtQty_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQty.KeyPress
         If Not Char.IsNumber(e.KeyChar) And Not e.KeyChar = Chr(Keys.Delete) And Not e.KeyChar = Chr(Keys.Back) And Not e.KeyChar = Chr(Keys.Space) Then
@@ -767,27 +760,27 @@ Public Class frmMultishop
 
         ShowConfig()
         ''Send sms Message
-        If tksendsms.Checked = True Then
-            Try
-                If Poscon.State = ConnectionState.Closed Then
-                    Poscon.Open()
-                End If
-                Dim que = " SELECT fromemail, mailsubject,body,fromsms,smsbody,smsapikey  FROM Emailconfig"
-                cmd = New SqlCommand(que, Poscon)
-                da = New SqlDataAdapter(cmd)
-                tbl = New DataTable
-                da.Fill(tbl)
-                If tbl.Rows.Count = 0 Then
-                    MsgBox("Reconfigure Sms and try again")
-                Else
-                    Sendsms(tbl.Rows(0)(5).ToString, tbl.Rows(0)(3).ToString, txtBuyerTel.Text, tbl.Rows(0)(4).ToString + "")
-                End If
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
+        'If tksendsms.Checked = True Then
+        '    Try
+        '        If Poscon.State = ConnectionState.Closed Then
+        '            Poscon.Open()
+        '        End If
+        '        Dim que = " SELECT fromemail, mailsubject,body,fromsms,smsbody,smsapikey  FROM Emailconfig"
+        '        cmd = New SqlCommand(que, Poscon)
+        '        da = New SqlDataAdapter(cmd)
+        '        tbl = New DataTable
+        '        da.Fill(tbl)
+        '        If tbl.Rows.Count = 0 Then
+        '            MsgBox("Reconfigure Sms and try again")
+        '        Else
+        '            Sendsms(tbl.Rows(0)(5).ToString, tbl.Rows(0)(3).ToString, txtBuyerTel.Text, tbl.Rows(0)(4).ToString + "")
+        '        End If
+        '    Catch ex As Exception
+        '        MsgBox(ex.Message)
+        '    End Try
 
 
-        End If
+        'End If
 
         If Val(txtCashPaid.Text) < Val(lblPayable.Text) Then
             MsgBox("Cash paid not enough", vbCritical)
@@ -804,7 +797,7 @@ Public Class frmMultishop
         Else
 
             'cbCreditCustName.Visible = True
-            'lblCreditCust.Visible = True
+            'lblCreditCust.Visible = Truejn
             Dim a = Val(lblTotal.Text)
             Dim b = Val(lblOldBal.Text)
             Dim sum = b + a
@@ -832,7 +825,7 @@ Public Class frmMultishop
                         .Parameters.AddWithValue("@ItemSize", row.Cells(6).Value)
                         .Parameters.AddWithValue("@ItemColour", row.Cells(5).Value)
                         .Parameters.AddWithValue("@QtySold", row.Cells(1).Value)
-                        .Parameters.AddWithValue("@DateSold", lblDate.Text)
+                        .Parameters.AddWithValue("@DateSold", SqlDbType.Date).Value = lblDate.Text
                         .Parameters.AddWithValue("@TimeSold", lblTime.Text)
                         .Parameters.AddWithValue("@BuyerName", txtBuyerName.Text)
                         .Parameters.AddWithValue("@BuyerTel", txtBuyerTel.Text)
@@ -929,19 +922,19 @@ Public Class frmMultishop
             End If
         End If
 
-        If tksendsms.Checked = True Then
-            Dim que = " SELECT fromemail, mailsubject,body,fromsms,smsbody,smsapikey  FROM Emailconfig"
-            cmd = New SqlCommand(que, Poscon)
-            da = New SqlDataAdapter(cmd)
-            tbl = New DataTable
-            da.Fill(tbl)
-            If tbl.Rows.Count = 0 Then
-                MsgBox("Reconfigure Sms and try again")
-            Else
-                Sendsms(tbl.Rows(0)(5).ToString, tbl.Rows(0)(3).ToString, txtBuyerTel.Text, tbl.Rows(0)(4).ToString + "")
-            End If
+        'If tksendsms.Checked = True Then
+        '    Dim que = " SELECT fromemail, mailsubject,body,fromsms,smsbody,smsapikey  FROM Emailconfig"
+        '    cmd = New SqlCommand(que, Poscon)
+        '    da = New SqlDataAdapter(cmd)
+        '    tbl = New DataTable
+        '    da.Fill(tbl)
+        '    If tbl.Rows.Count = 0 Then
+        '        MsgBox("Reconfigure Sms and try again")
+        '    Else
+        '        Sendsms(tbl.Rows(0)(5).ToString, tbl.Rows(0)(3).ToString, txtBuyerTel.Text, tbl.Rows(0)(4).ToString + "")
+        '    End If
 
-        End If
+        'End If
         ShowConfig()
         txtProdname.Focus()
     End Sub
@@ -1140,9 +1133,6 @@ Public Class frmMultishop
         txtDiscName.Text = ""
     End Sub
 
-    Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs)
-    End Sub
-
     Private Sub BunifuThinButton25_Click(sender As Object, e As EventArgs) Handles BunifuThinButton25.Click
         If gvSales.Rows.Count = 0 Then
             MsgBox("Make a sale to Discount")
@@ -1267,8 +1257,6 @@ Public Class frmMultishop
             txtCat.Text = tbl.Rows(0)(4).ToString
             txtSize.Text = tbl.Rows(0)(3).ToString
             txtColour.Text = tbl.Rows(0)(5).ToString
-
-
             Poscon.Close()
         Catch ex As Exception
 
@@ -1280,9 +1268,6 @@ Public Class frmMultishop
 
     Private Sub txtProdname_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtProdname.SelectedIndexChanged
         FillSale(txtProdname.SelectedItem)
-    End Sub
-
-    Private Sub BunifuThinButton26_Click(sender As Object, e As EventArgs)
     End Sub
 
     Private Sub txtQty_MouseLeave(sender As Object, e As EventArgs) Handles txtQty.MouseLeave
@@ -1524,11 +1509,10 @@ Public Class frmMultishop
 
     Private Sub cbCreditCustName_Click(sender As Object, e As EventArgs) Handles cbCreditCustName.Click
 
-        ComboFeed("select * from Customer", cbCreditCustName, 1)
+        ComboFeed("select * from Customer where customername='" + lblBranch.Text + "'", cbCreditCustName, 1)
     End Sub
 
     Private Sub txtProdname_Enter(sender As Object, e As EventArgs) Handles txtProdname.Enter
-
         ComboFeed("select * from Stockmast", txtProdname, 1)
     End Sub
 
@@ -1554,23 +1538,8 @@ Public Class frmMultishop
         End If
     End Sub
 
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSaleslist.SelectedIndexChanged
-
-        Select Case cbSaleslist.SelectedIndex
-            Case 0
-                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopstockmast where shopname='" + cbCreditCustName.Text + "'", gvStock)
-               ' reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast", gvStock)
-            Case 1
-                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopstockmast where shopname='" + cbCreditCustName.Text + "'", gvStock)
-               ' reload("select * from Packagesconfig", gvStock)
-            Case 2
-                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopstockmast where shopname='" + cbCreditCustName.Text + "'", gvStock)
-                reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
-
-        End Select
-    End Sub
-
     Private Sub frmSales_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
+        Display()
         SessionCheck()
     End Sub
 
@@ -1578,5 +1547,7 @@ Public Class frmMultishop
         SessionCheck()
     End Sub
 
-
+    Private Sub cbSaleslist_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSaleslist.SelectedIndexChanged
+        reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopstockmast where shopname='" + lblBranch.Text + "'", gvStock)
+    End Sub
 End Class
