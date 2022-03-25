@@ -24,11 +24,11 @@ Partial Class RecieveOder
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RecieveOder))
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.txtItemName = New System.Windows.Forms.Label()
@@ -70,8 +70,15 @@ Partial Class RecieveOder
         Me.tstime = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.gvStockBatch = New System.Windows.Forms.DataGridView()
+        Me.clItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clQtyRecieved = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OderRecieved = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbloderid = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -93,13 +100,6 @@ Partial Class RecieveOder
         Me.txtPackVolume = New System.Windows.Forms.TextBox()
         Me.txtPackSize = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.lbloderid = New System.Windows.Forms.Label()
-        Me.clItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clQtyRecieved = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OderRecieved = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -212,18 +212,17 @@ Partial Class RecieveOder
         '
         'txtqtyrecieve
         '
-        Me.txtqtyrecieve.Enabled = False
         Me.txtqtyrecieve.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.txtqtyrecieve.Location = New System.Drawing.Point(195, 101)
         Me.txtqtyrecieve.Name = "txtqtyrecieve"
-        Me.txtqtyrecieve.Size = New System.Drawing.Size(78, 29)
+        Me.txtqtyrecieve.Size = New System.Drawing.Size(105, 29)
         Me.txtqtyrecieve.TabIndex = 60
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(365, 86)
+        Me.Label3.Location = New System.Drawing.Point(404, 80)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(58, 17)
         Me.Label3.TabIndex = 39
@@ -233,7 +232,7 @@ Partial Class RecieveOder
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(278, 82)
+        Me.Label2.Location = New System.Drawing.Point(313, 82)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(37, 17)
         Me.Label2.TabIndex = 38
@@ -253,18 +252,18 @@ Partial Class RecieveOder
         '
         Me.txtAmount.Enabled = False
         Me.txtAmount.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtAmount.Location = New System.Drawing.Point(365, 103)
+        Me.txtAmount.Location = New System.Drawing.Point(404, 97)
         Me.txtAmount.Name = "txtAmount"
-        Me.txtAmount.Size = New System.Drawing.Size(108, 29)
+        Me.txtAmount.Size = New System.Drawing.Size(69, 29)
         Me.txtAmount.TabIndex = 4
         '
         'txtPrice
         '
         Me.txtPrice.Enabled = False
         Me.txtPrice.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtPrice.Location = New System.Drawing.Point(278, 100)
+        Me.txtPrice.Location = New System.Drawing.Point(313, 100)
         Me.txtPrice.Name = "txtPrice"
-        Me.txtPrice.Size = New System.Drawing.Size(66, 29)
+        Me.txtPrice.Size = New System.Drawing.Size(85, 29)
         Me.txtPrice.TabIndex = 3
         '
         'txtqtyremaining
@@ -589,9 +588,9 @@ Partial Class RecieveOder
         '
         Me.txtinvoiceno.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtinvoiceno.Font = New System.Drawing.Font("Segoe UI", 11.25!)
-        Me.txtinvoiceno.Location = New System.Drawing.Point(89, 61)
+        Me.txtinvoiceno.Location = New System.Drawing.Point(9, 83)
         Me.txtinvoiceno.Name = "txtinvoiceno"
-        Me.txtinvoiceno.Size = New System.Drawing.Size(131, 27)
+        Me.txtinvoiceno.Size = New System.Drawing.Size(219, 27)
         Me.txtinvoiceno.TabIndex = 49
         '
         'Label7
@@ -624,9 +623,9 @@ Partial Class RecieveOder
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(4, 60)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(84, 20)
+        Me.Label8.Size = New System.Drawing.Size(145, 20)
         Me.Label8.TabIndex = 50
-        Me.Label8.Text = "Invoice No"
+        Me.Label8.Text = "Supplier Invoice No"
         '
         'Label9
         '
@@ -750,24 +749,24 @@ Partial Class RecieveOder
         Me.gvStockBatch.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvStockBatch.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.gvStockBatch.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvStockBatch.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvStockBatch.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.gvStockBatch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gvStockBatch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clItemName, Me.clPrice, Me.clQtyRecieved, Me.OderRecieved, Me.Column1, Me.clAmount})
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gvStockBatch.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gvStockBatch.DefaultCellStyle = DataGridViewCellStyle2
         Me.gvStockBatch.GridColor = System.Drawing.Color.DarkRed
         Me.gvStockBatch.Location = New System.Drawing.Point(479, 225)
         Me.gvStockBatch.Name = "gvStockBatch"
@@ -779,6 +778,43 @@ Partial Class RecieveOder
         Me.gvStockBatch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gvStockBatch.Size = New System.Drawing.Size(591, 262)
         Me.gvStockBatch.TabIndex = 227
+        '
+        'clItemName
+        '
+        Me.clItemName.Frozen = True
+        Me.clItemName.HeaderText = "Item Name"
+        Me.clItemName.Name = "clItemName"
+        Me.clItemName.ReadOnly = True
+        '
+        'clPrice
+        '
+        Me.clPrice.HeaderText = "Price"
+        Me.clPrice.Name = "clPrice"
+        Me.clPrice.ReadOnly = True
+        '
+        'clQtyRecieved
+        '
+        Me.clQtyRecieved.HeaderText = "Qty Odered"
+        Me.clQtyRecieved.Name = "clQtyRecieved"
+        Me.clQtyRecieved.ReadOnly = True
+        '
+        'OderRecieved
+        '
+        Me.OderRecieved.HeaderText = "Qty Recieved"
+        Me.OderRecieved.Name = "OderRecieved"
+        Me.OderRecieved.ReadOnly = True
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Qty Remaining"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'clAmount
+        '
+        Me.clAmount.HeaderText = "Amount"
+        Me.clAmount.Name = "clAmount"
+        Me.clAmount.ReadOnly = True
         '
         'Label5
         '
@@ -812,6 +848,18 @@ Partial Class RecieveOder
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1088, 68)
         Me.Panel1.TabIndex = 228
+        '
+        'lbloderid
+        '
+        Me.lbloderid.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbloderid.AutoSize = True
+        Me.lbloderid.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbloderid.Location = New System.Drawing.Point(477, 35)
+        Me.lbloderid.Name = "lbloderid"
+        Me.lbloderid.Size = New System.Drawing.Size(44, 16)
+        Me.lbloderid.TabIndex = 164
+        Me.lbloderid.Text = "oderid"
         '
         'Label22
         '
@@ -971,9 +1019,9 @@ Partial Class RecieveOder
         Me.gvStockBf.AllowUserToAddRows = False
         Me.gvStockBf.AllowUserToDeleteRows = False
         Me.gvStockBf.AllowUserToResizeRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black
-        Me.gvStockBf.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.gvStockBf.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.gvStockBf.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -982,14 +1030,14 @@ Partial Class RecieveOder
         Me.gvStockBf.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvStockBf.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.gvStockBf.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.MediumPurple
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvStockBf.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.MediumPurple
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvStockBf.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.gvStockBf.ColumnHeadersHeight = 20
         Me.gvStockBf.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStockBf.CurrentTheme.AlternatingRowsStyle.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold)
@@ -1009,14 +1057,14 @@ Partial Class RecieveOder
         Me.gvStockBf.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black
         Me.gvStockBf.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStockBf.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gvStockBf.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gvStockBf.DefaultCellStyle = DataGridViewCellStyle5
         Me.gvStockBf.EnableHeadersVisualStyles = False
         Me.gvStockBf.GridColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStockBf.HeaderBackColor = System.Drawing.Color.MediumPurple
@@ -1135,55 +1183,6 @@ Partial Class RecieveOder
         Me.Label20.Size = New System.Drawing.Size(81, 17)
         Me.Label20.TabIndex = 239
         Me.Label20.Text = "PackVolume"
-        '
-        'lbloderid
-        '
-        Me.lbloderid.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbloderid.AutoSize = True
-        Me.lbloderid.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbloderid.Location = New System.Drawing.Point(477, 35)
-        Me.lbloderid.Name = "lbloderid"
-        Me.lbloderid.Size = New System.Drawing.Size(44, 16)
-        Me.lbloderid.TabIndex = 164
-        Me.lbloderid.Text = "oderid"
-        '
-        'clItemName
-        '
-        Me.clItemName.Frozen = True
-        Me.clItemName.HeaderText = "Item Name"
-        Me.clItemName.Name = "clItemName"
-        Me.clItemName.ReadOnly = True
-        '
-        'clPrice
-        '
-        Me.clPrice.HeaderText = "Price"
-        Me.clPrice.Name = "clPrice"
-        Me.clPrice.ReadOnly = True
-        '
-        'clQtyRecieved
-        '
-        Me.clQtyRecieved.HeaderText = "Qty Odered"
-        Me.clQtyRecieved.Name = "clQtyRecieved"
-        Me.clQtyRecieved.ReadOnly = True
-        '
-        'OderRecieved
-        '
-        Me.OderRecieved.HeaderText = "Qty Recieved"
-        Me.OderRecieved.Name = "OderRecieved"
-        Me.OderRecieved.ReadOnly = True
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Qty Remaining"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'clAmount
-        '
-        Me.clAmount.HeaderText = "Amount"
-        Me.clAmount.Name = "clAmount"
-        Me.clAmount.ReadOnly = True
         '
         'RecieveOder
         '

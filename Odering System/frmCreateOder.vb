@@ -285,7 +285,7 @@ Public Class frmCreateOder
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-            Dim query = "insert into Supplieroder (invoiceno,ItemName,Price,Amount,QtyOdered,dateodered,Oderedby,itemcat,SupplierName,SupplierID,PackVolume,qtyrecieved,qtyremaining,narration) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@qtyodered,'" + txtdate.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + "0" + "','" + gvStockBatch.Rows(i).Cells(3).Value + "','" + txtNarration.Text + "')"
+            Dim query = "insert into Supplieroder (invoiceno,ItemName,Price,Amount,QtyOdered,dateodered,Oderedby,itemcat,SupplierName,SupplierID,PackVolume,qtyrecieved,qtyremaining,narration,Prodcode) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@qtyodered,'" + txtdate.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + "0" + "','" + gvStockBatch.Rows(i).Cells(3).Value + "','" + txtNarration.Text + "','" + gvStockBatch.Rows(i).Cells(6).Value + "')"
             cmd = New SqlCommand(query, Poscon)
                 With cmd
                     .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)

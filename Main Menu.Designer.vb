@@ -966,7 +966,7 @@ Partial Class frmMain
         Me.BunifuButton10.AllowAnimations = True
         Me.BunifuButton10.AllowMouseEffects = True
         Me.BunifuButton10.AllowToggling = False
-        Me.BunifuButton10.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BunifuButton10.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.BunifuButton10.AnimationSpeed = 200
         Me.BunifuButton10.AutoGenerateColors = False
         Me.BunifuButton10.AutoRoundBorders = False

@@ -191,18 +191,15 @@ Public Class RecieveOder
             MsgBox("Select item or Enter Quantity recieved")
             txtqtyremaining.Focus()
         Else
-            Dim NewStock As Decimal
-            Dim a = Val(txtqtyrecieve.Text)
-            Dim b = Val(txtqtyremaining.Text)
-            NewStock = a + b
+
             For Each row As DataGridViewRow In gvStockBatch.Rows
-                If lblProdcode.Text = row.Cells(6).Value Then
-                    MsgBox("Item already added,Delete existing item to add again")
-                    cbSearchItem.Focus()
-                    Exit Sub
+                If txtItemName.Text = row.Cells(0).Value Then
+
+                    row.Cells(3).Value = txtqtyrecieve.Text
+                    row.Cells(5).Value = Val(txtPrice.Text) * Val(txtqtyrecieve.Text)
                 End If
             Next
-            gvStockBatch.Rows.Add(txtItemName.Text, txtqtyrecieve.Text, txtPrice.Text, txtqtyremaining.Text, NewStock, txtAmount.Text, lblProdcode.Text, txtoderqty.Text, txtPackVolume.Text)
+
             clear()
         End If
         Try
@@ -246,7 +243,7 @@ Public Class RecieveOder
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim query = "insert into Supplieroder (invoiceno,ItemName,Price,Amount,QtyOdered,dateodered,Oderedby,itemcat,SupplierName,SupplierID,PackVolume,qtyrecieved,qtyremaining,narration) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@qtyodered,convert(datetime,'" + DateTime.Now + "',105),'" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + "0" + "','" + gvStockBatch.Rows(i).Cells(3).Value + "','" + txtNarration.Text + "')"
+            Dim query = "update Supplieroder (invoiceno,ItemName,Price,Amount,QtyOdered,dateodered,Oderedby,itemcat,SupplierName,SupplierID,PackVolume,qtyrecieved,qtyremaining,narration) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@qtyodered,convert(datetime,'" + DateTime.Now + "',105),'" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + "0" + "','" + gvStockBatch.Rows(i).Cells(3).Value + "','" + txtNarration.Text + "')"
             cmd = New SqlCommand(query, Poscon)
             With cmd
                 .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
@@ -477,6 +474,10 @@ Public Class RecieveOder
         txtqtyremaining.Text = row.Cells(4).Value.ToString()
         txtPrice.Text = row.Cells(1).Value.ToString()
         txtItemName.Text = row.Cells(0).Value.ToString()
+    End Sub
+
+    Private Sub txtqtyrecieve_TextChanged(sender As Object, e As EventArgs) Handles txtqtyrecieve.TextChanged
+        txtAmount.Text = Val(txtPrice.Text) * Val(txtqtyrecieve.Text)
     End Sub
 End Class
 

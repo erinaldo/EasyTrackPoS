@@ -84,7 +84,6 @@ Public Class frmRecieveGoods
         Else
             tsuser.Text = tbl.Rows(index)(1).ToString
         End If
-
         Poscon.Close()
 
         'If Poscon.State = ConnectionState.Closed Then
@@ -243,24 +242,62 @@ Public Class frmRecieveGoods
     End Sub
 
     Private Sub gvStockBf_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStockBf.CellClick
-        Try
-            Dim row As DataGridViewRow = gvStockBf.Rows(e.RowIndex)
-            txtItemName.Text = row.Cells(0).Value.ToString()
-            txtItemPrice.Text = row.Cells(3).Value.ToString()
-            txtActualStock.Text = row.Cells(1).Value.ToString()
-            lblProdcode.Text = row.Cells(4).Value.ToString()
-            txtCat.Text = row.Cells(2).Value.ToString()
-            txtbaseQty.Text = row.Cells(5).Value.ToString()
-            txtPackSize.Text = row.Cells(6).Value.ToString()
-            Dim pckvol As New Decimal
-            Dim a = Val(txtPackSize.Text)
-            Dim b = Val(txtbaseQty.Text)
-            pckvol = a * b
-            txtPackVolume.Text = pckvol
-            txtQtyRecieved.Focus()
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+        Select Case ComboBox1.SelectedIndex
+            Case 0
+                Try
+                    Dim row As DataGridViewRow = gvStockBf.Rows(e.RowIndex)
+                    txtItemName.Text = row.Cells(0).Value.ToString()
+                    txtItemPrice.Text = row.Cells(3).Value.ToString()
+                    txtActualStock.Text = row.Cells(1).Value.ToString()
+                    lblProdcode.Text = row.Cells(4).Value.ToString()
+                    txtCat.Text = row.Cells(2).Value.ToString()
+                    txtbaseQty.Text = row.Cells(5).Value.ToString()
+                    txtPackSize.Text = row.Cells(6).Value.ToString()
+                    Dim pckvol As New Decimal
+                    Dim a = Val(txtPackSize.Text)
+                    Dim b = Val(txtbaseQty.Text)
+                    pckvol = a * b
+                    txtPackVolume.Text = pckvol
+                    txtQtyRecieved.Focus()
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                End Try
+            Case 1
+                If gvStockBatch.Rows.Count = 0 Then
+                    Dim ask As MsgBoxResult
+                    ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
+                    If ask = MsgBoxResult.Yes Then
+                        gvStockBatch.Rows.Clear()
+                        Dim row As DataGridViewRow = gvStockBf.Rows(e.RowIndex)
+                        lbloderid.Text = row.Cells(0).Value.ToString()
+                        If Poscon.State = ConnectionState.Closed Then
+                            Poscon.Open()
+                        End If
+                        Dim queryy = ("Select Invoiceno,Itemname,price,itemcat,QtyRemaining,prodcode,packvolume from supplieroder where invoiceno='" + lbloderid.Text + "'")
+                        cmd = New SqlCommand(queryy, Poscon)
+                        da = New SqlDataAdapter(cmd)
+                        tbl = New DataTable()
+                        da.Fill(tbl)
+                        If tbl.Rows.Count = 0 Then
+                            MsgBox("Package Empty")
+                            Exit Sub
+                        End If
+
+
+
+                        txtinvoiceno.Text = tbl.Rows(0)(0).ToString
+
+                        For k = 0 To tbl.Rows.Count - 1
+                            gvStockBatch.Rows.Add(tbl.Rows(k)(1).ToString, 0, tbl.Rows(k)(2).ToString, 0, 0, 0, tbl.Rows(k)(5).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(4).ToString)
+                        Next
+                        Poscon.Close()
+                    End If
+
+                End If
+            Case Else
+
+        End Select
+
 
     End Sub
     Public Sub Search(valueTosearch As String)
@@ -284,6 +321,27 @@ Public Class frmRecieveGoods
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If txtbaseQty.Text = "" Then
+            For Each row As DataGridViewRow In gvStockBatch.Rows
+                row.Cells(3).Value = txtQtyRecieved.Text
+                Row.Cells(5).Value = Val(txtQtyRecieved.Text) * Val(txtItemPrice.Text)
+                Row.Cells(1).Value = txtActualStock.Text
+                row.Cells(4).Value = Val(txtActualStock.Text) + Val(txtActualStock.Text)
+            Next
+            Try
+                Dim sum As Decimal = 0
+                For k = 0 To gvStockBatch.RowCount - 1
+                    sum += gvStockBatch.Rows(k).Cells(5).Value
+                Next
+                lblTotal.Text = sum
+                Dim newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
+                lblNewBal.Text = newbal
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
+            cbSearchItem.Focus()
+        End If
+
         If txtItemPrice.Text = "" Or txtQtyRecieved.Text = "" Then
             MsgBox("Select item or Enter Quantity recieved")
             txtQtyRecieved.Focus()
@@ -293,12 +351,12 @@ Public Class frmRecieveGoods
             Dim b = Val(txtQtyRecieved.Text)
             NewStock = a + b
             For Each row As DataGridViewRow In gvStockBatch.Rows
-                If lblProdcode.Text = row.Cells(6).Value Then
+                If txtItemName.Text = row.Cells(0).Value Then
                     MsgBox("Item already added,Delete existing item to add again")
-                    cbSearchItem.Focus()
-                    Exit Sub
                 End If
+                'Exit Sub
             Next
+
             gvStockBatch.Rows.Add(txtItemName.Text, txtActualStock.Text, txtItemPrice.Text, txtQtyRecieved.Text, NewStock, txtItemAmount.Text, lblProdcode.Text, txtCat.Text, txtPackVolume.Text)
             clear()
         End If
@@ -606,5 +664,43 @@ Public Class frmRecieveGoods
 
     Private Sub txtdate_ValueChanged_1(sender As Object, e As EventArgs) Handles txtdate.ValueChanged
         lbldate.Text = txtdate.Text
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        Select Case ComboBox1.SelectedIndex
+            Case 0
+                reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast", gvStockBf)
+            Case 1
+                reload("select * from Supplieroderconfig", gvStockBf)
+            Case Else
+
+        End Select
+    End Sub
+
+    Private Sub gvStockBatch_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStockBatch.CellClick
+        Try
+            Dim row As DataGridViewRow = gvStockBatch.Rows(e.RowIndex)
+            txtCat.Text = row.Cells(7).Value.ToString()
+            TextBox1.Text = row.Cells(9).Value.ToString()
+            txtItemPrice.Text = row.Cells(2).Value.ToString()
+            'txtPrice.Text = row.Cells(1).Value.ToString()
+            txtItemName.Text = row.Cells(0).Value.ToString()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            cmd = New SqlCommand("select prodqty from Stockmast where prodcode='" + row.Cells(6).Value.ToString() + "'", Poscon)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable
+            da.Fill(tbl)
+            If tbl.Rows.Count = 0 Then
+
+            Else
+                txtActualStock.Text = tbl.Rows(0)(0).ToString
+            End If
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
     End Sub
 End Class
