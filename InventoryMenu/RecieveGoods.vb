@@ -97,7 +97,8 @@ Public Class frmRecieveGoods
         'gvStockBf.DataSource = tbl
         'Poscon.Close()
         reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast", gvStockBf)
-
+        reload("select * from supplieroder", DataGridView1)
+        reload("select * from supplieroderconfig", DataGridView2)
     End Sub
 
     Public Sub Suppliers(valuetosearch As String)
@@ -204,6 +205,7 @@ Public Class frmRecieveGoods
         lblTotal.Text = ""
         txtinvoiceno.Text = ""
         txtCat.Text = ""
+        lbloderid.Text = "oder"
 
     End Sub
 
@@ -263,37 +265,39 @@ Public Class frmRecieveGoods
                     MsgBox(ex.ToString)
                 End Try
             Case 1
-                If gvStockBatch.Rows.Count = 0 Then
+                If gvStockBatch.Rows.Count <> 0 Then
                     Dim ask As MsgBoxResult
                     ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
-                    If ask = MsgBoxResult.Yes Then
-                        gvStockBatch.Rows.Clear()
-                        Dim row As DataGridViewRow = gvStockBf.Rows(e.RowIndex)
-                        lbloderid.Text = row.Cells(0).Value.ToString()
-                        If Poscon.State = ConnectionState.Closed Then
-                            Poscon.Open()
-                        End If
-                        Dim queryy = ("Select Invoiceno,Itemname,price,itemcat,QtyRemaining,prodcode,packvolume from supplieroder where invoiceno='" + lbloderid.Text + "'")
-                        cmd = New SqlCommand(queryy, Poscon)
-                        da = New SqlDataAdapter(cmd)
-                        tbl = New DataTable()
-                        da.Fill(tbl)
-                        If tbl.Rows.Count = 0 Then
-                            MsgBox("Package Empty")
-                            Exit Sub
-                        End If
-
-
-
-                        txtinvoiceno.Text = tbl.Rows(0)(0).ToString
-
-                        For k = 0 To tbl.Rows.Count - 1
-                            gvStockBatch.Rows.Add(tbl.Rows(k)(1).ToString, 0, tbl.Rows(k)(2).ToString, 0, 0, 0, tbl.Rows(k)(5).ToString, tbl.Rows(k)(3).ToString, tbl.Rows(k)(6).ToString, tbl.Rows(k)(4).ToString)
-                        Next
-                        Poscon.Close()
+                    If ask = MsgBoxResult.No Then
+                        Exit Sub
                     End If
-
                 End If
+                gvStockBatch.Rows.Clear()
+                Dim row As DataGridViewRow = gvStockBf.Rows(e.RowIndex)
+                lbloderid.Text = row.Cells(0).Value.ToString()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
+                End If
+                Dim queryy = ("Select Invoiceno,Itemname,price,itemcat,prodcode,packvolume,qtyodered from supplieroder where invoiceno='" + lbloderid.Text + "'")
+                cmd = New SqlCommand(queryy, Poscon)
+                da = New SqlDataAdapter(cmd)
+                tbl = New DataTable()
+                da.Fill(tbl)
+                If tbl.Rows.Count = 0 Then
+                    MsgBox("Package Empty")
+                    Exit Sub
+                End If
+                txtinvoiceno.Text = tbl.Rows(0)(0).ToString
+
+                For k = 0 To tbl.Rows.Count - 1
+                    gvStockBatch.Rows.Add(tbl.Rows(k)(1).ToString, 0, tbl.Rows(k)(2).ToString, 0, 0, 0, tbl.Rows(k)(4).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString)
+                Next
+                Poscon.Close()
+
+
+
+
+
             Case Else
 
         End Select
@@ -321,26 +325,7 @@ Public Class frmRecieveGoods
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-        If txtbaseQty.Text = "" Then
-            For Each row As DataGridViewRow In gvStockBatch.Rows
-                row.Cells(3).Value = txtQtyRecieved.Text
-                Row.Cells(5).Value = Val(txtQtyRecieved.Text) * Val(txtItemPrice.Text)
-                Row.Cells(1).Value = txtActualStock.Text
-                row.Cells(4).Value = Val(txtActualStock.Text) + Val(txtActualStock.Text)
-            Next
-            Try
-                Dim sum As Decimal = 0
-                For k = 0 To gvStockBatch.RowCount - 1
-                    sum += gvStockBatch.Rows(k).Cells(5).Value
-                Next
-                lblTotal.Text = sum
-                Dim newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
-                lblNewBal.Text = newbal
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
-            cbSearchItem.Focus()
-        End If
+
 
         If txtItemPrice.Text = "" Or txtQtyRecieved.Text = "" Then
             MsgBox("Select item or Enter Quantity recieved")
@@ -351,7 +336,11 @@ Public Class frmRecieveGoods
             Dim b = Val(txtQtyRecieved.Text)
             NewStock = a + b
             For Each row As DataGridViewRow In gvStockBatch.Rows
-                If txtItemName.Text = row.Cells(0).Value Then
+                If lblProdcode.Text = row.Cells(6).Value Then
+                    If ComboBox1.SelectedIndex = 1 Then
+                        addOder()
+                        Exit Sub
+                    End If
                     MsgBox("Item already added,Delete existing item to add again")
                 End If
                 'Exit Sub
@@ -372,6 +361,32 @@ Public Class frmRecieveGoods
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+    End Sub
+    Sub addOder()
+
+        For Each row As DataGridViewRow In gvStockBatch.Rows
+            If lblProdcode.Text = row.Cells(6).Value Then
+                row.Cells(3).Value = txtQtyRecieved.Text
+                row.Cells(5).Value = Val(txtQtyRecieved.Text) * Val(txtItemPrice.Text)
+                row.Cells(1).Value = txtActualStock.Text
+                row.Cells(4).Value = Val(txtActualStock.Text) + Val(txtActualStock.Text)
+            End If
+
+        Next
+        Try
+            Dim sum As Decimal = 0
+            For k = 0 To gvStockBatch.RowCount - 1
+                sum += gvStockBatch.Rows(k).Cells(5).Value
+            Next
+            lblTotal.Text = sum
+            Dim newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
+            lblNewBal.Text = newbal
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        cbSearchItem.Focus()
+
+
     End Sub
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
@@ -395,64 +410,88 @@ Public Class frmRecieveGoods
             End If
         End If
         Try
-                Dim i As Integer
-                For i = 0 To gvStockBatch.RowCount - 1
-                    If Poscon.State = ConnectionState.Closed Then
-                        Poscon.Open()
-                    End If
-                Dim query = "insert into recievestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyRecieved,dateRecieved,time,Recievedby,itemcat,SupplierName,SupplierID,PackVolume,narration) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + txtNarration.Text + "')"
-                cmd = New SqlCommand(query, Poscon)
-                    With cmd
-                        .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
-                        .Parameters.AddWithValue("@Price", (gvStockBatch.Rows(i).Cells(2).Value))
-                        .Parameters.AddWithValue("@amount", (gvStockBatch.Rows(i).Cells(5).Value))
-                        .Parameters.AddWithValue("@oldStock", (gvStockBatch.Rows(i).Cells(1).Value))
-                        .Parameters.AddWithValue("@newstock", (gvStockBatch.Rows(i).Cells(4).Value))
-                        .Parameters.AddWithValue("@qtyrecieved", (gvStockBatch.Rows(i).Cells(3).Value))
-                        .Parameters.AddWithValue("@itemcat", gvStockBatch.Rows(i).Cells(7).Value)
-                        .Parameters.AddWithValue("@packvolume", gvStockBatch.Rows(i).Cells(8).Value)
-                        .ExecuteNonQuery()
-
-                    End With
-                Next
+            Dim i As Integer
+            For i = 0 To gvStockBatch.RowCount - 1
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim sql = "insert into SupplierLedger (invoiceno,dateRecieved,timerecieved,Recievedby,SupplierName,SupplierNo,GoodsAmt) values('" + txtinvoiceno.Text + "','" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "','" + cbSuppName.Text + "','" + lblCustNo.Text + "','" + lblTotal.Text + "')"
-                cmd = New SqlCommand(sql, Poscon)
-                cmd.ExecuteNonQuery()
-                For Each row As DataGridViewRow In gvStockBatch.Rows
-                    Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyRecieved,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date,suppliername,qtyissued) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyrecieved,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date,'" + cbSuppName.Text + "',@qtyissued)"
-                    cmd = New SqlCommand(quer, Poscon)
-                    With cmd
-                        .Parameters.AddWithValue("@ItemCode", row.Cells(6).Value)
-                        .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
-                        .Parameters.AddWithValue("@tranxtype", "Recieved")
-                        .Parameters.AddWithValue("@tranxsource", "Recieve Goods")
-                        .Parameters.AddWithValue("@tranxgroup", row.Cells(4).Value)
-                        .Parameters.AddWithValue("@oldqty", row.Cells(1).Value)
-                        .Parameters.AddWithValue("@qtyrecieved", row.Cells(3).Value)
-                        .Parameters.AddWithValue("@qtyIssued", "0")
-                        .Parameters.AddWithValue("@Balance", row.Cells(4).Value)
-                        .Parameters.AddWithValue("@Rprice", row.Cells(2).Value)
-                        .Parameters.AddWithValue("@Cprice", row.Cells(2).Value)
-                        .Parameters.AddWithValue("@Ramt", row.Cells(5).Value)
-                        .Parameters.AddWithValue("@Camt", row.Cells(5).Value)
-                        .Parameters.AddWithValue("@Nar", txtNarration.Text)
-                        .Parameters.AddWithValue("@userid", tsuser.Text)
-                        .Parameters.AddWithValue("@Date", txtdate.Text)
-                        .Parameters.AddWithValue("@Time", tstime.Text)
-                        .ExecuteNonQuery()
-                    End With
-                    'MsgBox("Succesfully Wrintten into ledger")
-                Next
+                Dim query = "insert into recievestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyRecieved,dateRecieved,time,Recievedby,itemcat,SupplierName,SupplierID,PackVolume,narration) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + txtNarration.Text + "')"
+                cmd = New SqlCommand(query, Poscon)
+                With cmd
+                    .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
+                    .Parameters.AddWithValue("@Price", (gvStockBatch.Rows(i).Cells(2).Value))
+                    .Parameters.AddWithValue("@amount", (gvStockBatch.Rows(i).Cells(5).Value))
+                    .Parameters.AddWithValue("@oldStock", (gvStockBatch.Rows(i).Cells(1).Value))
+                    .Parameters.AddWithValue("@newstock", (gvStockBatch.Rows(i).Cells(4).Value))
+                    .Parameters.AddWithValue("@qtyrecieved", (gvStockBatch.Rows(i).Cells(3).Value))
+                    .Parameters.AddWithValue("@itemcat", gvStockBatch.Rows(i).Cells(7).Value)
+                    .Parameters.AddWithValue("@packvolume", gvStockBatch.Rows(i).Cells(8).Value)
+                    .ExecuteNonQuery()
 
-                Poscon.Close()
+                End With
+            Next
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            Dim sql = "insert into SupplierLedger (invoiceno,dateRecieved,timerecieved,Recievedby,SupplierName,SupplierNo,GoodsAmt) values('" + txtinvoiceno.Text + "','" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "','" + cbSuppName.Text + "','" + lblCustNo.Text + "','" + lblTotal.Text + "')"
+            cmd = New SqlCommand(sql, Poscon)
+            cmd.ExecuteNonQuery()
+            For Each row As DataGridViewRow In gvStockBatch.Rows
+                Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyRecieved,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date,suppliername,qtyissued) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyrecieved,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date,'" + cbSuppName.Text + "',@qtyissued)"
+                cmd = New SqlCommand(quer, Poscon)
+                With cmd
+                    .Parameters.AddWithValue("@ItemCode", row.Cells(6).Value)
+                    .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
+                    .Parameters.AddWithValue("@tranxtype", "Recieved")
+                    .Parameters.AddWithValue("@tranxsource", "Recieve Goods")
+                    .Parameters.AddWithValue("@tranxgroup", row.Cells(4).Value)
+                    .Parameters.AddWithValue("@oldqty", row.Cells(1).Value)
+                    .Parameters.AddWithValue("@qtyrecieved", row.Cells(3).Value)
+                    .Parameters.AddWithValue("@qtyIssued", "0")
+                    .Parameters.AddWithValue("@Balance", row.Cells(4).Value)
+                    .Parameters.AddWithValue("@Rprice", row.Cells(2).Value)
+                    .Parameters.AddWithValue("@Cprice", row.Cells(2).Value)
+                    .Parameters.AddWithValue("@Ramt", row.Cells(5).Value)
+                    .Parameters.AddWithValue("@Camt", row.Cells(5).Value)
+                    .Parameters.AddWithValue("@Nar", txtNarration.Text)
+                    .Parameters.AddWithValue("@userid", tsuser.Text)
+                    .Parameters.AddWithValue("@Date", txtdate.Text)
+                    .Parameters.AddWithValue("@Time", tstime.Text)
+                    .ExecuteNonQuery()
+                End With
+                'MsgBox("Succesfully Wrintten into ledger")
+            Next
+            create("update supplieroderconfig set supplierinvoice='" + TextBox2.Text + "' where invoiceno='" + txtinvoiceno.Text + "'")
+            create("update supplieroder set supplierinvoice='" + TextBox2.Text + "' where invoiceno='" + txtinvoiceno.Text + "'")
+            'Poscon.Close()
             'MsgBox("Record Saved")
 
         Finally
+            If lbloderid.Text <> "oder" Then
 
                 For k = 0 To gvStockBatch.RowCount - 1
+                    If Poscon.State = ConnectionState.Closed Then
+                        Poscon.Open()
+                    End If
+                    Dim sqll = "Select * from supplieroder where Prodcode='" + gvStockBatch.Rows(k).Cells(6).Value + "' and invoiceno='" + txtinvoiceno.Text + "'"
+                    cmd = New SqlCommand(sqll, Poscon)
+                    dr = cmd.ExecuteReader
+                    While dr.Read
+
+                        Dim query = "update supplieroder set qtyrecieved = '" & dr.Item("qtyrecieved") + gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= '" + gvStockBatch.Rows(k).Cells(6).Value + "' and invoiceno='" + txtinvoiceno.Text + "'"
+                        cmd = New SqlCommand(query, Poscon)
+                        cmd.ExecuteNonQuery()
+                    End While
+                Next
+                cmd = New SqlCommand("select oderbalance from supplieroderconfig where invoiceno='" + txtinvoiceno.Text + "'", Poscon)
+                dr = cmd.ExecuteReader
+                While dr.Read
+                    cmd = New SqlCommand("update supplieroderconfig set oderbalance='" & dr.Item("oderbalance") - Val(lblTotal.Text) & "'", Poscon)
+                    cmd.ExecuteNonQuery()
+                End While
+                Poscon.Close()
+            End If
+            For k = 0 To gvStockBatch.RowCount - 1
                     If Poscon.State = ConnectionState.Closed Then
                         Poscon.Open()
                     End If
@@ -476,10 +515,13 @@ Public Class frmRecieveGoods
                 MsgBox("Goods Recieved Successful")
                 Poscon.Close()
                 Display()
-                If ckprint.Checked = True Or tkPreview.Checked = True Then
-                    printreciept(txtinvoiceno.Text)
-                End If
-                gvStockBatch.Rows.Clear()
+            If ckprint.Checked = True Or tkPreview.Checked = True Then
+                printreciept(txtinvoiceno.Text)
+            End If
+
+
+
+            gvStockBatch.Rows.Clear()
                 clear()
 
             End Try
@@ -683,7 +725,7 @@ Public Class frmRecieveGoods
             txtCat.Text = row.Cells(7).Value.ToString()
             TextBox1.Text = row.Cells(9).Value.ToString()
             txtItemPrice.Text = row.Cells(2).Value.ToString()
-            'txtPrice.Text = row.Cells(1).Value.ToString()
+            lblProdcode.Text = row.Cells(6).Value.ToString()
             txtItemName.Text = row.Cells(0).Value.ToString()
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()

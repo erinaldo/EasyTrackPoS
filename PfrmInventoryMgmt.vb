@@ -125,4 +125,14 @@ Public Class PfrmInventoryMgmt
 
         End With
     End Sub
+
+    Private Sub BunifuButton8_Click(sender As Object, e As EventArgs) Handles BunifuButton8.Click
+        Dim f2 As New frmCreateOder
+        With f2
+            '.TopLevel = False
+            PCreateProd.Controls.Add(f2)
+            .BringToFront()
+            .Show()
+        End With
+    End Sub
 End Class
