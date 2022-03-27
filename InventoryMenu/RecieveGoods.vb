@@ -133,6 +133,13 @@ Public Class frmRecieveGoods
     End Sub
 
     Private Sub txtQtyRecieved_TextChanged(sender As Object, e As EventArgs) Handles txtQtyRecieved.TextChanged
+        If TextBox1.Text <> "" Then
+            If Val(txtQtyRecieved.Text) > Val(TextBox1.Text) Then
+                MsgBox("Quantity Recieved Cannot be greater than oder quantity")
+                txtQtyRecieved.Text = ""
+                Exit Sub
+            End If
+        End If
         Try
             Dim amt As Decimal
             amt = Val(txtQtyRecieved.Text) * Val(txtItemPrice.Text)
@@ -245,7 +252,7 @@ Public Class frmRecieveGoods
 
     Private Sub gvStockBf_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStockBf.CellClick
         Select Case ComboBox1.SelectedIndex
-            Case 0
+            Case 0, -1
                 Try
                     Dim row As DataGridViewRow = gvStockBf.Rows(e.RowIndex)
                     txtItemName.Text = row.Cells(0).Value.ToString()
@@ -278,7 +285,7 @@ Public Class frmRecieveGoods
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim queryy = ("Select Invoiceno,Itemname,price,itemcat,prodcode,packvolume,qtyodered from supplieroder where invoiceno='" + lbloderid.Text + "'")
+                Dim queryy = ("Select Invoiceno,Itemname,price,itemcat,prodcode,packvolume,qtyodered from supplieroder where invoiceno='" + lbloderid.Text + "' and qtyodered<>qtyrecieved")
                 cmd = New SqlCommand(queryy, Poscon)
                 da = New SqlDataAdapter(cmd)
                 tbl = New DataTable()
@@ -288,16 +295,10 @@ Public Class frmRecieveGoods
                     Exit Sub
                 End If
                 txtinvoiceno.Text = tbl.Rows(0)(0).ToString
-
                 For k = 0 To tbl.Rows.Count - 1
                     gvStockBatch.Rows.Add(tbl.Rows(k)(1).ToString, 0, tbl.Rows(k)(2).ToString, 0, 0, 0, tbl.Rows(k)(4).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString)
                 Next
                 Poscon.Close()
-
-
-
-
-
             Case Else
 
         End Select
@@ -415,7 +416,7 @@ Public Class frmRecieveGoods
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim query = "insert into recievestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyRecieved,dateRecieved,time,Recievedby,itemcat,SupplierName,SupplierID,PackVolume,narration) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + txtNarration.Text + "')"
+                Dim query = "insert into recievestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyRecieved,dateRecieved,time,Recievedby,itemcat,SupplierName,SupplierID,PackVolume,narration,waybillno) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + txtNarration.Text + "','" + TextBox2.Text + "')"
                 cmd = New SqlCommand(query, Poscon)
                 With cmd
                     .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
@@ -461,8 +462,11 @@ Public Class frmRecieveGoods
                 End With
                 'MsgBox("Succesfully Wrintten into ledger")
             Next
-            create("update supplieroderconfig set supplierinvoice='" + TextBox2.Text + "' where invoiceno='" + txtinvoiceno.Text + "'")
-            create("update supplieroder set supplierinvoice='" + TextBox2.Text + "' where invoiceno='" + txtinvoiceno.Text + "'")
+            If lbloderid.Text <> "oder" Then
+                create("update supplieroderconfig set supplierinvoice='" + TextBox2.Text + "' where invoiceno='" + txtinvoiceno.Text + "'")
+                create("update supplieroder set supplierinvoice='" + TextBox2.Text + "' where invoiceno='" + txtinvoiceno.Text + "'")
+            End If
+
             'Poscon.Close()
             'MsgBox("Record Saved")
 
@@ -713,7 +717,7 @@ Public Class frmRecieveGoods
             Case 0
                 reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast", gvStockBf)
             Case 1
-                reload("select * from Supplieroderconfig", gvStockBf)
+                reload("select * from Supplieroderconfig where oderbalance>0", gvStockBf)
             Case Else
 
         End Select

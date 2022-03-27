@@ -182,7 +182,7 @@ Public Class frmMain
     End Sub
 
 
-    Private Sub BunifuButton10_Click_1(sender As Object, e As EventArgs) Handles BunifuButton10.Click
+    Private Sub BunifuButton10_Click_1(sender As Object, e As EventArgs)
         Dim f1 As New SuppliersOders
         f1.Show()
         ' Me.Hide()
