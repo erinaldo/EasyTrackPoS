@@ -10,6 +10,7 @@ Public Class frmToCollected
         Timer1.Enabled = True
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
+        Display()
     End Sub
 
     Private Sub LoadReciepts(RecieptNo As String)
@@ -57,19 +58,22 @@ Public Class frmToCollected
 
     Private Sub Display()
 
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
+        'If Poscon.State = ConnectionState.Closed Then
+        '    Poscon.Open()
+        'End If
 
-        Dim query = "select SalesPerson,RecieptId from SalesTranx"
-        cmd = New SqlCommand(query, Poscon)
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim tbl As New DataTable()
-        adapter.Fill(tbl)
-        'gvReciepts.DataSource = tbl
-        Poscon.Close()
+        'Dim query = "select SalesPerson,RecieptId from SalesTranx"
+        'cmd = New SqlCommand(query, Poscon)
+        'Dim adapter As New SqlDataAdapter(cmd)
+        'Dim tbl As New DataTable()
+        'adapter.Fill(tbl)
+        ''gvReciepts.DataSource = tbl
+        'Poscon.Close()
 
+
+        reload("select distinct recieptno,buyername,buyerlocation,buyertel from salestranx", gvdel)
     End Sub
+
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
         If Poscon.State = ConnectionState.Closed Then
@@ -92,6 +96,7 @@ Public Class frmToCollected
         End If
         LoadReciepts(txtRecieptNo.Text)
     End Sub
+
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
         If lblRecieptNo.Text = "" Then
@@ -270,5 +275,31 @@ Public Class frmToCollected
             End With
         Next
     End Sub
+
+    Private Sub gvdel_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvdel.CellClick
+        Try
+            Dim row As DataGridViewRow = gvdel.Rows(e.RowIndex)
+
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            cmd = New SqlCommand("select * from TobeCollected where RecieptNo=@rno", Poscon)
+            cmd.Parameters.AddWithValue("@rno", SqlDbType.NVarChar).Value = row.Cells(0).Value.ToString
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
+            If tbl.Rows.Count() = 0 Then
+                LoadReciepts(row.Cells(0).Value.ToString)
+            Else
+                MsgBox("Sale Already Saved in To Be Collected")
+                Exit Sub
+            End If
+
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
 
 End Class

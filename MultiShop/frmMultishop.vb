@@ -202,22 +202,22 @@ Public Class frmMultishop
                 Poscon.Open()
             End If
             If cbCatSort.SelectedIndex = -1 And cbProdlineSort.SelectedIndex = -1 Then
-                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'", gvStock)
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopStockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and shopname='" + lblBranch.Text + "'", gvStock)
             End If
             If cbCatSort.SelectedIndex <> -1 And cbProdlineSort.SelectedIndex = -1 Then
 
-                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodcat like '%" + cbCatSort.Text + "%'", gvStock)
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopStockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodcat like '%" + cbCatSort.Text + "%' and shopname='" + lblBranch.Text + "'", gvStock)
 
             End If
             If cbCatSort.SelectedIndex = -1 And cbProdlineSort.SelectedIndex <> -1 Then
 
-                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and Prodline like '%" + cbProdlineSort.Text + "%'", gvStock)
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopStockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and Prodline like '%" + cbProdlineSort.Text + "%' and shopname='" + lblBranch.Text + "'", gvStock)
 
             End If
 
             If cbCatSort.SelectedIndex <> -1 And cbProdlineSort.SelectedIndex <> -1 Then
 
-                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodcat like '%" + cbCatSort.Text + "%' and Prodline like '%" + cbProdlineSort.Text + "%'", gvStock)
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopStockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodcat like '%" + cbCatSort.Text + "%' and Prodline like '%" + cbProdlineSort.Text + "%' and shopname='" + lblBranch.Text + "'", gvStock)
 
             End If
             Poscon.Close()
@@ -453,6 +453,10 @@ Public Class frmMultishop
     Private Sub cbCreditCustName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCreditCustName.SelectedIndexChanged
         Search(lblBranch.Text)
         If lblCustType.Text = "Branch Customer" Then
+            If lblBranch.Text = "" Then
+                reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopstockmast where shopname='" + cbCreditCustName.Text + "'", gvStock)
+                Exit Sub
+            End If
             reload("select ProdName,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode from multishopstockmast where shopname='" + lblBranch.Text + "'", gvStock)
         End If
     End Sub
@@ -1508,12 +1512,16 @@ Public Class frmMultishop
     End Sub
 
     Private Sub cbCreditCustName_Click(sender As Object, e As EventArgs) Handles cbCreditCustName.Click
+        If lblBranch.Text = "" Then
+            ComboFeed("select customername from Customer ", cbCreditCustName, 0)
+            Exit Sub
+        End If
 
         ComboFeed("select * from Customer where customername='" + lblBranch.Text + "'", cbCreditCustName, 1)
     End Sub
 
     Private Sub txtProdname_Enter(sender As Object, e As EventArgs) Handles txtProdname.Enter
-        ComboFeed("select * from Stockmast", txtProdname, 1)
+        ComboFeed("select * from multishopStockmast where shopname='" + lblBranch.Text + "'", txtProdname, 1)
     End Sub
 
     Public Sub StockCheck()

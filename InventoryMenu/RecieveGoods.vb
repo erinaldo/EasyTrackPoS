@@ -285,13 +285,13 @@ Public Class frmRecieveGoods
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim queryy = ("Select Invoiceno,Itemname,price,itemcat,prodcode,packvolume,qtyodered from supplieroder where invoiceno='" + lbloderid.Text + "' and qtyodered<>qtyrecieved")
+                Dim queryy = ("Select Invoiceno,Itemname,price,itemcat,prodcode,packvolume,qtyodered-qtyrecieved from supplieroder where invoiceno='" + lbloderid.Text + "' and qtyodered<>qtyrecieved")
                 cmd = New SqlCommand(queryy, Poscon)
                 da = New SqlDataAdapter(cmd)
                 tbl = New DataTable()
                 da.Fill(tbl)
                 If tbl.Rows.Count = 0 Then
-                    MsgBox("Package Empty")
+                    MsgBox("Oder Empty")
                     Exit Sub
                 End If
                 txtinvoiceno.Text = tbl.Rows(0)(0).ToString

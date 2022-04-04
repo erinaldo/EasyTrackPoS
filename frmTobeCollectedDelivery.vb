@@ -49,6 +49,9 @@ Public Class frmTobeCollectedDelivery
         Poscon.Close()
 
     End Sub
+    Sub display()
+        reload("select distinct recieptno,buyername,buyerloc,buyertel from tobecollected", gvdel)
+    End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
         LoadReciepts(txtRecieptNo.Text)
@@ -171,6 +174,7 @@ Public Class frmTobeCollectedDelivery
         Timer1.Enabled = True
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
+        display()
     End Sub
     Private Sub TobeColDelReciept()
 

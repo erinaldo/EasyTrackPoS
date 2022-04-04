@@ -27,6 +27,9 @@ Partial Class frmToCollected
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ActiveUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -77,11 +80,13 @@ Partial Class frmToCollected
         Me.Label15 = New System.Windows.Forms.Label()
         Me.ckprint = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.gvdel = New Bunifu.UI.WinForms.BunifuDataGridView()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.gvSalesReciepts, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.gvdel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStripStatusLabel1
@@ -333,7 +338,7 @@ Partial Class frmToCollected
         Me.gvSalesReciepts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.gvSalesReciepts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gvSalesReciepts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemCode, Me.ItemName, Me.QtySold, Me.RPrice, Me.Amount, Me.RecieptNo, Me.NewQtySold, Me.QtyCollected})
-        Me.gvSalesReciepts.Location = New System.Drawing.Point(26, 260)
+        Me.gvSalesReciepts.Location = New System.Drawing.Point(311, 260)
         Me.gvSalesReciepts.MultiSelect = False
         Me.gvSalesReciepts.Name = "gvSalesReciepts"
         Me.gvSalesReciepts.ReadOnly = True
@@ -349,7 +354,7 @@ Partial Class frmToCollected
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gvSalesReciepts.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.gvSalesReciepts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvSalesReciepts.Size = New System.Drawing.Size(911, 259)
+        Me.gvSalesReciepts.Size = New System.Drawing.Size(626, 259)
         Me.gvSalesReciepts.TabIndex = 34
         '
         'ItemCode
@@ -729,18 +734,85 @@ Partial Class frmToCollected
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.BunifuThinButton22)
-        Me.GroupBox2.Location = New System.Drawing.Point(23, 119)
+        Me.GroupBox2.Location = New System.Drawing.Point(308, 119)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(914, 135)
+        Me.GroupBox2.Size = New System.Drawing.Size(629, 135)
         Me.GroupBox2.TabIndex = 74
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "GroupBox2"
+        '
+        'gvdel
+        '
+        Me.gvdel.AllowCustomTheming = True
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        Me.gvdel.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        Me.gvdel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.gvdel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.gvdel.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.gvdel.BackgroundColor = System.Drawing.Color.White
+        Me.gvdel.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.gvdel.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.gvdel.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvdel.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.gvdel.ColumnHeadersHeight = 20
+        Me.gvdel.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.gvdel.CurrentTheme.AlternatingRowsStyle.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gvdel.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black
+        Me.gvdel.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.gvdel.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        Me.gvdel.CurrentTheme.BackColor = System.Drawing.Color.White
+        Me.gvdel.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.gvdel.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue
+        Me.gvdel.CurrentTheme.HeaderStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gvdel.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.gvdel.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.gvdel.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White
+        Me.gvdel.CurrentTheme.Name = Nothing
+        Me.gvdel.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.gvdel.CurrentTheme.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gvdel.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black
+        Me.gvdel.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.gvdel.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gvdel.DefaultCellStyle = DataGridViewCellStyle6
+        Me.gvdel.EnableHeadersVisualStyles = False
+        Me.gvdel.GridColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.gvdel.HeaderBackColor = System.Drawing.Color.DodgerBlue
+        Me.gvdel.HeaderBgColor = System.Drawing.Color.Empty
+        Me.gvdel.HeaderForeColor = System.Drawing.Color.White
+        Me.gvdel.Location = New System.Drawing.Point(12, 119)
+        Me.gvdel.MultiSelect = False
+        Me.gvdel.Name = "gvdel"
+        Me.gvdel.ReadOnly = True
+        Me.gvdel.RowHeadersVisible = False
+        Me.gvdel.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.gvdel.RowTemplate.Height = 40
+        Me.gvdel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.gvdel.Size = New System.Drawing.Size(281, 453)
+        Me.gvdel.TabIndex = 136
+        Me.gvdel.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
         '
         'frmToCollected
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(964, 648)
+        Me.Controls.Add(Me.gvdel)
         Me.Controls.Add(Me.lblUpdateTBC)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.StatusStrip1)
@@ -767,6 +839,7 @@ Partial Class frmToCollected
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.gvdel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -821,4 +894,5 @@ Partial Class frmToCollected
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label15 As Label
     Friend WithEvents ckprint As Bunifu.UI.WinForms.BunifuCheckBox
+    Friend WithEvents gvdel As Bunifu.UI.WinForms.BunifuDataGridView
 End Class
