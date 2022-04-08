@@ -87,6 +87,10 @@ Public Class Login
                             Dim f2 As New frmSalesMenu
                             f2.Show()
                             Me.Hide()
+                        Case "2"
+                            Dim f2 As New frmMultishop
+                            f2.Show()
+                            Me.Hide()
                         Case Else
                             MsgBox("Contact Admin")
                     End Select

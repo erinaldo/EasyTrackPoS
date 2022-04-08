@@ -51,15 +51,16 @@ Public Class frmUserProfilemgmt
             MsgBox("Fill all fields")
         Else
             Try
-                If Poscon.State = ConnectionState.Closed Then
-                    Poscon.Open()
-                End If
-                Dim query = "insert into UserProfiles(username,userid,password,usertype,usergroup,usergroupid,branch) values('" & txtName.Text & "','" + txtUserId.Text + "','" + txtUserpassword.Text + "','" & cbUsertype.Text & "','" & cbUsergroup.Text & "','" & cbUsergroup.SelectedIndex.ToString & "','" + ComboBox1.Text + "')"
-                Dim cmd As SqlCommand
-                cmd = New SqlCommand(query, Poscon)
-                cmd.ExecuteNonQuery()
-                MsgBox("User Saved Successfully")
-                Poscon.Close()
+                'If Poscon.State = ConnectionState.Closed Then
+                '    Poscon.Open()
+                'End If
+                'Dim query = "insert into UserProfiles(username,userid,password,usertype,usergroup,usergroupid,branch) values('" & txtName.Text & "','" + txtUserId.Text + "','" + txtUserpassword.Text + "','" & cbUsertype.Text & "','" & cbUsergroup.Text & "','" & cbUsergroup.SelectedIndex.ToString & "','" + ComboBox1.Text + "')"
+                'Dim cmd As SqlCommand
+                'cmd = New SqlCommand(query, Poscon)
+                'cmd.ExecuteNonQuery()
+                'MsgBox("User Saved Successfully")
+                'Poscon.Close()
+                create("insert into UserProfiles(username,userid,password,usertype,usergroup,usergroupid,branch) values('" & txtName.Text & "','" + txtUserId.Text + "','" + txtUserpassword.Text + "','" & cbUsertype.Text & "','" & cbUsergroup.Text & "','" & cbUsertype.SelectedIndex.ToString & "','" + ComboBox1.Text + "')")
                 Display()
             Catch ex As Exception
                 MsgBox(ex.ToString)

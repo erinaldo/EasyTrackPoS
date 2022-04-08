@@ -22,7 +22,7 @@ Partial Class frmUserProfilemgmt
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserProfilemgmt))
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -193,7 +193,7 @@ Partial Class frmUserProfilemgmt
         Me.cbUsertype.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cbUsertype.Font = New System.Drawing.Font("Segoe UI", 14.25!)
         Me.cbUsertype.FormattingEnabled = True
-        Me.cbUsertype.Items.AddRange(New Object() {"Admin", "PosCashier"})
+        Me.cbUsertype.Items.AddRange(New Object() {"Admin", "PosCashier", "BranchCashier"})
         Me.cbUsertype.Location = New System.Drawing.Point(610, 130)
         Me.cbUsertype.Name = "cbUsertype"
         Me.cbUsertype.Size = New System.Drawing.Size(183, 33)
@@ -214,14 +214,14 @@ Partial Class frmUserProfilemgmt
         Me.gvUserProfiles.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvUserProfiles.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.gvUserProfiles.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvUserProfiles.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvUserProfiles.DefaultCellStyle = DataGridViewCellStyle1
         Me.gvUserProfiles.GridColor = System.Drawing.Color.DarkRed
         Me.gvUserProfiles.Location = New System.Drawing.Point(21, 263)
         Me.gvUserProfiles.Name = "gvUserProfiles"
