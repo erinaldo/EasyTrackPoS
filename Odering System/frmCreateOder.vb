@@ -29,16 +29,7 @@ Public Class frmCreateOder
 
         Poscon.Close()
 
-        'If Poscon.State = ConnectionState.Closed Then
-        '    Poscon.Open()
-        'End If
-        'Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast"
-        'cmd = New SqlCommand(query, Poscon)
-        'da = New SqlDataAdapter(cmd)
-        'Dim tbl As New DataTable
-        'da.Fill(tbl)
-        'gvStockBf.DataSource = tbl
-        'Poscon.Close()
+        Newshowconfig()
         reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast", gvStockBf)
 
     End Sub
@@ -285,7 +276,7 @@ Public Class frmCreateOder
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-            Dim query = "insert into Supplieroder (invoiceno,ItemName,Price,Amount,QtyOdered,dateodered,Oderedby,itemcat,SupplierName,SupplierID,PackVolume,qtyrecieved,narration,Prodcode,total) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@qtyodered,'" + txtdate.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + "0" + "','" + txtNarration.Text + "','" + gvStockBatch.Rows(i).Cells(6).Value + "','" + lblTotal.Text + "')"
+            Dim query = "insert into Supplieroder (oderno,ItemName,Price,Amount,QtyOdered,dateodered,Oderedby,itemcat,SupplierName,SupplierID,PackVolume,qtyrecieved,narration,Prodcode,total) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@qtyodered,'" + txtdate.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + "0" + "','" + txtNarration.Text + "','" + gvStockBatch.Rows(i).Cells(6).Value + "','" + lblTotal.Text + "')"
             cmd = New SqlCommand(query, Poscon)
                 With cmd
                     .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
@@ -300,7 +291,7 @@ Public Class frmCreateOder
 
                 End With
             Next
-        create("insert into supplieroderconfig(invoiceno,oderTotal,oderbalance,oderdate,oderedby,Suppliername,supplierid,narration) values('" + txtinvoiceno.Text + "','" + lblTotal.Text + "','" + lblTotal.Text + "','" + txtdate.Text + "','" + tsuser.Text + "','" + cbSuppName.Text + "','" + lblCustNo.Text + "','" + txtNarration.Text + "')")
+        create("insert into supplieroderconfig(oderno,oderTotal,oderbalance,oderdate,oderedby,Suppliername,supplierid,narration) values('" + txtinvoiceno.Text + "','" + lblTotal.Text + "','" + lblTotal.Text + "','" + txtdate.Text + "','" + tsuser.Text + "','" + cbSuppName.Text + "','" + lblCustNo.Text + "','" + txtNarration.Text + "')")
 
         'If Poscon.State = ConnectionState.Closed Then
         '    Poscon.Open()
@@ -315,6 +306,7 @@ Public Class frmCreateOder
         '    printreciept(txtinvoiceno.Text)
         'End If
         'gvStockBatch.Rows.Clear()
+        gvStockBatch.Rows.Clear()
         clear()
 
         'Newshowconfig()
@@ -326,17 +318,19 @@ Public Class frmCreateOder
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
-        cmd = New SqlCommand("select max(Goodsid) from RecieveStock", Poscon)
+        cmd = New SqlCommand("select max(distinct oderno) from supplieroder", Poscon)
         result = cmd.ExecuteScalar.ToString
 
         If String.IsNullOrEmpty(result) Then
-            result = "SIR0001"
+            MsgBox(result)
+            result = "ORD0001"
             txtinvoiceno.Text = result
         Else
-            result = result.Substring(0)
+            MsgBox(result)
+            result = result.Substring(3)
             Int32.TryParse(result, digit)
             digit = digit + 1
-            result = "SIR" + digit.ToString("D4")
+            result = "ORD" + digit.ToString("D4")
             txtinvoiceno.Text = result
         End If
         'txtinvoiceno.Text = "SRV" + Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss")

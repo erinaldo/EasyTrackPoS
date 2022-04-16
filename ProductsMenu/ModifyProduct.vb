@@ -184,14 +184,24 @@ Public Class frmModifyProduct
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
 
         Try
-            If poscon.State = ConnectionState.Closed Then
-                poscon.Open()
+            'If poscon.State = ConnectionState.Closed Then
+            '    poscon.Open()
+            'End If
+            'Dim query = "update Stockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "' where Prodcode =" + txtStockCode.Text + ""
+            'Dim cmd As New SqlCommand(query, poscon)
+            'cmd.ExecuteNonQuery()
+            ''MsgBox("Product Updated Successfully")
+            'Poscon.Close()
+            create("update Stockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "' where Prodcode =" + txtStockCode.Text + "")
+            Poscon.Open()
+            cmd = New SqlCommand("select prodcode from multishopstockmast where prodcode='" & txtStockCode.Text & "'", Poscon)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable
+            da.Fill(tbl)
+            If tbl.Rows.Count <> 0 Then
+
+                create("update multishopStockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "' where Prodcode =" + txtStockCode.Text + "")
             End If
-            Dim query = "update Stockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "' where Prodcode =" + txtStockCode.Text + ""
-            Dim cmd As New SqlCommand(query, poscon)
-            cmd.ExecuteNonQuery()
-            'MsgBox("Product Updated Successfully")
-            poscon.Close()
             Display()
             clear()
 

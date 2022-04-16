@@ -151,15 +151,28 @@ Public Class frmChangePrice
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
+            'For Each row As DataGridViewRow In gvPriceBatch.Rows
+            '    Dim query = ("update Stockmast set RetailPrice=@Rprice, WholesalePrice= @Wprice,Packprice= @pckprice where Prodcode= '" + row.Cells(10).Value + "'")
+            '    cmd = New SqlCommand(query, Poscon)
+            '    With cmd
+            '        .Parameters.AddWithValue("@rprice", row.Cells(3).Value)
+            '        .Parameters.AddWithValue("@wprice", row.Cells(5).Value)
+            '        .Parameters.AddWithValue("@pckprice", row.Cells(11).Value)
+            '        .ExecuteNonQuery()
+            '    End With
+            'Next
             For Each row As DataGridViewRow In gvPriceBatch.Rows
-                Dim query = ("update Stockmast set RetailPrice=@Rprice, WholesalePrice= @Wprice,Packprice= @pckprice where Prodcode= '" + row.Cells(10).Value + "'")
-                cmd = New SqlCommand(query, Poscon)
-                With cmd
-                    .Parameters.AddWithValue("@rprice", row.Cells(3).Value)
-                    .Parameters.AddWithValue("@wprice", row.Cells(5).Value)
-                    .Parameters.AddWithValue("@pckprice", row.Cells(11).Value)
-                    .ExecuteNonQuery()
-                End With
+
+                create("update Stockmast set RetailPrice='" & row.Cells(3).Value & "', WholesalePrice= '" & row.Cells(3).Value & "',Packprice= '" & row.Cells(3).Value & "' where Prodcode= '" & row.Cells(10).Value & "'")
+                Poscon.Open()
+                cmd = New SqlCommand("select prodcode from multishopstockmast where prodcode='" & row.Cells(10).Value & "'", Poscon)
+                da = New SqlDataAdapter(cmd)
+                tbl = New DataTable
+                da.Fill(tbl)
+                If tbl.Rows.Count <> 0 Then
+                    create("update multishopStockmast set RetailPrice='" & row.Cells(3).Value & "', WholesalePrice= '" & row.Cells(3).Value & "',Packprice= '" & row.Cells(3).Value & "' where Prodcode= '" & row.Cells(10).Value & "'")
+                End If
+
             Next
 
             If Poscon.State = ConnectionState.Closed Then

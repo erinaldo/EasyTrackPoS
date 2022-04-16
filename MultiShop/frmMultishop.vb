@@ -296,20 +296,7 @@ Public Class frmMultishop
         ''txtProdName.Text = ""
     End Sub
     Private Sub ShowBand()
-        'Try
-        '    If Poscon.State = ConnectionState.Closed Then
-        '        Poscon.Open()
-        '    End If
-        '    Dim query = "select * from PriceBand"
-        '    cmd = New SqlCommand(query, Poscon)
-        '    Dim adapter As New SqlDataAdapter(cmd)
-        '    Dim tbl As New DataTable()
-        '    adapter.Fill(tbl)
-        '    gvPriceBand.DataSource = tbl
-        '    Poscon.Close()
-        'Catch ex As Exception
-        '    MsgBox(ex.Message, ex.ToString)
-        'End Try
+
         reload("select * from PriceBand", gvPriceBand)
     End Sub
     Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
@@ -356,11 +343,7 @@ Public Class frmMultishop
     Private Sub reciept()
         Try
             create("insert into Recieptconfig(Salesperson,recieptid,date) values('" + Activeuser.Text + "','" + lblRecieptNo.Text + "','" + lblDate.Text + "') ")
-            'Poscon.Open()
-            'Dim sql = "insert into Recieptconfig(Salesperson,recieptid,date) values('" + Activeuser.Text + "','" + lblRecieptNo.Text + "','" + lblDate.Text + "') "
-            'cmd = New SqlCommand(sql, Poscon)
-            'cmd.ExecuteNonQuery()
-            'Poscon.Close()
+
         Catch ex As Exception
             MsgBox(ex.Message, ex.ToString)
         End Try
@@ -786,10 +769,10 @@ Public Class frmMultishop
 
         'End If
 
-        If Val(txtCashPaid.Text) < Val(lblPayable.Text) Then
-            MsgBox("Cash paid not enough", vbCritical)
-            Exit Sub
-        End If
+        'If Val(txtCashPaid.Text) < Val(lblPayable.Text) Then
+        '    MsgBox("Cash paid not enough", vbCritical)
+        '    Exit Sub
+        'End If
         If ckrollPaper.Checked = False And ckA5Paper.Checked = False And ckA4.Checked = False Then
             MsgBox("Select Print format")
             Exit Sub
@@ -1513,7 +1496,7 @@ Public Class frmMultishop
 
     Private Sub cbCreditCustName_Click(sender As Object, e As EventArgs) Handles cbCreditCustName.Click
         If lblBranch.Text = "" Then
-            ComboFeed("select customername from Customer where Customertype='Branchcustomer' ", cbCreditCustName, 0)
+            ComboFeed("select customername from Customer where Customertype='" + "Branch Customer" + "' ", cbCreditCustName, 0)
             Exit Sub
         End If
 

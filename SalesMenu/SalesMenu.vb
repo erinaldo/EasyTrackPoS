@@ -25,24 +25,24 @@ Public Class frmSalesMenu
         If tbl.Rows.Count() = 0 Then
             MsgBox("NO Active Session. Please open a new session to continue", vbCritical)
         Else
-            'If Poscon.State = ConnectionState.Closed Then
-            '    Poscon.Open()
-            'End If
-            'cmd = New SqlCommand("select * from userlogs", Poscon)
-            'da = New SqlDataAdapter(cmd)
-            'tbl = New DataTable
-            'da.Fill(tbl)
-            'If tbl.Rows.Count = 0 Then
-            'Else
-            '    Dim index = tbl.Rows.Count() - 1
-            '    If tbl.Rows(index)(5).ToString = "" Then
-            Dim f2 As New frmSales
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            cmd = New SqlCommand("select * from userlogs", Poscon)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable
+            da.Fill(tbl)
+            If tbl.Rows.Count = 0 Then
+            Else
+                Dim index = tbl.Rows.Count() - 1
+                If tbl.Rows(index)(5).ToString = "" Then
+                    Dim f2 As New frmSales
                     f2.Show()
-            'Else
-            'Dim f3 As New frmMultishop
-            '        f3.Show()
-            '    End If
-            'End If
+                Else
+                    Dim f3 As New frmMultishop
+                    f3.Show()
+                End If
+            End If
             'cmd = New SqlCommand("Select * from userlogs where ", Poscon)
             'dr = cmd.ExecuteReader()
             'While dr.Read

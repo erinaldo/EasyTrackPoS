@@ -61,9 +61,9 @@ Partial Class frmAdjustStockReportMenu
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label3.Location = New System.Drawing.Point(168, 187)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(154, 32)
+        Me.Label3.Size = New System.Drawing.Size(145, 32)
         Me.Label3.TabIndex = 130
-        Me.Label3.Text = "By Category"
+        Me.Label3.Text = "Stock Value"
         '
         'Label2
         '
@@ -71,9 +71,9 @@ Partial Class frmAdjustStockReportMenu
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label2.Location = New System.Drawing.Point(153, 125)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(188, 32)
+        Me.Label2.Size = New System.Drawing.Size(182, 32)
         Me.Label2.TabIndex = 129
-        Me.Label2.Text = "By ProductLine"
+        Me.Label2.Text = "Stock balances"
         '
         'Label1
         '

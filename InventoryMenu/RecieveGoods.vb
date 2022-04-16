@@ -285,7 +285,7 @@ Public Class frmRecieveGoods
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim queryy = ("Select Invoiceno,Itemname,price,itemcat,prodcode,packvolume,qtyodered-qtyrecieved from supplieroder where invoiceno='" + lbloderid.Text + "' and qtyodered<>qtyrecieved")
+                Dim queryy = ("Select oderno,Itemname,price,itemcat,prodcode,packvolume,qtyodered-qtyrecieved from supplieroder where oderno='" + lbloderid.Text + "' and qtyodered<>qtyrecieved")
                 cmd = New SqlCommand(queryy, Poscon)
                 da = New SqlDataAdapter(cmd)
                 tbl = New DataTable()
@@ -463,8 +463,8 @@ Public Class frmRecieveGoods
                 'MsgBox("Succesfully Wrintten into ledger")
             Next
             If lbloderid.Text <> "oder" Then
-                create("update supplieroderconfig set supplierinvoice='" + TextBox2.Text + "' where invoiceno='" + txtinvoiceno.Text + "'")
-                create("update supplieroder set supplierinvoice='" + TextBox2.Text + "' where invoiceno='" + txtinvoiceno.Text + "'")
+                create("update supplieroderconfig set supplierinvoice='" + TextBox2.Text + "' where oderno='" + txtinvoiceno.Text + "'")
+                create("update supplieroder set supplierinvoice='" + TextBox2.Text + "' where oderno='" + txtinvoiceno.Text + "'")
             End If
 
             'Poscon.Close()
@@ -477,17 +477,17 @@ Public Class frmRecieveGoods
                     If Poscon.State = ConnectionState.Closed Then
                         Poscon.Open()
                     End If
-                    Dim sqll = "Select * from supplieroder where Prodcode='" + gvStockBatch.Rows(k).Cells(6).Value + "' and invoiceno='" + txtinvoiceno.Text + "'"
+                    Dim sqll = "Select * from supplieroder where Prodcode='" + gvStockBatch.Rows(k).Cells(6).Value + "' and oderno='" + txtinvoiceno.Text + "'"
                     cmd = New SqlCommand(sqll, Poscon)
                     dr = cmd.ExecuteReader
                     While dr.Read
 
-                        Dim query = "update supplieroder set qtyrecieved = '" & dr.Item("qtyrecieved") + gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= '" + gvStockBatch.Rows(k).Cells(6).Value + "' and invoiceno='" + txtinvoiceno.Text + "'"
+                        Dim query = "update supplieroder set qtyrecieved = '" & dr.Item("qtyrecieved") + gvStockBatch.Rows(k).Cells(3).Value & "' where Prodcode= '" + gvStockBatch.Rows(k).Cells(6).Value + "' and oderno='" + txtinvoiceno.Text + "'"
                         cmd = New SqlCommand(query, Poscon)
                         cmd.ExecuteNonQuery()
                     End While
                 Next
-                cmd = New SqlCommand("select oderbalance from supplieroderconfig where invoiceno='" + txtinvoiceno.Text + "'", Poscon)
+                cmd = New SqlCommand("select oderbalance from supplieroderconfig where oderno='" + txtinvoiceno.Text + "'", Poscon)
                 dr = cmd.ExecuteReader
                 While dr.Read
                     cmd = New SqlCommand("update supplieroderconfig set oderbalance='" & dr.Item("oderbalance") - Val(lblTotal.Text) & "'", Poscon)

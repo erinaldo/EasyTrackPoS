@@ -691,14 +691,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EasyTrackPoS.exe" size="7331752">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EasyTrackPoS.exe" size="7449000">
       <assemblyIdentity name="EasyTrackPoS" version="1.0.0.1" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>u35we9CD+nM4AwplL1Qy4uLk9yb6EeKeMB23NIKGkV4=</dsig:DigestValue>
+        <dsig:DigestValue>ZW3GtrDdlnF4DI7T1uceghMA7hxqSoNHT7OM4iShAAY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1020,7 +1020,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>VIzoEtdTWYGC30nl2OswOV8qbecmmQVv9gBaIbNkIZo=</dsig:DigestValue>
+      <dsig:DigestValue>lVJkbGhbq24Sp5qQuz9FcZp3GYpim2t3r0EXi6lQ4xo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="PoS_log.ldf" size="786432" writeableType="applicationData">
@@ -1029,7 +1029,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>D5NWYz/2WIflTGhsbgx9RcKywA+j0isoFcSOye7ve7A=</dsig:DigestValue>
+      <dsig:DigestValue>Mr3LRwOyedrFWIDXYwzm14vlORa2OKu8yPr8cR+xUt4=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
