@@ -1332,6 +1332,7 @@ Partial Class frmRetailIssueing
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(523, 160)
         Me.DataGridView1.TabIndex = 208
+        Me.DataGridView1.Visible = False
         '
         'frmRetailIssueing
         '

@@ -93,7 +93,7 @@ Partial Class frmRecieveGoods
         Me.Label17 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtWayBill = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.txtdate = New Bunifu.UI.WinForms.BunifuDatePicker()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -965,7 +965,7 @@ Partial Class frmRecieveGoods
         '
         Me.GroupBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox3.BackColor = System.Drawing.Color.LightBlue
-        Me.GroupBox3.Controls.Add(Me.TextBox2)
+        Me.GroupBox3.Controls.Add(Me.txtWayBill)
         Me.GroupBox3.Controls.Add(Me.Label23)
         Me.GroupBox3.Controls.Add(Me.lblOldBal)
         Me.GroupBox3.Controls.Add(Me.txtdate)
@@ -993,14 +993,14 @@ Partial Class frmRecieveGoods
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "GroupBox3"
         '
-        'TextBox2
+        'txtWayBill
         '
-        Me.TextBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox2.Font = New System.Drawing.Font("Segoe UI", 11.25!)
-        Me.TextBox2.Location = New System.Drawing.Point(89, 93)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(131, 27)
-        Me.TextBox2.TabIndex = 155
+        Me.txtWayBill.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtWayBill.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.txtWayBill.Location = New System.Drawing.Point(89, 93)
+        Me.txtWayBill.Name = "txtWayBill"
+        Me.txtWayBill.Size = New System.Drawing.Size(131, 27)
+        Me.txtWayBill.TabIndex = 155
         '
         'Label23
         '
@@ -1174,6 +1174,8 @@ Partial Class frmRecieveGoods
         Me.GroupBox4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox4.BackColor = System.Drawing.Color.Plum
+        Me.GroupBox4.Controls.Add(Me.DataGridView2)
+        Me.GroupBox4.Controls.Add(Me.DataGridView1)
         Me.GroupBox4.Controls.Add(Me.BunifuThinButton26)
         Me.GroupBox4.Controls.Add(Me.txtReprint)
         Me.GroupBox4.Location = New System.Drawing.Point(8, 636)
@@ -1284,18 +1286,18 @@ Partial Class frmRecieveGoods
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(28, 374)
+        Me.DataGridView1.Location = New System.Drawing.Point(350, 6)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(213, 203)
+        Me.DataGridView1.Size = New System.Drawing.Size(111, 37)
         Me.DataGridView1.TabIndex = 214
         Me.DataGridView1.Visible = False
         '
         'DataGridView2
         '
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(252, 351)
+        Me.DataGridView2.Location = New System.Drawing.Point(388, 19)
         Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(326, 191)
+        Me.DataGridView2.Size = New System.Drawing.Size(106, 31)
         Me.DataGridView2.TabIndex = 215
         Me.DataGridView2.Visible = False
         '
@@ -1305,8 +1307,6 @@ Partial Class frmRecieveGoods
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1088, 689)
-        Me.Controls.Add(Me.DataGridView2)
-        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.Label18)
@@ -1423,7 +1423,7 @@ Partial Class frmRecieveGoods
     Friend WithEvents OderQty As DataGridViewTextBoxColumn
     Friend WithEvents Label17 As Label
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtWayBill As TextBox
     Friend WithEvents Label23 As Label
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents DataGridView2 As DataGridView

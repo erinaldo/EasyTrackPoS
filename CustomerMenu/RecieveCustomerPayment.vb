@@ -48,13 +48,13 @@ Public Class RecieveCustomerPayment
             End If
             Dim query = "select * from customer where concat(customername,emailaddress) like '%" + valuetosearch + "%'"
             cmd = New SqlCommand(query, Poscon)
-            Dim adapter As New SqlDataAdapter(cmd)
-            Dim table As New DataTable()
-            adapter.Fill(table)
-            If table.Rows.Count() = 0 Then
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
+            If tbl.Rows.Count() = 0 Then
             Else
-                lblCustBal.Text = table.Rows(0)(10).ToString
-                lblCustID.Text = table.Rows(0)(9).ToString()
+                lblCustBal.Text = tbl.Rows(0)(10).ToString
+                lblCustID.Text = tbl.Rows(0)(9).ToString()
             End If
 
             Poscon.Close()
@@ -177,9 +177,9 @@ Public Class RecieveCustomerPayment
         clear()
     End Sub
 
-    Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs)
-        Application.Exit()
-    End Sub
+    'Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs)
+    '    Application.Exit()
+    'End Sub
     Public Sub User()
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()

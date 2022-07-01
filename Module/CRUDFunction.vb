@@ -257,7 +257,7 @@ Module CRUDFunction
         End Try
     End Sub
     'INSERT SMS 
-    Public Sub CreateSMS(ByVal sql As String)
+    Public Sub insertd(ByVal sql As String)
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
@@ -274,7 +274,7 @@ Module CRUDFunction
         End Try
     End Sub
 
-    Public Sub updatesLogged(ByVal sql As String)
+    Public Sub Sql(ByVal sql As String)
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
@@ -284,7 +284,7 @@ Module CRUDFunction
                 .CommandText = sql
                 result = cmd.ExecuteNonQuery
                 If result = 0 Then
-                    ' MessageBox.Show("Data is failed to updated", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Data is failed to updated", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
                     ' MessageBox.Show("Data has been updated in the database.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If

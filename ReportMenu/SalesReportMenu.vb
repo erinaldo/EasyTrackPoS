@@ -18,25 +18,25 @@ Public Class SalesReportMenu
         DateTime.TryParseExact(dpDatefrom.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outfrom)
         DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
         Try
-            Dim query = "select * from salestranx where datesold between @datefrom and @dateto"
+            Dim query = "select * from cancellationlog where datecancelled between @datefrom and @dateto"
             cmd = New SqlCommand(query, Poscon)
             cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
             cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
-            dt.Tables("salestranx").Rows.Clear()
-            da.SelectCommand = cmd
-            da.Fill(dt, "salestranx")
-
-            Dim sql = "select * from ClientReg"
-            dt.Tables("ClientReg").Rows.Clear()
-            cmd = New SqlCommand(sql, Poscon)
-            da.SelectCommand = cmd
-            da.Fill(dt, "ClientReg")
-
-
             dt.Tables("cancellationlog").Rows.Clear()
-            cmd = New SqlCommand("select * from cancellationlog", Poscon)
             da.SelectCommand = cmd
             da.Fill(dt, "cancellationlog")
+
+            'Dim sql = "select * from ClientReg"
+            'dt.Tables("ClientReg").Rows.Clear()
+            'cmd = New SqlCommand(sql, Poscon)
+            'da.SelectCommand = cmd
+            'da.Fill(dt, "ClientReg")
+
+
+            'dt.Tables("cancellationlog").Rows.Clear()
+            'cmd = New SqlCommand("select * from cancellationlog", Poscon)
+            'da.SelectCommand = cmd
+            'da.Fill(dt, "cancellationlog")
 
             'Dim sqll = "select expenses,cashcounted from Sessionledger where dateclosed between @datefrom and @dateto"
             'cmd = New SqlCommand(query, poscon)
@@ -46,7 +46,7 @@ Public Class SalesReportMenu
             'da.SelectCommand = cmd
             'da.Fill(dt, "Sessionledger")
 
-            Dim report As New rptSalesPerDate
+            Dim report As New rptCancellationpdate
             report.SetDataSource(dt)
             frmSupplierReport.Show()
             frmSupplierReport.CrystalReportViewer1.ReportSource = report

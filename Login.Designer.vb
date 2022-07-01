@@ -42,6 +42,7 @@ Partial Class Login
         Me.Label4 = New System.Windows.Forms.Label()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.lblBranch = New System.Windows.Forms.Label()
+        Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.StatusStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -200,7 +201,7 @@ Partial Class Login
         Me.BunifuThinButton21.BackgroundImage = CType(resources.GetObject("BunifuThinButton21.BackgroundImage"), System.Drawing.Image)
         Me.BunifuThinButton21.ButtonText = "LOGIN"
         Me.BunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BunifuThinButton21.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BunifuThinButton21.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BunifuThinButton21.ForeColor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton21.IdleBorderThickness = 1
         Me.BunifuThinButton21.IdleCornerRadius = 20
@@ -225,12 +226,40 @@ Partial Class Login
         Me.lblBranch.Text = "Branch"
         Me.lblBranch.Visible = False
         '
+        'BunifuThinButton22
+        '
+        Me.BunifuThinButton22.ActiveBorderThickness = 1
+        Me.BunifuThinButton22.ActiveCornerRadius = 20
+        Me.BunifuThinButton22.ActiveFillColor = System.Drawing.Color.Teal
+        Me.BunifuThinButton22.ActiveForecolor = System.Drawing.Color.White
+        Me.BunifuThinButton22.ActiveLineColor = System.Drawing.Color.Teal
+        Me.BunifuThinButton22.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BunifuThinButton22.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.BunifuThinButton22.BackgroundImage = CType(resources.GetObject("BunifuThinButton22.BackgroundImage"), System.Drawing.Image)
+        Me.BunifuThinButton22.ButtonText = "LOGIN"
+        Me.BunifuThinButton22.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BunifuThinButton22.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BunifuThinButton22.ForeColor = System.Drawing.Color.SeaGreen
+        Me.BunifuThinButton22.IdleBorderThickness = 1
+        Me.BunifuThinButton22.IdleCornerRadius = 20
+        Me.BunifuThinButton22.IdleFillColor = System.Drawing.Color.White
+        Me.BunifuThinButton22.IdleForecolor = System.Drawing.Color.Teal
+        Me.BunifuThinButton22.IdleLineColor = System.Drawing.Color.Teal
+        Me.BunifuThinButton22.Location = New System.Drawing.Point(53, 168)
+        Me.BunifuThinButton22.Margin = New System.Windows.Forms.Padding(5)
+        Me.BunifuThinButton22.Name = "BunifuThinButton22"
+        Me.BunifuThinButton22.Size = New System.Drawing.Size(194, 50)
+        Me.BunifuThinButton22.TabIndex = 144
+        Me.BunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(735, 461)
+        Me.Controls.Add(Me.BunifuThinButton22)
         Me.Controls.Add(Me.lblBranch)
         Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.Panel1)
@@ -273,4 +302,5 @@ Partial Class Login
     Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents lblBranch As Label
+    Friend WithEvents BunifuThinButton22 As Bunifu.Framework.UI.BunifuThinButton2
 End Class

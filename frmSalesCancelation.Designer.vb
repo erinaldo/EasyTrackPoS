@@ -674,7 +674,7 @@ Partial Class frmSalesCancelation
         Me.dpDate.Name = "dpDate"
         Me.dpDate.Size = New System.Drawing.Size(104, 32)
         Me.dpDate.TabIndex = 33
-        Me.dpDate.Value = New Date(2021, 11, 18, 0, 0, 0, 0)
+        Me.dpDate.Value = New Date(2022, 4, 15, 0, 0, 0, 0)
         '
         'GroupBox1
         '
@@ -1083,7 +1083,7 @@ Partial Class frmSalesCancelation
         Me.dpdateto.Name = "dpdateto"
         Me.dpdateto.Size = New System.Drawing.Size(122, 32)
         Me.dpdateto.TabIndex = 36
-        Me.dpdateto.Value = New Date(2021, 11, 18, 0, 0, 0, 0)
+        Me.dpdateto.Value = New Date(2022, 4, 15, 0, 0, 0, 0)
         '
         'Label9
         '

@@ -56,18 +56,6 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=K:\Daakye\FoodApplication\PoS"& _ 
-            ".mdf;Integrated Security=True; MultipleActiveResultSets=True; Connect Timeout=30"& _ 
-            "")>  _
-        Public ReadOnly Property Poscon() As String
-            Get
-                Return CType(Me("Poscon"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("DanielKwadwoKissi131100")>  _
         Public ReadOnly Property ProductKey() As String
             Get
@@ -79,10 +67,22 @@ Namespace My
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PoS.mdf;Integ"& _ 
-            "rated Security=True; MultipleActiveResultSets=True; Connect Timeout=30 ")>  _
+            "rated Security=True;MultipleActiveResultSets=True;Connect Timeout=30")>  _
         Public ReadOnly Property PoSConnectionString() As String
             Get
                 Return CType(Me("PoSConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Daakye\FoodApplication\PoS"& _ 
+            ".mdf;Integrated Security=True; MultipleActiveResultSets=True; Connect Timeout=30"& _ 
+            "")>  _
+        Public ReadOnly Property Poscon() As String
+            Get
+                Return CType(Me("Poscon"),String)
             End Get
         End Property
     End Class

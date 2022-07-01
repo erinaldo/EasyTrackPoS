@@ -99,7 +99,7 @@ Public Class Login
                     If Poscon.State = ConnectionState.Closed Then
                         Poscon.Open()
                     End If
-                    Dim query = "insert into Userlogs(username,UserId,LoginTime,LoginDate,Branch) values('" + lblusername.Text + "','" + txtUserID.Text + "','" + lbltime.Text + "','" + lbldate.Text + "','" + lblbranch.Text + "')"
+                    Dim query = "insert into Userlogs(username,UserId,LoginTime,LoginDate,Branch) values('" + lblusername.Text + "','" + txtUserID.Text + "','" + lbltime.Text + "','" + lbldate.Text + "','" + lblBranch.Text + "')"
                     cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()
                     Poscon.Close()
@@ -128,5 +128,9 @@ Public Class Login
         If e.KeyCode = Keys.Enter Then
             BunifuThinButton21_Click(Nothing, Nothing)
         End If
+    End Sub
+
+    Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
+
     End Sub
 End Class

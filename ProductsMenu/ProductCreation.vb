@@ -70,7 +70,8 @@ Public Class frmProdCreate
         If cbItemCodeType.SelectedIndex = 0 Then
             txtStockCode.Text = ""
         Else
-            txtStockCode.Text = lblProdline.Text + lblcat.Text + lblProdCount.Text
+            Newshowconfig()
+            'txtStockCode.Text = lblProdline.Text + lblcat.Text + lblProdCount.Text
         End If
     End Sub
     Public Sub Search(valuetosearch As String)
@@ -126,13 +127,13 @@ Public Class frmProdCreate
     End Sub
     Private Sub Display()
 
-        reload("select * from StockMast", gvStockMastBf)
-        ComboFeed("select distinct prodline from stockmast where prodline IS NOT NULL", cbProdLine, 0)
-        ComboFeed("select distinct prodsize from stockmast where prodsize IS NOT NULL", cbSize, 0)
-        ComboFeed("select distinct prodcolour from stockmast where prodcolour IS NOT NULL", cbColour, 0)
-        ComboFeed("select distinct prodcat from stockmast where prodcat IS NOT NULL", cbCat, 0)
-        ComboFeed("select distinct brandname from stockmast where brandname IS NOT NULL", cbbrandName, 0)
-
+        reload("select * from StockMast ORDER BY Prodname asc", gvStockMastBf)
+        ComboFeed("select distinct prodline from stockmast where prodline IS NOT NULL ORDER BY Prodline asc", cbProdLine, 0)
+        ComboFeed("select distinct prodsize from stockmast where prodsize IS NOT NULL ORDER BY Prodsize asc", cbSize, 0)
+        ComboFeed("select distinct prodcolour from stockmast where prodcolour IS NOT NULL ORDER BY Prodcolour asc", cbColour, 0)
+        ComboFeed("select distinct Prodcat from Stockmast where Prodcat IS NOT NULL ORDER BY Prodcat asc", cbCat, 0)
+        ComboFeed("select distinct brandname from stockmast where brandname IS NOT NULL ORDER BY brandname asc", cbbrandName, 0)
+        Newshowconfig()
         lblProdCount.Text = gvStockMastBf.Rows.Count()
 
     End Sub
@@ -192,7 +193,8 @@ Public Class frmProdCreate
         If cbItemCodeType.SelectedIndex = 0 Then
             txtStockCode.Text = ""
         Else
-            txtStockCode.Text = lblProdline.Text + lblcat.Text + lblProdCount.Text
+            Newshowconfig()
+            'txtStockCode.Text = lblProdline.Text + lblcat.Text + lblProdCount.Text
         End If
     End Sub
 
@@ -204,7 +206,8 @@ Public Class frmProdCreate
         If cbItemCodeType.SelectedIndex = 0 Then
             txtStockCode.Text = ""
         Else
-            txtStockCode.Text = lblProdline.Text + lblcat.Text + lblProdCount.Text
+            Newshowconfig()
+            'txtStockCode.Text = lblProdline.Text + lblcat.Text + lblProdCount.Text
         End If
     End Sub
 
@@ -258,11 +261,7 @@ Public Class frmProdCreate
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
 
-        If txtStockCode.Text = "" Or cbProdLine.SelectedIndex = -1 Or txtProdName.Text = "" Or cbCat.SelectedIndex = -1 Then
-            MsgBox("Fill all important fields")
-            Exit Sub
-        Else
-            If Poscon.State = ConnectionState.Closed Then
+        If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
 
@@ -306,7 +305,7 @@ Public Class frmProdCreate
 
             End Try
 
-        End If
+
         Display()
         txtRPrice.Text = ""
         txtbaseqty.Text = 1
@@ -414,7 +413,8 @@ Public Class frmProdCreate
         If cbItemCodeType.SelectedIndex = 0 Then
             txtStockCode.Text = ""
         Else
-            txtStockCode.Text = lblProdline.Text + lblcat.Text + lblProdCount.Text
+            Newshowconfig()
+            'txtStockCode.Text = lblProdline.Text + lblcat.Text + lblProdCount.Text
         End If
     End Sub
 
@@ -458,5 +458,27 @@ Public Class frmProdCreate
 
     Private Sub txtpacksize_TextChanged(sender As Object, e As EventArgs) Handles txtpacksize.TextChanged
         ItemName()
+    End Sub
+    Public Sub Newshowconfig()
+        Dim digit As Integer
+        Dim result As String
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+        cmd = New SqlCommand("select max(Itemno) from stockmast", Poscon)
+        result = cmd.ExecuteScalar.ToString
+
+        If String.IsNullOrEmpty(result) Then
+            result = "0001"
+            txtStockCode.Text = result
+        Else
+            result = result.Substring(0)
+            Int32.TryParse(result, digit)
+            digit = digit + 1
+            result = digit.ToString("D5")
+            txtStockCode.Text = result
+        End If
+        'txtinvoiceno.Text = "SRV" + Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss")
+
     End Sub
 End Class

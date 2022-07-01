@@ -23,9 +23,9 @@ Partial Class frmProdCreate
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProdCreate))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
@@ -315,7 +315,7 @@ Partial Class frmProdCreate
         Me.txtQty.Location = New System.Drawing.Point(137, 573)
         Me.txtQty.Name = "txtQty"
         Me.txtQty.Size = New System.Drawing.Size(294, 29)
-        Me.txtQty.TabIndex = 13
+        Me.txtQty.TabIndex = 14
         '
         'Label16
         '
@@ -341,7 +341,7 @@ Partial Class frmProdCreate
         Me.cbCat.Location = New System.Drawing.Point(152, 180)
         Me.cbCat.Name = "cbCat"
         Me.cbCat.Size = New System.Drawing.Size(282, 28)
-        Me.cbCat.TabIndex = 4
+        Me.cbCat.TabIndex = 3
         '
         'cbSize
         '
@@ -355,7 +355,7 @@ Partial Class frmProdCreate
         Me.cbSize.Location = New System.Drawing.Point(152, 218)
         Me.cbSize.Name = "cbSize"
         Me.cbSize.Size = New System.Drawing.Size(282, 28)
-        Me.cbSize.TabIndex = 5
+        Me.cbSize.TabIndex = 4
         '
         'cbColour
         '
@@ -369,7 +369,7 @@ Partial Class frmProdCreate
         Me.cbColour.Location = New System.Drawing.Point(152, 253)
         Me.cbColour.Name = "cbColour"
         Me.cbColour.Size = New System.Drawing.Size(282, 28)
-        Me.cbColour.TabIndex = 6
+        Me.cbColour.TabIndex = 5
         '
         'cbUnique
         '
@@ -383,7 +383,7 @@ Partial Class frmProdCreate
         Me.cbUnique.Location = New System.Drawing.Point(152, 292)
         Me.cbUnique.Name = "cbUnique"
         Me.cbUnique.Size = New System.Drawing.Size(282, 28)
-        Me.cbUnique.TabIndex = 7
+        Me.cbUnique.TabIndex = 6
         '
         'txtStockCode
         '
@@ -422,7 +422,6 @@ Partial Class frmProdCreate
         '
         'lblcat
         '
-        Me.lblcat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblcat.AutoSize = True
         Me.lblcat.BackColor = System.Drawing.SystemColors.Control
         Me.lblcat.Font = New System.Drawing.Font("Tahoma", 12.0!)
@@ -436,7 +435,6 @@ Partial Class frmProdCreate
         '
         'lblProdline
         '
-        Me.lblProdline.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblProdline.AutoSize = True
         Me.lblProdline.BackColor = System.Drawing.SystemColors.Control
         Me.lblProdline.Font = New System.Drawing.Font("Tahoma", 12.0!)
@@ -480,9 +478,9 @@ Partial Class frmProdCreate
         Me.gvStockMastBf.AllowUserToAddRows = False
         Me.gvStockMastBf.AllowUserToDeleteRows = False
         Me.gvStockMastBf.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        Me.gvStockMastBf.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        Me.gvStockMastBf.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.gvStockMastBf.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -492,14 +490,14 @@ Partial Class frmProdCreate
         Me.gvStockMastBf.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvStockMastBf.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.gvStockMastBf.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.DodgerBlue
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvStockMastBf.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvStockMastBf.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.gvStockMastBf.ColumnHeadersHeight = 25
         Me.gvStockMastBf.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStockMastBf.CurrentTheme.AlternatingRowsStyle.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold)
@@ -519,14 +517,14 @@ Partial Class frmProdCreate
         Me.gvStockMastBf.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black
         Me.gvStockMastBf.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStockMastBf.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gvStockMastBf.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gvStockMastBf.DefaultCellStyle = DataGridViewCellStyle3
         Me.gvStockMastBf.EnableHeadersVisualStyles = False
         Me.gvStockMastBf.GridColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStockMastBf.HeaderBackColor = System.Drawing.Color.DodgerBlue
@@ -595,7 +593,7 @@ Partial Class frmProdCreate
         Me.txtItemName.Location = New System.Drawing.Point(153, 143)
         Me.txtItemName.Name = "txtItemName"
         Me.txtItemName.Size = New System.Drawing.Size(282, 28)
-        Me.txtItemName.TabIndex = 3
+        Me.txtItemName.TabIndex = 2
         '
         'cbbrandName
         '
@@ -610,7 +608,7 @@ Partial Class frmProdCreate
         Me.cbbrandName.Location = New System.Drawing.Point(153, 109)
         Me.cbbrandName.Name = "cbbrandName"
         Me.cbbrandName.Size = New System.Drawing.Size(282, 28)
-        Me.cbbrandName.TabIndex = 2
+        Me.cbbrandName.TabIndex = 1
         '
         'Label2
         '
@@ -646,7 +644,7 @@ Partial Class frmProdCreate
         Me.txtLeastQty.Location = New System.Drawing.Point(152, 326)
         Me.txtLeastQty.Name = "txtLeastQty"
         Me.txtLeastQty.Size = New System.Drawing.Size(282, 31)
-        Me.txtLeastQty.TabIndex = 8
+        Me.txtLeastQty.TabIndex = 7
         '
         'Label3
         '
@@ -734,7 +732,7 @@ Partial Class frmProdCreate
         Me.txtCPrice.Location = New System.Drawing.Point(332, 539)
         Me.txtCPrice.Name = "txtCPrice"
         Me.txtCPrice.Size = New System.Drawing.Size(106, 29)
-        Me.txtCPrice.TabIndex = 158
+        Me.txtCPrice.TabIndex = 13
         '
         'Label4
         '

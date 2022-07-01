@@ -24,7 +24,11 @@ Public Class frmModifyProduct
         gvStock.DataSource = tbl
         poscon.Close()
 
-
+        ComboFeed("select distinct prodline from stockmast where prodline IS NOT NULL ORDER BY Prodline asc", cbProdLine, 0)
+        ComboFeed("select distinct prodsize from stockmast where prodsize IS NOT NULL ORDER BY Prodsize asc", cbSize, 0)
+        ComboFeed("select distinct prodcolour from stockmast where prodcolour IS NOT NULL ORDER BY Prodcolour asc", cbColour, 0)
+        ComboFeed("select distinct Prodcat from Stockmast where Prodcat IS NOT NULL ORDER BY Prodcat asc", cbCat, 0)
+        ComboFeed("select distinct brandname from stockmast where brandname IS NOT NULL ORDER BY brandname asc", cbBrandName, 0)
     End Sub
 
     Private Sub gvStock_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
@@ -156,29 +160,34 @@ Public Class frmModifyProduct
 
     End Sub
     Sub LoadCatPline()
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
-        End If
-        cbProdLine.Items.Clear()
-        Dim query = "select * from Productline"
-        cmd = New SqlCommand(query, poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            cbProdLine.Items.Add(dr(1))
-        End While
-        poscon.Close()
+        'If poscon.State = ConnectionState.Closed Then
+        '    poscon.Open()
+        'End If
+        'cbProdLine.Items.Clear()
+        'Dim query = "select * from Productline"
+        'cmd = New SqlCommand(query, poscon)
+        'dr = cmd.ExecuteReader
+        'While dr.Read
+        '    cbProdLine.Items.Add(dr(1))
+        'End While
+        'poscon.Close()
 
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
-        End If
-        cbCat.Items.Clear()
-        Dim sqll = "select * from Category"
-        cmd = New SqlCommand(sqll, poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            cbCat.Items.Add(dr(1))
-        End While
-        poscon.Close()
+        'If poscon.State = ConnectionState.Closed Then
+        '    poscon.Open()
+        'End If
+        'cbCat.Items.Clear()
+        'Dim sqll = "select * from Category"
+        'cmd = New SqlCommand(sqll, poscon)
+        'dr = cmd.ExecuteReader
+        'While dr.Read
+        '    cbCat.Items.Add(dr(1))
+        'End While
+        'Poscon.Close()
+        ComboFeed("select distinct prodline from stockmast where prodline IS NOT NULL ORDER BY Prodline asc", cbProdLine, 0)
+        ComboFeed("select distinct prodsize from stockmast where prodsize IS NOT NULL ORDER BY Prodsize asc", cbSize, 0)
+        ComboFeed("select distinct prodcolour from stockmast where prodcolour IS NOT NULL ORDER BY Prodcolour asc", cbColour, 0)
+        ComboFeed("select distinct Prodcat from Stockmast where Prodcat IS NOT NULL ORDER BY Prodcat asc", cbCat, 0)
+        ComboFeed("select distinct brandname from stockmast where brandname IS NOT NULL ORDER BY brandname asc", cbBrandName, 0)
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
@@ -199,7 +208,6 @@ Public Class frmModifyProduct
             tbl = New DataTable
             da.Fill(tbl)
             If tbl.Rows.Count <> 0 Then
-
                 create("update multishopStockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "' where Prodcode =" + txtStockCode.Text + "")
             End If
             Display()

@@ -11,16 +11,9 @@ Public Class frmProdCatCreation
         Display()
     End Sub
     Private Sub Display()
-        poscon.Close()
-        poscon.Open()
-        Dim query = "select * from Category"
-        cmd = New SqlCommand(query, poscon)
-        adapter = New SqlDataAdapter(cmd)
-        builder = New SqlCommandBuilder(adapter)
-        ds = New DataSet
-        adapter.Fill(ds)
-        gvStock.DataSource = ds.Tables(0)
-        poscon.Close()
+
+        reload("select * from Category", gvStock)
+        reload("select * from Prodline", DataGridView1)
     End Sub
 
 
@@ -207,6 +200,46 @@ Public Class frmProdCatCreation
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
 
+        Dim sql = "select * from Prodline where Productline= '" + txtProdline.Text + "' "
+        cmd = New SqlCommand(sql, Poscon)
+        dr = cmd.ExecuteReader
+        If txtProdline.Text = "" Then
+            MsgBox("Enter New Productlline")
+            Poscon.Close()
+        ElseIf (dr.Read = True) Then
+            MsgBox("Productline Already Exists, Enter a new Productline")
+            Poscon.Close()
+            clear()
+        Else
+            Try
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
+                End If
+                Dim query = "Insert into Prodline values('" + txtProdline.Text + "')"
+                cmd = New SqlCommand(query, Poscon)
+                cmd.ExecuteNonQuery()
+                'MsgBox("Succesfully Created")
+                Poscon.Close()
+                Display()
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+
+        End If
+        clear()
+        dr.Close()
+    End Sub
+
+    Private Sub Button4_Click_1(sender As Object, e As EventArgs) Handles Button4.Click
+
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        clear()
     End Sub
 End Class

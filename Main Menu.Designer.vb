@@ -682,6 +682,7 @@ Partial Class frmMain
         Me.BunifuButton6.TextMarginLeft = 0
         Me.BunifuButton6.TextPadding = New System.Windows.Forms.Padding(0)
         Me.BunifuButton6.UseDefaultRadiusAndThickness = True
+        Me.BunifuButton6.Visible = False
         '
         'BunifuButton7
         '

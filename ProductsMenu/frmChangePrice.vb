@@ -32,6 +32,7 @@ Public Class frmChangePrice
         da.Fill(tbl)
         gvStockguna.DataSource = tbl
         Poscon.Close()
+        ComboFeed("select prodname from StockMast where concat(ProdName,ProdCode) like '%" + cbChangepriceSrch.Text + "%'", cbChangepriceSrch, 0)
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs)
@@ -227,8 +228,6 @@ Public Class frmChangePrice
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
 
-
-
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
@@ -287,6 +286,7 @@ Public Class frmChangePrice
         lblnewcamt.Text = Val(txtNewWPrice.Text) * Val(lblqty.Text)
         lblnewramt.Text = Val(txtNewRPrice.Text) * Val(lblqty.Text)
         gvPriceBatch.Rows.Add(txtProdname.Text, lblqty.Text, txtOldRPrice.Text, txtNewRPrice.Text, txtOldWPrice.Text, txtNewWPrice.Text, lblodlRamt.Text, lblnewramt.Text, lbloldcamt.Text, lblnewcamt.Text, lblStockCode.Text, txtnewpckprice.Text, txtoldpckprice.Text)
+        Clear()
     End Sub
 
     Private Sub txtNewWPrice_TextChanged(sender As Object, e As EventArgs) Handles txtNewWPrice.TextChanged
@@ -301,9 +301,6 @@ Public Class frmChangePrice
         ' lbloldcamt.Text = Val(lbloldcamt.Text * lblqty.Text)
     End Sub
 
-    Private Sub gvStockguna_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStockguna.CellContentClick
-
-    End Sub
 
     Private Sub txtNewRPrice_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNewRPrice.KeyPress
         txtnewpckprice.Text = Val(txtNewRPrice.Text) * Val(lblpackvol.Text)

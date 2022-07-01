@@ -96,9 +96,15 @@ Public Class frmRecieveGoods
         'da.Fill(tbl)
         'gvStockBf.DataSource = tbl
         'Poscon.Close()
-        reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast", gvStockBf)
-        reload("select * from supplieroder", DataGridView1)
-        reload("select * from supplieroderconfig", DataGridView2)
+        If ComboBox1.SelectedIndex = -1 Or ComboBox1.SelectedIndex = 0 Then
+            reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast", gvStockBf)
+        Else
+            reload("select oderno,Suppliername,odertotal,odertotal-oderbalance as TotalRecieved,OderBalance,Oderdate,Oderedby,OderID,supplierid,narration,supplierinvoice from Supplieroderconfig where oderbalance>0", gvStockBf)
+            reload("select * from supplieroder", DataGridView1)
+            reload("select * from supplieroderconfig", DataGridView2)
+        End If
+
+
     End Sub
 
     Public Sub Suppliers(valuetosearch As String)
@@ -135,7 +141,7 @@ Public Class frmRecieveGoods
     Private Sub txtQtyRecieved_TextChanged(sender As Object, e As EventArgs) Handles txtQtyRecieved.TextChanged
         If TextBox1.Text <> "" Then
             If Val(txtQtyRecieved.Text) > Val(TextBox1.Text) Then
-                MsgBox("Quantity Recieved Cannot be greater than oder quantity")
+                MsgBox("Quantity Recieved Cannot be greater than order quantity")
                 txtQtyRecieved.Text = ""
                 Exit Sub
             End If
@@ -213,7 +219,8 @@ Public Class frmRecieveGoods
         txtinvoiceno.Text = ""
         txtCat.Text = ""
         lbloderid.Text = "oder"
-
+        txtCat.Text = ""
+        txtWayBill.Text = ""
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
@@ -282,6 +289,8 @@ Public Class frmRecieveGoods
                 gvStockBatch.Rows.Clear()
                 Dim row As DataGridViewRow = gvStockBf.Rows(e.RowIndex)
                 lbloderid.Text = row.Cells(0).Value.ToString()
+                cbSuppName.Text = row.Cells(1).Value.ToString()
+                txtWayBill.Text = row.Cells(10).Value.ToString()
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
@@ -295,6 +304,7 @@ Public Class frmRecieveGoods
                     Exit Sub
                 End If
                 txtinvoiceno.Text = tbl.Rows(0)(0).ToString
+
                 For k = 0 To tbl.Rows.Count - 1
                     gvStockBatch.Rows.Add(tbl.Rows(k)(1).ToString, 0, tbl.Rows(k)(2).ToString, 0, 0, 0, tbl.Rows(k)(4).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString)
                 Next
@@ -389,6 +399,27 @@ Public Class frmRecieveGoods
 
 
     End Sub
+    Public Sub searchSupp(valuetosearch As String)
+        Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            cmd = New SqlCommand("select supplierno from Supplier where suppliername like '%" + valuetosearch + "%'", Poscon)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
+            If tbl.Rows.Count() = 0 Then
+            Else
+                lblCustNo.Text = tbl.Rows(0)(0).ToString
+
+            End If
+
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+    End Sub
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
 
@@ -416,7 +447,7 @@ Public Class frmRecieveGoods
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim query = "insert into recievestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyRecieved,dateRecieved,time,Recievedby,itemcat,SupplierName,SupplierID,PackVolume,narration,waybillno) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + txtNarration.Text + "','" + TextBox2.Text + "')"
+                Dim query = "insert into recievestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyRecieved,dateRecieved,time,Recievedby,itemcat,SupplierName,SupplierID,PackVolume,narration,waybillno) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + txtNarration.Text + "','" + txtWayBill.Text + "')"
                 cmd = New SqlCommand(query, Poscon)
                 With cmd
                     .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
@@ -463,8 +494,8 @@ Public Class frmRecieveGoods
                 'MsgBox("Succesfully Wrintten into ledger")
             Next
             If lbloderid.Text <> "oder" Then
-                create("update supplieroderconfig set supplierinvoice='" + TextBox2.Text + "' where oderno='" + txtinvoiceno.Text + "'")
-                create("update supplieroder set supplierinvoice='" + TextBox2.Text + "' where oderno='" + txtinvoiceno.Text + "'")
+                create("update supplieroderconfig set supplierinvoice='" + txtWayBill.Text + "' where oderno='" + txtinvoiceno.Text + "'")
+                create("update supplieroder set supplierinvoice='" + txtWayBill.Text + "' where oderno='" + txtinvoiceno.Text + "'")
             End If
 
             'Poscon.Close()
@@ -715,9 +746,27 @@ Public Class frmRecieveGoods
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         Select Case ComboBox1.SelectedIndex
             Case 0
+                If gvStockBatch.Rows.Count <> 0 Then
+                    Dim ask As MsgBoxResult
+                    ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
+                    If ask = MsgBoxResult.No Then
+                        Exit Sub
+                    Else
+                        gvStockBatch.Rows.Clear()
+                    End If
+                End If
                 reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast", gvStockBf)
             Case 1
-                reload("select * from Supplieroderconfig where oderbalance>0", gvStockBf)
+                If gvStockBatch.Rows.Count <> 0 Then
+                    Dim ask As MsgBoxResult
+                    ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
+                    If ask = MsgBoxResult.No Then
+                        Exit Sub
+                    Else
+                        gvStockBatch.Rows.Clear()
+                    End If
+                End If
+                reload("select oderno,Suppliername,odertotal,odertotal-oderbalance as TotalRecieved,OderBalance,Oderdate,Oderedby,OderID,supplierid,narration,supplierinvoice from Supplieroderconfig where oderbalance>0", gvStockBf)
             Case Else
 
         End Select
@@ -748,5 +797,9 @@ Public Class frmRecieveGoods
             MsgBox(ex.Message)
         End Try
 
+    End Sub
+
+    Private Sub cbSuppName_TextChanged(sender As Object, e As EventArgs) Handles cbSuppName.TextChanged
+        searchSupp(cbSuppName.Text)
     End Sub
 End Class

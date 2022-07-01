@@ -17,7 +17,7 @@ Public Class frmDeleteProduct
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
-        Dim query = "select * from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
+        Dim query = "select * from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodqty=0"
         Dim cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
             Dim table As New DataTable()
@@ -200,7 +200,7 @@ Public Class frmDeleteProduct
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
-                Dim query = "select * from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
+                Dim query = "select * from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and prodqty=0"
                 cmd = New SqlCommand(query, Poscon)
                 Dim adapter As New SqlDataAdapter(cmd)
                 Dim table As New DataTable()

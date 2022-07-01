@@ -26,7 +26,7 @@ Public Class frmSalesCancelation
         'adapter.Fill(tbl)
         'gvReciepts.DataSource = tbl
         'Poscon.Close()
-        reload("select SalesPerson,RecieptId from RecieptConfig", gvReciepts)
+        reload("select SalesPerson,RecieptId from RecieptConfig where date = convert(datetime,'" + Date.Now.ToString("dd/MM/yyyy") + "',105)  ", gvReciepts)
     End Sub
 
     Private Sub LoadReciepts(RecieptNo As String)
@@ -225,13 +225,16 @@ Public Class frmSalesCancelation
             End With
 
         Next
-        If ckA5Paper.Checked = True Then
-            PrintRecieptA5(txtRecieptNo.Text)
-        ElseIf ckrollPaper.Checked = True Then
-            RollReciept(txtRecieptNo.Text)
-        ElseIf ckA4.Checked = True Then
-            PrintRecieptA4(txtRecieptNo.Text)
+        If ckprint.Checked = True Then
+            If ckA5Paper.Checked = True Then
+                PrintRecieptA5(txtRecieptNo.Text)
+            ElseIf ckrollPaper.Checked = True Then
+                RollReciept(txtRecieptNo.Text)
+            ElseIf ckA4.Checked = True Then
+                PrintRecieptA4(txtRecieptNo.Text)
+            End If
         End If
+
         gvSalesReciepts.Rows.Clear()
         Poscon.Close()
     End Sub
