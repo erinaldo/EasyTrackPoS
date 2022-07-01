@@ -51,14 +51,12 @@ Partial Class frmTouchSale
         Me.ActualStock = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Waiter = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OderNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cbCreditCustName = New System.Windows.Forms.ComboBox()
         Me.cbSaleType = New System.Windows.Forms.ComboBox()
         Me.lblCreditCust = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.lblNewBal = New System.Windows.Forms.Label()
         Me.lblCustNo = New System.Windows.Forms.Label()
         Me.lblOldBal = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.cbPaymode = New System.Windows.Forms.ComboBox()
         Me.cbLocation = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -66,17 +64,12 @@ Partial Class frmTouchSale
         Me.txtBuyerTel = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtBuyerName = New System.Windows.Forms.TextBox()
-        Me.lblChange = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtCashPaid = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblTotal = New System.Windows.Forms.Label()
         Me.lblProdCode = New System.Windows.Forms.Label()
-        Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.btnOder = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
-        Me.cbWaiter = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.lblDayOder = New System.Windows.Forms.Label()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -100,27 +93,36 @@ Partial Class frmTouchSale
         Me.one = New System.Windows.Forms.Label()
         Me.BunifuThinButton23 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lbldayodersale = New System.Windows.Forms.Label()
         Me.lblprodline = New System.Windows.Forms.Label()
         Me.lblOderNo = New System.Windows.Forms.Label()
         Me.lblWaiter = New System.Windows.Forms.Label()
-        Me.BunifuThinButton24 = New Bunifu.Framework.UI.BunifuThinButton2()
+        Me.btnSell = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BunifuThinButton25 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.txtQty = New System.Windows.Forms.TextBox()
         Me.txtPrice = New System.Windows.Forms.TextBox()
         Me.txtAmt = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblItemName = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.lblChange = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cbwaiter = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cbcreditcustname = New System.Windows.Forms.ComboBox()
+        Me.ckdirectsale = New System.Windows.Forms.CheckBox()
         CType(Me.gvtouchsale, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.gvOders, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gvOderDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'flItems
@@ -128,18 +130,20 @@ Partial Class frmTouchSale
         Me.flItems.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.flItems.Location = New System.Drawing.Point(145, 50)
+        Me.flItems.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.flItems.Location = New System.Drawing.Point(115, 50)
         Me.flItems.Name = "flItems"
-        Me.flItems.Size = New System.Drawing.Size(316, 553)
+        Me.flItems.Size = New System.Drawing.Size(354, 594)
         Me.flItems.TabIndex = 0
         '
         'flbtnCat
         '
         Me.flbtnCat.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.flbtnCat.BackColor = System.Drawing.Color.IndianRed
         Me.flbtnCat.Location = New System.Drawing.Point(12, 50)
         Me.flbtnCat.Name = "flbtnCat"
-        Me.flbtnCat.Size = New System.Drawing.Size(130, 553)
+        Me.flbtnCat.Size = New System.Drawing.Size(97, 594)
         Me.flbtnCat.TabIndex = 1
         '
         'txtCat
@@ -154,7 +158,8 @@ Partial Class frmTouchSale
         Me.gvtouchsale.AllowUserToAddRows = False
         DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
         Me.gvtouchsale.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
-        Me.gvtouchsale.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gvtouchsale.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gvtouchsale.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.gvtouchsale.BackgroundColor = System.Drawing.Color.White
         Me.gvtouchsale.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -180,13 +185,13 @@ Partial Class frmTouchSale
         Me.gvtouchsale.DefaultCellStyle = DataGridViewCellStyle12
         Me.gvtouchsale.EnableHeadersVisualStyles = False
         Me.gvtouchsale.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.gvtouchsale.Location = New System.Drawing.Point(467, 117)
+        Me.gvtouchsale.Location = New System.Drawing.Point(482, 117)
         Me.gvtouchsale.Name = "gvtouchsale"
         Me.gvtouchsale.ReadOnly = True
         Me.gvtouchsale.RowHeadersVisible = False
         Me.gvtouchsale.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.gvtouchsale.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvtouchsale.Size = New System.Drawing.Size(364, 292)
+        Me.gvtouchsale.Size = New System.Drawing.Size(349, 292)
         Me.gvtouchsale.TabIndex = 3
         Me.gvtouchsale.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
         Me.gvtouchsale.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -308,17 +313,6 @@ Partial Class frmTouchSale
         Me.OderNo.ReadOnly = True
         Me.OderNo.Width = 81
         '
-        'cbCreditCustName
-        '
-        Me.cbCreditCustName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cbCreditCustName.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbCreditCustName.FormattingEnabled = True
-        Me.cbCreditCustName.Location = New System.Drawing.Point(109, 67)
-        Me.cbCreditCustName.Name = "cbCreditCustName"
-        Me.cbCreditCustName.Size = New System.Drawing.Size(82, 25)
-        Me.cbCreditCustName.TabIndex = 144
-        '
         'cbSaleType
         '
         Me.cbSaleType.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -326,7 +320,7 @@ Partial Class frmTouchSale
         Me.cbSaleType.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbSaleType.FormattingEnabled = True
         Me.cbSaleType.Items.AddRange(New Object() {"Walk-In Sale", "Credit Sale"})
-        Me.cbSaleType.Location = New System.Drawing.Point(552, 449)
+        Me.cbSaleType.Location = New System.Drawing.Point(83, 19)
         Me.cbSaleType.Name = "cbSaleType"
         Me.cbSaleType.Size = New System.Drawing.Size(108, 25)
         Me.cbSaleType.TabIndex = 143
@@ -336,9 +330,9 @@ Partial Class frmTouchSale
         Me.lblCreditCust.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblCreditCust.AutoSize = True
-        Me.lblCreditCust.BackColor = System.Drawing.Color.White
+        Me.lblCreditCust.BackColor = System.Drawing.Color.Transparent
         Me.lblCreditCust.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCreditCust.Location = New System.Drawing.Point(470, 509)
+        Me.lblCreditCust.Location = New System.Drawing.Point(3, 79)
         Me.lblCreditCust.Name = "lblCreditCust"
         Me.lblCreditCust.Size = New System.Drawing.Size(98, 15)
         Me.lblCreditCust.TabIndex = 142
@@ -349,9 +343,9 @@ Partial Class frmTouchSale
         Me.Label22.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label22.AutoSize = True
-        Me.Label22.BackColor = System.Drawing.Color.White
+        Me.Label22.BackColor = System.Drawing.Color.Transparent
         Me.Label22.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(480, 453)
+        Me.Label22.Location = New System.Drawing.Point(3, 23)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(66, 17)
         Me.Label22.TabIndex = 141
@@ -362,9 +356,9 @@ Partial Class frmTouchSale
         Me.lblNewBal.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblNewBal.AutoSize = True
-        Me.lblNewBal.BackColor = System.Drawing.Color.White
+        Me.lblNewBal.BackColor = System.Drawing.Color.Transparent
         Me.lblNewBal.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNewBal.Location = New System.Drawing.Point(594, 487)
+        Me.lblNewBal.Location = New System.Drawing.Point(124, 55)
         Me.lblNewBal.Name = "lblNewBal"
         Me.lblNewBal.Size = New System.Drawing.Size(47, 13)
         Me.lblNewBal.TabIndex = 140
@@ -375,9 +369,9 @@ Partial Class frmTouchSale
         Me.lblCustNo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblCustNo.AutoSize = True
-        Me.lblCustNo.BackColor = System.Drawing.Color.White
+        Me.lblCustNo.BackColor = System.Drawing.Color.Transparent
         Me.lblCustNo.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCustNo.Location = New System.Drawing.Point(542, 487)
+        Me.lblCustNo.Location = New System.Drawing.Point(72, 56)
         Me.lblCustNo.Name = "lblCustNo"
         Me.lblCustNo.Size = New System.Drawing.Size(46, 13)
         Me.lblCustNo.TabIndex = 139
@@ -388,26 +382,13 @@ Partial Class frmTouchSale
         Me.lblOldBal.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblOldBal.AutoSize = True
-        Me.lblOldBal.BackColor = System.Drawing.Color.White
+        Me.lblOldBal.BackColor = System.Drawing.Color.Transparent
         Me.lblOldBal.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblOldBal.Location = New System.Drawing.Point(489, 487)
+        Me.lblOldBal.Location = New System.Drawing.Point(19, 55)
         Me.lblOldBal.Name = "lblOldBal"
         Me.lblOldBal.Size = New System.Drawing.Size(47, 13)
         Me.lblOldBal.TabIndex = 138
         Me.lblOldBal.Text = "Balance"
-        '
-        'Label2
-        '
-        Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.White
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(210, 72)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(48, 20)
-        Me.Label2.TabIndex = 137
-        Me.Label2.Text = "Total:"
         '
         'cbPaymode
         '
@@ -416,7 +397,7 @@ Partial Class frmTouchSale
         Me.cbPaymode.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPaymode.FormattingEnabled = True
         Me.cbPaymode.Items.AddRange(New Object() {"Cash", "Mobile Money", "Bank Transfer"})
-        Me.cbPaymode.Location = New System.Drawing.Point(735, 451)
+        Me.cbPaymode.Location = New System.Drawing.Point(264, 19)
         Me.cbPaymode.Name = "cbPaymode"
         Me.cbPaymode.Size = New System.Drawing.Size(96, 25)
         Me.cbPaymode.TabIndex = 136
@@ -427,7 +408,7 @@ Partial Class frmTouchSale
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbLocation.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbLocation.FormattingEnabled = True
-        Me.cbLocation.Location = New System.Drawing.Point(552, 609)
+        Me.cbLocation.Location = New System.Drawing.Point(85, 174)
         Me.cbLocation.Name = "cbLocation"
         Me.cbLocation.Size = New System.Drawing.Size(106, 25)
         Me.cbLocation.TabIndex = 135
@@ -437,9 +418,9 @@ Partial Class frmTouchSale
         Me.Label13.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label13.AutoSize = True
-        Me.Label13.BackColor = System.Drawing.Color.White
+        Me.Label13.BackColor = System.Drawing.Color.Transparent
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(485, 612)
+        Me.Label13.Location = New System.Drawing.Point(11, 177)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(61, 17)
         Me.Label13.TabIndex = 134
@@ -450,9 +431,9 @@ Partial Class frmTouchSale
         Me.Label12.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label12.AutoSize = True
-        Me.Label12.BackColor = System.Drawing.Color.White
+        Me.Label12.BackColor = System.Drawing.Color.Transparent
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(481, 545)
+        Me.Label12.Location = New System.Drawing.Point(7, 111)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(65, 17)
         Me.Label12.TabIndex = 133
@@ -464,7 +445,7 @@ Partial Class frmTouchSale
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtBuyerTel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtBuyerTel.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuyerTel.Location = New System.Drawing.Point(552, 543)
+        Me.txtBuyerTel.Location = New System.Drawing.Point(85, 109)
         Me.txtBuyerTel.Name = "txtBuyerTel"
         Me.txtBuyerTel.Size = New System.Drawing.Size(108, 25)
         Me.txtBuyerTel.TabIndex = 132
@@ -474,9 +455,9 @@ Partial Class frmTouchSale
         Me.Label11.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label11.AutoSize = True
-        Me.Label11.BackColor = System.Drawing.Color.White
+        Me.Label11.BackColor = System.Drawing.Color.Transparent
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(469, 576)
+        Me.Label11.Location = New System.Drawing.Point(-3, 142)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(83, 17)
         Me.Label11.TabIndex = 131
@@ -488,45 +469,19 @@ Partial Class frmTouchSale
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtBuyerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtBuyerName.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuyerName.Location = New System.Drawing.Point(553, 574)
+        Me.txtBuyerName.Location = New System.Drawing.Point(85, 140)
         Me.txtBuyerName.Name = "txtBuyerName"
         Me.txtBuyerName.Size = New System.Drawing.Size(107, 25)
         Me.txtBuyerName.TabIndex = 130
-        '
-        'lblChange
-        '
-        Me.lblChange.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblChange.AutoSize = True
-        Me.lblChange.BackColor = System.Drawing.Color.White
-        Me.lblChange.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChange.Location = New System.Drawing.Point(263, 143)
-        Me.lblChange.Name = "lblChange"
-        Me.lblChange.Size = New System.Drawing.Size(25, 30)
-        Me.lblChange.TabIndex = 129
-        Me.lblChange.Text = "0"
-        '
-        'Label5
-        '
-        Me.Label5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label5.AutoSize = True
-        Me.Label5.BackColor = System.Drawing.Color.White
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(202, 113)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(83, 20)
-        Me.Label5.TabIndex = 128
-        Me.Label5.Text = "Change>>"
         '
         'Label4
         '
         Me.Label4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.White
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(660, 454)
+        Me.Label4.Location = New System.Drawing.Point(193, 24)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(69, 17)
         Me.Label4.TabIndex = 127
@@ -538,7 +493,7 @@ Partial Class frmTouchSale
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtCashPaid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCashPaid.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCashPaid.Location = New System.Drawing.Point(734, 480)
+        Me.txtCashPaid.Location = New System.Drawing.Point(264, 50)
         Me.txtCashPaid.Name = "txtCashPaid"
         Me.txtCashPaid.Size = New System.Drawing.Size(96, 25)
         Me.txtCashPaid.TabIndex = 126
@@ -548,26 +503,13 @@ Partial Class frmTouchSale
         Me.Label3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.White
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(664, 484)
+        Me.Label3.Location = New System.Drawing.Point(193, 56)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(68, 17)
         Me.Label3.TabIndex = 125
         Me.Label3.Text = "Cash Paid"
-        '
-        'lblTotal
-        '
-        Me.lblTotal.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblTotal.AutoSize = True
-        Me.lblTotal.BackColor = System.Drawing.Color.White
-        Me.lblTotal.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(260, 73)
-        Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(25, 30)
-        Me.lblTotal.TabIndex = 124
-        Me.lblTotal.Text = "0"
         '
         'lblProdCode
         '
@@ -581,31 +523,31 @@ Partial Class frmTouchSale
         Me.lblProdCode.TabIndex = 146
         Me.lblProdCode.Text = "Prodcode"
         '
-        'BunifuThinButton21
+        'btnOder
         '
-        Me.BunifuThinButton21.ActiveBorderThickness = 1
-        Me.BunifuThinButton21.ActiveCornerRadius = 20
-        Me.BunifuThinButton21.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.BunifuThinButton21.ActiveForecolor = System.Drawing.Color.White
-        Me.BunifuThinButton21.ActiveLineColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.BunifuThinButton21.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BunifuThinButton21.BackColor = System.Drawing.SystemColors.Control
-        Me.BunifuThinButton21.BackgroundImage = CType(resources.GetObject("BunifuThinButton21.BackgroundImage"), System.Drawing.Image)
-        Me.BunifuThinButton21.ButtonText = "ODER"
-        Me.BunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BunifuThinButton21.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BunifuThinButton21.ForeColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton21.IdleBorderThickness = 1
-        Me.BunifuThinButton21.IdleCornerRadius = 20
-        Me.BunifuThinButton21.IdleFillColor = System.Drawing.Color.White
-        Me.BunifuThinButton21.IdleForecolor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.BunifuThinButton21.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.BunifuThinButton21.Location = New System.Drawing.Point(965, 506)
-        Me.BunifuThinButton21.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.BunifuThinButton21.Name = "BunifuThinButton21"
-        Me.BunifuThinButton21.Size = New System.Drawing.Size(213, 62)
-        Me.BunifuThinButton21.TabIndex = 147
-        Me.BunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btnOder.ActiveBorderThickness = 1
+        Me.btnOder.ActiveCornerRadius = 20
+        Me.btnOder.ActiveFillColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnOder.ActiveForecolor = System.Drawing.Color.White
+        Me.btnOder.ActiveLineColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnOder.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnOder.BackColor = System.Drawing.SystemColors.Control
+        Me.btnOder.BackgroundImage = CType(resources.GetObject("btnOder.BackgroundImage"), System.Drawing.Image)
+        Me.btnOder.ButtonText = "ODER"
+        Me.btnOder.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnOder.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOder.ForeColor = System.Drawing.Color.SeaGreen
+        Me.btnOder.IdleBorderThickness = 1
+        Me.btnOder.IdleCornerRadius = 20
+        Me.btnOder.IdleFillColor = System.Drawing.Color.White
+        Me.btnOder.IdleForecolor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnOder.IdleLineColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnOder.Location = New System.Drawing.Point(965, 506)
+        Me.btnOder.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnOder.Name = "btnOder"
+        Me.btnOder.Size = New System.Drawing.Size(213, 62)
+        Me.btnOder.TabIndex = 147
+        Me.btnOder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'BunifuThinButton22
         '
@@ -633,38 +575,13 @@ Partial Class frmTouchSale
         Me.BunifuThinButton22.TabIndex = 148
         Me.BunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'cbWaiter
-        '
-        Me.cbWaiter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cbWaiter.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbWaiter.FormattingEnabled = True
-        Me.cbWaiter.Items.AddRange(New Object() {"Cash", "Mobile Money", "Bank Transfer"})
-        Me.cbWaiter.Location = New System.Drawing.Point(256, 176)
-        Me.cbWaiter.Name = "cbWaiter"
-        Me.cbWaiter.Size = New System.Drawing.Size(107, 25)
-        Me.cbWaiter.TabIndex = 150
-        '
-        'Label1
-        '
-        Me.Label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.White
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(203, 176)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(48, 17)
-        Me.Label1.TabIndex = 149
-        Me.Label1.Text = "Waiter"
-        '
         'lblDayOder
         '
         Me.lblDayOder.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblDayOder.AutoSize = True
         Me.lblDayOder.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDayOder.Location = New System.Drawing.Point(520, 18)
+        Me.lblDayOder.Location = New System.Drawing.Point(520, 21)
         Me.lblDayOder.Name = "lblDayOder"
         Me.lblDayOder.Size = New System.Drawing.Size(32, 13)
         Me.lblDayOder.TabIndex = 151
@@ -760,7 +677,7 @@ Partial Class frmTouchSale
         DataGridViewCellStyle13.BackColor = System.Drawing.Color.White
         Me.gvOders.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
         Me.gvOders.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gvOders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.gvOders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.gvOders.BackgroundColor = System.Drawing.Color.White
         Me.gvOders.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvOders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
@@ -880,13 +797,13 @@ Partial Class frmTouchSale
         Me.gvOderDetails.DefaultCellStyle = DataGridViewCellStyle18
         Me.gvOderDetails.EnableHeadersVisualStyles = False
         Me.gvOderDetails.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.gvOderDetails.Location = New System.Drawing.Point(839, 353)
+        Me.gvOderDetails.Location = New System.Drawing.Point(856, 353)
         Me.gvOderDetails.MultiSelect = False
         Me.gvOderDetails.Name = "gvOderDetails"
         Me.gvOderDetails.ReadOnly = True
         Me.gvOderDetails.RowHeadersVisible = False
         Me.gvOderDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvOderDetails.Size = New System.Drawing.Size(340, 134)
+        Me.gvOderDetails.Size = New System.Drawing.Size(323, 119)
         Me.gvOderDetails.TabIndex = 160
         Me.gvOderDetails.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
         Me.gvOderDetails.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -981,10 +898,10 @@ Partial Class frmTouchSale
         Me.BunifuThinButton23.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton23.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton23.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton23.Location = New System.Drawing.Point(876, 560)
+        Me.BunifuThinButton23.Location = New System.Drawing.Point(856, 604)
         Me.BunifuThinButton23.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton23.Name = "BunifuThinButton23"
-        Me.BunifuThinButton23.Size = New System.Drawing.Size(80, 69)
+        Me.BunifuThinButton23.Size = New System.Drawing.Size(100, 40)
         Me.BunifuThinButton23.TabIndex = 165
         Me.BunifuThinButton23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -1000,28 +917,12 @@ Partial Class frmTouchSale
         Me.Guna2PictureBox2.TabIndex = 166
         Me.Guna2PictureBox2.TabStop = False
         '
-        'Panel1
-        '
-        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.cbWaiter)
-        Me.Panel1.Controls.Add(Me.cbCreditCustName)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Controls.Add(Me.lblChange)
-        Me.Panel1.Controls.Add(Me.lblTotal)
-        Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Location = New System.Drawing.Point(467, 436)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(366, 209)
-        Me.Panel1.TabIndex = 167
-        '
         'Panel2
         '
         Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.lbldayodersale)
         Me.Panel2.Controls.Add(Me.lblprodline)
         Me.Panel2.Controls.Add(Me.lblOderNo)
         Me.Panel2.Controls.Add(Me.lblWaiter)
@@ -1038,6 +939,18 @@ Partial Class frmTouchSale
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1191, 36)
         Me.Panel2.TabIndex = 168
+        '
+        'lbldayodersale
+        '
+        Me.lbldayodersale.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbldayodersale.AutoSize = True
+        Me.lbldayodersale.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbldayodersale.Location = New System.Drawing.Point(581, 2)
+        Me.lbldayodersale.Name = "lbldayodersale"
+        Me.lbldayodersale.Size = New System.Drawing.Size(71, 13)
+        Me.lbldayodersale.TabIndex = 170
+        Me.lbldayodersale.Text = "dayOdersale"
         '
         'lblprodline
         '
@@ -1057,7 +970,7 @@ Partial Class frmTouchSale
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblOderNo.AutoSize = True
         Me.lblOderNo.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblOderNo.Location = New System.Drawing.Point(628, 4)
+        Me.lblOderNo.Location = New System.Drawing.Point(510, 1)
         Me.lblOderNo.Name = "lblOderNo"
         Me.lblOderNo.Size = New System.Drawing.Size(48, 13)
         Me.lblOderNo.TabIndex = 169
@@ -1075,31 +988,31 @@ Partial Class frmTouchSale
         Me.lblWaiter.TabIndex = 167
         Me.lblWaiter.Text = "Waiter"
         '
-        'BunifuThinButton24
+        'btnSell
         '
-        Me.BunifuThinButton24.ActiveBorderThickness = 1
-        Me.BunifuThinButton24.ActiveCornerRadius = 20
-        Me.BunifuThinButton24.ActiveFillColor = System.Drawing.Color.Crimson
-        Me.BunifuThinButton24.ActiveForecolor = System.Drawing.Color.White
-        Me.BunifuThinButton24.ActiveLineColor = System.Drawing.Color.Crimson
-        Me.BunifuThinButton24.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BunifuThinButton24.BackColor = System.Drawing.SystemColors.Control
-        Me.BunifuThinButton24.BackgroundImage = CType(resources.GetObject("BunifuThinButton24.BackgroundImage"), System.Drawing.Image)
-        Me.BunifuThinButton24.ButtonText = "SELL"
-        Me.BunifuThinButton24.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BunifuThinButton24.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BunifuThinButton24.ForeColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton24.IdleBorderThickness = 1
-        Me.BunifuThinButton24.IdleCornerRadius = 20
-        Me.BunifuThinButton24.IdleFillColor = System.Drawing.Color.White
-        Me.BunifuThinButton24.IdleForecolor = System.Drawing.Color.Crimson
-        Me.BunifuThinButton24.IdleLineColor = System.Drawing.Color.Crimson
-        Me.BunifuThinButton24.Location = New System.Drawing.Point(965, 574)
-        Me.BunifuThinButton24.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.BunifuThinButton24.Name = "BunifuThinButton24"
-        Me.BunifuThinButton24.Size = New System.Drawing.Size(213, 62)
-        Me.BunifuThinButton24.TabIndex = 169
-        Me.BunifuThinButton24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btnSell.ActiveBorderThickness = 1
+        Me.btnSell.ActiveCornerRadius = 20
+        Me.btnSell.ActiveFillColor = System.Drawing.Color.Crimson
+        Me.btnSell.ActiveForecolor = System.Drawing.Color.White
+        Me.btnSell.ActiveLineColor = System.Drawing.Color.Crimson
+        Me.btnSell.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSell.BackColor = System.Drawing.SystemColors.Control
+        Me.btnSell.BackgroundImage = CType(resources.GetObject("btnSell.BackgroundImage"), System.Drawing.Image)
+        Me.btnSell.ButtonText = "SELL"
+        Me.btnSell.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSell.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSell.ForeColor = System.Drawing.Color.SeaGreen
+        Me.btnSell.IdleBorderThickness = 1
+        Me.btnSell.IdleCornerRadius = 20
+        Me.btnSell.IdleFillColor = System.Drawing.Color.White
+        Me.btnSell.IdleForecolor = System.Drawing.Color.Crimson
+        Me.btnSell.IdleLineColor = System.Drawing.Color.Crimson
+        Me.btnSell.Location = New System.Drawing.Point(965, 574)
+        Me.btnSell.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnSell.Name = "btnSell"
+        Me.btnSell.Size = New System.Drawing.Size(213, 62)
+        Me.btnSell.TabIndex = 169
+        Me.btnSell.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'BunifuThinButton25
         '
@@ -1176,20 +1089,156 @@ Partial Class frmTouchSale
         Me.lblItemName.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblItemName.AutoSize = True
         Me.lblItemName.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblItemName.Location = New System.Drawing.Point(467, 39)
+        Me.lblItemName.Location = New System.Drawing.Point(474, 39)
         Me.lblItemName.Name = "lblItemName"
         Me.lblItemName.Size = New System.Drawing.Size(134, 32)
         Me.lblItemName.TabIndex = 171
         Me.lblItemName.Text = "ItemName"
+        '
+        'Label2
+        '
+        Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold)
+        Me.Label2.Location = New System.Drawing.Point(216, 79)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(48, 20)
+        Me.Label2.TabIndex = 137
+        Me.Label2.Text = "Total:"
+        '
+        'lblTotal
+        '
+        Me.lblTotal.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.BackColor = System.Drawing.Color.Transparent
+        Me.lblTotal.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.Location = New System.Drawing.Point(270, 79)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(25, 30)
+        Me.lblTotal.TabIndex = 124
+        Me.lblTotal.Text = "0"
+        '
+        'lblChange
+        '
+        Me.lblChange.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblChange.AutoSize = True
+        Me.lblChange.BackColor = System.Drawing.Color.Transparent
+        Me.lblChange.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblChange.Location = New System.Drawing.Point(280, 145)
+        Me.lblChange.Name = "lblChange"
+        Me.lblChange.Size = New System.Drawing.Size(25, 30)
+        Me.lblChange.TabIndex = 129
+        Me.lblChange.Text = "0"
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label5.AutoSize = True
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(212, 113)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(83, 20)
+        Me.Label5.TabIndex = 128
+        Me.Label5.Text = "Change>>"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.BackColor = System.Drawing.Color.Khaki
+        Me.GroupBox1.Controls.Add(Me.cbcreditcustname)
+        Me.GroupBox1.Controls.Add(Me.cbwaiter)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.Label22)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.lblTotal)
+        Me.GroupBox1.Controls.Add(Me.cbPaymode)
+        Me.GroupBox1.Controls.Add(Me.lblChange)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.Label13)
+        Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.lblCreditCust)
+        Me.GroupBox1.Controls.Add(Me.lblOldBal)
+        Me.GroupBox1.Controls.Add(Me.lblCustNo)
+        Me.GroupBox1.Controls.Add(Me.cbLocation)
+        Me.GroupBox1.Controls.Add(Me.cbSaleType)
+        Me.GroupBox1.Controls.Add(Me.txtBuyerName)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.txtBuyerTel)
+        Me.GroupBox1.Controls.Add(Me.lblNewBal)
+        Me.GroupBox1.Controls.Add(Me.txtCashPaid)
+        Me.GroupBox1.Location = New System.Drawing.Point(472, 432)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(378, 225)
+        Me.GroupBox1.TabIndex = 172
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "GroupBox1"
+        '
+        'cbwaiter
+        '
+        Me.cbwaiter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbwaiter.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbwaiter.FormattingEnabled = True
+        Me.cbwaiter.Items.AddRange(New Object() {"Cash", "Mobile Money", "Bank Transfer"})
+        Me.cbwaiter.Location = New System.Drawing.Point(270, 178)
+        Me.cbwaiter.Name = "cbwaiter"
+        Me.cbwaiter.Size = New System.Drawing.Size(96, 25)
+        Me.cbwaiter.TabIndex = 174
+        '
+        'Label1
+        '
+        Me.Label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(196, 180)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(48, 17)
+        Me.Label1.TabIndex = 173
+        Me.Label1.Text = "Waiter"
+        '
+        'cbcreditcustname
+        '
+        Me.cbcreditcustname.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbcreditcustname.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbcreditcustname.FormattingEnabled = True
+        Me.cbcreditcustname.Items.AddRange(New Object() {"Cash", "Mobile Money", "Bank Transfer"})
+        Me.cbcreditcustname.Location = New System.Drawing.Point(107, 72)
+        Me.cbcreditcustname.Name = "cbcreditcustname"
+        Me.cbcreditcustname.Size = New System.Drawing.Size(96, 25)
+        Me.cbcreditcustname.TabIndex = 175
+        '
+        'ckdirectsale
+        '
+        Me.ckdirectsale.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ckdirectsale.AutoSize = True
+        Me.ckdirectsale.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckdirectsale.Location = New System.Drawing.Point(856, 552)
+        Me.ckdirectsale.Name = "ckdirectsale"
+        Me.ckdirectsale.Size = New System.Drawing.Size(93, 21)
+        Me.ckdirectsale.TabIndex = 175
+        Me.ckdirectsale.Text = "Direct Sale"
+        Me.ckdirectsale.UseVisualStyleBackColor = True
         '
         'frmTouchSale
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1191, 669)
+        Me.Controls.Add(Me.ckdirectsale)
         Me.Controls.Add(Me.lblItemName)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.BunifuThinButton24)
+        Me.Controls.Add(Me.btnSell)
         Me.Controls.Add(Me.BunifuThinButton25)
         Me.Controls.Add(Me.BunifuThinButton23)
         Me.Controls.Add(Me.gvOderDetails)
@@ -1201,31 +1250,15 @@ Partial Class frmTouchSale
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Guna2PictureBox1)
         Me.Controls.Add(Me.BunifuThinButton22)
-        Me.Controls.Add(Me.BunifuThinButton21)
-        Me.Controls.Add(Me.cbSaleType)
-        Me.Controls.Add(Me.lblCreditCust)
-        Me.Controls.Add(Me.Label22)
-        Me.Controls.Add(Me.lblNewBal)
-        Me.Controls.Add(Me.lblCustNo)
-        Me.Controls.Add(Me.lblOldBal)
-        Me.Controls.Add(Me.cbPaymode)
-        Me.Controls.Add(Me.cbLocation)
-        Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.txtBuyerTel)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.txtBuyerName)
-        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.btnOder)
         Me.Controls.Add(Me.txtAmt)
         Me.Controls.Add(Me.txtPrice)
         Me.Controls.Add(Me.txtQty)
-        Me.Controls.Add(Me.txtCashPaid)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.gvtouchsale)
         Me.Controls.Add(Me.flbtnCat)
         Me.Controls.Add(Me.flItems)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmTouchSale"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -1237,11 +1270,11 @@ Partial Class frmTouchSale
         CType(Me.gvOders, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gvOderDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1251,14 +1284,12 @@ Partial Class frmTouchSale
     Friend WithEvents flbtnCat As FlowLayoutPanel
     Friend WithEvents txtCat As TextBox
     Friend WithEvents gvtouchsale As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents cbCreditCustName As ComboBox
     Friend WithEvents cbSaleType As ComboBox
     Friend WithEvents lblCreditCust As Label
     Friend WithEvents Label22 As Label
     Friend WithEvents lblNewBal As Label
     Friend WithEvents lblCustNo As Label
     Friend WithEvents lblOldBal As Label
-    Friend WithEvents Label2 As Label
     Friend WithEvents cbPaymode As ComboBox
     Friend WithEvents cbLocation As ComboBox
     Friend WithEvents Label13 As Label
@@ -1266,17 +1297,12 @@ Partial Class frmTouchSale
     Friend WithEvents txtBuyerTel As TextBox
     Friend WithEvents Label11 As Label
     Friend WithEvents txtBuyerName As TextBox
-    Friend WithEvents lblChange As Label
-    Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents txtCashPaid As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents lblTotal As Label
     Friend WithEvents lblProdCode As Label
-    Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents btnOder As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents BunifuThinButton22 As Bunifu.Framework.UI.BunifuThinButton2
-    Friend WithEvents cbWaiter As ComboBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents lblDayOder As Label
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents StatusStrip1 As StatusStrip
@@ -1300,10 +1326,9 @@ Partial Class frmTouchSale
     Friend WithEvents one As Label
     Friend WithEvents BunifuThinButton23 As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents lblWaiter As Label
-    Friend WithEvents BunifuThinButton24 As Bunifu.Framework.UI.BunifuThinButton2
+    Friend WithEvents btnSell As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents lblOderNo As Label
     Friend WithEvents ItemCode As DataGridViewTextBoxColumn
     Friend WithEvents ItemName As DataGridViewTextBoxColumn
@@ -1326,4 +1351,14 @@ Partial Class frmTouchSale
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents lblItemName As Label
     Friend WithEvents lblprodline As Label
+    Friend WithEvents lbldayodersale As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lblTotal As Label
+    Friend WithEvents lblChange As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents cbwaiter As ComboBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents cbcreditcustname As ComboBox
+    Friend WithEvents ckdirectsale As CheckBox
 End Class
