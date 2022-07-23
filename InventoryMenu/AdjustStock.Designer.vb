@@ -490,7 +490,6 @@ Partial Class frmAdjustStock
         Me.Guna2PictureBox3.ImageRotate = 0!
         Me.Guna2PictureBox3.Location = New System.Drawing.Point(859, 5)
         Me.Guna2PictureBox3.Name = "Guna2PictureBox3"
-        Me.Guna2PictureBox3.ShadowDecoration.Parent = Me.Guna2PictureBox3
         Me.Guna2PictureBox3.Size = New System.Drawing.Size(40, 27)
         Me.Guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox3.TabIndex = 145
@@ -505,7 +504,6 @@ Partial Class frmAdjustStock
         Me.Guna2PictureBox4.ImageRotate = 0!
         Me.Guna2PictureBox4.Location = New System.Drawing.Point(891, 3)
         Me.Guna2PictureBox4.Name = "Guna2PictureBox4"
-        Me.Guna2PictureBox4.ShadowDecoration.Parent = Me.Guna2PictureBox4
         Me.Guna2PictureBox4.Size = New System.Drawing.Size(43, 32)
         Me.Guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox4.TabIndex = 144
@@ -591,19 +589,15 @@ Partial Class frmAdjustStock
         Me.txtnarration.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
         Me.txtnarration.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
         Me.txtnarration.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtnarration.DisabledState.Parent = Me.txtnarration
         Me.txtnarration.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.txtnarration.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtnarration.FocusedState.Parent = Me.txtnarration
         Me.txtnarration.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnarration.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtnarration.HoverState.Parent = Me.txtnarration
         Me.txtnarration.Location = New System.Drawing.Point(14, 30)
         Me.txtnarration.Name = "txtnarration"
         Me.txtnarration.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtnarration.PlaceholderText = ""
         Me.txtnarration.SelectedText = ""
-        Me.txtnarration.ShadowDecoration.Parent = Me.txtnarration
         Me.txtnarration.Size = New System.Drawing.Size(315, 37)
         Me.txtnarration.TabIndex = 145
         '

@@ -56,15 +56,6 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("DanielKwadwoKissi131100")>  _
-        Public ReadOnly Property ProductKey() As String
-            Get
-                Return CType(Me("ProductKey"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PoS.mdf;Integ"& _ 
             "rated Security=True;MultipleActiveResultSets=True;Connect Timeout=30")>  _
@@ -84,6 +75,269 @@ Namespace My
             Get
                 Return CType(Me("Poscon"),String)
             End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=192.168.8.100,1433; Database=D:\DAAKYE\FOODAPPLICATION\POS.MDF; User ID=la"& _ 
+            "st; Password=kissboy;")>  _
+        Public ReadOnly Property NetworkPoS() As String
+            Get
+                Return CType(Me("NetworkPoS"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ActiveUser() As String
+            Get
+                Return CType(Me("ActiveUser"),String)
+            End Get
+            Set
+                Me("ActiveUser") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property Productmenu() As Boolean
+            Get
+                Return CType(Me("Productmenu"),Boolean)
+            End Get
+            Set
+                Me("Productmenu") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property invmenu() As Boolean
+            Get
+                Return CType(Me("invmenu"),Boolean)
+            End Get
+            Set
+                Me("invmenu") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property customermenu() As Boolean
+            Get
+                Return CType(Me("customermenu"),Boolean)
+            End Get
+            Set
+                Me("customermenu") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property suppliermenu() As Boolean
+            Get
+                Return CType(Me("suppliermenu"),Boolean)
+            End Get
+            Set
+                Me("suppliermenu") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property salesmenu() As Boolean
+            Get
+                Return CType(Me("salesmenu"),Boolean)
+            End Get
+            Set
+                Me("salesmenu") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property setupmenu() As Boolean
+            Get
+                Return CType(Me("setupmenu"),Boolean)
+            End Get
+            Set
+                Me("setupmenu") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property reportmenu() As Boolean
+            Get
+                Return CType(Me("reportmenu"),Boolean)
+            End Get
+            Set
+                Me("reportmenu") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property accountsmenu() As Boolean
+            Get
+                Return CType(Me("accountsmenu"),Boolean)
+            End Get
+            Set
+                Me("accountsmenu") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property createprod() As Boolean
+            Get
+                Return CType(Me("createprod"),Boolean)
+            End Get
+            Set
+                Me("createprod") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property modprod() As Boolean
+            Get
+                Return CType(Me("modprod"),Boolean)
+            End Get
+            Set
+                Me("modprod") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property delprod() As Boolean
+            Get
+                Return CType(Me("delprod"),Boolean)
+            End Get
+            Set
+                Me("delprod") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property changeprice() As Boolean
+            Get
+                Return CType(Me("changeprice"),Boolean)
+            End Get
+            Set
+                Me("changeprice") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property opensession() As Boolean
+            Get
+                Return CType(Me("opensession"),Boolean)
+            End Get
+            Set
+                Me("opensession") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property sell() As Boolean
+            Get
+                Return CType(Me("sell"),Boolean)
+            End Get
+            Set
+                Me("sell") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property cancellation() As Boolean
+            Get
+                Return CType(Me("cancellation"),Boolean)
+            End Get
+            Set
+                Me("cancellation") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property packtrans() As Boolean
+            Get
+                Return CType(Me("packtrans"),Boolean)
+            End Get
+            Set
+                Me("packtrans") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property proforma() As Boolean
+            Get
+                Return CType(Me("proforma"),Boolean)
+            End Get
+            Set
+                Me("proforma") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property tobecol() As Boolean
+            Get
+                Return CType(Me("tobecol"),Boolean)
+            End Get
+            Set
+                Me("tobecol") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property tobecoldel() As Boolean
+            Get
+                Return CType(Me("tobecoldel"),Boolean)
+            End Get
+            Set
+                Me("tobecoldel") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property closesession() As Boolean
+            Get
+                Return CType(Me("closesession"),Boolean)
+            End Get
+            Set
+                Me("closesession") = value
+            End Set
         End Property
     End Class
 End Namespace

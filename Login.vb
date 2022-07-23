@@ -83,26 +83,30 @@ Public Class Login
                             Dim f3 As New frmMain
                             f3.Show()
                             Me.Hide()
+                            My.Settings.ActiveUser = lblusername.Text
+                            'My.Settings.Save()
                         Case "1"
                             Dim f2 As New frmSalesMenu
                             f2.Show()
                             Me.Hide()
+                            My.Settings.ActiveUser = lblusername.Text
+                           ' My.Settings.Save()
                         Case "2"
                             Dim f2 As New frmMultishop
                             f2.Show()
                             Me.Hide()
+                            My.Settings.ActiveUser = lblusername.Text
+                            ' My.Settings.Save()
                         Case Else
                             MsgBox("Contact Admin")
                     End Select
                     dr.Close()
+                    create("insert into Userlogs(username,UserId,LoginTime,LoginDate,Branch) values('" + lblusername.Text + "','" + txtUserID.Text + "','" + lbltime.Text + "','" + lbldate.Text + "','" + lblBranch.Text + "')")
+                    My.Settings.ActiveUser = lblusername.Text
+                    Reset()
+                    loadsettings()
 
-                    If Poscon.State = ConnectionState.Closed Then
-                        Poscon.Open()
-                    End If
-                    Dim query = "insert into Userlogs(username,UserId,LoginTime,LoginDate,Branch) values('" + lblusername.Text + "','" + txtUserID.Text + "','" + lbltime.Text + "','" + lbldate.Text + "','" + lblBranch.Text + "')"
-                    cmd = New SqlCommand(query, Poscon)
-                    cmd.ExecuteNonQuery()
-                    Poscon.Close()
+                    'My.Settings.Save()
                 Else
                     MsgBox("Wrong Username or Password")
                     txtPassword.Text = ""
@@ -118,6 +122,59 @@ Public Class Login
 
 
 
+    End Sub
+
+    Public Sub loadsettings()
+        Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            Dim query = "select * from settings where username='" & txtUserID.Text & "'"
+            cmd = New SqlCommand(query, Poscon)
+            dr = cmd.ExecuteReader
+            While dr.Read
+                'main menu
+                My.Settings.Productmenu = dr.Item("productmenu").ToString
+                My.Settings.invmenu = dr.Item("inventorymenu").ToString
+                My.Settings.customermenu = dr.Item("customermenu").ToString
+                My.Settings.suppliermenu = dr.Item("suppliermenu").ToString
+                My.Settings.salesmenu = dr.Item("salesmenu").ToString
+                My.Settings.setupmenu = dr.Item("setupmenu").ToString
+                My.Settings.reportmenu = dr.Item("reportmenu").ToString
+                My.Settings.accountsmenu = dr.Item("accountmenu").ToString
+
+                'product management
+                My.Settings.createprod = dr.Item("createprod").ToString
+                My.Settings.modprod = dr.Item("modprod").ToString
+                My.Settings.delprod = dr.Item("delprod").ToString
+
+                'Sales management
+                My.Settings.opensession = dr.Item("opensession").ToString
+                My.Settings.sell = dr.Item("sell").ToString
+                My.Settings.cancellation = dr.Item("cancellation").ToString
+                My.Settings.packtrans = dr.Item("packtrans").ToString
+                My.Settings.proforma = dr.Item("proforma").ToString
+                My.Settings.tobecol = dr.Item("tobecol").ToString
+                My.Settings.tobecoldel = dr.Item("tobecoldel").ToString
+                My.Settings.closesession = dr.Item("closesession").ToString
+
+                ''customer management
+                'My.Settings.suppliermenu = dr.Item("suppliermenu").ToString
+                'My.Settings.salesmenu = dr.Item("salesmenu").ToString
+                'My.Settings.setupmenu = dr.Item("setupmenu").ToString
+                'My.Settings.reportmenu = dr.Item("reportmenu").ToString
+                'My.Settings.accountsmenu = dr.Item("accountmenu").ToString
+
+
+
+
+                My.Settings.Save()
+            End While
+
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click

@@ -2,6 +2,7 @@
     Private Sub pfrmProductManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
+        setttings()
     End Sub
 
     Private Sub btnCat_Click(sender As Object, e As EventArgs)
@@ -36,7 +37,7 @@
         End With
     End Sub
 
-    Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles BunifuButton2.Click
+    Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles btncreateprod.Click
         Dim f2 As New frmProdCreate
         With f2
             .TopLevel = False
@@ -47,7 +48,7 @@
         End With
     End Sub
 
-    Private Sub BunifuButton3_Click(sender As Object, e As EventArgs) Handles BunifuButton3.Click
+    Private Sub BunifuButton3_Click(sender As Object, e As EventArgs) Handles btnmodprod.Click
         Dim f2 As New frmModifyProduct
         With f2
             .TopLevel = False
@@ -58,7 +59,7 @@
         End With
     End Sub
 
-    Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles BunifuButton4.Click
+    Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles btnchprice.Click
         Dim f2 As New frmChangePrice
         With f2
             .TopLevel = False
@@ -69,7 +70,7 @@
         End With
     End Sub
 
-    Private Sub BunifuButton5_Click(sender As Object, e As EventArgs) Handles BunifuButton5.Click
+    Private Sub BunifuButton5_Click(sender As Object, e As EventArgs) Handles btndelprod.Click
         Dim f2 As New frmDeleteProduct
         With f2
             .TopLevel = False
@@ -128,4 +129,11 @@
 
         End With
     End Sub
+    Private Sub setttings()
+        btncreateprod.Enabled = My.Settings.createprod
+        btnmodprod.Enabled = My.Settings.modprod
+        btndelprod.Enabled = My.Settings.delprod
+        btnchprice.Enabled = My.Settings.changeprice
+    End Sub
+
 End Class

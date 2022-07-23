@@ -166,7 +166,7 @@ Public Class RecieveCustomerPayment
                     PrintRecieptroll()
                 End If
                 If tkA5.Checked = True Then
-                    A4()
+                    'A4()
                 End If
                 MsgBox("Payment Saved")
             End If
@@ -213,6 +213,7 @@ Public Class RecieveCustomerPayment
         lblNewBal.Text = a - b - c
     End Sub
     Private Sub PrintRecieptroll()
+
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
@@ -257,6 +258,7 @@ Public Class RecieveCustomerPayment
         End Try
     End Sub
     Sub A4()
+
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()

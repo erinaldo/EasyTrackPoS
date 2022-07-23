@@ -54,4 +54,15 @@
 
         End With
     End Sub
+
+    Private Sub BunifuButton5_Click(sender As Object, e As EventArgs) Handles BunifuButton5.Click
+        Dim f2 As New frmAddwaiter
+        With f2
+            .TopLevel = False
+            PUserProfile.Controls.Add(f2)
+            .BringToFront()
+            .Show()
+
+        End With
+    End Sub
 End Class

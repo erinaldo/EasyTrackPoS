@@ -71,7 +71,7 @@ Public Class frmSessionOpening
             MsgBox("Session Created Succesfully")
             'Dim f2 As New PfrmSalesMgmt
             'f2.Show()
-            frmSales.Show()
+            frmTouchSale.Show()
             Me.Hide()
 
             If Poscon.State = ConnectionState.Closed Then

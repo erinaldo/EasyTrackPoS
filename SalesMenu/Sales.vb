@@ -17,30 +17,9 @@ Public Class frmSales
         'StockCheck()
 
         SessionCheck()
-        ckCashDisc.Checked = True
-        txtCashDisc.Enabled = True
-        ckPerDisc.Checked = False
-        txtPerDisc.Enabled = False
-
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
-        End If
-        Dim que = "select * from userlogs"
-        cmd = New SqlCommand(que, Poscon)
-        da = New SqlDataAdapter(cmd)
-        tbl = New DataTable
-        da.Fill(tbl)
-        If tbl.Rows.Count = 0 Then
-        Else
-            Dim index = tbl.Rows.Count() - 1
-            Activeuser.Text = tbl.Rows(index)(1).ToString
-        End If
-        Poscon.Close()
 
 
-        'ckrollPaper.Checked = True
-        'ckA5Paper.Checked = False
-        'ckA4.Checked = False
+        Activeuser.Text = My.Settings.ActiveUser
         ShowConfig()
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
@@ -56,6 +35,7 @@ Public Class frmSales
         cbPaymode.SelectedIndex = 0
         lblCustType.Text = ""
         Display()
+
     End Sub
     Private Sub clear()
         txtCashPaid.Text = ""
@@ -113,8 +93,8 @@ Public Class frmSales
                         'For discount percentage
                         If row.Cells(13).Value = "%" Then
                             Dim Discprice As Decimal
-                            Discprice = (Val(txtPerDisc.Text) / 100) * row.Cells(3).Value
-                            row.Cells(10).Value = txtPerDisc.Text
+                            Discprice = (Val(txtDiscAmt.Text) / 100) * row.Cells(3).Value
+                            row.Cells(10).Value = txtDiscAmt.Text
                             row.Cells(11).Value = Discprice
                             row.Cells(12).Value = row.Cells(3).Value - Discprice
 
@@ -129,7 +109,7 @@ Public Class frmSales
 
                         'End If
 
-                        If ckPerDisc.Checked = True Then
+                        If cbDisc.SelectedIndex = 1 Then
                             For k = 0 To gvSales.RowCount - 1
                                 If row.Cells(10).Value = "" Then
                                     row.Cells(12).Value = row.Cells(3).Value
@@ -247,7 +227,7 @@ Public Class frmSales
             da.Fill(tbl)
             lblOldBal.Text = tbl.Rows(0)(10).ToString
             lblCustNo.Text = tbl.Rows(0)(0).ToString
-            lblcusttype.Text = tbl.Rows(0)(12).ToString
+            lblCustType.Text = tbl.Rows(0)(12).ToString
             Dim newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
             lblNewBal.Text = newbal
             Poscon.Close()
@@ -760,7 +740,7 @@ Public Class frmSales
                 End If
                 sum += gvSales.Rows(k).Cells(3).Value
                 payable += gvSales.Rows(k).Cells(12).Value
-                DiscAmt += gvSales.Rows(k).Cells(11).Value
+                discamt += gvSales.Rows(k).Cells(11).Value
             Next
             lblTotal.Text = sum
             lblPayable.Text = payable
@@ -838,36 +818,36 @@ Public Class frmSales
             ' MsgBox("yes")
             For Each row As DataGridViewRow In gvSales.Rows
 
-                    If Poscon.State = ConnectionState.Closed Then
-                        Poscon.Open()
-                    End If
-                    Dim query = "insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,convert(datetime,'" + lblDate.Text + "',105),@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + Activeuser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "')"
-                    cmd = New SqlCommand(query, Poscon)
-                    With cmd
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
+                End If
+                Dim query = "insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,convert(datetime,'" + lblDate.Text + "',105),@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + Activeuser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "')"
+                cmd = New SqlCommand(query, Poscon)
+                With cmd
 
-                        .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = row.Cells(5).Value
-                        .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
-                        .Parameters.AddWithValue("@ProdLine", row.Cells(7).Value)
-                        .Parameters.AddWithValue("@ProdCat", row.Cells(4).Value)
-                        .Parameters.AddWithValue("@ItemSize", row.Cells(6).Value)
-                        .Parameters.AddWithValue("@ItemColour", row.Cells(4).Value)
-                        .Parameters.AddWithValue("@QtySold", row.Cells(1).Value)
-                        '.Parameters.AddWithValue("@DateSold", lblDate.Text)
-                        .Parameters.AddWithValue("@TimeSold", lblTime.Text)
-                        .Parameters.AddWithValue("@BuyerName", txtBuyerName.Text)
-                        .Parameters.AddWithValue("@BuyerTel", txtBuyerTel.Text)
-                        .Parameters.AddWithValue("@BuyerLocation", cbLocation.Text)
-                        .Parameters.AddWithValue("@NewStock", row.Cells(8).Value)
-                        .Parameters.AddWithValue("@RetailPrice", row.Cells(2).Value)
-                        .Parameters.AddWithValue("@Saletype", cbSaleType.Text)
-                        .Parameters.AddWithValue("@CreditCustomerName", cbCreditCustName.Text)
-                        .Parameters.AddWithValue("@Amount", row.Cells(3).Value)
-                        .Parameters.AddWithValue("@Discount", row.Cells(10).Value)
-                        .Parameters.AddWithValue("@DiscAmt", row.Cells(11).Value)
-                        .Parameters.AddWithValue("@AmtPayable", value:=(lblPayable.Text))
-                        .ExecuteNonQuery()
-                    End With
-                Next
+                    .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = row.Cells(5).Value
+                    .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
+                    .Parameters.AddWithValue("@ProdLine", row.Cells(7).Value)
+                    .Parameters.AddWithValue("@ProdCat", row.Cells(4).Value)
+                    .Parameters.AddWithValue("@ItemSize", row.Cells(6).Value)
+                    .Parameters.AddWithValue("@ItemColour", row.Cells(4).Value)
+                    .Parameters.AddWithValue("@QtySold", row.Cells(1).Value)
+                    '.Parameters.AddWithValue("@DateSold", lblDate.Text)
+                    .Parameters.AddWithValue("@TimeSold", lblTime.Text)
+                    .Parameters.AddWithValue("@BuyerName", txtBuyerName.Text)
+                    .Parameters.AddWithValue("@BuyerTel", txtBuyerTel.Text)
+                    .Parameters.AddWithValue("@BuyerLocation", cbLocation.Text)
+                    .Parameters.AddWithValue("@NewStock", row.Cells(8).Value)
+                    .Parameters.AddWithValue("@RetailPrice", row.Cells(2).Value)
+                    .Parameters.AddWithValue("@Saletype", cbSaleType.Text)
+                    .Parameters.AddWithValue("@CreditCustomerName", cbCreditCustName.Text)
+                    .Parameters.AddWithValue("@Amount", row.Cells(3).Value)
+                    .Parameters.AddWithValue("@Discount", row.Cells(10).Value)
+                    .Parameters.AddWithValue("@DiscAmt", row.Cells(11).Value)
+                    .Parameters.AddWithValue("@AmtPayable", value:=(lblPayable.Text))
+                    .ExecuteNonQuery()
+                End With
+            Next
 
             '    MsgBox("Record Saved")
 
@@ -885,6 +865,7 @@ Public Class frmSales
 
             ' MsgBox("Stock yes")
             For Each row As DataGridViewRow In gvSales.Rows
+                create("ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,qtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,time,date) values('" & row.Cells(5).Value & "','" & row.Cells(5).Value & "','" & row.Cells(5).Value & "','" & row.Cells(5).Value & "','" & row.Cells(5).Value & "','" & row.Cells(5).Value & "','" & row.Cells(5).Value & "','" & row.Cells(5).Value & "','" & My.Settings.ActiveUser & "','" & row.Cells(5).Value & "','" & row.Cells(5).Value & "','" & row.Cells(5).Value & "','" & row.Cells(5).Value & "','" & row.Cells(5).Value & "',convert(datetime,@Date,105)")
                 Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,qtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyIssued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@time,convert(datetime,@Date,105))"
                 cmd = New SqlCommand(quer, Poscon)
                 With cmd
@@ -1185,43 +1166,6 @@ Public Class frmSales
 
     End Sub
 
-    Private Sub BunifuCheckBox2_Click(sender As Object, e As EventArgs) Handles ckPerDisc.Click
-        If ckPerDisc.Checked = False Then
-            ckCashDisc.Checked = True
-            txtCashDisc.Enabled = True
-        Else
-            ckCashDisc.Checked = False
-            txtCashDisc.Enabled = False
-        End If
-
-        If ckCashDisc.Checked = False Then
-            txtCashDisc.Enabled = False
-            txtPerDisc.Enabled = True
-        Else
-            txtCashDisc.Enabled = True
-            txtPerDisc.Enabled = False
-        End If
-
-    End Sub
-
-    Private Sub BunifuCheckBox1_Click(sender As Object, e As EventArgs) Handles ckCashDisc.Click
-        If ckCashDisc.Checked = False Then
-            ckPerDisc.Checked = True
-
-        Else
-            ckPerDisc.Checked = False
-
-        End If
-
-        If ckPerDisc.Checked = False Then
-            txtPerDisc.Enabled = False
-            txtCashDisc.Enabled = True
-        Else
-            txtPerDisc.Enabled = True
-            txtCashDisc.Enabled = False
-        End If
-
-    End Sub
 
     Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click
 
@@ -1234,14 +1178,14 @@ Public Class frmSales
         Dim sum As Decimal = 0
         Dim payable As Decimal = 0
         Dim DiscAmt As Decimal = 0
-        If ckPerDisc.Checked = True Then
+        If cbDisc.SelectedIndex = 1 Then
             For Each row As DataGridViewRow In gvSales.Rows
 
                 If lbldiscCode.Text = row.Cells(5).Value Then
                     If row.Cells(10).Value = 0 Then
                         Dim Discprice As Decimal
-                        Discprice = (Val(txtPerDisc.Text) / 100) * row.Cells(3).Value
-                        row.Cells(10).Value = txtPerDisc.Text
+                        Discprice = (Val(txtDiscAmt.Text) / 100) * row.Cells(3).Value
+                        row.Cells(10).Value = txtDiscAmt.Text
                         row.Cells(11).Value = Discprice
                         row.Cells(12).Value = row.Cells(3).Value - Discprice
                         row.Cells(13).Value = "%"
@@ -1268,13 +1212,13 @@ Public Class frmSales
             MsgBox("Discount Added")
 
         End If
-        If ckCashDisc.Checked = True Then
+        If cbDisc.SelectedIndex = 1 Then
             For Each row As DataGridViewRow In gvSales.Rows
                 If lbldiscCode.Text = row.Cells(5).Value Then
                     If row.Cells(10).Value = 0 Then
                         Dim Discprice As Decimal
-                        Discprice = row.Cells(3).Value - Val(txtCashDisc.Text)
-                        row.Cells(10).Value = txtCashDisc.Text
+                        Discprice = row.Cells(3).Value - Val(cbDisc.Text)
+                        row.Cells(10).Value = cbDisc.Text
                         row.Cells(12).Value = Discprice
                         row.Cells(11).Value = row.Cells(3).Value - Discprice
                         row.Cells(13).Value = "$"
@@ -1320,17 +1264,17 @@ Public Class frmSales
         Dim payable As Decimal = 0
         Dim DiscAmt As Decimal = 0
 
-        If ckPerDisc.Checked = True Then
+        If cbDisc.SelectedIndex = 1 Then
             Dim ask As MsgBoxResult
-            ask = MsgBox("Would you like to discount Cart by " + txtPerDisc.Text + "%?", MsgBoxStyle.YesNo, "")
+            ask = MsgBox("Would you like to discount Cart by " + txtDiscAmt.Text + "%?", MsgBoxStyle.YesNo, "")
             If ask = MsgBoxResult.Yes Then
                 For Each row As DataGridViewRow In gvSales.Rows
 
                     If True Then
                         If row.Cells(10).Value = 0 Then
                             Dim Discprice As Decimal
-                            Discprice = (Val(txtPerDisc.Text) / 100) * row.Cells(3).Value
-                            row.Cells(10).Value = txtPerDisc.Text
+                            Discprice = (Val(txtDiscAmt.Text) / 100) * row.Cells(3).Value
+                            row.Cells(10).Value = txtDiscAmt.Text
                             row.Cells(11).Value = Discprice
                             row.Cells(12).Value = row.Cells(3).Value - Discprice
                             row.Cells(13).Value = "%"
@@ -1351,9 +1295,9 @@ Public Class frmSales
                     payable += gvSales.Rows(k).Cells(12).Value
                     DiscAmt += gvSales.Rows(k).Cells(11).Value
                 Next
-                If txtPerDisc.Text = "" Then
+                If txtDiscAmt.Text = "" Then
                 Else
-                    lblPayable.Text = Val(lblTotal.Text) - (Val(lblTotal.Text) * (Val(txtPerDisc.Text) / 100))
+                    lblPayable.Text = Val(lblTotal.Text) - (Val(lblTotal.Text) * (Val(txtDiscAmt.Text) / 100))
                 End If
                 lblTotal.Text = sum
                 'lblPayable.Text = payable
@@ -1362,17 +1306,17 @@ Public Class frmSales
 
             End If
         End If
-        If ckCashDisc.Checked = True Then
+        If cbDisc.SelectedIndex = 1 Then
             Dim ask As MsgBoxResult
-            ask = MsgBox("Would you like to discount Cart by ¢" + txtCashDisc.Text + "?", MsgBoxStyle.YesNo, "")
+            ask = MsgBox("Would you like to discount Cart by ¢" + txtDiscAmt.Text + "?", MsgBoxStyle.YesNo, "")
             If ask = MsgBoxResult.Yes Then
                 For Each row As DataGridViewRow In gvSales.Rows
                     If True Then
 
                         If row.Cells(10).Value = 0 Then
                             Dim Discprice As Decimal
-                            Discprice = row.Cells(3).Value - Val(txtCashDisc.Text)
-                            row.Cells(10).Value = txtCashDisc.Text
+                            Discprice = row.Cells(3).Value - Val(txtDiscAmt.Text)
+                            row.Cells(10).Value = txtDiscAmt.Text
                             row.Cells(11).Value = Val(row.Cells(3).Value - Discprice) / Val(gvSales.Rows.Count)
                             row.Cells(12).Value = row.Cells(3).Value - row.Cells(11).Value
                             row.Cells(13).Value = "$"
@@ -1395,9 +1339,9 @@ Public Class frmSales
                     payable += gvSales.Rows(k).Cells(12).Value
                     DiscAmt += gvSales.Rows(k).Cells(11).Value
                 Next
-                If txtCashDisc.Text = "" Then
+                If cbDisc.SelectedIndex = 1 Then
                 Else
-                    lblPayable.Text = Val(lblTotal.Text) - Val(txtCashDisc.Text)
+                    lblPayable.Text = Val(lblTotal.Text) - Val(txtDiscAmt.Text)
                 End If
                 lblTotal.Text = sum
                 'lblPayable.Text = payable

@@ -252,6 +252,7 @@ Partial Class Login
         Me.BunifuThinButton22.Size = New System.Drawing.Size(194, 50)
         Me.BunifuThinButton22.TabIndex = 144
         Me.BunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.BunifuThinButton22.Visible = False
         '
         'Login
         '

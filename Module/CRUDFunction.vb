@@ -82,6 +82,7 @@ Module CRUDFunction
         Finally
             Poscon.Close()
         End Try
+
     End Sub
     Public Sub ComboFeed(ByVal sql As String, combo As ComboBox, row As Integer)
         Try
@@ -342,4 +343,9 @@ Module CRUDFunction
             da.Dispose()
         End Try
     End Sub
+    Public Sub userc()
+        frmSales.lblTotal.Visible = False
+    End Sub
+
+
 End Module

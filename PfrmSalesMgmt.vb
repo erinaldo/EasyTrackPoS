@@ -8,6 +8,7 @@ Public Class PfrmSalesMgmt
     Private Sub PfrmSalesMgmt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
+        settings()
     End Sub
 
     Private Sub btnOders_Click(sender As Object, e As EventArgs)
@@ -58,7 +59,7 @@ Public Class PfrmSalesMgmt
 
     End Sub
 
-    Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles BunifuButton2.Click
+    Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles btnsell.Click
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
@@ -81,7 +82,7 @@ Public Class PfrmSalesMgmt
 
     End Sub
 
-    Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles BunifuButton4.Click
+    Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles btnchangepricesel.Click
         Dim f2 As New frmChangePrice
         With f2
             .TopLevel = False
@@ -92,7 +93,7 @@ Public Class PfrmSalesMgmt
         End With
     End Sub
 
-    Private Sub BunifuButton5_Click(sender As Object, e As EventArgs) Handles BunifuButton5.Click
+    Private Sub BunifuButton5_Click(sender As Object, e As EventArgs) Handles btncanc.Click
         Dim f2 As New frmSalesCancelation
         With f2
             .TopLevel = False
@@ -108,7 +109,7 @@ Public Class PfrmSalesMgmt
         Me.Hide()
     End Sub
 
-    Private Sub BunifuButton7_Click(sender As Object, e As EventArgs) Handles BunifuButton7.Click
+    Private Sub BunifuButton7_Click(sender As Object, e As EventArgs) Handles btnclosesession.Click
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
@@ -137,7 +138,7 @@ Public Class PfrmSalesMgmt
 
     End Sub
 
-    Private Sub BunifuButton3_Click(sender As Object, e As EventArgs) Handles BunifuButton3.Click
+    Private Sub BunifuButton3_Click(sender As Object, e As EventArgs) Handles btntobecol.Click
         Dim f2 As New frmToCollected
         With f2
             .TopLevel = False
@@ -148,7 +149,7 @@ Public Class PfrmSalesMgmt
         End With
     End Sub
 
-    Private Sub BunifuButton1_Click_1(sender As Object, e As EventArgs) Handles BunifuButton1.Click
+    Private Sub BunifuButton1_Click_1(sender As Object, e As EventArgs) Handles btntobecoldel.Click
         Dim f2 As New frmTobeCollectedDelivery
         With f2
             .TopLevel = False
@@ -159,7 +160,7 @@ Public Class PfrmSalesMgmt
         End With
     End Sub
 
-    Private Sub BunifuButton8_Click(sender As Object, e As EventArgs) Handles BunifuButton8.Click
+    Private Sub BunifuButton8_Click(sender As Object, e As EventArgs) Handles btnpacktrans.Click
         Dim f2 As New frmPackSingles
         With f2
             .TopLevel = False
@@ -170,8 +171,19 @@ Public Class PfrmSalesMgmt
         End With
     End Sub
 
-    Private Sub BunifuButton9_Click(sender As Object, e As EventArgs) Handles BunifuButton9.Click
+    Private Sub BunifuButton9_Click(sender As Object, e As EventArgs) Handles btnproforma.Click
         Dim f2 As New frmProForma
         f2.Show()
+    End Sub
+    Private Sub settings()
+        btnOpenSession.Enabled = My.Settings.opensession
+        btnsell.Enabled = My.Settings.sell
+        btnchangepricesel.Enabled = My.Settings.changeprice
+        btncanc.Enabled = My.Settings.cancellation
+        btntobecol.Enabled = My.Settings.tobecol
+        btntobecoldel.Enabled = My.Settings.tobecoldel
+        btnclosesession.Enabled = My.Settings.closesession
+        btnproforma.Enabled = My.Settings.proforma
+        btnpacktrans.Enabled = My.Settings.packtrans
     End Sub
 End Class

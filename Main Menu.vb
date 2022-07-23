@@ -1,9 +1,12 @@
-﻿Imports System.Security.Principal
-Public Class frmMain
+﻿Public Class frmMain
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
+        stuser.Text = My.Settings.ActiveUser
+
+        'settings()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
@@ -108,7 +111,8 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub BunifuButton1_Click(sender As Object, e As EventArgs) Handles BunifuButton1.Click
+    Private Sub BunifuButton1_Click(sender As Object, e As EventArgs) Handles btnproductmenu.Click
+
         Dim f2 As New pfrmProductManagement
         f2.Show()
         With Dashboard
@@ -121,19 +125,19 @@ Public Class frmMain
         Me.Hide()
     End Sub
 
-    Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles BunifuButton2.Click
+    Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles btninvmenu.Click
         Dim f4 As New PfrmInventoryMgmt
         f4.Show()
         Me.Hide()
     End Sub
 
-    Private Sub BunifuButton3_Click(sender As Object, e As EventArgs) Handles BunifuButton3.Click
+    Private Sub BunifuButton3_Click(sender As Object, e As EventArgs) Handles btnsalesmenu.Click
         Dim f5 As New PfrmSalesMgmt
         f5.Show()
         Me.Hide()
     End Sub
 
-    Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles BunifuButton4.Click
+    Private Sub BunifuButton4_Click(sender As Object, e As EventArgs) Handles btnrptmenu.Click
         'Dim f2 As New NewReport
         'f2.Show()
         ' NewReport.Show()
@@ -141,7 +145,7 @@ Public Class frmMain
         Me.Hide()
     End Sub
 
-    Private Sub BunifuButton5_Click(sender As Object, e As EventArgs) Handles BunifuButton5.Click
+    Private Sub BunifuButton5_Click(sender As Object, e As EventArgs) Handles rptcustmenu.Click
         Dim f2 As New PfrmCustomer
         f2.Show()
         Me.Hide()
@@ -155,12 +159,12 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub BunifuButton7_Click(sender As Object, e As EventArgs) Handles BunifuButton7.Click
+    Private Sub BunifuButton7_Click(sender As Object, e As EventArgs) Handles btnsuppmenu.Click
         frmSuppliersMenu.Show()
         Me.Hide()
     End Sub
 
-    Private Sub BunifuButton8_Click(sender As Object, e As EventArgs) Handles BunifuButton8.Click
+    Private Sub BunifuButton8_Click(sender As Object, e As EventArgs) Handles btnsysmenu.Click
         PfrmUserSetup.Show()
         Me.Hide()
     End Sub
@@ -169,6 +173,7 @@ Public Class frmMain
         Dim f1 As New Login
         f1.Show()
         Me.Hide()
+
     End Sub
 
     Private Sub Label7_Click_1(sender As Object, e As EventArgs) Handles Label7.Click
@@ -177,7 +182,7 @@ Public Class frmMain
         'Me.Hide()
     End Sub
 
-    Private Sub BunifuButton6_Click(sender As Object, e As EventArgs) Handles BunifuButton6.Click
+    Private Sub BunifuButton6_Click(sender As Object, e As EventArgs) Handles btnaccmenu.Click
         MsgBox("Contact your Service Providers")
     End Sub
 
@@ -187,4 +192,19 @@ Public Class frmMain
         f1.Show()
         ' Me.Hide()
     End Sub
+    Private Sub settings()
+        btnproductmenu.Enabled = My.Settings.Productmenu
+        btninvmenu.Enabled = My.Settings.invmenu
+        btnsalesmenu.Enabled = My.Settings.salesmenu
+        btnrptmenu.Enabled = My.Settings.reportmenu
+        rptcustmenu.Enabled = My.Settings.customermenu
+        btnaccmenu.Enabled = My.Settings.accountsmenu
+        btnsuppmenu.Enabled = My.Settings.suppliermenu
+        btnsysmenu.Enabled = My.Settings.setupmenu
+
+
+
+    End Sub
+
+
 End Class

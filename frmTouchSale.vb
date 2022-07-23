@@ -23,13 +23,17 @@ Public Class frmTouchSale
         While dr.Read
             Dim Button = New Button
             Button.Width = 90
-            Button.Height = 30
+            Button.Height = 25
 
 
             Button.Text = dr.Item("prodcat").ToString
             Button.FlatStyle = FlatStyle.Flat
-            Button.BackColor = Color.FromArgb(255, 107, 107)
+            Button.BackColor = Color.FromArgb(128, 128, 255)
             Button.ForeColor = Color.White
+            'Button.Font = New Font(Button.Font.FontFamily, 14)
+            Button.Font = New Font("Segoe UI", 13, FontStyle.Bold)
+            ' Button.Font = System.Drawing.Font("Marlett", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+
 
             flbtnCat.Controls.Add(Button)
             Button.Cursor = Cursors.Hand
@@ -56,26 +60,31 @@ Public Class frmTouchSale
         If action = "btnCategory" Then
             cmd = New SqlCommand("Select * from StockMast where ProdCat='" + txtCat.Text + "'", Poscon)
         End If
+        If action = "btnsearch" Then
+            cmd = New SqlCommand("Select * from StockMast where Prodname like '%" + txtSearch.Text + "%'", Poscon)
+        End If
 
         dr = cmd.ExecuteReader
         While dr.Read
             Dim Btn = New Button
             Btn.Width = 125
-            Btn.Height = 60
-            Btn.Text = dr.Item("itemname").ToString
+            Btn.Height = 65
+            Btn.Text = dr.Item("Prodname").ToString
+            Btn.TextAlign = ContentAlignment.TopCenter
             Btn.FlatStyle = FlatStyle.Flat
             Btn.BackColor = Color.FromArgb(255, 107, 107)
             Btn.ForeColor = Color.White
+            Btn.Font = New Font("Segoe UI", 10, FontStyle.Bold)
             Btn.Tag = dr.Item("ProdCode").ToString
             flItems.Controls.Add(Btn)
             Btn.Cursor = Cursors.Hand
 
 
             lblPrice = New Label
-            lblPrice.BackColor = Color.DarkGray
+            lblPrice.BackColor = Color.SteelBlue
             lblPrice.TextAlign = ContentAlignment.MiddleCenter
             lblPrice.Dock = DockStyle.Bottom
-            lblPrice.Text = dr.Item("RetailPrice")
+            lblPrice.Text = "¢" & dr.Item("RetailPrice")
             lblPrice.Tag = dr.Item("ProdCode").ToString
 
             Btn.Controls.Add(lblPrice)
@@ -87,6 +96,7 @@ Public Class frmTouchSale
         Poscon.Close()
     End Sub
     Private Sub frmTouchSale_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        tsUser.Text = My.Settings.ActiveUser
         LoadCatbtn()
         LoadItems()
         action = "Startup"
@@ -97,6 +107,8 @@ Public Class frmTouchSale
         OnloadActivity()
         ShowOderNo()
         btnSell.Visible = False
+        btnOder.Visible = True
+        display()
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
     End Sub
@@ -165,7 +177,7 @@ Public Class frmTouchSale
                 cmd = New SqlCommand(query, Poscon)
                 dr = cmd.ExecuteReader
                 While dr.Read
-                    lblItemName.Text = dr.Item("itemname")
+                    lblItemName.Text = dr.Item("Prodname")
                     lblCat.Text = dr.Item("ProdCat")
                     lblprodline.Text = dr.Item("Prodline")
                     lblActualStock.Text = dr.Item("ProdQty")
@@ -234,11 +246,11 @@ Public Class frmTouchSale
                 Oder()
                 Oderdetails()
                 gvtouchsale.Rows.Clear()
-                Clear()
+
                 LoadOder()
                 DisplayOders()
                 ShowOderNo()
-
+                Clear()
             End If
         End If
 
@@ -247,6 +259,8 @@ Public Class frmTouchSale
 
     Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs) Handles Guna2PictureBox1.Click
         Me.Hide()
+        Application.Exit()
+
     End Sub
     Public Sub Update_Oder()
         create("delete from odertranx where oderno='" + lblOderSale.Text + "'")
@@ -406,41 +420,28 @@ Public Class frmTouchSale
         LoadOder()
     End Sub
     Sub SearchWaiters(valuetosearch As String)
-
         Try
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
+
+            If cbcreditcustname.Text = "" Then
+                reload("select * from OdersConfig where status='" + "Pending" + "'", gvOders)
+                Exit Sub
             End If
-            Dim query = "select * from OdersConfig where concat(OderNo,Waiter) like '%" + valuetosearch + "%' where status='" + "Pending" + "'"
-            cmd = New SqlCommand(query, Poscon)
-            da = New SqlDataAdapter(cmd)
-            tbl = New DataTable()
-            da.Fill(tbl)
-            gvOders.DataSource = tbl
-            Poscon.Close()
+            reload("select * from OdersConfig where concat(OderNo,Waiter) like '%" + valuetosearch + "%' and status='" + "Pending" + "'", gvOders)
+
+
+
         Catch ex As Exception
-            'MsgBox(ex.ToString)
+            MsgBox(ex.ToString)
         End Try
     End Sub
     Private Sub DisplayOders()
-        'If poscon.State = ConnectionState.Closed Then
-        '    poscon.Open()
-        'End If
-        'Dim query = "select * from OdersConfig"
-        'cmd = New SqlCommand(query, poscon)
-        'da = New SqlDataAdapter(cmd)
-        'Dim builder As New SqlCommandBuilder
-        'builder = New SqlCommandBuilder(da)
-        'Dim ds As New DataSet
-        'da.Fill(ds)
-        'gvOders.DataSource = ds.Tables(0)
-        'poscon.Close()
+
         reload("select * from OdersConfig where status='" + "Pending" + "'", gvOders)
     End Sub
     Sub Clear()
-        lblDayOder.Text = ""
+        'lblDayOder.Text = ""
         cbwaiter.SelectedIndex = -1
-        lblCreditCust.Text = ""
+        'lblCreditCust.Text = ""
         lblProdCode.Text = ""
         txtBuyerName.Text = ""
         txtCashPaid.Text = ""
@@ -459,7 +460,6 @@ Public Class frmTouchSale
         cbcreditcustname.SelectedIndex = -1
         txtCat.Text = ""
         'txtProdline.Text = ""
-
 
 
     End Sub
@@ -548,6 +548,7 @@ Public Class frmTouchSale
 
             lblOderSale.Text = row.Cells(3).Value.ToString()
             lbldayodersale.Text = row.Cells(0).Value.ToString()
+            cbwaiter.Text = row.Cells(2).Value.ToString()
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
@@ -571,60 +572,16 @@ Public Class frmTouchSale
 
     End Sub
     Sub Reciept()
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim sql = "insert into Recieptconfig(salesperson,Recieptid,waitername,oderno,date) values('" + tsUser.Text + "','" + lblRecieptNo.Text + "','" + lblWaiter.Text + "','" + lblDayOder.Text + "','" + lbldate.Text + "') "
-        cmd = New SqlCommand(sql, Poscon)
-        cmd.ExecuteNonQuery()
-        Poscon.Close()
 
+        create("insert into Recieptconfig(salesperson,Recieptid,waitername,oderno,date) values('" + tsUser.Text + "','" + lblRecieptNo.Text + "','" + lblWaiter.Text + "','" + lblDayOder.Text + "','" + lbldate.Text + "') ")
     End Sub
     Private Sub ShowConfig()
-        'If poscon.State = ConnectionState.Closed Then
-        '    poscon.Open()
-        'End If
-        'Dim recieptcount As String
-        'Dim nextreciept As String
-        'Dim que = "select * from recieptconfig"
-        'cmd = New SqlCommand(que, poscon)
-        'Dim da As New SqlDataAdapter(cmd)
-        'Dim table As New DataTable
-        'da.Fill(table)
-        'If table.Rows.Count() = 0 Then
-        '    lblRecieptNo.Text = "10001"
-        'Else
-
-        '    Dim index = table.Rows.Count() - 1
-        '    Dim reciept = table.Rows(index)(0).ToString
-        '    nextreciept = reciept + 1
-        '    recieptcount = nextreciept.Count.ToString
-        '    Select Case recieptcount
-        '        Case "1"
-        '            lblRecieptNo.Text = "1000" + nextreciept
-        '        Case "2"
-        '            lblRecieptNo.Text = "100" + nextreciept
-        '        Case "3"
-        '            lblRecieptNo.Text = "10" + nextreciept
-        '        Case "4"
-        '            lblRecieptNo.Text = "1" + nextreciept
-        '        Case "5"
-        '            lblRecieptNo.Text = nextreciept
-        '        Case Else
-        '            lblRecieptNo.Text = nextreciept
-
-        '    End Select
-        'End If
-
-
-        'poscon.Close()
-
         Dim digit As Integer
         Dim result As String
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
-        cmd = New SqlCommand("select max(Recieptid) from recieptconfig", Poscon)
+        cmd = New SqlCommand("select max(recieptno) from salestranx", Poscon)
         result = cmd.ExecuteScalar.ToString
 
         If String.IsNullOrEmpty(result) Then
@@ -966,220 +923,149 @@ Public Class frmTouchSale
     End Sub
 
     Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs) Handles btnSell.Click
-        ShowConfig()
+        'ShowConfig()
         Reciept()
         ShowConfig()
-        If Val(txtCashPaid.Text) < Val(txtAmt.Text) Then
-            MsgBox("Cash Paid not enough")
-            Exit Sub
-        End If
+
 
         If cbSaleType.Text = "" Or gvtouchsale.RowCount = 0 Then
             MsgBox("Select Sale Type or Fill sale Cart", vbCritical)
-        Else
-            'Try
-            If (cbSaleType.SelectedIndex = 0 Or cbSaleType.SelectedItem = "Walk-In Sale") Then
+        End If
+
+
+        'Try
+        If (cbSaleType.SelectedIndex = 0 Or cbSaleType.Text = "Walk-In Sale") Then
+            'reciept()
+            If Val(txtCashPaid.Text) < Val(lblTotal.Text) Then
+                MsgBox("Cash Paid not enough")
+                Exit Sub
+            End If
+            ' cbCreditCustName.Visible = False
+            ' lblCreditCust.Visible = False
+            Try
+
+
+                For Each row As DataGridViewRow In gvtouchsale.Rows
+                    create("insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,waiter,amountpayable) values('" & row.Cells(0).Value & "','" & row.Cells(1).Value & "','" & row.Cells(8).Value & "','" & row.Cells(7).Value & "','" & row.Cells(3).Value & "','" & lbldate.Text & "','" & lbltime.Text & "','" & txtBuyerName.Text & "','" & txtBuyerTel.Text & "','" & cbLocation.Text & "','" & row.Cells(10).Value & "','" & row.Cells(2).Value & "','" & cbSaleType.Text & "','" & cbcreditcustname.Text & "','" & row.Cells(4).Value & "','" + tsUser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "','" + cbwaiter.Text + "','" & lblTotal.Text & "')")
+                    create("update StockMast set prodqty = prodqty - '" & row.Cells(3).Value & "' where Prodcode= '" & row.Cells(0).Value & "'")
+                Next
+                MsgBox("Record Saved")
+
+            Finally
+                RollReciept(lblRecieptNo.Text)
+                MsgBox("Sale Complete")
+
+                'Odersaleno.Text = gvtouchsale.Rows(k).Cells(5).Value
+                If lblOderSale.Text <> "odersale" Then
+                    Dim oderstatus As String = "sold"
+                    create("update OdersConfig set status='" + oderstatus + "' where OderNo= '" & lblOderSale.Text & "' ")
+                    create("update Odertranx set OderStatus = '" + oderstatus + "' where DayoderNo =" + lblOderSale.Text + "")
+
+                    MsgBox("Oder Status Updated")
+
+
+                End If
+
+                DisplayOders()
+                MsgBox("StockMast Updated")
+                lblTotal.Text = ""
+                Clear()
+                gvtouchsale.Rows.Clear()
+                DisplayOders()
+                frmTouchSale_Load(Nothing, Nothing)
+
+            End Try
+        End If
+        If (cbSaleType.SelectedIndex = 1 Or cbSaleType.Text = "Credit-Sale") Then
+            'cbCreditCustName.Visible = True
+            'lblCreditCust.Visible = True
+            Dim a = Val(lblTotal.Text)
+            Dim b = Val(lblOldBal.Text)
+            Dim sum = b - a
+            lblNewBal.Text = sum
+            If cbcreditcustname.Text = "" Then
+                MsgBox("Choose customer")
+                Exit Sub
+            End If
+
+            Try
                 'reciept()
 
-                ' cbCreditCustName.Visible = False
-                ' lblCreditCust.Visible = False
-                Try
-                    Dim i As Integer
-                    If True Then
-                        For i = 0 To gvtouchsale.RowCount - 1
+                For Each row As DataGridViewRow In gvtouchsale.Rows
+                    create("insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance) values('" & row.Cells(0).Value & "','" & row.Cells(1).Value & "','" & row.Cells(8).Value & "','" & row.Cells(7).Value & "','" & row.Cells(3).Value & "','" & lbldate.Text & "','" & lbltime.Text & "','" & txtBuyerName.Text & "','" & txtBuyerTel.Text & "','" & cbLocation.Text & "','" & row.Cells(10).Value & "','" & row.Cells(2).Value & "','" & cbSaleType.Text & "','" & cbcreditcustname.Text & "','" & row.Cells(4).Value & "','" + tsUser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "')")
+                    create("update StockMast set prodqty = prodqty - '" & row.Cells(3).Value & "' where Prodcode= '" & row.Cells(0).Value & "'")
+                    MsgBox("You Reach") ''''''''''''''''''''''''''
+                Next
+            Finally
+                create("Insert into CustomerLedger(CustomerName,oldbal,Newbal,CreditRecieved,DateRecieved,TimeRecieved,CustomerNo)Values('" + cbcreditcustname.Text + "','" + lblOldBal.Text + "','" + lblNewBal.Text + "','" + lblTotal.Text + "','" + lbldate.Text + "','" + lbltime.Text + "','" + lblCustNo.Text + "')")
+                create("update Customer set CurrentBalance = currentbalance + '" & lblTotal.Text & "' where CustomerNo = " + lblCustNo.Text + "")
 
-                            If Poscon.State = ConnectionState.Closed Then
-                                Poscon.Open()
-                            End If
-                            Dim query = "insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@QtySold,@DateSold,@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + tsUser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "')"
-                            Dim cmd As New SqlCommand
-                            cmd = New SqlCommand(query, Poscon)
-                            With cmd
+                MsgBox("Customer Updated") '''''''''''''''''''''''''''''''
+                RollReciept(lblRecieptNo.Text)
+                ShowConfig()
+                MsgBox("StockMast Updated") '''''''''''''''''''''''''
 
-                                .Parameters.AddWithValue("@ItemCode", gvtouchsale.Rows(i).Cells(0).Value)
-                                .Parameters.AddWithValue("@Itemname", gvtouchsale.Rows(i).Cells(1).Value)
-                                .Parameters.AddWithValue("@ProdLine", (gvtouchsale.Rows(i).Cells(8).Value))
-                                .Parameters.AddWithValue("@ProdCat", (gvtouchsale.Rows(i).Cells(7).Value))
-                                '.Parameters.AddWithValue("@ItemSize", (gvtouchsale.Rows(i).Cells(6).Value))
-                                '.Parameters.AddWithValue("@ItemColour", (gvtouchsale.Rows(i).Cells(4).Value))
-                                .Parameters.AddWithValue("@QtySold", (gvtouchsale.Rows(i).Cells(3).Value))
-                                .Parameters.AddWithValue("@DateSold", lbldate.Text)
-                                .Parameters.AddWithValue("@TimeSold", lbltime.Text)
-                                .Parameters.AddWithValue("@BuyerName", txtBuyerName.Text)
-                                .Parameters.AddWithValue("@BuyerTel", txtBuyerTel.Text)
-                                .Parameters.AddWithValue("@BuyerLocation", cbLocation.Text)
-                                .Parameters.AddWithValue("@NewStock", (gvtouchsale.Rows(i).Cells(10).Value))
-                                .Parameters.AddWithValue("@RetailPrice", gvtouchsale.Rows(i).Cells(2).Value)
-                                .Parameters.AddWithValue("@Saletype", cbSaleType.Text)
-                                .Parameters.AddWithValue("@CreditCustomerName", cbcreditcustname.Text)
-                                .Parameters.AddWithValue("@Amount", gvtouchsale.Rows(i).Cells(4).Value)
-                                .ExecuteNonQuery()
-                            End With
-                            Poscon.Close()
-
-
-                        Next
-
-                        'frmSalesReciept.Show()
-
-
-                        MsgBox("Record Saved")
-                    End If
-                Finally
-                    If Poscon.State = ConnectionState.Closed Then
-                        Poscon.Open()
-                    End If
-                    For k = 0 To gvtouchsale.RowCount - 1
-
-                        Dim quer = "update StockMast set prodqty = prodqty - '" & gvtouchsale.Rows(k).Cells(3).Value & "' where Prodcode= @itemcode"
-                        cmd = New SqlCommand(quer, Poscon)
-                        With cmd
-                            .Parameters.AddWithValue("@ItemCode", SqlDbType.NVarChar).Value = gvtouchsale.Rows(k).Cells(0).Value
-                            .ExecuteNonQuery()
-                        End With
-                        cmd.ExecuteNonQuery()
-
-                    Next
-                    MsgBox("Sale Complete")
-                    If Poscon.State = ConnectionState.Closed Then
-                        Poscon.Open()
-                    End If
-                    'Odersaleno.Text = gvtouchsale.Rows(k).Cells(5).Value
-                    If lblOderSale.Text <> "odersale" Then
-                        Dim oderstatus As String = "sold"
-                        Dim sql = "update OdersConfig set status='" + oderstatus + "' where OderNo= '" & lblOderSale.Text & "' "
-                        cmd = New SqlCommand(sql, Poscon)
-                        cmd.ExecuteNonQuery()
-                        MsgBox("Oder Deleted Successfully")
-
-                        Dim query = "update Odertranx set OderStatus = '" + oderstatus + "' where DayoderNo =" + lblOderSale.Text + ""
-                        cmd = New SqlCommand(query, Poscon)
-                        cmd.ExecuteNonQuery()
-                        MsgBox("Oder Status Updated")
-                        Poscon.Close()
-                        DisplayOders()
-                        MsgBox("StockMast Updated")
-                        lblTotal.Text = ""
-                        Clear()
-                        gvtouchsale.Rows.Clear()
-                        DisplayOders()
-                    End If
-
-
-
-                End Try
-            End If
-            If (cbSaleType.SelectedIndex = 1) Then
-                'cbCreditCustName.Visible = True
-                'lblCreditCust.Visible = True
-                Dim a = Val(lblTotal.Text)
-                Dim b = Val(lblOldBal.Text)
-                Dim sum = b - a
-                lblNewBal.Text = sum
-                If cbcreditcustname.Text = "" Then
-                    MsgBox("Choose customer")
-                Else
-                    Try
-                        'reciept()
-                        Dim i As Integer
-                        If True Then
-                            For i = 0 To gvtouchsale.RowCount - 1
-                                If Poscon.State = ConnectionState.Closed Then
-                                    Poscon.Open()
-                                End If
-                                Dim query = "insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance) values(@ItemCode,@ItemName,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,@DateSold,@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + tsUser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "')"
-                                Dim cmd As New SqlCommand
-                                cmd = New SqlCommand(query, Poscon)
-                                With cmd
-
-                                    .Parameters.AddWithValue("@ItemCode", gvtouchsale.Rows(i).Cells(0).Value)
-                                    .Parameters.AddWithValue("@Itemname", gvtouchsale.Rows(i).Cells(1).Value)
-                                    .Parameters.AddWithValue("@ProdLine", (gvtouchsale.Rows(i).Cells(8).Value))
-                                    .Parameters.AddWithValue("@ProdCat", (gvtouchsale.Rows(i).Cells(7).Value))
-                                    '.Parameters.AddWithValue("@ItemSize", (gvtouchsale.Rows(i).Cells(6).Value))
-                                    '.Parameters.AddWithValue("@ItemColour", (gvtouchsale.Rows(i).Cells(4).Value))
-                                    .Parameters.AddWithValue("@QtySold", (gvtouchsale.Rows(i).Cells(3).Value))
-                                    .Parameters.AddWithValue("@DateSold", lbldate.Text)
-                                    .Parameters.AddWithValue("@TimeSold", lbltime.Text)
-                                    .Parameters.AddWithValue("@BuyerName", txtBuyerName.Text)
-                                    .Parameters.AddWithValue("@BuyerTel", txtBuyerTel.Text)
-                                    .Parameters.AddWithValue("@BuyerLocation", cbLocation.Text)
-                                    .Parameters.AddWithValue("@NewStock", (gvtouchsale.Rows(i).Cells(9).Value))
-                                    .Parameters.AddWithValue("@RetailPrice", gvtouchsale.Rows(i).Cells(2).Value)
-                                    .Parameters.AddWithValue("@Saletype", cbSaleType.Text)
-                                    .Parameters.AddWithValue("@CreditCustomerName", cbcreditcustname.Text)
-                                    .Parameters.AddWithValue("@Amount", gvtouchsale.Rows(i).Cells(4).Value)
-                                    .ExecuteNonQuery()
-                                End With
-                                Poscon.Close()
-                                MsgBox("You Reach")
-                            Next
-                        End If
-
-                    Finally
-                        If Poscon.State = ConnectionState.Closed Then
-                            Poscon.Open()
-                        End If
-                        Dim quer = "Insert into CustomerLedger(CustomerName,oldbal,Newbal,CreditRecieved,DateRecieved,TimeRecieved,CustomerNo)Values('" + cbcreditcustname.Text + "','" + lblOldBal.Text + "','" + lblNewBal.Text + "','" + lblTotal.Text + "','" + lbldate.Text + "','" + lbltime.Text + "','" + lblCustNo.Text + "')"
-                        Dim cmd As New SqlCommand
-                        cmd = New SqlCommand(quer, Poscon)
-                        cmd.ExecuteNonQuery()
-
-                        Dim que = "update Customer set CurrentBalance=@CurBal where CustomerNo = " + lblCustNo.Text + ""
-                        Dim cm As New SqlCommand(que, Poscon)
-                        With cm
-
-                            .Parameters.AddWithValue("@CurBal", CDbl(lblNewBal.Text))
-                            .ExecuteNonQuery()
-
-                        End With
-
-
-                        MsgBox("Customer Updated")
-                        Poscon.Close()
-
-                        For k = 0 To gvtouchsale.RowCount - 1
-                            If Poscon.State = ConnectionState.Closed Then
-                                Poscon.Open()
-                            End If
-                            Dim query = "update StockMast set ProdQty = @newstock where ProdCode =" + gvtouchsale.Rows(k).Cells(5).Value + ""
-                            Dim cmdd As New SqlCommand
-                            cmdd = New SqlCommand(query, Poscon)
-                            With cmdd
-                                .Parameters.AddWithValue("@newstock", gvtouchsale.Rows(k).Cells(8).Value)
-                                .ExecuteNonQuery()
-                            End With
-                        Next
-                        Poscon.Close()
-
-                        ShowConfig()
-                        MsgBox("StockMast Updated")
-                        frmSalesReciept.Show()
-
-                        gvtouchsale.Rows.Clear()
-                        lblTotal.Text = ""
-                        Clear()
-                        DisplayOders()
-                        lblTotal.Text = ""
-                    End Try
-                End If
-                'If cbSaleType.Text = "" Or cbSaleType.Text = "Credit Sale" Then
-                'cbCreditCustName.Visible = False
-                'Else
-                '  cbCreditCustName.Visible = True
-
-                '     End If                   
-            End If
-            'Catch ex As Exception
-            '  MsgBox(ex.ToString)
-            'End Try
+                gvtouchsale.Rows.Clear()
+                lblTotal.Text = ""
+                Clear()
+                DisplayOders()
+                frmTouchSale_Load(Nothing, Nothing)
+            End Try
         End If
-        'PrintReciept()
-        ShowConfig()
+        'If cbSaleType.Text = "" Or cbSaleType.Text = "Credit Sale" Then
+        'cbCreditCustName.Visible = False
+        'Else
+        '  cbCreditCustName.Visible = True
 
-        'frmSalesReciept.Hide()
+        '     End If                   
+
+        'Catch ex As Exception
+        '  MsgBox(ex.ToString)
+        'End Try
+
+        ShowConfig()
     End Sub
 
+    Sub RollReciept(valuetosearch As String)
+        Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+
+            Dim que = "select * from recieptconfig"
+            cmd = New SqlCommand(que, Poscon)
+            da = New SqlDataAdapter(cmd)
+            Dim table As New DataTable
+            da.Fill(table)
+            Dim query = "select * from SalesTranx where recieptno='" + valuetosearch + "'"
+            cmd = New SqlCommand(query, Poscon)
+            dt.Tables("salesTranx").Rows.Clear()
+            da.SelectCommand = cmd
+            da.Fill(dt, "salesTranx")
+
+            Dim sql = "select * from ClientReg"
+            dt.Tables("ClientReg").Rows.Clear()
+            cmd = New SqlCommand(sql, Poscon)
+            da.SelectCommand = cmd
+            da.Fill(dt, "ClientReg")
+
+            Dim report As New rptSalesReciept
+            report.SetDataSource(dt)
+            If ckprint.Checked = True Then
+                report.PrintToPrinter(1, True, 0, 0)
+            End If
+            If ckprintpreview.Checked = True Then
+                frmSupplierReport.Show()
+                frmSupplierReport.CrystalReportViewer1.ReportSource = report
+                frmSupplierReport.CrystalReportViewer1.Refresh()
+            End If
+            cmd.Dispose()
+            da.Dispose()
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
     Private Sub gvOders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvOders.CellDoubleClick
         Try
             Dim row As DataGridViewRow = gvOders.Rows(e.RowIndex)
@@ -1187,6 +1073,8 @@ Public Class frmTouchSale
             lblOderSale.Text = row.Cells(3).Value.ToString()
             lbldayodersale.Text = row.Cells(0).Value.ToString()
             LoadOderSale()
+            btnSell.Visible = True
+            btnOder.Visible = False
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -1201,12 +1089,17 @@ Public Class frmTouchSale
         Next
         Dim report As New rptOderReciept
         report.SetDataSource(ds)
-        frmSupplierReport.Show()
-        frmSupplierReport.CrystalReportViewer1.ReportSource = report
-        frmSupplierReport.CrystalReportViewer1.Refresh()
+        report.PrintToPrinter(1, True, 0, 0)
+        'frmSupplierReport.Show()
+        'frmSupplierReport.CrystalReportViewer1.ReportSource = report
+        'frmSupplierReport.CrystalReportViewer1.Refresh()
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        If txtPrice.Text = "" Then
+            MsgBox("Select an item to sell")
+            Exit Sub
+        End If
         For Each row As DataGridViewRow In gvtouchsale.Rows
             If lblProdCode.Text = row.Cells(0).Value Then
                 row.Cells(3).Value += Val(txtQty.Text)
@@ -1223,6 +1116,9 @@ Public Class frmTouchSale
                 End Try
                 dr.Close()
                 Poscon.Close()
+                txtQty.Text = ""
+                txtPrice.Text = ""
+                txtAmt.Text = ""
                 Exit Sub
             End If
 
@@ -1266,5 +1162,76 @@ Public Class frmTouchSale
         End If
     End Sub
 
+    Private Sub txtQty_Enter(sender As Object, e As EventArgs) Handles txtQty.Enter
+        System.Diagnostics.Process.Start("osk.exe")
+    End Sub
 
+    Private Sub txtQty_Leave(sender As Object, e As EventArgs) Handles txtQty.Leave
+
+    End Sub
+
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+        action = "btnsearch"
+        LoadItems()
+    End Sub
+
+    Private Sub cbcreditcustname_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbcreditcustname.SelectedIndexChanged
+        Searchc(cbcreditcustname.Text)
+    End Sub
+    Public Sub Searchc(valuetosearch As String)
+        Try
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
+            Dim query = "select * from customer where concat(customername,Customerno) like '%" + valuetosearch + "%'"
+            cmd = New SqlCommand(query, Poscon)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
+            lblOldBal.Text = tbl.Rows(0)(10).ToString
+            lblCustNo.Text = tbl.Rows(0)(0).ToString
+            'lblcusttype.Text = tbl.Rows(0)(12).ToString
+            Dim newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
+            lblNewBal.Text = newbal
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Sub display()
+        ComboFeed("select customername from customer", cbcreditcustname, 0)
+    End Sub
+
+    Private Sub cbcreditcustname_Click(sender As Object, e As EventArgs) Handles cbcreditcustname.Click
+        ComboFeed("select customername from customer", cbcreditcustname, 0)
+    End Sub
+
+    Private Sub cbSaleType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSaleType.SelectedIndexChanged
+        If (cbSaleType.SelectedIndex = 1) Then
+            txtBuyerName.Enabled = False
+            txtCashPaid.Enabled = False
+            txtBuyerTel.Enabled = False
+            cbLocation.Enabled = False
+            cbPaymode.Enabled = False
+            cbcreditcustname.Visible = True
+            lblCreditCust.Visible = True
+            txtCashPaid.Text = 0
+        ElseIf (cbSaleType.SelectedIndex = 0) Then
+            cbPaymode.Enabled = True
+            txtBuyerName.Enabled = True
+            txtCashPaid.Enabled = True
+            txtBuyerTel.Enabled = True
+            cbLocation.Enabled = True
+            cbcreditcustname.Visible = False
+            lblCreditCust.Visible = False
+        End If
+    End Sub
+
+    Private Sub cbWaiterSearch_TextChanged(sender As Object, e As EventArgs) Handles cbWaiterSearch.TextChanged
+        SearchWaiters(cbWaiterSearch.Text)
+    End Sub
+
+    Private Sub Label14_Click(sender As Object, e As EventArgs) Handles Label14.Click
+        frmMain.Show()
+    End Sub
 End Class

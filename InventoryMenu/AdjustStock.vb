@@ -363,11 +363,11 @@ Public Class frmAdjustStock
                 If poscon.State = ConnectionState.Closed Then
                     poscon.Open()
                 End If
-                Dim sqll = "Select * from StockMast where Prodcode='" + gvStockBatch.Rows(k).Cells(6).Value + "'"
+                Dim sqll = "Select * from StockMast where Prodcode='" & gvStockBatch.Rows(k).Cells(6).Value & "'"
                 cmd = New SqlCommand(sqll, poscon)
                 dr = cmd.ExecuteReader
                 While dr.Read
-                    Dim query = "update StockMast set Prodqty = @newstock where prodcode =" + gvStockBatch.Rows(k).Cells(6).Value + ""
+                    Dim query = "update StockMast set Prodqty = @newstock where prodcode =" & gvStockBatch.Rows(k).Cells(6).Value & ""
                     cmd = New SqlCommand(query, poscon)
                     With cmd
                         If ckReplace.Checked = True Then

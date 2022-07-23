@@ -12,12 +12,12 @@
   <xs:element name="dsTouchReciepts" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsTouchReciepts" msprop:Generator_UserDSName="dsTouchReciepts">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="OderReciept" msprop:Generator_TableClassName="OderRecieptDataTable" msprop:Generator_TableVarName="tableOderReciept" msprop:Generator_TablePropName="OderReciept" msprop:Generator_RowDeletingName="OderRecieptRowDeleting" msprop:Generator_RowChangingName="OderRecieptRowChanging" msprop:Generator_RowEvHandlerName="OderRecieptRowChangeEventHandler" msprop:Generator_RowDeletedName="OderRecieptRowDeleted" msprop:Generator_UserTableName="OderReciept" msprop:Generator_RowChangedName="OderRecieptRowChanged" msprop:Generator_RowEvArgName="OderRecieptRowChangeEvent" msprop:Generator_RowClassName="OderRecieptRow">
+        <xs:element name="OderReciept" msprop:Generator_TableClassName="OderRecieptDataTable" msprop:Generator_TableVarName="tableOderReciept" msprop:Generator_RowChangedName="OderRecieptRowChanged" msprop:Generator_TablePropName="OderReciept" msprop:Generator_RowDeletingName="OderRecieptRowDeleting" msprop:Generator_RowChangingName="OderRecieptRowChanging" msprop:Generator_RowEvHandlerName="OderRecieptRowChangeEventHandler" msprop:Generator_RowDeletedName="OderRecieptRowDeleted" msprop:Generator_RowClassName="OderRecieptRow" msprop:Generator_UserTableName="OderReciept" msprop:Generator_RowEvArgName="OderRecieptRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Itemname" msprop:Generator_ColumnVarNameInTable="columnItemname" msprop:Generator_ColumnPropNameInRow="Itemname" msprop:Generator_ColumnPropNameInTable="ItemnameColumn" msprop:Generator_UserColumnName="Itemname" type="xs:string" minOccurs="0" />
-              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:string" minOccurs="0" />
-              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:string" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:double" minOccurs="0" />
+              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
