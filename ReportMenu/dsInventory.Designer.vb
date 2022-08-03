@@ -1593,7 +1593,7 @@ Partial Public Class dsInventory
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Overloads Function AddStockMastRow( _
-                    ByVal ProdCode As Long,  _
+                    ByVal ProdCode As String,  _
                     ByVal ProdName As String,  _
                     ByVal ProdLine As String,  _
                     ByVal ProdSize As String,  _
@@ -1619,8 +1619,8 @@ Partial Public Class dsInventory
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function FindByProdCode(ByVal ProdCode As Long) As StockMastRow
-            Return CType(Me.Rows.Find(New Object() {ProdCode}),StockMastRow)
+        Public Function FindByItemNo(ByVal ItemNo As Integer) As StockMastRow
+            Return CType(Me.Rows.Find(New Object() {ItemNo}),StockMastRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1663,7 +1663,7 @@ Partial Public Class dsInventory
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnProdCode = New Global.System.Data.DataColumn("ProdCode", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnProdCode = New Global.System.Data.DataColumn("ProdCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnProdCode)
             Me.columnProdName = New Global.System.Data.DataColumn("ProdName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnProdName)
@@ -1699,9 +1699,8 @@ Partial Public Class dsInventory
             MyBase.Columns.Add(Me.columnBaseQty)
             Me.columnPackPrice = New Global.System.Data.DataColumn("PackPrice", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPackPrice)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnProdCode}, true))
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnItemNo}, true))
             Me.columnProdCode.AllowDBNull = false
-            Me.columnProdCode.Unique = true
             Me.columnProdName.MaxLength = 50
             Me.columnProdLine.MaxLength = 50
             Me.columnProdSize.MaxLength = 50
@@ -1712,6 +1711,7 @@ Partial Public Class dsInventory
             Me.columnItemNo.AutoIncrementStep = -1
             Me.columnItemNo.AllowDBNull = false
             Me.columnItemNo.ReadOnly = true
+            Me.columnItemNo.Unique = true
             Me.columnItemName.MaxLength = 50
             Me.columnBrandName.MaxLength = 50
             Me.columnUniqueID.MaxLength = 50
@@ -3282,9 +3282,9 @@ Partial Public Class dsInventory
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ProdCode() As Long
+        Public Property ProdCode() As String
             Get
-                Return CType(Me(Me.tableStockMast.ProdCodeColumn),Long)
+                Return CType(Me(Me.tableStockMast.ProdCodeColumn),String)
             End Get
             Set
                 Me(Me.tableStockMast.ProdCodeColumn) = value
@@ -6774,48 +6774,6 @@ Namespace dsInventoryTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal ProdName As String,  _
-                    ByVal ProdLine As String,  _
-                    ByVal ProdSize As String,  _
-                    ByVal ProdColour As String,  _
-                    ByVal ProdCat As String,  _
-                    ByVal ProdQty As Global.System.Nullable(Of Double),  _
-                    ByVal RetailPrice As Global.System.Nullable(Of Double),  _
-                    ByVal WholesalePrice As Global.System.Nullable(Of Double),  _
-                    ByVal ItemName As String,  _
-                    ByVal BrandName As String,  _
-                    ByVal UniqueID As String,  _
-                    ByVal LeastQtyReminder As Global.System.Nullable(Of Double),  _
-                    ByVal DistributorPrice As Global.System.Nullable(Of Double),  _
-                    ByVal PackSize As Global.System.Nullable(Of Double),  _
-                    ByVal BaseQty As Global.System.Nullable(Of Double),  _
-                    ByVal PackPrice As Global.System.Nullable(Of Double),  _
-                    ByVal Original_ProdCode As Long,  _
-                    ByVal Original_ProdName As String,  _
-                    ByVal Original_ProdLine As String,  _
-                    ByVal Original_ProdSize As String,  _
-                    ByVal Original_ProdColour As String,  _
-                    ByVal Original_ProdCat As String,  _
-                    ByVal Original_ProdQty As Global.System.Nullable(Of Double),  _
-                    ByVal Original_RetailPrice As Global.System.Nullable(Of Double),  _
-                    ByVal Original_WholesalePrice As Global.System.Nullable(Of Double),  _
-                    ByVal Original_ItemNo As Integer,  _
-                    ByVal Original_ItemName As String,  _
-                    ByVal Original_BrandName As String,  _
-                    ByVal Original_UniqueID As String,  _
-                    ByVal Original_LeastQtyReminder As Global.System.Nullable(Of Double),  _
-                    ByVal Original_DistributorPrice As Global.System.Nullable(Of Double),  _
-                    ByVal Original_PackSize As Global.System.Nullable(Of Double),  _
-                    ByVal Original_BaseQty As Global.System.Nullable(Of Double),  _
-                    ByVal Original_PackPrice As Global.System.Nullable(Of Double)) As Integer
-            Return Me.Update(Original_ProdCode, ProdName, ProdLine, ProdSize, ProdColour, ProdCat, ProdQty, RetailPrice, WholesalePrice, ItemName, BrandName, UniqueID, LeastQtyReminder, DistributorPrice, PackSize, BaseQty, PackPrice, Original_ProdCode, Original_ProdName, Original_ProdLine, Original_ProdSize, Original_ProdColour, Original_ProdCat, Original_ProdQty, Original_RetailPrice, Original_WholesalePrice, Original_ItemNo, Original_ItemName, Original_BrandName, Original_UniqueID, Original_LeastQtyReminder, Original_DistributorPrice, Original_PackSize, Original_BaseQty, Original_PackPrice)
         End Function
     End Class
     

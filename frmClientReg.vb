@@ -51,7 +51,7 @@ Public Class frmClientReg
             showimage()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -76,7 +76,7 @@ Public Class frmClientReg
             Poscon.Close()
             search()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -97,7 +97,7 @@ Public Class frmClientReg
         '    End If
 
         'Catch ex As Exception
-        '    MsgBox(ex.ToString)
+        '    msgbox(ex.message)
         'End Try
         da = New SqlDataAdapter(cmd)
         Dim ds As New DataSet()

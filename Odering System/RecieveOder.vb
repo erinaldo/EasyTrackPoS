@@ -63,7 +63,8 @@ Public Class RecieveOder
             End If
             Poscon.Close()
         Catch ex As Exception
-            'MsgBox(ex.ToString)
+            '
+            '
         End Try
 
 
@@ -81,7 +82,7 @@ Public Class RecieveOder
             amt = Val(txtqtyremaining.Text) * Val(txtPrice.Text)
             txtAmount.Text = amt
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -116,7 +117,7 @@ Public Class RecieveOder
             Next
             lblTotal.Text = sum
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -177,7 +178,7 @@ Public Class RecieveOder
                 reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'", gvStockBf)
             End If
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -212,7 +213,7 @@ Public Class RecieveOder
             Dim newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
             lblNewBal.Text = newbal
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -442,7 +443,7 @@ Public Class RecieveOder
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Private Sub BunifuThinButton26_Click(sender As Object, e As EventArgs) Handles BunifuThinButton26.Click

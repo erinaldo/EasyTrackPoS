@@ -32,7 +32,7 @@ Public Class frmSupplierReportMenu
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -66,7 +66,7 @@ Public Class frmSupplierReportMenu
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -96,7 +96,7 @@ Public Class frmSupplierReportMenu
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -126,7 +126,7 @@ Public Class frmSupplierReportMenu
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -172,7 +172,7 @@ Public Class frmSupplierReportMenu
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 End Class

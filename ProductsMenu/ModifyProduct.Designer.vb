@@ -23,9 +23,9 @@ Partial Class frmModifyProduct
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmModifyProduct))
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtStockCode = New System.Windows.Forms.TextBox()
         Me.cbUnique = New System.Windows.Forms.ComboBox()
@@ -56,6 +56,8 @@ Partial Class frmModifyProduct
         Me.txtbaseqty = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtpacksize = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtReoder = New System.Windows.Forms.TextBox()
         Me.Panel2.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,22 +73,24 @@ Partial Class frmModifyProduct
         Me.Label17.BackColor = System.Drawing.SystemColors.Control
         Me.Label17.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.Black
-        Me.Label17.Location = New System.Drawing.Point(28, 468)
+        Me.Label17.Location = New System.Drawing.Point(1, 515)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(87, 21)
         Me.Label17.TabIndex = 51
         Me.Label17.Text = "Item Code"
+        Me.Label17.Visible = False
         '
         'txtStockCode
         '
         Me.txtStockCode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.txtStockCode.Font = New System.Drawing.Font("Tahoma", 24.0!)
-        Me.txtStockCode.Location = New System.Drawing.Point(140, 468)
+        Me.txtStockCode.Location = New System.Drawing.Point(12, 539)
         Me.txtStockCode.Name = "txtStockCode"
         Me.txtStockCode.ReadOnly = True
-        Me.txtStockCode.Size = New System.Drawing.Size(220, 46)
+        Me.txtStockCode.Size = New System.Drawing.Size(31, 46)
         Me.txtStockCode.TabIndex = 49
+        Me.txtStockCode.Visible = False
         '
         'cbUnique
         '
@@ -105,7 +109,7 @@ Partial Class frmModifyProduct
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.cbColour.Font = New System.Drawing.Font("Segoe UI", 11.25!)
         Me.cbColour.FormattingEnabled = True
-        Me.cbColour.Location = New System.Drawing.Point(140, 387)
+        Me.cbColour.Location = New System.Drawing.Point(140, 378)
         Me.cbColour.Name = "cbColour"
         Me.cbColour.Size = New System.Drawing.Size(220, 28)
         Me.cbColour.TabIndex = 47
@@ -125,7 +129,8 @@ Partial Class frmModifyProduct
         '
         Me.cbCat.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.cbCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbCat.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbCat.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cbCat.Font = New System.Drawing.Font("Segoe UI", 11.25!)
         Me.cbCat.FormattingEnabled = True
         Me.cbCat.Location = New System.Drawing.Point(140, 243)
@@ -152,7 +157,7 @@ Partial Class frmModifyProduct
         Me.Label16.BackColor = System.Drawing.SystemColors.Control
         Me.Label16.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.Black
-        Me.Label16.Location = New System.Drawing.Point(37, 394)
+        Me.Label16.Location = New System.Drawing.Point(42, 380)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(59, 21)
         Me.Label16.TabIndex = 42
@@ -219,7 +224,8 @@ Partial Class frmModifyProduct
         Me.cbProdLine.AllowDrop = True
         Me.cbProdLine.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.cbProdLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbProdLine.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbProdLine.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cbProdLine.Font = New System.Drawing.Font("Segoe UI", 11.25!)
         Me.cbProdLine.FormattingEnabled = True
         Me.cbProdLine.Location = New System.Drawing.Point(140, 97)
@@ -288,7 +294,6 @@ Partial Class frmModifyProduct
         Me.Guna2PictureBox2.ImageRotate = 0!
         Me.Guna2PictureBox2.Location = New System.Drawing.Point(863, 5)
         Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
-        Me.Guna2PictureBox2.ShadowDecoration.Parent = Me.Guna2PictureBox2
         Me.Guna2PictureBox2.Size = New System.Drawing.Size(40, 27)
         Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox2.TabIndex = 145
@@ -303,7 +308,6 @@ Partial Class frmModifyProduct
         Me.Guna2PictureBox1.ImageRotate = 0!
         Me.Guna2PictureBox1.Location = New System.Drawing.Point(895, 3)
         Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.ShadowDecoration.Parent = Me.Guna2PictureBox1
         Me.Guna2PictureBox1.Size = New System.Drawing.Size(43, 32)
         Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox1.TabIndex = 144
@@ -342,9 +346,9 @@ Partial Class frmModifyProduct
         Me.gvStock.AllowUserToAddRows = False
         Me.gvStock.AllowUserToDeleteRows = False
         Me.gvStock.AllowUserToResizeRows = False
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black
-        Me.gvStock.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        Me.gvStock.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.gvStock.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -354,14 +358,14 @@ Partial Class frmModifyProduct
         Me.gvStock.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvStock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.gvStock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.DodgerBlue
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvStock.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvStock.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.gvStock.ColumnHeadersHeight = 25
         Me.gvStock.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStock.CurrentTheme.AlternatingRowsStyle.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold)
@@ -381,14 +385,14 @@ Partial Class frmModifyProduct
         Me.gvStock.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black
         Me.gvStock.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStock.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gvStock.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gvStock.DefaultCellStyle = DataGridViewCellStyle6
         Me.gvStock.EnableHeadersVisualStyles = False
         Me.gvStock.GridColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStock.HeaderBackColor = System.Drawing.Color.DodgerBlue
@@ -426,7 +430,7 @@ Partial Class frmModifyProduct
         Me.BunifuThinButton21.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton21.IdleForecolor = System.Drawing.Color.SkyBlue
         Me.BunifuThinButton21.IdleLineColor = System.Drawing.Color.SkyBlue
-        Me.BunifuThinButton21.Location = New System.Drawing.Point(96, 522)
+        Me.BunifuThinButton21.Location = New System.Drawing.Point(126, 522)
         Me.BunifuThinButton21.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton21.Name = "BunifuThinButton21"
         Me.BunifuThinButton21.Size = New System.Drawing.Size(185, 61)
@@ -523,12 +527,38 @@ Partial Class frmModifyProduct
         Me.txtpacksize.TabIndex = 156
         Me.txtpacksize.Text = "1"
         '
+        'Label2
+        '
+        Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.SystemColors.Control
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(23, 473)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(102, 21)
+        Me.Label2.TabIndex = 160
+        Me.Label2.Text = "Re-Oder Qty"
+        '
+        'txtReoder
+        '
+        Me.txtReoder.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtReoder.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtReoder.Location = New System.Drawing.Point(140, 467)
+        Me.txtReoder.Name = "txtReoder"
+        Me.txtReoder.Size = New System.Drawing.Size(220, 27)
+        Me.txtReoder.TabIndex = 161
+        '
         'frmModifyProduct
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(938, 597)
+        Me.Controls.Add(Me.txtReoder)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.txtbaseqty)
         Me.Controls.Add(Me.Label5)
@@ -600,4 +630,6 @@ Partial Class frmModifyProduct
     Friend WithEvents txtbaseqty As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents txtpacksize As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents txtReoder As TextBox
 End Class

@@ -48,11 +48,40 @@ Partial Class frmUserProfilemgmt
         Me.lbluserid = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ckproforma = New System.Windows.Forms.CheckBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.ckclosesess = New System.Windows.Forms.CheckBox()
+        Me.CheckBox21 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox22 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox23 = New System.Windows.Forms.CheckBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.CheckBox24 = New System.Windows.Forms.CheckBox()
+        Me.ckrecievecs = New System.Windows.Forms.CheckBox()
+        Me.ckmodcs = New System.Windows.Forms.CheckBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.ckcreatecs = New System.Windows.Forms.CheckBox()
+        Me.ckdisc = New System.Windows.Forms.CheckBox()
+        Me.ckcancsale = New System.Windows.Forms.CheckBox()
+        Me.cksell = New System.Windows.Forms.CheckBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.ckopensession = New System.Windows.Forms.CheckBox()
+        Me.ckmultisale = New System.Windows.Forms.CheckBox()
+        Me.ckmultiissue = New System.Windows.Forms.CheckBox()
+        Me.ckadjstock = New System.Windows.Forms.CheckBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.ckrecgoods = New System.Windows.Forms.CheckBox()
+        Me.ckchangeprice = New System.Windows.Forms.CheckBox()
+        Me.ckdelprod = New System.Windows.Forms.CheckBox()
+        Me.ckmodprod = New System.Windows.Forms.CheckBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ckcreateprod = New System.Windows.Forms.CheckBox()
         CType(Me.gvUserProfiles, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label6
@@ -210,7 +239,7 @@ Partial Class frmUserProfilemgmt
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gvUserProfiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.gvUserProfiles.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.gvUserProfiles.BackgroundColor = System.Drawing.Color.White
+        Me.gvUserProfiles.BackgroundColor = System.Drawing.Color.Silver
         Me.gvUserProfiles.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvUserProfiles.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.gvUserProfiles.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
@@ -223,7 +252,7 @@ Partial Class frmUserProfilemgmt
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.gvUserProfiles.DefaultCellStyle = DataGridViewCellStyle1
         Me.gvUserProfiles.GridColor = System.Drawing.Color.DarkRed
-        Me.gvUserProfiles.Location = New System.Drawing.Point(21, 263)
+        Me.gvUserProfiles.Location = New System.Drawing.Point(21, 270)
         Me.gvUserProfiles.Name = "gvUserProfiles"
         Me.gvUserProfiles.ReadOnly = True
         Me.gvUserProfiles.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
@@ -231,7 +260,7 @@ Partial Class frmUserProfilemgmt
         Me.gvUserProfiles.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
         Me.gvUserProfiles.RowTemplate.Height = 25
         Me.gvUserProfiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvUserProfiles.Size = New System.Drawing.Size(781, 301)
+        Me.gvUserProfiles.Size = New System.Drawing.Size(781, 294)
         Me.gvUserProfiles.TabIndex = 132
         '
         'BunifuThinButton21
@@ -280,7 +309,6 @@ Partial Class frmUserProfilemgmt
         Me.Guna2PictureBox2.ImageRotate = 0!
         Me.Guna2PictureBox2.Location = New System.Drawing.Point(753, 2)
         Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
-        Me.Guna2PictureBox2.ShadowDecoration.Parent = Me.Guna2PictureBox2
         Me.Guna2PictureBox2.Size = New System.Drawing.Size(40, 27)
         Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox2.TabIndex = 143
@@ -295,7 +323,6 @@ Partial Class frmUserProfilemgmt
         Me.Guna2PictureBox1.ImageRotate = 0!
         Me.Guna2PictureBox1.Location = New System.Drawing.Point(785, 0)
         Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.ShadowDecoration.Parent = Me.Guna2PictureBox1
         Me.Guna2PictureBox1.Size = New System.Drawing.Size(43, 32)
         Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox1.TabIndex = 142
@@ -399,11 +426,354 @@ Partial Class frmUserProfilemgmt
         Me.Label1.TabIndex = 147
         Me.Label1.Text = "Branch Name"
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.BackColor = System.Drawing.SystemColors.ScrollBar
+        Me.GroupBox1.Controls.Add(Me.ckproforma)
+        Me.GroupBox1.Controls.Add(Me.CheckBox1)
+        Me.GroupBox1.Controls.Add(Me.ckclosesess)
+        Me.GroupBox1.Controls.Add(Me.CheckBox21)
+        Me.GroupBox1.Controls.Add(Me.CheckBox22)
+        Me.GroupBox1.Controls.Add(Me.CheckBox23)
+        Me.GroupBox1.Controls.Add(Me.Label14)
+        Me.GroupBox1.Controls.Add(Me.CheckBox24)
+        Me.GroupBox1.Controls.Add(Me.ckrecievecs)
+        Me.GroupBox1.Controls.Add(Me.ckmodcs)
+        Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Controls.Add(Me.ckcreatecs)
+        Me.GroupBox1.Controls.Add(Me.ckdisc)
+        Me.GroupBox1.Controls.Add(Me.ckcancsale)
+        Me.GroupBox1.Controls.Add(Me.cksell)
+        Me.GroupBox1.Controls.Add(Me.Label10)
+        Me.GroupBox1.Controls.Add(Me.ckopensession)
+        Me.GroupBox1.Controls.Add(Me.ckmultisale)
+        Me.GroupBox1.Controls.Add(Me.ckmultiissue)
+        Me.GroupBox1.Controls.Add(Me.ckadjstock)
+        Me.GroupBox1.Controls.Add(Me.Label8)
+        Me.GroupBox1.Controls.Add(Me.ckrecgoods)
+        Me.GroupBox1.Controls.Add(Me.ckchangeprice)
+        Me.GroupBox1.Controls.Add(Me.ckdelprod)
+        Me.GroupBox1.Controls.Add(Me.ckmodprod)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.ckcreateprod)
+        Me.GroupBox1.Location = New System.Drawing.Point(22, 290)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(781, 157)
+        Me.GroupBox1.TabIndex = 149
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "User Controls"
+        Me.GroupBox1.Visible = False
+        '
+        'ckproforma
+        '
+        Me.ckproforma.AutoSize = True
+        Me.ckproforma.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckproforma.Location = New System.Drawing.Point(140, 148)
+        Me.ckproforma.Name = "ckproforma"
+        Me.ckproforma.Size = New System.Drawing.Size(82, 21)
+        Me.ckproforma.TabIndex = 181
+        Me.ckproforma.Text = "Proforma"
+        Me.ckproforma.UseVisualStyleBackColor = True
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox1.Location = New System.Drawing.Point(270, 126)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(105, 21)
+        Me.CheckBox1.TabIndex = 180
+        Me.CheckBox1.Text = "Deposit sales"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'ckclosesess
+        '
+        Me.ckclosesess.AutoSize = True
+        Me.ckclosesess.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckclosesess.Location = New System.Drawing.Point(270, 147)
+        Me.ckclosesess.Name = "ckclosesess"
+        Me.ckclosesess.Size = New System.Drawing.Size(107, 21)
+        Me.ckclosesess.TabIndex = 179
+        Me.ckclosesess.Text = "Close Session"
+        Me.ckclosesess.UseVisualStyleBackColor = True
+        '
+        'CheckBox21
+        '
+        Me.CheckBox21.AutoSize = True
+        Me.CheckBox21.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox21.Location = New System.Drawing.Point(609, 121)
+        Me.CheckBox21.Name = "CheckBox21"
+        Me.CheckBox21.Size = New System.Drawing.Size(113, 21)
+        Me.CheckBox21.TabIndex = 178
+        Me.CheckBox21.Text = "Multishop Sale"
+        Me.CheckBox21.UseVisualStyleBackColor = True
+        '
+        'CheckBox22
+        '
+        Me.CheckBox22.AutoSize = True
+        Me.CheckBox22.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox22.Location = New System.Drawing.Point(609, 94)
+        Me.CheckBox22.Name = "CheckBox22"
+        Me.CheckBox22.Size = New System.Drawing.Size(90, 21)
+        Me.CheckBox22.TabIndex = 177
+        Me.CheckBox22.Text = "Multi-Issue"
+        Me.CheckBox22.UseVisualStyleBackColor = True
+        '
+        'CheckBox23
+        '
+        Me.CheckBox23.AutoSize = True
+        Me.CheckBox23.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox23.Location = New System.Drawing.Point(609, 67)
+        Me.CheckBox23.Name = "CheckBox23"
+        Me.CheckBox23.Size = New System.Drawing.Size(60, 21)
+        Me.CheckBox23.TabIndex = 176
+        Me.CheckBox23.Text = "Users"
+        Me.CheckBox23.UseVisualStyleBackColor = True
+        '
+        'Label14
+        '
+        Me.Label14.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label14.Location = New System.Drawing.Point(605, 16)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(54, 21)
+        Me.Label14.TabIndex = 175
+        Me.Label14.Text = "Setup"
+        '
+        'CheckBox24
+        '
+        Me.CheckBox24.AutoSize = True
+        Me.CheckBox24.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox24.Location = New System.Drawing.Point(609, 40)
+        Me.CheckBox24.Name = "CheckBox24"
+        Me.CheckBox24.Size = New System.Drawing.Size(86, 21)
+        Me.CheckBox24.TabIndex = 174
+        Me.CheckBox24.Text = "Add users"
+        Me.CheckBox24.UseVisualStyleBackColor = True
+        '
+        'ckrecievecs
+        '
+        Me.ckrecievecs.AutoSize = True
+        Me.ckrecievecs.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckrecievecs.Location = New System.Drawing.Point(423, 94)
+        Me.ckrecievecs.Name = "ckrecievecs"
+        Me.ckrecievecs.Size = New System.Drawing.Size(124, 21)
+        Me.ckrecievecs.TabIndex = 168
+        Me.ckrecievecs.Text = "Recieve Payment"
+        Me.ckrecievecs.UseVisualStyleBackColor = True
+        '
+        'ckmodcs
+        '
+        Me.ckmodcs.AutoSize = True
+        Me.ckmodcs.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckmodcs.Location = New System.Drawing.Point(423, 67)
+        Me.ckmodcs.Name = "ckmodcs"
+        Me.ckmodcs.Size = New System.Drawing.Size(110, 21)
+        Me.ckmodcs.TabIndex = 167
+        Me.ckmodcs.Text = "Delete/Modify"
+        Me.ckmodcs.UseVisualStyleBackColor = True
+        '
+        'Label11
+        '
+        Me.Label11.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label11.Location = New System.Drawing.Point(404, 16)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(154, 21)
+        Me.Label11.TabIndex = 165
+        Me.Label11.Text = "Customer/Supplier"
+        '
+        'ckcreatecs
+        '
+        Me.ckcreatecs.AutoSize = True
+        Me.ckcreatecs.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckcreatecs.Location = New System.Drawing.Point(423, 40)
+        Me.ckcreatecs.Name = "ckcreatecs"
+        Me.ckcreatecs.Size = New System.Drawing.Size(65, 21)
+        Me.ckcreatecs.TabIndex = 164
+        Me.ckcreatecs.Text = "Create"
+        Me.ckcreatecs.UseVisualStyleBackColor = True
+        '
+        'ckdisc
+        '
+        Me.ckdisc.AutoSize = True
+        Me.ckdisc.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckdisc.Location = New System.Drawing.Point(270, 105)
+        Me.ckdisc.Name = "ckdisc"
+        Me.ckdisc.Size = New System.Drawing.Size(77, 21)
+        Me.ckdisc.TabIndex = 163
+        Me.ckdisc.Text = "Discount"
+        Me.ckdisc.UseVisualStyleBackColor = True
+        '
+        'ckcancsale
+        '
+        Me.ckcancsale.AutoSize = True
+        Me.ckcancsale.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckcancsale.Location = New System.Drawing.Point(270, 84)
+        Me.ckcancsale.Name = "ckcancsale"
+        Me.ckcancsale.Size = New System.Drawing.Size(99, 21)
+        Me.ckcancsale.TabIndex = 162
+        Me.ckcancsale.Text = "Cancel Sales"
+        Me.ckcancsale.UseVisualStyleBackColor = True
+        '
+        'cksell
+        '
+        Me.cksell.AutoSize = True
+        Me.cksell.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cksell.Location = New System.Drawing.Point(270, 63)
+        Me.cksell.Name = "cksell"
+        Me.cksell.Size = New System.Drawing.Size(47, 21)
+        Me.cksell.TabIndex = 161
+        Me.cksell.Text = "Sell"
+        Me.cksell.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label10.Location = New System.Drawing.Point(283, 16)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(49, 21)
+        Me.Label10.TabIndex = 160
+        Me.Label10.Text = "Sales"
+        '
+        'ckopensession
+        '
+        Me.ckopensession.AutoSize = True
+        Me.ckopensession.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckopensession.Location = New System.Drawing.Point(270, 42)
+        Me.ckopensession.Name = "ckopensession"
+        Me.ckopensession.Size = New System.Drawing.Size(107, 21)
+        Me.ckopensession.TabIndex = 159
+        Me.ckopensession.Text = "Open Session"
+        Me.ckopensession.UseVisualStyleBackColor = True
+        '
+        'ckmultisale
+        '
+        Me.ckmultisale.AutoSize = True
+        Me.ckmultisale.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckmultisale.Location = New System.Drawing.Point(140, 121)
+        Me.ckmultisale.Name = "ckmultisale"
+        Me.ckmultisale.Size = New System.Drawing.Size(113, 21)
+        Me.ckmultisale.TabIndex = 158
+        Me.ckmultisale.Text = "Multishop Sale"
+        Me.ckmultisale.UseVisualStyleBackColor = True
+        '
+        'ckmultiissue
+        '
+        Me.ckmultiissue.AutoSize = True
+        Me.ckmultiissue.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckmultiissue.Location = New System.Drawing.Point(140, 94)
+        Me.ckmultiissue.Name = "ckmultiissue"
+        Me.ckmultiissue.Size = New System.Drawing.Size(90, 21)
+        Me.ckmultiissue.TabIndex = 157
+        Me.ckmultiissue.Text = "Multi-Issue"
+        Me.ckmultiissue.UseVisualStyleBackColor = True
+        '
+        'ckadjstock
+        '
+        Me.ckadjstock.AutoSize = True
+        Me.ckadjstock.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckadjstock.Location = New System.Drawing.Point(140, 67)
+        Me.ckadjstock.Name = "ckadjstock"
+        Me.ckadjstock.Size = New System.Drawing.Size(98, 21)
+        Me.ckadjstock.TabIndex = 156
+        Me.ckadjstock.Text = "Adjust Stock"
+        Me.ckadjstock.UseVisualStyleBackColor = True
+        '
+        'Label8
+        '
+        Me.Label8.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label8.Location = New System.Drawing.Point(136, 16)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(85, 21)
+        Me.Label8.TabIndex = 155
+        Me.Label8.Text = "Inventory"
+        '
+        'ckrecgoods
+        '
+        Me.ckrecgoods.AutoSize = True
+        Me.ckrecgoods.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckrecgoods.Location = New System.Drawing.Point(140, 40)
+        Me.ckrecgoods.Name = "ckrecgoods"
+        Me.ckrecgoods.Size = New System.Drawing.Size(114, 21)
+        Me.ckrecgoods.TabIndex = 154
+        Me.ckrecgoods.Text = "Recieve Goods"
+        Me.ckrecgoods.UseVisualStyleBackColor = True
+        '
+        'ckchangeprice
+        '
+        Me.ckchangeprice.AutoSize = True
+        Me.ckchangeprice.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckchangeprice.Location = New System.Drawing.Point(6, 121)
+        Me.ckchangeprice.Name = "ckchangeprice"
+        Me.ckchangeprice.Size = New System.Drawing.Size(103, 21)
+        Me.ckchangeprice.TabIndex = 153
+        Me.ckchangeprice.Text = "Change Price"
+        Me.ckchangeprice.UseVisualStyleBackColor = True
+        '
+        'ckdelprod
+        '
+        Me.ckdelprod.AutoSize = True
+        Me.ckdelprod.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckdelprod.Location = New System.Drawing.Point(6, 94)
+        Me.ckdelprod.Name = "ckdelprod"
+        Me.ckdelprod.Size = New System.Drawing.Size(113, 21)
+        Me.ckdelprod.TabIndex = 152
+        Me.ckdelprod.Text = "Delete Product"
+        Me.ckdelprod.UseVisualStyleBackColor = True
+        '
+        'ckmodprod
+        '
+        Me.ckmodprod.AutoSize = True
+        Me.ckmodprod.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckmodprod.Location = New System.Drawing.Point(6, 67)
+        Me.ckmodprod.Name = "ckmodprod"
+        Me.ckmodprod.Size = New System.Drawing.Size(118, 21)
+        Me.ckmodprod.TabIndex = 151
+        Me.ckmodprod.Text = "Modify product"
+        Me.ckmodprod.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label7.Location = New System.Drawing.Point(12, 16)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(74, 21)
+        Me.Label7.TabIndex = 150
+        Me.Label7.Text = "Product "
+        '
+        'ckcreateprod
+        '
+        Me.ckcreateprod.AutoSize = True
+        Me.ckcreateprod.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckcreateprod.Location = New System.Drawing.Point(6, 40)
+        Me.ckcreateprod.Name = "ckcreateprod"
+        Me.ckcreateprod.Size = New System.Drawing.Size(114, 21)
+        Me.ckcreateprod.TabIndex = 0
+        Me.ckcreateprod.Text = "Create Product"
+        Me.ckcreateprod.UseVisualStyleBackColor = True
+        '
         'frmUserProfilemgmt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(829, 635)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lbluserid)
@@ -435,6 +805,8 @@ Partial Class frmUserProfilemgmt
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -464,4 +836,32 @@ Partial Class frmUserProfilemgmt
     Friend WithEvents lbluserid As Label
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents ckchangeprice As CheckBox
+    Friend WithEvents ckdelprod As CheckBox
+    Friend WithEvents ckmodprod As CheckBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents ckcreateprod As CheckBox
+    Friend WithEvents ckmultisale As CheckBox
+    Friend WithEvents ckmultiissue As CheckBox
+    Friend WithEvents ckadjstock As CheckBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents ckrecgoods As CheckBox
+    Friend WithEvents ckclosesess As CheckBox
+    Friend WithEvents CheckBox21 As CheckBox
+    Friend WithEvents CheckBox22 As CheckBox
+    Friend WithEvents CheckBox23 As CheckBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents CheckBox24 As CheckBox
+    Friend WithEvents ckrecievecs As CheckBox
+    Friend WithEvents ckmodcs As CheckBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents ckcreatecs As CheckBox
+    Friend WithEvents ckdisc As CheckBox
+    Friend WithEvents ckcancsale As CheckBox
+    Friend WithEvents cksell As CheckBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents ckopensession As CheckBox
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents ckproforma As CheckBox
 End Class

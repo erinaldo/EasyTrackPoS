@@ -54,7 +54,7 @@ Public Class frmPaySupplierBill
 
 
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
         Clear()
@@ -76,7 +76,7 @@ Public Class frmPaySupplierBill
             End While
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
         cbCustName.Text = ""
@@ -120,7 +120,7 @@ Public Class frmPaySupplierBill
 
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
 

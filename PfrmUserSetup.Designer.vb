@@ -283,7 +283,7 @@ Partial Class PfrmUserSetup
         Me.BunifuButton1.IdleIconLeftImage = CType(resources.GetObject("BunifuButton1.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton1.IdleIconRightImage = Nothing
         Me.BunifuButton1.IndicateFocus = False
-        Me.BunifuButton1.Location = New System.Drawing.Point(0, 353)
+        Me.BunifuButton1.Location = New System.Drawing.Point(0, 350)
         Me.BunifuButton1.Name = "BunifuButton1"
         Me.BunifuButton1.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton1.OnDisabledState.BorderRadius = 1
@@ -317,7 +317,7 @@ Partial Class PfrmUserSetup
         Me.BunifuButton1.OnPressedState.ForeColor = System.Drawing.Color.White
         Me.BunifuButton1.OnPressedState.IconLeftImage = Nothing
         Me.BunifuButton1.OnPressedState.IconRightImage = Nothing
-        Me.BunifuButton1.Size = New System.Drawing.Size(255, 59)
+        Me.BunifuButton1.Size = New System.Drawing.Size(245, 58)
         Me.BunifuButton1.TabIndex = 167
         Me.BunifuButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuButton1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
@@ -408,7 +408,7 @@ Partial Class PfrmUserSetup
         Me.BunifuButton4.OnPressedState.ForeColor = System.Drawing.Color.White
         Me.BunifuButton4.OnPressedState.IconLeftImage = Nothing
         Me.BunifuButton4.OnPressedState.IconRightImage = Nothing
-        Me.BunifuButton4.Size = New System.Drawing.Size(260, 70)
+        Me.BunifuButton4.Size = New System.Drawing.Size(245, 62)
         Me.BunifuButton4.TabIndex = 166
         Me.BunifuButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuButton4.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
@@ -465,7 +465,7 @@ Partial Class PfrmUserSetup
         Me.BunifuButton3.IdleIconLeftImage = CType(resources.GetObject("BunifuButton3.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton3.IdleIconRightImage = Nothing
         Me.BunifuButton3.IndicateFocus = False
-        Me.BunifuButton3.Location = New System.Drawing.Point(0, 265)
+        Me.BunifuButton3.Location = New System.Drawing.Point(0, 258)
         Me.BunifuButton3.Name = "BunifuButton3"
         Me.BunifuButton3.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton3.OnDisabledState.BorderRadius = 1
@@ -499,7 +499,7 @@ Partial Class PfrmUserSetup
         Me.BunifuButton3.OnPressedState.ForeColor = System.Drawing.Color.White
         Me.BunifuButton3.OnPressedState.IconLeftImage = Nothing
         Me.BunifuButton3.OnPressedState.IconRightImage = Nothing
-        Me.BunifuButton3.Size = New System.Drawing.Size(245, 70)
+        Me.BunifuButton3.Size = New System.Drawing.Size(245, 68)
         Me.BunifuButton3.TabIndex = 166
         Me.BunifuButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuButton3.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center

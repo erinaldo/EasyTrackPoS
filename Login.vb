@@ -27,7 +27,8 @@ Public Class Login
             End If
             Poscon.Close()
         Catch ex As Exception
-            'MsgBox(ex.ToString)
+            '
+            '
         End Try
 
     End Sub
@@ -44,7 +45,7 @@ Public Class Login
                 Poscon.Open()
             End If
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -115,7 +116,7 @@ Public Class Login
 
             End If
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
         frmMain.stuser.Text = lblusername.Text
         frmCashierAccess.stUser.Text = lblusername.Text
@@ -123,7 +124,6 @@ Public Class Login
 
 
     End Sub
-
     Public Sub loadsettings()
         Try
             If Poscon.State = ConnectionState.Closed Then
@@ -134,14 +134,14 @@ Public Class Login
             dr = cmd.ExecuteReader
             While dr.Read
                 'main menu
-                My.Settings.Productmenu = dr.Item("productmenu").ToString
-                My.Settings.invmenu = dr.Item("inventorymenu").ToString
-                My.Settings.customermenu = dr.Item("customermenu").ToString
-                My.Settings.suppliermenu = dr.Item("suppliermenu").ToString
-                My.Settings.salesmenu = dr.Item("salesmenu").ToString
-                My.Settings.setupmenu = dr.Item("setupmenu").ToString
-                My.Settings.reportmenu = dr.Item("reportmenu").ToString
-                My.Settings.accountsmenu = dr.Item("accountmenu").ToString
+                'My.Settings.Productmenu = dr.Item("productmenu").ToString
+                'My.Settings.invmenu = dr.Item("inventorymenu").ToString
+                'My.Settings.customermenu = dr.Item("customermenu").ToString
+                'My.Settings.suppliermenu = dr.Item("suppliermenu").ToString
+                'My.Settings.salesmenu = dr.Item("salesmenu").ToString
+                'My.Settings.setupmenu = dr.Item("setupmenu").ToString
+                'My.Settings.reportmenu = dr.Item("reportmenu").ToString
+                'My.Settings.accountsmenu = dr.Item("accountmenu").ToString
 
                 'product management
                 My.Settings.createprod = dr.Item("createprod").ToString
@@ -154,26 +154,21 @@ Public Class Login
                 My.Settings.cancellation = dr.Item("cancellation").ToString
                 My.Settings.packtrans = dr.Item("packtrans").ToString
                 My.Settings.proforma = dr.Item("proforma").ToString
-                My.Settings.tobecol = dr.Item("tobecol").ToString
-                My.Settings.tobecoldel = dr.Item("tobecoldel").ToString
+                My.Settings.DelierySale = dr.Item("deliverysale").ToString
+
                 My.Settings.closesession = dr.Item("closesession").ToString
 
-                ''customer management
-                'My.Settings.suppliermenu = dr.Item("suppliermenu").ToString
-                'My.Settings.salesmenu = dr.Item("salesmenu").ToString
-                'My.Settings.setupmenu = dr.Item("setupmenu").ToString
-                'My.Settings.reportmenu = dr.Item("reportmenu").ToString
-                'My.Settings.accountsmenu = dr.Item("accountmenu").ToString
-
-
-
+                'customer/supplier management
+                My.Settings.CreateCS = dr.Item("CreateCS").ToString
+                My.Settings.DeleteCS = dr.Item("DeleteCS").ToString
+                My.Settings.RecieveCS = dr.Item("RecieveCS").ToString
 
                 My.Settings.Save()
             End While
 
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -187,7 +182,4 @@ Public Class Login
         End If
     End Sub
 
-    Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
-
-    End Sub
 End Class

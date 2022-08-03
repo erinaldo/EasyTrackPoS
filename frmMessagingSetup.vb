@@ -33,7 +33,7 @@ Public Class frmMessagingSetup
 
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub

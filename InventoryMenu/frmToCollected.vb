@@ -57,20 +57,6 @@ Public Class frmToCollected
     End Sub
 
     Private Sub Display()
-
-        'If Poscon.State = ConnectionState.Closed Then
-        '    Poscon.Open()
-        'End If
-
-        'Dim query = "select SalesPerson,RecieptId from SalesTranx"
-        'cmd = New SqlCommand(query, Poscon)
-        'Dim adapter As New SqlDataAdapter(cmd)
-        'Dim tbl As New DataTable()
-        'adapter.Fill(tbl)
-        ''gvReciepts.DataSource = tbl
-        'Poscon.Close()
-
-
         reload("select distinct recieptno,buyername,buyerlocation,buyertel from salestranx", gvdel)
     End Sub
 
@@ -130,14 +116,19 @@ Public Class frmToCollected
             txtQtySold.Text = row.Cells(2).Value.ToString()
             lblProdCode.Text = row.Cells(0).Value.ToString()
             lblRecieptNo.Text = row.Cells(5).Value.ToString()
-
+            txtQtyCollected.Text = ""
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
 
     Private Sub txtToBecollected_TextChanged(sender As Object, e As EventArgs) Handles txtToBecollected.TextChanged
+        If Val(txtToBecollected.Text) > Val(txtQtySold.Text) Then
+            MsgBox("Qty collected cannot be more that qty sold")
+            txtToBecollected.Text = ""
+            Exit Sub
+        End If
         Dim a As New Decimal
         Dim b As New Decimal
         Dim c As New Decimal
@@ -167,8 +158,8 @@ Public Class frmToCollected
         For Each row As DataGridViewRow In gvSalesReciepts.Rows
             For i = 6 To 7
                 If row.Cells(i).Value Is Nothing Then
-                    row.Cells(6).Value = row.Cells(2).Value
-                    row.Cells(7).Value = 0
+                    row.Cells(6).Value = 0
+                    row.Cells(7).Value = row.Cells(2).Value
                 End If
             Next
             'For k = 8 To 9
@@ -179,7 +170,7 @@ Public Class frmToCollected
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim query = "insert into ToBeCollected (ItemCode,ItemName,QtySold,DateSold,BuyerName,BuyerTel,BuyerLoc,QtyCollected,QtyTobeCollected,Price,salesperson,RecieptNo,DateToBeCollected) values(@ItemCode,@ItemName,@QtySold,@DateSold,@BuyerName,@BuyerTel,@BuyerLocation,@QtyCollected,@QtyTobeCollected,@Price,'" + ActiveUser.Text + "', '" + lblRecieptNo.Text + "','" + dpDate.Text + "')"
+            Dim query = "insert into ToBeCollected (ItemCode,ItemName,QtySold,DateSold,BuyerName,BuyerTel,BuyerLoc,QtyCollected,QtyTobeCollected,Price,salesperson,RecieptNo,DateToBeCollected) values(@ItemCode,@ItemName,@QtySold,@DateSold,@BuyerName,@BuyerTel,@BuyerLocation,@QtyCollected,@QtyTobeCollected,@Price,'" + My.Settings.ActiveUser + "', '" + lblRecieptNo.Text + "','" + dpDate.Text + "')"
             Dim cmd As New SqlCommand
             cmd = New SqlCommand(query, Poscon)
             With cmd
@@ -202,7 +193,13 @@ Public Class frmToCollected
         Next
 
         MsgBox("Item Collected Successfully")
-        TobeColReciept(lblRecieptNo.Text)
+        If ckrollPaper.Checked = True Then
+            TobeColReciept(lblRecieptNo.Text)
+        Else
+            TobeColRecieptA4(lblRecieptNo.Text)
+
+        End If
+
         gvSalesReciepts.Rows.Clear()
         Poscon.Close()
         clear()
@@ -226,7 +223,7 @@ Public Class frmToCollected
             Poscon.Open()
         End If
 
-        Dim query = "select * from TobeCollected where recieptno='" + RecieptNo + "'"
+        Dim query = "select * from TobeCollected where recieptno='" + RecieptNo + "' and qtytobecollected<>0"
         dt.Tables("TobeCollected").Rows.Clear()
         cmd = New SqlCommand(query, Poscon)
         da = New SqlDataAdapter
@@ -241,6 +238,41 @@ Public Class frmToCollected
         da.Fill(dt, "ClientReg")
 
         Dim report As New rptTobeCollected
+        report.SetDataSource(dt)
+        If ckprint.Checked = True Then
+            report.PrintToPrinter(1, True, 0, 0)
+        End If
+        frmSalesReciept.Show()
+        frmSalesReciept.CrystalReportViewer1.Refresh()
+        frmSalesReciept.CrystalReportViewer1.ReportSource = report
+
+
+        ' report.PrintToPrinter(1, True, 0, 0)
+        cmd.Dispose()
+        da.Dispose()
+        Poscon.Close()
+    End Sub
+    Private Sub TobeColRecieptA4(RecieptNo As String)
+        'dt.EnforceConstraints = False
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+
+        Dim query = "select * from TobeCollected where recieptno='" + RecieptNo + "' and qtytobecollected<>0"
+        dt.Tables("TobeCollected").Rows.Clear()
+        cmd = New SqlCommand(query, Poscon)
+        da = New SqlDataAdapter
+        da.SelectCommand = cmd
+        da.Fill(dt, "TobeCollected")
+
+        Dim sql = "select * from ClientReg"
+        dt.Tables("ClientReg").Rows.Clear()
+        cmd = New SqlCommand(sql, Poscon)
+        da = New SqlDataAdapter
+        da.SelectCommand = cmd
+        da.Fill(dt, "ClientReg")
+
+        Dim report As New rptTobecollectedA4
         report.SetDataSource(dt)
         If ckprint.Checked = True Then
             report.PrintToPrinter(1, True, 0, 0)
@@ -297,9 +329,22 @@ Public Class frmToCollected
 
 
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
-
+    Private Sub txtQtyCollected_TextChanged(sender As Object, e As EventArgs) Handles txtQtyCollected.TextChanged
+        If Val(txtQtyCollected.Text) > Val(txtQtySold.Text) Then
+            MsgBox("Qty collected cannot be more that qty sold")
+            txtQtyCollected.Text = ""
+            Exit Sub
+        End If
+        Dim a As New Decimal
+        Dim b As New Decimal
+        Dim c As New Decimal
+        a = Val(txtQtySold.Text)
+        b = Val(txtQtyCollected.Text)
+        c = a - b
+        txtToBecollected.Text = c
+    End Sub
 End Class

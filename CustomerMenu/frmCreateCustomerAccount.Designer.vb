@@ -23,9 +23,9 @@ Partial Class frmCreateCustomerAccount
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCreateCustomerAccount))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -95,7 +95,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label13.Location = New System.Drawing.Point(109, 117)
+        Me.Label13.Location = New System.Drawing.Point(105, 125)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(56, 21)
         Me.Label13.TabIndex = 105
@@ -108,7 +108,7 @@ Partial Class frmCreateCustomerAccount
         Me.txtName.BackColor = System.Drawing.Color.White
         Me.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtName.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtName.Location = New System.Drawing.Point(218, 117)
+        Me.txtName.Location = New System.Drawing.Point(209, 117)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(282, 29)
         Me.txtName.TabIndex = 104
@@ -120,7 +120,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(68, 179)
+        Me.Label2.Location = New System.Drawing.Point(66, 164)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(117, 21)
         Me.Label2.TabIndex = 107
@@ -133,7 +133,7 @@ Partial Class frmCreateCustomerAccount
         Me.txtEmailAddress.BackColor = System.Drawing.Color.White
         Me.txtEmailAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtEmailAddress.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtEmailAddress.Location = New System.Drawing.Point(218, 177)
+        Me.txtEmailAddress.Location = New System.Drawing.Point(209, 162)
         Me.txtEmailAddress.Name = "txtEmailAddress"
         Me.txtEmailAddress.Size = New System.Drawing.Size(282, 29)
         Me.txtEmailAddress.TabIndex = 106
@@ -145,7 +145,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(109, 239)
+        Me.Label3.Location = New System.Drawing.Point(92, 209)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(69, 21)
         Me.Label3.TabIndex = 109
@@ -158,7 +158,7 @@ Partial Class frmCreateCustomerAccount
         Me.txtContact.BackColor = System.Drawing.Color.White
         Me.txtContact.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtContact.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtContact.Location = New System.Drawing.Point(218, 231)
+        Me.txtContact.Location = New System.Drawing.Point(209, 207)
         Me.txtContact.Name = "txtContact"
         Me.txtContact.Size = New System.Drawing.Size(282, 29)
         Me.txtContact.TabIndex = 108
@@ -170,11 +170,11 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label4.Location = New System.Drawing.Point(20, 353)
+        Me.Label4.Location = New System.Drawing.Point(62, 300)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(165, 21)
+        Me.Label4.Size = New System.Drawing.Size(99, 42)
         Me.Label4.TabIndex = 111
-        Me.Label4.Text = "Residentail Location"
+        Me.Label4.Text = "Residentail " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  Location"
         '
         'txtResLocation
         '
@@ -183,7 +183,7 @@ Partial Class frmCreateCustomerAccount
         Me.txtResLocation.BackColor = System.Drawing.Color.White
         Me.txtResLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtResLocation.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtResLocation.Location = New System.Drawing.Point(218, 347)
+        Me.txtResLocation.Location = New System.Drawing.Point(209, 297)
         Me.txtResLocation.Name = "txtResLocation"
         Me.txtResLocation.Size = New System.Drawing.Size(282, 29)
         Me.txtResLocation.TabIndex = 110
@@ -195,7 +195,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label5.Location = New System.Drawing.Point(20, 408)
+        Me.Label5.Location = New System.Drawing.Point(40, 350)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(145, 21)
         Me.Label5.TabIndex = 113
@@ -208,7 +208,7 @@ Partial Class frmCreateCustomerAccount
         Me.txtBusLocation.BackColor = System.Drawing.Color.White
         Me.txtBusLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtBusLocation.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtBusLocation.Location = New System.Drawing.Point(218, 402)
+        Me.txtBusLocation.Location = New System.Drawing.Point(209, 342)
         Me.txtBusLocation.Name = "txtBusLocation"
         Me.txtBusLocation.Size = New System.Drawing.Size(282, 29)
         Me.txtBusLocation.TabIndex = 112
@@ -220,11 +220,11 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label6.Location = New System.Drawing.Point(-3, 289)
+        Me.Label6.Location = New System.Drawing.Point(46, 252)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(215, 21)
+        Me.Label6.Size = New System.Drawing.Size(151, 42)
         Me.Label6.TabIndex = 115
-        Me.Label6.Text = "Residential Digital Address"
+        Me.Label6.Text = "Residential Digital" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       Address"
         '
         'txtResDigAddress
         '
@@ -233,7 +233,7 @@ Partial Class frmCreateCustomerAccount
         Me.txtResDigAddress.BackColor = System.Drawing.Color.White
         Me.txtResDigAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtResDigAddress.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtResDigAddress.Location = New System.Drawing.Point(218, 287)
+        Me.txtResDigAddress.Location = New System.Drawing.Point(209, 252)
         Me.txtResDigAddress.Name = "txtResDigAddress"
         Me.txtResDigAddress.Size = New System.Drawing.Size(282, 29)
         Me.txtResDigAddress.TabIndex = 114
@@ -244,7 +244,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label7.Location = New System.Drawing.Point(48, 449)
+        Me.Label7.Location = New System.Drawing.Point(46, 395)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(99, 21)
         Me.Label7.TabIndex = 117
@@ -257,7 +257,7 @@ Partial Class frmCreateCustomerAccount
         Me.txtCreditLimit.BackColor = System.Drawing.Color.White
         Me.txtCreditLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCreditLimit.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtCreditLimit.Location = New System.Drawing.Point(218, 450)
+        Me.txtCreditLimit.Location = New System.Drawing.Point(209, 387)
         Me.txtCreditLimit.Name = "txtCreditLimit"
         Me.txtCreditLimit.Size = New System.Drawing.Size(282, 29)
         Me.txtCreditLimit.TabIndex = 116
@@ -268,7 +268,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label8.Location = New System.Drawing.Point(48, 502)
+        Me.Label8.Location = New System.Drawing.Point(46, 438)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(104, 21)
         Me.Label8.TabIndex = 118
@@ -281,7 +281,7 @@ Partial Class frmCreateCustomerAccount
         Me.cbIDCardType.Font = New System.Drawing.Font("Segoe UI", 14.25!)
         Me.cbIDCardType.FormattingEnabled = True
         Me.cbIDCardType.Items.AddRange(New Object() {"Voters ID card", "Drivers Lincense", "Ghana Card"})
-        Me.cbIDCardType.Location = New System.Drawing.Point(218, 494)
+        Me.cbIDCardType.Location = New System.Drawing.Point(209, 432)
         Me.cbIDCardType.Name = "cbIDCardType"
         Me.cbIDCardType.Size = New System.Drawing.Size(282, 33)
         Me.cbIDCardType.TabIndex = 119
@@ -292,7 +292,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label9.Location = New System.Drawing.Point(44, 543)
+        Me.Label9.Location = New System.Drawing.Point(35, 481)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(133, 21)
         Me.Label9.TabIndex = 120
@@ -305,7 +305,7 @@ Partial Class frmCreateCustomerAccount
         Me.txtIdCardNo.BackColor = System.Drawing.Color.White
         Me.txtIdCardNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtIdCardNo.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtIdCardNo.Location = New System.Drawing.Point(218, 544)
+        Me.txtIdCardNo.Location = New System.Drawing.Point(209, 481)
         Me.txtIdCardNo.Name = "txtIdCardNo"
         Me.txtIdCardNo.Size = New System.Drawing.Size(282, 29)
         Me.txtIdCardNo.TabIndex = 121
@@ -317,7 +317,7 @@ Partial Class frmCreateCustomerAccount
         Me.txtCustBal.BackColor = System.Drawing.Color.White
         Me.txtCustBal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCustBal.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtCustBal.Location = New System.Drawing.Point(218, 579)
+        Me.txtCustBal.Location = New System.Drawing.Point(209, 526)
         Me.txtCustBal.Name = "txtCustBal"
         Me.txtCustBal.Size = New System.Drawing.Size(282, 29)
         Me.txtCustBal.TabIndex = 123
@@ -328,7 +328,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label10.Location = New System.Drawing.Point(64, 579)
+        Me.Label10.Location = New System.Drawing.Point(66, 528)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(70, 21)
         Me.Label10.TabIndex = 124
@@ -412,7 +412,6 @@ Partial Class frmCreateCustomerAccount
         Me.Guna2PictureBox2.ImageRotate = 0!
         Me.Guna2PictureBox2.Location = New System.Drawing.Point(880, 5)
         Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
-        Me.Guna2PictureBox2.ShadowDecoration.Parent = Me.Guna2PictureBox2
         Me.Guna2PictureBox2.Size = New System.Drawing.Size(40, 27)
         Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox2.TabIndex = 143
@@ -427,7 +426,6 @@ Partial Class frmCreateCustomerAccount
         Me.Guna2PictureBox1.ImageRotate = 0!
         Me.Guna2PictureBox1.Location = New System.Drawing.Point(912, 3)
         Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.ShadowDecoration.Parent = Me.Guna2PictureBox1
         Me.Guna2PictureBox1.Size = New System.Drawing.Size(43, 32)
         Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox1.TabIndex = 142
@@ -466,9 +464,9 @@ Partial Class frmCreateCustomerAccount
         Me.gvStockMast.AllowUserToAddRows = False
         Me.gvStockMast.AllowUserToDeleteRows = False
         Me.gvStockMast.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        Me.gvStockMast.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        Me.gvStockMast.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.gvStockMast.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gvStockMast.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
@@ -477,14 +475,14 @@ Partial Class frmCreateCustomerAccount
         Me.gvStockMast.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvStockMast.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.gvStockMast.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvStockMast.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvStockMast.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.gvStockMast.ColumnHeadersHeight = 25
         Me.gvStockMast.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStockMast.CurrentTheme.AlternatingRowsStyle.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold)
@@ -504,14 +502,14 @@ Partial Class frmCreateCustomerAccount
         Me.gvStockMast.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black
         Me.gvStockMast.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStockMast.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gvStockMast.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gvStockMast.DefaultCellStyle = DataGridViewCellStyle6
         Me.gvStockMast.EnableHeadersVisualStyles = False
         Me.gvStockMast.GridColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvStockMast.HeaderBackColor = System.Drawing.Color.DodgerBlue
@@ -533,8 +531,8 @@ Partial Class frmCreateCustomerAccount
         '
         Me.cbCustType.Font = New System.Drawing.Font("Segoe UI", 14.25!)
         Me.cbCustType.FormattingEnabled = True
-        Me.cbCustType.Items.AddRange(New Object() {"Branch Customer", "Credit Customer"})
-        Me.cbCustType.Location = New System.Drawing.Point(218, 631)
+        Me.cbCustType.Items.AddRange(New Object() {"Branch Customer", "Credit Customer", "Depositor"})
+        Me.cbCustType.Location = New System.Drawing.Point(209, 571)
         Me.cbCustType.Name = "cbCustType"
         Me.cbCustType.Size = New System.Drawing.Size(282, 33)
         Me.cbCustType.TabIndex = 147
@@ -545,7 +543,7 @@ Partial Class frmCreateCustomerAccount
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label12.Location = New System.Drawing.Point(48, 639)
+        Me.Label12.Location = New System.Drawing.Point(40, 571)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(121, 21)
         Me.Label12.TabIndex = 146

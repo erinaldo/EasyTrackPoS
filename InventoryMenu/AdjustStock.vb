@@ -10,71 +10,34 @@ Public Class frmAdjustStock
         WindowState = FormWindowState.Maximized
         Display()
         Timer1.Enabled = True
-        txtDate.Text = Date.Now.ToString("dd-MMM-yy")
+        txtDate.Text = Date.Now.ToString("dd/MMM/yy")
 
-        User()
+
         cbSearchItem.Focus()
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
-        End If
-        cbSearchItem.Items.Clear()
-        Dim sql = "select * from Stockmast"
-        cmd = New SqlCommand(sql, poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            cbSearchItem.Items.Add(dr(1))
-        End While
-        poscon.Close()
 
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
-        End If
-        cbCatSort.Items.Clear()
-        Dim sqll = "select category from Category"
-        cmd = New SqlCommand(sqll, poscon)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            cbCatSort.Items.Add(dr(0))
-        End While
-        poscon.Close()
+        ComboFeed("select prodname from Stockmast", cbSearchItem, 0)
+        ComboFeed("select distinct prodcat from stockmast", cbCatSort, 0)
+
         Clear()
     End Sub
 
-    Private Sub User()
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
-        End If
-        Dim que = "select * from userlogs"
-        cmd = New SqlCommand(que, poscon)
-        da = New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        If table.Rows.Count = 0 Then
 
-        Else
-
-            Dim index = table.Rows.Count() - 1
-            activeuser.Text = table.Rows(index)(1).ToString
-        End If
-
-        poscon.Close()
-    End Sub
 
     Private Sub Display()
         Try
             If poscon.State = ConnectionState.Closed Then
                 poscon.Open()
             End If
-            'Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast"
+            'Dim query = "select Prodcode,prodname,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast"
             'cmd = New SqlCommand(query, poscon)
             'da = New SqlDataAdapter(cmd)
             'Dim tbl As New DataTable
             'da.Fill(tbl)
             'gvStockBf.DataSource = tbl
             'Poscon.Close()
-            reload("select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast", gvStockBf)
+            reload("select Prodcode,prodname,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast", gvStockBf)
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -87,7 +50,7 @@ Public Class frmAdjustStock
         Try
             gvStockBatch.Rows.Add(txtItemName.Text, txtCat.Text, txtActualStock.Text, txtItemPrice.Text, txtNewStock.Text, txtItemAmount.Text, lblStockcode.Text, txtprodline.Text)
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
         Clear()
@@ -104,7 +67,7 @@ Public Class frmAdjustStock
             lblStockcode.Text = row.Cells(0).Value.ToString()
 
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -183,7 +146,7 @@ Public Class frmAdjustStock
             poscon.Close()
             MsgBox("Successfully Adjusted Stock")
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
         Display()
@@ -224,7 +187,7 @@ Public Class frmAdjustStock
             txtActualStock.Text = row.Cells(2).Value.ToString()
 
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -241,7 +204,7 @@ Public Class frmAdjustStock
             txtprodline.Text = row.Cells(6).Value.ToString()
             txtNewStock.Focus()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -284,14 +247,14 @@ Public Class frmAdjustStock
                 poscon.Open()
             End If
             If cbCatSort.SelectedIndex = -1 Then
-                Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
+                Dim query = "select Prodcode,prodname,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where concat(prodname,ProdCode) like '%" + valueTosearch + "%'"
                 cmd = New SqlCommand(query, poscon)
                 Dim adapter As New SqlDataAdapter(cmd)
                 Dim table As New DataTable()
                 adapter.Fill(table)
                 gvStockBf.DataSource = table
             Else
-                Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'"
+                Dim query = "select Prodcode,prodname,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where concat(prodname,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'"
                 cmd = New SqlCommand(query, poscon)
                 Dim adapter As New SqlDataAdapter(cmd)
                 Dim table As New DataTable()
@@ -301,7 +264,7 @@ Public Class frmAdjustStock
 
             poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -322,7 +285,7 @@ Public Class frmAdjustStock
         Try
             gvStockBatch.Rows.Add(txtItemName.Text, txtCat.Text, txtActualStock.Text, txtItemPrice.Text, txtNewStock.Text, txtItemAmount.Text, lblStockcode.Text, txtprodline.Text)
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
         Clear()
@@ -331,6 +294,11 @@ Public Class frmAdjustStock
     Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click
         If gvStockBatch.Rows.Count = 0 Then
             MsgBox("Select Items to Adjust")
+            Exit Sub
+        End If
+        If txtnarration.Text = "" Then
+            MsgBox("Kindly enter a narration. Why are you adjusting?")
+            txtnarration.Focus()
             Exit Sub
         End If
         Try
@@ -344,7 +312,7 @@ Public Class frmAdjustStock
                 If poscon.State = ConnectionState.Closed Then
                     poscon.Open()
                 End If
-                Dim que = "insert into AdjustStock (ProdLine,ItemName,ItemCat,OldQty,AdjustmentQty,DateAdjusted,AdjustedBy,Price,Narration,time) values(@Prodline,@Itemname,@ItemCat,@oldqty,@AdjustmentQty,'" + txtDate.Text + "','" + activeuser.Text + "',@Price,'" + txtnarration.Text + "','" + lbltime.Text + "')"
+                Dim que = "insert into AdjustStock (ProdLine,ItemName,ItemCat,OldQty,AdjustmentQty,DateAdjusted,AdjustedBy,Price,Narration,time) values(@Prodline,@Itemname,@ItemCat,@oldqty,@AdjustmentQty,'" + txtDate.Text + "','" & My.Settings.ActiveUser & "',@Price,'" + txtnarration.Text + "','" + lbltime.Text + "')"
                 cmd = New SqlCommand(que, poscon)
                 With cmd
                     .Parameters.AddWithValue("@Prodline", gvStockBatch.Rows(i).Cells(7).Value)
@@ -367,7 +335,7 @@ Public Class frmAdjustStock
                 cmd = New SqlCommand(sqll, poscon)
                 dr = cmd.ExecuteReader
                 While dr.Read
-                    Dim query = "update StockMast set Prodqty = @newstock where prodcode =" & gvStockBatch.Rows(k).Cells(6).Value & ""
+                    Dim query = "update StockMast set Prodqty = @newstock where prodcode ='" & gvStockBatch.Rows(k).Cells(6).Value.ToString & "'"
                     cmd = New SqlCommand(query, poscon)
                     With cmd
                         If ckReplace.Checked = True Then
@@ -399,7 +367,7 @@ Public Class frmAdjustStock
                     .Parameters.AddWithValue("@Ramt", row.Cells(5).Value)
                     .Parameters.AddWithValue("@Camt", row.Cells(5).Value)
                     .Parameters.AddWithValue("@Nar", txtnarration.Text)
-                    .Parameters.AddWithValue("@userid", activeuser.Text)
+                    .Parameters.AddWithValue("@userid", My.Settings.ActiveUser)
                     .Parameters.AddWithValue("@Date", txtDate.Text)
                     .Parameters.AddWithValue("@Time", lbltime.Text)
                     .ExecuteNonQuery()
@@ -409,7 +377,7 @@ Public Class frmAdjustStock
             poscon.Close()
             'MsgBox("Successfully Adjusted Stock")
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
         Display()
@@ -420,7 +388,7 @@ Public Class frmAdjustStock
         If poscon.State = ConnectionState.Closed Then
             poscon.Open()
         End If
-        Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where ProdCat like '%" + valuetosearch + "%'"
+        Dim query = "select Prodcode,itemname,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where ProdCat like '%" + valuetosearch + "%'"
         cmd = New SqlCommand(query, poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim table As New DataTable()
@@ -435,7 +403,7 @@ Public Class frmAdjustStock
                 poscon.Open()
             End If
 
-            Dim query = "select Prodcode,ProdName,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
+            Dim query = "select Prodcode,prodname,prodsize,ProdQty,retailprice,prodcat,prodline,prodcolour from StockMast where concat(prodname,ProdCode) like '%" + valueTosearch + "%'"
             cmd = New SqlCommand(query, poscon)
             Dim adapter As New SqlDataAdapter(cmd)
             Dim table As New DataTable()

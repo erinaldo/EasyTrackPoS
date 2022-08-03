@@ -21,9 +21,9 @@
     <Setting Name="NetworkPoS" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=192.168.8.100,1433; Database=D:\DAAKYE\FOODAPPLICATION\POS.MDF; User ID=last; Password=kissboy;&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;server=192.168.1.102,1433; Database=PoS; User ID= sa; Password=kissboy;MultipleActiveResultSets=True;Connect Timeout=30&lt;/ConnectionString&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server=192.168.8.100,1433; Database=D:\DAAKYE\FOODAPPLICATION\POS.MDF; User ID=last; Password=kissboy;</Value>
+      <Value Profile="(Default)">server=192.168.1.102,1433; Database=PoS; User ID= sa; Password=kissboy;MultipleActiveResultSets=True;Connect Timeout=30</Value>
     </Setting>
     <Setting Name="ActiveUser" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -79,13 +79,27 @@
     <Setting Name="proforma" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="tobecol" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="tobecoldel" Type="System.Boolean" Scope="User">
+    <Setting Name="DelierySale" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="closesession" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="D__DAAKYE_FOODAPPLICATION_POS_MDFConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=192.168.8.100,1433;Initial Catalog=D:\DAAKYE\FOODAPPLICATION\POS.MDF;User ID=last;Password=kissboy&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=192.168.8.100,1433;Initial Catalog=D:\DAAKYE\FOODAPPLICATION\POS.MDF;User ID=last;Password=kissboy</Value>
+    </Setting>
+    <Setting Name="CreateCS" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RecieveCS" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DeleteCS" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

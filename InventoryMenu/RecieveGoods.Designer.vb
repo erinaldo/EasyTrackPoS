@@ -91,7 +91,7 @@ Partial Class frmRecieveGoods
         Me.cbCatSort = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label17 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtOrderQty = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.txtWayBill = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -101,6 +101,8 @@ Partial Class frmRecieveGoods
         Me.tkPreview = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.ckprint = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.BunifuThinButton26 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.txtReprint = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
@@ -109,8 +111,6 @@ Partial Class frmRecieveGoods
         Me.txtPackVolume = New System.Windows.Forms.TextBox()
         Me.txtbaseQty = New System.Windows.Forms.TextBox()
         Me.txtPackSize = New System.Windows.Forms.TextBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         CType(Me.gvStockBatch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -119,8 +119,8 @@ Partial Class frmRecieveGoods
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cbSearchItem
@@ -146,7 +146,6 @@ Partial Class frmRecieveGoods
         '
         'txtItemPrice
         '
-        Me.txtItemPrice.Enabled = False
         Me.txtItemPrice.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.txtItemPrice.Location = New System.Drawing.Point(334, 100)
         Me.txtItemPrice.Name = "txtItemPrice"
@@ -733,12 +732,12 @@ Partial Class frmRecieveGoods
         '
         Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(228, 48)
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(226, 63)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(55, 25)
+        Me.Label6.Size = New System.Drawing.Size(104, 17)
         Me.Label6.TabIndex = 147
-        Me.Label6.Text = "Total"
+        Me.Label6.Text = "Purchases Total"
         '
         'BunifuThinButton23
         '
@@ -922,7 +921,7 @@ Partial Class frmRecieveGoods
         Me.GroupBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.BackColor = System.Drawing.Color.LightBlue
         Me.GroupBox2.Controls.Add(Me.Label17)
-        Me.GroupBox2.Controls.Add(Me.TextBox1)
+        Me.GroupBox2.Controls.Add(Me.txtOrderQty)
         Me.GroupBox2.Controls.Add(Me.txtItemName)
         Me.GroupBox2.Controls.Add(Me.BunifuThinButton21)
         Me.GroupBox2.Controls.Add(Me.Label14)
@@ -952,14 +951,14 @@ Partial Class frmRecieveGoods
         Me.Label17.TabIndex = 151
         Me.Label17.Text = "Oder Qty"
         '
-        'TextBox1
+        'txtOrderQty
         '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TextBox1.Location = New System.Drawing.Point(77, 103)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(72, 29)
-        Me.TextBox1.TabIndex = 150
+        Me.txtOrderQty.Enabled = False
+        Me.txtOrderQty.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.txtOrderQty.Location = New System.Drawing.Point(77, 103)
+        Me.txtOrderQty.Name = "txtOrderQty"
+        Me.txtOrderQty.Size = New System.Drawing.Size(72, 29)
+        Me.txtOrderQty.TabIndex = 150
         '
         'GroupBox3
         '
@@ -1185,6 +1184,24 @@ Partial Class frmRecieveGoods
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Reprint"
         '
+        'DataGridView2
+        '
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Location = New System.Drawing.Point(388, 19)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.Size = New System.Drawing.Size(106, 31)
+        Me.DataGridView2.TabIndex = 215
+        Me.DataGridView2.Visible = False
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(350, 6)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(111, 37)
+        Me.DataGridView1.TabIndex = 214
+        Me.DataGridView1.Visible = False
+        '
         'BunifuThinButton26
         '
         Me.BunifuThinButton26.ActiveBorderThickness = 1
@@ -1283,24 +1300,6 @@ Partial Class frmRecieveGoods
         Me.txtPackSize.Size = New System.Drawing.Size(76, 23)
         Me.txtPackSize.TabIndex = 208
         '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(350, 6)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(111, 37)
-        Me.DataGridView1.TabIndex = 214
-        Me.DataGridView1.Visible = False
-        '
-        'DataGridView2
-        '
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(388, 19)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(106, 31)
-        Me.DataGridView2.TabIndex = 215
-        Me.DataGridView2.Visible = False
-        '
         'frmRecieveGoods
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1338,8 +1337,8 @@ Partial Class frmRecieveGoods
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1422,7 +1421,7 @@ Partial Class frmRecieveGoods
     Friend WithEvents PackVolume As DataGridViewTextBoxColumn
     Friend WithEvents OderQty As DataGridViewTextBoxColumn
     Friend WithEvents Label17 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtOrderQty As TextBox
     Friend WithEvents txtWayBill As TextBox
     Friend WithEvents Label23 As Label
     Friend WithEvents DataGridView1 As DataGridView

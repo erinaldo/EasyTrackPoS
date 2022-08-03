@@ -148,7 +148,7 @@ Public Class frmProForma
                             lblPayable.Text = payable
                             'lblDiscAmt.Text = DiscAmt
                         Catch ex As Exception
-                            MsgBox(ex.ToString)
+                            MsgBox(ex.Message)
                         End Try
                         Exit Sub
 
@@ -297,7 +297,7 @@ Public Class frmProForma
             txtSize.Text = row.Cells(3).Value.ToString()
             txtColour.Text = row.Cells(4).Value.ToString()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
         ''txtProdName.Text = ""
     End Sub
@@ -333,7 +333,7 @@ Public Class frmProForma
             Next
             lblTotal.Text = sum
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -453,7 +453,7 @@ Public Class frmProForma
             lblProdName.Text = row.Cells(0).Value.ToString()
             '+ "-" + txtProdline.Text + ""
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
         ''txtProdName.Text = ""
@@ -490,7 +490,7 @@ Public Class frmProForma
             lblPayable.Text = payable
             'lblDiscAmt.Text = discamt
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -549,7 +549,7 @@ Public Class frmProForma
             lblPayable.Text = payable
             'lblDiscAmt.Text = discamt
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -704,7 +704,7 @@ Public Class frmProForma
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -746,7 +746,7 @@ Public Class frmProForma
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Sub PrintRecieptA5(valuetosearch As String)
@@ -786,7 +786,7 @@ Public Class frmProForma
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Sub Sortcat(valuetosearch As String)
@@ -976,7 +976,7 @@ Public Class frmProForma
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 

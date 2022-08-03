@@ -38,7 +38,7 @@ Public Class frmReviewPrices
         Else
             Try
                 Poscon.Open()
-                Dim query = ("update Stockmast set RetailPrice='" + txtNewRPrice.Text + "', WholesalePrice= '" + txtNewWPrice.Text + "' where Prodcode= " + txtStockCode.Text + "")
+                Dim query = ("update Stockmast set RetailPrice='" + txtNewRPrice.Text + "', WholesalePrice= '" + txtNewWPrice.Text + "' where Prodcode= '" + txtStockCode.Text + "'")
                 Dim cmd As New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 MsgBox("Product Updated Successfully")

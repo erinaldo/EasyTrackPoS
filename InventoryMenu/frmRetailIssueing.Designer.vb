@@ -1133,7 +1133,7 @@ Partial Class frmRetailIssueing
         Me.lblTotal.BackColor = System.Drawing.Color.LightSteelBlue
         Me.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblTotal.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(288, 27)
+        Me.lblTotal.Location = New System.Drawing.Point(305, 22)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(40, 47)
         Me.lblTotal.TabIndex = 182

@@ -1,5 +1,5 @@
 ﻿Imports System.Data.SqlClient
-
+Imports System.Globalization
 Public Class RecieveCustomerPayment
     'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
@@ -12,7 +12,7 @@ Public Class RecieveCustomerPayment
 
     End Sub
     Private Sub RecieveCustomerPayment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        User()
+
         recieptno()
 
         Timer1.Enabled = True
@@ -28,7 +28,7 @@ Public Class RecieveCustomerPayment
         '    cbCustName.ValueMember = "IDCardNumber"
         '    Poscon.Close()
         'Catch ex As Exception
-        '    MsgBox(ex.ToString)
+        '    msgbox(ex.message)
         'End Try
         ComboFeed("select customername from Customer", cbCustName, 0)
 
@@ -55,11 +55,15 @@ Public Class RecieveCustomerPayment
             Else
                 lblCustBal.Text = tbl.Rows(0)(10).ToString
                 lblCustID.Text = tbl.Rows(0)(9).ToString()
+                Dim dblValue As Double = Val(lblCustBal.Text)
+
+                ' lblCustBal.Text = dblValue.ToString("N", CultureInfo.InvariantCulture)
+
             End If
 
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -77,6 +81,9 @@ Public Class RecieveCustomerPayment
         Dim b = Val(txtAmtPaid.Text)
         Dim c = Val(txtdiscount.Text)
         lblNewBal.Text = a - b - c
+        Dim dblValue As Double = Val(lblNewBal.Text)
+        'lblNewBal.Text = dblValue.ToString("N", CultureInfo.InvariantCulture)
+
     End Sub
     Private Sub clear()
         cbCustName.Text = ""
@@ -108,15 +115,15 @@ Public Class RecieveCustomerPayment
                     Poscon.Open()
                 End If
 
-                Dim query = "insert into customerpayment values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtDatePaid.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbType.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + lblTime.Text + "') "
+                Dim query = "insert into customerpayment values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtdatepaid.Text + "','" + txtAmtPaid.Text + "','" & lblNewBal.Text & "','" + cbType.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + lblTime.Text + "') "
                 cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
 
-                Dim quer = "update Customer set CurrentBalance = " + lblNewBal.Text + " where IDCardNumber =" + lblCustID.Text + ""
+                Dim quer = "update Customer set CurrentBalance = " & lblNewBal.Text & " where IDCardNumber =" + lblCustID.Text + ""
                 cmd = New SqlCommand(quer, Poscon)
                 cmd.ExecuteNonQuery()
 
-                Dim sql = "insert into customerledger(CustomerName,Oldbal,datepaid,amtpaid,newbal,paymenttype,paymentmode,REcievedby,narration,timepaid) values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtDatePaid.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbType.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + lblTime.Text + "') "
+                Dim sql = "insert into customerledger(CustomerName,Oldbal,datepaid,amtpaid,newbal,paymenttype,paymentmode,REcievedby,narration,timepaid) values('" + cbCustName.Text + "','" + lblCustBal.Text + "','" + txtdatepaid.Text + "','" + txtAmtPaid.Text + "','" & lblNewBal.Text & "','" + cbType.Text + "','" + cbPaymentMode.Text + "','" + txtRecievedBy.Text + "','" + txtNarration.Text + "','" + lblTime.Text + "') "
                 cmd = New SqlCommand(sql, Poscon)
                 cmd.ExecuteNonQuery()
 
@@ -127,7 +134,7 @@ Public Class RecieveCustomerPayment
 
 
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
 
@@ -172,7 +179,7 @@ Public Class RecieveCustomerPayment
             End If
             recieptno()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
         clear()
     End Sub
@@ -180,25 +187,7 @@ Public Class RecieveCustomerPayment
     'Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs)
     '    Application.Exit()
     'End Sub
-    Public Sub User()
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim que = "select * from userlogs"
-        cmd = New SqlCommand(que, Poscon)
-        Dim da As New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        If table.Rows.Count = 0 Then
 
-        Else
-
-            Dim index = table.Rows.Count() - 1
-            txtRecievedBy.Text = table.Rows(index)(1).ToString
-        End If
-
-        Poscon.Close()
-    End Sub
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
         RecieveCustomerPayment_Load(e, e)
@@ -254,7 +243,7 @@ Public Class RecieveCustomerPayment
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Sub A4()
@@ -299,7 +288,7 @@ Public Class RecieveCustomerPayment
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Public Sub recieptno()

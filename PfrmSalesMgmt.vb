@@ -8,7 +8,7 @@ Public Class PfrmSalesMgmt
     Private Sub PfrmSalesMgmt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
-        settings()
+        'settings()
     End Sub
 
     Private Sub btnOders_Click(sender As Object, e As EventArgs)
@@ -178,10 +178,10 @@ Public Class PfrmSalesMgmt
     Private Sub settings()
         btnOpenSession.Enabled = My.Settings.opensession
         btnsell.Enabled = My.Settings.sell
-        btnchangepricesel.Enabled = My.Settings.changeprice
+        'btnchangepricesel.Enabled = My.Settings.changeprice
         btncanc.Enabled = My.Settings.cancellation
-        btntobecol.Enabled = My.Settings.tobecol
-        btntobecoldel.Enabled = My.Settings.tobecoldel
+        btntobecol.Enabled = My.Settings.DelierySale
+        btntobecoldel.Enabled = My.Settings.DelierySale
         btnclosesession.Enabled = My.Settings.closesession
         btnproforma.Enabled = My.Settings.proforma
         btnpacktrans.Enabled = My.Settings.packtrans

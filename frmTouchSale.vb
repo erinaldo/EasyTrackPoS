@@ -149,7 +149,7 @@ Public Class frmTouchSale
                                 Next
                                 lblTotal.Text = sum
                             Catch ex As Exception
-                                MsgBox(ex.ToString)
+                                MsgBox(ex.Message)
                             End Try
                             dr.Close()
                             Poscon.Close()
@@ -185,7 +185,7 @@ Public Class frmTouchSale
                 End While
             End If
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -217,7 +217,7 @@ Public Class frmTouchSale
     '                    Next
     '                    lblTotal.Text = sum
     '                Catch ex As Exception
-    '                    MsgBox(ex.ToString)
+    '                    msgbox(ex.message)
     '                End Try
     '                dr.Close()
     '                poscon.Close()
@@ -431,7 +431,7 @@ Public Class frmTouchSale
 
 
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Private Sub DisplayOders()
@@ -567,7 +567,7 @@ Public Class frmTouchSale
             End If
             'LoadOderSale()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -654,7 +654,7 @@ Public Class frmTouchSale
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -863,7 +863,7 @@ Public Class frmTouchSale
                 '     End If                   
             End If
             'Catch ex As Exception
-            '  MsgBox(ex.ToString)
+            '  msgbox(ex.message)
             'End Try
         End If
         ShowConfig()
@@ -879,7 +879,7 @@ Public Class frmTouchSale
             Next
             lblTotal.Text = sum
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Sub CashPaid()
@@ -1020,7 +1020,7 @@ Public Class frmTouchSale
         '     End If                   
 
         'Catch ex As Exception
-        '  MsgBox(ex.ToString)
+        '  msgbox(ex.message)
         'End Try
 
         ShowConfig()
@@ -1063,7 +1063,7 @@ Public Class frmTouchSale
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Private Sub gvOders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvOders.CellDoubleClick
@@ -1076,7 +1076,7 @@ Public Class frmTouchSale
             btnSell.Visible = True
             btnOder.Visible = False
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -1112,7 +1112,7 @@ Public Class frmTouchSale
                     Next
                     lblTotal.Text = sum
                 Catch ex As Exception
-                    MsgBox(ex.ToString)
+                    MsgBox(ex.Message)
                 End Try
                 dr.Close()
                 Poscon.Close()

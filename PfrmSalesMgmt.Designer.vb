@@ -153,7 +153,7 @@ Partial Class PfrmSalesMgmt
         Me.btnproforma.IdleIconLeftImage = CType(resources.GetObject("btnproforma.IdleIconLeftImage"), System.Drawing.Image)
         Me.btnproforma.IdleIconRightImage = Nothing
         Me.btnproforma.IndicateFocus = False
-        Me.btnproforma.Location = New System.Drawing.Point(1, 425)
+        Me.btnproforma.Location = New System.Drawing.Point(1, 414)
         Me.btnproforma.Name = "btnproforma"
         Me.btnproforma.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.btnproforma.OnDisabledState.BorderRadius = 1
@@ -177,7 +177,7 @@ Partial Class PfrmSalesMgmt
         Me.btnproforma.OnIdleState.BorderThickness = 1
         Me.btnproforma.OnIdleState.FillColor = System.Drawing.Color.White
         Me.btnproforma.OnIdleState.ForeColor = System.Drawing.Color.Black
-        Me.btnproforma.OnIdleState.IconLeftImage = CType(resources.GetObject("BunifuButton9.OnIdleState.IconLeftImage"), System.Drawing.Image)
+        Me.btnproforma.OnIdleState.IconLeftImage = CType(resources.GetObject("btnproforma.OnIdleState.IconLeftImage"), System.Drawing.Image)
         Me.btnproforma.OnIdleState.IconRightImage = Nothing
         Me.btnproforma.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(144, Byte), Integer))
         Me.btnproforma.OnPressedState.BorderRadius = 1
@@ -244,7 +244,7 @@ Partial Class PfrmSalesMgmt
         Me.btntobecoldel.IdleIconLeftImage = CType(resources.GetObject("btntobecoldel.IdleIconLeftImage"), System.Drawing.Image)
         Me.btntobecoldel.IdleIconRightImage = Nothing
         Me.btntobecoldel.IndicateFocus = False
-        Me.btntobecoldel.Location = New System.Drawing.Point(0, 542)
+        Me.btntobecoldel.Location = New System.Drawing.Point(0, 552)
         Me.btntobecoldel.Name = "btntobecoldel"
         Me.btntobecoldel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.btntobecoldel.OnDisabledState.BorderRadius = 1
@@ -268,7 +268,7 @@ Partial Class PfrmSalesMgmt
         Me.btntobecoldel.OnIdleState.BorderThickness = 1
         Me.btntobecoldel.OnIdleState.FillColor = System.Drawing.Color.White
         Me.btntobecoldel.OnIdleState.ForeColor = System.Drawing.Color.Black
-        Me.btntobecoldel.OnIdleState.IconLeftImage = CType(resources.GetObject("BunifuButton1.OnIdleState.IconLeftImage"), System.Drawing.Image)
+        Me.btntobecoldel.OnIdleState.IconLeftImage = CType(resources.GetObject("btntobecoldel.OnIdleState.IconLeftImage"), System.Drawing.Image)
         Me.btntobecoldel.OnIdleState.IconRightImage = Nothing
         Me.btntobecoldel.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(144, Byte), Integer))
         Me.btntobecoldel.OnPressedState.BorderRadius = 1
@@ -335,7 +335,7 @@ Partial Class PfrmSalesMgmt
         Me.btntobecol.IdleIconLeftImage = CType(resources.GetObject("btntobecol.IdleIconLeftImage"), System.Drawing.Image)
         Me.btntobecol.IdleIconRightImage = Nothing
         Me.btntobecol.IndicateFocus = False
-        Me.btntobecol.Location = New System.Drawing.Point(-1, 481)
+        Me.btntobecol.Location = New System.Drawing.Point(-1, 483)
         Me.btntobecol.Name = "btntobecol"
         Me.btntobecol.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.btntobecol.OnDisabledState.BorderRadius = 1
@@ -359,7 +359,7 @@ Partial Class PfrmSalesMgmt
         Me.btntobecol.OnIdleState.BorderThickness = 1
         Me.btntobecol.OnIdleState.FillColor = System.Drawing.Color.White
         Me.btntobecol.OnIdleState.ForeColor = System.Drawing.Color.Black
-        Me.btntobecol.OnIdleState.IconLeftImage = CType(resources.GetObject("BunifuButton3.OnIdleState.IconLeftImage"), System.Drawing.Image)
+        Me.btntobecol.OnIdleState.IconLeftImage = CType(resources.GetObject("btntobecol.OnIdleState.IconLeftImage"), System.Drawing.Image)
         Me.btntobecol.OnIdleState.IconRightImage = Nothing
         Me.btntobecol.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(144, Byte), Integer))
         Me.btntobecol.OnPressedState.BorderRadius = 1
@@ -426,7 +426,7 @@ Partial Class PfrmSalesMgmt
         Me.btnpacktrans.IdleIconLeftImage = CType(resources.GetObject("btnpacktrans.IdleIconLeftImage"), System.Drawing.Image)
         Me.btnpacktrans.IdleIconRightImage = Nothing
         Me.btnpacktrans.IndicateFocus = False
-        Me.btnpacktrans.Location = New System.Drawing.Point(1, 358)
+        Me.btnpacktrans.Location = New System.Drawing.Point(1, 345)
         Me.btnpacktrans.Name = "btnpacktrans"
         Me.btnpacktrans.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.btnpacktrans.OnDisabledState.BorderRadius = 1
@@ -450,7 +450,7 @@ Partial Class PfrmSalesMgmt
         Me.btnpacktrans.OnIdleState.BorderThickness = 1
         Me.btnpacktrans.OnIdleState.FillColor = System.Drawing.Color.White
         Me.btnpacktrans.OnIdleState.ForeColor = System.Drawing.Color.Black
-        Me.btnpacktrans.OnIdleState.IconLeftImage = CType(resources.GetObject("BunifuButton8.OnIdleState.IconLeftImage"), System.Drawing.Image)
+        Me.btnpacktrans.OnIdleState.IconLeftImage = CType(resources.GetObject("btnpacktrans.OnIdleState.IconLeftImage"), System.Drawing.Image)
         Me.btnpacktrans.OnIdleState.IconRightImage = Nothing
         Me.btnpacktrans.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(144, Byte), Integer))
         Me.btnpacktrans.OnPressedState.BorderRadius = 1
@@ -517,7 +517,7 @@ Partial Class PfrmSalesMgmt
         Me.btnclosesession.IdleIconLeftImage = CType(resources.GetObject("btnclosesession.IdleIconLeftImage"), System.Drawing.Image)
         Me.btnclosesession.IdleIconRightImage = Nothing
         Me.btnclosesession.IndicateFocus = False
-        Me.btnclosesession.Location = New System.Drawing.Point(1, 602)
+        Me.btnclosesession.Location = New System.Drawing.Point(1, 614)
         Me.btnclosesession.Name = "btnclosesession"
         Me.btnclosesession.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.btnclosesession.OnDisabledState.BorderRadius = 1
@@ -541,7 +541,7 @@ Partial Class PfrmSalesMgmt
         Me.btnclosesession.OnIdleState.BorderThickness = 1
         Me.btnclosesession.OnIdleState.FillColor = System.Drawing.Color.White
         Me.btnclosesession.OnIdleState.ForeColor = System.Drawing.Color.Black
-        Me.btnclosesession.OnIdleState.IconLeftImage = CType(resources.GetObject("BunifuButton7.OnIdleState.IconLeftImage"), System.Drawing.Image)
+        Me.btnclosesession.OnIdleState.IconLeftImage = CType(resources.GetObject("btnclosesession.OnIdleState.IconLeftImage"), System.Drawing.Image)
         Me.btnclosesession.OnIdleState.IconRightImage = Nothing
         Me.btnclosesession.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(144, Byte), Integer))
         Me.btnclosesession.OnPressedState.BorderRadius = 1
@@ -608,7 +608,7 @@ Partial Class PfrmSalesMgmt
         Me.BunifuButton6.IdleIconLeftImage = CType(resources.GetObject("BunifuButton6.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton6.IdleIconRightImage = Nothing
         Me.BunifuButton6.IndicateFocus = False
-        Me.BunifuButton6.Location = New System.Drawing.Point(1, 38)
+        Me.BunifuButton6.Location = New System.Drawing.Point(1, 0)
         Me.BunifuButton6.Name = "BunifuButton6"
         Me.BunifuButton6.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton6.OnDisabledState.BorderRadius = 1
@@ -699,7 +699,7 @@ Partial Class PfrmSalesMgmt
         Me.btncanc.IdleIconLeftImage = CType(resources.GetObject("btncanc.IdleIconLeftImage"), System.Drawing.Image)
         Me.btncanc.IdleIconRightImage = Nothing
         Me.btncanc.IndicateFocus = False
-        Me.btncanc.Location = New System.Drawing.Point(0, 297)
+        Me.btncanc.Location = New System.Drawing.Point(0, 276)
         Me.btncanc.Name = "btncanc"
         Me.btncanc.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.btncanc.OnDisabledState.BorderRadius = 1
@@ -723,7 +723,7 @@ Partial Class PfrmSalesMgmt
         Me.btncanc.OnIdleState.BorderThickness = 1
         Me.btncanc.OnIdleState.FillColor = System.Drawing.Color.White
         Me.btncanc.OnIdleState.ForeColor = System.Drawing.Color.Black
-        Me.btncanc.OnIdleState.IconLeftImage = CType(resources.GetObject("BunifuButton5.OnIdleState.IconLeftImage"), System.Drawing.Image)
+        Me.btncanc.OnIdleState.IconLeftImage = CType(resources.GetObject("btncanc.OnIdleState.IconLeftImage"), System.Drawing.Image)
         Me.btncanc.OnIdleState.IconRightImage = Nothing
         Me.btncanc.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(144, Byte), Integer))
         Me.btncanc.OnPressedState.BorderRadius = 1
@@ -790,7 +790,7 @@ Partial Class PfrmSalesMgmt
         Me.btnchangepricesel.IdleIconLeftImage = CType(resources.GetObject("btnchangepricesel.IdleIconLeftImage"), System.Drawing.Image)
         Me.btnchangepricesel.IdleIconRightImage = Nothing
         Me.btnchangepricesel.IndicateFocus = False
-        Me.btnchangepricesel.Location = New System.Drawing.Point(0, 236)
+        Me.btnchangepricesel.Location = New System.Drawing.Point(0, 207)
         Me.btnchangepricesel.Name = "btnchangepricesel"
         Me.btnchangepricesel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.btnchangepricesel.OnDisabledState.BorderRadius = 1
@@ -814,7 +814,7 @@ Partial Class PfrmSalesMgmt
         Me.btnchangepricesel.OnIdleState.BorderThickness = 1
         Me.btnchangepricesel.OnIdleState.FillColor = System.Drawing.Color.White
         Me.btnchangepricesel.OnIdleState.ForeColor = System.Drawing.Color.Black
-        Me.btnchangepricesel.OnIdleState.IconLeftImage = CType(resources.GetObject("BunifuButton4.OnIdleState.IconLeftImage"), System.Drawing.Image)
+        Me.btnchangepricesel.OnIdleState.IconLeftImage = CType(resources.GetObject("btnchangepricesel.OnIdleState.IconLeftImage"), System.Drawing.Image)
         Me.btnchangepricesel.OnIdleState.IconRightImage = Nothing
         Me.btnchangepricesel.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(144, Byte), Integer))
         Me.btnchangepricesel.OnPressedState.BorderRadius = 1
@@ -881,7 +881,7 @@ Partial Class PfrmSalesMgmt
         Me.btnsell.IdleIconLeftImage = CType(resources.GetObject("btnsell.IdleIconLeftImage"), System.Drawing.Image)
         Me.btnsell.IdleIconRightImage = Nothing
         Me.btnsell.IndicateFocus = False
-        Me.btnsell.Location = New System.Drawing.Point(1, 175)
+        Me.btnsell.Location = New System.Drawing.Point(1, 138)
         Me.btnsell.Name = "btnsell"
         Me.btnsell.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.btnsell.OnDisabledState.BorderRadius = 1
@@ -905,7 +905,7 @@ Partial Class PfrmSalesMgmt
         Me.btnsell.OnIdleState.BorderThickness = 1
         Me.btnsell.OnIdleState.FillColor = System.Drawing.Color.White
         Me.btnsell.OnIdleState.ForeColor = System.Drawing.Color.Black
-        Me.btnsell.OnIdleState.IconLeftImage = CType(resources.GetObject("BunifuButton2.OnIdleState.IconLeftImage"), System.Drawing.Image)
+        Me.btnsell.OnIdleState.IconLeftImage = CType(resources.GetObject("btnsell.OnIdleState.IconLeftImage"), System.Drawing.Image)
         Me.btnsell.OnIdleState.IconRightImage = Nothing
         Me.btnsell.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(144, Byte), Integer))
         Me.btnsell.OnPressedState.BorderRadius = 1
@@ -972,7 +972,7 @@ Partial Class PfrmSalesMgmt
         Me.btnOpenSession.IdleIconLeftImage = CType(resources.GetObject("btnOpenSession.IdleIconLeftImage"), System.Drawing.Image)
         Me.btnOpenSession.IdleIconRightImage = Nothing
         Me.btnOpenSession.IndicateFocus = False
-        Me.btnOpenSession.Location = New System.Drawing.Point(1, 114)
+        Me.btnOpenSession.Location = New System.Drawing.Point(1, 69)
         Me.btnOpenSession.Name = "btnOpenSession"
         Me.btnOpenSession.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.btnOpenSession.OnDisabledState.BorderRadius = 1

@@ -503,6 +503,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsTobeCollected.xsd</DependentUpon>
     </Compile>
+    <Compile Include="InventoryMenu\dsTotalStock.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTotalStock.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryMenu\dsTotalStock.vb">
+      <DependentUpon>dsTotalStock.xsd</DependentUpon>
+    </Compile>
     <Compile Include="InventoryMenu\frmGoodsRecievedPerInvoice.Designer.vb">
       <DependentUpon>frmGoodsRecievedPerInvoice.vb</DependentUpon>
     </Compile>
@@ -585,6 +593,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptTobeCollected.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InventoryMenu\rptTobecollectedA4.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTobecollectedA4.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InventoryMenu\rptTotalStock.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTotalStock.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Module\SMSModule.vb" />
@@ -978,6 +998,17 @@
     <Compile Include="ReportMenu\StockValueReportMenu.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reports\dsTempStockmaspaymode.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTempStockmaspaymode.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptSalesperpaymode.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSalesperpaymode.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptCustomerInvoicesPerDate.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1048,6 +1079,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptToBeCollectedDelivery.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptToBeCollectedDeliveryA4.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptToBeCollectedDeliveryA4.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SalesMenu\CloseSalesMenu.Designer.vb">
@@ -1126,6 +1163,12 @@
       <DependentUpon>frmSessionLedger.vb</DependentUpon>
     </Compile>
     <Compile Include="SalesMenu\frmSessionLedger.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesMenu\frmSimpleSale.Designer.vb">
+      <DependentUpon>frmSimpleSale.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SalesMenu\frmSimpleSale.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SalesMenu\Keypad.vb" />
@@ -1466,6 +1509,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTobeCollected.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMenu\rptTobecollectedA4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTobecollectedA4.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMenu\rptTotalStock.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTotalStock.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="MultiShop\frmMultishop.resx">
       <DependentUpon>frmMultishop.vb</DependentUpon>
     </EmbeddedResource>
@@ -1679,6 +1730,10 @@
     <EmbeddedResource Include="ReportMenu\StockValueReportMenu.resx">
       <DependentUpon>StockValueReportMenu.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptSalesperpaymode.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSalesperpaymode.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptCustomerInvoicesPerDate.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCustomerInvoicesPerDate.vb</LastGenOutput>
@@ -1727,6 +1782,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToBeCollectedDelivery.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="rptToBeCollectedDeliveryA4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToBeCollectedDeliveryA4.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SalesMenu\CloseSalesMenu.resx">
       <DependentUpon>CloseSalesMenu.vb</DependentUpon>
     </EmbeddedResource>
@@ -1756,6 +1815,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SalesMenu\frmSessionLedger.resx">
       <DependentUpon>frmSessionLedger.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesMenu\frmSimpleSale.resx">
+      <DependentUpon>frmSimpleSale.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesMenu\rptCancellationpdate.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1934,6 +1996,17 @@
     <None Include="InventoryMenu\dsTobeCollected.xss">
       <DependentUpon>dsTobeCollected.xsd</DependentUpon>
     </None>
+    <None Include="InventoryMenu\dsTotalStock.xsc">
+      <DependentUpon>dsTotalStock.xsd</DependentUpon>
+    </None>
+    <None Include="InventoryMenu\dsTotalStock.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTotalStock.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="InventoryMenu\dsTotalStock.xss">
+      <DependentUpon>dsTotalStock.xsd</DependentUpon>
+    </None>
     <None Include="MultiShop\dsMultishop.xsc">
       <DependentUpon>dsMultishop.xsd</DependentUpon>
     </None>
@@ -1990,6 +2063,18 @@
     <None Include="ReportMenu\dsSupplier.xss">
       <DependentUpon>dsSupplier.xsd</DependentUpon>
     </None>
+    <None Include="Reports\dsTempStockmaspaymode.xsc">
+      <DependentUpon>dsTempStockmaspaymode.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\dsTempStockmaspaymode.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTempStockmaspaymode.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Reports\dsTempStockmaspaymode.xss">
+      <DependentUpon>dsTempStockmaspaymode.xsd</DependentUpon>
+    </None>
+    <None Include="SalesMenu\.editorconfig" />
     <None Include="SalesMenu\dsSalesTranx.xsc">
       <DependentUpon>dsSalesTranx.xsd</DependentUpon>
     </None>
@@ -2054,7 +2139,9 @@
   <ItemGroup>
     <Folder Include="DataSet\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="packages\System.Text.Json.6.0.5\build\System.Text.Json.targets" Condition="Exists('packages\System.Text.Json.6.0.5\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

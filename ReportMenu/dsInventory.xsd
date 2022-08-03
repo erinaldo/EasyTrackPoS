@@ -574,7 +574,7 @@ SELECT ProformaNo, ItemCode, ItemName, ProdLine, ProdCat, ItemSize, ItemColour, 
   <xs:element name="dsInventory" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsInventory" msprop:Generator_UserDSName="dsInventory">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ClientReg" msprop:Generator_TableClassName="ClientRegDataTable" msprop:Generator_TableVarName="tableClientReg" msprop:Generator_RowChangedName="ClientRegRowChanged" msprop:Generator_TablePropName="ClientReg" msprop:Generator_RowDeletingName="ClientRegRowDeleting" msprop:Generator_RowChangingName="ClientRegRowChanging" msprop:Generator_RowEvHandlerName="ClientRegRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientRegRowDeleted" msprop:Generator_RowClassName="ClientRegRow" msprop:Generator_UserTableName="ClientReg" msprop:Generator_RowEvArgName="ClientRegRowChangeEvent">
+        <xs:element name="ClientReg" msprop:Generator_TableClassName="ClientRegDataTable" msprop:Generator_TableVarName="tableClientReg" msprop:Generator_TablePropName="ClientReg" msprop:Generator_RowDeletingName="ClientRegRowDeleting" msprop:Generator_RowChangingName="ClientRegRowChanging" msprop:Generator_RowEvHandlerName="ClientRegRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientRegRowDeleted" msprop:Generator_UserTableName="ClientReg" msprop:Generator_RowChangedName="ClientRegRowChanged" msprop:Generator_RowEvArgName="ClientRegRowChangeEvent" msprop:Generator_RowClassName="ClientRegRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ClientID" msprop:Generator_ColumnVarNameInTable="columnClientID" msprop:Generator_ColumnPropNameInRow="ClientID" msprop:Generator_ColumnPropNameInTable="ClientIDColumn" msprop:Generator_UserColumnName="ClientID">
@@ -644,7 +644,7 @@ SELECT ProformaNo, ItemCode, ItemName, ProdLine, ProdCat, ItemSize, ItemColour, 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="InventoryLedger" msprop:Generator_TableClassName="InventoryLedgerDataTable" msprop:Generator_TableVarName="tableInventoryLedger" msprop:Generator_TablePropName="InventoryLedger" msprop:Generator_RowDeletingName="InventoryLedgerRowDeleting" msprop:Generator_RowChangingName="InventoryLedgerRowChanging" msprop:Generator_RowEvHandlerName="InventoryLedgerRowChangeEventHandler" msprop:Generator_RowDeletedName="InventoryLedgerRowDeleted" msprop:Generator_UserTableName="InventoryLedger" msprop:Generator_RowChangedName="InventoryLedgerRowChanged" msprop:Generator_RowEvArgName="InventoryLedgerRowChangeEvent" msprop:Generator_RowClassName="InventoryLedgerRow">
+        <xs:element name="InventoryLedger" msprop:Generator_TableClassName="InventoryLedgerDataTable" msprop:Generator_TableVarName="tableInventoryLedger" msprop:Generator_RowChangedName="InventoryLedgerRowChanged" msprop:Generator_TablePropName="InventoryLedger" msprop:Generator_RowDeletingName="InventoryLedgerRowDeleting" msprop:Generator_RowChangingName="InventoryLedgerRowChanging" msprop:Generator_RowEvHandlerName="InventoryLedgerRowChangeEventHandler" msprop:Generator_RowDeletedName="InventoryLedgerRowDeleted" msprop:Generator_RowClassName="InventoryLedgerRow" msprop:Generator_UserTableName="InventoryLedger" msprop:Generator_RowEvArgName="InventoryLedgerRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TranxID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTranxID" msprop:Generator_ColumnPropNameInRow="TranxID" msprop:Generator_ColumnPropNameInTable="TranxIDColumn" msprop:Generator_UserColumnName="TranxID" type="xs:int" />
@@ -738,10 +738,10 @@ SELECT ProformaNo, ItemCode, ItemName, ProdLine, ProdCat, ItemSize, ItemColour, 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="StockMast" msprop:Generator_TableClassName="StockMastDataTable" msprop:Generator_TableVarName="tableStockMast" msprop:Generator_RowChangedName="StockMastRowChanged" msprop:Generator_TablePropName="StockMast" msprop:Generator_RowDeletingName="StockMastRowDeleting" msprop:Generator_RowChangingName="StockMastRowChanging" msprop:Generator_RowEvHandlerName="StockMastRowChangeEventHandler" msprop:Generator_RowDeletedName="StockMastRowDeleted" msprop:Generator_RowClassName="StockMastRow" msprop:Generator_UserTableName="StockMast" msprop:Generator_RowEvArgName="StockMastRowChangeEvent">
+        <xs:element name="StockMast" msprop:Generator_TableClassName="StockMastDataTable" msprop:Generator_TableVarName="tableStockMast" msprop:Generator_TablePropName="StockMast" msprop:Generator_RowDeletingName="StockMastRowDeleting" msprop:Generator_RowChangingName="StockMastRowChanging" msprop:Generator_RowEvHandlerName="StockMastRowChangeEventHandler" msprop:Generator_RowDeletedName="StockMastRowDeleted" msprop:Generator_UserTableName="StockMast" msprop:Generator_RowChangedName="StockMastRowChanged" msprop:Generator_RowEvArgName="StockMastRowChangeEvent" msprop:Generator_RowClassName="StockMastRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ProdCode" msprop:Generator_ColumnVarNameInTable="columnProdCode" msprop:Generator_ColumnPropNameInRow="ProdCode" msprop:Generator_ColumnPropNameInTable="ProdCodeColumn" msprop:Generator_UserColumnName="ProdCode" type="xs:long" />
+              <xs:element name="ProdCode" msprop:Generator_ColumnVarNameInTable="columnProdCode" msprop:Generator_ColumnPropNameInRow="ProdCode" msprop:Generator_ColumnPropNameInTable="ProdCodeColumn" msprop:Generator_UserColumnName="ProdCode" type="xs:string" />
               <xs:element name="ProdName" msprop:Generator_ColumnVarNameInTable="columnProdName" msprop:Generator_ColumnPropNameInRow="ProdName" msprop:Generator_ColumnPropNameInTable="ProdNameColumn" msprop:Generator_UserColumnName="ProdName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -810,7 +810,7 @@ SELECT ProformaNo, ItemCode, ItemName, ProdLine, ProdCat, ItemSize, ItemColour, 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProformaInvoices" msprop:Generator_TableClassName="ProformaInvoicesDataTable" msprop:Generator_TableVarName="tableProformaInvoices" msprop:Generator_TablePropName="ProformaInvoices" msprop:Generator_RowDeletingName="ProformaInvoicesRowDeleting" msprop:Generator_RowChangingName="ProformaInvoicesRowChanging" msprop:Generator_RowEvHandlerName="ProformaInvoicesRowChangeEventHandler" msprop:Generator_RowDeletedName="ProformaInvoicesRowDeleted" msprop:Generator_UserTableName="ProformaInvoices" msprop:Generator_RowChangedName="ProformaInvoicesRowChanged" msprop:Generator_RowEvArgName="ProformaInvoicesRowChangeEvent" msprop:Generator_RowClassName="ProformaInvoicesRow">
+        <xs:element name="ProformaInvoices" msprop:Generator_TableClassName="ProformaInvoicesDataTable" msprop:Generator_TableVarName="tableProformaInvoices" msprop:Generator_RowChangedName="ProformaInvoicesRowChanged" msprop:Generator_TablePropName="ProformaInvoices" msprop:Generator_RowDeletingName="ProformaInvoicesRowDeleting" msprop:Generator_RowChangingName="ProformaInvoicesRowChanging" msprop:Generator_RowEvHandlerName="ProformaInvoicesRowChangeEventHandler" msprop:Generator_RowDeletedName="ProformaInvoicesRowDeleted" msprop:Generator_RowClassName="ProformaInvoicesRow" msprop:Generator_UserTableName="ProformaInvoices" msprop:Generator_RowEvArgName="ProformaInvoicesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProformaNo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProformaNo" msprop:Generator_ColumnPropNameInRow="ProformaNo" msprop:Generator_ColumnPropNameInTable="ProformaNoColumn" msprop:Generator_UserColumnName="ProformaNo" type="xs:int" />
@@ -917,7 +917,7 @@ SELECT ProformaNo, ItemCode, ItemName, ProdLine, ProdCat, ItemSize, ItemColour, 
     </xs:unique>
     <xs:unique name="StockMast_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:StockMast" />
-      <xs:field xpath="mstns:ProdCode" />
+      <xs:field xpath="mstns:ItemNo" />
     </xs:unique>
     <xs:unique name="ProformaInvoices_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:ProformaInvoices" />

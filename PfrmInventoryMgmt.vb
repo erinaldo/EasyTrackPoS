@@ -83,7 +83,7 @@ Public Class PfrmInventoryMgmt
             adp.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -111,7 +111,7 @@ Public Class PfrmInventoryMgmt
             adp.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 

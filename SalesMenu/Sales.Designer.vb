@@ -128,6 +128,9 @@ Partial Class frmSales
         Me.lblOPrice = New System.Windows.Forms.Label()
         Me.gvPriceBand = New Bunifu.UI.WinForms.BunifuDataGridView()
         Me.gbsell = New System.Windows.Forms.GroupBox()
+        Me.lblpayref = New System.Windows.Forms.Label()
+        Me.txtpayref = New System.Windows.Forms.TextBox()
+        Me.lblCreditlimit = New System.Windows.Forms.Label()
         Me.lblCustType = New System.Windows.Forms.Label()
         Me.Label36 = New System.Windows.Forms.Label()
         Me.tksendsms = New Bunifu.UI.WinForms.BunifuCheckBox()
@@ -141,6 +144,7 @@ Partial Class frmSales
         Me.Label29 = New System.Windows.Forms.Label()
         Me.lbldiscCode = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.cbDisc = New System.Windows.Forms.ComboBox()
         Me.txtDiscName = New System.Windows.Forms.RichTextBox()
         Me.BunifuThinButton23 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.txtDiscAmt = New System.Windows.Forms.TextBox()
@@ -158,7 +162,6 @@ Partial Class frmSales
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblProformaInvoice = New System.Windows.Forms.Label()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
-        Me.cbDisc = New System.Windows.Forms.ComboBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
@@ -192,7 +195,7 @@ Partial Class frmSales
         Me.lblTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTotal.AutoSize = True
         Me.lblTotal.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(71, 236)
+        Me.lblTotal.Location = New System.Drawing.Point(71, 229)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(25, 30)
         Me.lblTotal.TabIndex = 1
@@ -203,7 +206,7 @@ Partial Class frmSales
         Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(29, 277)
+        Me.Label3.Location = New System.Drawing.Point(29, 293)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(84, 21)
         Me.Label3.TabIndex = 2
@@ -214,7 +217,7 @@ Partial Class frmSales
         Me.txtCashPaid.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtCashPaid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCashPaid.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCashPaid.Location = New System.Drawing.Point(30, 301)
+        Me.txtCashPaid.Location = New System.Drawing.Point(30, 317)
         Me.txtCashPaid.Name = "txtCashPaid"
         Me.txtCashPaid.Size = New System.Drawing.Size(150, 31)
         Me.txtCashPaid.TabIndex = 1
@@ -224,7 +227,7 @@ Partial Class frmSales
         Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(191, 275)
+        Me.Label4.Location = New System.Drawing.Point(191, 291)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(86, 21)
         Me.Label4.TabIndex = 4
@@ -422,7 +425,7 @@ Partial Class frmSales
         Me.cbPaymode.Font = New System.Drawing.Font("Segoe UI", 14.25!)
         Me.cbPaymode.FormattingEnabled = True
         Me.cbPaymode.Items.AddRange(New Object() {"Cash", "Mobile Money", "Bank Transfer"})
-        Me.cbPaymode.Location = New System.Drawing.Point(200, 299)
+        Me.cbPaymode.Location = New System.Drawing.Point(200, 315)
         Me.cbPaymode.Name = "cbPaymode"
         Me.cbPaymode.Size = New System.Drawing.Size(113, 33)
         Me.cbPaymode.TabIndex = 24
@@ -466,7 +469,7 @@ Partial Class frmSales
         Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(24, 242)
+        Me.Label2.Location = New System.Drawing.Point(24, 235)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(52, 21)
         Me.Label2.TabIndex = 104
@@ -597,7 +600,7 @@ Partial Class frmSales
         Me.cbSaleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbSaleType.Font = New System.Drawing.Font("Segoe UI", 14.25!)
         Me.cbSaleType.FormattingEnabled = True
-        Me.cbSaleType.Items.AddRange(New Object() {"Walk-In Sale", "Credit Sale"})
+        Me.cbSaleType.Items.AddRange(New Object() {"Walk-In Sale", "Credit Sale", "Deposit Sale"})
         Me.cbSaleType.Location = New System.Drawing.Point(156, 22)
         Me.cbSaleType.Name = "cbSaleType"
         Me.cbSaleType.Size = New System.Drawing.Size(148, 33)
@@ -1410,6 +1413,9 @@ Partial Class frmSales
         Me.gbsell.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbsell.BackColor = System.Drawing.Color.PaleGoldenrod
+        Me.gbsell.Controls.Add(Me.lblpayref)
+        Me.gbsell.Controls.Add(Me.txtpayref)
+        Me.gbsell.Controls.Add(Me.lblCreditlimit)
         Me.gbsell.Controls.Add(Me.lblCustType)
         Me.gbsell.Controls.Add(Me.Label36)
         Me.gbsell.Controls.Add(Me.tksendsms)
@@ -1458,6 +1464,40 @@ Partial Class frmSales
         Me.gbsell.TabStop = False
         Me.gbsell.Text = "Sell"
         '
+        'lblpayref
+        '
+        Me.lblpayref.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblpayref.AutoSize = True
+        Me.lblpayref.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblpayref.Location = New System.Drawing.Point(210, 346)
+        Me.lblpayref.Name = "lblpayref"
+        Me.lblpayref.Size = New System.Drawing.Size(44, 21)
+        Me.lblpayref.TabIndex = 149
+        Me.lblpayref.Text = "Ref#"
+        Me.lblpayref.Visible = False
+        '
+        'txtpayref
+        '
+        Me.txtpayref.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtpayref.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtpayref.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpayref.Location = New System.Drawing.Point(214, 370)
+        Me.txtpayref.Name = "txtpayref"
+        Me.txtpayref.Size = New System.Drawing.Size(99, 31)
+        Me.txtpayref.TabIndex = 148
+        Me.txtpayref.Visible = False
+        '
+        'lblCreditlimit
+        '
+        Me.lblCreditlimit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblCreditlimit.AutoSize = True
+        Me.lblCreditlimit.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCreditlimit.Location = New System.Drawing.Point(211, 216)
+        Me.lblCreditlimit.Name = "lblCreditlimit"
+        Me.lblCreditlimit.Size = New System.Drawing.Size(66, 15)
+        Me.lblCreditlimit.TabIndex = 147
+        Me.lblCreditlimit.Text = "Creditlimit"
+        '
         'lblCustType
         '
         Me.lblCustType.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -1468,6 +1508,7 @@ Partial Class frmSales
         Me.lblCustType.Size = New System.Drawing.Size(55, 15)
         Me.lblCustType.TabIndex = 146
         Me.lblCustType.Text = "custtype"
+        Me.lblCustType.Visible = False
         '
         'Label36
         '
@@ -1631,8 +1672,8 @@ Partial Class frmSales
         Me.ckA4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ckA4.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
         Me.ckA4.BorderRadius = 12
-        Me.ckA4.Checked = False
-        Me.ckA4.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
+        Me.ckA4.Checked = True
+        Me.ckA4.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
         Me.ckA4.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckA4.CustomCheckmarkImage = Nothing
         Me.ckA4.Location = New System.Drawing.Point(13, 586)
@@ -1697,7 +1738,7 @@ Partial Class frmSales
         Me.lblPayable.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblPayable.AutoSize = True
         Me.lblPayable.Font = New System.Drawing.Font("Segoe UI", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPayable.Location = New System.Drawing.Point(233, 235)
+        Me.lblPayable.Location = New System.Drawing.Point(112, 259)
         Me.lblPayable.Name = "lblPayable"
         Me.lblPayable.Size = New System.Drawing.Size(34, 40)
         Me.lblPayable.TabIndex = 138
@@ -1708,7 +1749,7 @@ Partial Class frmSales
         Me.Label29.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label29.AutoSize = True
         Me.Label29.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(152, 243)
+        Me.Label29.Location = New System.Drawing.Point(31, 267)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(75, 21)
         Me.Label29.TabIndex = 139
@@ -1732,20 +1773,33 @@ Partial Class frmSales
         Me.GroupBox3.Controls.Add(Me.txtDiscName)
         Me.GroupBox3.Controls.Add(Me.BunifuThinButton23)
         Me.GroupBox3.Controls.Add(Me.txtDiscAmt)
+        Me.GroupBox3.Enabled = False
         Me.GroupBox3.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox3.Location = New System.Drawing.Point(39, 98)
+        Me.GroupBox3.Location = New System.Drawing.Point(13, 98)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(282, 104)
         Me.GroupBox3.TabIndex = 136
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Discount"
         '
+        'cbDisc
+        '
+        Me.cbDisc.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbDisc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbDisc.Font = New System.Drawing.Font("Segoe UI", 14.25!)
+        Me.cbDisc.FormattingEnabled = True
+        Me.cbDisc.Items.AddRange(New Object() {"Cash", "Percentage"})
+        Me.cbDisc.Location = New System.Drawing.Point(16, 58)
+        Me.cbDisc.Name = "cbDisc"
+        Me.cbDisc.Size = New System.Drawing.Size(79, 33)
+        Me.cbDisc.TabIndex = 147
+        '
         'txtDiscName
         '
         Me.txtDiscName.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtDiscName.Location = New System.Drawing.Point(12, 15)
+        Me.txtDiscName.Location = New System.Drawing.Point(23, 23)
         Me.txtDiscName.Name = "txtDiscName"
-        Me.txtDiscName.Size = New System.Drawing.Size(237, 41)
+        Me.txtDiscName.Size = New System.Drawing.Size(237, 30)
         Me.txtDiscName.TabIndex = 138
         Me.txtDiscName.Text = ""
         '
@@ -1878,8 +1932,8 @@ Partial Class frmSales
         Me.ckrollPaper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ckrollPaper.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
         Me.ckrollPaper.BorderRadius = 12
-        Me.ckrollPaper.Checked = True
-        Me.ckrollPaper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.ckrollPaper.Checked = False
+        Me.ckrollPaper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
         Me.ckrollPaper.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckrollPaper.CustomCheckmarkImage = Nothing
         Me.ckrollPaper.Location = New System.Drawing.Point(13, 537)
@@ -2063,18 +2117,6 @@ Partial Class frmSales
         Me.NotifyIcon1.Text = "Stock Check"
         Me.NotifyIcon1.Visible = True
         '
-        'cbDisc
-        '
-        Me.cbDisc.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cbDisc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDisc.Font = New System.Drawing.Font("Segoe UI", 14.25!)
-        Me.cbDisc.FormattingEnabled = True
-        Me.cbDisc.Items.AddRange(New Object() {"Cash", "Percentage"})
-        Me.cbDisc.Location = New System.Drawing.Point(16, 58)
-        Me.cbDisc.Name = "cbDisc"
-        Me.cbDisc.Size = New System.Drawing.Size(79, 33)
-        Me.cbDisc.TabIndex = 147
-        '
         'frmSales
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2252,4 +2294,7 @@ Partial Class frmSales
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents lblCustType As Label
     Friend WithEvents cbDisc As ComboBox
+    Friend WithEvents lblCreditlimit As Label
+    Friend WithEvents lblpayref As Label
+    Friend WithEvents txtpayref As TextBox
 End Class

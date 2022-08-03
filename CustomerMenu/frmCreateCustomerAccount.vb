@@ -159,10 +159,10 @@ Public Class frmCreateCustomerAccount
     End Sub
 
     Private Sub txtIdCardNo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtIdCardNo.KeyPress
-        If Not Char.IsNumber(e.KeyChar) And Not e.KeyChar = Chr(Keys.Delete) And Not e.KeyChar = Chr(Keys.Back) And Not e.KeyChar = Chr(Keys.Space) Then
-            e.Handled = True
-            MsgBox("This field will accept numbers only")
-        End If
+        'If Not Char.IsNumber(e.KeyChar) And Not e.KeyChar = Chr(Keys.Delete) And Not e.KeyChar = Chr(Keys.Back) And Not e.KeyChar = Chr(Keys.Space) Then
+        '    e.Handled = True
+        '    MsgBox("This field will accept numbers only")
+        'End If
     End Sub
     Sub CustTotal()
         If gvStockMast.Rows.Count = 0 Then

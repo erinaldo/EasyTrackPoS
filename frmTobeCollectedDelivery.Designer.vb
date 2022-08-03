@@ -76,6 +76,10 @@ Partial Class frmTobeCollectedDelivery
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.gvdel = New Bunifu.UI.WinForms.BunifuDataGridView()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.ckA5Paper = New Bunifu.UI.WinForms.BunifuCheckBox()
+        Me.ckrollPaper = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.gvSalesReciepts, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,21 +92,23 @@ Partial Class frmTobeCollectedDelivery
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(471, 18)
+        Me.Label9.Location = New System.Drawing.Point(401, 28)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(68, 21)
         Me.Label9.TabIndex = 99
         Me.Label9.Text = "QtyLeft"
+        Me.Label9.Visible = False
         '
         'txtQtyCollected
         '
         Me.txtQtyCollected.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtQtyCollected.Location = New System.Drawing.Point(469, 42)
+        Me.txtQtyCollected.Location = New System.Drawing.Point(399, 52)
         Me.txtQtyCollected.Name = "txtQtyCollected"
         Me.txtQtyCollected.ReadOnly = True
-        Me.txtQtyCollected.Size = New System.Drawing.Size(155, 33)
+        Me.txtQtyCollected.Size = New System.Drawing.Size(122, 33)
         Me.txtQtyCollected.TabIndex = 98
         Me.txtQtyCollected.Text = "0"
+        Me.txtQtyCollected.Visible = False
         '
         'dpDate
         '
@@ -172,7 +178,7 @@ Partial Class frmTobeCollectedDelivery
         '
         Me.lblItemName.AutoSize = True
         Me.lblItemName.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblItemName.Location = New System.Drawing.Point(36, 76)
+        Me.lblItemName.Location = New System.Drawing.Point(6, 80)
         Me.lblItemName.Name = "lblItemName"
         Me.lblItemName.Size = New System.Drawing.Size(185, 45)
         Me.lblItemName.TabIndex = 78
@@ -185,7 +191,8 @@ Partial Class frmTobeCollectedDelivery
         Me.BunifuThinButton22.ActiveFillColor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton22.ActiveForecolor = System.Drawing.Color.White
         Me.BunifuThinButton22.ActiveLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton22.BackColor = System.Drawing.Color.LightBlue
+        Me.BunifuThinButton22.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BunifuThinButton22.BackColor = System.Drawing.Color.Plum
         Me.BunifuThinButton22.BackgroundImage = CType(resources.GetObject("BunifuThinButton22.BackgroundImage"), System.Drawing.Image)
         Me.BunifuThinButton22.ButtonText = "UPDATE"
         Me.BunifuThinButton22.Cursor = System.Windows.Forms.Cursors.Hand
@@ -196,10 +203,10 @@ Partial Class frmTobeCollectedDelivery
         Me.BunifuThinButton22.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton22.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton22.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton22.Location = New System.Drawing.Point(699, 40)
+        Me.BunifuThinButton22.Location = New System.Drawing.Point(499, 28)
         Me.BunifuThinButton22.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton22.Name = "BunifuThinButton22"
-        Me.BunifuThinButton22.Size = New System.Drawing.Size(127, 65)
+        Me.BunifuThinButton22.Size = New System.Drawing.Size(117, 65)
         Me.BunifuThinButton22.TabIndex = 77
         Me.BunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -207,7 +214,7 @@ Partial Class frmTobeCollectedDelivery
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(281, 16)
+        Me.Label2.Location = New System.Drawing.Point(211, 26)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(116, 21)
         Me.Label2.TabIndex = 76
@@ -217,7 +224,7 @@ Partial Class frmTobeCollectedDelivery
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(87, 16)
+        Me.Label1.Location = New System.Drawing.Point(17, 26)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(155, 21)
         Me.Label1.TabIndex = 75
@@ -226,15 +233,15 @@ Partial Class frmTobeCollectedDelivery
         'txtToBecollected
         '
         Me.txtToBecollected.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtToBecollected.Location = New System.Drawing.Point(281, 42)
+        Me.txtToBecollected.Location = New System.Drawing.Point(211, 52)
         Me.txtToBecollected.Name = "txtToBecollected"
-        Me.txtToBecollected.Size = New System.Drawing.Size(174, 33)
+        Me.txtToBecollected.Size = New System.Drawing.Size(126, 33)
         Me.txtToBecollected.TabIndex = 74
         '
         'txtQtySold
         '
         Me.txtQtySold.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtQtySold.Location = New System.Drawing.Point(91, 40)
+        Me.txtQtySold.Location = New System.Drawing.Point(21, 50)
         Me.txtQtySold.Name = "txtQtySold"
         Me.txtQtySold.ReadOnly = True
         Me.txtQtySold.Size = New System.Drawing.Size(155, 33)
@@ -296,7 +303,7 @@ Partial Class frmTobeCollectedDelivery
         Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Location = New System.Drawing.Point(-2, -9)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(956, 65)
+        Me.Panel1.Size = New System.Drawing.Size(981, 65)
         Me.Panel1.TabIndex = 92
         '
         'Label8
@@ -353,7 +360,7 @@ Partial Class frmTobeCollectedDelivery
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ActiveUser})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 696)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(954, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(979, 22)
         Me.StatusStrip1.TabIndex = 88
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -473,7 +480,7 @@ Partial Class frmTobeCollectedDelivery
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gvSalesReciepts.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.gvSalesReciepts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvSalesReciepts.Size = New System.Drawing.Size(611, 313)
+        Me.gvSalesReciepts.Size = New System.Drawing.Size(636, 313)
         Me.gvSalesReciepts.TabIndex = 70
         '
         'ItemCode
@@ -538,10 +545,10 @@ Partial Class frmTobeCollectedDelivery
         Me.BunifuThinButton23.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton23.IdleForecolor = System.Drawing.Color.Red
         Me.BunifuThinButton23.IdleLineColor = System.Drawing.Color.Red
-        Me.BunifuThinButton23.Location = New System.Drawing.Point(661, 56)
+        Me.BunifuThinButton23.Location = New System.Drawing.Point(763, 30)
         Me.BunifuThinButton23.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton23.Name = "BunifuThinButton23"
-        Me.BunifuThinButton23.Size = New System.Drawing.Size(205, 48)
+        Me.BunifuThinButton23.Size = New System.Drawing.Size(128, 74)
         Me.BunifuThinButton23.TabIndex = 100
         Me.BunifuThinButton23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -560,7 +567,7 @@ Partial Class frmTobeCollectedDelivery
         Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(734, 30)
+        Me.Label15.Location = New System.Drawing.Point(749, 13)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(47, 21)
         Me.Label15.TabIndex = 132
@@ -585,7 +592,7 @@ Partial Class frmTobeCollectedDelivery
         Me.ckprint.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
         Me.ckprint.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckprint.CustomCheckmarkImage = Nothing
-        Me.ckprint.Location = New System.Drawing.Point(714, 33)
+        Me.ckprint.Location = New System.Drawing.Point(729, 16)
         Me.ckprint.MinimumSize = New System.Drawing.Size(17, 17)
         Me.ckprint.Name = "ckprint"
         Me.ckprint.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
@@ -625,6 +632,10 @@ Partial Class frmTobeCollectedDelivery
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.BackColor = System.Drawing.Color.Khaki
+        Me.GroupBox1.Controls.Add(Me.Label25)
+        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.ckA5Paper)
+        Me.GroupBox1.Controls.Add(Me.ckrollPaper)
         Me.GroupBox1.Controls.Add(Me.Label15)
         Me.GroupBox1.Controls.Add(Me.BunifuThinButton23)
         Me.GroupBox1.Controls.Add(Me.ckprint)
@@ -640,7 +651,7 @@ Partial Class frmTobeCollectedDelivery
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Location = New System.Drawing.Point(24, 587)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(886, 108)
+        Me.GroupBox1.Size = New System.Drawing.Size(911, 108)
         Me.GroupBox1.TabIndex = 133
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GroupBox1"
@@ -649,7 +660,7 @@ Partial Class frmTobeCollectedDelivery
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox2.BackColor = System.Drawing.Color.LightBlue
+        Me.GroupBox2.BackColor = System.Drawing.Color.Plum
         Me.GroupBox2.Controls.Add(Me.txtQtyCollected)
         Me.GroupBox2.Controls.Add(Me.Label9)
         Me.GroupBox2.Controls.Add(Me.BunifuThinButton22)
@@ -660,7 +671,7 @@ Partial Class frmTobeCollectedDelivery
         Me.GroupBox2.Controls.Add(Me.txtQtySold)
         Me.GroupBox2.Location = New System.Drawing.Point(299, 128)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(610, 131)
+        Me.GroupBox2.Size = New System.Drawing.Size(635, 131)
         Me.GroupBox2.TabIndex = 134
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "GroupBox2"
@@ -731,11 +742,143 @@ Partial Class frmTobeCollectedDelivery
         Me.gvdel.TabIndex = 135
         Me.gvdel.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
         '
+        'Label25
+        '
+        Me.Label25.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.Location = New System.Drawing.Point(671, 71)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(78, 21)
+        Me.Label25.TabIndex = 138
+        Me.Label25.Text = "A4 Paper"
+        '
+        'Label12
+        '
+        Me.Label12.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(671, 46)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(84, 21)
+        Me.Label12.TabIndex = 137
+        Me.Label12.Text = "RollPaper"
+        '
+        'ckA5Paper
+        '
+        Me.ckA5Paper.AllowBindingControlAnimation = True
+        Me.ckA5Paper.AllowBindingControlColorChanges = False
+        Me.ckA5Paper.AllowBindingControlLocation = True
+        Me.ckA5Paper.AllowCheckBoxAnimation = False
+        Me.ckA5Paper.AllowCheckmarkAnimation = True
+        Me.ckA5Paper.AllowOnHoverStates = True
+        Me.ckA5Paper.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ckA5Paper.AutoCheck = True
+        Me.ckA5Paper.BackColor = System.Drawing.Color.Transparent
+        Me.ckA5Paper.BackgroundImage = CType(resources.GetObject("ckA5Paper.BackgroundImage"), System.Drawing.Image)
+        Me.ckA5Paper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ckA5Paper.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
+        Me.ckA5Paper.BorderRadius = 12
+        Me.ckA5Paper.Checked = True
+        Me.ckA5Paper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.ckA5Paper.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ckA5Paper.CustomCheckmarkImage = Nothing
+        Me.ckA5Paper.Location = New System.Drawing.Point(651, 74)
+        Me.ckA5Paper.MinimumSize = New System.Drawing.Size(17, 17)
+        Me.ckA5Paper.Name = "ckA5Paper"
+        Me.ckA5Paper.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.ckA5Paper.OnCheck.BorderRadius = 12
+        Me.ckA5Paper.OnCheck.BorderThickness = 2
+        Me.ckA5Paper.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
+        Me.ckA5Paper.OnCheck.CheckmarkColor = System.Drawing.Color.White
+        Me.ckA5Paper.OnCheck.CheckmarkThickness = 2
+        Me.ckA5Paper.OnDisable.BorderColor = System.Drawing.Color.LightGray
+        Me.ckA5Paper.OnDisable.BorderRadius = 12
+        Me.ckA5Paper.OnDisable.BorderThickness = 2
+        Me.ckA5Paper.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckA5Paper.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
+        Me.ckA5Paper.OnDisable.CheckmarkThickness = 2
+        Me.ckA5Paper.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckA5Paper.OnHoverChecked.BorderRadius = 12
+        Me.ckA5Paper.OnHoverChecked.BorderThickness = 2
+        Me.ckA5Paper.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckA5Paper.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
+        Me.ckA5Paper.OnHoverChecked.CheckmarkThickness = 2
+        Me.ckA5Paper.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckA5Paper.OnHoverUnchecked.BorderRadius = 12
+        Me.ckA5Paper.OnHoverUnchecked.BorderThickness = 1
+        Me.ckA5Paper.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckA5Paper.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
+        Me.ckA5Paper.OnUncheck.BorderRadius = 12
+        Me.ckA5Paper.OnUncheck.BorderThickness = 1
+        Me.ckA5Paper.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckA5Paper.Size = New System.Drawing.Size(20, 20)
+        Me.ckA5Paper.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
+        Me.ckA5Paper.TabIndex = 136
+        Me.ckA5Paper.ThreeState = False
+        Me.ckA5Paper.ToolTipText = Nothing
+        '
+        'ckrollPaper
+        '
+        Me.ckrollPaper.AllowBindingControlAnimation = True
+        Me.ckrollPaper.AllowBindingControlColorChanges = False
+        Me.ckrollPaper.AllowBindingControlLocation = True
+        Me.ckrollPaper.AllowCheckBoxAnimation = False
+        Me.ckrollPaper.AllowCheckmarkAnimation = True
+        Me.ckrollPaper.AllowOnHoverStates = True
+        Me.ckrollPaper.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ckrollPaper.AutoCheck = True
+        Me.ckrollPaper.BackColor = System.Drawing.Color.Transparent
+        Me.ckrollPaper.BackgroundImage = CType(resources.GetObject("ckrollPaper.BackgroundImage"), System.Drawing.Image)
+        Me.ckrollPaper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ckrollPaper.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
+        Me.ckrollPaper.BorderRadius = 12
+        Me.ckrollPaper.Checked = False
+        Me.ckrollPaper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
+        Me.ckrollPaper.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ckrollPaper.CustomCheckmarkImage = Nothing
+        Me.ckrollPaper.Location = New System.Drawing.Point(651, 49)
+        Me.ckrollPaper.MinimumSize = New System.Drawing.Size(17, 17)
+        Me.ckrollPaper.Name = "ckrollPaper"
+        Me.ckrollPaper.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.ckrollPaper.OnCheck.BorderRadius = 12
+        Me.ckrollPaper.OnCheck.BorderThickness = 2
+        Me.ckrollPaper.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
+        Me.ckrollPaper.OnCheck.CheckmarkColor = System.Drawing.Color.White
+        Me.ckrollPaper.OnCheck.CheckmarkThickness = 2
+        Me.ckrollPaper.OnDisable.BorderColor = System.Drawing.Color.LightGray
+        Me.ckrollPaper.OnDisable.BorderRadius = 12
+        Me.ckrollPaper.OnDisable.BorderThickness = 2
+        Me.ckrollPaper.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckrollPaper.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
+        Me.ckrollPaper.OnDisable.CheckmarkThickness = 2
+        Me.ckrollPaper.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckrollPaper.OnHoverChecked.BorderRadius = 12
+        Me.ckrollPaper.OnHoverChecked.BorderThickness = 2
+        Me.ckrollPaper.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckrollPaper.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
+        Me.ckrollPaper.OnHoverChecked.CheckmarkThickness = 2
+        Me.ckrollPaper.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckrollPaper.OnHoverUnchecked.BorderRadius = 12
+        Me.ckrollPaper.OnHoverUnchecked.BorderThickness = 1
+        Me.ckrollPaper.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckrollPaper.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
+        Me.ckrollPaper.OnUncheck.BorderRadius = 12
+        Me.ckrollPaper.OnUncheck.BorderThickness = 1
+        Me.ckrollPaper.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckrollPaper.Size = New System.Drawing.Size(20, 20)
+        Me.ckrollPaper.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
+        Me.ckrollPaper.TabIndex = 135
+        Me.ckrollPaper.ThreeState = False
+        Me.ckrollPaper.ToolTipText = Nothing
+        '
         'frmTobeCollectedDelivery
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(954, 718)
+        Me.ClientSize = New System.Drawing.Size(979, 718)
         Me.Controls.Add(Me.gvdel)
         Me.Controls.Add(Me.lblDeliveryReciept)
         Me.Controls.Add(Me.BunifuThinButton21)
@@ -815,4 +958,8 @@ Partial Class frmTobeCollectedDelivery
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents gvdel As Bunifu.UI.WinForms.BunifuDataGridView
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents ckA5Paper As Bunifu.UI.WinForms.BunifuCheckBox
+    Friend WithEvents ckrollPaper As Bunifu.UI.WinForms.BunifuCheckBox
 End Class

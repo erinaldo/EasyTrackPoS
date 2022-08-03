@@ -29,7 +29,7 @@ Public Class StockValueReport
                     da.Dispose()
                     Poscon.Close()
                 Catch ex As Exception
-                    MsgBox(ex.ToString)
+                    MsgBox(ex.Message)
                 End Try
             Case 1
                 Try
@@ -56,7 +56,7 @@ Public Class StockValueReport
                     da.Dispose()
                     Poscon.Close()
                 Catch ex As Exception
-                    MsgBox(ex.ToString)
+                    MsgBox(ex.Message)
                 End Try
             Case 2
                 Try
@@ -83,7 +83,7 @@ Public Class StockValueReport
                     da.Dispose()
                     Poscon.Close()
                 Catch ex As Exception
-                    MsgBox(ex.ToString)
+                    MsgBox(ex.Message)
                 End Try
             Case 3
                 Try

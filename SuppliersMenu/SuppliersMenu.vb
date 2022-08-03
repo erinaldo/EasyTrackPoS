@@ -56,6 +56,12 @@
     Private Sub frmSuppliersMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
+        settings()
+    End Sub
+    Private Sub settings()
+        BunifuButton3.Enabled = My.Settings.CreateCS
+        BunifuButton4.Enabled = My.Settings.RecieveCS
+        BunifuButton1.Enabled = My.Settings.DeleteCS
     End Sub
 
     Private Sub BunifuButton2_Click(sender As Object, e As EventArgs) Handles BunifuButton2.Click

@@ -1007,7 +1007,7 @@ Partial Class frmMultishop
         Me.BunifuThinButton21.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BunifuThinButton21.BackColor = System.Drawing.Color.PaleGoldenrod
         Me.BunifuThinButton21.BackgroundImage = CType(resources.GetObject("BunifuThinButton21.BackgroundImage"), System.Drawing.Image)
-        Me.BunifuThinButton21.ButtonText = "SELL"
+        Me.BunifuThinButton21.ButtonText = "SAVE"
         Me.BunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BunifuThinButton21.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BunifuThinButton21.ForeColor = System.Drawing.SystemColors.WindowText

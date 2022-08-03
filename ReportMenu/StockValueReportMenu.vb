@@ -41,7 +41,8 @@ Public Class StockValueReportMenu
             adp.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+
+
         End Try
     End Sub
 
@@ -71,7 +72,7 @@ Public Class StockValueReportMenu
             adp.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -101,7 +102,7 @@ Public Class StockValueReportMenu
             adp.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -131,7 +132,7 @@ Public Class StockValueReportMenu
             adp.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -161,7 +162,7 @@ Public Class StockValueReportMenu
             adp.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 End Class

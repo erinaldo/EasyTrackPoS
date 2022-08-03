@@ -56,7 +56,7 @@ Public Class frmSupplierOders
             'txtColour.Text = row.Cells(4).Value.ToString()
 
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 

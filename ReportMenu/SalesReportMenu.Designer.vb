@@ -56,9 +56,9 @@ Partial Class SalesReportMenu
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label8.Location = New System.Drawing.Point(175, 364)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(127, 32)
+        Me.Label8.Size = New System.Drawing.Size(164, 32)
         Me.Label8.TabIndex = 121
-        Me.Label8.Text = "Per Brand"
+        Me.Label8.Text = "Per Paymode"
         '
         'Label3
         '

@@ -80,8 +80,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("server=192.168.8.100,1433; Database=D:\DAAKYE\FOODAPPLICATION\POS.MDF; User ID=la"& _ 
-            "st; Password=kissboy;")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=192.168.1.102,1433; Database=PoS; User ID= sa; Password=kissboy;MultipleAc"& _ 
+            "tiveResultSets=True;Connect Timeout=30")>  _
         Public ReadOnly Property NetworkPoS() As String
             Get
                 Return CType(Me("NetworkPoS"),String)
@@ -307,24 +307,12 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property tobecol() As Boolean
+        Public Property DelierySale() As Boolean
             Get
-                Return CType(Me("tobecol"),Boolean)
+                Return CType(Me("DelierySale"),Boolean)
             End Get
             Set
-                Me("tobecol") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property tobecoldel() As Boolean
-            Get
-                Return CType(Me("tobecoldel"),Boolean)
-            End Get
-            Set
-                Me("tobecoldel") = value
+                Me("DelierySale") = value
             End Set
         End Property
         
@@ -337,6 +325,53 @@ Namespace My
             End Get
             Set
                 Me("closesession") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.8.100,1433;Initial Catalog=D:\DAAKYE\FOODAPPLICATION\POS.MDF;"& _ 
+            "User ID=last;Password=kissboy")>  _
+        Public ReadOnly Property D__DAAKYE_FOODAPPLICATION_POS_MDFConnectionString() As String
+            Get
+                Return CType(Me("D__DAAKYE_FOODAPPLICATION_POS_MDFConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property CreateCS() As Boolean
+            Get
+                Return CType(Me("CreateCS"),Boolean)
+            End Get
+            Set
+                Me("CreateCS") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property RecieveCS() As Boolean
+            Get
+                Return CType(Me("RecieveCS"),Boolean)
+            End Get
+            Set
+                Me("RecieveCS") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property DeleteCS() As Boolean
+            Get
+                Return CType(Me("DeleteCS"),Boolean)
+            End Get
+            Set
+                Me("DeleteCS") = value
             End Set
         End Property
     End Class

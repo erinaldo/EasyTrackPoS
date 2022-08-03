@@ -19,7 +19,7 @@ Public Class frmStockBalpSize
             adp.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 End Class

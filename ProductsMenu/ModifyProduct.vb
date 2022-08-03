@@ -13,17 +13,8 @@ Public Class frmModifyProduct
         LoadCatPline()
     End Sub
     Private Sub Display()
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
-        End If
-        Dim query = "select * from StockMast"
-        cmd = New SqlCommand(query, poscon)
-        da = New SqlDataAdapter(cmd)
-        Dim tbl As New DataTable
-        da.Fill(tbl)
-        gvStock.DataSource = tbl
-        poscon.Close()
 
+        reload("select * from StockMast", gvStock)
         ComboFeed("select distinct prodline from stockmast where prodline IS NOT NULL ORDER BY Prodline asc", cbProdLine, 0)
         ComboFeed("select distinct prodsize from stockmast where prodsize IS NOT NULL ORDER BY Prodsize asc", cbSize, 0)
         ComboFeed("select distinct prodcolour from stockmast where prodcolour IS NOT NULL ORDER BY Prodcolour asc", cbColour, 0)
@@ -43,8 +34,9 @@ Public Class frmModifyProduct
             cbUnique.Text = row.Cells(8).Value.ToString()
             txtbaseqty.Text = row.Cells(16).Value.ToString()
             txtpacksize.Text = row.Cells(15).Value.ToString()
+            txtReoder.Text = row.Cells(13).Value.ToString()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -85,6 +77,7 @@ Public Class frmModifyProduct
         cbUnique.Text = ""
         txtbaseqty.Text = ""
         txtpacksize.Text = ""
+        txtReoder.Text = ""
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs)
         Try
@@ -146,7 +139,7 @@ Public Class frmModifyProduct
             Dim row As DataGridViewRow = gvStock.Rows(e.RowIndex)
             txtStockCode.Text = row.Cells(0).Value.ToString()
             cbProdLine.Text = row.Cells(2).Value.ToString()
-            cbProdname.Text = row.Cells(1).Value.ToString()
+            cbProdname.Text = row.Cells(10).Value.ToString()
             cbCat.Text = row.Cells(5).Value.ToString()
             cbSize.Text = row.Cells(3).Value.ToString()
             cbColour.Text = row.Cells(4).Value.ToString()
@@ -154,8 +147,9 @@ Public Class frmModifyProduct
             cbBrandName.Text = row.Cells(11).Value.ToString()
             txtbaseqty.Text = row.Cells(16).Value.ToString()
             txtpacksize.Text = row.Cells(15).Value.ToString()
+            txtReoder.Text = row.Cells(13).Value.ToString()
         Catch ex As Exception
-            'MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -193,16 +187,11 @@ Public Class frmModifyProduct
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
 
         Try
-            'If poscon.State = ConnectionState.Closed Then
-            '    poscon.Open()
-            'End If
-            'Dim query = "update Stockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "' where Prodcode =" + txtStockCode.Text + ""
-            'Dim cmd As New SqlCommand(query, poscon)
-            'cmd.ExecuteNonQuery()
-            ''MsgBox("Product Updated Successfully")
-            'Poscon.Close()
-            create("update Stockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "' where Prodcode =" + txtStockCode.Text + "")
-            Poscon.Open()
+
+            create("update Stockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "',leastqtyreminder='" & txtReoder.Text & "' where Prodcode ='" & txtStockCode.Text & "'")
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
+            End If
             cmd = New SqlCommand("select prodcode from multishopstockmast where prodcode='" & txtStockCode.Text & "'", Poscon)
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable
@@ -214,7 +203,7 @@ Public Class frmModifyProduct
             clear()
 
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 

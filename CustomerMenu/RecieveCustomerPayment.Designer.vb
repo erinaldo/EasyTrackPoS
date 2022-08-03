@@ -218,6 +218,7 @@ Partial Class RecieveCustomerPayment
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbType.Font = New System.Drawing.Font("Segoe UI", 14.25!)
         Me.cbType.FormattingEnabled = True
+        Me.cbType.Items.AddRange(New Object() {"Debt Payment", "Deposit Payment"})
         Me.cbType.Location = New System.Drawing.Point(681, 102)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(149, 33)
@@ -230,11 +231,11 @@ Partial Class RecieveCustomerPayment
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label7.Location = New System.Drawing.Point(605, 107)
+        Me.Label7.Location = New System.Drawing.Point(552, 102)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(46, 21)
+        Me.Label7.Size = New System.Drawing.Size(118, 21)
         Me.Label7.TabIndex = 133
-        Me.Label7.Text = "Type"
+        Me.Label7.Text = "Payment Type"
         Me.Label7.Visible = False
         '
         'cbPaymentMode

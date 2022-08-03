@@ -71,7 +71,7 @@ Module CRUDFunction
                 result = cmd.ExecuteNonQuery
                 'CHECKING IF THE DATA HAS EXECUTED OR NOT AND THEN THE POP UP MESSAGE WILL APPEAR
                 If result = 0 Then
-                    MessageBox.Show("Data is failed to insert.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Failed ", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
                     'MessageBox.Show("Data has been inserted in the database.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If

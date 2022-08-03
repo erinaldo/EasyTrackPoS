@@ -30,7 +30,7 @@ Public Class SupplierReport
                     da.Dispose()
                     Poscon.Close()
                 Catch ex As Exception
-                    MsgBox(ex.ToString)
+                    MsgBox(ex.Message)
                 End Try
             Case 1
                 Try
@@ -64,7 +64,7 @@ Public Class SupplierReport
                     da.Dispose()
                     Poscon.Close()
                 Catch ex As Exception
-                    MsgBox(ex.ToString)
+                    MsgBox(ex.Message)
                 End Try
             Case 2
                 Try
@@ -90,7 +90,7 @@ Public Class SupplierReport
                     da.Dispose()
                     Poscon.Close()
                 Catch ex As Exception
-                    MsgBox(ex.ToString)
+                    MsgBox(ex.Message)
                 End Try
             Case 3
                 Try
@@ -117,7 +117,7 @@ Public Class SupplierReport
                     da.Dispose()
                     Poscon.Close()
                 Catch ex As Exception
-                    MsgBox(ex.ToString)
+                    MsgBox(ex.Message)
                 End Try
             Case 4
                 Try
@@ -146,7 +146,7 @@ Public Class SupplierReport
                     da.Dispose()
                     Poscon.Close()
                 Catch ex As Exception
-                    MsgBox(ex.ToString)
+                    MsgBox(ex.Message)
                 End Try
             Case Else
                 MsgBox("Kindly Choose a Report to View")

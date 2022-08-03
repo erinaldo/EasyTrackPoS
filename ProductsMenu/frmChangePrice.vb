@@ -138,7 +138,7 @@ Public Class frmChangePrice
             lblnewramt.Text = Val(txtNewRPrice.Text) * Val(lblqty.Text)
 
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -148,58 +148,58 @@ Public Class frmChangePrice
             MsgBox("Enter New Prices")
             Exit Sub
         Else
-            ' Try
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            'For Each row As DataGridViewRow In gvPriceBatch.Rows
-            '    Dim query = ("update Stockmast set RetailPrice=@Rprice, WholesalePrice= @Wprice,Packprice= @pckprice where Prodcode= '" + row.Cells(10).Value + "'")
-            '    cmd = New SqlCommand(query, Poscon)
-            '    With cmd
-            '        .Parameters.AddWithValue("@rprice", row.Cells(3).Value)
-            '        .Parameters.AddWithValue("@wprice", row.Cells(5).Value)
-            '        .Parameters.AddWithValue("@pckprice", row.Cells(11).Value)
-            '        .ExecuteNonQuery()
-            '    End With
-            'Next
-            For Each row As DataGridViewRow In gvPriceBatch.Rows
-
-                create("update Stockmast set RetailPrice='" & row.Cells(3).Value & "', WholesalePrice= '" & row.Cells(3).Value & "',Packprice= '" & row.Cells(3).Value & "' where Prodcode= '" & row.Cells(10).Value & "'")
-                Poscon.Open()
-                cmd = New SqlCommand("select prodcode from multishopstockmast where prodcode='" & row.Cells(10).Value & "'", Poscon)
-                da = New SqlDataAdapter(cmd)
-                tbl = New DataTable
-                da.Fill(tbl)
-                If tbl.Rows.Count <> 0 Then
-                    create("update multishopStockmast set RetailPrice='" & row.Cells(3).Value & "', WholesalePrice= '" & row.Cells(3).Value & "',Packprice= '" & row.Cells(3).Value & "' where Prodcode= '" & row.Cells(10).Value & "'")
+            Try
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
+                'For Each row As DataGridViewRow In gvPriceBatch.Rows
+                '    Dim query = ("update Stockmast set RetailPrice=@Rprice, WholesalePrice= @Wprice,Packprice= @pckprice where Prodcode= '" + row.Cells(10).Value + "'")
+                '    cmd = New SqlCommand(query, Poscon)
+                '    With cmd
+                '        .Parameters.AddWithValue("@rprice", row.Cells(3).Value)
+                '        .Parameters.AddWithValue("@wprice", row.Cells(5).Value)
+                '        .Parameters.AddWithValue("@pckprice", row.Cells(11).Value)
+                '        .ExecuteNonQuery()
+                '    End With
+                'Next
+                For Each row As DataGridViewRow In gvPriceBatch.Rows
 
-            Next
+                    create("update Stockmast set RetailPrice='" & row.Cells(3).Value & "', WholesalePrice= '" & row.Cells(3).Value & "',Packprice= '" & row.Cells(3).Value & "' where Prodcode= '" & row.Cells(10).Value & "'")
+                    Poscon.Open()
+                    cmd = New SqlCommand("select prodcode from multishopstockmast where prodcode='" & row.Cells(10).Value & "'", Poscon)
+                    da = New SqlDataAdapter(cmd)
+                    tbl = New DataTable
+                    da.Fill(tbl)
+                    If tbl.Rows.Count <> 0 Then
+                        create("update multishopStockmast set RetailPrice='" & row.Cells(3).Value & "', WholesalePrice= '" & row.Cells(3).Value & "',Packprice= '" & row.Cells(3).Value & "' where Prodcode= '" & row.Cells(10).Value & "'")
+                    End If
 
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            For Each row As DataGridViewRow In gvPriceBatch.Rows
-                Dim sql = "insert into Pricechangelog(ItemCode,ItemName,Qty,oldrprice,newrprice,newramt,date,time,activeuser,oldpackprice,newpackprice) values(@itemcode,@itemname,@qty,@oldrprice,@newrprice,@newramt,'" + lblDate.Text + "','" + lbltime.Text + "','" + lbluser.Text + "',@oldpackprice,@newpackprice)"
-                cmd = New SqlCommand(sql, Poscon)
-                With cmd
-                    .Parameters.AddWithValue("@ItemCode", row.Cells(10).Value)
-                    .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
-                    .Parameters.AddWithValue("@qty", row.Cells(1).Value)
-                    .Parameters.AddWithValue("@oldrprice", row.Cells(2).Value)
-                    .Parameters.AddWithValue("@newrprice", row.Cells(3).Value)
-                    .Parameters.AddWithValue("@newramt", row.Cells(7).Value)
-                    .Parameters.AddWithValue("@newpackprice", row.Cells(11).Value)
-                    .Parameters.AddWithValue("@oldpackprice", row.Cells(12).Value)
-                    cmd.ExecuteNonQuery()
-                End With
-            Next
-            MsgBox("Product Updated Successfully")
-            gvPriceBatch.Rows.Clear()
-            Poscon.Close()
-            'Catch ex As Exception
-            'MsgBox(ex.Message)
-            ' End Try
+                Next
+
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
+                End If
+                For Each row As DataGridViewRow In gvPriceBatch.Rows
+                    Dim sql = "insert into Pricechangelog(ItemCode,ItemName,Qty,oldrprice,newrprice,newramt,date,time,activeuser,oldpackprice,newpackprice) values(@itemcode,@itemname,@qty,@oldrprice,@newrprice,@newramt,'" + lblDate.Text + "','" + lbltime.Text + "','" + My.Settings.ActiveUser + "',@oldpackprice,@newpackprice)"
+                    cmd = New SqlCommand(sql, Poscon)
+                    With cmd
+                        .Parameters.AddWithValue("@ItemCode", row.Cells(10).Value)
+                        .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
+                        .Parameters.AddWithValue("@qty", row.Cells(1).Value)
+                        .Parameters.AddWithValue("@oldrprice", row.Cells(2).Value)
+                        .Parameters.AddWithValue("@newrprice", row.Cells(3).Value)
+                        .Parameters.AddWithValue("@newramt", row.Cells(7).Value)
+                        .Parameters.AddWithValue("@newpackprice", row.Cells(11).Value)
+                        .Parameters.AddWithValue("@oldpackprice", row.Cells(12).Value)
+                        cmd.ExecuteNonQuery()
+                    End With
+                Next
+                MsgBox("Product Updated Successfully")
+                gvPriceBatch.Rows.Clear()
+                Poscon.Close()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
         Display()
         Clear()

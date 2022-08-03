@@ -1,22 +1,24 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Globalization
 Public Class frmRetailIssueing
     'Dim As New SqlConnection(My.Settings.PoSConnectionString)
     Dim cmd As SqlCommand
     Dim da As SqlDataAdapter
     Dim dr As SqlDataReader
     Dim dt As New dsGoodsRecieved
+
     Private Sub frmRetailIssueing_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
         Timer1.Enabled = True
         Display()
         Try
-            ComboFeed("select * from Stockmast", cbSearchItem, 1)
-            ComboFeed("select * from customer", cbSuppName, 1)
-            ComboFeed("select category from Category", cbCatSort, 0)
-            ComboFeed("select productline from productline", cbCatSort, 0)
+            ComboFeed("select distinct itemname from Stockmast", cbSearchItem, 0)
+            ComboFeed("select distinct customername from customer", cbSuppName, 0)
+            ComboFeed("select distinct prodcat from Stockmast", cbCatSort, 0)
+            ComboFeed("select distinct prodline from stockmast", cbProdlineSort, 0)
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
         cbSearchItem.Focus()
         cbPaymentMode.SelectedIndex = 0
@@ -29,23 +31,8 @@ Public Class frmRetailIssueing
     End Sub
     Private Sub Display()
 
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim que = "select * from userlogs"
-        cmd = New SqlCommand(que, Poscon)
-        da = New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        Dim index = table.Rows.Count() - 1
-        If table.Rows.Count = 0 Then
 
-        Else
-            tsuser.Text = table.Rows(index)(1).ToString
-        End If
-
-        Poscon.Close()
-        reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast", gvStockBf)
+        reload("select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast", gvStockBf)
         'where baseqty*packsize<>1
     End Sub
 
@@ -55,7 +42,7 @@ Public Class frmRetailIssueing
             amt = Val(txtQtyRecieved.Text) * Val(txtItemPrice.Text) * Val(txtbaseQty.Text) * Val(txtPackSize.Text)
             txtItemAmount.Text = amt
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Private Sub clear()
@@ -94,7 +81,7 @@ Public Class frmRetailIssueing
             txtPackVolume.Text = Val(txtPackSize.Text * txtbaseQty.Text)
             txtQtyRecieved.Focus()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -130,7 +117,7 @@ Public Class frmRetailIssueing
             '            lbltotalbal.Text = totbal
             '            clear()
             '        Catch ex As Exception
-            '            MsgBox(ex.ToString)
+            '            msgbox(ex.message)
             '        End Try
             '        Exit Sub
             '    End If
@@ -149,8 +136,12 @@ Public Class frmRetailIssueing
             lblNewBal.Text = newbal
             Dim totbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
             lbltotalbal.Text = totbal
+            Dim dblValue As Double = Val(lblTotal.Text)
+
+            'lblTotal.Text = dblValue.ToString("N", CultureInfo.InvariantCulture)
+
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -176,7 +167,7 @@ Public Class frmRetailIssueing
             End If
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
 
@@ -254,10 +245,10 @@ Public Class frmRetailIssueing
                         End With
                         'MsgBox("Succesfully Wrintten into ledger")
                     End While
-                    cmd = New SqlCommand("Select * from StockMast where Prodcode='" + row.Cells(6).Value + "'", Poscon)
+                    cmd = New SqlCommand("Select * from StockMast where Prodcode='" & row.Cells(6).Value.ToString & "'", Poscon)
                     dr = cmd.ExecuteReader
                     While dr.Read
-                        Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - row.Cells(3).Value & "' where Prodcode= " & row.Cells(6).Value & ""
+                        Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - row.Cells(3).Value & "' where Prodcode= '" & row.Cells(6).Value.ToString & "'"
                         cmd = New SqlCommand(query, Poscon)
                         cmd.ExecuteNonQuery()
                     End While
@@ -281,20 +272,20 @@ Public Class frmRetailIssueing
 
                 If lblCustType.Text = "Branch Customer" Then
                     For Each row As DataGridViewRow In gvStockBatch.Rows
-                        cmd = New SqlCommand("Select * from multishopStockMast where Prodcode='" + row.Cells(6).Value + "' and shopname='" + cbSuppName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
+                        cmd = New SqlCommand("Select * from multishopStockMast where Prodcode='" & row.Cells(6).Value.ToString & "' and shopname='" + cbSuppName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
                         da = New SqlDataAdapter(cmd)
                         tbl = New DataTable()
                         da.Fill(tbl)
                         If tbl.Rows.Count = 0 Then
-                            MsgBox("Write")
-                            cmd = New SqlCommand("Select * from StockMast where Prodcode='" + row.Cells(6).Value + "'", Poscon)
+                            'MsgBox("Write")
+                            cmd = New SqlCommand("Select * from StockMast where Prodcode='" & row.Cells(6).Value.ToString & "'", Poscon)
                             dr = cmd.ExecuteReader()
                             While dr.Read
 
                                 cmd = New SqlCommand("insert into Multishopstockmast (prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyReminder,distributorprice,packsize,baseqty,Packprice,Shopname,shopno) values (@prodcode,@prodname,@prodline,@prodsize,@prodcolour,@prodcat,@prodqty,@retailprice,@wholesaleprice,@itemname,@brandname,@uniqueid,@leastqtyReminder,@distributorprice,@packsize,@baseqty,@Packprice,'" + cbSuppName.Text + "','" + lblCustNo.Text + "')", Poscon)
                                 With cmd
                                     .Parameters.AddWithValue("@prodcode", dr.Item("Prodcode"))
-                                    .Parameters.AddWithValue("@prodname", dr.Item("Prodname"))
+                                    .Parameters.AddWithValue("@prodname", dr.Item("itemname"))
                                     .Parameters.AddWithValue("@prodline", dr.Item("Prodline"))
                                     .Parameters.AddWithValue("@prodsize", dr.Item("Prodsize"))
                                     .Parameters.AddWithValue("@prodcolour", dr.Item("Prodcolour"))
@@ -314,11 +305,11 @@ Public Class frmRetailIssueing
                                 End With
                             End While
                         Else
-                            MsgBox("Update")
+                            'MsgBox("Update")
                             cmd = New SqlCommand("Select * from multishopStockMast where Prodcode='" + row.Cells(6).Value + "' and shopname='" + cbSuppName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
                             dr = cmd.ExecuteReader()
                             While dr.Read
-                                cmd = New SqlCommand("update multishopstockmast set prodqty=@Prodqty where Prodcode= " & row.Cells(6).Value & " and shopname='" + cbSuppName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
+                                cmd = New SqlCommand("update multishopstockmast set prodqty=@Prodqty where Prodcode= '" & row.Cells(6).Value.ToString & "' and shopname='" + cbSuppName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
                                 With cmd
                                     .Parameters.AddWithValue("@prodcode", dr.Item("Prodcode"))
                                     .Parameters.AddWithValue("@prodqty", dr.Item("ProdQty") + row.Cells(3).Value)
@@ -379,7 +370,7 @@ Public Class frmRetailIssueing
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -430,11 +421,11 @@ Public Class frmRetailIssueing
             End If
             If cbCatSort.SelectedIndex = -1 Then
 
-                reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' ", gvStockBf)
+                reload("select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(itemname,ProdCode) like '%" + valueTosearch + "%' ", gvStockBf)
                 'and baseqty*packsize<>1
             Else
 
-                reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'  ", gvStockBf)
+                reload("select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(itemname,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'  ", gvStockBf)
                 'and baseqty*packsize<>1
             End If
 
@@ -445,7 +436,7 @@ Public Class frmRetailIssueing
 
     End Sub
     Sub Sort(valuetosearch As String)
-        reload("select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where ProdCat like '%" + valuetosearch + "%' ", gvStockBf)
+        reload("select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where ProdCat like '%" + valuetosearch + "%' ", gvStockBf)
         'and baseqty*packsize<>1
     End Sub
     'Private Sub ShowConfigs()
@@ -546,7 +537,7 @@ Public Class frmRetailIssueing
                 Poscon.Open()
             End If
 
-            Dim query = "select ProdName,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and baseqty*packsize<>1"
+            Dim query = "select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(itemname,ProdCode) like '%" + valueTosearch + "%' and baseqty*packsize<>1"
             cmd = New SqlCommand(query, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable()

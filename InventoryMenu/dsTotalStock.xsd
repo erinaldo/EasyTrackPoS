@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsTotalStock" targetNamespace="http://tempuri.org/dsTotalStock.xsd" xmlns:mstns="http://tempuri.org/dsTotalStock.xsd" xmlns="http://tempuri.org/dsTotalStock.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsTotalStock" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsTotalStock" msprop:Generator_UserDSName="dsTotalStock">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TotalStock" msprop:Generator_TableClassName="TotalStockDataTable" msprop:Generator_TableVarName="tableTotalStock" msprop:Generator_RowChangedName="TotalStockRowChanged" msprop:Generator_TablePropName="TotalStock" msprop:Generator_RowDeletingName="TotalStockRowDeleting" msprop:Generator_RowChangingName="TotalStockRowChanging" msprop:Generator_RowEvHandlerName="TotalStockRowChangeEventHandler" msprop:Generator_RowDeletedName="TotalStockRowDeleted" msprop:Generator_RowClassName="TotalStockRow" msprop:Generator_UserTableName="TotalStock" msprop:Generator_RowEvArgName="TotalStockRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Itemname" msprop:Generator_ColumnVarNameInTable="columnItemname" msprop:Generator_ColumnPropNameInRow="Itemname" msprop:Generator_ColumnPropNameInTable="ItemnameColumn" msprop:Generator_UserColumnName="Itemname" type="xs:string" minOccurs="0" />
+              <xs:element name="ShopQty" msprop:Generator_ColumnVarNameInTable="columnShopQty" msprop:Generator_ColumnPropNameInRow="ShopQty" msprop:Generator_ColumnPropNameInTable="ShopQtyColumn" msprop:Generator_UserColumnName="ShopQty" type="xs:double" minOccurs="0" />
+              <xs:element name="TobelCollectedQty" msprop:Generator_ColumnVarNameInTable="columnTobelCollectedQty" msprop:Generator_ColumnPropNameInRow="TobelCollectedQty" msprop:Generator_ColumnPropNameInTable="TobelCollectedQtyColumn" msprop:Generator_UserColumnName="TobelCollectedQty" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

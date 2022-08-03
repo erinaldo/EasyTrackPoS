@@ -55,7 +55,7 @@ Public Class SalesReportMenu
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -86,7 +86,7 @@ Public Class SalesReportMenu
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -117,7 +117,7 @@ Public Class SalesReportMenu
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -148,7 +148,7 @@ Public Class SalesReportMenu
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -179,7 +179,7 @@ Public Class SalesReportMenu
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -188,6 +188,38 @@ Public Class SalesReportMenu
     End Sub
 
     Private Sub SalesReportMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dpdatefrom.Value = Date.Today
+        dpdateto.Value = Date.Today
+    End Sub
 
+    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
+        DateTime.TryParseExact(dpdatefrom.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outfrom)
+        DateTime.TryParseExact(dpdateto.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, outto)
+        Try
+            Dim query = "select * from salestranx where datesold between @datefrom and @dateto"
+            cmd = New SqlCommand(query, Poscon)
+            cmd.Parameters.Add("datefrom", sqlDbType:=SqlDbType.Date).Value = outfrom
+            cmd.Parameters.Add("dateto", sqlDbType:=SqlDbType.Date).Value = outto
+            dt.Tables("salestranx").Rows.Clear()
+            da.SelectCommand = cmd
+            da.Fill(dt, "salestranx")
+
+            Dim sql = "select * from ClientReg"
+            dt.Tables("ClientReg").Rows.Clear()
+            cmd = New SqlCommand(sql, Poscon)
+            da.SelectCommand = cmd
+            da.Fill(dt, "ClientReg")
+
+            Dim report As New rptsalesperpaymode
+            report.SetDataSource(dt)
+            frmSupplierReport.Show()
+            frmSupplierReport.CrystalReportViewer1.ReportSource = report
+            frmSupplierReport.CrystalReportViewer1.Refresh()
+            cmd.Dispose()
+            da.Dispose()
+            Poscon.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

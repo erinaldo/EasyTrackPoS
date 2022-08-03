@@ -36,7 +36,7 @@ Public Class frmCloseSalesMenu
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim query = "update SessionLedger set closedby='" + stUser.Text + "',dateclosed=convert(datetime,'" + lblDate.Text + "',105),Timeclosed='" + lblTime.Text + "',salesType='" + cbSalesType.Text + "',CashCounted='" + txtCashCounted.Text + "',Expenses='" + txtExpense.Text + "',NextSessiondate=convert(datetime,'" + lblnextdate.Text + "',105) where sessionid='" + lblsessionID.Text + "'"
+                Dim query = "update SessionLedger set closedby='" + My.Settings.ActiveUser + "',dateclosed=convert(datetime,'" + lblDate.Text + "',105),Timeclosed='" + lblTime.Text + "',salesType='" + cbSalesType.Text + "',CashCounted='" + txtCashCounted.Text + "',Expenses='" + txtExpense.Text + "',NextSessiondate=convert(datetime,'" + lblnextdate.Text + "',105) where sessionid='" + lblsessionID.Text + "'"
                 cmd = New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                 Dim quer = "delete from ActiveSession where SessionID= " + lblsessionID.Text + " "
@@ -44,14 +44,17 @@ Public Class frmCloseSalesMenu
                 cmd.ExecuteNonQuery()
                 Poscon.Close()
                 MsgBox("Session Closed Succesfully")
-                Application.Exit()
+                PfrmSalesMgmt.Hide()
+                Me.Close()
+                Application.Restart()
+
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try
         ElseIf cbSalesType.SelectedIndex = 0 Or cbSalesType.SelectedItem = "Non-Sales Session" Then
 
             If txtCashCounted.Text = "" Then
-                MsgBox("Enter Cash counted")
+                MsgBox("Kindly Enter Cash counted")
             Else
                 Try
                     If Poscon.State = ConnectionState.Closed Then
@@ -65,7 +68,8 @@ Public Class frmCloseSalesMenu
                     cmd.ExecuteNonQuery()
                     Poscon.Close()
                     MsgBox("Session Closed Succesfully")
-                    Application.Exit()
+                    PfrmSalesMgmt.Hide()
+                    Application.Restart()
                 Catch ex As Exception
                     MsgBox(ex.Message)
                 End Try

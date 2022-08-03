@@ -2,7 +2,7 @@
     Private Sub pfrmProductManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
-        setttings()
+        'setttings()
     End Sub
 
     Private Sub btnCat_Click(sender As Object, e As EventArgs)
@@ -97,7 +97,7 @@
         Me.Hide()
     End Sub
 
-    Private Sub BunifuButton7_Click(sender As Object, e As EventArgs) Handles BunifuButton7.Click
+    Private Sub BunifuButton7_Click(sender As Object, e As EventArgs) 
         Dim f2 As New frmProdCatCreation
         With f2
             .TopLevel = False
@@ -133,7 +133,7 @@
         btncreateprod.Enabled = My.Settings.createprod
         btnmodprod.Enabled = My.Settings.modprod
         btndelprod.Enabled = My.Settings.delprod
-        btnchprice.Enabled = My.Settings.changeprice
+        'btnchprice.Enabled = My.Settings.changeprice
     End Sub
 
 End Class

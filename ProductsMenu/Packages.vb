@@ -140,8 +140,8 @@ Public Class frmPackages
                                 lblTotal.Text = sum
 
                         Catch ex As Exception
-                                MsgBox(ex.ToString)
-                            End Try
+                            MsgBox(ex.Message)
+                        End Try
                             Exit Sub
 
                         End If
@@ -287,7 +287,7 @@ Public Class frmPackages
             txtSize.Text = row.Cells(3).Value.ToString()
             txtColour.Text = row.Cells(4).Value.ToString()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
         ''txtProdName.Text = ""
     End Sub
@@ -323,7 +323,7 @@ Public Class frmPackages
             Next
             lblTotal.Text = sum
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -406,7 +406,7 @@ Public Class frmPackages
             lblProdName.Text = row.Cells(0).Value.ToString()
             '+ "-" + txtProdline.Text + ""
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
         ''txtProdName.Text = ""
@@ -443,7 +443,7 @@ Public Class frmPackages
 
             'lblDiscAmt.Text = discamt
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -480,7 +480,7 @@ Public Class frmPackages
 
             'lblDiscAmt.Text = discamt
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 

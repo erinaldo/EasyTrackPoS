@@ -1063,7 +1063,7 @@ Partial Class frmSalesCancelation
         Me.dpdateto.BorderColor = System.Drawing.Color.Silver
         Me.dpdateto.BorderRadius = 1
         Me.dpdateto.Color = System.Drawing.Color.Silver
-        Me.dpdateto.CustomFormat = "MM/dd/yyyy"
+        Me.dpdateto.CustomFormat = ""
         Me.dpdateto.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin
         Me.dpdateto.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left
         Me.dpdateto.DisabledColor = System.Drawing.Color.Gray

@@ -65,8 +65,9 @@ Public Class frmTobeCollectedDelivery
             txtQtySold.Text = row.Cells(2).Value.ToString()
             lblProdCode.Text = row.Cells(0).Value.ToString()
             lblRecieptNo.Text = row.Cells(4).Value.ToString()
+            txtQtyCollected.Text = ""
         Catch ex As Exception
-
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -90,10 +91,15 @@ Public Class frmTobeCollectedDelivery
             End If
 
         Next
-        'Clear()
+        Clear()
     End Sub
 
     Private Sub txtToBecollected_TextChanged(sender As Object, e As EventArgs) Handles txtToBecollected.TextChanged
+        If Val(txtQtySold.Text) < Val(txtToBecollected.Text) Then
+            MsgBox("Qty collected cannot be more that qty to be collected")
+            txtToBecollected.Text = ""
+            Exit Sub
+        End If
         Dim a As New Decimal
         Dim b As New Decimal
         Dim c As New Decimal
@@ -129,7 +135,7 @@ Public Class frmTobeCollectedDelivery
             'End If
             'Next
 
-            Dim sqll = "update TobeCollected set QtyTobeCollected = @newstock where ItemCode =" + row.Cells(0).Value + " and RecieptNo=" + lblRecieptNo.Text + ""
+            Dim sqll = "update TobeCollected set QtyTobeCollected = @newstock where ItemCode ='" & row.Cells(0).Value.ToString & "' and RecieptNo='" & lblRecieptNo.Text & "'"
             cmd = New SqlCommand(sqll, Poscon)
             With cmd
                 .Parameters.AddWithValue("@newstock", row.Cells(6).Value)
@@ -138,11 +144,11 @@ Public Class frmTobeCollectedDelivery
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim query = "insert into ToBeCollecteddeliverylog (ItemCode,ItemName,oldQtytobeCollected,DateCollected,BuyerName,BuyerTel,BuyerLoc,QtyTobeCollected,Price,salesperson,RecieptNo,DateToBeCollected,QtyCollected,timecollected,DeliveryID) values(@ItemCode,@ItemName,@oldQtytobecollected,@DateSold,@BuyerName,@BuyerTel,@BuyerLocation,@QtyTobeCollected,@Price,'" + ActiveUser.Text + "', '" + lblRecieptNo.Text + "','" + dpDate.Text + "',@QtyCollected,'" + lblTimeSold.Text + "','" + lblDeliveryReciept.Text + "')"
+            Dim query = "insert into ToBeCollecteddeliverylog (ItemCode,ItemName,oldQtytobeCollected,DateCollected,BuyerName,BuyerTel,BuyerLoc,QtyTobeCollected,Price,salesperson,RecieptNo,DateToBeCollected,QtyCollected,timecollected,DeliveryID) values(@ItemCode,@ItemName,@oldQtytobecollected,@DateSold,@BuyerName,@BuyerTel,@BuyerLocation,@QtyTobeCollected,@Price,'" + My.Settings.ActiveUser + "', '" & lblRecieptNo.Text & "','" + dpDate.Text + "',@QtyCollected,'" + lblTimeSold.Text + "','" & lblDeliveryReciept.Text & "')"
             cmd = New SqlCommand(query, Poscon)
             With cmd
 
-                .Parameters.AddWithValue("@ItemCode", row.Cells(0).Value)
+                .Parameters.AddWithValue("@ItemCode", row.Cells(0).Value.ToString)
                 .Parameters.AddWithValue("@Itemname", row.Cells(1).Value)
                 .Parameters.AddWithValue("@oldQtyToBeCollected", row.Cells(2).Value)
                 .Parameters.AddWithValue("@DateSold", CDate(lblDate.Text))
@@ -157,7 +163,13 @@ Public Class frmTobeCollectedDelivery
 
             End With
         Next
-        TobeColDelReciept()
+
+        If ckrollPaper.Checked = True Then
+            TobeColDelReciept()
+        Else
+            TobeColDelRecieptA4()
+
+        End If
         MsgBox("Successfully Delivered")
         gvSalesReciepts.Rows.Clear()
         Poscon.Close()
@@ -179,7 +191,7 @@ Public Class frmTobeCollectedDelivery
     Private Sub TobeColDelReciept()
 
         Try
-            Dim query = "select * from TobeCollecteddeliverylog where DeliveryId='" + lblDeliveryReciept.Text + "' and RecieptNo='" + lblRecieptNo.Text + "'"
+            Dim query = "select * from TobeCollecteddeliverylog where DeliveryId='" + lblDeliveryReciept.Text + "' and RecieptNo='" + lblRecieptNo.Text + "' and qtytobecollected<>0 "
             cmd = New SqlCommand(query, Poscon)
             dt.Tables("TobeCollecteddeliverylog").Rows.Clear()
             da = New SqlDataAdapter
@@ -204,7 +216,38 @@ Public Class frmTobeCollectedDelivery
 
 
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub TobeColDelRecieptA4()
+
+        Try
+            Dim query = "select * from TobeCollecteddeliverylog where DeliveryId='" + lblDeliveryReciept.Text + "' and RecieptNo='" + lblRecieptNo.Text + "' and qtytobecollected<>0 "
+            cmd = New SqlCommand(query, Poscon)
+            dt.Tables("TobeCollecteddeliverylog").Rows.Clear()
+            da = New SqlDataAdapter
+            da.SelectCommand = cmd
+            da.Fill(dt, "TobeCollecteddeliverylog")
+
+            Dim sql = "select * from ClientReg"
+            dt.Tables("ClientReg").Rows.Clear()
+            cmd = New SqlCommand(sql, Poscon)
+            da = New SqlDataAdapter
+            da.SelectCommand = cmd
+            da.Fill(dt, "ClientReg")
+
+            Dim report As New rptToBeCollectedDeliveryA4
+            report.SetDataSource(dt)
+            If ckprint.Checked = True Then
+                report.PrintToPrinter(1, True, 0, 0)
+            End If
+            frmTobeCollectedPreview.Show()
+            frmTobeCollectedPreview.CrystalReportViewer1.ReportSource = report
+            frmTobeCollectedPreview.CrystalReportViewer1.Refresh()
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -226,7 +269,7 @@ Public Class frmTobeCollectedDelivery
 
             Dim index = table.Rows.Count() - 1
             Dim reciept = table.Rows(index)(0).ToString
-            lblDeliveryReciept.Text = reciept + 1
+            lblDeliveryReciept.Text = Val(reciept) + 1
         End If
         Poscon.Close()
     End Sub
@@ -240,6 +283,10 @@ Public Class frmTobeCollectedDelivery
         txtToBecollected.Text = ""
         lblDate.Text = ""
         lblDeliveryReciept.Text = ""
+
+    End Sub
+
+    Private Sub gvdel_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvdel.CellClick
 
     End Sub
 End Class

@@ -71,7 +71,7 @@ Public Class frmSessionOpening
             MsgBox("Session Created Succesfully")
             'Dim f2 As New PfrmSalesMgmt
             'f2.Show()
-            frmTouchSale.Show()
+            frmSales.Show()
             Me.Hide()
 
             If Poscon.State = ConnectionState.Closed Then
@@ -83,10 +83,11 @@ Public Class frmSessionOpening
             Dim table As New DataTable
             da.Fill(table)
             lblSessionID.Text = table.Rows(0)(0).ToString
-            Dim query = "insert into SessionLedger(sessionId,Openedby,dateopened,Timeopened,sessionType,Sessionmembers) values('" + lblSessionID.Text + "','" + tsUser.Text + "',convert(datetime,'" + txtOpeningSalesDate.Text + "',105),'" + lblTime.Text + "','" + cbSessiontype.Text + "','" + txtShiftMembers.Text + "')"
-            cmd = New SqlCommand(query, Poscon)
-            cmd.ExecuteNonQuery()
-            Poscon.Close()
+            'Dim query = "insert into SessionLedger(sessionId,Openedby,dateopened,Timeopened,sessionType,Sessionmembers) values('" + lblSessionID.Text + "','" + My.Settings.ActiveUser + "',convert(datetime,'" + txtOpeningSalesDate.Text + "',105),'" + lblTime.Text + "','" + cbSessiontype.Text + "','" + txtShiftMembers.Text + "')"
+            'cmd = New SqlCommand(query, Poscon)
+            'cmd.ExecuteNonQuery()
+            'Poscon.Close()
+            create("insert into SessionLedger(sessionId,Openedby,dateopened,Timeopened,sessionType,Sessionmembers) values('" + lblSessionID.Text + "','" + My.Settings.ActiveUser + "',convert(datetime,'" + txtOpeningSalesDate.Text + "',105),'" + lblTime.Text + "','" + cbSessiontype.Text + "','" + txtShiftMembers.Text + "')")
             Me.Hide()
         Else
             MsgBox("Active Session Already in progress", vbCritical)
@@ -109,6 +110,7 @@ Public Class frmSessionOpening
                 Dim Index = tbl.Rows.Count - 1
             'MsgBox(tbl.Rows(Index)(0).ToString)
             txtOpeningSalesDate.Text = Date.Parse(tbl.Rows(Index)(0).ToString)
+            Label5.Text = Date.Parse(tbl.Rows(Index)(0).ToString)
         End If
         Poscon.Close()
     End Sub

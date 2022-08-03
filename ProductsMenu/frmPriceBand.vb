@@ -155,7 +155,7 @@ Public Class frmPriceBand
             lblBandCode.Text = row.Cells(0).Value.ToString()
             cbItemName.Text = row.Cells(1).Value.ToString()
         Catch ex As Exception
-            'MsgBox(ex.ToString)
+            'msgbox(ex.message)
         End Try
     End Sub
     Sub Clear()

@@ -159,7 +159,7 @@ Public Class frmMultishop
                             lblPayable.Text = payable
                             lblDiscAmt.Text = DiscAmt
                         Catch ex As Exception
-                            MsgBox(ex.ToString)
+                            MsgBox(ex.Message)
                         End Try
                         Exit Sub
 
@@ -328,7 +328,7 @@ Public Class frmMultishop
             Next
             lblTotal.Text = sum
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -516,7 +516,7 @@ Public Class frmMultishop
             lblProdName.Text = row.Cells(0).Value.ToString()
             txtQty.Focus()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
         '    Case 1
         '        If gvSales.Rows.Count <> 0 Then
@@ -655,7 +655,7 @@ Public Class frmMultishop
         '            '+ "-" + txtProdline.Text + ""
         '            txtQty.Focus()
         '        Catch ex As Exception
-        '            MsgBox(ex.ToString)
+        '            msgbox(ex.message)
         '        End Try
         '    Case 4
         '        Try
@@ -675,7 +675,7 @@ Public Class frmMultishop
         '            '+ "-" + txtProdline.Text + ""
         '            txtQty.Focus()
         '        Catch ex As Exception
-        '            MsgBox(ex.ToString)
+        '            msgbox(ex.message)
         '        End Try
 
         '    Case Else
@@ -716,7 +716,7 @@ Public Class frmMultishop
             lblPayable.Text = payable
             lblDiscAmt.Text = discamt
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Sub SessionCheck()
@@ -850,7 +850,7 @@ Public Class frmMultishop
                     cmd = New SqlCommand("Select * from multishopStockMast where Prodcode='" + row.Cells(5).Value + "' and shopname='" + cbCreditCustName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
                     dr = cmd.ExecuteReader()
                     While dr.Read
-                        cmd = New SqlCommand("update multishopstockmast set prodqty=@Prodqty where Prodcode= " & row.Cells(5).Value & " and shopname='" + cbCreditCustName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
+                        cmd = New SqlCommand("update multishopstockmast set prodqty=@Prodqty where Prodcode= '" & row.Cells(5).Value.ToString & "' and shopname='" + cbCreditCustName.Text + "' and shopno='" + lblCustNo.Text + "'", Poscon)
                         With cmd
                             .Parameters.AddWithValue("@prodcode", dr.Item("Prodcode"))
                             .Parameters.AddWithValue("@prodqty", dr.Item("ProdQty") - row.Cells(1).Value)
@@ -983,7 +983,7 @@ Public Class frmMultishop
             lblPayable.Text = payable
             lblDiscAmt.Text = discamt
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -1362,7 +1362,7 @@ Public Class frmMultishop
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -1404,7 +1404,7 @@ Public Class frmMultishop
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Sub PrintRecieptA5(valuetosearch As String)
@@ -1444,7 +1444,7 @@ Public Class frmMultishop
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Sub Sortcat(valuetosearch As String)

@@ -35,15 +35,16 @@ Partial Class frmSessionOpening
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.txtOpeningSalesDate = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblSessionID = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.BunifuThinButton21 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.txtOpeningSalesDate = New Bunifu.UI.WinForms.BunifuDatePicker()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -171,19 +172,6 @@ Partial Class frmSessionOpening
         'Timer1
         '
         '
-        'txtOpeningSalesDate
-        '
-        Me.txtOpeningSalesDate.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtOpeningSalesDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtOpeningSalesDate.Font = New System.Drawing.Font("Segoe UI Semibold", 20.25!, System.Drawing.FontStyle.Bold)
-        Me.txtOpeningSalesDate.Location = New System.Drawing.Point(278, 221)
-        Me.txtOpeningSalesDate.Name = "txtOpeningSalesDate"
-        Me.txtOpeningSalesDate.ReadOnly = True
-        Me.txtOpeningSalesDate.Size = New System.Drawing.Size(235, 43)
-        Me.txtOpeningSalesDate.TabIndex = 121
-        '
         'Label4
         '
         Me.Label4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -234,6 +222,7 @@ Partial Class frmSessionOpening
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.Peru
+        Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label14)
         Me.Panel1.Controls.Add(Me.Label15)
@@ -244,6 +233,18 @@ Partial Class frmSessionOpening
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(686, 64)
         Me.Panel1.TabIndex = 124
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(416, 11)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(60, 25)
+        Me.Label5.TabIndex = 119
+        Me.Label5.Text = "Date"
+        Me.Label5.Visible = False
         '
         'BunifuThinButton21
         '
@@ -280,16 +281,41 @@ Partial Class frmSessionOpening
         Me.DataGridView1.TabIndex = 126
         Me.DataGridView1.Visible = False
         '
+        'txtOpeningSalesDate
+        '
+        Me.txtOpeningSalesDate.BackColor = System.Drawing.Color.Transparent
+        Me.txtOpeningSalesDate.BorderColor = System.Drawing.Color.Silver
+        Me.txtOpeningSalesDate.BorderRadius = 1
+        Me.txtOpeningSalesDate.Color = System.Drawing.Color.Silver
+        Me.txtOpeningSalesDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin
+        Me.txtOpeningSalesDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left
+        Me.txtOpeningSalesDate.DisabledColor = System.Drawing.Color.Gray
+        Me.txtOpeningSalesDate.DisplayWeekNumbers = False
+        Me.txtOpeningSalesDate.DPHeight = 0
+        Me.txtOpeningSalesDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
+        Me.txtOpeningSalesDate.FillDatePicker = False
+        Me.txtOpeningSalesDate.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.txtOpeningSalesDate.ForeColor = System.Drawing.Color.Black
+        Me.txtOpeningSalesDate.Icon = CType(resources.GetObject("txtOpeningSalesDate.Icon"), System.Drawing.Image)
+        Me.txtOpeningSalesDate.IconColor = System.Drawing.Color.Gray
+        Me.txtOpeningSalesDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right
+        Me.txtOpeningSalesDate.LeftTextMargin = 5
+        Me.txtOpeningSalesDate.Location = New System.Drawing.Point(278, 214)
+        Me.txtOpeningSalesDate.MinimumSize = New System.Drawing.Size(4, 32)
+        Me.txtOpeningSalesDate.Name = "txtOpeningSalesDate"
+        Me.txtOpeningSalesDate.Size = New System.Drawing.Size(235, 32)
+        Me.txtOpeningSalesDate.TabIndex = 127
+        '
         'frmSessionOpening
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(686, 390)
+        Me.Controls.Add(Me.txtOpeningSalesDate)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.lblSessionID)
         Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.txtOpeningSalesDate)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtShiftMembers)
         Me.Controls.Add(Me.Label3)
@@ -322,7 +348,6 @@ Partial Class frmSessionOpening
     Friend WithEvents Label15 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents txtOpeningSalesDate As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
@@ -331,4 +356,6 @@ Partial Class frmSessionOpening
     Friend WithEvents Panel1 As Panel
     Friend WithEvents BunifuThinButton21 As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents txtOpeningSalesDate As Bunifu.UI.WinForms.BunifuDatePicker
+    Friend WithEvents Label5 As Label
 End Class

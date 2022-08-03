@@ -77,7 +77,7 @@ Public Class frmSalesCancelation
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
         Display()
-        User()
+
         'Dim milliseconds = CLng(DateTime.UtcNow.Subtract(New DateTime(1970, 1, 1)).TotalMilliseconds)
         'MsgBox(milliseconds)
     End Sub
@@ -171,7 +171,7 @@ Public Class frmSalesCancelation
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim query = "insert into cancellationlog (ItemCode,ItemName,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,QtyCancelled,Price,Cancelledby,RecieptNo,DateCancelled,TimeCancelled) values(@ItemCode,@ItemName,@QtySold,@DateSold,@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,'" + ActiveUser.Text + "', '" + lblRecieptNo.Text + "','" + lblDate.Text + "','" + lblTime.Text + "')"
+            Dim query = "insert into cancellationlog (ItemCode,ItemName,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,QtyCancelled,Price,Cancelledby,RecieptNo,DateCancelled,TimeCancelled) values(@ItemCode,@ItemName,@QtySold,@DateSold,@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,'" + My.Settings.ActiveUser + "', '" + lblRecieptNo.Text + "','" + lblDate.Text + "','" + lblTime.Text + "')"
             Dim cmd As New SqlCommand
             cmd = New SqlCommand(query, Poscon)
             With cmd
@@ -209,17 +209,17 @@ Public Class frmSalesCancelation
 
 
 
-            Dim query = "update StockMast set ProdQty = @newstock where Prodcode =" + row.Cells(0).Value + ""
+            Dim query = "update StockMast set ProdQty = @newstock where Prodcode ='" & row.Cells(0).Value.ToString & "'"
             cmd = New SqlCommand(query, Poscon)
             With cmd
-                Dim sql = "Select * from StockMast where ProdCode='" + row.Cells(0).Value + "'"
+                Dim sql = "Select * from StockMast where ProdCode='" & row.Cells(0).Value.ToString & "'"
                 cmd = New SqlCommand(sql, Poscon)
                 dr = cmd.ExecuteReader
                 While dr.Read
 
                     lblActualStock.Text = dr.Item("ProdQty")
 
-                    .Parameters.AddWithValue("@newstock", dr.Item("ProdQty") + row.Cells(8).Value)
+                    .Parameters.AddWithValue("@newstock", Val(dr.Item("ProdQty")) + row.Cells(8).Value)
                     .ExecuteNonQuery()
                 End While
             End With
@@ -273,19 +273,9 @@ Public Class frmSalesCancelation
     End Sub
     Public Sub SearchRecieptNo(valuetosearch As String)
         Try
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            Dim query = "select SalesPerson,RecieptId from RecieptConfig where concat(SalesPerson,RecieptId,date) like '%" + valuetosearch + "%'"
-            cmd = New SqlCommand(query, Poscon)
-            Dim adapter As New SqlDataAdapter(cmd)
-            Dim table As New DataTable()
-            adapter.Fill(table)
-            gvReciepts.DataSource = table
-            Poscon.Close()
-
+            reload("select SalesPerson,RecieptId from RecieptConfig where concat(SalesPerson,RecieptId,date) like '%" + valuetosearch + "%'", gvReciepts)
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
 
@@ -293,13 +283,18 @@ Public Class frmSalesCancelation
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         lblTime.Text = Date.Now.ToString("hh:mm:ss")
-        lblDate.Text = Date.Now.ToString("dd-MMM-yy")
+        lblDate.Text = Date.Now.ToString("dd/MMM/yy")
     End Sub
 
     Private Sub gvReciepts_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvReciepts.CellClick
-        Dim row As DataGridViewRow = gvReciepts.Rows(e.RowIndex)
-        txtRecieptNo.Text = row.Cells(1).Value.ToString()
-        LoadReciepts(txtRecieptNo.Text)
+        Try
+            Dim row As DataGridViewRow = gvReciepts.Rows(e.RowIndex)
+            txtRecieptNo.Text = row.Cells(1).Value.ToString()
+            LoadReciepts(txtRecieptNo.Text)
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
     Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs) Handles BunifuThinButton24.Click
@@ -350,7 +345,7 @@ Public Class frmSalesCancelation
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim query = "select SalesPerson,RecieptId from RecieptConfig where date between @date1 and @date2"
+            Dim query = "select  distinct SalesPerson,RecieptId from RecieptConfig where date between @date1 and @date2"
             cmd = New SqlCommand(query, Poscon)
             cmd.Parameters.Add("date1", SqlDbType.DateTime).Value = outfrom
             cmd.Parameters.Add("date2", SqlDbType.DateTime).Value = outto
@@ -360,28 +355,10 @@ Public Class frmSalesCancelation
             gvReciepts.DataSource = tbl
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
-    Public Sub User()
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim que = "select * from userlogs"
-        cmd = New SqlCommand(que, Poscon)
-        Dim da As New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        da.Fill(table)
-        If table.Rows.Count = 0 Then
 
-        Else
-
-            Dim index = table.Rows.Count() - 1
-            ActiveUser.Text = table.Rows(index)(1).ToString
-        End If
-
-        Poscon.Close()
-    End Sub
 
     Sub RollReciept(valuetosearch As String)
         Try
@@ -420,7 +397,7 @@ Public Class frmSalesCancelation
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -462,7 +439,7 @@ Public Class frmSalesCancelation
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Sub PrintRecieptA5(valuetosearch As String)
@@ -502,7 +479,7 @@ Public Class frmSalesCancelation
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 

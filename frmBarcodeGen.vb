@@ -55,7 +55,7 @@ Public Class frmBarcodeGen
             Dim barcodeimage As Image = Barcode.Encode(TYPE.CODE39, lblBarCode.Text, forecolor, backcolor, pbBarcode.Width, 75)
             pbBarcode.Image = barcodeimage
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
 
@@ -68,7 +68,7 @@ Public Class frmBarcodeGen
             lblitemname.Text = row.Cells(0).Value.ToString()
             lblPrice.Text = row.Cells(2).Value.ToString()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 

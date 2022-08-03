@@ -36,19 +36,7 @@ Public Class frmDeleteProduct
 
     End Sub
     Private Sub Display()
-
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-
-        Dim query = "select * from StockMast where prodqty=0"
-        cmd = New SqlCommand(query, Poscon)
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim tbl As New DataTable()
-        adapter.Fill(tbl)
-        gvStockguna.DataSource = tbl
-        Poscon.Close()
-
+        reload("select * from StockMast where prodqty=0", gvStockguna)
     End Sub
     Private Sub filtercat()
         If Poscon.State = ConnectionState.Closed Then
@@ -70,7 +58,7 @@ Public Class frmDeleteProduct
             txtDelSearch.Text = row.Cells(1).Value.ToString()
             txtItemNo.Text = row.Cells(0).Value.ToString()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
 
@@ -85,7 +73,7 @@ Public Class frmDeleteProduct
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim query = "delete from Stockmast where Prodcode= " + txtItemNo.Text + " "
+                Dim query = "delete from Stockmast where Prodcode= '" + txtItemNo.Text + "' "
                 Dim cmd As New SqlCommand(query, Poscon)
                 cmd.ExecuteNonQuery()
                     MsgBox("Product Deleted Successfully")
@@ -155,7 +143,7 @@ Public Class frmDeleteProduct
             txtDelSearch.Text = row.Cells(1).Value.ToString()
             txtItemNo.Text = row.Cells(0).Value.ToString()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -173,9 +161,9 @@ Public Class frmDeleteProduct
             Dim row As DataGridViewRow = gvStockguna.Rows(e.RowIndex)
             'txtDelSearch.Text = row.Cells(0).Value.ToString()
             txtItemNo.Text = row.Cells(0).Value.ToString()
-            lblItemName.Text = row.Cells(1).Value.ToString()
+            lblItemName.Text = row.Cells(10).Value.ToString()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -266,18 +254,12 @@ Public Class frmDeleteProduct
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-        If lblItemName.Text = "" Or txtItemNo.Text = "" Then
+        If txtItemNo.Text = "" Then
             MsgBox("Select a Product")
         Else
             Try
-                If Poscon.State = ConnectionState.Closed Then
-                    Poscon.Open()
-                End If
-                Dim query = "delete from Stockmast where Prodcode= " + txtItemNo.Text + " "
-                Dim cmd As New SqlCommand(query, Poscon)
-                cmd.ExecuteNonQuery()
-                MsgBox("Product Deleted Successfully")
-                Poscon.Close()
+                create("delete from Stockmast where Prodcode= '" + txtItemNo.Text + "' ")
+                create("insert into inventoryledger(itemname,tranxtype,Userid,date) values('" & lblItemName.Text & "','" & "Deleted" & "','" & My.Settings.ActiveUser & "',convert(datetime,'" & DateTime.Now & "',105))")
                 Display()
 
 

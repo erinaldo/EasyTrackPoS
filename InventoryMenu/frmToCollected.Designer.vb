@@ -24,12 +24,12 @@ Partial Class frmToCollected
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmToCollected))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ActiveUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -81,6 +81,10 @@ Partial Class frmToCollected
         Me.ckprint = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.gvdel = New Bunifu.UI.WinForms.BunifuDataGridView()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.ckA5Paper = New Bunifu.UI.WinForms.BunifuCheckBox()
+        Me.ckrollPaper = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.gvSalesReciepts, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -289,10 +293,10 @@ Partial Class frmToCollected
         Me.BunifuThinButton23.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton23.IdleForecolor = System.Drawing.Color.Red
         Me.BunifuThinButton23.IdleLineColor = System.Drawing.Color.Red
-        Me.BunifuThinButton23.Location = New System.Drawing.Point(758, 35)
+        Me.BunifuThinButton23.Location = New System.Drawing.Point(812, 37)
         Me.BunifuThinButton23.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton23.Name = "BunifuThinButton23"
-        Me.BunifuThinButton23.Size = New System.Drawing.Size(140, 57)
+        Me.BunifuThinButton23.Size = New System.Drawing.Size(132, 57)
         Me.BunifuThinButton23.TabIndex = 48
         Me.BunifuThinButton23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -328,31 +332,31 @@ Partial Class frmToCollected
         Me.gvSalesReciepts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.gvSalesReciepts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.gvSalesReciepts.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvSalesReciepts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvSalesReciepts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.gvSalesReciepts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gvSalesReciepts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemCode, Me.ItemName, Me.QtySold, Me.RPrice, Me.Amount, Me.RecieptNo, Me.NewQtySold, Me.QtyCollected})
         Me.gvSalesReciepts.Location = New System.Drawing.Point(311, 260)
         Me.gvSalesReciepts.MultiSelect = False
         Me.gvSalesReciepts.Name = "gvSalesReciepts"
         Me.gvSalesReciepts.ReadOnly = True
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Khaki
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvSalesReciepts.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Khaki
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvSalesReciepts.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.gvSalesReciepts.RowHeadersVisible = False
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gvSalesReciepts.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gvSalesReciepts.RowsDefaultCellStyle = DataGridViewCellStyle9
         Me.gvSalesReciepts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gvSalesReciepts.Size = New System.Drawing.Size(626, 259)
         Me.gvSalesReciepts.TabIndex = 34
@@ -444,17 +448,18 @@ Partial Class frmToCollected
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(281, 17)
+        Me.Label2.Location = New System.Drawing.Point(407, 17)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(153, 21)
         Me.Label2.TabIndex = 42
         Me.Label2.Text = "QtyToBeCollected"
+        Me.Label2.Visible = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(93, 17)
+        Me.Label1.Location = New System.Drawing.Point(44, 17)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(71, 21)
         Me.Label1.TabIndex = 41
@@ -463,15 +468,15 @@ Partial Class frmToCollected
         'txtToBecollected
         '
         Me.txtToBecollected.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtToBecollected.Location = New System.Drawing.Point(287, 40)
+        Me.txtToBecollected.Location = New System.Drawing.Point(237, 40)
         Me.txtToBecollected.Name = "txtToBecollected"
-        Me.txtToBecollected.Size = New System.Drawing.Size(174, 33)
+        Me.txtToBecollected.Size = New System.Drawing.Size(148, 33)
         Me.txtToBecollected.TabIndex = 39
         '
         'txtQtySold
         '
         Me.txtQtySold.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtQtySold.Location = New System.Drawing.Point(97, 40)
+        Me.txtQtySold.Location = New System.Drawing.Point(48, 40)
         Me.txtQtySold.Name = "txtQtySold"
         Me.txtQtySold.ReadOnly = True
         Me.txtQtySold.Size = New System.Drawing.Size(155, 33)
@@ -573,28 +578,29 @@ Partial Class frmToCollected
         Me.dpDate.Location = New System.Drawing.Point(551, 41)
         Me.dpDate.MinimumSize = New System.Drawing.Size(4, 32)
         Me.dpDate.Name = "dpDate"
-        Me.dpDate.Size = New System.Drawing.Size(166, 32)
+        Me.dpDate.Size = New System.Drawing.Size(130, 32)
         Me.dpDate.TabIndex = 67
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(471, 16)
+        Me.Label9.Location = New System.Drawing.Point(244, 16)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(116, 21)
+        Me.Label9.Size = New System.Drawing.Size(119, 21)
         Me.Label9.TabIndex = 69
-        Me.Label9.Text = "QtyCollected"
+        Me.Label9.Text = "QtyDeposited"
         '
         'txtQtyCollected
         '
         Me.txtQtyCollected.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtQtyCollected.Location = New System.Drawing.Point(475, 40)
+        Me.txtQtyCollected.Location = New System.Drawing.Point(411, 40)
         Me.txtQtyCollected.Name = "txtQtyCollected"
         Me.txtQtyCollected.ReadOnly = True
-        Me.txtQtyCollected.Size = New System.Drawing.Size(155, 33)
+        Me.txtQtyCollected.Size = New System.Drawing.Size(136, 33)
         Me.txtQtyCollected.TabIndex = 68
         Me.txtQtyCollected.Text = "0"
+        Me.txtQtyCollected.Visible = False
         '
         'lblUpdateTBC
         '
@@ -633,6 +639,10 @@ Partial Class frmToCollected
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.BackColor = System.Drawing.Color.Thistle
+        Me.GroupBox1.Controls.Add(Me.Label25)
+        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.ckA5Paper)
+        Me.GroupBox1.Controls.Add(Me.ckrollPaper)
         Me.GroupBox1.Controls.Add(Me.Label15)
         Me.GroupBox1.Controls.Add(Me.txtBuyerName)
         Me.GroupBox1.Controls.Add(Me.txtCustLoc)
@@ -651,7 +661,7 @@ Partial Class frmToCollected
         Me.GroupBox1.Controls.Add(Me.lblDate)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 525)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(925, 98)
+        Me.GroupBox1.Size = New System.Drawing.Size(952, 98)
         Me.GroupBox1.TabIndex = 73
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GroupBox1"
@@ -661,7 +671,7 @@ Partial Class frmToCollected
         Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(810, 11)
+        Me.Label15.Location = New System.Drawing.Point(837, 11)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(47, 21)
         Me.Label15.TabIndex = 130
@@ -686,7 +696,7 @@ Partial Class frmToCollected
         Me.ckprint.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
         Me.ckprint.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckprint.CustomCheckmarkImage = Nothing
-        Me.ckprint.Location = New System.Drawing.Point(790, 14)
+        Me.ckprint.Location = New System.Drawing.Point(817, 14)
         Me.ckprint.MinimumSize = New System.Drawing.Size(17, 17)
         Me.ckprint.Name = "ckprint"
         Me.ckprint.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
@@ -744,9 +754,9 @@ Partial Class frmToCollected
         'gvdel
         '
         Me.gvdel.AllowCustomTheming = True
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        Me.gvdel.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black
+        Me.gvdel.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
         Me.gvdel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.gvdel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
@@ -755,14 +765,14 @@ Partial Class frmToCollected
         Me.gvdel.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvdel.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.gvdel.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.DodgerBlue
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gvdel.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(204, Byte), Integer))
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gvdel.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.gvdel.ColumnHeadersHeight = 20
         Me.gvdel.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvdel.CurrentTheme.AlternatingRowsStyle.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -782,14 +792,14 @@ Partial Class frmToCollected
         Me.gvdel.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black
         Me.gvdel.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvdel.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gvdel.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gvdel.DefaultCellStyle = DataGridViewCellStyle12
         Me.gvdel.EnableHeadersVisualStyles = False
         Me.gvdel.GridColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvdel.HeaderBackColor = System.Drawing.Color.DodgerBlue
@@ -803,9 +813,141 @@ Partial Class frmToCollected
         Me.gvdel.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.gvdel.RowTemplate.Height = 40
         Me.gvdel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gvdel.Size = New System.Drawing.Size(281, 453)
+        Me.gvdel.Size = New System.Drawing.Size(281, 400)
         Me.gvdel.TabIndex = 136
         Me.gvdel.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
+        '
+        'Label25
+        '
+        Me.Label25.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.Location = New System.Drawing.Point(720, 66)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(78, 21)
+        Me.Label25.TabIndex = 134
+        Me.Label25.Text = "A4 Paper"
+        '
+        'Label12
+        '
+        Me.Label12.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(720, 41)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(84, 21)
+        Me.Label12.TabIndex = 133
+        Me.Label12.Text = "RollPaper"
+        '
+        'ckA5Paper
+        '
+        Me.ckA5Paper.AllowBindingControlAnimation = True
+        Me.ckA5Paper.AllowBindingControlColorChanges = False
+        Me.ckA5Paper.AllowBindingControlLocation = True
+        Me.ckA5Paper.AllowCheckBoxAnimation = False
+        Me.ckA5Paper.AllowCheckmarkAnimation = True
+        Me.ckA5Paper.AllowOnHoverStates = True
+        Me.ckA5Paper.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ckA5Paper.AutoCheck = True
+        Me.ckA5Paper.BackColor = System.Drawing.Color.Transparent
+        Me.ckA5Paper.BackgroundImage = CType(resources.GetObject("ckA5Paper.BackgroundImage"), System.Drawing.Image)
+        Me.ckA5Paper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ckA5Paper.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
+        Me.ckA5Paper.BorderRadius = 12
+        Me.ckA5Paper.Checked = True
+        Me.ckA5Paper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.ckA5Paper.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ckA5Paper.CustomCheckmarkImage = Nothing
+        Me.ckA5Paper.Location = New System.Drawing.Point(700, 69)
+        Me.ckA5Paper.MinimumSize = New System.Drawing.Size(17, 17)
+        Me.ckA5Paper.Name = "ckA5Paper"
+        Me.ckA5Paper.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.ckA5Paper.OnCheck.BorderRadius = 12
+        Me.ckA5Paper.OnCheck.BorderThickness = 2
+        Me.ckA5Paper.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
+        Me.ckA5Paper.OnCheck.CheckmarkColor = System.Drawing.Color.White
+        Me.ckA5Paper.OnCheck.CheckmarkThickness = 2
+        Me.ckA5Paper.OnDisable.BorderColor = System.Drawing.Color.LightGray
+        Me.ckA5Paper.OnDisable.BorderRadius = 12
+        Me.ckA5Paper.OnDisable.BorderThickness = 2
+        Me.ckA5Paper.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckA5Paper.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
+        Me.ckA5Paper.OnDisable.CheckmarkThickness = 2
+        Me.ckA5Paper.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckA5Paper.OnHoverChecked.BorderRadius = 12
+        Me.ckA5Paper.OnHoverChecked.BorderThickness = 2
+        Me.ckA5Paper.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckA5Paper.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
+        Me.ckA5Paper.OnHoverChecked.CheckmarkThickness = 2
+        Me.ckA5Paper.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckA5Paper.OnHoverUnchecked.BorderRadius = 12
+        Me.ckA5Paper.OnHoverUnchecked.BorderThickness = 1
+        Me.ckA5Paper.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckA5Paper.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
+        Me.ckA5Paper.OnUncheck.BorderRadius = 12
+        Me.ckA5Paper.OnUncheck.BorderThickness = 1
+        Me.ckA5Paper.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckA5Paper.Size = New System.Drawing.Size(20, 20)
+        Me.ckA5Paper.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
+        Me.ckA5Paper.TabIndex = 132
+        Me.ckA5Paper.ThreeState = False
+        Me.ckA5Paper.ToolTipText = Nothing
+        '
+        'ckrollPaper
+        '
+        Me.ckrollPaper.AllowBindingControlAnimation = True
+        Me.ckrollPaper.AllowBindingControlColorChanges = False
+        Me.ckrollPaper.AllowBindingControlLocation = True
+        Me.ckrollPaper.AllowCheckBoxAnimation = False
+        Me.ckrollPaper.AllowCheckmarkAnimation = True
+        Me.ckrollPaper.AllowOnHoverStates = True
+        Me.ckrollPaper.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ckrollPaper.AutoCheck = True
+        Me.ckrollPaper.BackColor = System.Drawing.Color.Transparent
+        Me.ckrollPaper.BackgroundImage = CType(resources.GetObject("ckrollPaper.BackgroundImage"), System.Drawing.Image)
+        Me.ckrollPaper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ckrollPaper.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
+        Me.ckrollPaper.BorderRadius = 12
+        Me.ckrollPaper.Checked = False
+        Me.ckrollPaper.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked
+        Me.ckrollPaper.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ckrollPaper.CustomCheckmarkImage = Nothing
+        Me.ckrollPaper.Location = New System.Drawing.Point(700, 44)
+        Me.ckrollPaper.MinimumSize = New System.Drawing.Size(17, 17)
+        Me.ckrollPaper.Name = "ckrollPaper"
+        Me.ckrollPaper.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.ckrollPaper.OnCheck.BorderRadius = 12
+        Me.ckrollPaper.OnCheck.BorderThickness = 2
+        Me.ckrollPaper.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
+        Me.ckrollPaper.OnCheck.CheckmarkColor = System.Drawing.Color.White
+        Me.ckrollPaper.OnCheck.CheckmarkThickness = 2
+        Me.ckrollPaper.OnDisable.BorderColor = System.Drawing.Color.LightGray
+        Me.ckrollPaper.OnDisable.BorderRadius = 12
+        Me.ckrollPaper.OnDisable.BorderThickness = 2
+        Me.ckrollPaper.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckrollPaper.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
+        Me.ckrollPaper.OnDisable.CheckmarkThickness = 2
+        Me.ckrollPaper.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckrollPaper.OnHoverChecked.BorderRadius = 12
+        Me.ckrollPaper.OnHoverChecked.BorderThickness = 2
+        Me.ckrollPaper.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckrollPaper.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
+        Me.ckrollPaper.OnHoverChecked.CheckmarkThickness = 2
+        Me.ckrollPaper.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckrollPaper.OnHoverUnchecked.BorderRadius = 12
+        Me.ckrollPaper.OnHoverUnchecked.BorderThickness = 1
+        Me.ckrollPaper.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckrollPaper.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
+        Me.ckrollPaper.OnUncheck.BorderRadius = 12
+        Me.ckrollPaper.OnUncheck.BorderThickness = 1
+        Me.ckrollPaper.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckrollPaper.Size = New System.Drawing.Size(20, 20)
+        Me.ckrollPaper.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
+        Me.ckrollPaper.TabIndex = 131
+        Me.ckrollPaper.ThreeState = False
+        Me.ckrollPaper.ToolTipText = Nothing
         '
         'frmToCollected
         '
@@ -895,4 +1037,8 @@ Partial Class frmToCollected
     Friend WithEvents Label15 As Label
     Friend WithEvents ckprint As Bunifu.UI.WinForms.BunifuCheckBox
     Friend WithEvents gvdel As Bunifu.UI.WinForms.BunifuDataGridView
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents ckA5Paper As Bunifu.UI.WinForms.BunifuCheckBox
+    Friend WithEvents ckrollPaper As Bunifu.UI.WinForms.BunifuCheckBox
 End Class

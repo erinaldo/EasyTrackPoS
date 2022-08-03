@@ -27,11 +27,13 @@ Partial Public Class dsTobeCollected
     
     Private tableToBeCollected As ToBeCollectedDataTable
     
-    Private tableToBeCollectedDeliveryLog As ToBeCollectedDeliveryLogDataTable
-    
     Private tableClientReg As ClientRegDataTable
     
+    Private tableToBeCollectedDeliveryLog As ToBeCollectedDeliveryLogDataTable
+    
     Private tabledtTobeCollectedDel As dtTobeCollectedDelDataTable
+    
+    Private tableTotalStock As TotalStockDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -65,14 +67,17 @@ Partial Public Class dsTobeCollected
             If (Not (ds.Tables("ToBeCollected")) Is Nothing) Then
                 MyBase.Tables.Add(New ToBeCollectedDataTable(ds.Tables("ToBeCollected")))
             End If
-            If (Not (ds.Tables("ToBeCollectedDeliveryLog")) Is Nothing) Then
-                MyBase.Tables.Add(New ToBeCollectedDeliveryLogDataTable(ds.Tables("ToBeCollectedDeliveryLog")))
-            End If
             If (Not (ds.Tables("ClientReg")) Is Nothing) Then
                 MyBase.Tables.Add(New ClientRegDataTable(ds.Tables("ClientReg")))
             End If
+            If (Not (ds.Tables("ToBeCollectedDeliveryLog")) Is Nothing) Then
+                MyBase.Tables.Add(New ToBeCollectedDeliveryLogDataTable(ds.Tables("ToBeCollectedDeliveryLog")))
+            End If
             If (Not (ds.Tables("dtTobeCollectedDel")) Is Nothing) Then
                 MyBase.Tables.Add(New dtTobeCollectedDelDataTable(ds.Tables("dtTobeCollectedDel")))
+            End If
+            If (Not (ds.Tables("TotalStock")) Is Nothing) Then
+                MyBase.Tables.Add(New TotalStockDataTable(ds.Tables("TotalStock")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -105,16 +110,6 @@ Partial Public Class dsTobeCollected
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property ToBeCollectedDeliveryLog() As ToBeCollectedDeliveryLogDataTable
-        Get
-            Return Me.tableToBeCollectedDeliveryLog
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property ClientReg() As ClientRegDataTable
         Get
             Return Me.tableClientReg
@@ -125,9 +120,29 @@ Partial Public Class dsTobeCollected
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property ToBeCollectedDeliveryLog() As ToBeCollectedDeliveryLogDataTable
+        Get
+            Return Me.tableToBeCollectedDeliveryLog
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property dtTobeCollectedDel() As dtTobeCollectedDelDataTable
         Get
             Return Me.tabledtTobeCollectedDel
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property TotalStock() As TotalStockDataTable
+        Get
+            Return Me.tableTotalStock
         End Get
     End Property
     
@@ -201,14 +216,17 @@ Partial Public Class dsTobeCollected
             If (Not (ds.Tables("ToBeCollected")) Is Nothing) Then
                 MyBase.Tables.Add(New ToBeCollectedDataTable(ds.Tables("ToBeCollected")))
             End If
-            If (Not (ds.Tables("ToBeCollectedDeliveryLog")) Is Nothing) Then
-                MyBase.Tables.Add(New ToBeCollectedDeliveryLogDataTable(ds.Tables("ToBeCollectedDeliveryLog")))
-            End If
             If (Not (ds.Tables("ClientReg")) Is Nothing) Then
                 MyBase.Tables.Add(New ClientRegDataTable(ds.Tables("ClientReg")))
             End If
+            If (Not (ds.Tables("ToBeCollectedDeliveryLog")) Is Nothing) Then
+                MyBase.Tables.Add(New ToBeCollectedDeliveryLogDataTable(ds.Tables("ToBeCollectedDeliveryLog")))
+            End If
             If (Not (ds.Tables("dtTobeCollectedDel")) Is Nothing) Then
                 MyBase.Tables.Add(New dtTobeCollectedDelDataTable(ds.Tables("dtTobeCollectedDel")))
+            End If
+            If (Not (ds.Tables("TotalStock")) Is Nothing) Then
+                MyBase.Tables.Add(New TotalStockDataTable(ds.Tables("TotalStock")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -248,22 +266,28 @@ Partial Public Class dsTobeCollected
                 Me.tableToBeCollected.InitVars
             End If
         End If
-        Me.tableToBeCollectedDeliveryLog = CType(MyBase.Tables("ToBeCollectedDeliveryLog"),ToBeCollectedDeliveryLogDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tableToBeCollectedDeliveryLog) Is Nothing) Then
-                Me.tableToBeCollectedDeliveryLog.InitVars
-            End If
-        End If
         Me.tableClientReg = CType(MyBase.Tables("ClientReg"),ClientRegDataTable)
         If (initTable = true) Then
             If (Not (Me.tableClientReg) Is Nothing) Then
                 Me.tableClientReg.InitVars
             End If
         End If
+        Me.tableToBeCollectedDeliveryLog = CType(MyBase.Tables("ToBeCollectedDeliveryLog"),ToBeCollectedDeliveryLogDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableToBeCollectedDeliveryLog) Is Nothing) Then
+                Me.tableToBeCollectedDeliveryLog.InitVars
+            End If
+        End If
         Me.tabledtTobeCollectedDel = CType(MyBase.Tables("dtTobeCollectedDel"),dtTobeCollectedDelDataTable)
         If (initTable = true) Then
             If (Not (Me.tabledtTobeCollectedDel) Is Nothing) Then
                 Me.tabledtTobeCollectedDel.InitVars
+            End If
+        End If
+        Me.tableTotalStock = CType(MyBase.Tables("TotalStock"),TotalStockDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableTotalStock) Is Nothing) Then
+                Me.tableTotalStock.InitVars
             End If
         End If
     End Sub
@@ -278,23 +302,19 @@ Partial Public Class dsTobeCollected
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
         Me.tableToBeCollected = New ToBeCollectedDataTable()
         MyBase.Tables.Add(Me.tableToBeCollected)
-        Me.tableToBeCollectedDeliveryLog = New ToBeCollectedDeliveryLogDataTable()
-        MyBase.Tables.Add(Me.tableToBeCollectedDeliveryLog)
         Me.tableClientReg = New ClientRegDataTable()
         MyBase.Tables.Add(Me.tableClientReg)
+        Me.tableToBeCollectedDeliveryLog = New ToBeCollectedDeliveryLogDataTable()
+        MyBase.Tables.Add(Me.tableToBeCollectedDeliveryLog)
         Me.tabledtTobeCollectedDel = New dtTobeCollectedDelDataTable()
         MyBase.Tables.Add(Me.tabledtTobeCollectedDel)
+        Me.tableTotalStock = New TotalStockDataTable()
+        MyBase.Tables.Add(Me.tableTotalStock)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Function ShouldSerializeToBeCollected() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Private Function ShouldSerializeToBeCollectedDeliveryLog() As Boolean
         Return false
     End Function
     
@@ -306,7 +326,19 @@ Partial Public Class dsTobeCollected
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializeToBeCollectedDeliveryLog() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Function ShouldSerializedtTobeCollectedDel() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializeTotalStock() As Boolean
         Return false
     End Function
     
@@ -372,13 +404,16 @@ Partial Public Class dsTobeCollected
     Public Delegate Sub ToBeCollectedRowChangeEventHandler(ByVal sender As Object, ByVal e As ToBeCollectedRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Delegate Sub ToBeCollectedDeliveryLogRowChangeEventHandler(ByVal sender As Object, ByVal e As ToBeCollectedDeliveryLogRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub ClientRegRowChangeEventHandler(ByVal sender As Object, ByVal e As ClientRegRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub ToBeCollectedDeliveryLogRowChangeEventHandler(ByVal sender As Object, ByVal e As ToBeCollectedDeliveryLogRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub dtTobeCollectedDelRowChangeEventHandler(ByVal sender As Object, ByVal e As dtTobeCollectedDelRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub TotalStockRowChangeEventHandler(ByVal sender As Object, ByVal e As TotalStockRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -631,7 +666,7 @@ Partial Public Class dsTobeCollected
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Overloads Function AddToBeCollectedRow( _
-                    ByVal RecieptNo As Integer,  _
+                    ByVal RecieptNo As String,  _
                     ByVal ItemName As String,  _
                     ByVal QtySold As Decimal,  _
                     ByVal Price As Decimal,  _
@@ -699,7 +734,7 @@ Partial Public Class dsTobeCollected
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnRecieptNo = New Global.System.Data.DataColumn("RecieptNo", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnRecieptNo = New Global.System.Data.DataColumn("RecieptNo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnRecieptNo)
             Me.columnItemName = New Global.System.Data.DataColumn("ItemName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnItemName)
@@ -833,531 +868,6 @@ Partial Public Class dsTobeCollected
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "ToBeCollectedDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class ToBeCollectedDeliveryLogDataTable
-        Inherits Global.System.Data.TypedTableBase(Of ToBeCollectedDeliveryLogRow)
-        
-        Private columnRecieptNo As Global.System.Data.DataColumn
-        
-        Private columnItemName As Global.System.Data.DataColumn
-        
-        Private columnQtySold As Global.System.Data.DataColumn
-        
-        Private columnPrice As Global.System.Data.DataColumn
-        
-        Private columnQtyCollected As Global.System.Data.DataColumn
-        
-        Private columnQtyToBeCollected As Global.System.Data.DataColumn
-        
-        Private columnAmount As Global.System.Data.DataColumn
-        
-        Private columnDateCollected As Global.System.Data.DataColumn
-        
-        Private columnTimeCollected As Global.System.Data.DataColumn
-        
-        Private columnBuyerName As Global.System.Data.DataColumn
-        
-        Private columnBuyerLoc As Global.System.Data.DataColumn
-        
-        Private columnBuyerTel As Global.System.Data.DataColumn
-        
-        Private columnDateToBeCollected As Global.System.Data.DataColumn
-        
-        Private columnItemCode As Global.System.Data.DataColumn
-        
-        Private columnDateSold As Global.System.Data.DataColumn
-        
-        Private columnSalesPerson As Global.System.Data.DataColumn
-        
-        Private columnOldQtyToBeCollected As Global.System.Data.DataColumn
-        
-        Private columnCollectionID As Global.System.Data.DataColumn
-        
-        Private columnDeliveryID As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "ToBeCollectedDeliveryLog"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property RecieptNoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnRecieptNo
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property ItemNameColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnItemName
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property QtySoldColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnQtySold
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property PriceColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPrice
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property QtyCollectedColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnQtyCollected
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property QtyToBeCollectedColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnQtyToBeCollected
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property AmountColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnAmount
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property DateCollectedColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDateCollected
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property TimeCollectedColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnTimeCollected
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property BuyerNameColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnBuyerName
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property BuyerLocColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnBuyerLoc
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property BuyerTelColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnBuyerTel
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property DateToBeCollectedColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDateToBeCollected
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property ItemCodeColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnItemCode
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property DateSoldColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDateSold
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property SalesPersonColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnSalesPerson
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property OldQtyToBeCollectedColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnOldQtyToBeCollected
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property CollectionIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCollectionID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property DeliveryIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDeliveryID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As ToBeCollectedDeliveryLogRow
-            Get
-                Return CType(Me.Rows(index),ToBeCollectedDeliveryLogRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event ToBeCollectedDeliveryLogRowChanging As ToBeCollectedDeliveryLogRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event ToBeCollectedDeliveryLogRowChanged As ToBeCollectedDeliveryLogRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event ToBeCollectedDeliveryLogRowDeleting As ToBeCollectedDeliveryLogRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event ToBeCollectedDeliveryLogRowDeleted As ToBeCollectedDeliveryLogRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Sub AddToBeCollectedDeliveryLogRow(ByVal row As ToBeCollectedDeliveryLogRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddToBeCollectedDeliveryLogRow( _
-                    ByVal RecieptNo As Integer,  _
-                    ByVal ItemName As String,  _
-                    ByVal QtySold As Decimal,  _
-                    ByVal Price As Decimal,  _
-                    ByVal QtyCollected As Decimal,  _
-                    ByVal QtyToBeCollected As Decimal,  _
-                    ByVal Amount As Decimal,  _
-                    ByVal DateCollected As Date,  _
-                    ByVal TimeCollected As System.TimeSpan,  _
-                    ByVal BuyerName As String,  _
-                    ByVal BuyerLoc As String,  _
-                    ByVal BuyerTel As String,  _
-                    ByVal DateToBeCollected As Date,  _
-                    ByVal ItemCode As String,  _
-                    ByVal DateSold As Date,  _
-                    ByVal SalesPerson As String,  _
-                    ByVal OldQtyToBeCollected As Decimal,  _
-                    ByVal DeliveryID As String) As ToBeCollectedDeliveryLogRow
-            Dim rowToBeCollectedDeliveryLogRow As ToBeCollectedDeliveryLogRow = CType(Me.NewRow,ToBeCollectedDeliveryLogRow)
-            Dim columnValuesArray() As Object = New Object() {RecieptNo, ItemName, QtySold, Price, QtyCollected, QtyToBeCollected, Amount, DateCollected, TimeCollected, BuyerName, BuyerLoc, BuyerTel, DateToBeCollected, ItemCode, DateSold, SalesPerson, OldQtyToBeCollected, Nothing, DeliveryID}
-            rowToBeCollectedDeliveryLogRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowToBeCollectedDeliveryLogRow)
-            Return rowToBeCollectedDeliveryLogRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function FindByCollectionID(ByVal CollectionID As Integer) As ToBeCollectedDeliveryLogRow
-            Return CType(Me.Rows.Find(New Object() {CollectionID}),ToBeCollectedDeliveryLogRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As ToBeCollectedDeliveryLogDataTable = CType(MyBase.Clone,ToBeCollectedDeliveryLogDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New ToBeCollectedDeliveryLogDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnRecieptNo = MyBase.Columns("RecieptNo")
-            Me.columnItemName = MyBase.Columns("ItemName")
-            Me.columnQtySold = MyBase.Columns("QtySold")
-            Me.columnPrice = MyBase.Columns("Price")
-            Me.columnQtyCollected = MyBase.Columns("QtyCollected")
-            Me.columnQtyToBeCollected = MyBase.Columns("QtyToBeCollected")
-            Me.columnAmount = MyBase.Columns("Amount")
-            Me.columnDateCollected = MyBase.Columns("DateCollected")
-            Me.columnTimeCollected = MyBase.Columns("TimeCollected")
-            Me.columnBuyerName = MyBase.Columns("BuyerName")
-            Me.columnBuyerLoc = MyBase.Columns("BuyerLoc")
-            Me.columnBuyerTel = MyBase.Columns("BuyerTel")
-            Me.columnDateToBeCollected = MyBase.Columns("DateToBeCollected")
-            Me.columnItemCode = MyBase.Columns("ItemCode")
-            Me.columnDateSold = MyBase.Columns("DateSold")
-            Me.columnSalesPerson = MyBase.Columns("SalesPerson")
-            Me.columnOldQtyToBeCollected = MyBase.Columns("OldQtyToBeCollected")
-            Me.columnCollectionID = MyBase.Columns("CollectionID")
-            Me.columnDeliveryID = MyBase.Columns("DeliveryID")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnRecieptNo = New Global.System.Data.DataColumn("RecieptNo", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnRecieptNo)
-            Me.columnItemName = New Global.System.Data.DataColumn("ItemName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnItemName)
-            Me.columnQtySold = New Global.System.Data.DataColumn("QtySold", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnQtySold)
-            Me.columnPrice = New Global.System.Data.DataColumn("Price", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPrice)
-            Me.columnQtyCollected = New Global.System.Data.DataColumn("QtyCollected", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnQtyCollected)
-            Me.columnQtyToBeCollected = New Global.System.Data.DataColumn("QtyToBeCollected", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnQtyToBeCollected)
-            Me.columnAmount = New Global.System.Data.DataColumn("Amount", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnAmount)
-            Me.columnDateCollected = New Global.System.Data.DataColumn("DateCollected", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDateCollected)
-            Me.columnTimeCollected = New Global.System.Data.DataColumn("TimeCollected", GetType(Global.System.TimeSpan), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTimeCollected)
-            Me.columnBuyerName = New Global.System.Data.DataColumn("BuyerName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnBuyerName)
-            Me.columnBuyerLoc = New Global.System.Data.DataColumn("BuyerLoc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnBuyerLoc)
-            Me.columnBuyerTel = New Global.System.Data.DataColumn("BuyerTel", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnBuyerTel)
-            Me.columnDateToBeCollected = New Global.System.Data.DataColumn("DateToBeCollected", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDateToBeCollected)
-            Me.columnItemCode = New Global.System.Data.DataColumn("ItemCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnItemCode)
-            Me.columnDateSold = New Global.System.Data.DataColumn("DateSold", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDateSold)
-            Me.columnSalesPerson = New Global.System.Data.DataColumn("SalesPerson", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSalesPerson)
-            Me.columnOldQtyToBeCollected = New Global.System.Data.DataColumn("OldQtyToBeCollected", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnOldQtyToBeCollected)
-            Me.columnCollectionID = New Global.System.Data.DataColumn("CollectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCollectionID)
-            Me.columnDeliveryID = New Global.System.Data.DataColumn("DeliveryID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDeliveryID)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCollectionID}, true))
-            Me.columnRecieptNo.AllowDBNull = false
-            Me.columnItemName.MaxLength = 50
-            Me.columnBuyerName.MaxLength = 50
-            Me.columnBuyerLoc.MaxLength = 50
-            Me.columnBuyerTel.MaxLength = 50
-            Me.columnItemCode.MaxLength = 50
-            Me.columnSalesPerson.MaxLength = 50
-            Me.columnCollectionID.AutoIncrement = true
-            Me.columnCollectionID.AutoIncrementSeed = -1
-            Me.columnCollectionID.AutoIncrementStep = -1
-            Me.columnCollectionID.AllowDBNull = false
-            Me.columnCollectionID.ReadOnly = true
-            Me.columnCollectionID.Unique = true
-            Me.columnDeliveryID.MaxLength = 50
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function NewToBeCollectedDeliveryLogRow() As ToBeCollectedDeliveryLogRow
-            Return CType(Me.NewRow,ToBeCollectedDeliveryLogRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New ToBeCollectedDeliveryLogRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(ToBeCollectedDeliveryLogRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.ToBeCollectedDeliveryLogRowChangedEvent) Is Nothing) Then
-                RaiseEvent ToBeCollectedDeliveryLogRowChanged(Me, New ToBeCollectedDeliveryLogRowChangeEvent(CType(e.Row,ToBeCollectedDeliveryLogRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.ToBeCollectedDeliveryLogRowChangingEvent) Is Nothing) Then
-                RaiseEvent ToBeCollectedDeliveryLogRowChanging(Me, New ToBeCollectedDeliveryLogRowChangeEvent(CType(e.Row,ToBeCollectedDeliveryLogRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.ToBeCollectedDeliveryLogRowDeletedEvent) Is Nothing) Then
-                RaiseEvent ToBeCollectedDeliveryLogRowDeleted(Me, New ToBeCollectedDeliveryLogRowChangeEvent(CType(e.Row,ToBeCollectedDeliveryLogRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.ToBeCollectedDeliveryLogRowDeletingEvent) Is Nothing) Then
-                RaiseEvent ToBeCollectedDeliveryLogRowDeleting(Me, New ToBeCollectedDeliveryLogRowChangeEvent(CType(e.Row,ToBeCollectedDeliveryLogRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub RemoveToBeCollectedDeliveryLogRow(ByVal row As ToBeCollectedDeliveryLogRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As dsTobeCollected = New dsTobeCollected()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "ToBeCollectedDeliveryLogDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -1785,6 +1295,532 @@ Partial Public Class dsTobeCollected
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class ToBeCollectedDeliveryLogDataTable
+        Inherits Global.System.Data.TypedTableBase(Of ToBeCollectedDeliveryLogRow)
+        
+        Private columnRecieptNo As Global.System.Data.DataColumn
+        
+        Private columnItemName As Global.System.Data.DataColumn
+        
+        Private columnQtySold As Global.System.Data.DataColumn
+        
+        Private columnPrice As Global.System.Data.DataColumn
+        
+        Private columnQtyCollected As Global.System.Data.DataColumn
+        
+        Private columnQtyToBeCollected As Global.System.Data.DataColumn
+        
+        Private columnAmount As Global.System.Data.DataColumn
+        
+        Private columnDateCollected As Global.System.Data.DataColumn
+        
+        Private columnTimeCollected As Global.System.Data.DataColumn
+        
+        Private columnBuyerName As Global.System.Data.DataColumn
+        
+        Private columnBuyerLoc As Global.System.Data.DataColumn
+        
+        Private columnBuyerTel As Global.System.Data.DataColumn
+        
+        Private columnDateToBeCollected As Global.System.Data.DataColumn
+        
+        Private columnItemCode As Global.System.Data.DataColumn
+        
+        Private columnDateSold As Global.System.Data.DataColumn
+        
+        Private columnSalesPerson As Global.System.Data.DataColumn
+        
+        Private columnOldQtyToBeCollected As Global.System.Data.DataColumn
+        
+        Private columnCollectionID As Global.System.Data.DataColumn
+        
+        Private columnDeliveryID As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "ToBeCollectedDeliveryLog"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property RecieptNoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRecieptNo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ItemNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnItemName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property QtySoldColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnQtySold
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PriceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPrice
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property QtyCollectedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnQtyCollected
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property QtyToBeCollectedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnQtyToBeCollected
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property AmountColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAmount
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DateCollectedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDateCollected
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property TimeCollectedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTimeCollected
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property BuyerNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBuyerName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property BuyerLocColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBuyerLoc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property BuyerTelColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBuyerTel
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DateToBeCollectedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDateToBeCollected
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ItemCodeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnItemCode
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DateSoldColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDateSold
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SalesPersonColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSalesPerson
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property OldQtyToBeCollectedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOldQtyToBeCollected
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CollectionIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCollectionID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DeliveryIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDeliveryID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As ToBeCollectedDeliveryLogRow
+            Get
+                Return CType(Me.Rows(index),ToBeCollectedDeliveryLogRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event ToBeCollectedDeliveryLogRowChanging As ToBeCollectedDeliveryLogRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event ToBeCollectedDeliveryLogRowChanged As ToBeCollectedDeliveryLogRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event ToBeCollectedDeliveryLogRowDeleting As ToBeCollectedDeliveryLogRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event ToBeCollectedDeliveryLogRowDeleted As ToBeCollectedDeliveryLogRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub AddToBeCollectedDeliveryLogRow(ByVal row As ToBeCollectedDeliveryLogRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function AddToBeCollectedDeliveryLogRow( _
+                    ByVal RecieptNo As String,  _
+                    ByVal ItemName As String,  _
+                    ByVal QtySold As Double,  _
+                    ByVal Price As Decimal,  _
+                    ByVal QtyCollected As Double,  _
+                    ByVal QtyToBeCollected As Double,  _
+                    ByVal Amount As Decimal,  _
+                    ByVal DateCollected As Date,  _
+                    ByVal TimeCollected As System.TimeSpan,  _
+                    ByVal BuyerName As String,  _
+                    ByVal BuyerLoc As String,  _
+                    ByVal BuyerTel As String,  _
+                    ByVal DateToBeCollected As Date,  _
+                    ByVal ItemCode As String,  _
+                    ByVal DateSold As Date,  _
+                    ByVal SalesPerson As String,  _
+                    ByVal OldQtyToBeCollected As Double,  _
+                    ByVal DeliveryID As String) As ToBeCollectedDeliveryLogRow
+            Dim rowToBeCollectedDeliveryLogRow As ToBeCollectedDeliveryLogRow = CType(Me.NewRow,ToBeCollectedDeliveryLogRow)
+            Dim columnValuesArray() As Object = New Object() {RecieptNo, ItemName, QtySold, Price, QtyCollected, QtyToBeCollected, Amount, DateCollected, TimeCollected, BuyerName, BuyerLoc, BuyerTel, DateToBeCollected, ItemCode, DateSold, SalesPerson, OldQtyToBeCollected, Nothing, DeliveryID}
+            rowToBeCollectedDeliveryLogRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowToBeCollectedDeliveryLogRow)
+            Return rowToBeCollectedDeliveryLogRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function FindByCollectionID(ByVal CollectionID As Integer) As ToBeCollectedDeliveryLogRow
+            Return CType(Me.Rows.Find(New Object() {CollectionID}),ToBeCollectedDeliveryLogRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As ToBeCollectedDeliveryLogDataTable = CType(MyBase.Clone,ToBeCollectedDeliveryLogDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New ToBeCollectedDeliveryLogDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnRecieptNo = MyBase.Columns("RecieptNo")
+            Me.columnItemName = MyBase.Columns("ItemName")
+            Me.columnQtySold = MyBase.Columns("QtySold")
+            Me.columnPrice = MyBase.Columns("Price")
+            Me.columnQtyCollected = MyBase.Columns("QtyCollected")
+            Me.columnQtyToBeCollected = MyBase.Columns("QtyToBeCollected")
+            Me.columnAmount = MyBase.Columns("Amount")
+            Me.columnDateCollected = MyBase.Columns("DateCollected")
+            Me.columnTimeCollected = MyBase.Columns("TimeCollected")
+            Me.columnBuyerName = MyBase.Columns("BuyerName")
+            Me.columnBuyerLoc = MyBase.Columns("BuyerLoc")
+            Me.columnBuyerTel = MyBase.Columns("BuyerTel")
+            Me.columnDateToBeCollected = MyBase.Columns("DateToBeCollected")
+            Me.columnItemCode = MyBase.Columns("ItemCode")
+            Me.columnDateSold = MyBase.Columns("DateSold")
+            Me.columnSalesPerson = MyBase.Columns("SalesPerson")
+            Me.columnOldQtyToBeCollected = MyBase.Columns("OldQtyToBeCollected")
+            Me.columnCollectionID = MyBase.Columns("CollectionID")
+            Me.columnDeliveryID = MyBase.Columns("DeliveryID")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnRecieptNo = New Global.System.Data.DataColumn("RecieptNo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRecieptNo)
+            Me.columnItemName = New Global.System.Data.DataColumn("ItemName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnItemName)
+            Me.columnQtySold = New Global.System.Data.DataColumn("QtySold", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQtySold)
+            Me.columnPrice = New Global.System.Data.DataColumn("Price", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPrice)
+            Me.columnQtyCollected = New Global.System.Data.DataColumn("QtyCollected", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQtyCollected)
+            Me.columnQtyToBeCollected = New Global.System.Data.DataColumn("QtyToBeCollected", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQtyToBeCollected)
+            Me.columnAmount = New Global.System.Data.DataColumn("Amount", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAmount)
+            Me.columnDateCollected = New Global.System.Data.DataColumn("DateCollected", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDateCollected)
+            Me.columnTimeCollected = New Global.System.Data.DataColumn("TimeCollected", GetType(Global.System.TimeSpan), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTimeCollected)
+            Me.columnBuyerName = New Global.System.Data.DataColumn("BuyerName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBuyerName)
+            Me.columnBuyerLoc = New Global.System.Data.DataColumn("BuyerLoc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBuyerLoc)
+            Me.columnBuyerTel = New Global.System.Data.DataColumn("BuyerTel", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBuyerTel)
+            Me.columnDateToBeCollected = New Global.System.Data.DataColumn("DateToBeCollected", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDateToBeCollected)
+            Me.columnItemCode = New Global.System.Data.DataColumn("ItemCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnItemCode)
+            Me.columnDateSold = New Global.System.Data.DataColumn("DateSold", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDateSold)
+            Me.columnSalesPerson = New Global.System.Data.DataColumn("SalesPerson", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSalesPerson)
+            Me.columnOldQtyToBeCollected = New Global.System.Data.DataColumn("OldQtyToBeCollected", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOldQtyToBeCollected)
+            Me.columnCollectionID = New Global.System.Data.DataColumn("CollectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCollectionID)
+            Me.columnDeliveryID = New Global.System.Data.DataColumn("DeliveryID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDeliveryID)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCollectionID}, true))
+            Me.columnRecieptNo.AllowDBNull = false
+            Me.columnRecieptNo.MaxLength = 50
+            Me.columnItemName.MaxLength = 50
+            Me.columnBuyerName.MaxLength = 50
+            Me.columnBuyerLoc.MaxLength = 50
+            Me.columnBuyerTel.MaxLength = 50
+            Me.columnItemCode.MaxLength = 50
+            Me.columnSalesPerson.MaxLength = 50
+            Me.columnCollectionID.AutoIncrement = true
+            Me.columnCollectionID.AutoIncrementSeed = -1
+            Me.columnCollectionID.AutoIncrementStep = -1
+            Me.columnCollectionID.AllowDBNull = false
+            Me.columnCollectionID.ReadOnly = true
+            Me.columnCollectionID.Unique = true
+            Me.columnDeliveryID.MaxLength = 50
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function NewToBeCollectedDeliveryLogRow() As ToBeCollectedDeliveryLogRow
+            Return CType(Me.NewRow,ToBeCollectedDeliveryLogRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New ToBeCollectedDeliveryLogRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(ToBeCollectedDeliveryLogRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.ToBeCollectedDeliveryLogRowChangedEvent) Is Nothing) Then
+                RaiseEvent ToBeCollectedDeliveryLogRowChanged(Me, New ToBeCollectedDeliveryLogRowChangeEvent(CType(e.Row,ToBeCollectedDeliveryLogRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.ToBeCollectedDeliveryLogRowChangingEvent) Is Nothing) Then
+                RaiseEvent ToBeCollectedDeliveryLogRowChanging(Me, New ToBeCollectedDeliveryLogRowChangeEvent(CType(e.Row,ToBeCollectedDeliveryLogRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.ToBeCollectedDeliveryLogRowDeletedEvent) Is Nothing) Then
+                RaiseEvent ToBeCollectedDeliveryLogRowDeleted(Me, New ToBeCollectedDeliveryLogRowChangeEvent(CType(e.Row,ToBeCollectedDeliveryLogRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.ToBeCollectedDeliveryLogRowDeletingEvent) Is Nothing) Then
+                RaiseEvent ToBeCollectedDeliveryLogRowDeleting(Me, New ToBeCollectedDeliveryLogRowChangeEvent(CType(e.Row,ToBeCollectedDeliveryLogRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub RemoveToBeCollectedDeliveryLogRow(ByVal row As ToBeCollectedDeliveryLogRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As dsTobeCollected = New dsTobeCollected()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "ToBeCollectedDeliveryLogDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class dtTobeCollectedDelDataTable
         Inherits Global.System.Data.TypedTableBase(Of dtTobeCollectedDelRow)
         
@@ -2085,6 +2121,284 @@ Partial Public Class dsTobeCollected
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class TotalStockDataTable
+        Inherits Global.System.Data.TypedTableBase(Of TotalStockRow)
+        
+        Private columnItemname As Global.System.Data.DataColumn
+        
+        Private columnShopQty_ As Global.System.Data.DataColumn
+        
+        Private columnTobeCollectedqty As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "TotalStock"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ItemnameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnItemname
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ShopQty_Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnShopQty_
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property TobeCollectedqtyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTobeCollectedqty
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As TotalStockRow
+            Get
+                Return CType(Me.Rows(index),TotalStockRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event TotalStockRowChanging As TotalStockRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event TotalStockRowChanged As TotalStockRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event TotalStockRowDeleting As TotalStockRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event TotalStockRowDeleted As TotalStockRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub AddTotalStockRow(ByVal row As TotalStockRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function AddTotalStockRow(ByVal Itemname As String, ByVal ShopQty_ As String, ByVal TobeCollectedqty As String) As TotalStockRow
+            Dim rowTotalStockRow As TotalStockRow = CType(Me.NewRow,TotalStockRow)
+            Dim columnValuesArray() As Object = New Object() {Itemname, ShopQty_, TobeCollectedqty}
+            rowTotalStockRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowTotalStockRow)
+            Return rowTotalStockRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As TotalStockDataTable = CType(MyBase.Clone,TotalStockDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New TotalStockDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnItemname = MyBase.Columns("Itemname")
+            Me.columnShopQty_ = MyBase.Columns("ShopQty ")
+            Me.columnTobeCollectedqty = MyBase.Columns("TobeCollectedqty")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnItemname = New Global.System.Data.DataColumn("Itemname", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnItemname)
+            Me.columnShopQty_ = New Global.System.Data.DataColumn("ShopQty ", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnShopQty_)
+            Me.columnTobeCollectedqty = New Global.System.Data.DataColumn("TobeCollectedqty", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTobeCollectedqty)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function NewTotalStockRow() As TotalStockRow
+            Return CType(Me.NewRow,TotalStockRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New TotalStockRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(TotalStockRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.TotalStockRowChangedEvent) Is Nothing) Then
+                RaiseEvent TotalStockRowChanged(Me, New TotalStockRowChangeEvent(CType(e.Row,TotalStockRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.TotalStockRowChangingEvent) Is Nothing) Then
+                RaiseEvent TotalStockRowChanging(Me, New TotalStockRowChangeEvent(CType(e.Row,TotalStockRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.TotalStockRowDeletedEvent) Is Nothing) Then
+                RaiseEvent TotalStockRowDeleted(Me, New TotalStockRowChangeEvent(CType(e.Row,TotalStockRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.TotalStockRowDeletingEvent) Is Nothing) Then
+                RaiseEvent TotalStockRowDeleting(Me, New TotalStockRowChangeEvent(CType(e.Row,TotalStockRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub RemoveTotalStockRow(ByVal row As TotalStockRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As dsTobeCollected = New dsTobeCollected()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "TotalStockDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class ToBeCollectedRow
@@ -2101,9 +2415,9 @@ Partial Public Class dsTobeCollected
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property RecieptNo() As Integer
+        Public Property RecieptNo() As String
             Get
-                Return CType(Me(Me.tableToBeCollected.RecieptNoColumn),Integer)
+                Return CType(Me(Me.tableToBeCollected.RecieptNoColumn),String)
             End Get
             Set
                 Me(Me.tableToBeCollected.RecieptNoColumn) = value
@@ -2530,510 +2844,6 @@ Partial Public Class dsTobeCollected
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class ToBeCollectedDeliveryLogRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tableToBeCollectedDeliveryLog As ToBeCollectedDeliveryLogDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tableToBeCollectedDeliveryLog = CType(Me.Table,ToBeCollectedDeliveryLogDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property RecieptNo() As Integer
-            Get
-                Return CType(Me(Me.tableToBeCollectedDeliveryLog.RecieptNoColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.RecieptNoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ItemName() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.ItemNameColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ItemName' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.ItemNameColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property QtySold() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.QtySoldColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'QtySold' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.QtySoldColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Price() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.PriceColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Price' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.PriceColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property QtyCollected() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.QtyCollectedColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'QtyCollected' in table 'ToBeCollectedDeliveryLog' is DBNull"& _ 
-                            ".", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.QtyCollectedColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property QtyToBeCollected() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.QtyToBeCollectedColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'QtyToBeCollected' in table 'ToBeCollectedDeliveryLog' is DB"& _ 
-                            "Null.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.QtyToBeCollectedColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Amount() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.AmountColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Amount' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.AmountColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property DateCollected() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.DateCollectedColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateCollected' in table 'ToBeCollectedDeliveryLog' is DBNul"& _ 
-                            "l.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.DateCollectedColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property TimeCollected() As System.TimeSpan
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.TimeCollectedColumn),Global.System.TimeSpan)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'TimeCollected' in table 'ToBeCollectedDeliveryLog' is DBNul"& _ 
-                            "l.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.TimeCollectedColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property BuyerName() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.BuyerNameColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'BuyerName' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.BuyerNameColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property BuyerLoc() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.BuyerLocColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'BuyerLoc' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.BuyerLocColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property BuyerTel() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.BuyerTelColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'BuyerTel' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.BuyerTelColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property DateToBeCollected() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.DateToBeCollectedColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateToBeCollected' in table 'ToBeCollectedDeliveryLog' is D"& _ 
-                            "BNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.DateToBeCollectedColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ItemCode() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.ItemCodeColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ItemCode' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.ItemCodeColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property DateSold() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.DateSoldColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateSold' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.DateSoldColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property SalesPerson() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.SalesPersonColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'SalesPerson' in table 'ToBeCollectedDeliveryLog' is DBNull."& _ 
-                            "", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.SalesPersonColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property OldQtyToBeCollected() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.OldQtyToBeCollectedColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OldQtyToBeCollected' in table 'ToBeCollectedDeliveryLog' is"& _ 
-                            " DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.OldQtyToBeCollectedColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property CollectionID() As Integer
-            Get
-                Return CType(Me(Me.tableToBeCollectedDeliveryLog.CollectionIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.CollectionIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property DeliveryID() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.DeliveryIDColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DeliveryID' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableToBeCollectedDeliveryLog.DeliveryIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsItemNameNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.ItemNameColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetItemNameNull()
-            Me(Me.tableToBeCollectedDeliveryLog.ItemNameColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsQtySoldNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.QtySoldColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetQtySoldNull()
-            Me(Me.tableToBeCollectedDeliveryLog.QtySoldColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsPriceNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.PriceColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetPriceNull()
-            Me(Me.tableToBeCollectedDeliveryLog.PriceColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsQtyCollectedNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.QtyCollectedColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetQtyCollectedNull()
-            Me(Me.tableToBeCollectedDeliveryLog.QtyCollectedColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsQtyToBeCollectedNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.QtyToBeCollectedColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetQtyToBeCollectedNull()
-            Me(Me.tableToBeCollectedDeliveryLog.QtyToBeCollectedColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsAmountNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.AmountColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetAmountNull()
-            Me(Me.tableToBeCollectedDeliveryLog.AmountColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDateCollectedNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.DateCollectedColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDateCollectedNull()
-            Me(Me.tableToBeCollectedDeliveryLog.DateCollectedColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsTimeCollectedNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.TimeCollectedColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetTimeCollectedNull()
-            Me(Me.tableToBeCollectedDeliveryLog.TimeCollectedColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsBuyerNameNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.BuyerNameColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetBuyerNameNull()
-            Me(Me.tableToBeCollectedDeliveryLog.BuyerNameColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsBuyerLocNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.BuyerLocColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetBuyerLocNull()
-            Me(Me.tableToBeCollectedDeliveryLog.BuyerLocColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsBuyerTelNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.BuyerTelColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetBuyerTelNull()
-            Me(Me.tableToBeCollectedDeliveryLog.BuyerTelColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDateToBeCollectedNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.DateToBeCollectedColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDateToBeCollectedNull()
-            Me(Me.tableToBeCollectedDeliveryLog.DateToBeCollectedColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsItemCodeNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.ItemCodeColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetItemCodeNull()
-            Me(Me.tableToBeCollectedDeliveryLog.ItemCodeColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDateSoldNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.DateSoldColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDateSoldNull()
-            Me(Me.tableToBeCollectedDeliveryLog.DateSoldColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsSalesPersonNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.SalesPersonColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetSalesPersonNull()
-            Me(Me.tableToBeCollectedDeliveryLog.SalesPersonColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsOldQtyToBeCollectedNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.OldQtyToBeCollectedColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetOldQtyToBeCollectedNull()
-            Me(Me.tableToBeCollectedDeliveryLog.OldQtyToBeCollectedColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDeliveryIDNull() As Boolean
-            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.DeliveryIDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDeliveryIDNull()
-            Me(Me.tableToBeCollectedDeliveryLog.DeliveryIDColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
     Partial Public Class ClientRegRow
         Inherits Global.System.Data.DataRow
         
@@ -3304,6 +3114,510 @@ Partial Public Class dsTobeCollected
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
+    Partial Public Class ToBeCollectedDeliveryLogRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableToBeCollectedDeliveryLog As ToBeCollectedDeliveryLogDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableToBeCollectedDeliveryLog = CType(Me.Table,ToBeCollectedDeliveryLogDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property RecieptNo() As String
+            Get
+                Return CType(Me(Me.tableToBeCollectedDeliveryLog.RecieptNoColumn),String)
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.RecieptNoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ItemName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.ItemNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ItemName' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.ItemNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property QtySold() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.QtySoldColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'QtySold' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.QtySoldColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Price() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.PriceColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Price' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.PriceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property QtyCollected() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.QtyCollectedColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'QtyCollected' in table 'ToBeCollectedDeliveryLog' is DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.QtyCollectedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property QtyToBeCollected() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.QtyToBeCollectedColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'QtyToBeCollected' in table 'ToBeCollectedDeliveryLog' is DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.QtyToBeCollectedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Amount() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.AmountColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Amount' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.AmountColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DateCollected() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.DateCollectedColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateCollected' in table 'ToBeCollectedDeliveryLog' is DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.DateCollectedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property TimeCollected() As System.TimeSpan
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.TimeCollectedColumn),Global.System.TimeSpan)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TimeCollected' in table 'ToBeCollectedDeliveryLog' is DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.TimeCollectedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property BuyerName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.BuyerNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BuyerName' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.BuyerNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property BuyerLoc() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.BuyerLocColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BuyerLoc' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.BuyerLocColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property BuyerTel() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.BuyerTelColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BuyerTel' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.BuyerTelColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DateToBeCollected() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.DateToBeCollectedColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateToBeCollected' in table 'ToBeCollectedDeliveryLog' is D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.DateToBeCollectedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ItemCode() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.ItemCodeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ItemCode' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.ItemCodeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DateSold() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.DateSoldColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateSold' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.DateSoldColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SalesPerson() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.SalesPersonColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SalesPerson' in table 'ToBeCollectedDeliveryLog' is DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.SalesPersonColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property OldQtyToBeCollected() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.OldQtyToBeCollectedColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OldQtyToBeCollected' in table 'ToBeCollectedDeliveryLog' is"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.OldQtyToBeCollectedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CollectionID() As Integer
+            Get
+                Return CType(Me(Me.tableToBeCollectedDeliveryLog.CollectionIDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.CollectionIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DeliveryID() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableToBeCollectedDeliveryLog.DeliveryIDColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DeliveryID' in table 'ToBeCollectedDeliveryLog' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableToBeCollectedDeliveryLog.DeliveryIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsItemNameNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.ItemNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetItemNameNull()
+            Me(Me.tableToBeCollectedDeliveryLog.ItemNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsQtySoldNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.QtySoldColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetQtySoldNull()
+            Me(Me.tableToBeCollectedDeliveryLog.QtySoldColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPriceNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.PriceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPriceNull()
+            Me(Me.tableToBeCollectedDeliveryLog.PriceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsQtyCollectedNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.QtyCollectedColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetQtyCollectedNull()
+            Me(Me.tableToBeCollectedDeliveryLog.QtyCollectedColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsQtyToBeCollectedNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.QtyToBeCollectedColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetQtyToBeCollectedNull()
+            Me(Me.tableToBeCollectedDeliveryLog.QtyToBeCollectedColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsAmountNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.AmountColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetAmountNull()
+            Me(Me.tableToBeCollectedDeliveryLog.AmountColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDateCollectedNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.DateCollectedColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDateCollectedNull()
+            Me(Me.tableToBeCollectedDeliveryLog.DateCollectedColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsTimeCollectedNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.TimeCollectedColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetTimeCollectedNull()
+            Me(Me.tableToBeCollectedDeliveryLog.TimeCollectedColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsBuyerNameNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.BuyerNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetBuyerNameNull()
+            Me(Me.tableToBeCollectedDeliveryLog.BuyerNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsBuyerLocNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.BuyerLocColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetBuyerLocNull()
+            Me(Me.tableToBeCollectedDeliveryLog.BuyerLocColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsBuyerTelNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.BuyerTelColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetBuyerTelNull()
+            Me(Me.tableToBeCollectedDeliveryLog.BuyerTelColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDateToBeCollectedNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.DateToBeCollectedColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDateToBeCollectedNull()
+            Me(Me.tableToBeCollectedDeliveryLog.DateToBeCollectedColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsItemCodeNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.ItemCodeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetItemCodeNull()
+            Me(Me.tableToBeCollectedDeliveryLog.ItemCodeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDateSoldNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.DateSoldColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDateSoldNull()
+            Me(Me.tableToBeCollectedDeliveryLog.DateSoldColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSalesPersonNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.SalesPersonColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSalesPersonNull()
+            Me(Me.tableToBeCollectedDeliveryLog.SalesPersonColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsOldQtyToBeCollectedNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.OldQtyToBeCollectedColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetOldQtyToBeCollectedNull()
+            Me(Me.tableToBeCollectedDeliveryLog.OldQtyToBeCollectedColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDeliveryIDNull() As Boolean
+            Return Me.IsNull(Me.tableToBeCollectedDeliveryLog.DeliveryIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDeliveryIDNull()
+            Me(Me.tableToBeCollectedDeliveryLog.DeliveryIDColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
     Partial Public Class dtTobeCollectedDelRow
         Inherits Global.System.Data.DataRow
         
@@ -3453,6 +3767,103 @@ Partial Public Class dsTobeCollected
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class TotalStockRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableTotalStock As TotalStockDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableTotalStock = CType(Me.Table,TotalStockDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Itemname() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTotalStock.ItemnameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Itemname' in table 'TotalStock' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTotalStock.ItemnameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ShopQty_() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTotalStock.ShopQty_Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ShopQty ' in table 'TotalStock' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTotalStock.ShopQty_Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property TobeCollectedqty() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTotalStock.TobeCollectedqtyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TobeCollectedqty' in table 'TotalStock' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTotalStock.TobeCollectedqtyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsItemnameNull() As Boolean
+            Return Me.IsNull(Me.tableTotalStock.ItemnameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetItemnameNull()
+            Me(Me.tableTotalStock.ItemnameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsShopQty_Null() As Boolean
+            Return Me.IsNull(Me.tableTotalStock.ShopQty_Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetShopQty_Null()
+            Me(Me.tableTotalStock.ShopQty_Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsTobeCollectedqtyNull() As Boolean
+            Return Me.IsNull(Me.tableTotalStock.TobeCollectedqtyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetTobeCollectedqtyNull()
+            Me(Me.tableTotalStock.TobeCollectedqtyColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -3474,42 +3885,6 @@ Partial Public Class dsTobeCollected
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property Row() As ToBeCollectedRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Class ToBeCollectedDeliveryLogRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As ToBeCollectedDeliveryLogRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New(ByVal row As ToBeCollectedDeliveryLogRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Row() As ToBeCollectedDeliveryLogRow
             Get
                 Return Me.eventRow
             End Get
@@ -3564,6 +3939,42 @@ Partial Public Class dsTobeCollected
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class ToBeCollectedDeliveryLogRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As ToBeCollectedDeliveryLogRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As ToBeCollectedDeliveryLogRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As ToBeCollectedDeliveryLogRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Class dtTobeCollectedDelRowChangeEvent
         Inherits Global.System.EventArgs
         
@@ -3582,6 +3993,42 @@ Partial Public Class dsTobeCollected
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property Row() As dtTobeCollectedDelRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class TotalStockRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As TotalStockRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As TotalStockRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As TotalStockRow
             Get
                 Return Me.eventRow
             End Get
@@ -4527,1009 +4974,6 @@ Namespace dsTobeCollectedTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class ToBeCollectedDeliveryLogTableAdapter
-        Inherits Global.System.ComponentModel.Component
-        
-        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
-        
-        Private _connection As Global.System.Data.SqlClient.SqlConnection
-        
-        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
-        
-        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
-        
-        Private _clearBeforeFill As Boolean
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.ClearBeforeFill = true
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
-            Get
-                If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter
-                End If
-                Return Me._adapter
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
-            Get
-                If (Me._connection Is Nothing) Then
-                    Me.InitConnection
-                End If
-                Return Me._connection
-            End Get
-            Set
-                Me._connection = value
-                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
-                    Me.Adapter.InsertCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
-                    Me.Adapter.DeleteCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
-                    Me.Adapter.UpdateCommand.Connection = value
-                End If
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
-                    End If
-                    i = (i + 1)
-                Loop
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
-            Get
-                Return Me._transaction
-            End Get
-            Set
-                Me._transaction = value
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    Me.CommandCollection(i).Transaction = Me._transaction
-                    i = (i + 1)
-                Loop
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
-                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
-                    Me.Adapter.InsertCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
-                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
-                End If
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
-            Get
-                If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection
-                End If
-                Return Me._commandCollection
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ClearBeforeFill() As Boolean
-            Get
-                Return Me._clearBeforeFill
-            End Get
-            Set
-                Me._clearBeforeFill = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitAdapter()
-            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
-            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
-            tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "ToBeCollectedDeliveryLog"
-            tableMapping.ColumnMappings.Add("RecieptNo", "RecieptNo")
-            tableMapping.ColumnMappings.Add("ItemName", "ItemName")
-            tableMapping.ColumnMappings.Add("QtySold", "QtySold")
-            tableMapping.ColumnMappings.Add("Price", "Price")
-            tableMapping.ColumnMappings.Add("QtyCollected", "QtyCollected")
-            tableMapping.ColumnMappings.Add("QtyToBeCollected", "QtyToBeCollected")
-            tableMapping.ColumnMappings.Add("Amount", "Amount")
-            tableMapping.ColumnMappings.Add("DateCollected", "DateCollected")
-            tableMapping.ColumnMappings.Add("TimeCollected", "TimeCollected")
-            tableMapping.ColumnMappings.Add("BuyerName", "BuyerName")
-            tableMapping.ColumnMappings.Add("BuyerLoc", "BuyerLoc")
-            tableMapping.ColumnMappings.Add("BuyerTel", "BuyerTel")
-            tableMapping.ColumnMappings.Add("DateToBeCollected", "DateToBeCollected")
-            tableMapping.ColumnMappings.Add("ItemCode", "ItemCode")
-            tableMapping.ColumnMappings.Add("DateSold", "DateSold")
-            tableMapping.ColumnMappings.Add("SalesPerson", "SalesPerson")
-            tableMapping.ColumnMappings.Add("OldQtyToBeCollected", "OldQtyToBeCollected")
-            tableMapping.ColumnMappings.Add("CollectionID", "CollectionID")
-            tableMapping.ColumnMappings.Add("DeliveryID", "DeliveryID")
-            Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ToBeCollectedDeliveryLog] WHERE (([RecieptNo] = @Original_Reci"& _ 
-                "eptNo) AND ((@IsNull_ItemName = 1 AND [ItemName] IS NULL) OR ([ItemName] = @Orig"& _ 
-                "inal_ItemName)) AND ((@IsNull_QtySold = 1 AND [QtySold] IS NULL) OR ([QtySold] ="& _ 
-                " @Original_QtySold)) AND ((@IsNull_Price = 1 AND [Price] IS NULL) OR ([Price] = "& _ 
-                "@Original_Price)) AND ((@IsNull_QtyCollected = 1 AND [QtyCollected] IS NULL) OR "& _ 
-                "([QtyCollected] = @Original_QtyCollected)) AND ((@IsNull_QtyToBeCollected = 1 AN"& _ 
-                "D [QtyToBeCollected] IS NULL) OR ([QtyToBeCollected] = @Original_QtyToBeCollecte"& _ 
-                "d)) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amou"& _ 
-                "nt)) AND ((@IsNull_DateCollected = 1 AND [DateCollected] IS NULL) OR ([DateColle"& _ 
-                "cted] = @Original_DateCollected)) AND ((@IsNull_TimeCollected = 1 AND [TimeColle"& _ 
-                "cted] IS NULL) OR ([TimeCollected] = @Original_TimeCollected)) AND ((@IsNull_Buy"& _ 
-                "erName = 1 AND [BuyerName] IS NULL) OR ([BuyerName] = @Original_BuyerName)) AND "& _ 
-                "((@IsNull_BuyerLoc = 1 AND [BuyerLoc] IS NULL) OR ([BuyerLoc] = @Original_BuyerL"& _ 
-                "oc)) AND ((@IsNull_BuyerTel = 1 AND [BuyerTel] IS NULL) OR ([BuyerTel] = @Origin"& _ 
-                "al_BuyerTel)) AND ((@IsNull_DateToBeCollected = 1 AND [DateToBeCollected] IS NUL"& _ 
-                "L) OR ([DateToBeCollected] = @Original_DateToBeCollected)) AND ((@IsNull_ItemCod"& _ 
-                "e = 1 AND [ItemCode] IS NULL) OR ([ItemCode] = @Original_ItemCode)) AND ((@IsNul"& _ 
-                "l_DateSold = 1 AND [DateSold] IS NULL) OR ([DateSold] = @Original_DateSold)) AND"& _ 
-                " ((@IsNull_SalesPerson = 1 AND [SalesPerson] IS NULL) OR ([SalesPerson] = @Origi"& _ 
-                "nal_SalesPerson)) AND ((@IsNull_OldQtyToBeCollected = 1 AND [OldQtyToBeCollected"& _ 
-                "] IS NULL) OR ([OldQtyToBeCollected] = @Original_OldQtyToBeCollected)) AND ([Col"& _ 
-                "lectionID] = @Original_CollectionID) AND ((@IsNull_DeliveryID = 1 AND [DeliveryI"& _ 
-                "D] IS NULL) OR ([DeliveryID] = @Original_DeliveryID)))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecieptNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecieptNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ItemName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtySold", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtySold", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtySold", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtySold", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Price", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Price", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtyCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtyCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtyCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtyToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtyToBeCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Amount", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TimeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TimeCollected", Global.System.Data.SqlDbType.Time, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerLoc", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerLoc", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerTel", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerTel", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateToBeCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ItemCode", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemCode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateSold", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateSold", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SalesPerson", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SalesPerson", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_OldQtyToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_OldQtyToBeCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CollectionID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CollectionID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeliveryID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeliveryID", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ToBeCollectedDeliveryLog] ([RecieptNo], [ItemName], [QtySold],"& _ 
-                " [Price], [QtyCollected], [QtyToBeCollected], [Amount], [DateCollected], [TimeCo"& _ 
-                "llected], [BuyerName], [BuyerLoc], [BuyerTel], [DateToBeCollected], [ItemCode], "& _ 
-                "[DateSold], [SalesPerson], [OldQtyToBeCollected], [DeliveryID]) VALUES (@Reciept"& _ 
-                "No, @ItemName, @QtySold, @Price, @QtyCollected, @QtyToBeCollected, @Amount, @Dat"& _ 
-                "eCollected, @TimeCollected, @BuyerName, @BuyerLoc, @BuyerTel, @DateToBeCollected"& _ 
-                ", @ItemCode, @DateSold, @SalesPerson, @OldQtyToBeCollected, @DeliveryID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELEC"& _ 
-                "T RecieptNo, ItemName, QtySold, Price, QtyCollected, QtyToBeCollected, Amount, D"& _ 
-                "ateCollected, TimeCollected, BuyerName, BuyerLoc, BuyerTel, DateToBeCollected, I"& _ 
-                "temCode, DateSold, SalesPerson, OldQtyToBeCollected, CollectionID, DeliveryID FR"& _ 
-                "OM ToBeCollectedDeliveryLog WHERE (CollectionID = SCOPE_IDENTITY())"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecieptNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecieptNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtySold", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtySold", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Price", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtyCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtyCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtyToBeCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TimeCollected", Global.System.Data.SqlDbType.Time, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerLoc", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerTel", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateToBeCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemCode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateSold", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SalesPerson", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OldQtyToBeCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeliveryID", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[ToBeCollectedDeliveryLog] SET [RecieptNo] = @RecieptNo, [ItemName] "& _ 
-                "= @ItemName, [QtySold] = @QtySold, [Price] = @Price, [QtyCollected] = @QtyCollec"& _ 
-                "ted, [QtyToBeCollected] = @QtyToBeCollected, [Amount] = @Amount, [DateCollected]"& _ 
-                " = @DateCollected, [TimeCollected] = @TimeCollected, [BuyerName] = @BuyerName, ["& _ 
-                "BuyerLoc] = @BuyerLoc, [BuyerTel] = @BuyerTel, [DateToBeCollected] = @DateToBeCo"& _ 
-                "llected, [ItemCode] = @ItemCode, [DateSold] = @DateSold, [SalesPerson] = @SalesP"& _ 
-                "erson, [OldQtyToBeCollected] = @OldQtyToBeCollected, [DeliveryID] = @DeliveryID "& _ 
-                "WHERE (([RecieptNo] = @Original_RecieptNo) AND ((@IsNull_ItemName = 1 AND [ItemN"& _ 
-                "ame] IS NULL) OR ([ItemName] = @Original_ItemName)) AND ((@IsNull_QtySold = 1 AN"& _ 
-                "D [QtySold] IS NULL) OR ([QtySold] = @Original_QtySold)) AND ((@IsNull_Price = 1"& _ 
-                " AND [Price] IS NULL) OR ([Price] = @Original_Price)) AND ((@IsNull_QtyCollected"& _ 
-                " = 1 AND [QtyCollected] IS NULL) OR ([QtyCollected] = @Original_QtyCollected)) A"& _ 
-                "ND ((@IsNull_QtyToBeCollected = 1 AND [QtyToBeCollected] IS NULL) OR ([QtyToBeCo"& _ 
-                "llected] = @Original_QtyToBeCollected)) AND ((@IsNull_Amount = 1 AND [Amount] IS"& _ 
-                " NULL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_DateCollected = 1 AND [Da"& _ 
-                "teCollected] IS NULL) OR ([DateCollected] = @Original_DateCollected)) AND ((@IsN"& _ 
-                "ull_TimeCollected = 1 AND [TimeCollected] IS NULL) OR ([TimeCollected] = @Origin"& _ 
-                "al_TimeCollected)) AND ((@IsNull_BuyerName = 1 AND [BuyerName] IS NULL) OR ([Buy"& _ 
-                "erName] = @Original_BuyerName)) AND ((@IsNull_BuyerLoc = 1 AND [BuyerLoc] IS NUL"& _ 
-                "L) OR ([BuyerLoc] = @Original_BuyerLoc)) AND ((@IsNull_BuyerTel = 1 AND [BuyerTe"& _ 
-                "l] IS NULL) OR ([BuyerTel] = @Original_BuyerTel)) AND ((@IsNull_DateToBeCollecte"& _ 
-                "d = 1 AND [DateToBeCollected] IS NULL) OR ([DateToBeCollected] = @Original_DateT"& _ 
-                "oBeCollected)) AND ((@IsNull_ItemCode = 1 AND [ItemCode] IS NULL) OR ([ItemCode]"& _ 
-                " = @Original_ItemCode)) AND ((@IsNull_DateSold = 1 AND [DateSold] IS NULL) OR (["& _ 
-                "DateSold] = @Original_DateSold)) AND ((@IsNull_SalesPerson = 1 AND [SalesPerson]"& _ 
-                " IS NULL) OR ([SalesPerson] = @Original_SalesPerson)) AND ((@IsNull_OldQtyToBeCo"& _ 
-                "llected = 1 AND [OldQtyToBeCollected] IS NULL) OR ([OldQtyToBeCollected] = @Orig"& _ 
-                "inal_OldQtyToBeCollected)) AND ([CollectionID] = @Original_CollectionID) AND ((@"& _ 
-                "IsNull_DeliveryID = 1 AND [DeliveryID] IS NULL) OR ([DeliveryID] = @Original_Del"& _ 
-                "iveryID)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT RecieptNo, ItemName, QtySold, Price, QtyCollected, QtyToBeCo"& _ 
-                "llected, Amount, DateCollected, TimeCollected, BuyerName, BuyerLoc, BuyerTel, Da"& _ 
-                "teToBeCollected, ItemCode, DateSold, SalesPerson, OldQtyToBeCollected, Collectio"& _ 
-                "nID, DeliveryID FROM ToBeCollectedDeliveryLog WHERE (CollectionID = @CollectionI"& _ 
-                "D)"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecieptNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecieptNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtySold", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtySold", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Price", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtyCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtyCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtyToBeCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TimeCollected", Global.System.Data.SqlDbType.Time, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerLoc", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerTel", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateToBeCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemCode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateSold", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SalesPerson", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OldQtyToBeCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeliveryID", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecieptNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecieptNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ItemName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtySold", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtySold", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtySold", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtySold", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Price", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Price", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtyCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtyCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtyCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtyToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtyToBeCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Amount", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TimeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TimeCollected", Global.System.Data.SqlDbType.Time, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerLoc", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerLoc", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerTel", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerTel", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateToBeCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ItemCode", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemCode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateSold", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateSold", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SalesPerson", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SalesPerson", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_OldQtyToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_OldQtyToBeCollected", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CollectionID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CollectionID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeliveryID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeliveryID", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CollectionID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "CollectionID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitConnection()
-            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.HardSoft_PoS.My.MySettings.Default.PoSConnectionString
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
-            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT RecieptNo, ItemName, QtySold, Price, QtyCollected, QtyToBeCollected, Amoun"& _ 
-                "t, DateCollected, TimeCollected, BuyerName, BuyerLoc, BuyerTel, DateToBeCollecte"& _ 
-                "d, ItemCode, DateSold, SalesPerson, OldQtyToBeCollected, CollectionID, DeliveryI"& _ 
-                "D FROM dbo.ToBeCollectedDeliveryLog"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsTobeCollected.ToBeCollectedDeliveryLogDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As dsTobeCollected.ToBeCollectedDeliveryLogDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As dsTobeCollected.ToBeCollectedDeliveryLogDataTable = New dsTobeCollected.ToBeCollectedDeliveryLogDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As dsTobeCollected.ToBeCollectedDeliveryLogDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As dsTobeCollected) As Integer
-            Return Me.Adapter.Update(dataSet, "ToBeCollectedDeliveryLog")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete( _
-                    ByVal Original_RecieptNo As Integer,  _
-                    ByVal Original_ItemName As String,  _
-                    ByVal Original_QtySold As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Price As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_QtyCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_QtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Amount As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_DateCollected As Global.System.Nullable(Of Date),  _
-                    ByVal Original_TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
-                    ByVal Original_BuyerName As String,  _
-                    ByVal Original_BuyerLoc As String,  _
-                    ByVal Original_BuyerTel As String,  _
-                    ByVal Original_DateToBeCollected As Global.System.Nullable(Of Date),  _
-                    ByVal Original_ItemCode As String,  _
-                    ByVal Original_DateSold As Global.System.Nullable(Of Date),  _
-                    ByVal Original_SalesPerson As String,  _
-                    ByVal Original_OldQtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_CollectionID As Integer,  _
-                    ByVal Original_DeliveryID As String) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_RecieptNo,Integer)
-            If (Original_ItemName Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_ItemName,String)
-            End If
-            If (Original_QtySold.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_QtySold.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Price.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Price.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (Original_QtyCollected.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_QtyCollected.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (Original_QtyToBeCollected.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_QtyToBeCollected.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Amount.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Amount.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (Original_DateCollected.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_DateCollected.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (Original_TimeCollected.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_TimeCollected.Value,System.TimeSpan)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (Original_BuyerName Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_BuyerName,String)
-            End If
-            If (Original_BuyerLoc Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_BuyerLoc,String)
-            End If
-            If (Original_BuyerTel Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_BuyerTel,String)
-            End If
-            If (Original_DateToBeCollected.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_DateToBeCollected.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
-            End If
-            If (Original_ItemCode Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_ItemCode,String)
-            End If
-            If (Original_DateSold.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_DateSold.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (Original_SalesPerson Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_SalesPerson,String)
-            End If
-            If (Original_OldQtyToBeCollected.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_OldQtyToBeCollected.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.DeleteCommand.Parameters(33).Value = CType(Original_CollectionID,Integer)
-            If (Original_DeliveryID Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(35).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(Original_DeliveryID,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert( _
-                    ByVal RecieptNo As Integer,  _
-                    ByVal ItemName As String,  _
-                    ByVal QtySold As Global.System.Nullable(Of Decimal),  _
-                    ByVal Price As Global.System.Nullable(Of Decimal),  _
-                    ByVal QtyCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal QtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Amount As Global.System.Nullable(Of Decimal),  _
-                    ByVal DateCollected As Global.System.Nullable(Of Date),  _
-                    ByVal TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
-                    ByVal BuyerName As String,  _
-                    ByVal BuyerLoc As String,  _
-                    ByVal BuyerTel As String,  _
-                    ByVal DateToBeCollected As Global.System.Nullable(Of Date),  _
-                    ByVal ItemCode As String,  _
-                    ByVal DateSold As Global.System.Nullable(Of Date),  _
-                    ByVal SalesPerson As String,  _
-                    ByVal OldQtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal DeliveryID As String) As Integer
-            Me.Adapter.InsertCommand.Parameters(0).Value = CType(RecieptNo,Integer)
-            If (ItemName Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(ItemName,String)
-            End If
-            If (QtySold.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(QtySold.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            If (Price.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(Price.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (QtyCollected.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(QtyCollected.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (QtyToBeCollected.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(QtyToBeCollected.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (Amount.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(Amount.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (DateCollected.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(DateCollected.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (TimeCollected.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(TimeCollected.Value,System.TimeSpan)
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (BuyerName Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(BuyerName,String)
-            End If
-            If (BuyerLoc Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(BuyerLoc,String)
-            End If
-            If (BuyerTel Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(BuyerTel,String)
-            End If
-            If (DateToBeCollected.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(DateToBeCollected.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (ItemCode Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(ItemCode,String)
-            End If
-            If (DateSold.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(14).Value = CType(DateSold.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (SalesPerson Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(15).Value = CType(SalesPerson,String)
-            End If
-            If (OldQtyToBeCollected.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(16).Value = CType(OldQtyToBeCollected.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (DeliveryID Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(17).Value = CType(DeliveryID,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal RecieptNo As Integer,  _
-                    ByVal ItemName As String,  _
-                    ByVal QtySold As Global.System.Nullable(Of Decimal),  _
-                    ByVal Price As Global.System.Nullable(Of Decimal),  _
-                    ByVal QtyCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal QtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Amount As Global.System.Nullable(Of Decimal),  _
-                    ByVal DateCollected As Global.System.Nullable(Of Date),  _
-                    ByVal TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
-                    ByVal BuyerName As String,  _
-                    ByVal BuyerLoc As String,  _
-                    ByVal BuyerTel As String,  _
-                    ByVal DateToBeCollected As Global.System.Nullable(Of Date),  _
-                    ByVal ItemCode As String,  _
-                    ByVal DateSold As Global.System.Nullable(Of Date),  _
-                    ByVal SalesPerson As String,  _
-                    ByVal OldQtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal DeliveryID As String,  _
-                    ByVal Original_RecieptNo As Integer,  _
-                    ByVal Original_ItemName As String,  _
-                    ByVal Original_QtySold As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Price As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_QtyCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_QtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Amount As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_DateCollected As Global.System.Nullable(Of Date),  _
-                    ByVal Original_TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
-                    ByVal Original_BuyerName As String,  _
-                    ByVal Original_BuyerLoc As String,  _
-                    ByVal Original_BuyerTel As String,  _
-                    ByVal Original_DateToBeCollected As Global.System.Nullable(Of Date),  _
-                    ByVal Original_ItemCode As String,  _
-                    ByVal Original_DateSold As Global.System.Nullable(Of Date),  _
-                    ByVal Original_SalesPerson As String,  _
-                    ByVal Original_OldQtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_CollectionID As Integer,  _
-                    ByVal Original_DeliveryID As String,  _
-                    ByVal CollectionID As Integer) As Integer
-            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(RecieptNo,Integer)
-            If (ItemName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(ItemName,String)
-            End If
-            If (QtySold.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(QtySold.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            If (Price.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Price.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (QtyCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(QtyCollected.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (QtyToBeCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(QtyToBeCollected.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (Amount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Amount.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (DateCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(DateCollected.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (TimeCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(TimeCollected.Value,System.TimeSpan)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (BuyerName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(BuyerName,String)
-            End If
-            If (BuyerLoc Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(BuyerLoc,String)
-            End If
-            If (BuyerTel Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(BuyerTel,String)
-            End If
-            If (DateToBeCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(DateToBeCollected.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (ItemCode Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(ItemCode,String)
-            End If
-            If (DateSold.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(DateSold.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (SalesPerson Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(SalesPerson,String)
-            End If
-            If (OldQtyToBeCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(OldQtyToBeCollected.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (DeliveryID Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(DeliveryID,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_RecieptNo,Integer)
-            If (Original_ItemName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_ItemName,String)
-            End If
-            If (Original_QtySold.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_QtySold.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Price.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Price.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
-            End If
-            If (Original_QtyCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_QtyCollected.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
-            End If
-            If (Original_QtyToBeCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_QtyToBeCollected.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Amount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_Amount.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
-            End If
-            If (Original_DateCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_DateCollected.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
-            End If
-            If (Original_TimeCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_TimeCollected.Value,System.TimeSpan)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
-            End If
-            If (Original_BuyerName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_BuyerName,String)
-            End If
-            If (Original_BuyerLoc Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_BuyerLoc,String)
-            End If
-            If (Original_BuyerTel Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_BuyerTel,String)
-            End If
-            If (Original_DateToBeCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_DateToBeCollected.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
-            End If
-            If (Original_ItemCode Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_ItemCode,String)
-            End If
-            If (Original_DateSold.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_DateSold.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
-            End If
-            If (Original_SalesPerson Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_SalesPerson,String)
-            End If
-            If (Original_OldQtyToBeCollected.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_OldQtyToBeCollected.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_CollectionID,Integer)
-            If (Original_DeliveryID Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_DeliveryID,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(54).Value = CType(CollectionID,Integer)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal RecieptNo As Integer,  _
-                    ByVal ItemName As String,  _
-                    ByVal QtySold As Global.System.Nullable(Of Decimal),  _
-                    ByVal Price As Global.System.Nullable(Of Decimal),  _
-                    ByVal QtyCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal QtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Amount As Global.System.Nullable(Of Decimal),  _
-                    ByVal DateCollected As Global.System.Nullable(Of Date),  _
-                    ByVal TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
-                    ByVal BuyerName As String,  _
-                    ByVal BuyerLoc As String,  _
-                    ByVal BuyerTel As String,  _
-                    ByVal DateToBeCollected As Global.System.Nullable(Of Date),  _
-                    ByVal ItemCode As String,  _
-                    ByVal DateSold As Global.System.Nullable(Of Date),  _
-                    ByVal SalesPerson As String,  _
-                    ByVal OldQtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal DeliveryID As String,  _
-                    ByVal Original_RecieptNo As Integer,  _
-                    ByVal Original_ItemName As String,  _
-                    ByVal Original_QtySold As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Price As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_QtyCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_QtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Amount As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_DateCollected As Global.System.Nullable(Of Date),  _
-                    ByVal Original_TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
-                    ByVal Original_BuyerName As String,  _
-                    ByVal Original_BuyerLoc As String,  _
-                    ByVal Original_BuyerTel As String,  _
-                    ByVal Original_DateToBeCollected As Global.System.Nullable(Of Date),  _
-                    ByVal Original_ItemCode As String,  _
-                    ByVal Original_DateSold As Global.System.Nullable(Of Date),  _
-                    ByVal Original_SalesPerson As String,  _
-                    ByVal Original_OldQtyToBeCollected As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_CollectionID As Integer,  _
-                    ByVal Original_DeliveryID As String) As Integer
-            Return Me.Update(RecieptNo, ItemName, QtySold, Price, QtyCollected, QtyToBeCollected, Amount, DateCollected, TimeCollected, BuyerName, BuyerLoc, BuyerTel, DateToBeCollected, ItemCode, DateSold, SalesPerson, OldQtyToBeCollected, DeliveryID, Original_RecieptNo, Original_ItemName, Original_QtySold, Original_Price, Original_QtyCollected, Original_QtyToBeCollected, Original_Amount, Original_DateCollected, Original_TimeCollected, Original_BuyerName, Original_BuyerLoc, Original_BuyerTel, Original_DateToBeCollected, Original_ItemCode, Original_DateSold, Original_SalesPerson, Original_OldQtyToBeCollected, Original_CollectionID, Original_DeliveryID, Original_CollectionID)
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the connection and commands used to retrieve and save data.
-    '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     Global.System.ComponentModel.ToolboxItem(true),  _
-     Global.System.ComponentModel.DataObjectAttribute(true),  _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
     Partial Public Class ClientRegTableAdapter
         Inherits Global.System.ComponentModel.Component
         
@@ -5821,6 +5265,1025 @@ Namespace dsTobeCollectedTableAdapters
     End Class
     
     '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class ToBeCollectedDeliveryLogTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "ToBeCollectedDeliveryLog"
+            tableMapping.ColumnMappings.Add("RecieptNo", "RecieptNo")
+            tableMapping.ColumnMappings.Add("ItemName", "ItemName")
+            tableMapping.ColumnMappings.Add("QtySold", "QtySold")
+            tableMapping.ColumnMappings.Add("Price", "Price")
+            tableMapping.ColumnMappings.Add("QtyCollected", "QtyCollected")
+            tableMapping.ColumnMappings.Add("QtyToBeCollected", "QtyToBeCollected")
+            tableMapping.ColumnMappings.Add("Amount", "Amount")
+            tableMapping.ColumnMappings.Add("DateCollected", "DateCollected")
+            tableMapping.ColumnMappings.Add("TimeCollected", "TimeCollected")
+            tableMapping.ColumnMappings.Add("BuyerName", "BuyerName")
+            tableMapping.ColumnMappings.Add("BuyerLoc", "BuyerLoc")
+            tableMapping.ColumnMappings.Add("BuyerTel", "BuyerTel")
+            tableMapping.ColumnMappings.Add("DateToBeCollected", "DateToBeCollected")
+            tableMapping.ColumnMappings.Add("ItemCode", "ItemCode")
+            tableMapping.ColumnMappings.Add("DateSold", "DateSold")
+            tableMapping.ColumnMappings.Add("SalesPerson", "SalesPerson")
+            tableMapping.ColumnMappings.Add("OldQtyToBeCollected", "OldQtyToBeCollected")
+            tableMapping.ColumnMappings.Add("CollectionID", "CollectionID")
+            tableMapping.ColumnMappings.Add("DeliveryID", "DeliveryID")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ToBeCollectedDeliveryLog] WHERE (([RecieptNo] = @Original_Reci"& _ 
+                "eptNo) AND ((@IsNull_ItemName = 1 AND [ItemName] IS NULL) OR ([ItemName] = @Orig"& _ 
+                "inal_ItemName)) AND ((@IsNull_QtySold = 1 AND [QtySold] IS NULL) OR ([QtySold] ="& _ 
+                " @Original_QtySold)) AND ((@IsNull_Price = 1 AND [Price] IS NULL) OR ([Price] = "& _ 
+                "@Original_Price)) AND ((@IsNull_QtyCollected = 1 AND [QtyCollected] IS NULL) OR "& _ 
+                "([QtyCollected] = @Original_QtyCollected)) AND ((@IsNull_QtyToBeCollected = 1 AN"& _ 
+                "D [QtyToBeCollected] IS NULL) OR ([QtyToBeCollected] = @Original_QtyToBeCollecte"& _ 
+                "d)) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amou"& _ 
+                "nt)) AND ((@IsNull_DateCollected = 1 AND [DateCollected] IS NULL) OR ([DateColle"& _ 
+                "cted] = @Original_DateCollected)) AND ((@IsNull_TimeCollected = 1 AND [TimeColle"& _ 
+                "cted] IS NULL) OR ([TimeCollected] = @Original_TimeCollected)) AND ((@IsNull_Buy"& _ 
+                "erName = 1 AND [BuyerName] IS NULL) OR ([BuyerName] = @Original_BuyerName)) AND "& _ 
+                "((@IsNull_BuyerLoc = 1 AND [BuyerLoc] IS NULL) OR ([BuyerLoc] = @Original_BuyerL"& _ 
+                "oc)) AND ((@IsNull_BuyerTel = 1 AND [BuyerTel] IS NULL) OR ([BuyerTel] = @Origin"& _ 
+                "al_BuyerTel)) AND ((@IsNull_DateToBeCollected = 1 AND [DateToBeCollected] IS NUL"& _ 
+                "L) OR ([DateToBeCollected] = @Original_DateToBeCollected)) AND ((@IsNull_ItemCod"& _ 
+                "e = 1 AND [ItemCode] IS NULL) OR ([ItemCode] = @Original_ItemCode)) AND ((@IsNul"& _ 
+                "l_DateSold = 1 AND [DateSold] IS NULL) OR ([DateSold] = @Original_DateSold)) AND"& _ 
+                " ((@IsNull_SalesPerson = 1 AND [SalesPerson] IS NULL) OR ([SalesPerson] = @Origi"& _ 
+                "nal_SalesPerson)) AND ((@IsNull_OldQtyToBeCollected = 1 AND [OldQtyToBeCollected"& _ 
+                "] IS NULL) OR ([OldQtyToBeCollected] = @Original_OldQtyToBeCollected)) AND ([Col"& _ 
+                "lectionID] = @Original_CollectionID) AND ((@IsNull_DeliveryID = 1 AND [DeliveryI"& _ 
+                "D] IS NULL) OR ([DeliveryID] = @Original_DeliveryID)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecieptNo", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecieptNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ItemName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtySold", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtySold", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtySold", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtySold", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Price", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Price", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtyCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtyCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtyToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtyToBeCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Amount", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TimeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TimeCollected", Global.System.Data.SqlDbType.Time, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerLoc", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerLoc", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerTel", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerTel", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateToBeCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ItemCode", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemCode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateSold", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateSold", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SalesPerson", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SalesPerson", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_OldQtyToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_OldQtyToBeCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CollectionID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CollectionID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeliveryID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeliveryID", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ToBeCollectedDeliveryLog] ([RecieptNo], [ItemName], [QtySold],"& _ 
+                " [Price], [QtyCollected], [QtyToBeCollected], [Amount], [DateCollected], [TimeCo"& _ 
+                "llected], [BuyerName], [BuyerLoc], [BuyerTel], [DateToBeCollected], [ItemCode], "& _ 
+                "[DateSold], [SalesPerson], [OldQtyToBeCollected], [DeliveryID]) VALUES (@Reciept"& _ 
+                "No, @ItemName, @QtySold, @Price, @QtyCollected, @QtyToBeCollected, @Amount, @Dat"& _ 
+                "eCollected, @TimeCollected, @BuyerName, @BuyerLoc, @BuyerTel, @DateToBeCollected"& _ 
+                ", @ItemCode, @DateSold, @SalesPerson, @OldQtyToBeCollected, @DeliveryID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELEC"& _ 
+                "T RecieptNo, ItemName, QtySold, Price, QtyCollected, QtyToBeCollected, Amount, D"& _ 
+                "ateCollected, TimeCollected, BuyerName, BuyerLoc, BuyerTel, DateToBeCollected, I"& _ 
+                "temCode, DateSold, SalesPerson, OldQtyToBeCollected, CollectionID, DeliveryID FR"& _ 
+                "OM ToBeCollectedDeliveryLog WHERE (CollectionID = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecieptNo", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecieptNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtySold", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtySold", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Price", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtyCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtyToBeCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TimeCollected", Global.System.Data.SqlDbType.Time, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerLoc", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerTel", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateToBeCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemCode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateSold", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SalesPerson", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OldQtyToBeCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeliveryID", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[ToBeCollectedDeliveryLog] SET [RecieptNo] = @RecieptNo, [ItemName] "& _ 
+                "= @ItemName, [QtySold] = @QtySold, [Price] = @Price, [QtyCollected] = @QtyCollec"& _ 
+                "ted, [QtyToBeCollected] = @QtyToBeCollected, [Amount] = @Amount, [DateCollected]"& _ 
+                " = @DateCollected, [TimeCollected] = @TimeCollected, [BuyerName] = @BuyerName, ["& _ 
+                "BuyerLoc] = @BuyerLoc, [BuyerTel] = @BuyerTel, [DateToBeCollected] = @DateToBeCo"& _ 
+                "llected, [ItemCode] = @ItemCode, [DateSold] = @DateSold, [SalesPerson] = @SalesP"& _ 
+                "erson, [OldQtyToBeCollected] = @OldQtyToBeCollected, [DeliveryID] = @DeliveryID "& _ 
+                "WHERE (([RecieptNo] = @Original_RecieptNo) AND ((@IsNull_ItemName = 1 AND [ItemN"& _ 
+                "ame] IS NULL) OR ([ItemName] = @Original_ItemName)) AND ((@IsNull_QtySold = 1 AN"& _ 
+                "D [QtySold] IS NULL) OR ([QtySold] = @Original_QtySold)) AND ((@IsNull_Price = 1"& _ 
+                " AND [Price] IS NULL) OR ([Price] = @Original_Price)) AND ((@IsNull_QtyCollected"& _ 
+                " = 1 AND [QtyCollected] IS NULL) OR ([QtyCollected] = @Original_QtyCollected)) A"& _ 
+                "ND ((@IsNull_QtyToBeCollected = 1 AND [QtyToBeCollected] IS NULL) OR ([QtyToBeCo"& _ 
+                "llected] = @Original_QtyToBeCollected)) AND ((@IsNull_Amount = 1 AND [Amount] IS"& _ 
+                " NULL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_DateCollected = 1 AND [Da"& _ 
+                "teCollected] IS NULL) OR ([DateCollected] = @Original_DateCollected)) AND ((@IsN"& _ 
+                "ull_TimeCollected = 1 AND [TimeCollected] IS NULL) OR ([TimeCollected] = @Origin"& _ 
+                "al_TimeCollected)) AND ((@IsNull_BuyerName = 1 AND [BuyerName] IS NULL) OR ([Buy"& _ 
+                "erName] = @Original_BuyerName)) AND ((@IsNull_BuyerLoc = 1 AND [BuyerLoc] IS NUL"& _ 
+                "L) OR ([BuyerLoc] = @Original_BuyerLoc)) AND ((@IsNull_BuyerTel = 1 AND [BuyerTe"& _ 
+                "l] IS NULL) OR ([BuyerTel] = @Original_BuyerTel)) AND ((@IsNull_DateToBeCollecte"& _ 
+                "d = 1 AND [DateToBeCollected] IS NULL) OR ([DateToBeCollected] = @Original_DateT"& _ 
+                "oBeCollected)) AND ((@IsNull_ItemCode = 1 AND [ItemCode] IS NULL) OR ([ItemCode]"& _ 
+                " = @Original_ItemCode)) AND ((@IsNull_DateSold = 1 AND [DateSold] IS NULL) OR (["& _ 
+                "DateSold] = @Original_DateSold)) AND ((@IsNull_SalesPerson = 1 AND [SalesPerson]"& _ 
+                " IS NULL) OR ([SalesPerson] = @Original_SalesPerson)) AND ((@IsNull_OldQtyToBeCo"& _ 
+                "llected = 1 AND [OldQtyToBeCollected] IS NULL) OR ([OldQtyToBeCollected] = @Orig"& _ 
+                "inal_OldQtyToBeCollected)) AND ([CollectionID] = @Original_CollectionID) AND ((@"& _ 
+                "IsNull_DeliveryID = 1 AND [DeliveryID] IS NULL) OR ([DeliveryID] = @Original_Del"& _ 
+                "iveryID)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT RecieptNo, ItemName, QtySold, Price, QtyCollected, QtyToBeCo"& _ 
+                "llected, Amount, DateCollected, TimeCollected, BuyerName, BuyerLoc, BuyerTel, Da"& _ 
+                "teToBeCollected, ItemCode, DateSold, SalesPerson, OldQtyToBeCollected, Collectio"& _ 
+                "nID, DeliveryID FROM ToBeCollectedDeliveryLog WHERE (CollectionID = @CollectionI"& _ 
+                "D)"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecieptNo", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecieptNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtySold", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtySold", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Price", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtyCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QtyToBeCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TimeCollected", Global.System.Data.SqlDbType.Time, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerLoc", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BuyerTel", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateToBeCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemCode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateSold", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SalesPerson", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OldQtyToBeCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeliveryID", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecieptNo", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecieptNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ItemName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtySold", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtySold", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtySold", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtySold", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Price", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Price", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Price", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtyCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtyCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_QtyToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_QtyToBeCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "QtyToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Amount", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TimeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TimeCollected", Global.System.Data.SqlDbType.Time, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TimeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerLoc", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerLoc", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerLoc", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BuyerTel", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BuyerTel", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BuyerTel", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateToBeCollected", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ItemCode", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemCode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DateSold", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateSold", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateSold", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SalesPerson", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SalesPerson", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesPerson", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_OldQtyToBeCollected", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_OldQtyToBeCollected", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OldQtyToBeCollected", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CollectionID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CollectionID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeliveryID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeliveryID", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeliveryID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CollectionID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "CollectionID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.HardSoft_PoS.My.MySettings.Default.PoSConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT RecieptNo, ItemName, QtySold, Price, QtyCollected, QtyToBeCollected, Amoun"& _ 
+                "t, DateCollected, TimeCollected, BuyerName, BuyerLoc, BuyerTel, DateToBeCollecte"& _ 
+                "d, ItemCode, DateSold, SalesPerson, OldQtyToBeCollected, CollectionID, DeliveryI"& _ 
+                "D FROM dbo.ToBeCollectedDeliveryLog"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsTobeCollected.ToBeCollectedDeliveryLogDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As dsTobeCollected.ToBeCollectedDeliveryLogDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As dsTobeCollected.ToBeCollectedDeliveryLogDataTable = New dsTobeCollected.ToBeCollectedDeliveryLogDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As dsTobeCollected.ToBeCollectedDeliveryLogDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As dsTobeCollected) As Integer
+            Return Me.Adapter.Update(dataSet, "ToBeCollectedDeliveryLog")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete( _
+                    ByVal Original_RecieptNo As String,  _
+                    ByVal Original_ItemName As String,  _
+                    ByVal Original_QtySold As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Price As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_QtyCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Original_QtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Amount As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_DateCollected As Global.System.Nullable(Of Date),  _
+                    ByVal Original_TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
+                    ByVal Original_BuyerName As String,  _
+                    ByVal Original_BuyerLoc As String,  _
+                    ByVal Original_BuyerTel As String,  _
+                    ByVal Original_DateToBeCollected As Global.System.Nullable(Of Date),  _
+                    ByVal Original_ItemCode As String,  _
+                    ByVal Original_DateSold As Global.System.Nullable(Of Date),  _
+                    ByVal Original_SalesPerson As String,  _
+                    ByVal Original_OldQtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Original_CollectionID As Integer,  _
+                    ByVal Original_DeliveryID As String) As Integer
+            If (Original_RecieptNo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_RecieptNo")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_RecieptNo,String)
+            End If
+            If (Original_ItemName Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_ItemName,String)
+            End If
+            If (Original_QtySold.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_QtySold.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Price.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Price.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (Original_QtyCollected.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_QtyCollected.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Original_QtyToBeCollected.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_QtyToBeCollected.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Amount.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Amount.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (Original_DateCollected.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_DateCollected.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (Original_TimeCollected.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_TimeCollected.Value,System.TimeSpan)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (Original_BuyerName Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_BuyerName,String)
+            End If
+            If (Original_BuyerLoc Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_BuyerLoc,String)
+            End If
+            If (Original_BuyerTel Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_BuyerTel,String)
+            End If
+            If (Original_DateToBeCollected.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_DateToBeCollected.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
+            End If
+            If (Original_ItemCode Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_ItemCode,String)
+            End If
+            If (Original_DateSold.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_DateSold.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
+            End If
+            If (Original_SalesPerson Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_SalesPerson,String)
+            End If
+            If (Original_OldQtyToBeCollected.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_OldQtyToBeCollected.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.DeleteCommand.Parameters(33).Value = CType(Original_CollectionID,Integer)
+            If (Original_DeliveryID Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(35).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(Original_DeliveryID,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert( _
+                    ByVal RecieptNo As String,  _
+                    ByVal ItemName As String,  _
+                    ByVal QtySold As Global.System.Nullable(Of Double),  _
+                    ByVal Price As Global.System.Nullable(Of Decimal),  _
+                    ByVal QtyCollected As Global.System.Nullable(Of Double),  _
+                    ByVal QtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Amount As Global.System.Nullable(Of Decimal),  _
+                    ByVal DateCollected As Global.System.Nullable(Of Date),  _
+                    ByVal TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
+                    ByVal BuyerName As String,  _
+                    ByVal BuyerLoc As String,  _
+                    ByVal BuyerTel As String,  _
+                    ByVal DateToBeCollected As Global.System.Nullable(Of Date),  _
+                    ByVal ItemCode As String,  _
+                    ByVal DateSold As Global.System.Nullable(Of Date),  _
+                    ByVal SalesPerson As String,  _
+                    ByVal OldQtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal DeliveryID As String) As Integer
+            If (RecieptNo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("RecieptNo")
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(RecieptNo,String)
+            End If
+            If (ItemName Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(ItemName,String)
+            End If
+            If (QtySold.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(QtySold.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (Price.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(Price.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (QtyCollected.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(QtyCollected.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (QtyToBeCollected.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(QtyToBeCollected.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (Amount.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(Amount.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (DateCollected.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(DateCollected.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (TimeCollected.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(TimeCollected.Value,System.TimeSpan)
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (BuyerName Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(BuyerName,String)
+            End If
+            If (BuyerLoc Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(BuyerLoc,String)
+            End If
+            If (BuyerTel Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(BuyerTel,String)
+            End If
+            If (DateToBeCollected.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(DateToBeCollected.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (ItemCode Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(ItemCode,String)
+            End If
+            If (DateSold.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(DateSold.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (SalesPerson Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(SalesPerson,String)
+            End If
+            If (OldQtyToBeCollected.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(OldQtyToBeCollected.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (DeliveryID Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(DeliveryID,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal RecieptNo As String,  _
+                    ByVal ItemName As String,  _
+                    ByVal QtySold As Global.System.Nullable(Of Double),  _
+                    ByVal Price As Global.System.Nullable(Of Decimal),  _
+                    ByVal QtyCollected As Global.System.Nullable(Of Double),  _
+                    ByVal QtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Amount As Global.System.Nullable(Of Decimal),  _
+                    ByVal DateCollected As Global.System.Nullable(Of Date),  _
+                    ByVal TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
+                    ByVal BuyerName As String,  _
+                    ByVal BuyerLoc As String,  _
+                    ByVal BuyerTel As String,  _
+                    ByVal DateToBeCollected As Global.System.Nullable(Of Date),  _
+                    ByVal ItemCode As String,  _
+                    ByVal DateSold As Global.System.Nullable(Of Date),  _
+                    ByVal SalesPerson As String,  _
+                    ByVal OldQtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal DeliveryID As String,  _
+                    ByVal Original_RecieptNo As String,  _
+                    ByVal Original_ItemName As String,  _
+                    ByVal Original_QtySold As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Price As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_QtyCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Original_QtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Amount As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_DateCollected As Global.System.Nullable(Of Date),  _
+                    ByVal Original_TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
+                    ByVal Original_BuyerName As String,  _
+                    ByVal Original_BuyerLoc As String,  _
+                    ByVal Original_BuyerTel As String,  _
+                    ByVal Original_DateToBeCollected As Global.System.Nullable(Of Date),  _
+                    ByVal Original_ItemCode As String,  _
+                    ByVal Original_DateSold As Global.System.Nullable(Of Date),  _
+                    ByVal Original_SalesPerson As String,  _
+                    ByVal Original_OldQtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Original_CollectionID As Integer,  _
+                    ByVal Original_DeliveryID As String,  _
+                    ByVal CollectionID As Integer) As Integer
+            If (RecieptNo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("RecieptNo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(RecieptNo,String)
+            End If
+            If (ItemName Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(ItemName,String)
+            End If
+            If (QtySold.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(QtySold.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (Price.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Price.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (QtyCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(QtyCollected.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (QtyToBeCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(QtyToBeCollected.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (Amount.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Amount.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (DateCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(DateCollected.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (TimeCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(TimeCollected.Value,System.TimeSpan)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (BuyerName Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(BuyerName,String)
+            End If
+            If (BuyerLoc Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(BuyerLoc,String)
+            End If
+            If (BuyerTel Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(BuyerTel,String)
+            End If
+            If (DateToBeCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(DateToBeCollected.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (ItemCode Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(ItemCode,String)
+            End If
+            If (DateSold.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(DateSold.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (SalesPerson Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(SalesPerson,String)
+            End If
+            If (OldQtyToBeCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(OldQtyToBeCollected.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (DeliveryID Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(DeliveryID,String)
+            End If
+            If (Original_RecieptNo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_RecieptNo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_RecieptNo,String)
+            End If
+            If (Original_ItemName Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_ItemName,String)
+            End If
+            If (Original_QtySold.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_QtySold.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Price.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Price.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+            End If
+            If (Original_QtyCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_QtyCollected.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+            End If
+            If (Original_QtyToBeCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_QtyToBeCollected.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Amount.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_Amount.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+            End If
+            If (Original_DateCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_DateCollected.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+            End If
+            If (Original_TimeCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_TimeCollected.Value,System.TimeSpan)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+            End If
+            If (Original_BuyerName Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_BuyerName,String)
+            End If
+            If (Original_BuyerLoc Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_BuyerLoc,String)
+            End If
+            If (Original_BuyerTel Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_BuyerTel,String)
+            End If
+            If (Original_DateToBeCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_DateToBeCollected.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+            End If
+            If (Original_ItemCode Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_ItemCode,String)
+            End If
+            If (Original_DateSold.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_DateSold.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
+            End If
+            If (Original_SalesPerson Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_SalesPerson,String)
+            End If
+            If (Original_OldQtyToBeCollected.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_OldQtyToBeCollected.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_CollectionID,Integer)
+            If (Original_DeliveryID Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_DeliveryID,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(54).Value = CType(CollectionID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal RecieptNo As String,  _
+                    ByVal ItemName As String,  _
+                    ByVal QtySold As Global.System.Nullable(Of Double),  _
+                    ByVal Price As Global.System.Nullable(Of Decimal),  _
+                    ByVal QtyCollected As Global.System.Nullable(Of Double),  _
+                    ByVal QtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Amount As Global.System.Nullable(Of Decimal),  _
+                    ByVal DateCollected As Global.System.Nullable(Of Date),  _
+                    ByVal TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
+                    ByVal BuyerName As String,  _
+                    ByVal BuyerLoc As String,  _
+                    ByVal BuyerTel As String,  _
+                    ByVal DateToBeCollected As Global.System.Nullable(Of Date),  _
+                    ByVal ItemCode As String,  _
+                    ByVal DateSold As Global.System.Nullable(Of Date),  _
+                    ByVal SalesPerson As String,  _
+                    ByVal OldQtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal DeliveryID As String,  _
+                    ByVal Original_RecieptNo As String,  _
+                    ByVal Original_ItemName As String,  _
+                    ByVal Original_QtySold As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Price As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_QtyCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Original_QtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Amount As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_DateCollected As Global.System.Nullable(Of Date),  _
+                    ByVal Original_TimeCollected As Global.System.Nullable(Of Global.System.TimeSpan),  _
+                    ByVal Original_BuyerName As String,  _
+                    ByVal Original_BuyerLoc As String,  _
+                    ByVal Original_BuyerTel As String,  _
+                    ByVal Original_DateToBeCollected As Global.System.Nullable(Of Date),  _
+                    ByVal Original_ItemCode As String,  _
+                    ByVal Original_DateSold As Global.System.Nullable(Of Date),  _
+                    ByVal Original_SalesPerson As String,  _
+                    ByVal Original_OldQtyToBeCollected As Global.System.Nullable(Of Double),  _
+                    ByVal Original_CollectionID As Integer,  _
+                    ByVal Original_DeliveryID As String) As Integer
+            Return Me.Update(RecieptNo, ItemName, QtySold, Price, QtyCollected, QtyToBeCollected, Amount, DateCollected, TimeCollected, BuyerName, BuyerLoc, BuyerTel, DateToBeCollected, ItemCode, DateSold, SalesPerson, OldQtyToBeCollected, DeliveryID, Original_RecieptNo, Original_ItemName, Original_QtySold, Original_Price, Original_QtyCollected, Original_QtyToBeCollected, Original_Amount, Original_DateCollected, Original_TimeCollected, Original_BuyerName, Original_BuyerLoc, Original_BuyerTel, Original_DateToBeCollected, Original_ItemCode, Original_DateSold, Original_SalesPerson, Original_OldQtyToBeCollected, Original_CollectionID, Original_DeliveryID, Original_CollectionID)
+        End Function
+    End Class
+    
+    '''<summary>
     '''TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     '''</summary>
     <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -5835,9 +6298,9 @@ Namespace dsTobeCollectedTableAdapters
         
         Private _toBeCollectedTableAdapter As ToBeCollectedTableAdapter
         
-        Private _toBeCollectedDeliveryLogTableAdapter As ToBeCollectedDeliveryLogTableAdapter
-        
         Private _clientRegTableAdapter As ClientRegTableAdapter
+        
+        Private _toBeCollectedDeliveryLogTableAdapter As ToBeCollectedDeliveryLogTableAdapter
         
         Private _backupDataSetBeforeUpdate As Boolean
         
@@ -5873,12 +6336,12 @@ Namespace dsTobeCollectedTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property ToBeCollectedDeliveryLogTableAdapter() As ToBeCollectedDeliveryLogTableAdapter
+        Public Property ClientRegTableAdapter() As ClientRegTableAdapter
             Get
-                Return Me._toBeCollectedDeliveryLogTableAdapter
+                Return Me._clientRegTableAdapter
             End Get
             Set
-                Me._toBeCollectedDeliveryLogTableAdapter = value
+                Me._clientRegTableAdapter = value
             End Set
         End Property
         
@@ -5887,12 +6350,12 @@ Namespace dsTobeCollectedTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property ClientRegTableAdapter() As ClientRegTableAdapter
+        Public Property ToBeCollectedDeliveryLogTableAdapter() As ToBeCollectedDeliveryLogTableAdapter
             Get
-                Return Me._clientRegTableAdapter
+                Return Me._toBeCollectedDeliveryLogTableAdapter
             End Get
             Set
-                Me._clientRegTableAdapter = value
+                Me._toBeCollectedDeliveryLogTableAdapter = value
             End Set
         End Property
         
@@ -5919,13 +6382,13 @@ Namespace dsTobeCollectedTableAdapters
                             AndAlso (Not (Me._toBeCollectedTableAdapter.Connection) Is Nothing)) Then
                     Return Me._toBeCollectedTableAdapter.Connection
                 End If
-                If ((Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._toBeCollectedDeliveryLogTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._toBeCollectedDeliveryLogTableAdapter.Connection
-                End If
                 If ((Not (Me._clientRegTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._clientRegTableAdapter.Connection) Is Nothing)) Then
                     Return Me._clientRegTableAdapter.Connection
+                End If
+                If ((Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._toBeCollectedDeliveryLogTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._toBeCollectedDeliveryLogTableAdapter.Connection
                 End If
                 Return Nothing
             End Get
@@ -5943,10 +6406,10 @@ Namespace dsTobeCollectedTableAdapters
                 If (Not (Me._toBeCollectedTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
-                If (Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing) Then
+                If (Not (Me._clientRegTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
-                If (Not (Me._clientRegTableAdapter) Is Nothing) Then
+                If (Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 Return count
@@ -5969,21 +6432,21 @@ Namespace dsTobeCollectedTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.ToBeCollectedDeliveryLog.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._toBeCollectedDeliveryLogTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             If (Not (Me._clientRegTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.ClientReg.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._clientRegTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.ToBeCollectedDeliveryLog.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._toBeCollectedDeliveryLogTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -6005,19 +6468,19 @@ Namespace dsTobeCollectedTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.ToBeCollectedDeliveryLog.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._toBeCollectedDeliveryLogTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             If (Not (Me._clientRegTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.ClientReg.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._clientRegTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.ToBeCollectedDeliveryLog.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._toBeCollectedDeliveryLogTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -6031,19 +6494,19 @@ Namespace dsTobeCollectedTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As dsTobeCollected, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._clientRegTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.ClientReg.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._clientRegTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
             If (Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.ToBeCollectedDeliveryLog.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._toBeCollectedDeliveryLogTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._clientRegTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.ClientReg.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._clientRegTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -6101,13 +6564,13 @@ Namespace dsTobeCollectedTableAdapters
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
-            If ((Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._toBeCollectedDeliveryLogTableAdapter.Connection) = false)) Then
+            If ((Not (Me._clientRegTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._clientRegTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
-            If ((Not (Me._clientRegTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._clientRegTableAdapter.Connection) = false)) Then
+            If ((Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._toBeCollectedDeliveryLogTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
@@ -6152,15 +6615,6 @@ Namespace dsTobeCollectedTableAdapters
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._toBeCollectedTableAdapter.Adapter)
                     End If
                 End If
-                If (Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._toBeCollectedDeliveryLogTableAdapter, Me._toBeCollectedDeliveryLogTableAdapter.Connection)
-                    Me._toBeCollectedDeliveryLogTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._toBeCollectedDeliveryLogTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._toBeCollectedDeliveryLogTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._toBeCollectedDeliveryLogTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._toBeCollectedDeliveryLogTableAdapter.Adapter)
-                    End If
-                End If
                 If (Not (Me._clientRegTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._clientRegTableAdapter, Me._clientRegTableAdapter.Connection)
                     Me._clientRegTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
@@ -6168,6 +6622,15 @@ Namespace dsTobeCollectedTableAdapters
                     If Me._clientRegTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._clientRegTableAdapter.Adapter.AcceptChangesDuringUpdate = false
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._clientRegTableAdapter.Adapter)
+                    End If
+                End If
+                If (Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._toBeCollectedDeliveryLogTableAdapter, Me._toBeCollectedDeliveryLogTableAdapter.Connection)
+                    Me._toBeCollectedDeliveryLogTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._toBeCollectedDeliveryLogTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._toBeCollectedDeliveryLogTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._toBeCollectedDeliveryLogTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._toBeCollectedDeliveryLogTableAdapter.Adapter)
                     End If
                 End If
                 '
@@ -6234,13 +6697,13 @@ Namespace dsTobeCollectedTableAdapters
                     Me._toBeCollectedTableAdapter.Connection = CType(revertConnections(Me._toBeCollectedTableAdapter),Global.System.Data.SqlClient.SqlConnection)
                     Me._toBeCollectedTableAdapter.Transaction = Nothing
                 End If
-                If (Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing) Then
-                    Me._toBeCollectedDeliveryLogTableAdapter.Connection = CType(revertConnections(Me._toBeCollectedDeliveryLogTableAdapter),Global.System.Data.SqlClient.SqlConnection)
-                    Me._toBeCollectedDeliveryLogTableAdapter.Transaction = Nothing
-                End If
                 If (Not (Me._clientRegTableAdapter) Is Nothing) Then
                     Me._clientRegTableAdapter.Connection = CType(revertConnections(Me._clientRegTableAdapter),Global.System.Data.SqlClient.SqlConnection)
                     Me._clientRegTableAdapter.Transaction = Nothing
+                End If
+                If (Not (Me._toBeCollectedDeliveryLogTableAdapter) Is Nothing) Then
+                    Me._toBeCollectedDeliveryLogTableAdapter.Connection = CType(revertConnections(Me._toBeCollectedDeliveryLogTableAdapter),Global.System.Data.SqlClient.SqlConnection)
+                    Me._toBeCollectedDeliveryLogTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

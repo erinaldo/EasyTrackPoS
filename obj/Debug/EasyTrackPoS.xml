@@ -517,12 +517,12 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedDeliveryLogDataTable">
+<member name="T:HardSoft_PoS.dsTobeCollected.ClientRegDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsTobeCollected.ClientRegDataTable">
+<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedDeliveryLogDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -532,12 +532,12 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedRow">
+<member name="T:HardSoft_PoS.dsTobeCollected.TotalStockDataTable">
 <summary>
-Represents strongly named DataRow class.
+Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedDeliveryLogRow">
+<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -547,7 +547,17 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedDeliveryLogRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsTobeCollected.dtTobeCollectedDelRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTobeCollected.TotalStockRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -557,12 +567,12 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedDeliveryLogRowChangeEvent">
+<member name="T:HardSoft_PoS.dsTobeCollected.ClientRegRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsTobeCollected.ClientRegRowChangeEvent">
+<member name="T:HardSoft_PoS.dsTobeCollected.ToBeCollectedDeliveryLogRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -572,17 +582,22 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsTobeCollected.TotalStockRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.ToBeCollectedTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.ToBeCollectedDeliveryLogTableAdapter">
+<member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.ClientRegTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.ClientRegTableAdapter">
+<member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.ToBeCollectedDeliveryLogTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -625,6 +640,26 @@ Update Order Option
 <member name="T:HardSoft_PoS.dsTobeCollectedTableAdapters.TableAdapterManager.SelfReferenceComparer">
 <summary>
 Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTotalStock">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTotalStock.TotalStockDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTotalStock.TotalStockRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTotalStock.TotalStockRowChangeEvent">
+<summary>
+Row event argument class
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsMultishop">
@@ -847,11 +882,6 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsStockMast.StockMastDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
 <member name="T:HardSoft_PoS.dsStockMast.PriceChangeLogDataTable">
 <summary>
 Represents the strongly named DataTable class.
@@ -862,12 +892,17 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsStockMast.ClientRegRow">
+<member name="T:HardSoft_PoS.dsStockMast.StockMastDataTable">
 <summary>
-Represents strongly named DataRow class.
+Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsStockMast.StockMastRow">
+<member name="T:HardSoft_PoS.dsStockMast.TotalStockDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.ClientRegRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -882,12 +917,17 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsStockMast.ClientRegRowChangeEvent">
+<member name="T:HardSoft_PoS.dsStockMast.StockMastRow">
 <summary>
-Row event argument class
+Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsStockMast.StockMastRowChangeEvent">
+<member name="T:HardSoft_PoS.dsStockMast.TotalStockRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.ClientRegRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -898,6 +938,16 @@ Row event argument class
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsStockMast.InventoryLedgerRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.StockMastRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.TotalStockRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -1067,17 +1117,17 @@ Used to sort self-referenced table's rows
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsStockMastTableAdapters.StockMastTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
 <member name="T:HardSoft_PoS.dsStockMastTableAdapters.PriceChangeLogTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsStockMastTableAdapters.InventoryLedgerTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMastTableAdapters.StockMastTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -1122,17 +1172,77 @@ Update Order Option
 Used to sort self-referenced table's rows
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsTempStockmaspaymode">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTempStockmaspaymode.SalesTranxDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTempStockmaspaymode.SalesTranxRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTempStockmaspaymode.SalesTranxRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTempStockmaspaymodeTableAdapters.SalesTranxTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTempStockmaspaymodeTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsTempStockmaspaymodeTableAdapters.TableAdapterManager.UpdateUpdatedRows(HardSoft_PoS.dsTempStockmaspaymode,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsTempStockmaspaymodeTableAdapters.TableAdapterManager.UpdateInsertedRows(HardSoft_PoS.dsTempStockmaspaymode,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsTempStockmaspaymodeTableAdapters.TableAdapterManager.UpdateDeletedRows(HardSoft_PoS.dsTempStockmaspaymode,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsTempStockmaspaymodeTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HardSoft_PoS.dsTempStockmaspaymodeTableAdapters.TableAdapterManager.UpdateAll(HardSoft_PoS.dsTempStockmaspaymode)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTempStockmaspaymodeTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsTempStockmaspaymodeTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsSalesTranx">
 <summary>
 Represents a strongly typed in-memory cache of data.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsSalesTranx.ClientRegDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:HardSoft_PoS.dsSalesTranx.SalesTranxDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -1152,12 +1262,12 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsSalesTranx.ClientRegRow">
+<member name="T:HardSoft_PoS.dsSalesTranx.SalesTranxDataTable">
 <summary>
-Represents strongly named DataRow class.
+Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsSalesTranx.SalesTranxRow">
+<member name="T:HardSoft_PoS.dsSalesTranx.ClientRegRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -1177,12 +1287,12 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsSalesTranx.ClientRegRowChangeEvent">
+<member name="T:HardSoft_PoS.dsSalesTranx.SalesTranxRow">
 <summary>
-Row event argument class
+Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsSalesTranx.SalesTranxRowChangeEvent">
+<member name="T:HardSoft_PoS.dsSalesTranx.ClientRegRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -1202,12 +1312,12 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.ClientRegTableAdapter">
+<member name="T:HardSoft_PoS.dsSalesTranx.SalesTranxRowChangeEvent">
 <summary>
-Represents the connection and commands used to retrieve and save data.
+Row event argument class
 </summary>
 </member>
-<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.SalesTranxTableAdapter">
+<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.ClientRegTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -1223,6 +1333,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.CancellationLogTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsSalesTranxTableAdapters.SalesTranxTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

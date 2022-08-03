@@ -8,27 +8,11 @@ Public Class frmCreateOder
     Dim dr As SqlDataReader
     Dim dt As New dsGoodsRecieved
     Private Sub frmCreateOder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
 
+        Display()
     End Sub
     Private Sub Display()
-
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim que = "select * from userlogs"
-        cmd = New SqlCommand(que, Poscon)
-        da = New SqlDataAdapter(cmd)
-        tbl = New DataTable
-        da.Fill(tbl)
-        Dim index = tbl.Rows.Count() - 1
-        If tbl.Rows.Count = 0 Then
-
-        Else
-            tsuser.Text = tbl.Rows(index)(1).ToString
-        End If
-
-        Poscon.Close()
-
         Newshowconfig()
         reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast", gvStockBf)
 
@@ -53,7 +37,7 @@ Public Class frmCreateOder
             End If
             Poscon.Close()
         Catch ex As Exception
-            'MsgBox(ex.ToString)
+            'msgbox(ex.message)
         End Try
 
 
@@ -71,7 +55,7 @@ Public Class frmCreateOder
             amt = Val(txtQtyRecieved.Text) * Val(txtItemPrice.Text)
             txtItemAmount.Text = amt
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -90,7 +74,7 @@ Public Class frmCreateOder
                     If Poscon.State = ConnectionState.Closed Then
                         Poscon.Open()
                     End If
-                    Dim query = "insert into recievestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyRecieved,dateRecieved,time,Recievedby,itemcat,Suppliername) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + txtdate.Text + "','" + tstime.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "')"
+                    Dim query = "insert into recievestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyRecieved,dateRecieved,time,Recievedby,itemcat,Suppliername) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + txtdate.Text + "','" + tstime.Text + "','" + My.Settings.ActiveUser + "',@itemCat,'" + cbSuppName.Text + "')"
                     cmd = New SqlCommand(query, Poscon)
                     With cmd
                         .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
@@ -113,7 +97,7 @@ Public Class frmCreateOder
                     If Poscon.State = ConnectionState.Closed Then
                         Poscon.Open()
                     End If
-                    Dim query = "update StockMast set Prodqty = '" & gvStockBatch.Rows(k).Cells(4).Value & "' where Prodcode= " & gvStockBatch.Rows(k).Cells(6).Value & ""
+                    Dim query = "update StockMast set Prodqty = '" & gvStockBatch.Rows(k).Cells(4).Value & "' where Prodcode= '" & gvStockBatch.Rows(k).Cells(6).Value & "'"
                     cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()
 
@@ -158,7 +142,7 @@ Public Class frmCreateOder
             Next
             lblTotal.Text = sum
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -192,7 +176,7 @@ Public Class frmCreateOder
             txtPackVolume.Text = pckvol
             txtQtyRecieved.Focus()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -207,7 +191,7 @@ Public Class frmCreateOder
                 reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%' and ProdCat = '" + cbCatSort.Text + "'", gvStockBf)
             End If
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
 
     End Sub
@@ -245,7 +229,7 @@ Public Class frmCreateOder
             Dim newbal = Val(lblOldBal.Text) + Val(lblTotal.Text)
             lblNewBal.Text = newbal
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -276,7 +260,7 @@ Public Class frmCreateOder
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-            Dim query = "insert into Supplieroder (oderno,ItemName,Price,Amount,QtyOdered,dateodered,Oderedby,itemcat,SupplierName,SupplierID,PackVolume,qtyrecieved,narration,Prodcode,total) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@qtyodered,'" + txtdate.Text + "','" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + "0" + "','" + txtNarration.Text + "','" + gvStockBatch.Rows(i).Cells(6).Value + "','" + lblTotal.Text + "')"
+            Dim query = "insert into Supplieroder (oderno,ItemName,Price,Amount,QtyOdered,dateodered,Oderedby,itemcat,SupplierName,SupplierID,PackVolume,qtyrecieved,narration,Prodcode,total) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@qtyodered,'" + txtdate.Text + "','" + My.Settings.ActiveUser + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packvolume,'" + "0" + "','" + txtNarration.Text + "','" + gvStockBatch.Rows(i).Cells(6).Value + "','" + lblTotal.Text + "')"
             cmd = New SqlCommand(query, Poscon)
                 With cmd
                     .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
@@ -291,7 +275,7 @@ Public Class frmCreateOder
 
                 End With
             Next
-        create("insert into supplieroderconfig(oderno,oderTotal,oderbalance,oderdate,oderedby,Suppliername,supplierid,narration) values('" + txtinvoiceno.Text + "','" + lblTotal.Text + "','" + lblTotal.Text + "','" + txtdate.Text + "','" + tsuser.Text + "','" + cbSuppName.Text + "','" + lblCustNo.Text + "','" + txtNarration.Text + "')")
+        create("insert into supplieroderconfig(oderno,oderTotal,oderbalance,oderdate,oderedby,Suppliername,supplierid,narration) values('" + txtinvoiceno.Text + "','" + lblTotal.Text + "','" + lblTotal.Text + "','" + txtdate.Text + "','" + My.Settings.ActiveUser + "','" + cbSuppName.Text + "','" + lblCustNo.Text + "','" + txtNarration.Text + "')")
 
         'If Poscon.State = ConnectionState.Closed Then
         '    Poscon.Open()
@@ -318,15 +302,14 @@ Public Class frmCreateOder
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
-        cmd = New SqlCommand("select max(distinct oderno) from supplieroder", Poscon)
+        cmd = New SqlCommand("select max(oderno) from supplieroder", Poscon)
         result = cmd.ExecuteScalar.ToString
 
         If String.IsNullOrEmpty(result) Then
-            MsgBox(result)
+            'MsgBox(result)
             result = "ORD0001"
             txtinvoiceno.Text = result
         Else
-            MsgBox(result)
             result = result.Substring(3)
             Int32.TryParse(result, digit)
             digit = digit + 1
@@ -385,17 +368,8 @@ Public Class frmCreateOder
         Suppliers(cbSuppName.Text)
     End Sub
     Sub Sort(valuetosearch As String)
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim query = "select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where ProdCat like '%" + valuetosearch + "%'"
-        cmd = New SqlCommand(query, Poscon)
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim table As New DataTable()
-        adapter.Fill(table)
-        gvStockBf.DataSource = table
-        Poscon.Close()
 
+        reload("select ProdName,ProdQty,ProdCat,packprice,Prodcode,packsize,baseqty from StockMast where ProdCat like '%" + valuetosearch + "%'", gvStockBf)
     End Sub
 
     Private Sub BunifuThinButton24_Click(sender As Object, e As EventArgs) Handles BunifuThinButton24.Click
@@ -479,7 +453,7 @@ Public Class frmCreateOder
             da.Dispose()
             Poscon.Close()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Private Sub BunifuThinButton26_Click(sender As Object, e As EventArgs) Handles BunifuThinButton26.Click
@@ -500,60 +474,20 @@ Public Class frmCreateOder
         Timer1.Enabled = True
         Display()
         Try
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            cbSearchItem.Items.Clear()
-            Dim sql = "select * from Stockmast"
-            cmd = New SqlCommand(sql, Poscon)
-            dr = cmd.ExecuteReader
-            While dr.Read
-                cbSearchItem.Items.Add(dr(1))
-            End While
-            Poscon.Close()
 
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            cbSuppName.Items.Clear()
-            Dim query = ("select * from Supplier")
-            cmd = New SqlCommand(query, Poscon)
-            dr = cmd.ExecuteReader
-            While dr.Read
-                cbSuppName.Items.Add(dr(1))
-            End While
-            Poscon.Close()
+            ComboFeed("select * from Stockmast", cbSearchItem, 1)
 
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            cbCatSort.Items.Clear()
-            Dim sqll = "select category from Category"
-            cmd = New SqlCommand(sqll, Poscon)
-            dr = cmd.ExecuteReader
-            While dr.Read
-                cbCatSort.Items.Add(dr(0))
-            End While
-            Poscon.Close()
+            ComboFeed("select * from Supplier", cbSuppName, 1)
 
-            If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
-            cbCatSort.Items.Clear()
-            Dim pli = "select productline from productline"
-            cmd = New SqlCommand(pli, Poscon)
-            dr = cmd.ExecuteReader
-            While dr.Read
-                cbCatSort.Items.Add(dr(0))
-            End While
-            Poscon.Close()
+            ComboFeed("select distinct prodcat from stockmast", cbCatSort, 0)
 
+            ComboFeed("select distinct prodline from stockmast", cbProdlineSort, 0)
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
         cbSuppName.SelectedItem = -1
         cbSearchItem.Focus()
-        txtdate.Text = Date.Now.ToString("dd-MMM-yy")
+        txtdate.Text = Date.Now.ToString("dd/MMM/yy")
         'Newshowconfig()
     End Sub
 End Class

@@ -94,7 +94,7 @@ Public Class frmProdCreate
             Poscon.Close()
 
         Catch ex As Exception
-            'MsgBox(ex.ToString)
+            'msgbox(ex.message)
         End Try
 
 
@@ -120,13 +120,13 @@ Public Class frmProdCreate
             Poscon.Close()
 
         Catch ex As Exception
-            'MsgBox(ex.ToString)
+            'msgbox(ex.message)
         End Try
 
 
     End Sub
     Private Sub Display()
-
+        cbItemtype.SelectedIndex = 0
         reload("select * from StockMast ORDER BY Prodname asc", gvStockMastBf)
         ComboFeed("select distinct prodline from stockmast where prodline IS NOT NULL ORDER BY Prodline asc", cbProdLine, 0)
         ComboFeed("select distinct prodsize from stockmast where prodsize IS NOT NULL ORDER BY Prodsize asc", cbSize, 0)
@@ -237,7 +237,7 @@ Public Class frmProdCreate
     End Sub
 
     Private Sub txtStockCode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtStockCode.KeyPress
-        If Not Char.IsNumber(e.KeyChar) And Not e.KeyChar = Chr(Keys.Delete) And Not e.KeyChar = Chr(Keys.Back) And Not e.KeyChar = Chr(Keys.Space) Then
+        If Not Char.IsNumber(e.KeyChar) And Not e.KeyChar = Chr(Keys.Delete) And Not e.KeyChar = Chr(Keys.Back) And Not e.KeyChar = Chr(Keys.Space) Or cbItemCodeType.SelectedIndex = 1 Then
             e.Handled = True
             MsgBox("This field will accept numbers only")
         End If
@@ -260,13 +260,15 @@ Public Class frmProdCreate
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-
+        If cbItemCodeType.SelectedIndex = 1 Then
+            Newshowconfig()
+        End If
         If Poscon.State = ConnectionState.Closed Then
-                Poscon.Open()
-            End If
+            Poscon.Open()
+        End If
 
-            Dim qu = "select * from Stockmast where ProdName= '" + txtProdName.Text + "' and ItemName='" + txtItemName.Text + "' and ProdCat='" + cbCat.Text + "' "
-            cmd = New SqlCommand(qu, Poscon)
+        Dim qu = "select * from Stockmast where ProdName= '" + txtProdName.Text + "' and ItemName='" + txtItemName.Text + "' and ProdCat='" + cbCat.Text + "' "
+        cmd = New SqlCommand(qu, Poscon)
             dr = cmd.ExecuteReader
             If (dr.Read = True) Then
                 MsgBox("Item Name already exists")
@@ -277,33 +279,34 @@ Public Class frmProdCreate
             End If
 
             Try
-                dr.Close()
+            'dr.Close()
 
-                If Poscon.State = ConnectionState.Closed Then
+            If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-
-                Dim sql = "select * from StockMast where ProdCode like '%" + txtStockCode.Text + "%'"
-                cmd = New SqlCommand(sql, Poscon)
+            dr.Close()
+            Dim sql = "select * from StockMast where ProdCode = '" & txtStockCode.Text & "'"
+            cmd = New SqlCommand(sql, Poscon)
                 da = New SqlDataAdapter(cmd)
                 tbl = New DataTable()
                 da.Fill(tbl)
-                ' If (txtItemName.Text + " " + cbColour.Text + " " + cbUnique.Text + " " + cbSize.Text) = table.Rows(0)(1).ToString Then
-                'MsgBox("Item Name Alredy exists")
+            ' If (txtItemName.Text + " " + cbColour.Text + " " + cbUnique.Text + " " + cbSize.Text) = table.Rows(0)(1).ToString Then
+            'MsgBox("Item Name Alredy exists")
 
-                'Display()
-                'clear()
-                'Exit Sub
-                'End If
-                If tbl.Rows.Count() = 0 Then
+            'Display()
+            'clear()
+            'Exit Sub
+            'End If
 
-                    create("insert into stockmast(prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyReminder,distributorprice,packsize,baseqty,Packprice,costprice) values('" & txtStockCode.Text & "','" + txtProdName.Text + "','" + cbProdLine.Text + "','" & cbSize.Text & "','" & cbColour.Text & "','" & cbCat.Text & "','" & txtQty.Text & "','" & txtRPrice.Text & "','" & txtWPrice.Text & "','" & txtItemName.Text & "','" & cbbrandName.Text & "','" & cbUnique.Text & "','" & txtLeastQty.Text & "','" & txtWPrice.Text & "','" & txtpacksize.Text & "','" & txtbaseqty.Text & "','" & txtpackprice.Text & "','" & txtCPrice.Text & "')")
+            If tbl.Rows.Count() = 0 Then
 
-                End If
+                create("insert into stockmast(prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyReminder,distributorprice,packsize,baseqty,Packprice,costprice,prodtype) values('" & txtStockCode.Text & "','" + txtProdName.Text + "','" + cbProdLine.Text + "','" & cbSize.Text & "','" & cbColour.Text & "','" & cbCat.Text & "','" & txtQty.Text & "','" & txtRPrice.Text & "','" & txtWPrice.Text & "','" & txtItemName.Text & "','" & cbbrandName.Text & "','" & cbUnique.Text & "','" & txtLeastQty.Text & "','" & txtWPrice.Text & "','" & txtpacksize.Text & "','" & txtbaseqty.Text & "','" & txtpackprice.Text & "','" & txtCPrice.Text & "','" & cbItemtype.Text & "')")
+
+            End If
             Catch ex As Exception
-                MsgBox(ex.ToString)
+            MsgBox(ex.Message)
 
-            End Try
+        End Try
 
 
         Display()
@@ -345,7 +348,7 @@ Public Class frmProdCreate
             Dim row As DataGridViewRow = gvStockMastBf.Rows(e.RowIndex)
             'txtItemName.Text = row.Cells(0).Value.ToString()
             txtProdName.Text = row.Cells(1).Value.ToString()
-            txtRPrice.Text = row.Cells(7).Value.ToString()
+            'txtRPrice.Text = row.Cells(7).Value.ToString()
             txtStockCode.Text = row.Cells(0).Value.ToString()
             txtQty.Text = row.Cells(6).Value.ToString()
             cbProdLine.Text = row.Cells(2).Value.ToString()
@@ -358,10 +361,10 @@ Public Class frmProdCreate
             cbUnique.Text = row.Cells(12).Value.ToString()
             cbProdLine.Text = row.Cells(2).Value.ToString()
             txtbaseqty.Text = row.Cells(16).Value.ToString()
-            txtpackprice.Text = row.Cells(17).Value.ToString()
+            'txtpackprice.Text = row.Cells(17).Value.ToString()
             txtpacksize.Text = row.Cells(15).Value.ToString()
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
