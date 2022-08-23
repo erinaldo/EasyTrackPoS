@@ -10,6 +10,7 @@ Public Class frmTouchSale
     Dim dt As New dsSalesTranx
     Dim ds As New dsTouchReciepts
     Dim tbl As New DataTable
+    Dim deleteoderno As String
 
     Sub LoadCatbtn()
         flbtnCat.AutoScroll = True
@@ -31,7 +32,7 @@ Public Class frmTouchSale
             Button.BackColor = Color.FromArgb(128, 128, 255)
             Button.ForeColor = Color.White
             'Button.Font = New Font(Button.Font.FontFamily, 14)
-            Button.Font = New Font("Segoe UI", 13, FontStyle.Bold)
+            Button.Font = New Font("Segoe UI", 10, FontStyle.Bold)
             ' Button.Font = System.Drawing.Font("Marlett", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
 
 
@@ -106,8 +107,8 @@ Public Class frmTouchSale
         ShowConfig()
         OnloadActivity()
         ShowOderNo()
-        btnSell.Visible = False
-        btnOder.Visible = True
+        'btnSell.Visible = False
+        'btnOder.Visible = True
         display()
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
@@ -183,6 +184,7 @@ Public Class frmTouchSale
                     lblActualStock.Text = dr.Item("ProdQty")
                     txtPrice.Text = dr.Item("RetailPrice").ToString
                 End While
+                dr.Close()
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -237,6 +239,12 @@ Public Class frmTouchSale
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles btnOder.Click
         If lblOderSale.Text <> "odersale" Then
             Update_Oder()
+            Clear()
+            gvtouchsale.Rows.Clear()
+            lblOderSale.Text = "odersale"
+            btnOder.ForeColor = Color.Blue
+            btnOder.ButtonText = "ODER"
+
             Exit Sub
         Else
             If cbwaiter.Text = "" Then
@@ -247,6 +255,8 @@ Public Class frmTouchSale
                 Oderdetails()
                 gvtouchsale.Rows.Clear()
 
+                printoder()
+
                 LoadOder()
                 DisplayOders()
                 ShowOderNo()
@@ -254,13 +264,24 @@ Public Class frmTouchSale
             End If
         End If
 
+        lblOderSale.Text = "odersale"
+    End Sub
+    Sub printoder()
+        ds.Tables("OderReciept").Rows.Clear()
+
+        For Each row As DataGridViewRow In gvtouchsale.Rows
+            ds.Tables("OderReciept").Rows.Add(row.Cells(1).Value, row.Cells(2).Value, row.Cells(3).Value)
+        Next
+        Dim report As New rptOderReciept
+        report.SetDataSource(ds)
+        If ckprint.Checked = True Then
+            report.PrintToPrinter(1, True, 0, 0)
+        End If
 
     End Sub
 
     Private Sub Guna2PictureBox1_Click(sender As Object, e As EventArgs) Handles Guna2PictureBox1.Click
         Me.Hide()
-        Application.Exit()
-
     End Sub
     Public Sub Update_Oder()
         create("delete from odertranx where oderno='" + lblOderSale.Text + "'")
@@ -309,7 +330,7 @@ Public Class frmTouchSale
         'Next
 
         lblOderSale.Text = "odersale"
-        MsgBox("Oder Updated Succefull")
+        'MsgBox("Oder Updated Succefull")
         LoadOder()
     End Sub
     Sub LoadOder()
@@ -376,7 +397,7 @@ Public Class frmTouchSale
         cmd = New SqlCommand(sql, Poscon)
         cmd.ExecuteNonQuery()
         Poscon.Close()
-        MsgBox("Oder Successful")
+        'MsgBox("Oder Successful")
         'gvtouchsale.Rows.Clear()
         'Clear()
         LoadOder()
@@ -387,7 +408,7 @@ Public Class frmTouchSale
         End If
         For Each row As DataGridViewRow In gvtouchsale.Rows
             'create("insert into odertranx (OderNo,ItemCode,ItemName,Price,Oderqty,OderAmt,DayOderNo,OderStatus,Category,Prodline,WaiterName) values('" + lblOderNo.Text + "',@ItemCode,@ItemName,@Price,@Oderqty,@OderAmt,'" + lblDayOder.Text + "',@Oderstatus,@Category,@Prodline,'" + cbWaiter.Text + "') ON DUPLICATE KEY update ItemCode=@itemcodeu,ItemName=@itemnameu,Price=@priceu,Oderqty=@oderqtyu,OderAmt=@oderamtu,OderStatus=@oderstatusu,Category=@categoryu,Prodline=@prodlineu,WaiterName='" + cbWaiter.Text + "' where Oderno=@dayoderno")
-            Dim qu = "insert into odertranx (OderNo,ItemCode,ItemName,Price,Oderqty,OderAmt,DayOderNo,OderStatus,Category,Prodline,WaiterName,oderdate) values('" + lblOderNo.Text + "',@ItemCode,@ItemName,@Price,@Oderqty,@OderAmt,'" + lblDayOder.Text + "',@Oderstatus,@Category,@Prodline,'" + cbwaiter.Text + "',convert(date,'" + Date.Now + "',105))"
+            Dim qu = "insert into odertranx (OderNo,ItemCode,ItemName,Price,Oderqty,OderAmt,DayOderNo,OderStatus,Category,Prodline,WaiterName,oderdate,buyername,buyerlocation,buyertel) values('" + lblOderNo.Text + "',@ItemCode,@ItemName,@Price,@Oderqty,@OderAmt,'" + lblDayOder.Text + "',@Oderstatus,@Category,@Prodline,'" + cbwaiter.Text + "',convert(date,'" + Date.Now + "',105),'" + txtBuyerName.Text + "','" & txtBuyerTel.Text & "','" & cbLocation.Text & "')"
             'ON DUPLICATE KEY update ItemCode=@itemcodeu,ItemName=@itemnameu,Price=@priceu,Oderqty=@oderqtyu,OderAmt=@oderamtu,OderStatus=@oderstatusu,Category=@categoryu,Prodline=@prodlineu,WaiterName='" + cbWaiter.Text + "' where Oderno=@dayoderno"
             cmd = New SqlCommand(qu, Poscon)
             With cmd
@@ -400,6 +421,8 @@ Public Class frmTouchSale
                 .Parameters.AddWithValue("@OderStatus", "Pending")
                 .Parameters.AddWithValue("@Category", row.Cells(7).Value)
                 .Parameters.AddWithValue("@Prodline", row.Cells(8).Value)
+
+
 
                 'Update
                 '.Parameters.AddWithValue("@ItemCodeu", row.Cells(0).Value)
@@ -416,16 +439,16 @@ Public Class frmTouchSale
             End With
         Next
 
-        MsgBox("Oder Details Succefull")
+        'MsgBox("Oder Details Succefull")
         LoadOder()
     End Sub
     Sub SearchWaiters(valuetosearch As String)
         Try
 
-            If cbcreditcustname.Text = "" Then
-                reload("select * from OdersConfig where status='" + "Pending" + "'", gvOders)
-                Exit Sub
-            End If
+            'If cbcreditcustname.Text = "" Then
+            '    reload("select * from OdersConfig where status='" + "Pending" + "'", gvOders)
+            '    Exit Sub
+            'End If
             reload("select * from OdersConfig where concat(OderNo,Waiter) like '%" + valuetosearch + "%' and status='" + "Pending" + "'", gvOders)
 
 
@@ -436,7 +459,7 @@ Public Class frmTouchSale
     End Sub
     Private Sub DisplayOders()
 
-        reload("select * from OdersConfig where status='" + "Pending" + "'", gvOders)
+        reload("select distinct waitername,buyername,sum(price*oderqty) as Amount,oderno  from Odertranx where oderstatus='" + "Pending" + "' group by oderno,buyername,waitername", gvOders)
     End Sub
     Sub Clear()
         'lblDayOder.Text = ""
@@ -491,12 +514,13 @@ Public Class frmTouchSale
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim queryy = ("Select * from OderTranx where OderNo like '%" + lblOderSale.Text + "%'")
+            Dim queryy = ("Select * from OderTranx where OderNo = '" + lblOderSale.Text + "'")
             cmd = New SqlCommand(queryy, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             da.Fill(table)
             gvOderDetails.DataSource = table
+
             For Each row As DataGridViewRow In gvOderDetails.Rows
                 'dr.Close()
                 Dim query = "Select * from StockMast where Prodcode=@itemcode"
@@ -507,7 +531,11 @@ Public Class frmTouchSale
                     lblWaiter.Text = row.Cells(10).Value
                     gvtouchsale.Rows.Add(row.Cells(1).Value, row.Cells(2).Value, row.Cells(3).Value, row.Cells(4).Value, row.Cells(5).Value, row.Cells(6).Value, row.Cells(7).Value, row.Cells(8).Value, row.Cells(9).Value, lblRecieptNo.Text, dr.Item("ProdQty") - row.Cells(4).Value, dr.Item("ProdQty"), row.Cells(10).Value, row.Cells(0).Value)
                 End While
+                txtBuyerName.Text = row.Cells(13).Value
+                txtBuyerTel.Text = row.Cells(14).Value
+                cbLocation.Text = row.Cells(15).Value
             Next
+            dr.Close()
             Poscon.Close()
         Else
             Dim ask As MsgBoxResult
@@ -517,7 +545,7 @@ Public Class frmTouchSale
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim queryy = ("Select * from OderTranx where OderNo like '%" + lblOderSale.Text + "%'")
+                Dim queryy = ("Select * from OderTranx where OderNo = '" & lblOderSale.Text & "'")
                 cmd = New SqlCommand(queryy, Poscon)
                 da = New SqlDataAdapter(cmd)
                 Dim table As New DataTable()
@@ -533,6 +561,7 @@ Public Class frmTouchSale
                         lblWaiter.Text = row.Cells(10).Value
                         gvtouchsale.Rows.Add(row.Cells(1).Value, row.Cells(2).Value, row.Cells(3).Value, row.Cells(4).Value, row.Cells(5).Value, row.Cells(6).Value, row.Cells(7).Value, row.Cells(8).Value, row.Cells(9).Value, lblRecieptNo.Text, dr.Item("ProdQty") - row.Cells(4).Value, dr.Item("ProdQty"), row.Cells(10).Value, row.Cells(0).Value)
                     End While
+                    dr.Close()
                 Next
                 Poscon.Close()
             Else
@@ -546,13 +575,15 @@ Public Class frmTouchSale
         Try
             Dim row As DataGridViewRow = gvOders.Rows(e.RowIndex)
 
+            deleteoderno = row.Cells(3).Value.ToString()
             lblOderSale.Text = row.Cells(3).Value.ToString()
             lbldayodersale.Text = row.Cells(0).Value.ToString()
             cbwaiter.Text = row.Cells(2).Value.ToString()
+
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            Dim queryy = ("Select * from OderTranx where OderNo like '%" + lblOderSale.Text + "%'")
+            Dim queryy = ("Select * from OderTranx where OderNo = '" & lblOderSale.Text & "'")
             cmd = New SqlCommand(queryy, Poscon)
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable
@@ -561,9 +592,10 @@ Public Class frmTouchSale
             If tbl.Rows.Count = 0 Then
 
                 MsgBox("Empty Oder. Reoder!")
-                create("delete from odersconfig where oderno='" + lblOderSale.Text + "'")
-
+                create("delete from odersconfig where oderno='" & deleteoderno & "'")
+                DisplayOders()
                 'Clear()
+                lblOderSale.Text = "odersale"
             End If
             'LoadOderSale()
         Catch ex As Exception
@@ -744,7 +776,7 @@ Public Class frmTouchSale
                     Next
 
 
-                    MsgBox("StockMast Updated")
+                    'MsgBox("StockMast Updated")
                     lblTotal.Text = ""
                     Clear()
                     gvtouchsale.Rows.Clear()
@@ -821,7 +853,7 @@ Public Class frmTouchSale
                         End With
 
 
-                        MsgBox("Customer Updated")
+                        'MsgBox("Customer Updated")
                         Poscon.Close()
 
                         For k = 0 To gvtouchsale.RowCount - 1
@@ -842,7 +874,7 @@ Public Class frmTouchSale
                         Poscon.Close()
 
                         ShowConfig()
-                        MsgBox("StockMast Updated")
+                        'MsgBox("StockMast Updated")
                         frmSalesReciept.Show()
 
                         gvtouchsale.Rows.Clear()
@@ -906,12 +938,16 @@ Public Class frmTouchSale
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         lbltime.Text = Date.Now.ToString("hh:mm:ss")
-        lbldate.Text = Date.Now.ToString("dd-MMM-yy")
+        lbldate.Text = Date.Now.ToString("dd/MMM/yy")
     End Sub
 
     Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click, BunifuThinButton23.Click
         gvtouchsale.Rows.Clear()
         lblOderSale.Text = "odersale"
+        If lblOderSale.Text = "odersale" Then
+            btnOder.ForeColor = Color.Blue
+            btnOder.ButtonText = "ODER"
+        End If
     End Sub
 
     Private Sub Guna2PictureBox2_Click(sender As Object, e As EventArgs) Handles Guna2PictureBox2.Click
@@ -949,30 +985,31 @@ Public Class frmTouchSale
                     create("insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,waiter,amountpayable) values('" & row.Cells(0).Value & "','" & row.Cells(1).Value & "','" & row.Cells(8).Value & "','" & row.Cells(7).Value & "','" & row.Cells(3).Value & "','" & lbldate.Text & "','" & lbltime.Text & "','" & txtBuyerName.Text & "','" & txtBuyerTel.Text & "','" & cbLocation.Text & "','" & row.Cells(10).Value & "','" & row.Cells(2).Value & "','" & cbSaleType.Text & "','" & cbcreditcustname.Text & "','" & row.Cells(4).Value & "','" + tsUser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "','" + cbwaiter.Text + "','" & lblTotal.Text & "')")
                     create("update StockMast set prodqty = prodqty - '" & row.Cells(3).Value & "' where Prodcode= '" & row.Cells(0).Value & "'")
                 Next
-                MsgBox("Record Saved")
+                'MsgBox("Record Saved")
 
             Finally
                 RollReciept(lblRecieptNo.Text)
-                MsgBox("Sale Complete")
+                'MsgBox("Sale Complete")
 
                 'Odersaleno.Text = gvtouchsale.Rows(k).Cells(5).Value
                 If lblOderSale.Text <> "odersale" Then
                     Dim oderstatus As String = "sold"
                     create("update OdersConfig set status='" + oderstatus + "' where OderNo= '" & lblOderSale.Text & "' ")
-                    create("update Odertranx set OderStatus = '" + oderstatus + "' where DayoderNo =" + lblOderSale.Text + "")
 
-                    MsgBox("Oder Status Updated")
+                    create("update Odertranx set OderStatus = '" + oderstatus + "' where oderno ='" & lblOderSale.Text & "'")
+
+                    'MsgBox("Oder Status Updated")
 
 
                 End If
 
                 DisplayOders()
-                MsgBox("StockMast Updated")
+                'MsgBox("StockMast Updated")
                 lblTotal.Text = ""
                 Clear()
                 gvtouchsale.Rows.Clear()
                 DisplayOders()
-                frmTouchSale_Load(Nothing, Nothing)
+                'frmTouchSale_Load(Nothing, Nothing)
 
             End Try
         End If
@@ -994,22 +1031,22 @@ Public Class frmTouchSale
                 For Each row As DataGridViewRow In gvtouchsale.Rows
                     create("insert into salestranx (ItemCode,ItemName,ProdLine,ProdCat,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance) values('" & row.Cells(0).Value & "','" & row.Cells(1).Value & "','" & row.Cells(8).Value & "','" & row.Cells(7).Value & "','" & row.Cells(3).Value & "','" & lbldate.Text & "','" & lbltime.Text & "','" & txtBuyerName.Text & "','" & txtBuyerTel.Text & "','" & cbLocation.Text & "','" & row.Cells(10).Value & "','" & row.Cells(2).Value & "','" & cbSaleType.Text & "','" & cbcreditcustname.Text & "','" & row.Cells(4).Value & "','" + tsUser.Text + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "')")
                     create("update StockMast set prodqty = prodqty - '" & row.Cells(3).Value & "' where Prodcode= '" & row.Cells(0).Value & "'")
-                    MsgBox("You Reach") ''''''''''''''''''''''''''
+                    ' MsgBox("You Reach") ''''''''''''''''''''''''''
                 Next
             Finally
                 create("Insert into CustomerLedger(CustomerName,oldbal,Newbal,CreditRecieved,DateRecieved,TimeRecieved,CustomerNo)Values('" + cbcreditcustname.Text + "','" + lblOldBal.Text + "','" + lblNewBal.Text + "','" + lblTotal.Text + "','" + lbldate.Text + "','" + lbltime.Text + "','" + lblCustNo.Text + "')")
                 create("update Customer set CurrentBalance = currentbalance + '" & lblTotal.Text & "' where CustomerNo = " + lblCustNo.Text + "")
 
-                MsgBox("Customer Updated") '''''''''''''''''''''''''''''''
+                ' MsgBox("Customer Updated") '''''''''''''''''''''''''''''''
                 RollReciept(lblRecieptNo.Text)
                 ShowConfig()
-                MsgBox("StockMast Updated") '''''''''''''''''''''''''
+                'MsgBox("StockMast Updated") '''''''''''''''''''''''''
 
                 gvtouchsale.Rows.Clear()
                 lblTotal.Text = ""
                 Clear()
                 DisplayOders()
-                frmTouchSale_Load(Nothing, Nothing)
+                'frmTouchSale_Load(Nothing, Nothing)
             End Try
         End If
         'If cbSaleType.Text = "" Or cbSaleType.Text = "Credit Sale" Then
@@ -1024,6 +1061,7 @@ Public Class frmTouchSale
         'End Try
 
         ShowConfig()
+        lblOderSale.Text = "odersale"
     End Sub
 
     Sub RollReciept(valuetosearch As String)
@@ -1072,9 +1110,11 @@ Public Class frmTouchSale
             'lblOderNo.Text = row.Cells(0).Value.ToString()
             lblOderSale.Text = row.Cells(3).Value.ToString()
             lbldayodersale.Text = row.Cells(0).Value.ToString()
+            btnOder.ButtonText = "Add to Oder"
+            btnOder.ForeColor = Color.Red
             LoadOderSale()
-            btnSell.Visible = True
-            btnOder.Visible = False
+            'btnSell.Visible = True
+            'btnOder.Visible = False
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -1096,6 +1136,9 @@ Public Class frmTouchSale
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        If gvtouchsale.Rows.Count = 0 Then
+
+        End If
         If txtPrice.Text = "" Then
             MsgBox("Select an item to sell")
             Exit Sub
@@ -1127,6 +1170,10 @@ Public Class frmTouchSale
         txtQty.Text = ""
         txtPrice.Text = ""
         txtAmt.Text = ""
+        If lblOderSale.Text = "odersale" Then
+            btnOder.ForeColor = Color.Blue
+            btnOder.ButtonText = "ODER"
+        End If
     End Sub
 
     Private Sub txtQty_KeyUp(sender As Object, e As KeyEventArgs) Handles txtQty.KeyUp
@@ -1138,32 +1185,32 @@ Public Class frmTouchSale
     End Sub
 
     Private Sub ckDirectsale_CheckedChanged(sender As Object, e As Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs)
-        If ckDirectsale.Checked = True Then
-            btnSell.Visible = False
-            btnOder.Visible = True
-        Else
-            btnSell.Visible = True
-            btnOder.Visible = False
-        End If
+        'If ckDirectsale.Checked = True Then
+        '    btnSell.Visible = False
+        '    btnOder.Visible = True
+        'Else
+        '    btnSell.Visible = True
+        '    btnOder.Visible = False
+        'End If
     End Sub
 
     Private Sub Label8_Click(sender As Object, e As EventArgs)
-        btnSell.Visible = True
-        btnOder.Visible = False
+        'btnSell.Visible = True
+        'btnOder.Visible = False
     End Sub
 
-    Private Sub ckdirectsale_CheckedChanged(sender As Object, e As EventArgs) Handles ckdirectsale.CheckedChanged
-        If ckdirectsale.Checked = True Then
-            btnSell.Visible = True
-            btnOder.Visible = False
-        Else
-            btnSell.Visible = False
-            btnOder.Visible = True
-        End If
+    Private Sub ckdirectsale_CheckedChanged(sender As Object, e As EventArgs)
+        'If ckdirectsale.Checked = True Then
+        '    btnSell.Visible = True
+        '    btnOder.Visible = False
+        'Else
+        '    btnSell.Visible = False
+        '    btnOder.Visible = True
+        'End If
     End Sub
 
     Private Sub txtQty_Enter(sender As Object, e As EventArgs) Handles txtQty.Enter
-        System.Diagnostics.Process.Start("osk.exe")
+        'System.Diagnostics.Process.Start("osk.exe")
     End Sub
 
     Private Sub txtQty_Leave(sender As Object, e As EventArgs) Handles txtQty.Leave
@@ -1234,4 +1281,16 @@ Public Class frmTouchSale
     Private Sub Label14_Click(sender As Object, e As EventArgs) Handles Label14.Click
         frmMain.Show()
     End Sub
+
+    Private Sub gvtouchsale_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles gvtouchsale.UserDeletedRow
+        If gvtouchsale.Rows.Count = 0 Then
+            lblOderSale.Text = "odersale"
+            If lblOderSale.Text = "odersale" Then
+                btnOder.ForeColor = Color.Blue
+                btnOder.ButtonText = "ODER"
+            End If
+        End If
+    End Sub
+
+
 End Class

@@ -101,22 +101,6 @@ Partial Class frmSales
         Me.BunifuThinButton25 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.BunifuThinButton22 = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.gvSales = New Bunifu.UI.WinForms.BunifuDataGridView()
-        Me.ProdName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Price = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Amount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Size = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdLine = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NewStock = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RecieptNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Discount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DiscAmt = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AmtPayable = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DiscSyb = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Colour = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OldQty = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.cbSaleslist = New System.Windows.Forms.ComboBox()
@@ -162,6 +146,23 @@ Partial Class frmSales
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblProformaInvoice = New System.Windows.Forms.Label()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.ProdName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Price = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Amount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Size = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdLine = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NewStock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RecieptNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Discount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiscAmt = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AmtPayable = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiscSyb = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Colour = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OldQty = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
@@ -782,8 +783,7 @@ Partial Class frmSales
         Me.gvStock.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.gvStock.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.gvStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.gvStock.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.gvStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.gvStock.BackgroundColor = System.Drawing.Color.White
         Me.gvStock.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvStock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
@@ -1062,7 +1062,7 @@ Partial Class frmSales
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.gvSales.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.gvSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gvSales.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProdName, Me.Quantity, Me.Price, Me.Amount, Me.Category, Me.ProdCode, Me.Size, Me.ProdLine, Me.NewStock, Me.RecieptNumber, Me.Discount, Me.DiscAmt, Me.AmtPayable, Me.DiscSyb, Me.Colour, Me.OldQty})
+        Me.gvSales.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProdName, Me.Quantity, Me.Price, Me.Amount, Me.Category, Me.ProdCode, Me.Size, Me.ProdLine, Me.NewStock, Me.RecieptNumber, Me.Discount, Me.DiscAmt, Me.AmtPayable, Me.DiscSyb, Me.Colour, Me.OldQty, Me.Column1})
         Me.gvSales.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.gvSales.CurrentTheme.AlternatingRowsStyle.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold)
         Me.gvSales.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black
@@ -1103,118 +1103,6 @@ Partial Class frmSales
         Me.gvSales.Size = New System.Drawing.Size(569, 349)
         Me.gvSales.TabIndex = 132
         Me.gvSales.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
-        '
-        'ProdName
-        '
-        Me.ProdName.HeaderText = "ProdName"
-        Me.ProdName.Name = "ProdName"
-        Me.ProdName.ReadOnly = True
-        Me.ProdName.Width = 99
-        '
-        'Quantity
-        '
-        Me.Quantity.HeaderText = "Qty"
-        Me.Quantity.Name = "Quantity"
-        Me.Quantity.ReadOnly = True
-        Me.Quantity.Width = 54
-        '
-        'Price
-        '
-        Me.Price.HeaderText = "Price"
-        Me.Price.Name = "Price"
-        Me.Price.ReadOnly = True
-        Me.Price.Width = 63
-        '
-        'Amount
-        '
-        Me.Amount.HeaderText = "Amount"
-        Me.Amount.Name = "Amount"
-        Me.Amount.ReadOnly = True
-        Me.Amount.Width = 81
-        '
-        'Category
-        '
-        Me.Category.HeaderText = "Category"
-        Me.Category.Name = "Category"
-        Me.Category.ReadOnly = True
-        Me.Category.Width = 92
-        '
-        'ProdCode
-        '
-        Me.ProdCode.HeaderText = "ProdCode"
-        Me.ProdCode.Name = "ProdCode"
-        Me.ProdCode.ReadOnly = True
-        Me.ProdCode.Width = 95
-        '
-        'Size
-        '
-        Me.Size.HeaderText = "Size"
-        Me.Size.Name = "Size"
-        Me.Size.ReadOnly = True
-        Me.Size.Width = 56
-        '
-        'ProdLine
-        '
-        Me.ProdLine.HeaderText = "ProdLine"
-        Me.ProdLine.Name = "ProdLine"
-        Me.ProdLine.ReadOnly = True
-        Me.ProdLine.Width = 86
-        '
-        'NewStock
-        '
-        Me.NewStock.HeaderText = "NewStock"
-        Me.NewStock.Name = "NewStock"
-        Me.NewStock.ReadOnly = True
-        Me.NewStock.Width = 94
-        '
-        'RecieptNumber
-        '
-        Me.RecieptNumber.HeaderText = "RecieptNo"
-        Me.RecieptNumber.Name = "RecieptNumber"
-        Me.RecieptNumber.ReadOnly = True
-        Me.RecieptNumber.Width = 98
-        '
-        'Discount
-        '
-        Me.Discount.HeaderText = "Discount"
-        Me.Discount.Name = "Discount"
-        Me.Discount.ReadOnly = True
-        Me.Discount.Width = 86
-        '
-        'DiscAmt
-        '
-        Me.DiscAmt.HeaderText = "DiscountAmt"
-        Me.DiscAmt.Name = "DiscAmt"
-        Me.DiscAmt.ReadOnly = True
-        Me.DiscAmt.Width = 112
-        '
-        'AmtPayable
-        '
-        Me.AmtPayable.HeaderText = "AmtPayable"
-        Me.AmtPayable.Name = "AmtPayable"
-        Me.AmtPayable.ReadOnly = True
-        Me.AmtPayable.Width = 111
-        '
-        'DiscSyb
-        '
-        Me.DiscSyb.HeaderText = "DiscSyb"
-        Me.DiscSyb.Name = "DiscSyb"
-        Me.DiscSyb.ReadOnly = True
-        Me.DiscSyb.Width = 82
-        '
-        'Colour
-        '
-        Me.Colour.HeaderText = "Colour"
-        Me.Colour.Name = "Colour"
-        Me.Colour.ReadOnly = True
-        Me.Colour.Width = 74
-        '
-        'OldQty
-        '
-        Me.OldQty.HeaderText = "oldQty"
-        Me.OldQty.Name = "OldQty"
-        Me.OldQty.ReadOnly = True
-        Me.OldQty.Width = 75
         '
         'GroupBox2
         '
@@ -2117,6 +2005,125 @@ Partial Class frmSales
         Me.NotifyIcon1.Text = "Stock Check"
         Me.NotifyIcon1.Visible = True
         '
+        'ProdName
+        '
+        Me.ProdName.HeaderText = "ProdName"
+        Me.ProdName.Name = "ProdName"
+        Me.ProdName.ReadOnly = True
+        Me.ProdName.Width = 99
+        '
+        'Quantity
+        '
+        Me.Quantity.HeaderText = "Qty"
+        Me.Quantity.Name = "Quantity"
+        Me.Quantity.ReadOnly = True
+        Me.Quantity.Width = 54
+        '
+        'Price
+        '
+        Me.Price.HeaderText = "Price"
+        Me.Price.Name = "Price"
+        Me.Price.ReadOnly = True
+        Me.Price.Width = 63
+        '
+        'Amount
+        '
+        Me.Amount.HeaderText = "Amount"
+        Me.Amount.Name = "Amount"
+        Me.Amount.ReadOnly = True
+        Me.Amount.Width = 81
+        '
+        'Category
+        '
+        Me.Category.HeaderText = "Category"
+        Me.Category.Name = "Category"
+        Me.Category.ReadOnly = True
+        Me.Category.Width = 92
+        '
+        'ProdCode
+        '
+        Me.ProdCode.HeaderText = "ProdCode"
+        Me.ProdCode.Name = "ProdCode"
+        Me.ProdCode.ReadOnly = True
+        Me.ProdCode.Width = 95
+        '
+        'Size
+        '
+        Me.Size.HeaderText = "Size"
+        Me.Size.Name = "Size"
+        Me.Size.ReadOnly = True
+        Me.Size.Width = 56
+        '
+        'ProdLine
+        '
+        Me.ProdLine.HeaderText = "ProdLine"
+        Me.ProdLine.Name = "ProdLine"
+        Me.ProdLine.ReadOnly = True
+        Me.ProdLine.Width = 86
+        '
+        'NewStock
+        '
+        Me.NewStock.HeaderText = "NewStock"
+        Me.NewStock.Name = "NewStock"
+        Me.NewStock.ReadOnly = True
+        Me.NewStock.Width = 94
+        '
+        'RecieptNumber
+        '
+        Me.RecieptNumber.HeaderText = "RecieptNo"
+        Me.RecieptNumber.Name = "RecieptNumber"
+        Me.RecieptNumber.ReadOnly = True
+        Me.RecieptNumber.Width = 98
+        '
+        'Discount
+        '
+        Me.Discount.HeaderText = "Discount"
+        Me.Discount.Name = "Discount"
+        Me.Discount.ReadOnly = True
+        Me.Discount.Width = 86
+        '
+        'DiscAmt
+        '
+        Me.DiscAmt.HeaderText = "DiscountAmt"
+        Me.DiscAmt.Name = "DiscAmt"
+        Me.DiscAmt.ReadOnly = True
+        Me.DiscAmt.Width = 112
+        '
+        'AmtPayable
+        '
+        Me.AmtPayable.HeaderText = "AmtPayable"
+        Me.AmtPayable.Name = "AmtPayable"
+        Me.AmtPayable.ReadOnly = True
+        Me.AmtPayable.Width = 111
+        '
+        'DiscSyb
+        '
+        Me.DiscSyb.HeaderText = "DiscSyb"
+        Me.DiscSyb.Name = "DiscSyb"
+        Me.DiscSyb.ReadOnly = True
+        Me.DiscSyb.Width = 82
+        '
+        'Colour
+        '
+        Me.Colour.HeaderText = "Colour"
+        Me.Colour.Name = "Colour"
+        Me.Colour.ReadOnly = True
+        Me.Colour.Width = 74
+        '
+        'OldQty
+        '
+        Me.OldQty.HeaderText = "oldQty"
+        Me.OldQty.Name = "OldQty"
+        Me.OldQty.ReadOnly = True
+        Me.OldQty.Width = 75
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Units"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 61
+        '
         'frmSales
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2257,22 +2264,6 @@ Partial Class frmSales
     Friend WithEvents Label28 As Label
     Friend WithEvents ckA4 As Bunifu.UI.WinForms.BunifuCheckBox
     Friend WithEvents lblOPrice As Label
-    Friend WithEvents ProdName As DataGridViewTextBoxColumn
-    Friend WithEvents Quantity As DataGridViewTextBoxColumn
-    Friend WithEvents Price As DataGridViewTextBoxColumn
-    Friend WithEvents Amount As DataGridViewTextBoxColumn
-    Friend WithEvents Category As DataGridViewTextBoxColumn
-    Friend WithEvents ProdCode As DataGridViewTextBoxColumn
-    Friend WithEvents Size As DataGridViewTextBoxColumn
-    Friend WithEvents ProdLine As DataGridViewTextBoxColumn
-    Friend WithEvents NewStock As DataGridViewTextBoxColumn
-    Friend WithEvents RecieptNumber As DataGridViewTextBoxColumn
-    Friend WithEvents Discount As DataGridViewTextBoxColumn
-    Friend WithEvents DiscAmt As DataGridViewTextBoxColumn
-    Friend WithEvents AmtPayable As DataGridViewTextBoxColumn
-    Friend WithEvents DiscSyb As DataGridViewTextBoxColumn
-    Friend WithEvents Colour As DataGridViewTextBoxColumn
-    Friend WithEvents OldQty As DataGridViewTextBoxColumn
     Friend WithEvents Label31 As Label
     Friend WithEvents BunifuThinButton28 As Bunifu.Framework.UI.BunifuThinButton2
     Friend WithEvents txtReprintNo As TextBox
@@ -2297,4 +2288,21 @@ Partial Class frmSales
     Friend WithEvents lblCreditlimit As Label
     Friend WithEvents lblpayref As Label
     Friend WithEvents txtpayref As TextBox
+    Friend WithEvents ProdName As DataGridViewTextBoxColumn
+    Friend WithEvents Quantity As DataGridViewTextBoxColumn
+    Friend WithEvents Price As DataGridViewTextBoxColumn
+    Friend WithEvents Amount As DataGridViewTextBoxColumn
+    Friend WithEvents Category As DataGridViewTextBoxColumn
+    Friend WithEvents ProdCode As DataGridViewTextBoxColumn
+    Friend WithEvents Size As DataGridViewTextBoxColumn
+    Friend WithEvents ProdLine As DataGridViewTextBoxColumn
+    Friend WithEvents NewStock As DataGridViewTextBoxColumn
+    Friend WithEvents RecieptNumber As DataGridViewTextBoxColumn
+    Friend WithEvents Discount As DataGridViewTextBoxColumn
+    Friend WithEvents DiscAmt As DataGridViewTextBoxColumn
+    Friend WithEvents AmtPayable As DataGridViewTextBoxColumn
+    Friend WithEvents DiscSyb As DataGridViewTextBoxColumn
+    Friend WithEvents Colour As DataGridViewTextBoxColumn
+    Friend WithEvents OldQty As DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
 End Class

@@ -696,6 +696,7 @@ Partial Class frmMain
         Me.btnaccmenu.TextMarginLeft = 0
         Me.btnaccmenu.TextPadding = New System.Windows.Forms.Padding(0)
         Me.btnaccmenu.UseDefaultRadiusAndThickness = True
+        Me.btnaccmenu.Visible = False
         '
         'btnsuppmenu
         '

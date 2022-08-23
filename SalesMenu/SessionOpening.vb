@@ -69,9 +69,9 @@ Public Class frmSessionOpening
             cmd.ExecuteNonQuery()
             Poscon.Close()
             MsgBox("Session Created Succesfully")
-            'Dim f2 As New PfrmSalesMgmt
+            Dim f2 As New frmSales
             'f2.Show()
-            frmSales.Show()
+            f2.Show()
             Me.Hide()
 
             If Poscon.State = ConnectionState.Closed Then

@@ -6,7 +6,7 @@ Public Class EasyTrackSplash
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        ' Timer1.Enabled = True
+        Timer1.Enabled = True
         startProgress.Increment(1)
         Dim per As String
         per = Convert.ToString(startProgress.Value)

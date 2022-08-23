@@ -2237,6 +2237,8 @@ Partial Public Class dsSalesTranx
         
         Private columnPayRef As Global.System.Data.DataColumn
         
+        Private columnUnits As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -2521,6 +2523,14 @@ Partial Public Class dsSalesTranx
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property UnitsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUnits
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2587,9 +2597,10 @@ Partial Public Class dsSalesTranx
                     ByVal TableID As String,  _
                     ByVal CustomerType As String,  _
                     ByVal Paymode As String,  _
-                    ByVal PayRef As String) As SalesTranxRow
+                    ByVal PayRef As String,  _
+                    ByVal Units As String) As SalesTranxRow
             Dim rowSalesTranxRow As SalesTranxRow = CType(Me.NewRow,SalesTranxRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, ItemCode, ItemName, ProdLine, ProdCat, ItemSize, ItemColour, QtySold, DateSold, TimeSold, BuyerName, BuyerTel, BuyerLocation, NewStock, RetailPrice, SaleType, CredCustName, Amount, SoldBy, RecieptNo, AmtPaid, Balance, DiscountRate, DiscountAmount, TotalDiscount, AmountPayable, Waiter, TableID, CustomerType, Paymode, PayRef}
+            Dim columnValuesArray() As Object = New Object() {Nothing, ItemCode, ItemName, ProdLine, ProdCat, ItemSize, ItemColour, QtySold, DateSold, TimeSold, BuyerName, BuyerTel, BuyerLocation, NewStock, RetailPrice, SaleType, CredCustName, Amount, SoldBy, RecieptNo, AmtPaid, Balance, DiscountRate, DiscountAmount, TotalDiscount, AmountPayable, Waiter, TableID, CustomerType, Paymode, PayRef, Units}
             rowSalesTranxRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSalesTranxRow)
             Return rowSalesTranxRow
@@ -2649,6 +2660,7 @@ Partial Public Class dsSalesTranx
             Me.columnCustomerType = MyBase.Columns("CustomerType")
             Me.columnPaymode = MyBase.Columns("Paymode")
             Me.columnPayRef = MyBase.Columns("PayRef")
+            Me.columnUnits = MyBase.Columns("Units")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2716,6 +2728,8 @@ Partial Public Class dsSalesTranx
             MyBase.Columns.Add(Me.columnPaymode)
             Me.columnPayRef = New Global.System.Data.DataColumn("PayRef", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPayRef)
+            Me.columnUnits = New Global.System.Data.DataColumn("Units", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUnits)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnSalesTranxNo}, true))
             Me.columnSalesTranxNo.AutoIncrement = true
             Me.columnSalesTranxNo.AutoIncrementSeed = -1
@@ -2742,6 +2756,7 @@ Partial Public Class dsSalesTranx
             Me.columnCustomerType.MaxLength = 50
             Me.columnPaymode.MaxLength = 50
             Me.columnPayRef.MaxLength = 50
+            Me.columnUnits.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4802,6 +4817,21 @@ Partial Public Class dsSalesTranx
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Units() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSalesTranx.UnitsColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Units' in table 'SalesTranx' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSalesTranx.UnitsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsItemCodeNull() As Boolean
             Return Me.IsNull(Me.tableSalesTranx.ItemCodeColumn)
         End Function
@@ -5158,6 +5188,18 @@ Partial Public Class dsSalesTranx
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetPayRefNull()
             Me(Me.tableSalesTranx.PayRefColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsUnitsNull() As Boolean
+            Return Me.IsNull(Me.tableSalesTranx.UnitsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetUnitsNull()
+            Me(Me.tableSalesTranx.UnitsColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8314,6 +8356,7 @@ Namespace dsSalesTranxTableAdapters
             tableMapping.ColumnMappings.Add("CustomerType", "CustomerType")
             tableMapping.ColumnMappings.Add("Paymode", "Paymode")
             tableMapping.ColumnMappings.Add("PayRef", "PayRef")
+            tableMapping.ColumnMappings.Add("Units", "Units")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -8351,7 +8394,8 @@ Namespace dsSalesTranxTableAdapters
                 "al_TableID)) AND ((@IsNull_CustomerType = 1 AND [CustomerType] IS NULL) OR ([Cus"& _ 
                 "tomerType] = @Original_CustomerType)) AND ((@IsNull_Paymode = 1 AND [Paymode] IS"& _ 
                 " NULL) OR ([Paymode] = @Original_Paymode)) AND ((@IsNull_PayRef = 1 AND [PayRef]"& _ 
-                " IS NULL) OR ([PayRef] = @Original_PayRef)))"
+                " IS NULL) OR ([PayRef] = @Original_PayRef)) AND ((@IsNull_Units = 1 AND [Units] "& _ 
+                "IS NULL) OR ([Units] = @Original_Units)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SalesTranxNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesTranxNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ItemCode", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -8412,6 +8456,8 @@ Namespace dsSalesTranxTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Paymode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Paymode", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PayRef", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PayRef", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PayRef", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PayRef", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Units", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Units", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Units", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Units", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[SalesTranx] ([ItemCode], [ItemName], [ProdLine], [ProdCat], [I"& _ 
@@ -8419,16 +8465,17 @@ Namespace dsSalesTranxTableAdapters
                 "l], [BuyerLocation], [NewStock], [RetailPrice], [SaleType], [CredCustName], [Amo"& _ 
                 "unt], [SoldBy], [RecieptNo], [AmtPaid], [Balance], [DiscountRate], [DiscountAmou"& _ 
                 "nt], [TotalDiscount], [AmountPayable], [Waiter], [TableID], [CustomerType], [Pay"& _ 
-                "mode], [PayRef]) VALUES (@ItemCode, @ItemName, @ProdLine, @ProdCat, @ItemSize, @"& _ 
-                "ItemColour, @QtySold, @DateSold, @TimeSold, @BuyerName, @BuyerTel, @BuyerLocatio"& _ 
-                "n, @NewStock, @RetailPrice, @SaleType, @CredCustName, @Amount, @SoldBy, @Reciept"& _ 
-                "No, @AmtPaid, @Balance, @DiscountRate, @DiscountAmount, @TotalDiscount, @AmountP"& _ 
-                "ayable, @Waiter, @TableID, @CustomerType, @Paymode, @PayRef);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT SalesTranx"& _ 
-                "No, ItemCode, ItemName, ProdLine, ProdCat, ItemSize, ItemColour, QtySold, DateSo"& _ 
-                "ld, TimeSold, BuyerName, BuyerTel, BuyerLocation, NewStock, RetailPrice, SaleTyp"& _ 
-                "e, CredCustName, Amount, SoldBy, RecieptNo, AmtPaid, Balance, DiscountRate, Disc"& _ 
-                "ountAmount, TotalDiscount, AmountPayable, Waiter, TableID, CustomerType, Paymode"& _ 
-                ", PayRef FROM SalesTranx WHERE (SalesTranxNo = SCOPE_IDENTITY())"
+                "mode], [PayRef], [Units]) VALUES (@ItemCode, @ItemName, @ProdLine, @ProdCat, @It"& _ 
+                "emSize, @ItemColour, @QtySold, @DateSold, @TimeSold, @BuyerName, @BuyerTel, @Buy"& _ 
+                "erLocation, @NewStock, @RetailPrice, @SaleType, @CredCustName, @Amount, @SoldBy,"& _ 
+                " @RecieptNo, @AmtPaid, @Balance, @DiscountRate, @DiscountAmount, @TotalDiscount,"& _ 
+                " @AmountPayable, @Waiter, @TableID, @CustomerType, @Paymode, @PayRef, @Units);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "SELECT SalesTranxNo, ItemCode, ItemName, ProdLine, ProdCat, ItemSize, ItemColour"& _ 
+                ", QtySold, DateSold, TimeSold, BuyerName, BuyerTel, BuyerLocation, NewStock, Ret"& _ 
+                "ailPrice, SaleType, CredCustName, Amount, SoldBy, RecieptNo, AmtPaid, Balance, D"& _ 
+                "iscountRate, DiscountAmount, TotalDiscount, AmountPayable, Waiter, TableID, Cust"& _ 
+                "omerType, Paymode, PayRef, Units FROM SalesTranx WHERE (SalesTranxNo = SCOPE_IDE"& _ 
+                "NTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemCode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -8460,6 +8507,7 @@ Namespace dsSalesTranxTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CustomerType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Paymode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Paymode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PayRef", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PayRef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Units", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Units", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[SalesTranx] SET [ItemCode] = @ItemCode, [ItemName] = @ItemName, [Pr"& _ 
@@ -8471,47 +8519,48 @@ Namespace dsSalesTranxTableAdapters
                 "RecieptNo] = @RecieptNo, [AmtPaid] = @AmtPaid, [Balance] = @Balance, [DiscountRa"& _ 
                 "te] = @DiscountRate, [DiscountAmount] = @DiscountAmount, [TotalDiscount] = @Tota"& _ 
                 "lDiscount, [AmountPayable] = @AmountPayable, [Waiter] = @Waiter, [TableID] = @Ta"& _ 
-                "bleID, [CustomerType] = @CustomerType, [Paymode] = @Paymode, [PayRef] = @PayRef "& _ 
-                "WHERE (([SalesTranxNo] = @Original_SalesTranxNo) AND ((@IsNull_ItemCode = 1 AND "& _ 
-                "[ItemCode] IS NULL) OR ([ItemCode] = @Original_ItemCode)) AND ((@IsNull_ItemName"& _ 
-                " = 1 AND [ItemName] IS NULL) OR ([ItemName] = @Original_ItemName)) AND ((@IsNull"& _ 
-                "_ProdLine = 1 AND [ProdLine] IS NULL) OR ([ProdLine] = @Original_ProdLine)) AND "& _ 
-                "((@IsNull_ProdCat = 1 AND [ProdCat] IS NULL) OR ([ProdCat] = @Original_ProdCat))"& _ 
-                " AND ((@IsNull_ItemSize = 1 AND [ItemSize] IS NULL) OR ([ItemSize] = @Original_I"& _ 
-                "temSize)) AND ((@IsNull_ItemColour = 1 AND [ItemColour] IS NULL) OR ([ItemColour"& _ 
-                "] = @Original_ItemColour)) AND ((@IsNull_QtySold = 1 AND [QtySold] IS NULL) OR ("& _ 
-                "[QtySold] = @Original_QtySold)) AND ((@IsNull_DateSold = 1 AND [DateSold] IS NUL"& _ 
-                "L) OR ([DateSold] = @Original_DateSold)) AND ((@IsNull_TimeSold = 1 AND [TimeSol"& _ 
-                "d] IS NULL) OR ([TimeSold] = @Original_TimeSold)) AND ((@IsNull_BuyerName = 1 AN"& _ 
-                "D [BuyerName] IS NULL) OR ([BuyerName] = @Original_BuyerName)) AND ((@IsNull_Buy"& _ 
-                "erTel = 1 AND [BuyerTel] IS NULL) OR ([BuyerTel] = @Original_BuyerTel)) AND ((@I"& _ 
-                "sNull_BuyerLocation = 1 AND [BuyerLocation] IS NULL) OR ([BuyerLocation] = @Orig"& _ 
-                "inal_BuyerLocation)) AND ((@IsNull_NewStock = 1 AND [NewStock] IS NULL) OR ([New"& _ 
-                "Stock] = @Original_NewStock)) AND ((@IsNull_RetailPrice = 1 AND [RetailPrice] IS"& _ 
-                " NULL) OR ([RetailPrice] = @Original_RetailPrice)) AND ((@IsNull_CredCustName = "& _ 
-                "1 AND [CredCustName] IS NULL) OR ([CredCustName] = @Original_CredCustName)) AND "& _ 
-                "((@IsNull_Amount = 1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)) AND"& _ 
-                " ((@IsNull_SoldBy = 1 AND [SoldBy] IS NULL) OR ([SoldBy] = @Original_SoldBy)) AN"& _ 
-                "D ((@IsNull_RecieptNo = 1 AND [RecieptNo] IS NULL) OR ([RecieptNo] = @Original_R"& _ 
-                "ecieptNo)) AND ((@IsNull_AmtPaid = 1 AND [AmtPaid] IS NULL) OR ([AmtPaid] = @Ori"& _ 
-                "ginal_AmtPaid)) AND ((@IsNull_Balance = 1 AND [Balance] IS NULL) OR ([Balance] ="& _ 
-                " @Original_Balance)) AND ((@IsNull_DiscountRate = 1 AND [DiscountRate] IS NULL) "& _ 
-                "OR ([DiscountRate] = @Original_DiscountRate)) AND ((@IsNull_DiscountAmount = 1 A"& _ 
-                "ND [DiscountAmount] IS NULL) OR ([DiscountAmount] = @Original_DiscountAmount)) A"& _ 
-                "ND ((@IsNull_TotalDiscount = 1 AND [TotalDiscount] IS NULL) OR ([TotalDiscount] "& _ 
-                "= @Original_TotalDiscount)) AND ((@IsNull_AmountPayable = 1 AND [AmountPayable] "& _ 
-                "IS NULL) OR ([AmountPayable] = @Original_AmountPayable)) AND ((@IsNull_Waiter = "& _ 
-                "1 AND [Waiter] IS NULL) OR ([Waiter] = @Original_Waiter)) AND ((@IsNull_TableID "& _ 
-                "= 1 AND [TableID] IS NULL) OR ([TableID] = @Original_TableID)) AND ((@IsNull_Cus"& _ 
-                "tomerType = 1 AND [CustomerType] IS NULL) OR ([CustomerType] = @Original_Custome"& _ 
-                "rType)) AND ((@IsNull_Paymode = 1 AND [Paymode] IS NULL) OR ([Paymode] = @Origin"& _ 
-                "al_Paymode)) AND ((@IsNull_PayRef = 1 AND [PayRef] IS NULL) OR ([PayRef] = @Orig"& _ 
-                "inal_PayRef)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT SalesTranxNo, ItemCode, ItemName, ProdLine, ProdCat, Ite"& _ 
-                "mSize, ItemColour, QtySold, DateSold, TimeSold, BuyerName, BuyerTel, BuyerLocati"& _ 
-                "on, NewStock, RetailPrice, SaleType, CredCustName, Amount, SoldBy, RecieptNo, Am"& _ 
-                "tPaid, Balance, DiscountRate, DiscountAmount, TotalDiscount, AmountPayable, Wait"& _ 
-                "er, TableID, CustomerType, Paymode, PayRef FROM SalesTranx WHERE (SalesTranxNo ="& _ 
-                " @SalesTranxNo)"
+                "bleID, [CustomerType] = @CustomerType, [Paymode] = @Paymode, [PayRef] = @PayRef,"& _ 
+                " [Units] = @Units WHERE (([SalesTranxNo] = @Original_SalesTranxNo) AND ((@IsNull"& _ 
+                "_ItemCode = 1 AND [ItemCode] IS NULL) OR ([ItemCode] = @Original_ItemCode)) AND "& _ 
+                "((@IsNull_ItemName = 1 AND [ItemName] IS NULL) OR ([ItemName] = @Original_ItemNa"& _ 
+                "me)) AND ((@IsNull_ProdLine = 1 AND [ProdLine] IS NULL) OR ([ProdLine] = @Origin"& _ 
+                "al_ProdLine)) AND ((@IsNull_ProdCat = 1 AND [ProdCat] IS NULL) OR ([ProdCat] = @"& _ 
+                "Original_ProdCat)) AND ((@IsNull_ItemSize = 1 AND [ItemSize] IS NULL) OR ([ItemS"& _ 
+                "ize] = @Original_ItemSize)) AND ((@IsNull_ItemColour = 1 AND [ItemColour] IS NUL"& _ 
+                "L) OR ([ItemColour] = @Original_ItemColour)) AND ((@IsNull_QtySold = 1 AND [QtyS"& _ 
+                "old] IS NULL) OR ([QtySold] = @Original_QtySold)) AND ((@IsNull_DateSold = 1 AND"& _ 
+                " [DateSold] IS NULL) OR ([DateSold] = @Original_DateSold)) AND ((@IsNull_TimeSol"& _ 
+                "d = 1 AND [TimeSold] IS NULL) OR ([TimeSold] = @Original_TimeSold)) AND ((@IsNul"& _ 
+                "l_BuyerName = 1 AND [BuyerName] IS NULL) OR ([BuyerName] = @Original_BuyerName))"& _ 
+                " AND ((@IsNull_BuyerTel = 1 AND [BuyerTel] IS NULL) OR ([BuyerTel] = @Original_B"& _ 
+                "uyerTel)) AND ((@IsNull_BuyerLocation = 1 AND [BuyerLocation] IS NULL) OR ([Buye"& _ 
+                "rLocation] = @Original_BuyerLocation)) AND ((@IsNull_NewStock = 1 AND [NewStock]"& _ 
+                " IS NULL) OR ([NewStock] = @Original_NewStock)) AND ((@IsNull_RetailPrice = 1 AN"& _ 
+                "D [RetailPrice] IS NULL) OR ([RetailPrice] = @Original_RetailPrice)) AND ((@IsNu"& _ 
+                "ll_CredCustName = 1 AND [CredCustName] IS NULL) OR ([CredCustName] = @Original_C"& _ 
+                "redCustName)) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) OR ([Amount] = @Ori"& _ 
+                "ginal_Amount)) AND ((@IsNull_SoldBy = 1 AND [SoldBy] IS NULL) OR ([SoldBy] = @Or"& _ 
+                "iginal_SoldBy)) AND ((@IsNull_RecieptNo = 1 AND [RecieptNo] IS NULL) OR ([Reciep"& _ 
+                "tNo] = @Original_RecieptNo)) AND ((@IsNull_AmtPaid = 1 AND [AmtPaid] IS NULL) OR"& _ 
+                " ([AmtPaid] = @Original_AmtPaid)) AND ((@IsNull_Balance = 1 AND [Balance] IS NUL"& _ 
+                "L) OR ([Balance] = @Original_Balance)) AND ((@IsNull_DiscountRate = 1 AND [Disco"& _ 
+                "untRate] IS NULL) OR ([DiscountRate] = @Original_DiscountRate)) AND ((@IsNull_Di"& _ 
+                "scountAmount = 1 AND [DiscountAmount] IS NULL) OR ([DiscountAmount] = @Original_"& _ 
+                "DiscountAmount)) AND ((@IsNull_TotalDiscount = 1 AND [TotalDiscount] IS NULL) OR"& _ 
+                " ([TotalDiscount] = @Original_TotalDiscount)) AND ((@IsNull_AmountPayable = 1 AN"& _ 
+                "D [AmountPayable] IS NULL) OR ([AmountPayable] = @Original_AmountPayable)) AND ("& _ 
+                "(@IsNull_Waiter = 1 AND [Waiter] IS NULL) OR ([Waiter] = @Original_Waiter)) AND "& _ 
+                "((@IsNull_TableID = 1 AND [TableID] IS NULL) OR ([TableID] = @Original_TableID))"& _ 
+                " AND ((@IsNull_CustomerType = 1 AND [CustomerType] IS NULL) OR ([CustomerType] ="& _ 
+                " @Original_CustomerType)) AND ((@IsNull_Paymode = 1 AND [Paymode] IS NULL) OR (["& _ 
+                "Paymode] = @Original_Paymode)) AND ((@IsNull_PayRef = 1 AND [PayRef] IS NULL) OR"& _ 
+                " ([PayRef] = @Original_PayRef)) AND ((@IsNull_Units = 1 AND [Units] IS NULL) OR "& _ 
+                "([Units] = @Original_Units)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT SalesTranxNo, ItemCode, ItemName, ProdLin"& _ 
+                "e, ProdCat, ItemSize, ItemColour, QtySold, DateSold, TimeSold, BuyerName, BuyerT"& _ 
+                "el, BuyerLocation, NewStock, RetailPrice, SaleType, CredCustName, Amount, SoldBy"& _ 
+                ", RecieptNo, AmtPaid, Balance, DiscountRate, DiscountAmount, TotalDiscount, Amou"& _ 
+                "ntPayable, Waiter, TableID, CustomerType, Paymode, PayRef, Units FROM SalesTranx"& _ 
+                " WHERE (SalesTranxNo = @SalesTranxNo)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemCode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -8543,6 +8592,7 @@ Namespace dsSalesTranxTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CustomerType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Paymode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Paymode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PayRef", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PayRef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Units", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Units", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SalesTranxNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesTranxNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ItemCode", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemCode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemCode", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -8602,6 +8652,8 @@ Namespace dsSalesTranxTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Paymode", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Paymode", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PayRef", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PayRef", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PayRef", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PayRef", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Units", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Units", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Units", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Units", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SalesTranxNo", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "SalesTranxNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -8622,7 +8674,7 @@ Namespace dsSalesTranxTableAdapters
                 " QtySold, DateSold, TimeSold, BuyerName, BuyerTel, BuyerLocation, NewStock, Reta"& _ 
                 "ilPrice, SaleType, CredCustName, Amount, SoldBy, RecieptNo, AmtPaid, Balance, Di"& _ 
                 "scountRate, DiscountAmount, TotalDiscount, AmountPayable, Waiter, TableID, Custo"& _ 
-                "merType, Paymode, PayRef FROM dbo.SalesTranx"
+                "merType, Paymode, PayRef, Units FROM dbo.SalesTranx"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -8712,7 +8764,8 @@ Namespace dsSalesTranxTableAdapters
                     ByVal Original_TableID As String,  _
                     ByVal Original_CustomerType As String,  _
                     ByVal Original_Paymode As String,  _
-                    ByVal Original_PayRef As String) As Integer
+                    ByVal Original_PayRef As String,  _
+                    ByVal Original_Units As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_SalesTranxNo,Integer)
             If (Original_ItemCode Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -8917,6 +8970,13 @@ Namespace dsSalesTranxTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(57).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(58).Value = CType(Original_PayRef,String)
             End If
+            If (Original_Units Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(59).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(60).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(59).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(60).Value = CType(Original_Units,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -8966,7 +9026,8 @@ Namespace dsSalesTranxTableAdapters
                     ByVal TableID As String,  _
                     ByVal CustomerType As String,  _
                     ByVal Paymode As String,  _
-                    ByVal PayRef As String) As Integer
+                    ByVal PayRef As String,  _
+                    ByVal Units As String) As Integer
             If (ItemCode Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -9117,6 +9178,11 @@ Namespace dsSalesTranxTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(29).Value = CType(PayRef,String)
             End If
+            If (Units Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(30).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(30).Value = CType(Units,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -9167,6 +9233,7 @@ Namespace dsSalesTranxTableAdapters
                     ByVal CustomerType As String,  _
                     ByVal Paymode As String,  _
                     ByVal PayRef As String,  _
+                    ByVal Units As String,  _
                     ByVal Original_SalesTranxNo As Integer,  _
                     ByVal Original_ItemCode As String,  _
                     ByVal Original_ItemName As String,  _
@@ -9197,6 +9264,7 @@ Namespace dsSalesTranxTableAdapters
                     ByVal Original_CustomerType As String,  _
                     ByVal Original_Paymode As String,  _
                     ByVal Original_PayRef As String,  _
+                    ByVal Original_Units As String,  _
                     ByVal SalesTranxNo As Integer) As Integer
             If (ItemCode Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -9348,211 +9416,223 @@ Namespace dsSalesTranxTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(29).Value = CType(PayRef,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_SalesTranxNo,Integer)
-            If (Original_ItemCode Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+            If (Units Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_ItemCode,String)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Units,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_SalesTranxNo,Integer)
+            If (Original_ItemCode Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_ItemCode,String)
             End If
             If (Original_ItemName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_ItemName,String)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_ItemName,String)
             End If
             If (Original_ProdLine Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_ProdLine,String)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_ProdLine,String)
             End If
             If (Original_ProdCat Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_ProdCat,String)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_ProdCat,String)
             End If
             If (Original_ItemSize Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_ItemSize,String)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_ItemSize,String)
             End If
             If (Original_ItemColour Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_ItemColour,String)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_ItemColour,String)
             End If
             If (Original_QtySold.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_QtySold.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_QtySold.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
             End If
             If (Original_DateSold.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_DateSold.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_DateSold.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
             End If
             If (Original_TimeSold.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_TimeSold.Value,System.TimeSpan)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_TimeSold.Value,System.TimeSpan)
             Else
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
             End If
             If (Original_BuyerName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_BuyerName,String)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_BuyerName,String)
             End If
             If (Original_BuyerTel Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_BuyerTel,String)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_BuyerTel,String)
             End If
             If (Original_BuyerLocation Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_BuyerLocation,String)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_BuyerLocation,String)
             End If
             If (Original_NewStock.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_NewStock.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_NewStock.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
             End If
             If (Original_RetailPrice.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_RetailPrice.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_RetailPrice.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
             End If
             If (Original_CredCustName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_CredCustName,String)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_CredCustName,String)
             End If
             If (Original_Amount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_Amount.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(Original_Amount.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
             End If
             If (Original_SoldBy Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_SoldBy,String)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(Original_SoldBy,String)
             End If
             If (Original_RecieptNo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(67).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_RecieptNo,String)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(Original_RecieptNo,String)
             End If
             If (Original_AmtPaid.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_AmtPaid.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(Original_AmtPaid.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = Global.System.DBNull.Value
             End If
             If (Original_Balance.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_Balance.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(Original_Balance.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = Global.System.DBNull.Value
             End If
             If (Original_DiscountRate Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_DiscountRate,String)
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(Original_DiscountRate,String)
             End If
             If (Original_DiscountAmount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_DiscountAmount.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(Original_DiscountAmount.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = Global.System.DBNull.Value
             End If
             If (Original_TotalDiscount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_TotalDiscount.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(Original_TotalDiscount.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(77).Value = Global.System.DBNull.Value
             End If
             If (Original_AmountPayable.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_AmountPayable.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(Original_AmountPayable.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(79).Value = Global.System.DBNull.Value
             End If
             If (Original_Waiter Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(81).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_Waiter,String)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(Original_Waiter,String)
             End If
             If (Original_TableID Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(83).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_TableID,String)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(Original_TableID,String)
             End If
             If (Original_CustomerType Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(85).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_CustomerType,String)
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(Original_CustomerType,String)
             End If
             If (Original_Paymode Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(86).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(87).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(Original_Paymode,String)
+                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(Original_Paymode,String)
             End If
             If (Original_PayRef Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(88).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(89).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(Original_PayRef,String)
+                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(Original_PayRef,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(89).Value = CType(SalesTranxNo,Integer)
+            If (Original_Units Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(91).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(Original_Units,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(92).Value = CType(SalesTranxNo,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -9603,6 +9683,7 @@ Namespace dsSalesTranxTableAdapters
                     ByVal CustomerType As String,  _
                     ByVal Paymode As String,  _
                     ByVal PayRef As String,  _
+                    ByVal Units As String,  _
                     ByVal Original_SalesTranxNo As Integer,  _
                     ByVal Original_ItemCode As String,  _
                     ByVal Original_ItemName As String,  _
@@ -9632,8 +9713,9 @@ Namespace dsSalesTranxTableAdapters
                     ByVal Original_TableID As String,  _
                     ByVal Original_CustomerType As String,  _
                     ByVal Original_Paymode As String,  _
-                    ByVal Original_PayRef As String) As Integer
-            Return Me.Update(ItemCode, ItemName, ProdLine, ProdCat, ItemSize, ItemColour, QtySold, DateSold, TimeSold, BuyerName, BuyerTel, BuyerLocation, NewStock, RetailPrice, SaleType, CredCustName, Amount, SoldBy, RecieptNo, AmtPaid, Balance, DiscountRate, DiscountAmount, TotalDiscount, AmountPayable, Waiter, TableID, CustomerType, Paymode, PayRef, Original_SalesTranxNo, Original_ItemCode, Original_ItemName, Original_ProdLine, Original_ProdCat, Original_ItemSize, Original_ItemColour, Original_QtySold, Original_DateSold, Original_TimeSold, Original_BuyerName, Original_BuyerTel, Original_BuyerLocation, Original_NewStock, Original_RetailPrice, Original_CredCustName, Original_Amount, Original_SoldBy, Original_RecieptNo, Original_AmtPaid, Original_Balance, Original_DiscountRate, Original_DiscountAmount, Original_TotalDiscount, Original_AmountPayable, Original_Waiter, Original_TableID, Original_CustomerType, Original_Paymode, Original_PayRef, Original_SalesTranxNo)
+                    ByVal Original_PayRef As String,  _
+                    ByVal Original_Units As String) As Integer
+            Return Me.Update(ItemCode, ItemName, ProdLine, ProdCat, ItemSize, ItemColour, QtySold, DateSold, TimeSold, BuyerName, BuyerTel, BuyerLocation, NewStock, RetailPrice, SaleType, CredCustName, Amount, SoldBy, RecieptNo, AmtPaid, Balance, DiscountRate, DiscountAmount, TotalDiscount, AmountPayable, Waiter, TableID, CustomerType, Paymode, PayRef, Units, Original_SalesTranxNo, Original_ItemCode, Original_ItemName, Original_ProdLine, Original_ProdCat, Original_ItemSize, Original_ItemColour, Original_QtySold, Original_DateSold, Original_TimeSold, Original_BuyerName, Original_BuyerTel, Original_BuyerLocation, Original_NewStock, Original_RetailPrice, Original_CredCustName, Original_Amount, Original_SoldBy, Original_RecieptNo, Original_AmtPaid, Original_Balance, Original_DiscountRate, Original_DiscountAmount, Original_TotalDiscount, Original_AmountPayable, Original_Waiter, Original_TableID, Original_CustomerType, Original_Paymode, Original_PayRef, Original_Units, Original_SalesTranxNo)
         End Function
     End Class
     

@@ -39,6 +39,7 @@ Public Class Login
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         Timer1.Enabled = True
         Try
             If Poscon.State = ConnectionState.Closed Then
@@ -47,6 +48,13 @@ Public Class Login
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+    Public Sub ConFile()
+
+        Dim readfile As String
+        readfile = My.Computer.FileSystem.ReadAllText(Application.StartupPath + "\PosconString.txt")
+        My.Settings.Posconstring = readfile
+        MsgBox(My.Settings.Posconstring)
     End Sub
 
     Private Sub txtUsername_Validated(sender As Object, e As EventArgs) Handles txtUserID.Validated
@@ -182,4 +190,7 @@ Public Class Login
         End If
     End Sub
 
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+        'ConFile()
+    End Sub
 End Class

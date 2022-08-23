@@ -566,17 +566,9 @@ Public Class frmRecieveGoods
     Private Sub cbSuppName_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cbSuppName.SelectionChangeCommitted
         Suppliers(cbSuppName.Text)
     End Sub
-    Sub Sort(valuetosearch As String)
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim query = "select itemname,ProdQty,ProdCat,costprice,Prodcode,packsize,baseqty from StockMast where ProdCat like '%" + valuetosearch + "%'"
-        cmd = New SqlCommand(query, Poscon)
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim table As New DataTable()
-        adapter.Fill(table)
-        gvStockBf.DataSource = table
-        Poscon.Close()
+    Sub catSort(valuetosearch As String)
+
+        reload("select itemname,ProdQty,ProdCat,costprice,Prodcode,packsize,baseqty from StockMast where ProdCat like '%" + valuetosearch + "%'", gvStockBf)
 
     End Sub
 
@@ -592,7 +584,7 @@ Public Class frmRecieveGoods
     End Sub
 
     Private Sub cbCatSort_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cbCatSort.SelectionChangeCommitted
-        Sort(cbCatSort.Text)
+        catSort(cbCatSort.Text)
     End Sub
 
     Private Sub cbSearchItem_TextChanged(sender As Object, e As EventArgs) Handles cbSearchItem.TextChanged
@@ -746,5 +738,9 @@ Public Class frmRecieveGoods
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub cbProdlineSort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProdlineSort.SelectedIndexChanged
+        reload("select itemname,ProdQty,ProdCat,costprice,Prodcode,packsize,baseqty from StockMast where prodline = '" + cbProdlineSort.Text + "'", gvStockBf)
     End Sub
 End Class

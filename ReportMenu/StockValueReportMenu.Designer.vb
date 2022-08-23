@@ -32,6 +32,8 @@ Partial Class StockValueReportMenu
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -42,9 +44,9 @@ Partial Class StockValueReportMenu
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label8.Location = New System.Drawing.Point(62, 282)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(209, 32)
+        Me.Label8.Size = New System.Drawing.Size(127, 32)
         Me.Label8.TabIndex = 125
-        Me.Label8.Text = "Per Brand(Retail)"
+        Me.Label8.Text = "Per Brand"
         '
         'Label2
         '
@@ -52,9 +54,9 @@ Partial Class StockValueReportMenu
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label2.Location = New System.Drawing.Point(50, 206)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(245, 32)
+        Me.Label2.Size = New System.Drawing.Size(163, 32)
         Me.Label2.TabIndex = 122
-        Me.Label2.Text = "Per Category(Retail)"
+        Me.Label2.Text = "Per Category"
         '
         'PictureBox1
         '
@@ -72,9 +74,9 @@ Partial Class StockValueReportMenu
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label1.Location = New System.Drawing.Point(75, 367)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(178, 32)
+        Me.Label1.Size = New System.Drawing.Size(96, 32)
         Me.Label1.TabIndex = 127
-        Me.Label1.Text = "Overall(Retail)"
+        Me.Label1.Text = "Overall"
         '
         'Panel1
         '
@@ -91,7 +93,7 @@ Partial Class StockValueReportMenu
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(137, 22)
+        Me.Label3.Location = New System.Drawing.Point(196, 22)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(230, 32)
         Me.Label3.TabIndex = 129
@@ -103,9 +105,9 @@ Partial Class StockValueReportMenu
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label4.Location = New System.Drawing.Point(412, 367)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(166, 32)
+        Me.Label4.Size = New System.Drawing.Size(96, 32)
         Me.Label4.TabIndex = 131
-        Me.Label4.Text = "Overall(Pack)"
+        Me.Label4.Text = "Overall"
         '
         'Label5
         '
@@ -113,9 +115,9 @@ Partial Class StockValueReportMenu
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label5.Location = New System.Drawing.Point(399, 282)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(197, 32)
+        Me.Label5.Size = New System.Drawing.Size(127, 32)
         Me.Label5.TabIndex = 130
-        Me.Label5.Text = "Per Brand(Pack)"
+        Me.Label5.Text = "Per Brand"
         '
         'Label6
         '
@@ -123,15 +125,37 @@ Partial Class StockValueReportMenu
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label6.Location = New System.Drawing.Point(387, 206)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(233, 32)
+        Me.Label6.Size = New System.Drawing.Size(163, 32)
         Me.Label6.TabIndex = 129
-        Me.Label6.Text = "Per Category(Pack)"
+        Me.Label6.Text = "Per Category"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
+        Me.Label7.Location = New System.Drawing.Point(415, 153)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(93, 32)
+        Me.Label7.TabIndex = 132
+        Me.Label7.Text = "Carton"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
+        Me.Label9.Location = New System.Drawing.Point(78, 153)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(79, 32)
+        Me.Label9.TabIndex = 133
+        Me.Label9.Text = "Retail"
         '
         'StockValueReportMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(646, 535)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label6)
@@ -160,4 +184,6 @@ Partial Class StockValueReportMenu
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label9 As Label
 End Class

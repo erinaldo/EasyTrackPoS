@@ -376,6 +376,7 @@ Partial Class RecieveCustomerPayment
         Me.lblpaymentid.Size = New System.Drawing.Size(45, 13)
         Me.lblpaymentid.TabIndex = 152
         Me.lblpaymentid.Text = "Label12"
+        Me.lblpaymentid.Visible = False
         '
         'BunifuThinButton22
         '

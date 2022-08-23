@@ -136,4 +136,7 @@
         'btnchprice.Enabled = My.Settings.changeprice
     End Sub
 
+    Private Sub BunifuButton2_Click_1(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

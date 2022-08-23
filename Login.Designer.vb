@@ -183,9 +183,9 @@ Partial Class Login
         Me.Label4.ForeColor = System.Drawing.Color.White
         Me.Label4.Location = New System.Drawing.Point(221, 12)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(289, 66)
+        Me.Label4.Size = New System.Drawing.Size(278, 66)
         Me.Label4.TabIndex = 141
-        Me.Label4.Text = "      EasyTrack " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Business Software)"
+        Me.Label4.Text = "      EasyTrack " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Business Solution)"
         '
         'BunifuThinButton21
         '

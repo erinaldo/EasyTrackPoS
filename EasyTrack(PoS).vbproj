@@ -339,6 +339,12 @@
     <Compile Include="CustomerMenu\dsproforma.vb">
       <DependentUpon>dsproforma.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CustomerMenu\frmCustomerbalanceRevaluation.Designer.vb">
+      <DependentUpon>frmCustomerbalanceRevaluation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerMenu\frmCustomerbalanceRevaluation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CustomerMenu\rptCustomerPaymentsperDate.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -527,6 +533,12 @@
       <DependentUpon>frmRetailIssueing.vb</DependentUpon>
     </Compile>
     <Compile Include="InventoryMenu\frmRetailIssueing.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryMenu\frmStockTaking.Designer.vb">
+      <DependentUpon>frmStockTaking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryMenu\frmStockTaking.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InventoryMenu\frmToCollected.Designer.vb">
@@ -1384,6 +1396,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomerMenu\frmCustomerbalanceRevaluation.resx">
+      <DependentUpon>frmCustomerbalanceRevaluation.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerMenu\rptCustomerPaymentsperDate.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCustomerPaymentsperDate.vb</LastGenOutput>
@@ -1465,6 +1480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryMenu\frmRetailIssueing.resx">
       <DependentUpon>frmRetailIssueing.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMenu\frmStockTaking.resx">
+      <DependentUpon>frmStockTaking.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryMenu\frmToCollected.resx">
       <DependentUpon>frmToCollected.vb</DependentUpon>
@@ -2128,6 +2146,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>EasyTrackPoS.mdf</DependentUpon>
     </Content>
+    <Content Include="Module\PosconString.txt" />
     <Content Include="PoS.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

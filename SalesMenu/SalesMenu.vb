@@ -105,4 +105,10 @@ Public Class frmSalesMenu
         frmSupplierOders.Show()
         Me.Hide()
     End Sub
+
+    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
+        Me.Hide()
+        Dim f1 As New Login
+        f1.Show()
+    End Sub
 End Class

@@ -123,7 +123,7 @@ Partial Class pfrmProductManagement
         Me.BunifuButton11.IdleIconLeftImage = CType(resources.GetObject("BunifuButton11.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton11.IdleIconRightImage = Nothing
         Me.BunifuButton11.IndicateFocus = False
-        Me.BunifuButton11.Location = New System.Drawing.Point(2, 473)
+        Me.BunifuButton11.Location = New System.Drawing.Point(0, 479)
         Me.BunifuButton11.Name = "BunifuButton11"
         Me.BunifuButton11.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton11.OnDisabledState.BorderRadius = 1

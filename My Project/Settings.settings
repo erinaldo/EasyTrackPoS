@@ -21,36 +21,12 @@
     <Setting Name="NetworkPoS" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=192.168.1.102,1433; Database=PoS; User ID= sa; Password=kissboy;MultipleActiveResultSets=True;Connect Timeout=30&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;server=192.168.0.104,1433; Database=PoS; User ID= sa; Password=kissbo;MultipleActiveResultSets=True;Connect Timeout=30&lt;/ConnectionString&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server=192.168.1.102,1433; Database=PoS; User ID= sa; Password=kissboy;MultipleActiveResultSets=True;Connect Timeout=30</Value>
+      <Value Profile="(Default)">server=192.168.0.104,1433; Database=PoS; User ID= sa; Password=kissbo;MultipleActiveResultSets=True;Connect Timeout=30</Value>
     </Setting>
     <Setting Name="ActiveUser" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Productmenu" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="invmenu" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="customermenu" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="suppliermenu" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="salesmenu" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="setupmenu" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="reportmenu" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="accountsmenu" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="createprod" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -101,6 +77,12 @@
     </Setting>
     <Setting Name="DeleteCS" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="userlevel" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Posconstring" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

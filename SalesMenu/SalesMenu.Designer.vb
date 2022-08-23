@@ -41,6 +41,8 @@ Partial Class frmSalesMenu
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsuser = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -51,6 +53,7 @@ Partial Class frmSalesMenu
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PictureBox1
@@ -69,7 +72,7 @@ Partial Class frmSalesMenu
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(220, 107)
+        Me.Label1.Location = New System.Drawing.Point(217, 149)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(168, 32)
         Me.Label1.TabIndex = 101
@@ -89,7 +92,7 @@ Partial Class frmSalesMenu
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(232, 344)
+        Me.Label3.Location = New System.Drawing.Point(232, 318)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(119, 32)
         Me.Label3.TabIndex = 103
@@ -100,7 +103,7 @@ Partial Class frmSalesMenu
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.Label4.Location = New System.Drawing.Point(217, 430)
+        Me.Label4.Location = New System.Drawing.Point(200, 306)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(168, 32)
         Me.Label4.TabIndex = 104
@@ -127,7 +130,6 @@ Partial Class frmSalesMenu
         Me.Guna2PictureBox2.ImageRotate = 0!
         Me.Guna2PictureBox2.Location = New System.Drawing.Point(486, 5)
         Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
-        Me.Guna2PictureBox2.ShadowDecoration.Parent = Me.Guna2PictureBox2
         Me.Guna2PictureBox2.Size = New System.Drawing.Size(40, 27)
         Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox2.TabIndex = 145
@@ -141,7 +143,6 @@ Partial Class frmSalesMenu
         Me.Guna2PictureBox1.ImageRotate = 0!
         Me.Guna2PictureBox1.Location = New System.Drawing.Point(518, 3)
         Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.ShadowDecoration.Parent = Me.Guna2PictureBox1
         Me.Guna2PictureBox1.Size = New System.Drawing.Size(43, 32)
         Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox1.TabIndex = 144
@@ -163,7 +164,7 @@ Partial Class frmSalesMenu
         '
         Me.PictureBox2.Enabled = False
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(175, 104)
+        Me.PictureBox2.Location = New System.Drawing.Point(172, 146)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(41, 42)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -185,7 +186,7 @@ Partial Class frmSalesMenu
         '
         Me.PictureBox4.Enabled = False
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(186, 338)
+        Me.PictureBox4.Location = New System.Drawing.Point(186, 312)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(41, 42)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -197,7 +198,7 @@ Partial Class frmSalesMenu
         '
         Me.PictureBox5.Enabled = False
         Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
-        Me.PictureBox5.Location = New System.Drawing.Point(171, 424)
+        Me.PictureBox5.Location = New System.Drawing.Point(154, 300)
         Me.PictureBox5.Name = "PictureBox5"
         Me.PictureBox5.Size = New System.Drawing.Size(41, 42)
         Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -249,6 +250,27 @@ Partial Class frmSalesMenu
         Me.tsuser.Size = New System.Drawing.Size(29, 17)
         Me.tsuser.Text = "user"
         '
+        'PictureBox7
+        '
+        Me.PictureBox7.Enabled = False
+        Me.PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), System.Drawing.Image)
+        Me.PictureBox7.Location = New System.Drawing.Point(168, 391)
+        Me.PictureBox7.Name = "PictureBox7"
+        Me.PictureBox7.Size = New System.Drawing.Size(41, 42)
+        Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox7.TabIndex = 154
+        Me.PictureBox7.TabStop = False
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
+        Me.Label7.Location = New System.Drawing.Point(229, 397)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(96, 32)
+        Me.Label7.TabIndex = 153
+        Me.Label7.Text = "Logout"
+        '
         'frmSalesMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -256,6 +278,8 @@ Partial Class frmSalesMenu
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(561, 502)
+        Me.Controls.Add(Me.PictureBox7)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.PictureBox6)
         Me.Controls.Add(Me.Label6)
@@ -284,6 +308,7 @@ Partial Class frmSalesMenu
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -307,4 +332,6 @@ Partial Class frmSalesMenu
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents tsuser As ToolStripStatusLabel
+    Friend WithEvents PictureBox7 As PictureBox
+    Friend WithEvents Label7 As Label
 End Class

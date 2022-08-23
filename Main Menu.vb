@@ -177,7 +177,7 @@
     End Sub
 
     Private Sub Label7_Click_1(sender As Object, e As EventArgs) Handles Label7.Click
-        Dim f1 As New frmTouchSale
+        Dim f1 As New frmSales
         f1.Show()
         'Me.Hide()
     End Sub
@@ -193,21 +193,21 @@
         ' Me.Hide()
     End Sub
     Private Sub settings()
-        btnproductmenu.Enabled = My.Settings.Productmenu
-        btninvmenu.Enabled = My.Settings.invmenu
-        btnsalesmenu.Enabled = My.Settings.salesmenu
-        btnrptmenu.Enabled = My.Settings.reportmenu
-        rptcustmenu.Enabled = My.Settings.customermenu
-        btnaccmenu.Enabled = My.Settings.accountsmenu
-        btnsuppmenu.Enabled = My.Settings.suppliermenu
-        btnsysmenu.Enabled = My.Settings.setupmenu
+        'btnproductmenu.Enabled = My.Settings.Productmenu
+        'btninvmenu.Enabled = My.Settings.invmenu
+        'btnsalesmenu.Enabled = My.Settings.salesmenu
+        'btnrptmenu.Enabled = My.Settings.reportmenu
+        'rptcustmenu.Enabled = My.Settings.customermenu
+        'btnaccmenu.Enabled = My.Settings.accountsmenu
+        'btnsuppmenu.Enabled = My.Settings.suppliermenu
+        'btnsysmenu.Enabled = My.Settings.setupmenu
 
 
 
     End Sub
 
     Private Sub Label1_Click_1(sender As Object, e As EventArgs) Handles Label1.Click
-        MsgBox("yes")
+
         frmsimplesale.Show()
     End Sub
 End Class

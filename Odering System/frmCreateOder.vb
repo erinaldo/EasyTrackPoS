@@ -490,4 +490,18 @@ Public Class frmCreateOder
         txtdate.Text = Date.Now.ToString("dd/MMM/yy")
         'Newshowconfig()
     End Sub
+
+    Private Sub cbProdlineSort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProdlineSort.SelectedIndexChanged
+        reload("select itemname,ProdQty,ProdCat,packprice as ctnprice,Prodcode,packsize,baseqty from StockMast where prodline = '" + cbProdlineSort.Text + "'", gvStockBf)
+    End Sub
+
+    Private Sub txtItemPrice_TextChanged(sender As Object, e As EventArgs) Handles txtItemPrice.TextChanged
+        Try
+            Dim amt As Decimal
+            amt = Val(txtQtyRecieved.Text) * Val(txtItemPrice.Text)
+            txtItemAmount.Text = amt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 End Class

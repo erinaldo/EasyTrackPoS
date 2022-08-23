@@ -337,7 +337,7 @@ Partial Class frmRetailIssueing
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(83, 34)
         Me.Label13.TabIndex = 175
-        Me.Label13.Text = "Actual Stock" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "     (Pack)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label13.Text = "Actual Stock" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "     (ctn)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'cbSuppName
         '
@@ -450,7 +450,7 @@ Partial Class frmRetailIssueing
         Me.gvStockBf.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.gvStockBf.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.gvStockBf.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.gvStockBf.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
         Me.gvStockBf.BackgroundColor = System.Drawing.Color.White
         Me.gvStockBf.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvStockBf.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
@@ -699,7 +699,7 @@ Partial Class frmRetailIssueing
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(84, 34)
         Me.Label1.TabIndex = 160
-        Me.Label1.Text = "Qty Issueing" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "    (Pack)"
+        Me.Label1.Text = "Qty Issueing" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "    (ctn)"
         '
         'gvStockBatch
         '
@@ -1113,6 +1113,7 @@ Partial Class frmRetailIssueing
         Me.lblCustType.Size = New System.Drawing.Size(57, 15)
         Me.lblCustType.TabIndex = 202
         Me.lblCustType.Text = "CustType"
+        Me.lblCustType.Visible = False
         '
         'Label24
         '

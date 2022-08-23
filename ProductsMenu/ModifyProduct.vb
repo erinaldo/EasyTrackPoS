@@ -20,6 +20,7 @@ Public Class frmModifyProduct
         ComboFeed("select distinct prodcolour from stockmast where prodcolour IS NOT NULL ORDER BY Prodcolour asc", cbColour, 0)
         ComboFeed("select distinct Prodcat from Stockmast where Prodcat IS NOT NULL ORDER BY Prodcat asc", cbCat, 0)
         ComboFeed("select distinct brandname from stockmast where brandname IS NOT NULL ORDER BY brandname asc", cbBrandName, 0)
+        ComboFeed("select distinct units from stockmast where units IS NOT NULL ORDER BY units asc", ComboBox1, 0)
     End Sub
 
     Private Sub gvStock_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
@@ -78,6 +79,7 @@ Public Class frmModifyProduct
         txtbaseqty.Text = ""
         txtpacksize.Text = ""
         txtReoder.Text = ""
+        ComboBox1.Text = ""
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs)
         Try
@@ -148,6 +150,7 @@ Public Class frmModifyProduct
             txtbaseqty.Text = row.Cells(16).Value.ToString()
             txtpacksize.Text = row.Cells(15).Value.ToString()
             txtReoder.Text = row.Cells(13).Value.ToString()
+            ComboBox1.Text = row.Cells(20).Value.ToString()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -188,7 +191,7 @@ Public Class frmModifyProduct
 
         Try
 
-            create("update Stockmast Set ProdCode='" + txtStockCode.Text + "',ProdName= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "',leastqtyreminder='" & txtReoder.Text & "' where Prodcode ='" & txtStockCode.Text & "'")
+            create("update Stockmast Set ProdCode='" + txtStockCode.Text + "',Itemname= '" + cbProdname.Text + "',Prodname= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "',leastqtyreminder='" & txtReoder.Text & "',units='" & ComboBox1.Text & "' where Prodcode ='" & txtStockCode.Text & "'")
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If

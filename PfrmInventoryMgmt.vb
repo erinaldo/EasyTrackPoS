@@ -135,4 +135,14 @@ Public Class PfrmInventoryMgmt
             .Show()
         End With
     End Sub
+
+    Private Sub BunifuButton9_Click(sender As Object, e As EventArgs) Handles BunifuButton9.Click
+        Dim f2 As New frmStockTaking
+        With f2
+            .TopLevel = False
+            PCreateProd.Controls.Add(f2)
+            .BringToFront()
+            .Show()
+        End With
+    End Sub
 End Class

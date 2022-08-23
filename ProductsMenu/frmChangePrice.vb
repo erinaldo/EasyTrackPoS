@@ -32,7 +32,7 @@ Public Class frmChangePrice
         da.Fill(tbl)
         gvStockguna.DataSource = tbl
         Poscon.Close()
-        ComboFeed("select prodname from StockMast where concat(ProdName,ProdCode) like '%" + cbChangepriceSrch.Text + "%'", cbChangepriceSrch, 0)
+        ComboFeed("select prodname from StockMast where ProdName like '%" + cbChangepriceSrch.Text + "%'", cbChangepriceSrch, 0)
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs)
@@ -88,7 +88,7 @@ Public Class frmChangePrice
 
     Public Sub Search(valueTosearch As String)
         Poscon.Open()
-        Dim query = "select prodname,Retailprice,Prodqty,Wholesaleprice,prodcode,packprice,packsize,baseqty from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
+        Dim query = "select prodname,Retailprice,Prodqty,Wholesaleprice,prodcode,packprice,packsize,baseqty from StockMast where Itemname like '%" + valueTosearch + "%'"
         cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim table As New DataTable()
@@ -308,5 +308,9 @@ Public Class frmChangePrice
 
     Private Sub txtnewpckprice_TextChanged(sender As Object, e As EventArgs) Handles txtnewpckprice.TextChanged
         txtNewRPrice.Text = Val(txtnewpckprice.Text) / Val(lblpackvol.Text)
+    End Sub
+
+    Private Sub cbChangepriceSrch_TextChanged(sender As Object, e As EventArgs) Handles cbChangepriceSrch.TextChanged
+
     End Sub
 End Class

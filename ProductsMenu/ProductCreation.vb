@@ -133,6 +133,7 @@ Public Class frmProdCreate
         ComboFeed("select distinct prodcolour from stockmast where prodcolour IS NOT NULL ORDER BY Prodcolour asc", cbColour, 0)
         ComboFeed("select distinct Prodcat from Stockmast where Prodcat IS NOT NULL ORDER BY Prodcat asc", cbCat, 0)
         ComboFeed("select distinct brandname from stockmast where brandname IS NOT NULL ORDER BY brandname asc", cbbrandName, 0)
+        ComboFeed("select distinct units from stockmast where units IS NOT NULL ORDER BY units asc", ComboBox1, 0)
         Newshowconfig()
         lblProdCount.Text = gvStockMastBf.Rows.Count()
 
@@ -300,7 +301,7 @@ Public Class frmProdCreate
 
             If tbl.Rows.Count() = 0 Then
 
-                create("insert into stockmast(prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyReminder,distributorprice,packsize,baseqty,Packprice,costprice,prodtype) values('" & txtStockCode.Text & "','" + txtProdName.Text + "','" + cbProdLine.Text + "','" & cbSize.Text & "','" & cbColour.Text & "','" & cbCat.Text & "','" & txtQty.Text & "','" & txtRPrice.Text & "','" & txtWPrice.Text & "','" & txtItemName.Text & "','" & cbbrandName.Text & "','" & cbUnique.Text & "','" & txtLeastQty.Text & "','" & txtWPrice.Text & "','" & txtpacksize.Text & "','" & txtbaseqty.Text & "','" & txtpackprice.Text & "','" & txtCPrice.Text & "','" & cbItemtype.Text & "')")
+                create("insert into stockmast(prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyReminder,distributorprice,packsize,baseqty,Packprice,costprice,prodtype,units) values('" & txtStockCode.Text & "','" + txtProdName.Text + "','" + cbProdLine.Text + "','" & cbSize.Text & "','" & cbColour.Text & "','" & cbCat.Text & "','" & txtQty.Text & "','" & txtRPrice.Text & "','" & txtWPrice.Text & "','" & txtItemName.Text & "','" & cbbrandName.Text & "','" & cbUnique.Text & "','" & txtLeastQty.Text & "','" & txtWPrice.Text & "','" & txtpacksize.Text & "','" & txtbaseqty.Text & "','" & txtpackprice.Text & "','" & txtCPrice.Text & "','" & cbItemtype.Text & "','" & ComboBox1.Text & "')")
 
             End If
             Catch ex As Exception

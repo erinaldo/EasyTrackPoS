@@ -8,6 +8,7 @@ Public Class frmSales
     Dim da As SqlDataAdapter
     Dim dt As New dsSalesTranx
     Dim tbl As DataTable
+    Dim units As String
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
         'Dim f2 As New frmSalesMenu
         'f2.Show()
@@ -164,7 +165,7 @@ Public Class frmSales
                 Dim a = Val(txtQty.Text)
                 Dim c = Val(lblActualStock.Text)
                 Dim newstock = c - a
-                gvSales.Rows.Add(lblProdName.Text, txtQty.Text, txtPrice.Text, txtAmt.Text, txtCat.Text, txtProdcode.Text, txtSize.Text, txtProdline.Text, newstock, lblRecieptNo.Text, "0", "0", txtAmt.Text, "", txtColour.Text, lblActualStock.Text)
+                gvSales.Rows.Add(lblProdName.Text, txtQty.Text, txtPrice.Text, txtAmt.Text, txtCat.Text, txtProdcode.Text, txtSize.Text, txtProdline.Text, newstock, lblRecieptNo.Text, "0", "0", txtAmt.Text, "", txtColour.Text, lblActualStock.Text, units)
 
             End While
             dr.Close()
@@ -259,15 +260,15 @@ Public Class frmSales
         'End If
         Select Case cbSaleslist.SelectedIndex
             Case 0
-                reload("select Prodname,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode,prodtype from StockMast ORDER BY Prodname asc", gvStock)
+                reload("select Prodname,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode,prodtype,units from StockMast ORDER BY Prodname asc", gvStock)
             Case 1
                 reload("select * from Packagesconfig", gvStock)
             Case 2
                 reload("select * from Proformaconfig where Status='" + "Pending" + "'", gvStock)
             Case 3
-                reload("select Prodname,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode,prodtypefrom StockMast where baseqty*packsize<>1 ORDER BY Prodname asc", gvStock)
+                reload("select Prodname,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode,prodtype,units from StockMast where baseqty*packsize<>1 ORDER BY Prodname asc", gvStock)
             Case 4
-                reload("select Prodname,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode,prodtype from StockMast where baseqty*packsize=1 ORDER BY Prodlname asc", gvStock)
+                reload("select Prodname,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode,prodtype,units from StockMast where baseqty*packsize=1 ORDER BY Prodlname asc", gvStock)
 
         End Select
 
@@ -532,6 +533,8 @@ Public Class frmSales
                     txtColour.Text = row.Cells(5).Value.ToString()
                     lblOPrice.Text = row.Cells(2).Value.ToString()
                     lblProdName.Text = row.Cells(0).Value.ToString()
+                    lblProdName.Text = row.Cells(0).Value.ToString()
+                    units = row.Cells(9).Value.ToString()
                     If row.Cells(8).Value.ToString() = "Non-Stock" Then
                         txtPrice.ReadOnly = False
                     Else
@@ -829,7 +832,8 @@ Public Class frmSales
             For Each row As DataGridViewRow In gvSales.Rows
 
 
-                Dim query = "insert into salestranx (ItemCode,itemname,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount,paymode,payref) values(@ItemCode,@itemname,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,convert(datetime,'" + lblDate.Text + "',105),@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + My.Settings.ActiveUser + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "','" + cbPaymode.Text + "','" & txtpayref.Text & "')"
+                Dim query = "insert into salestranx (ItemCode,itemname,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount,paymode,payref,units) 
+                        values(@ItemCode,@itemname,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,convert(datetime,'" + lblDate.Text + "',105),@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + My.Settings.ActiveUser + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "','" + cbPaymode.Text + "','" & txtpayref.Text & "','" & row.Cells(16).Value & "')"
                 cmd = New SqlCommand(query, Poscon)
                 With cmd
 
@@ -956,7 +960,7 @@ Public Class frmSales
                         End If
                         For Each row As DataGridViewRow In gvSales.Rows
 
-                        Dim query = "insert into salestranx (ItemCode,itemname,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount,customertype) values(@ItemCode,@itemname,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,convert(datetime,@DateSold,105),@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + My.Settings.ActiveUser + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "','" + lblCustType.Text + "')"
+                        Dim query = "insert into salestranx (ItemCode,itemname,ProdLine,ProdCat,ItemSize,ItemColour,QtySold,DateSold,TimeSold,BuyerName,BuyerTel,BuyerLocation,NewStock,RetailPrice,SaleType,CredCustName,Amount,Soldby,RecieptNo,AmtPaid,Balance,DiscountRate,DiscountAmount,AmountPayable,TotalDiscount,customertype,units) values(@ItemCode,@itemname,@ProdLine,@ProdCat,@ItemSize,@ItemColour,@QtySold,convert(datetime,@DateSold,105),@TimeSold,@BuyerName,@BuyerTel,@BuyerLocation,@NewStock,@RetailPrice,@SaleType,@CreditCustomerName,@Amount,'" + My.Settings.ActiveUser + "', '" + lblRecieptNo.Text + "','" + txtCashPaid.Text + "','" + lblChange.Text + "',@Discount,@DiscAmt,@Amtpayable,'" + lblDiscAmt.Text + "','" + lblCustType.Text + "','" + units + "')"
                         cmd = New SqlCommand(query, Poscon)
                             With cmd
 
@@ -1386,7 +1390,7 @@ Public Class frmSales
                 Poscon.Open()
             End If
 
-            Dim query = "select Prodname,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode,prodtype from StockMast where concat(Prodname,ProdCode) like '%" + valueTosearch + "%' ORDER BY Prodname asc"
+            Dim query = "select Prodname,ProdQty,retailprice,Prodsize,ProdCat,ProdColour,Prodline,ProdCode,prodtype,units from StockMast where concat(Prodname,ProdCode) like '%" + valueTosearch + "%' ORDER BY Prodname asc"
             cmd = New SqlCommand(query, Poscon)
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable()
@@ -1404,7 +1408,8 @@ Public Class frmSales
             txtCat.Text = tbl.Rows(0)(4).ToString
             txtSize.Text = tbl.Rows(0)(3).ToString
             txtColour.Text = tbl.Rows(0)(5).ToString
-            If tbl.Rows(0)(5).ToString = "Non-Stock" Then
+            units = tbl.Rows(0)(9).ToString
+            If tbl.Rows(0)(8).ToString = "Non-Stock" Then
                 txtPrice.ReadOnly = False
             Else
                 txtPrice.ReadOnly = True

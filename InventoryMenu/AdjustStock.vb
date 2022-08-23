@@ -107,7 +107,7 @@ Public Class frmAdjustStock
                     poscon.Open()
                 End If
 
-                Dim query = "update StockMast set Prodqty = @newstock where prodcode =" + gvStockBatch.Rows(k).Cells(6).Value + ""
+                Dim query = "update StockMast set Prodqty = @newstock where prodcode ='" & gvStockBatch.Rows(k).Cells(6).Value & "'"
                 cmd = New SqlCommand(query, poscon)
                 With cmd
                     .Parameters.AddWithValue("@newstock", gvStockBatch.Rows(k).Cells(4).Value)

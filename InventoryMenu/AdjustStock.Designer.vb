@@ -395,11 +395,11 @@ Partial Class frmAdjustStock
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(199, 71)
+        Me.Label1.Location = New System.Drawing.Point(187, 87)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(79, 34)
+        Me.Label1.Size = New System.Drawing.Size(89, 17)
         Me.Label1.TabIndex = 70
-        Me.Label1.Text = "New Stock " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Adjustment"
+        Me.Label1.Text = "Add/Subtract"
         '
         'PictureBox1
         '
@@ -522,8 +522,8 @@ Partial Class frmAdjustStock
         Me.gvStockBf.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gvStockBf.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.gvStockBf.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.gvStockBf.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.gvStockBf.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
         Me.gvStockBf.BackgroundColor = System.Drawing.Color.White
         Me.gvStockBf.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.gvStockBf.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
@@ -584,6 +584,9 @@ Partial Class frmAdjustStock
         'txtnarration
         '
         Me.txtnarration.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtnarration.BackColor = System.Drawing.Color.White
+        Me.txtnarration.BorderColor = System.Drawing.Color.Black
+        Me.txtnarration.BorderRadius = 10
         Me.txtnarration.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtnarration.DefaultText = ""
         Me.txtnarration.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -591,9 +594,12 @@ Partial Class frmAdjustStock
         Me.txtnarration.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.txtnarration.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.txtnarration.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtnarration.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnarration.Font = New System.Drawing.Font("Segoe UI Symbol", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.txtnarration.ForeColor = System.Drawing.Color.Black
         Me.txtnarration.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtnarration.Location = New System.Drawing.Point(14, 30)
+        Me.txtnarration.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtnarration.Multiline = True
         Me.txtnarration.Name = "txtnarration"
         Me.txtnarration.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtnarration.PlaceholderText = ""
@@ -677,10 +683,10 @@ Partial Class frmAdjustStock
         Me.BunifuThinButton23.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton23.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton23.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton23.Location = New System.Drawing.Point(404, 21)
+        Me.BunifuThinButton23.Location = New System.Drawing.Point(344, 21)
         Me.BunifuThinButton23.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton23.Name = "BunifuThinButton23"
-        Me.BunifuThinButton23.Size = New System.Drawing.Size(124, 72)
+        Me.BunifuThinButton23.Size = New System.Drawing.Size(184, 72)
         Me.BunifuThinButton23.TabIndex = 149
         Me.BunifuThinButton23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -864,6 +870,7 @@ Partial Class frmAdjustStock
         Me.ckReplace.TabIndex = 152
         Me.ckReplace.ThreeState = False
         Me.ckReplace.ToolTipText = Nothing
+        Me.ckReplace.Visible = False
         '
         'Label6
         '
@@ -874,6 +881,7 @@ Partial Class frmAdjustStock
         Me.Label6.Size = New System.Drawing.Size(55, 17)
         Me.Label6.TabIndex = 151
         Me.Label6.Text = "Replace"
+        Me.Label6.Visible = False
         '
         'frmAdjustStock
         '

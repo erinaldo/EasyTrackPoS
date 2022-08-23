@@ -80,8 +80,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("server=192.168.1.102,1433; Database=PoS; User ID= sa; Password=kissboy;MultipleAc"& _ 
-            "tiveResultSets=True;Connect Timeout=30")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=192.168.0.104,1433; Database=PoS; User ID= sa; Password=kissbo;MultipleAct"& _ 
+            "iveResultSets=True;Connect Timeout=30")>  _
         Public ReadOnly Property NetworkPoS() As String
             Get
                 Return CType(Me("NetworkPoS"),String)
@@ -97,102 +97,6 @@ Namespace My
             End Get
             Set
                 Me("ActiveUser") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property Productmenu() As Boolean
-            Get
-                Return CType(Me("Productmenu"),Boolean)
-            End Get
-            Set
-                Me("Productmenu") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property invmenu() As Boolean
-            Get
-                Return CType(Me("invmenu"),Boolean)
-            End Get
-            Set
-                Me("invmenu") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property customermenu() As Boolean
-            Get
-                Return CType(Me("customermenu"),Boolean)
-            End Get
-            Set
-                Me("customermenu") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property suppliermenu() As Boolean
-            Get
-                Return CType(Me("suppliermenu"),Boolean)
-            End Get
-            Set
-                Me("suppliermenu") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property salesmenu() As Boolean
-            Get
-                Return CType(Me("salesmenu"),Boolean)
-            End Get
-            Set
-                Me("salesmenu") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property setupmenu() As Boolean
-            Get
-                Return CType(Me("setupmenu"),Boolean)
-            End Get
-            Set
-                Me("setupmenu") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property reportmenu() As Boolean
-            Get
-                Return CType(Me("reportmenu"),Boolean)
-            End Get
-            Set
-                Me("reportmenu") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property accountsmenu() As Boolean
-            Get
-                Return CType(Me("accountsmenu"),Boolean)
-            End Get
-            Set
-                Me("accountsmenu") = value
             End Set
         End Property
         
@@ -372,6 +276,30 @@ Namespace My
             End Get
             Set
                 Me("DeleteCS") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property userlevel() As Integer
+            Get
+                Return CType(Me("userlevel"),Integer)
+            End Get
+            Set
+                Me("userlevel") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Posconstring() As String
+            Get
+                Return CType(Me("Posconstring"),String)
+            End Get
+            Set
+                Me("Posconstring") = value
             End Set
         End Property
     End Class

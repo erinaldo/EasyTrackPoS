@@ -36,7 +36,7 @@ Public Class frmModifyCustomerAccounts
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
         Poscon.Open()
-        Dim query = ("update customer set CustomerName='" + txtName.Text + "', EmailAddress= '" + txtEmailAdd.Text + "',BusinessDigitalAddress= '" + txtBusDigAdd.Text + "',ResidentialDigitalAddress= '" + txtResDigAdd.Text + "',ResidentailLocation= '" + txtResLocation.Text + "',BusinessLocation= '" + txtBussLocation.Text + "',CreditLimit= '" + txtCardLimit.Text + "',Idcardtype= '" + cbCardType.Text + "',IdcardNumber= '" + txtCardNo.Text + "' where CustomerNo= " + txtCardNo.Text + "")
+        Dim query = ("update customer set CustomerName='" + txtName.Text + "', EmailAddress= '" + txtEmailAdd.Text + "',BusinessDigitalAddress= '" + txtBusDigAdd.Text + "',ResidentialDigitalAddress= '" + txtResDigAdd.Text + "',ResidentailLocation= '" + txtResLocation.Text + "',BusinessLocation= '" + txtBussLocation.Text + "',CreditLimit= '" + txtCardLimit.Text + "',Idcardtype= '" + cbCardType.Text + "',IdcardNumber= '" + txtCardNo.Text + "' where CustomerNo= '" & txtCardNo.Text & "'")
         Dim cmd As New SqlCommand(query, Poscon)
         cmd.ExecuteNonQuery()
         MsgBox("Customer Updated Successfully")
@@ -54,7 +54,7 @@ Public Class frmModifyCustomerAccounts
             Poscon.Open()
         End If
 
-        Dim query = ("update customer set CustomerName='" + txtName.Text + "', EmailAddress= '" + txtEmailAdd.Text + "',BusinessDigitalAddress= '" + txtBusDigAdd.Text + "',ResidentialDigitalAddress= '" + txtResDigAdd.Text + "',ResidentailLocation= '" + txtResLocation.Text + "',BusinessLocation= '" + txtBussLocation.Text + "',CreditLimit= '" + txtCardLimit.Text + "',Idcardtype= '" + cbCardType.Text + "',currentbalance= '" + txtCurrentBalance.Text + "' where Idcardnumber= " + txtCardNo.Text + "")
+        Dim query = ("update customer set CustomerName='" + txtName.Text + "', EmailAddress= '" + txtEmailAdd.Text + "',BusinessDigitalAddress= '" + txtBusDigAdd.Text + "',ResidentialDigitalAddress= '" + txtResDigAdd.Text + "',ResidentailLocation= '" + txtResLocation.Text + "',BusinessLocation= '" + txtBussLocation.Text + "',CreditLimit= '" + txtCardLimit.Text + "',Idcardtype= '" + cbCardType.Text + "',currentbalance= '" + txtCurrentBalance.Text + "' where Idcardnumber= '" & txtCardNo.Text & "'")
         Dim cmd As New SqlCommand(query, Poscon)
         cmd.ExecuteNonQuery()
         MsgBox("Customer Updated Successfully")

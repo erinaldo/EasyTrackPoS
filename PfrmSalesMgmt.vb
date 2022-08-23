@@ -72,8 +72,8 @@ Public Class PfrmSalesMgmt
             If table.Rows.Count() = 0 Then
                 MsgBox("NO Active Session. Please open a new session to continue", vbCritical)
             Else
-                Dim f2 As New frmSales
-                f2.Show()
+                'Dim f2 As New frmTouchSale
+                frmSales.Show()
 
             End If
         Catch ex As Exception
