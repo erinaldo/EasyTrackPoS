@@ -46,6 +46,10 @@ Public Class frmModifyCustomerAccounts
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If My.Settings.DeleteCS = False Then
+            MsgBox("Sorry you dont have access to this feature")
+            Exit Sub
+        End If
         If txtCardNo.Text = "" Then
             MsgBox("Select Customer To Edit")
             Exit Sub

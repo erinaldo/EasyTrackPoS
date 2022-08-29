@@ -104,6 +104,8 @@ Partial Class frmRetailIssueing
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.ckWaybill = New Bunifu.UI.WinForms.BunifuCheckBox()
         Me.txtdate = New Bunifu.UI.WinForms.BunifuDatePicker()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.ckprint = New Bunifu.UI.WinForms.BunifuCheckBox()
@@ -810,10 +812,10 @@ Partial Class frmRetailIssueing
         '
         'txtItemPrice
         '
-        Me.txtItemPrice.Enabled = False
         Me.txtItemPrice.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.txtItemPrice.Location = New System.Drawing.Point(848, 202)
         Me.txtItemPrice.Name = "txtItemPrice"
+        Me.txtItemPrice.ReadOnly = True
         Me.txtItemPrice.Size = New System.Drawing.Size(66, 29)
         Me.txtItemPrice.TabIndex = 157
         '
@@ -1157,6 +1159,8 @@ Partial Class frmRetailIssueing
         Me.GroupBox3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox3.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.GroupBox3.Controls.Add(Me.Label26)
+        Me.GroupBox3.Controls.Add(Me.ckWaybill)
         Me.GroupBox3.Controls.Add(Me.txtdate)
         Me.GroupBox3.Controls.Add(Me.Label23)
         Me.GroupBox3.Controls.Add(Me.ckprint)
@@ -1175,6 +1179,71 @@ Partial Class frmRetailIssueing
         Me.GroupBox3.TabIndex = 204
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "save"
+        '
+        'Label26
+        '
+        Me.Label26.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label26.AutoSize = True
+        Me.Label26.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label26.Location = New System.Drawing.Point(419, 52)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(72, 21)
+        Me.Label26.TabIndex = 189
+        Me.Label26.Text = "Way bill"
+        '
+        'ckWaybill
+        '
+        Me.ckWaybill.AllowBindingControlAnimation = True
+        Me.ckWaybill.AllowBindingControlColorChanges = False
+        Me.ckWaybill.AllowBindingControlLocation = True
+        Me.ckWaybill.AllowCheckBoxAnimation = False
+        Me.ckWaybill.AllowCheckmarkAnimation = True
+        Me.ckWaybill.AllowOnHoverStates = True
+        Me.ckWaybill.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ckWaybill.AutoCheck = True
+        Me.ckWaybill.BackColor = System.Drawing.Color.Transparent
+        Me.ckWaybill.BackgroundImage = CType(resources.GetObject("ckWaybill.BackgroundImage"), System.Drawing.Image)
+        Me.ckWaybill.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ckWaybill.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right
+        Me.ckWaybill.BorderRadius = 12
+        Me.ckWaybill.Checked = True
+        Me.ckWaybill.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked
+        Me.ckWaybill.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ckWaybill.CustomCheckmarkImage = Nothing
+        Me.ckWaybill.Location = New System.Drawing.Point(399, 55)
+        Me.ckWaybill.MinimumSize = New System.Drawing.Size(17, 17)
+        Me.ckWaybill.Name = "ckWaybill"
+        Me.ckWaybill.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.ckWaybill.OnCheck.BorderRadius = 12
+        Me.ckWaybill.OnCheck.BorderThickness = 2
+        Me.ckWaybill.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue
+        Me.ckWaybill.OnCheck.CheckmarkColor = System.Drawing.Color.White
+        Me.ckWaybill.OnCheck.CheckmarkThickness = 2
+        Me.ckWaybill.OnDisable.BorderColor = System.Drawing.Color.LightGray
+        Me.ckWaybill.OnDisable.BorderRadius = 12
+        Me.ckWaybill.OnDisable.BorderThickness = 2
+        Me.ckWaybill.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckWaybill.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray
+        Me.ckWaybill.OnDisable.CheckmarkThickness = 2
+        Me.ckWaybill.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckWaybill.OnHoverChecked.BorderRadius = 12
+        Me.ckWaybill.OnHoverChecked.BorderThickness = 2
+        Me.ckWaybill.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckWaybill.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White
+        Me.ckWaybill.OnHoverChecked.CheckmarkThickness = 2
+        Me.ckWaybill.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ckWaybill.OnHoverUnchecked.BorderRadius = 12
+        Me.ckWaybill.OnHoverUnchecked.BorderThickness = 1
+        Me.ckWaybill.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckWaybill.OnUncheck.BorderColor = System.Drawing.Color.DarkGray
+        Me.ckWaybill.OnUncheck.BorderRadius = 12
+        Me.ckWaybill.OnUncheck.BorderThickness = 1
+        Me.ckWaybill.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent
+        Me.ckWaybill.Size = New System.Drawing.Size(17, 17)
+        Me.ckWaybill.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu
+        Me.ckWaybill.TabIndex = 188
+        Me.ckWaybill.ThreeState = False
+        Me.ckWaybill.ToolTipText = Nothing
         '
         'txtdate
         '
@@ -1476,4 +1545,6 @@ Partial Class frmRetailIssueing
     Friend WithEvents ckPreview As Bunifu.UI.WinForms.BunifuCheckBox
     Friend WithEvents lblCustType As Label
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Label26 As Label
+    Friend WithEvents ckWaybill As Bunifu.UI.WinForms.BunifuCheckBox
 End Class

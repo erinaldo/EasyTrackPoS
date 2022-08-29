@@ -175,4 +175,9 @@ Public Class frmSupplierReportMenu
             MsgBox(ex.Message)
         End Try
     End Sub
+
+    Private Sub frmSupplierReportMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dpdatefrom.Value = Date.Today
+        dpdateto.Value = Date.Today
+    End Sub
 End Class

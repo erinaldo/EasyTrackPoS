@@ -631,7 +631,7 @@ SELECT CustomerNo, CustomerName, EmailAddress, BusinessDigitalAddress, Residenti
   <xs:element name="dscustomer" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dscustomer" msprop:Generator_UserDSName="dscustomer">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ClientReg" msprop:Generator_TableClassName="ClientRegDataTable" msprop:Generator_TableVarName="tableClientReg" msprop:Generator_RowChangedName="ClientRegRowChanged" msprop:Generator_TablePropName="ClientReg" msprop:Generator_RowDeletingName="ClientRegRowDeleting" msprop:Generator_RowChangingName="ClientRegRowChanging" msprop:Generator_RowEvHandlerName="ClientRegRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientRegRowDeleted" msprop:Generator_RowClassName="ClientRegRow" msprop:Generator_UserTableName="ClientReg" msprop:Generator_RowEvArgName="ClientRegRowChangeEvent">
+        <xs:element name="ClientReg" msprop:Generator_TableClassName="ClientRegDataTable" msprop:Generator_TableVarName="tableClientReg" msprop:Generator_TablePropName="ClientReg" msprop:Generator_RowDeletingName="ClientRegRowDeleting" msprop:Generator_RowChangingName="ClientRegRowChanging" msprop:Generator_RowEvHandlerName="ClientRegRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientRegRowDeleted" msprop:Generator_UserTableName="ClientReg" msprop:Generator_RowChangedName="ClientRegRowChanged" msprop:Generator_RowEvArgName="ClientRegRowChangeEvent" msprop:Generator_RowClassName="ClientRegRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ClientID" msprop:Generator_ColumnVarNameInTable="columnClientID" msprop:Generator_ColumnPropNameInRow="ClientID" msprop:Generator_ColumnPropNameInTable="ClientIDColumn" msprop:Generator_UserColumnName="ClientID">
@@ -701,7 +701,7 @@ SELECT CustomerNo, CustomerName, EmailAddress, BusinessDigitalAddress, Residenti
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="IssueStock" msprop:Generator_TableClassName="IssueStockDataTable" msprop:Generator_TableVarName="tableIssueStock" msprop:Generator_TablePropName="IssueStock" msprop:Generator_RowDeletingName="IssueStockRowDeleting" msprop:Generator_RowChangingName="IssueStockRowChanging" msprop:Generator_RowEvHandlerName="IssueStockRowChangeEventHandler" msprop:Generator_RowDeletedName="IssueStockRowDeleted" msprop:Generator_UserTableName="IssueStock" msprop:Generator_RowChangedName="IssueStockRowChanged" msprop:Generator_RowEvArgName="IssueStockRowChangeEvent" msprop:Generator_RowClassName="IssueStockRow">
+        <xs:element name="IssueStock" msprop:Generator_TableClassName="IssueStockDataTable" msprop:Generator_TableVarName="tableIssueStock" msprop:Generator_RowChangedName="IssueStockRowChanged" msprop:Generator_TablePropName="IssueStock" msprop:Generator_RowDeletingName="IssueStockRowDeleting" msprop:Generator_RowChangingName="IssueStockRowChanging" msprop:Generator_RowEvHandlerName="IssueStockRowChangeEventHandler" msprop:Generator_RowDeletedName="IssueStockRowDeleted" msprop:Generator_RowClassName="IssueStockRow" msprop:Generator_UserTableName="IssueStock" msprop:Generator_RowEvArgName="IssueStockRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="InvoiceNo" msprop:Generator_ColumnVarNameInTable="columnInvoiceNo" msprop:Generator_ColumnPropNameInRow="InvoiceNo" msprop:Generator_ColumnPropNameInTable="InvoiceNoColumn" msprop:Generator_UserColumnName="InvoiceNo">
@@ -784,7 +784,7 @@ SELECT CustomerNo, CustomerName, EmailAddress, BusinessDigitalAddress, Residenti
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CustomerPayment" msprop:Generator_TableClassName="CustomerPaymentDataTable" msprop:Generator_TableVarName="tableCustomerPayment" msprop:Generator_RowChangedName="CustomerPaymentRowChanged" msprop:Generator_TablePropName="CustomerPayment" msprop:Generator_RowDeletingName="CustomerPaymentRowDeleting" msprop:Generator_RowChangingName="CustomerPaymentRowChanging" msprop:Generator_RowEvHandlerName="CustomerPaymentRowChangeEventHandler" msprop:Generator_RowDeletedName="CustomerPaymentRowDeleted" msprop:Generator_RowClassName="CustomerPaymentRow" msprop:Generator_UserTableName="CustomerPayment" msprop:Generator_RowEvArgName="CustomerPaymentRowChangeEvent">
+        <xs:element name="CustomerPayment" msprop:Generator_TableClassName="CustomerPaymentDataTable" msprop:Generator_TableVarName="tableCustomerPayment" msprop:Generator_TablePropName="CustomerPayment" msprop:Generator_RowDeletingName="CustomerPaymentRowDeleting" msprop:Generator_RowChangingName="CustomerPaymentRowChanging" msprop:Generator_RowEvHandlerName="CustomerPaymentRowChangeEventHandler" msprop:Generator_RowDeletedName="CustomerPaymentRowDeleted" msprop:Generator_UserTableName="CustomerPayment" msprop:Generator_RowChangedName="CustomerPaymentRowChanged" msprop:Generator_RowEvArgName="CustomerPaymentRowChangeEvent" msprop:Generator_RowClassName="CustomerPaymentRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PaymentID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnPaymentID" msprop:Generator_ColumnPropNameInRow="PaymentID" msprop:Generator_ColumnPropNameInTable="PaymentIDColumn" msprop:Generator_UserColumnName="PaymentID" type="xs:int" />
@@ -832,7 +832,7 @@ SELECT CustomerNo, CustomerName, EmailAddress, BusinessDigitalAddress, Residenti
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CustomerLedger" msprop:Generator_TableClassName="CustomerLedgerDataTable" msprop:Generator_TableVarName="tableCustomerLedger" msprop:Generator_RowChangedName="CustomerLedgerRowChanged" msprop:Generator_TablePropName="CustomerLedger" msprop:Generator_RowDeletingName="CustomerLedgerRowDeleting" msprop:Generator_RowChangingName="CustomerLedgerRowChanging" msprop:Generator_RowEvHandlerName="CustomerLedgerRowChangeEventHandler" msprop:Generator_RowDeletedName="CustomerLedgerRowDeleted" msprop:Generator_RowClassName="CustomerLedgerRow" msprop:Generator_UserTableName="CustomerLedger" msprop:Generator_RowEvArgName="CustomerLedgerRowChangeEvent">
+        <xs:element name="CustomerLedger" msprop:Generator_TableClassName="CustomerLedgerDataTable" msprop:Generator_TableVarName="tableCustomerLedger" msprop:Generator_TablePropName="CustomerLedger" msprop:Generator_RowDeletingName="CustomerLedgerRowDeleting" msprop:Generator_RowChangingName="CustomerLedgerRowChanging" msprop:Generator_RowEvHandlerName="CustomerLedgerRowChangeEventHandler" msprop:Generator_RowDeletedName="CustomerLedgerRowDeleted" msprop:Generator_UserTableName="CustomerLedger" msprop:Generator_RowChangedName="CustomerLedgerRowChanged" msprop:Generator_RowEvArgName="CustomerLedgerRowChangeEvent" msprop:Generator_RowClassName="CustomerLedgerRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="LedgerID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnLedgerID" msprop:Generator_ColumnPropNameInRow="LedgerID" msprop:Generator_ColumnPropNameInTable="LedgerIDColumn" msprop:Generator_UserColumnName="LedgerID" type="xs:int" />
@@ -879,7 +879,7 @@ SELECT CustomerNo, CustomerName, EmailAddress, BusinessDigitalAddress, Residenti
               <xs:element name="CreditRecieved" msprop:Generator_ColumnVarNameInTable="columnCreditRecieved" msprop:Generator_ColumnPropNameInRow="CreditRecieved" msprop:Generator_ColumnPropNameInTable="CreditRecievedColumn" msprop:Generator_UserColumnName="CreditRecieved" type="xs:double" minOccurs="0" />
               <xs:element name="TimeRecieved" msprop:Generator_ColumnVarNameInTable="columnTimeRecieved" msprop:Generator_ColumnPropNameInRow="TimeRecieved" msprop:Generator_ColumnPropNameInTable="TimeRecievedColumn" msprop:Generator_UserColumnName="TimeRecieved" type="xs:duration" minOccurs="0" />
               <xs:element name="DateRecieved" msprop:Generator_ColumnVarNameInTable="columnDateRecieved" msprop:Generator_ColumnPropNameInRow="DateRecieved" msprop:Generator_ColumnPropNameInTable="DateRecievedColumn" msprop:Generator_UserColumnName="DateRecieved" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="CustomerNo" msprop:Generator_ColumnVarNameInTable="columnCustomerNo" msprop:Generator_ColumnPropNameInRow="CustomerNo" msprop:Generator_ColumnPropNameInTable="CustomerNoColumn" msprop:Generator_UserColumnName="CustomerNo" type="xs:int" minOccurs="0" />
+              <xs:element name="CustomerNo" msprop:Generator_ColumnVarNameInTable="columnCustomerNo" msprop:Generator_ColumnPropNameInRow="CustomerNo" msprop:Generator_ColumnPropNameInTable="CustomerNoColumn" msprop:Generator_UserColumnName="CustomerNo" type="xs:string" minOccurs="0" />
               <xs:element name="IssueNo" msprop:Generator_ColumnVarNameInTable="columnIssueNo" msprop:Generator_ColumnPropNameInRow="IssueNo" msprop:Generator_ColumnPropNameInTable="IssueNoColumn" msprop:Generator_UserColumnName="IssueNo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -891,10 +891,10 @@ SELECT CustomerNo, CustomerName, EmailAddress, BusinessDigitalAddress, Residenti
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Customer" msprop:Generator_TableClassName="CustomerDataTable" msprop:Generator_TableVarName="tableCustomer" msprop:Generator_RowChangedName="CustomerRowChanged" msprop:Generator_TablePropName="Customer" msprop:Generator_RowDeletingName="CustomerRowDeleting" msprop:Generator_RowChangingName="CustomerRowChanging" msprop:Generator_RowEvHandlerName="CustomerRowChangeEventHandler" msprop:Generator_RowDeletedName="CustomerRowDeleted" msprop:Generator_RowClassName="CustomerRow" msprop:Generator_UserTableName="Customer" msprop:Generator_RowEvArgName="CustomerRowChangeEvent">
+        <xs:element name="Customer" msprop:Generator_TableClassName="CustomerDataTable" msprop:Generator_TableVarName="tableCustomer" msprop:Generator_TablePropName="Customer" msprop:Generator_RowDeletingName="CustomerRowDeleting" msprop:Generator_RowChangingName="CustomerRowChanging" msprop:Generator_RowEvHandlerName="CustomerRowChangeEventHandler" msprop:Generator_RowDeletedName="CustomerRowDeleted" msprop:Generator_UserTableName="Customer" msprop:Generator_RowChangedName="CustomerRowChanged" msprop:Generator_RowEvArgName="CustomerRowChangeEvent" msprop:Generator_RowClassName="CustomerRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="CustomerNo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnCustomerNo" msprop:Generator_ColumnPropNameInRow="CustomerNo" msprop:Generator_ColumnPropNameInTable="CustomerNoColumn" msprop:Generator_UserColumnName="CustomerNo" type="xs:int" />
+              <xs:element name="CustomerNo" msdata:ReadOnly="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnCustomerNo" msprop:Generator_ColumnPropNameInRow="CustomerNo" msprop:Generator_ColumnPropNameInTable="CustomerNoColumn" msprop:Generator_UserColumnName="CustomerNo" type="xs:string" />
               <xs:element name="CustomerName" msprop:Generator_ColumnVarNameInTable="columnCustomerName" msprop:Generator_ColumnPropNameInRow="CustomerName" msprop:Generator_ColumnPropNameInTable="CustomerNameColumn" msprop:Generator_UserColumnName="CustomerName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -957,7 +957,7 @@ SELECT CustomerNo, CustomerName, EmailAddress, BusinessDigitalAddress, Residenti
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Range" msprop:Generator_TableClassName="RangeDataTable" msprop:Generator_TableVarName="tableRange" msprop:Generator_TablePropName="Range" msprop:Generator_RowDeletingName="RangeRowDeleting" msprop:Generator_RowChangingName="RangeRowChanging" msprop:Generator_RowEvHandlerName="RangeRowChangeEventHandler" msprop:Generator_RowDeletedName="RangeRowDeleted" msprop:Generator_UserTableName="Range" msprop:Generator_RowChangedName="RangeRowChanged" msprop:Generator_RowEvArgName="RangeRowChangeEvent" msprop:Generator_RowClassName="RangeRow">
+        <xs:element name="Range" msprop:Generator_TableClassName="RangeDataTable" msprop:Generator_TableVarName="tableRange" msprop:Generator_RowChangedName="RangeRowChanged" msprop:Generator_TablePropName="Range" msprop:Generator_RowDeletingName="RangeRowDeleting" msprop:Generator_RowChangingName="RangeRowChanging" msprop:Generator_RowEvHandlerName="RangeRowChangeEventHandler" msprop:Generator_RowDeletedName="RangeRowDeleted" msprop:Generator_RowClassName="RangeRow" msprop:Generator_UserTableName="Range" msprop:Generator_RowEvArgName="RangeRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="From" msprop:Generator_ColumnVarNameInTable="columnFrom" msprop:Generator_ColumnPropNameInRow="From" msprop:Generator_ColumnPropNameInTable="FromColumn" msprop:Generator_UserColumnName="From" type="xs:dateTime" minOccurs="0" />
@@ -978,10 +978,6 @@ SELECT CustomerNo, CustomerName, EmailAddress, BusinessDigitalAddress, Residenti
     <xs:unique name="CustomerLedger_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:CustomerLedger" />
       <xs:field xpath="mstns:LedgerID" />
-    </xs:unique>
-    <xs:unique name="Customer_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Customer" />
-      <xs:field xpath="mstns:CustomerNo" />
     </xs:unique>
   </xs:element>
 </xs:schema>

@@ -423,7 +423,7 @@ Partial Class PfrmInventoryMgmt
         Me.BunifuButton6.IdleIconLeftImage = CType(resources.GetObject("BunifuButton6.IdleIconLeftImage"), System.Drawing.Image)
         Me.BunifuButton6.IdleIconRightImage = Nothing
         Me.BunifuButton6.IndicateFocus = False
-        Me.BunifuButton6.Location = New System.Drawing.Point(3, 524)
+        Me.BunifuButton6.Location = New System.Drawing.Point(10, 482)
         Me.BunifuButton6.Name = "BunifuButton6"
         Me.BunifuButton6.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.BunifuButton6.OnDisabledState.BorderRadius = 1
@@ -464,7 +464,6 @@ Partial Class PfrmInventoryMgmt
         Me.BunifuButton6.TextMarginLeft = 0
         Me.BunifuButton6.TextPadding = New System.Windows.Forms.Padding(0)
         Me.BunifuButton6.UseDefaultRadiusAndThickness = True
-        Me.BunifuButton6.Visible = False
         '
         'BunifuButton5
         '

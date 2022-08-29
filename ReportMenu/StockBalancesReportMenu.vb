@@ -81,7 +81,7 @@ Public Class StockBalancesReportMenu
             adp.SelectCommand = cmd
             adp.Fill(dt, "ClientReg")
 
-            Dim report As New rptStockValPCatPck
+            Dim report As New rptStockBalpBrandpck
             report.SetDataSource(dt)
             frmSupplierReport.Show()
             frmSupplierReport.CrystalReportViewer1.ReportSource = report

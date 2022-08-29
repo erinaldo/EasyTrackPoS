@@ -292,6 +292,10 @@ Public Class frmAdjustStock
     End Sub
 
     Private Sub BunifuThinButton23_Click(sender As Object, e As EventArgs) Handles BunifuThinButton23.Click
+        If My.Settings.Adjuststock = False Then
+            MsgBox("Sorry You dont have access to this feature")
+            Exit Sub
+        End If
         If gvStockBatch.Rows.Count = 0 Then
             MsgBox("Select Items to Adjust")
             Exit Sub
@@ -304,16 +308,16 @@ Public Class frmAdjustStock
         Try
 
 
-            If poscon.State = ConnectionState.Closed Then
-                poscon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim i As Integer
             For i = 0 To gvStockBatch.RowCount - 1
-                If poscon.State = ConnectionState.Closed Then
-                    poscon.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim que = "insert into AdjustStock (ProdLine,ItemName,ItemCat,OldQty,AdjustmentQty,DateAdjusted,AdjustedBy,Price,Narration,time) values(@Prodline,@Itemname,@ItemCat,@oldqty,@AdjustmentQty,'" + txtDate.Text + "','" & My.Settings.ActiveUser & "',@Price,'" + txtnarration.Text + "','" + lbltime.Text + "')"
-                cmd = New SqlCommand(que, poscon)
+                cmd = New SqlCommand(que, Poscon)
                 With cmd
                     .Parameters.AddWithValue("@Prodline", gvStockBatch.Rows(i).Cells(7).Value)
                     .Parameters.AddWithValue("@itemname", gvStockBatch.Rows(i).Cells(0).Value)
@@ -328,15 +332,15 @@ Public Class frmAdjustStock
             Next
             ' MsgBox("Record Saved")
             For k = 0 To gvStockBatch.RowCount - 1
-                If poscon.State = ConnectionState.Closed Then
-                    poscon.Open()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
                 End If
                 Dim sqll = "Select * from StockMast where Prodcode='" & gvStockBatch.Rows(k).Cells(6).Value & "'"
-                cmd = New SqlCommand(sqll, poscon)
+                cmd = New SqlCommand(sqll, Poscon)
                 dr = cmd.ExecuteReader
                 While dr.Read
                     Dim query = "update StockMast set Prodqty = @newstock where prodcode ='" & gvStockBatch.Rows(k).Cells(6).Value.ToString & "'"
-                    cmd = New SqlCommand(query, poscon)
+                    cmd = New SqlCommand(query, Poscon)
                     With cmd
                         If ckReplace.Checked = True Then
                             .Parameters.AddWithValue("@newstock", gvStockBatch.Rows(k).Cells(4).Value)
@@ -352,7 +356,7 @@ Public Class frmAdjustStock
 
             For Each row As DataGridViewRow In gvStockBatch.Rows
                 Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyRecieved,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyrecieved,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date)"
-                cmd = New SqlCommand(quer, poscon)
+                cmd = New SqlCommand(quer, Poscon)
                 With cmd
                     .Parameters.AddWithValue("@ItemCode", row.Cells(6).Value)
                     .Parameters.AddWithValue("@Itemname", row.Cells(0).Value)
@@ -374,7 +378,7 @@ Public Class frmAdjustStock
                 End With
 
             Next
-            poscon.Close()
+            Poscon.Close()
             'MsgBox("Successfully Adjusted Stock")
         Catch ex As Exception
             MsgBox(ex.Message)

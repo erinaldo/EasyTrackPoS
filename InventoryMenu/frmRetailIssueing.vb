@@ -11,15 +11,8 @@ Public Class frmRetailIssueing
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
         Timer1.Enabled = True
-        Display()
-        Try
-            ComboFeed("select distinct itemname from Stockmast", cbSearchItem, 0)
-            ComboFeed("select distinct customername from customer", cbSuppName, 0)
-            ComboFeed("select distinct prodcat from Stockmast", cbCatSort, 0)
-            ComboFeed("select distinct prodline from stockmast", cbProdlineSort, 0)
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+
+
         cbSearchItem.Focus()
         cbPaymentMode.SelectedIndex = 0
         cbSuppName.SelectedIndex = -1
@@ -34,6 +27,7 @@ Public Class frmRetailIssueing
 
         reload("select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast", gvStockBf)
         'where baseqty*packsize<>1
+        ComboFeed("select itemname from Stockmast", cbSearchItem, 0)
     End Sub
 
     Private Sub txtQtyRecieved_TextChanged(sender As Object, e As EventArgs) Handles txtQtyRecieved.TextChanged
@@ -178,6 +172,8 @@ Public Class frmRetailIssueing
     End Sub
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Newshowconfig()
+
         If cbSuppName.Text = "" Or lblCustNo.Text = "CustNo" Then
             MsgBox("Choose Customer")
             Exit Sub
@@ -195,7 +191,7 @@ Public Class frmRetailIssueing
                     If Poscon.State = ConnectionState.Closed Then
                         Poscon.Open()
                     End If
-                    Dim query = "insert into Issuestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyIssued,Issuedby,itemcat,CustomerName,CustomerID,PackVolume,Customeroldbal,totalbalance,customerpayment,newbalance,narration,dateissued,time,paymode,TranxRef,totalissued) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + tsuser.Text + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packVolume,'" + lblOldBal.Text + "','" + lbltotalbal.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + txtNarration.Text + "','" + txtdate.Text + "','" + tstime.Text + "','" + cbPaymentMode.Text + "','" + txtREfNo.Text + "','" + lblTotal.Text + "')"
+                    Dim query = "insert into Issuestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyIssued,Issuedby,itemcat,CustomerName,CustomerID,PackVolume,Customeroldbal,totalbalance,customerpayment,newbalance,narration,dateissued,time,paymode,TranxRef,totalissued) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + My.Settings.ActiveUser + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packVolume,'" + lblOldBal.Text + "','" + lbltotalbal.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + txtNarration.Text + "','" + txtdate.Text + "','" + tstime.Text + "','" + cbPaymentMode.Text + "','" + txtREfNo.Text + "','" + lblTotal.Text + "')"
                     cmd = New SqlCommand(query, Poscon)
                     With cmd
                         .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
@@ -213,7 +209,7 @@ Public Class frmRetailIssueing
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim sql = "insert into CustomerLedger (issueno,Recievedby,CustomerName,CustomerNo,creditrecieved,oldbal,narration,newbal,daterecieved,timerecieved,amtpaid) values('" + txtinvoiceno.Text + "','" + tsuser.Text + "','" + cbSuppName.Text + "','" + lblCustNo.Text + "','" + lblTotal.Text + "','" + lblOldBal.Text + "','" + txtNarration.Text + "','" + lblNewBal.Text + "','" + txtdate.Text + "','" + tstime.Text + "','" + txtAmtPaid.Text + "')"
+                Dim sql = "insert into CustomerLedger (issueno,Recievedby,CustomerName,CustomerNo,creditrecieved,oldbal,narration,newbal,daterecieved,timerecieved,amtpaid) values('" + txtinvoiceno.Text + "','" + My.Settings.ActiveUser + "','" + cbSuppName.Text + "','" + lblCustNo.Text + "','" + lblTotal.Text + "','" + lblOldBal.Text + "','" + txtNarration.Text + "','" + lblNewBal.Text + "','" + txtdate.Text + "','" + tstime.Text + "','" + txtAmtPaid.Text + "')"
                 cmd = New SqlCommand(sql, Poscon)
                 cmd.ExecuteNonQuery()
                 For Each row As DataGridViewRow In gvStockBatch.Rows
@@ -238,7 +234,7 @@ Public Class frmRetailIssueing
                             .Parameters.AddWithValue("@Ramt", row.Cells(5).Value)
                             .Parameters.AddWithValue("@Camt", row.Cells(5).Value)
                             .Parameters.AddWithValue("@Nar", txtNarration.Text)
-                            .Parameters.AddWithValue("@userid", tsuser.Text)
+                            .Parameters.AddWithValue("@userid", My.Settings.ActiveUser)
                             .Parameters.AddWithValue("@Date", txtdate.Text)
                             .Parameters.AddWithValue("@Time", tstime.Text)
                             .ExecuteNonQuery()
@@ -254,7 +250,7 @@ Public Class frmRetailIssueing
                     End While
                 Next
                 If Val(txtAmtPaid.Text) > 0 Then
-                    Dim query = "insert into customerpayment(Customername,oldbal,datepaid,amtpaid,newbal,Paymentmode,Recievedby) values('" + cbSuppName.Text + "','" + lblOldBal.Text + "','" + txtdate.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbPaymentMode.Text + "','" + tsuser.Text + "') "
+                    Dim query = "insert into customerpayment(Customername,oldbal,datepaid,amtpaid,newbal,Paymentmode,Recievedby) values('" + cbSuppName.Text + "','" + lblOldBal.Text + "','" + txtdate.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbPaymentMode.Text + "','" + My.Settings.ActiveUser + "') "
                     cmd = New SqlCommand(query, Poscon)
                     cmd.ExecuteNonQuery()
 
@@ -323,7 +319,7 @@ Public Class frmRetailIssueing
                 End If
                 Poscon.Close()
 
-                Display()
+                'Display()
                 reciept()
                 gvStockBatch.Rows.Clear()
                 If ckPreview.Checked = True Or ckprint.Checked = True Then
@@ -345,6 +341,7 @@ Public Class frmRetailIssueing
             End If
             dt.Tables("IssueStock").Rows.Clear()
             cmd = New SqlCommand(query, Poscon)
+            da = New SqlDataAdapter
             da.SelectCommand = cmd
             da.Fill(dt, "IssueStock")
 
@@ -354,7 +351,7 @@ Public Class frmRetailIssueing
             da.SelectCommand = cmd
             da.Fill(dt, "ClientReg")
 
-            Dim report As New rptGoodsIssued
+            Dim report As New rptGoodsIssuedDuadian
             report.SetDataSource(dt)
             If ckprint.Checked = True Then
                 report.PrintToPrinter(1, True, 0, 0)
@@ -363,6 +360,13 @@ Public Class frmRetailIssueing
                 frmSupplierReport.Show()
                 frmSupplierReport.CrystalReportViewer1.ReportSource = report
                 frmSupplierReport.CrystalReportViewer1.Refresh()
+            End If
+            If ckWaybill.Checked = True Then
+                Dim wreport As New rptIssueStockWaybill
+                wreport.SetDataSource(dt)
+                If ckprint.Checked = True Then
+                    wreport.PrintToPrinter(1, True, 0, 0)
+                End If
             End If
 
 
@@ -412,7 +416,10 @@ Public Class frmRetailIssueing
     End Sub
 
     Private Sub cbSearchItem_TextChanged(sender As Object, e As EventArgs) Handles cbSearchItem.TextChanged
-        Search(cbSearchItem.Text)
+        If cbSearchItem.Text = "" Then
+            Display()
+        End If
+        'Search(cbSearchItem.Text)
     End Sub
     Public Sub Search(valueTosearch As String)
         Try
@@ -531,28 +538,37 @@ Public Class frmRetailIssueing
         Poscon.Close()
 
     End Sub
-    Public Sub FillIssue(valueTosearch As String)
+    Public Sub FillIssue(valueTosearch As String, e As KeyEventArgs)
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
 
-            Dim query = "select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where concat(itemname,ProdCode) like '%" + valueTosearch + "%' and baseqty*packsize<>1"
+            Dim query = "select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where itemname like '%" + valueTosearch + "%' "
+            'and baseqty*packsize<>1
             cmd = New SqlCommand(query, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             da.Fill(table)
-            gvStockBf.DataSource = table
+            If e.KeyCode = Keys.Enter Then
+                If table.Rows.Count > 1 Then
+                    gvStockBf.DataSource = table
+                End If
 
-            txtItemName.Text = table.Rows(0)(0).ToString
-            txtItemPrice.Text = table.Rows(0)(3).ToString
-            txtActualStock.Text = table.Rows(0)(1).ToString
-            lblProdcode.Text = table.Rows(0)(7).ToString
-            txtCat.Text = table.Rows(0)(2).ToString
-            txtPackSize.Text = table.Rows(0)(5).ToString
-            txtbaseQty.Text = table.Rows(0)(6).ToString
-            lblpackprice.Text = table.Rows(0)(4).ToString
-            txtPackVolume.Text = Val(txtPackSize.Text * txtbaseQty.Text)
+            End If
+
+            If table.Rows.Count = 1 Then
+                txtItemName.Text = table.Rows(0)(0).ToString
+                txtItemPrice.Text = table.Rows(0)(3).ToString
+                txtActualStock.Text = table.Rows(0)(1).ToString
+                lblProdcode.Text = table.Rows(0)(7).ToString
+                txtCat.Text = table.Rows(0)(2).ToString
+                txtPackSize.Text = table.Rows(0)(5).ToString
+                txtbaseQty.Text = table.Rows(0)(6).ToString
+                lblpackprice.Text = table.Rows(0)(4).ToString
+                txtPackVolume.Text = Val(txtPackSize.Text * txtbaseQty.Text)
+            End If
+
 
             Poscon.Close()
         Catch ex As Exception
@@ -566,7 +582,7 @@ Public Class frmRetailIssueing
 
     Private Sub cbSearchItem_KeyDown(sender As Object, e As KeyEventArgs) Handles cbSearchItem.KeyDown
         If e.KeyCode = Keys.Enter Then
-            FillIssue(cbSearchItem.Text)
+            FillIssue(cbSearchItem.Text, e)
             txtQtyRecieved.Focus()
         End If
         'e.SuppressKeyPress = True
@@ -613,5 +629,36 @@ Public Class frmRetailIssueing
 
     Private Sub txtdate_ValueChanged(sender As Object, e As EventArgs) Handles txtdate.ValueChanged
         lbldate.Text = txtdate.Text
+    End Sub
+
+    Private Sub cbSearchItem_Click(sender As Object, e As EventArgs) Handles cbSearchItem.Click
+
+    End Sub
+
+    Private Sub cbSuppName_Click(sender As Object, e As EventArgs) Handles cbSuppName.Click
+        ComboFeed("select distinct customername from customer", cbSuppName, 0)
+    End Sub
+
+    Private Sub cbCatSort_Click(sender As Object, e As EventArgs) Handles cbCatSort.Click
+        ComboFeed("select distinct prodcat from Stockmast", cbCatSort, 0)
+    End Sub
+
+    Private Sub cbProdlineSort_Click(sender As Object, e As EventArgs) Handles cbProdlineSort.Click
+        ComboFeed("select distinct prodline from stockmast", cbProdlineSort, 0)
+    End Sub
+
+    Private Sub frmRetailIssueing_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
+        Display()
+    End Sub
+
+    Private Sub txtItemPrice_DoubleClick(sender As Object, e As EventArgs) Handles txtItemPrice.DoubleClick
+        If My.Settings.TempPriceChange = False Then
+            MsgBox("Sorry you dont have access to this feature")
+            Exit Sub
+        End If
+        If My.Settings.TempPriceChange = True Then
+            txtItemPrice.Enabled = True
+            txtItemPrice.ReadOnly = False
+        End If
     End Sub
 End Class

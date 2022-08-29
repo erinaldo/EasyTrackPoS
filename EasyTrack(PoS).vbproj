@@ -547,6 +547,12 @@
     <Compile Include="InventoryMenu\frmToCollected.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="InventoryMenu\PfrmWHSEManagement.Designer.vb">
+      <DependentUpon>PfrmWHSEManagement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryMenu\PfrmWHSEManagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="InventoryMenu\rptCustomerSummPDate.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -557,6 +563,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptGoodsIssued.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InventoryMenu\rptGoodsIssuedDuadian.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptGoodsIssuedDuadian.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="InventoryMenu\rptGoodsIssuePerCust.vb">
@@ -575,6 +587,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptInventLedgerPerItem.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InventoryMenu\rptIssueStockWaybill.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIssueStockWaybill.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="InventoryMenu\rptnewLedgerPerItem.vb">
@@ -642,6 +660,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptMultishopStockBals.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Multiwarehouse\frmCreateWHSE.Designer.vb">
+      <DependentUpon>frmCreateWHSE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Multiwarehouse\frmCreateWHSE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Multiwarehouse\frmWarehouseRecieve.Designer.vb">
+      <DependentUpon>frmWarehouseRecieve.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Multiwarehouse\frmWarehouseRecieve.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Multiwarehouse\frmWHSEIssue.Designer.vb">
+      <DependentUpon>frmWHSEIssue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Multiwarehouse\frmWHSEIssue.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Odering System\frmAddwaiter.Designer.vb">
       <DependentUpon>frmAddwaiter.vb</DependentUpon>
@@ -912,6 +948,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptStockBalbyPline.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportMenu\rptStockBalpBrandpck.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStockBalpBrandpck.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReportMenu\rptStockBalPositive.vb">
@@ -1487,6 +1529,9 @@
     <EmbeddedResource Include="InventoryMenu\frmToCollected.resx">
       <DependentUpon>frmToCollected.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMenu\PfrmWHSEManagement.resx">
+      <DependentUpon>PfrmWHSEManagement.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryMenu\rptCustomerSummPDate.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCustomerSummPDate.vb</LastGenOutput>
@@ -1494,6 +1539,10 @@
     <EmbeddedResource Include="InventoryMenu\rptGoodsIssued.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptGoodsIssued.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMenu\rptGoodsIssuedDuadian.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptGoodsIssuedDuadian.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryMenu\rptGoodsIssuePerCust.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1506,6 +1555,10 @@
     <EmbeddedResource Include="InventoryMenu\rptInventLedgerPerItem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptInventLedgerPerItem.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMenu\rptIssueStockWaybill.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIssueStockWaybill.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryMenu\rptnewLedgerPerItem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1544,6 +1597,15 @@
     <EmbeddedResource Include="MultiShop\rptMultishopStockBals.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptMultishopStockBals.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multiwarehouse\frmCreateWHSE.resx">
+      <DependentUpon>frmCreateWHSE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multiwarehouse\frmWarehouseRecieve.resx">
+      <DependentUpon>frmWarehouseRecieve.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multiwarehouse\frmWHSEIssue.resx">
+      <DependentUpon>frmWHSEIssue.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="Odering System\frmAddwaiter.resx">
@@ -1685,6 +1747,10 @@
     <EmbeddedResource Include="ReportMenu\rptStockBalbyPline.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptStockBalbyPline.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportMenu\rptStockBalpBrandpck.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStockBalpBrandpck.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportMenu\rptStockBalPositive.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

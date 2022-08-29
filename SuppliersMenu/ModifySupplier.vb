@@ -23,6 +23,10 @@ Public Class frmModifySupplier
         poscon.Close()
     End Sub
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
+        If My.Settings.DeleteCS = False Then
+            MsgBox("Sorry you dont have access to this feature")
+            Exit Sub
+        End If
         If lblCustID.Text = "" Then
             MsgBox("Select Supplier To Edit")
             Exit Sub
@@ -67,8 +71,12 @@ Public Class frmModifySupplier
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-        If poscon.State = ConnectionState.Closed Then
-            poscon.Open()
+        If My.Settings.DeleteCS = False Then
+            MsgBox("Sorry you dont have access to this feature")
+            Exit Sub
+        End If
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
         End If
         Dim query = "delete from Supplier where Supplierno='" + lblCustID.Text + "' "
         cmd = New SqlCommand(query, poscon)

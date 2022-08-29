@@ -183,7 +183,8 @@
     End Sub
 
     Private Sub BunifuButton6_Click(sender As Object, e As EventArgs) Handles btnaccmenu.Click
-        MsgBox("Contact your Service Providers")
+        PfrmWHSEManagement.Show()
+        Me.Hide()
     End Sub
 
 

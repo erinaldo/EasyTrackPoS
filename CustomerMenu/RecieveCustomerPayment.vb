@@ -150,6 +150,10 @@ Public Class RecieveCustomerPayment
     End Sub
 
     Private Sub BunifuThinButton21_Click_1(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If My.Settings.RecieveCS = False Then
+            MsgBox("Sorry you do not have access to this feature")
+            Exit Sub
+        End If
         If lblCustID.Text = "" Then
             MsgBox("Choose Customer")
             Exit Sub

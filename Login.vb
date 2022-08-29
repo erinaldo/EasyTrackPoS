@@ -141,20 +141,15 @@ Public Class Login
             cmd = New SqlCommand(query, Poscon)
             dr = cmd.ExecuteReader
             While dr.Read
-                'main menu
-                'My.Settings.Productmenu = dr.Item("productmenu").ToString
-                'My.Settings.invmenu = dr.Item("inventorymenu").ToString
-                'My.Settings.customermenu = dr.Item("customermenu").ToString
-                'My.Settings.suppliermenu = dr.Item("suppliermenu").ToString
-                'My.Settings.salesmenu = dr.Item("salesmenu").ToString
-                'My.Settings.setupmenu = dr.Item("setupmenu").ToString
-                'My.Settings.reportmenu = dr.Item("reportmenu").ToString
-                'My.Settings.accountsmenu = dr.Item("accountmenu").ToString
+                'Inventory management
+                My.Settings.Adjuststock = dr.Item("adjuststock").ToString
 
                 'product management
                 My.Settings.createprod = dr.Item("createprod").ToString
                 My.Settings.modprod = dr.Item("modprod").ToString
                 My.Settings.delprod = dr.Item("delprod").ToString
+                My.Settings.TempPriceChange = dr.Item("Temppricechange").ToString
+                My.Settings.changeprice = dr.Item("changeprice").ToString
 
                 'Sales management
                 My.Settings.opensession = dr.Item("opensession").ToString
@@ -163,7 +158,6 @@ Public Class Login
                 My.Settings.packtrans = dr.Item("packtrans").ToString
                 My.Settings.proforma = dr.Item("proforma").ToString
                 My.Settings.DelierySale = dr.Item("deliverysale").ToString
-
                 My.Settings.closesession = dr.Item("closesession").ToString
 
                 'customer/supplier management
@@ -173,7 +167,7 @@ Public Class Login
 
                 My.Settings.Save()
             End While
-
+            dr.Close()
             Poscon.Close()
         Catch ex As Exception
             MsgBox(ex.Message)

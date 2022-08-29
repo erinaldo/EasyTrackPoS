@@ -126,20 +126,34 @@ Public Class frmProdCreate
 
     End Sub
     Private Sub Display()
+
         cbItemtype.SelectedIndex = 0
-        reload("select * from StockMast ORDER BY Prodname asc", gvStockMastBf)
-        ComboFeed("select distinct prodline from stockmast where prodline IS NOT NULL ORDER BY Prodline asc", cbProdLine, 0)
-        ComboFeed("select distinct prodsize from stockmast where prodsize IS NOT NULL ORDER BY Prodsize asc", cbSize, 0)
-        ComboFeed("select distinct prodcolour from stockmast where prodcolour IS NOT NULL ORDER BY Prodcolour asc", cbColour, 0)
-        ComboFeed("select distinct Prodcat from Stockmast where Prodcat IS NOT NULL ORDER BY Prodcat asc", cbCat, 0)
-        ComboFeed("select distinct brandname from stockmast where brandname IS NOT NULL ORDER BY brandname asc", cbbrandName, 0)
-        ComboFeed("select distinct units from stockmast where units IS NOT NULL ORDER BY units asc", ComboBox1, 0)
+        reload("select * from StockMast ORDER BY itemname asc", gvStockMastBf)
+
         Newshowconfig()
         lblProdCount.Text = gvStockMastBf.Rows.Count()
 
     End Sub
+    Private Sub Datagridview()
+        gvStockMastBf.Columns(0).Width = 0
+        gvStockMastBf.Columns(1).Width = 100
+        gvStockMastBf.Columns(2).Width = 100
+        gvStockMastBf.Columns(3).Width = 100
+        gvStockMastBf.Columns(4).Width = 100
+        gvStockMastBf.Columns(5).Width = 100
+        gvStockMastBf.Columns(6).Width = 100
+        gvStockMastBf.Columns(7).Width = 100
+        gvStockMastBf.Columns(8).Width = 100
+        gvStockMastBf.Columns(9).Width = 100
+        gvStockMastBf.Columns(10).Width = 100
+        gvStockMastBf.Columns(11).Width = 100
+        gvStockMastBf.Columns(12).Width = 100
+        gvStockMastBf.Columns(13).Width = 100
+        gvStockMastBf.Columns(14).Width = 100
+        gvStockMastBf.Columns(15).Width = 100
+    End Sub
     Private Sub ProductManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Display()
+        'Display()
         clear()
         cbItemCodeType.SelectedIndex = 1
     End Sub
@@ -261,6 +275,10 @@ Public Class frmProdCreate
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If My.Settings.createprod = False Then
+            MsgBox("Sorry you dont have access to this feature")
+            Exit Sub
+        End If
         If cbItemCodeType.SelectedIndex = 1 Then
             Newshowconfig()
         End If
@@ -270,27 +288,27 @@ Public Class frmProdCreate
 
         Dim qu = "select * from Stockmast where ProdName= '" + txtProdName.Text + "' and ItemName='" + txtItemName.Text + "' and ProdCat='" + cbCat.Text + "' "
         cmd = New SqlCommand(qu, Poscon)
-            dr = cmd.ExecuteReader
-            If (dr.Read = True) Then
-                MsgBox("Item Name already exists")
-                dr.Close()
-                Poscon.Close()
-                cbItemCodeType.SelectedIndex = 0
-                Exit Sub
-            End If
+        dr = cmd.ExecuteReader
+        If (dr.Read = True) Then
+            MsgBox("Item Name already exists")
+            dr.Close()
+            Poscon.Close()
+            cbItemCodeType.SelectedIndex = 0
+            Exit Sub
+        End If
 
-            Try
+        Try
             'dr.Close()
 
             If Poscon.State = ConnectionState.Closed Then
-                    Poscon.Open()
-                End If
+                Poscon.Open()
+            End If
             dr.Close()
             Dim sql = "select * from StockMast where ProdCode = '" & txtStockCode.Text & "'"
             cmd = New SqlCommand(sql, Poscon)
-                da = New SqlDataAdapter(cmd)
-                tbl = New DataTable()
-                da.Fill(tbl)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
             ' If (txtItemName.Text + " " + cbColour.Text + " " + cbUnique.Text + " " + cbSize.Text) = table.Rows(0)(1).ToString Then
             'MsgBox("Item Name Alredy exists")
 
@@ -304,7 +322,7 @@ Public Class frmProdCreate
                 create("insert into stockmast(prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyReminder,distributorprice,packsize,baseqty,Packprice,costprice,prodtype,units) values('" & txtStockCode.Text & "','" + txtProdName.Text + "','" + cbProdLine.Text + "','" & cbSize.Text & "','" & cbColour.Text & "','" & cbCat.Text & "','" & txtQty.Text & "','" & txtRPrice.Text & "','" & txtWPrice.Text & "','" & txtItemName.Text & "','" & cbbrandName.Text & "','" & cbUnique.Text & "','" & txtLeastQty.Text & "','" & txtWPrice.Text & "','" & txtpacksize.Text & "','" & txtbaseqty.Text & "','" & txtpackprice.Text & "','" & txtCPrice.Text & "','" & cbItemtype.Text & "','" & ComboBox1.Text & "')")
 
             End If
-            Catch ex As Exception
+        Catch ex As Exception
             MsgBox(ex.Message)
 
         End Try
@@ -369,7 +387,7 @@ Public Class frmProdCreate
         End Try
     End Sub
 
-    Public Sub Feel(valueTosearch As String)
+    Public Sub Feel(valueTosearch As String, e As KeyEventArgs)
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
@@ -380,7 +398,10 @@ Public Class frmProdCreate
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable()
             da.Fill(tbl)
-            gvStockMastBf.DataSource = tbl
+            If e.KeyCode = Keys.Enter Then
+                gvStockMastBf.DataSource = tbl
+            End If
+
             Dim itemavailable As Boolean
             itemavailable = tbl.Rows(0)(0).ToString = ""
             If itemavailable Then
@@ -400,7 +421,7 @@ Public Class frmProdCreate
     End Sub
 
     Private Sub cbSearchProdCreate_KeyUp(sender As Object, e As KeyEventArgs) Handles cbSearchProdCreate.KeyUp
-        Feel(cbSearchProdCreate.Text)
+
     End Sub
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
         ProductManagement_Load(e, e)
@@ -423,12 +444,7 @@ Public Class frmProdCreate
     End Sub
 
     Private Sub txtRPrice_TextChanged(sender As Object, e As EventArgs) Handles txtRPrice.TextChanged
-        Dim packprice As Decimal
-        Dim a = Val(txtpacksize.Text)
-        Dim b = Val(txtbaseqty.Text)
-        Dim c = Val(txtRPrice.Text)
-        packprice = a * b * c
-        txtpackprice.Text = packprice
+
     End Sub
 
     Private Sub txtpackprice_TextChanged(sender As Object, e As EventArgs) Handles txtpackprice.TextChanged
@@ -484,5 +500,71 @@ Public Class frmProdCreate
         End If
         'txtinvoiceno.Text = "SRV" + Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss")
 
+    End Sub
+
+    Private Sub cbSearchProdCreate_KeyDown(sender As Object, e As KeyEventArgs) Handles cbSearchProdCreate.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Feel(cbSearchProdCreate.Text, e)
+            txtProdName.Focus()
+
+        End If
+
+
+    End Sub
+
+    Private Sub frmProdCreate_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
+        Display()
+    End Sub
+
+    Private Sub cbSearchProdCreate_TextChanged(sender As Object, e As EventArgs) Handles cbSearchProdCreate.TextChanged
+        If cbSearchProdCreate.Text = "" Then
+            Display()
+        End If
+    End Sub
+
+    Private Sub cbProdLine_Click(sender As Object, e As EventArgs) Handles cbProdLine.Click
+        ComboFeed("select distinct prodline from stockmast where prodline IS NOT NULL ORDER BY Prodline asc", cbProdLine, 0)
+    End Sub
+
+    Private Sub cbSize_Click(sender As Object, e As EventArgs) Handles cbSize.Click
+        ComboFeed("select distinct prodsize from stockmast where prodsize IS NOT NULL ORDER BY Prodsize asc", cbSize, 0)
+    End Sub
+
+    Private Sub cbColour_Click(sender As Object, e As EventArgs) Handles cbColour.Click
+        ComboFeed("select distinct prodcolour from stockmast where prodcolour IS NOT NULL ORDER BY Prodcolour asc", cbColour, 0)
+    End Sub
+
+    Private Sub cbCat_Click(sender As Object, e As EventArgs) Handles cbCat.Click
+        ComboFeed("select distinct Prodcat from Stockmast where Prodcat IS NOT NULL ORDER BY Prodcat asc", cbCat, 0)
+    End Sub
+
+    Private Sub cbbrandName_Click(sender As Object, e As EventArgs) Handles cbbrandName.Click
+        ComboFeed("select distinct brandname from stockmast where brandname IS NOT NULL ORDER BY brandname asc", cbbrandName, 0)
+    End Sub
+
+    Private Sub ComboBox1_Click(sender As Object, e As EventArgs) Handles ComboBox1.Click
+        ComboFeed("select distinct units from stockmast where units IS NOT NULL ORDER BY units asc", ComboBox1, 0)
+    End Sub
+
+    Private Sub cbSearchProdCreate_Click(sender As Object, e As EventArgs) Handles cbSearchProdCreate.Click
+        ComboFeed("select itemname from stockmast", cbSearchProdCreate, 0)
+    End Sub
+
+    Private Sub txtRPrice_Leave(sender As Object, e As EventArgs) Handles txtRPrice.Leave
+        Dim packprice As Decimal
+        Dim a = Val(txtpacksize.Text)
+        Dim b = Val(txtbaseqty.Text)
+        Dim c = Val(txtRPrice.Text)
+        packprice = a * b * c
+        txtpackprice.Text = packprice
+    End Sub
+
+    Private Sub txtRPrice_MouseLeave(sender As Object, e As EventArgs) Handles txtRPrice.MouseLeave
+        Dim packprice As Decimal
+        Dim a = Val(txtpacksize.Text)
+        Dim b = Val(txtbaseqty.Text)
+        Dim c = Val(txtRPrice.Text)
+        packprice = a * b * c
+        txtpackprice.Text = packprice
     End Sub
 End Class

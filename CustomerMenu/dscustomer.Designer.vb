@@ -2089,7 +2089,7 @@ Partial Public Class dscustomer
                     ByVal CreditRecieved As Double,  _
                     ByVal TimeRecieved As System.TimeSpan,  _
                     ByVal DateRecieved As Date,  _
-                    ByVal CustomerNo As Integer,  _
+                    ByVal CustomerNo As String,  _
                     ByVal IssueNo As String,  _
                     ByVal Discount As Double) As CustomerLedgerRow
             Dim rowCustomerLedgerRow As CustomerLedgerRow = CType(Me.NewRow,CustomerLedgerRow)
@@ -2172,7 +2172,7 @@ Partial Public Class dscustomer
             MyBase.Columns.Add(Me.columnTimeRecieved)
             Me.columnDateRecieved = New Global.System.Data.DataColumn("DateRecieved", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDateRecieved)
-            Me.columnCustomerNo = New Global.System.Data.DataColumn("CustomerNo", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnCustomerNo = New Global.System.Data.DataColumn("CustomerNo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCustomerNo)
             Me.columnIssueNo = New Global.System.Data.DataColumn("IssueNo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnIssueNo)
@@ -2520,18 +2520,12 @@ Partial Public Class dscustomer
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddCustomerRow(ByVal CustomerName As String, ByVal EmailAddress As String, ByVal BusinessDigitalAddress As String, ByVal ResidentialDigitalAddress As String, ByVal ResidentailLocation As String, ByVal BusinessLocation As String, ByVal CreditLimit As Double, ByVal IDCardType As String, ByVal IDCardNumber As String, ByVal CurrentBalance As Double, ByVal Discount As Double) As CustomerRow
+        Public Overloads Function AddCustomerRow(ByVal CustomerNo As String, ByVal CustomerName As String, ByVal EmailAddress As String, ByVal BusinessDigitalAddress As String, ByVal ResidentialDigitalAddress As String, ByVal ResidentailLocation As String, ByVal BusinessLocation As String, ByVal CreditLimit As Double, ByVal IDCardType As String, ByVal IDCardNumber As String, ByVal CurrentBalance As Double, ByVal Discount As Double) As CustomerRow
             Dim rowCustomerRow As CustomerRow = CType(Me.NewRow,CustomerRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, CustomerName, EmailAddress, BusinessDigitalAddress, ResidentialDigitalAddress, ResidentailLocation, BusinessLocation, CreditLimit, IDCardType, IDCardNumber, CurrentBalance, Discount}
+            Dim columnValuesArray() As Object = New Object() {CustomerNo, CustomerName, EmailAddress, BusinessDigitalAddress, ResidentialDigitalAddress, ResidentailLocation, BusinessLocation, CreditLimit, IDCardType, IDCardNumber, CurrentBalance, Discount}
             rowCustomerRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCustomerRow)
             Return rowCustomerRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function FindByCustomerNo(ByVal CustomerNo As Integer) As CustomerRow
-            Return CType(Me.Rows.Find(New Object() {CustomerNo}),CustomerRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2568,7 +2562,7 @@ Partial Public Class dscustomer
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnCustomerNo = New Global.System.Data.DataColumn("CustomerNo", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnCustomerNo = New Global.System.Data.DataColumn("CustomerNo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCustomerNo)
             Me.columnCustomerName = New Global.System.Data.DataColumn("CustomerName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCustomerName)
@@ -2592,13 +2586,10 @@ Partial Public Class dscustomer
             MyBase.Columns.Add(Me.columnCurrentBalance)
             Me.columnDiscount = New Global.System.Data.DataColumn("Discount", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDiscount)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCustomerNo}, true))
-            Me.columnCustomerNo.AutoIncrement = true
             Me.columnCustomerNo.AutoIncrementSeed = -1
             Me.columnCustomerNo.AutoIncrementStep = -1
             Me.columnCustomerNo.AllowDBNull = false
             Me.columnCustomerNo.ReadOnly = true
-            Me.columnCustomerNo.Unique = true
             Me.columnCustomerName.MaxLength = 50
             Me.columnEmailAddress.MaxLength = 50
             Me.columnBusinessDigitalAddress.MaxLength = 50
@@ -4426,10 +4417,10 @@ Partial Public Class dscustomer
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property CustomerNo() As Integer
+        Public Property CustomerNo() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCustomerLedger.CustomerNoColumn),Integer)
+                    Return CType(Me(Me.tableCustomerLedger.CustomerNoColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'CustomerNo' in table 'CustomerLedger' is DBNull.", e)
                 End Try
@@ -4679,9 +4670,9 @@ Partial Public Class dscustomer
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property CustomerNo() As Integer
+        Public Property CustomerNo() As String
             Get
-                Return CType(Me(Me.tableCustomer.CustomerNoColumn),Integer)
+                Return CType(Me(Me.tableCustomer.CustomerNoColumn),String)
             End Get
             Set
                 Me(Me.tableCustomer.CustomerNoColumn) = value
@@ -9027,37 +9018,6 @@ Namespace dscustomerTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal CustomerName As String,  _
-                    ByVal EmailAddress As String,  _
-                    ByVal BusinessDigitalAddress As String,  _
-                    ByVal ResidentialDigitalAddress As String,  _
-                    ByVal ResidentailLocation As String,  _
-                    ByVal BusinessLocation As String,  _
-                    ByVal CreditLimit As Global.System.Nullable(Of Double),  _
-                    ByVal IDCardType As String,  _
-                    ByVal IDCardNumber As String,  _
-                    ByVal CurrentBalance As Global.System.Nullable(Of Double),  _
-                    ByVal Discount As Global.System.Nullable(Of Double),  _
-                    ByVal Original_CustomerNo As Integer,  _
-                    ByVal Original_CustomerName As String,  _
-                    ByVal Original_EmailAddress As String,  _
-                    ByVal Original_BusinessDigitalAddress As String,  _
-                    ByVal Original_ResidentialDigitalAddress As String,  _
-                    ByVal Original_ResidentailLocation As String,  _
-                    ByVal Original_BusinessLocation As String,  _
-                    ByVal Original_CreditLimit As Global.System.Nullable(Of Double),  _
-                    ByVal Original_IDCardType As String,  _
-                    ByVal Original_IDCardNumber As String,  _
-                    ByVal Original_CurrentBalance As Global.System.Nullable(Of Double),  _
-                    ByVal Original_Discount As Global.System.Nullable(Of Double)) As Integer
-            Return Me.Update(CustomerName, EmailAddress, BusinessDigitalAddress, ResidentialDigitalAddress, ResidentailLocation, BusinessLocation, CreditLimit, IDCardType, IDCardNumber, CurrentBalance, Discount, Original_CustomerNo, Original_CustomerName, Original_EmailAddress, Original_BusinessDigitalAddress, Original_ResidentialDigitalAddress, Original_ResidentailLocation, Original_BusinessLocation, Original_CreditLimit, Original_IDCardType, Original_IDCardNumber, Original_CurrentBalance, Original_Discount, Original_CustomerNo)
         End Function
     End Class
     

@@ -77,17 +77,6 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("server=192.168.0.104,1433; Database=PoS; User ID= sa; Password=kissbo;MultipleAct"& _ 
-            "iveResultSets=True;Connect Timeout=30")>  _
-        Public ReadOnly Property NetworkPoS() As String
-            Get
-                Return CType(Me("NetworkPoS"),String)
-            End Get
-        End Property
-        
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
@@ -300,6 +289,41 @@ Namespace My
             End Get
             Set
                 Me("Posconstring") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=192.168.0.102,1433; Database=PoS; User ID= sa; Password=kissboy;MultipleAc"& _ 
+            "tiveResultSets=True;Connect Timeout=30")>  _
+        Public ReadOnly Property NetworkPoS() As String
+            Get
+                Return CType(Me("NetworkPoS"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property TempPriceChange() As Boolean
+            Get
+                Return CType(Me("TempPriceChange"),Boolean)
+            End Get
+            Set
+                Me("TempPriceChange") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property Adjuststock() As Boolean
+            Get
+                Return CType(Me("Adjuststock"),Boolean)
+            End Get
+            Set
+                Me("Adjuststock") = value
             End Set
         End Property
     End Class

@@ -13,6 +13,10 @@ Public Class frmPaySupplierBill
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If My.Settings.RecieveCS = False Then
+            MsgBox("Sorry you dont access to this feature")
+            Exit Sub
+        End If
         If cbCustName.Text = "" Then
             MsgBox("Choose Supplier")
             Exit Sub

@@ -9,18 +9,18 @@ Public Class frmModifyProduct
 
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
-        Display()
+
         LoadCatPline()
     End Sub
     Private Sub Display()
 
         reload("select * from StockMast", gvStock)
-        ComboFeed("select distinct prodline from stockmast where prodline IS NOT NULL ORDER BY Prodline asc", cbProdLine, 0)
-        ComboFeed("select distinct prodsize from stockmast where prodsize IS NOT NULL ORDER BY Prodsize asc", cbSize, 0)
-        ComboFeed("select distinct prodcolour from stockmast where prodcolour IS NOT NULL ORDER BY Prodcolour asc", cbColour, 0)
-        ComboFeed("select distinct Prodcat from Stockmast where Prodcat IS NOT NULL ORDER BY Prodcat asc", cbCat, 0)
-        ComboFeed("select distinct brandname from stockmast where brandname IS NOT NULL ORDER BY brandname asc", cbBrandName, 0)
-        ComboFeed("select distinct units from stockmast where units IS NOT NULL ORDER BY units asc", ComboBox1, 0)
+
+
+
+
+
+
     End Sub
 
     Private Sub gvStock_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
@@ -188,10 +188,13 @@ Public Class frmModifyProduct
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
-
+        If My.Settings.modprod = False Then
+            MsgBox("Sorry you dont have access to this feature")
+            Exit Sub
+        End If
         Try
 
-            create("update Stockmast Set ProdCode='" + txtStockCode.Text + "',Itemname= '" + cbProdname.Text + "',Prodname= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "',leastqtyreminder='" & txtReoder.Text & "',units='" & ComboBox1.Text & "' where Prodcode ='" & txtStockCode.Text & "'")
+            create("update Stockmast Set Itemname= '" + cbProdname.Text + "',Prodname= '" + cbProdname.Text + "',ProdLine='" + cbProdLine.Text + "',ProdSize='" + cbSize.Text + "',ProdColour='" + cbColour.Text + "',ProdCat='" + cbCat.Text + "',BrandName='" + cbBrandName.Text + "',uniqueid='" + cbUnique.Text + "',PackSize='" + txtpacksize.Text + "',Baseqty='" + txtbaseqty.Text + "',leastqtyreminder='" & txtReoder.Text & "',units='" & ComboBox1.Text & "' where Prodcode ='" & txtStockCode.Text & "'")
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
@@ -211,20 +214,23 @@ Public Class frmModifyProduct
     End Sub
 
     Private Sub cbSearchItem_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbSearchItem.KeyPress
-        Search(cbSearchItem.Text)
+
     End Sub
-    Public Sub Search(valueTosearch As String)
+    Public Sub Search(valueTosearch As String, e As KeyEventArgs)
         Try
-            If poscon.State = ConnectionState.Closed Then
-                poscon.Open()
+            If Poscon.State = ConnectionState.Closed Then
+                Poscon.Open()
             End If
             Dim query = "select * from StockMast where concat(ProdName,ProdCode) like '%" + valueTosearch + "%'"
-            cmd = New SqlCommand(query, poscon)
+            cmd = New SqlCommand(query, Poscon)
             da = New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             da.Fill(table)
-            gvStock.DataSource = table
-            poscon.Close()
+            If e.KeyCode = Keys.Enter Then
+                gvStock.DataSource = table
+            End If
+
+            Poscon.Close()
 
         Catch ex As Exception
 
@@ -237,6 +243,47 @@ Public Class frmModifyProduct
     End Sub
 
     Private Sub cbSearchItem_TextChanged(sender As Object, e As EventArgs) Handles cbSearchItem.TextChanged
-        Search(cbSearchItem.Text)
+        If cbSearchItem.Text = "" Then
+            Display()
+        End If
+    End Sub
+
+    Private Sub frmModifyProduct_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
+        Display()
+    End Sub
+
+    Private Sub cbProdLine_Click(sender As Object, e As EventArgs) Handles cbProdLine.Click
+        ComboFeed("select distinct prodline from stockmast where prodline IS NOT NULL ORDER BY Prodline asc", cbProdLine, 0)
+    End Sub
+
+    Private Sub cbSize_Click(sender As Object, e As EventArgs) Handles cbSize.Click
+        ComboFeed("select distinct prodsize from stockmast where prodsize IS NOT NULL ORDER BY Prodsize asc", cbSize, 0)
+    End Sub
+
+    Private Sub cbColour_Click(sender As Object, e As EventArgs) Handles cbColour.Click
+        ComboFeed("select distinct prodcolour from stockmast where prodcolour IS NOT NULL ORDER BY Prodcolour asc", cbColour, 0)
+    End Sub
+
+    Private Sub cbCat_Click(sender As Object, e As EventArgs) Handles cbCat.Click
+        ComboFeed("select distinct Prodcat from Stockmast where Prodcat IS NOT NULL ORDER BY Prodcat asc", cbCat, 0)
+    End Sub
+
+    Private Sub cbBrandName_Click(sender As Object, e As EventArgs) Handles cbBrandName.Click
+        ComboFeed("select distinct brandname from stockmast where brandname IS NOT NULL ORDER BY brandname asc", cbBrandName, 0)
+    End Sub
+
+    Private Sub ComboBox1_Click(sender As Object, e As EventArgs) Handles ComboBox1.Click
+        ComboFeed("select distinct units from stockmast where units IS NOT NULL ORDER BY units asc", ComboBox1, 0)
+    End Sub
+
+    Private Sub cbSearchItem_Click(sender As Object, e As EventArgs) Handles cbSearchItem.Click
+        ComboFeed("select itemname from stockmast", cbSearchItem, 0)
+    End Sub
+
+    Private Sub cbSearchItem_KeyDown(sender As Object, e As KeyEventArgs) Handles cbSearchItem.KeyDown
+
+        If e.KeyCode = Keys.Enter Then
+            Search(cbSearchItem.Text, e)
+        End If
     End Sub
 End Class

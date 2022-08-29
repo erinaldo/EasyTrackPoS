@@ -6,21 +6,11 @@ Public Class frmRecieveGoods
     Dim da As SqlDataAdapter
     Dim dr As SqlDataReader
     Dim dt As New dsGoodsRecieved
+
     Private Sub frmRecieveGoods_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
         WindowState = FormWindowState.Maximized
         Timer1.Enabled = True
-        Display()
-        Try
-
-            ComboFeed("select itemname from stockmast", cbSearchItem, 0)
-            ComboFeed("select suppliername from Supplier", cbSuppName, 0)
-            ComboFeed("select distinct(prodcat) from stockmast", cbCatSort, 0)
-            ComboFeed("select distinct(prodline) from stockmast", cbProdlineSort, 0)
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
         cbSuppName.SelectedItem = -1
         cbSearchItem.Focus()
         'stxtdate.Text = Date.Now.ToString("dd-MMM-yy")
@@ -29,13 +19,14 @@ Public Class frmRecieveGoods
     Private Sub Display()
 
         If ComboBox1.SelectedIndex = -1 Or ComboBox1.SelectedIndex = 0 Then
-            reload("select itemname,ProdQty,ProdCat,costprice,Prodcode,packsize,baseqty from StockMast", gvStockBf)
+            reload("select itemname,ProdQty,ProdCat,packprice as CtnPrice,Prodcode,packsize,baseqty,retailprice from StockMast", gvStockBf)
+
         Else
             reload("select oderno,Suppliername,odertotal,odertotal-oderbalance as TotalRecieved,OderBalance,Oderdate,Oderedby,OderID,supplierid,narration,supplierinvoice from Supplieroderconfig where oderbalance>0", gvStockBf)
             reload("select * from supplieroder", DataGridView1)
             reload("select * from supplieroderconfig", DataGridView2)
         End If
-
+        ComboFeed("select itemname from stockmast", cbSearchItem, 0)
 
     End Sub
 
@@ -189,7 +180,7 @@ Public Class frmRecieveGoods
         End If
     End Sub
 
-    Private Sub gvStockBf_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStockBf.CellClick
+    Private Sub gvStockBf_CellClick(sender As Object, e As DataGridViewCellEventArgs)
         Select Case ComboBox1.SelectedIndex
             Case 0, -1
                 Try
@@ -264,7 +255,7 @@ Public Class frmRecieveGoods
     End Sub
 
     Private Sub cbSearchItem_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbSearchItem.KeyPress
-        Search(cbSearchItem.Text)
+        'Search(cbSearchItem.Text)
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
@@ -484,7 +475,7 @@ Public Class frmRecieveGoods
             cmd.ExecuteNonQuery()
             MsgBox("Goods Recieved Successful")
             Poscon.Close()
-            Display()
+            'Display()
             If ckprint.Checked = True Or tkPreview.Checked = True Then
                 printreciept(txtinvoiceno.Text)
             End If
@@ -531,25 +522,36 @@ Public Class frmRecieveGoods
             gvStockBatch.Rows.Clear()
         End If
     End Sub
-    Public Sub FillGoods(valueTosearch As String)
+    Public Sub FillGoods(valueTosearch As String, e As KeyEventArgs)
         Try
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
 
-            Dim query = "select itemname,ProdQty,ProdCat,costprice,Prodcode,packsize,baseqty from StockMast where concat(itemname,ProdCode) like '%" + valueTosearch + "%'"
+            Dim query = "select itemname,ProdQty,ProdCat,packprice as ctnprice,Prodcode,packsize,baseqty,retailprice from StockMast where concat(itemname,ProdCode) like '%" + valueTosearch + "%'"
             cmd = New SqlCommand(query, Poscon)
             Dim adapter As New SqlDataAdapter(cmd)
             Dim table As New DataTable()
             adapter.Fill(table)
-            gvStockBf.DataSource = table
-            txtItemName.Text = table.Rows(0)(0).ToString
-            txtItemPrice.Text = table.Rows(0)(3).ToString
-            txtActualStock.Text = table.Rows(0)(1).ToString
-            lblProdcode.Text = table.Rows(0)(4).ToString
-            txtCat.Text = table.Rows(0)(2).ToString
-            txtbaseQty.Text = table.Rows(0)(5).ToString
-            txtPackSize.Text = table.Rows(0)(6).ToString
+            If e.KeyCode = Keys.Enter Then
+                If gvStockBf.Rows.Count > 1 Then
+                    gvStockBf.DataSource = table
+                End If
+
+            End If
+
+            If gvStockBf.Rows.Count = 1 Then
+                txtItemName.Text = table.Rows(0)(0).ToString
+                txtItemPrice.Text = table.Rows(0)(3).ToString
+                txtActualStock.Text = table.Rows(0)(1).ToString
+                lblProdcode.Text = table.Rows(0)(4).ToString
+                txtCat.Text = table.Rows(0)(2).ToString
+                txtbaseQty.Text = table.Rows(0)(5).ToString
+                txtPackSize.Text = table.Rows(0)(6).ToString
+                txtunitprice.Text = table.Rows(0)(7).ToString
+
+            End If
+
 
 
             Dim pckvol As New Decimal
@@ -588,12 +590,15 @@ Public Class frmRecieveGoods
     End Sub
 
     Private Sub cbSearchItem_TextChanged(sender As Object, e As EventArgs) Handles cbSearchItem.TextChanged
-        Search(cbSearchItem.Text)
+        If cbSearchItem.Text = "" Then
+            Display()
+        End If
+        'Search(cbSearchItem.Text)
     End Sub
 
     Private Sub cbSearchItem_KeyDown(sender As Object, e As KeyEventArgs) Handles cbSearchItem.KeyDown
         If e.KeyCode = Keys.Enter Then
-            FillGoods(cbSearchItem.Text)
+            FillGoods(cbSearchItem.Text, e)
             txtQtyRecieved.Focus()
         End If
     End Sub
@@ -742,5 +747,96 @@ Public Class frmRecieveGoods
 
     Private Sub cbProdlineSort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProdlineSort.SelectedIndexChanged
         reload("select itemname,ProdQty,ProdCat,costprice,Prodcode,packsize,baseqty from StockMast where prodline = '" + cbProdlineSort.Text + "'", gvStockBf)
+    End Sub
+
+    Private Sub frmRecieveGoods_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
+        Display()
+    End Sub
+
+    Private Sub cbSearchItem_Click(sender As Object, e As EventArgs) Handles cbSearchItem.Click
+
+    End Sub
+
+    Private Sub cbSuppName_Click(sender As Object, e As EventArgs) Handles cbSuppName.Click
+        ComboFeed("select suppliername from Supplier", cbSuppName, 0)
+    End Sub
+
+    Private Sub cbCatSort_Click(sender As Object, e As EventArgs) Handles cbCatSort.Click
+        ComboFeed("select distinct(prodcat) from stockmast", cbCatSort, 0)
+    End Sub
+
+    Private Sub cbProdlineSort_Click(sender As Object, e As EventArgs) Handles cbProdlineSort.Click
+        ComboFeed("select distinct(prodline) from stockmast", cbProdlineSort, 0)
+    End Sub
+
+    Private Sub gvStockBf_CellClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles gvStockBf.CellClick
+        Select Case ComboBox1.SelectedIndex
+            Case 0, -1
+                Try
+                    Dim row As DataGridViewRow = gvStockBf.Rows(e.RowIndex)
+                    txtItemName.Text = row.Cells(0).Value.ToString()
+                    txtItemPrice.Text = row.Cells(3).Value.ToString()
+                    txtActualStock.Text = row.Cells(1).Value.ToString()
+                    lblProdcode.Text = row.Cells(4).Value.ToString()
+                    txtCat.Text = row.Cells(2).Value.ToString()
+                    txtbaseQty.Text = row.Cells(5).Value.ToString()
+                    txtPackSize.Text = row.Cells(6).Value.ToString()
+                    txtunitprice.Text = row.Cells(6).Value.ToString()
+                    Dim pckvol As New Decimal
+                    Dim a = Val(txtPackSize.Text)
+                    Dim b = Val(txtbaseQty.Text)
+                    pckvol = a * b
+                    txtPackVolume.Text = pckvol
+                    txtQtyRecieved.Focus()
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
+            Case 1
+                If gvStockBatch.Rows.Count <> 0 Then
+                    Dim ask As MsgBoxResult
+                    ask = MsgBox("Would you like to clear Cart?", MsgBoxStyle.YesNo, "")
+                    If ask = MsgBoxResult.No Then
+                        Exit Sub
+                    End If
+                End If
+                gvStockBatch.Rows.Clear()
+                Dim row As DataGridViewRow = gvStockBf.Rows(e.RowIndex)
+                lbloderid.Text = row.Cells(0).Value.ToString()
+                cbSuppName.Text = row.Cells(1).Value.ToString()
+                txtWayBill.Text = row.Cells(10).Value.ToString()
+                If Poscon.State = ConnectionState.Closed Then
+                    Poscon.Open()
+                End If
+                Dim queryy = ("Select oderno,Itemname,price,itemcat,prodcode,packvolume,qtyodered-qtyrecieved from supplieroder where oderno='" + lbloderid.Text + "' and qtyodered<>qtyrecieved")
+                cmd = New SqlCommand(queryy, Poscon)
+                da = New SqlDataAdapter(cmd)
+                tbl = New DataTable()
+                da.Fill(tbl)
+                If tbl.Rows.Count = 0 Then
+                    MsgBox("Oder Empty")
+                    Exit Sub
+                End If
+                txtinvoiceno.Text = tbl.Rows(0)(0).ToString
+
+                For k = 0 To tbl.Rows.Count - 1
+                    gvStockBatch.Rows.Add(tbl.Rows(k)(1).ToString, 0, tbl.Rows(k)(2).ToString, 0, 0, 0, tbl.Rows(k)(4).ToString, tbl.Rows(k)(2).ToString, tbl.Rows(k)(5).ToString, tbl.Rows(k)(6).ToString)
+                Next
+                Poscon.Close()
+            Case Else
+
+        End Select
+
+    End Sub
+
+    Private Sub Label16_Click(sender As Object, e As EventArgs) Handles Label16.Click
+        For Each row As DataGridViewRow In gvStockBatch.Rows
+            dt.Tables("Recievestock").Rows.Clear()
+            dt.Tables("Recievestock").Rows.Add("Preview", row.Cells(0).Value, row.Cells(2).Value, row.Cells(5).Value, 0, 0, row.Cells(3).Value)
+        Next
+        Dim report As New rptRecieveStockInvoice
+        report.SetDataSource(dt)
+        frmSupplierReport.Show()
+        frmSupplierReport.CrystalReportViewer1.ReportSource = report
+        frmSupplierReport.CrystalReportViewer1.Refresh()
     End Sub
 End Class

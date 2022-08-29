@@ -912,5 +912,9 @@ D:\Daakye\FoodApplication\bin\Debug\CrystalDecisions.Windows.Forms.dll
 D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmAddwaiter.resources
 D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmsimplesale.resources
 D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmStockTaking.resources
-D:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).vbproj.AssemblyReference.cache
 D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCustomerbalanceRevaluation.resources
+D:\Daakye\FoodApplication\obj\Debug\EasyTrack(PoS).vbproj.AssemblyReference.cache
+D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmWarehouseRecieve.resources
+D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.PfrmWHSEManagement.resources
+D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCreateWHSE.resources
+D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmWHSEIssue.resources

@@ -620,7 +620,7 @@ Partial Class frmMain
         Me.btnaccmenu.BackColor1 = System.Drawing.Color.White
         Me.btnaccmenu.BackgroundImage = CType(resources.GetObject("btnaccmenu.BackgroundImage"), System.Drawing.Image)
         Me.btnaccmenu.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid
-        Me.btnaccmenu.ButtonText = "Accounts"
+        Me.btnaccmenu.ButtonText = "Multi-Warehouse"
         Me.btnaccmenu.ButtonTextMarginLeft = 0
         Me.btnaccmenu.ColorContrastOnClick = 45
         Me.btnaccmenu.ColorContrastOnHover = 45
@@ -696,7 +696,6 @@ Partial Class frmMain
         Me.btnaccmenu.TextMarginLeft = 0
         Me.btnaccmenu.TextPadding = New System.Windows.Forms.Padding(0)
         Me.btnaccmenu.UseDefaultRadiusAndThickness = True
-        Me.btnaccmenu.Visible = False
         '
         'btnsuppmenu
         '

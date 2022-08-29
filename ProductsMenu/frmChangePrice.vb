@@ -22,17 +22,9 @@ Public Class frmChangePrice
         Display()
     End Sub
     Private Sub Display()
-        If Poscon.State = ConnectionState.Closed Then
-            Poscon.Open()
-        End If
-        Dim query = "select prodname,Retailprice,Prodqty,Wholesaleprice,prodcode,packprice,packsize,baseqty from StockMast"
-        cmd = New SqlCommand(query, Poscon)
-        da = New SqlDataAdapter(cmd)
-        Dim tbl As New DataTable
-        da.Fill(tbl)
-        gvStockguna.DataSource = tbl
-        Poscon.Close()
-        ComboFeed("select prodname from StockMast where ProdName like '%" + cbChangepriceSrch.Text + "%'", cbChangepriceSrch, 0)
+
+        reload("select prodname,Retailprice,Prodqty,Wholesaleprice,prodcode,packprice,packsize,baseqty from StockMast", gvStockguna)
+        ' ComboFeed("select prodname from StockMast where ProdName like '%" + cbChangepriceSrch.Text + "%'", cbChangepriceSrch, 0)
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs)
@@ -48,7 +40,7 @@ Public Class frmChangePrice
 
     Private Sub txtNewRPrice_TextChanged(sender As Object, e As EventArgs) Handles txtNewRPrice.TextChanged
         ' lblnewramt.Text = Val(txtNewRPrice.Text) * Val(lblqty.Text)
-        txtnewpckprice.Text = Val(txtNewRPrice.Text) * Val(lblpackvol.Text)
+
     End Sub
 
     Private Sub Label3_Click(sender As Object, e As EventArgs)
@@ -86,14 +78,17 @@ Public Class frmChangePrice
         Application.Exit()
     End Sub
 
-    Public Sub Search(valueTosearch As String)
+    Public Sub Search(valueTosearch As String, e As KeyEventArgs)
         Poscon.Open()
         Dim query = "select prodname,Retailprice,Prodqty,Wholesaleprice,prodcode,packprice,packsize,baseqty from StockMast where Itemname like '%" + valueTosearch + "%'"
         cmd = New SqlCommand(query, Poscon)
         Dim adapter As New SqlDataAdapter(cmd)
         Dim table As New DataTable()
         adapter.Fill(table)
-        gvStockguna.DataSource = table
+        If e.KeyCode = Keys.Enter Then
+            gvStockguna.DataSource = table
+        End If
+
 
 
         If table.Rows.Count() > 0 Then
@@ -116,7 +111,7 @@ Public Class frmChangePrice
     End Sub
 
     Private Sub cbProdLine_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbChangepriceSrch.KeyPress
-        Search(cbChangepriceSrch.Text)
+
     End Sub
 
     Private Sub gvStockguna_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gvStockguna.CellClick
@@ -144,6 +139,10 @@ Public Class frmChangePrice
     End Sub
 
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If My.Settings.changeprice = False Then
+            MsgBox("Your dont have access to this feature.")
+            Exit Sub
+        End If
         If txtNewRPrice.Text = "" Then
             MsgBox("Enter New Prices")
             Exit Sub
@@ -281,6 +280,7 @@ Public Class frmChangePrice
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        txtnewpckprice.Text = Val(txtNewRPrice.Text) * Val(lblpackvol.Text)
         lblodlRamt.Text = Val(txtOldRPrice.Text) * Val(lblqty.Text)
         lbloldcamt.Text = Val(lbloldcamt.Text) * Val(lblqty.Text)
         lblnewcamt.Text = Val(txtNewWPrice.Text) * Val(lblqty.Text)
@@ -303,7 +303,7 @@ Public Class frmChangePrice
 
 
     Private Sub txtNewRPrice_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNewRPrice.KeyPress
-        txtnewpckprice.Text = Val(txtNewRPrice.Text) * Val(lblpackvol.Text)
+
     End Sub
 
     Private Sub txtnewpckprice_TextChanged(sender As Object, e As EventArgs) Handles txtnewpckprice.TextChanged
@@ -311,6 +311,30 @@ Public Class frmChangePrice
     End Sub
 
     Private Sub cbChangepriceSrch_TextChanged(sender As Object, e As EventArgs) Handles cbChangepriceSrch.TextChanged
+        If cbChangepriceSrch.Text = "" Then
+            Display()
+        End If
+    End Sub
 
+    Private Sub cbChangepriceSrch_Click(sender As Object, e As EventArgs) Handles cbChangepriceSrch.Click
+        ComboFeed("select itemname from stockmast", cbChangepriceSrch, 0)
+    End Sub
+
+    Private Sub cbChangepriceSrch_KeyDown(sender As Object, e As KeyEventArgs) Handles cbChangepriceSrch.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Search(cbChangepriceSrch.Text, e)
+        End If
+    End Sub
+
+    Private Sub txtNewRPrice_Leave(sender As Object, e As EventArgs) Handles txtNewRPrice.Leave
+        txtnewpckprice.Text = Val(txtNewRPrice.Text) * Val(lblpackvol.Text)
+    End Sub
+
+    Private Sub txtNewRPrice_Validated(sender As Object, e As EventArgs) Handles txtNewRPrice.Validated
+        txtnewpckprice.Text = Val(txtNewRPrice.Text) * Val(lblpackvol.Text)
+    End Sub
+
+    Private Sub txtNewRPrice_MouseLeave(sender As Object, e As EventArgs) Handles txtNewRPrice.MouseLeave
+        txtnewpckprice.Text = Val(txtNewRPrice.Text) * Val(lblpackvol.Text)
     End Sub
 End Class

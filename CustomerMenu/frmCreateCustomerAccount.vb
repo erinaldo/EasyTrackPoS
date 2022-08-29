@@ -114,6 +114,10 @@ Public Class frmCreateCustomerAccount
     End Sub
 
     Private Sub BunifuThinButton21_Click_1(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If My.Settings.CreateCS = False Then
+            MsgBox("Sorry you dont have access to this feature")
+            Exit Sub
+        End If
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
