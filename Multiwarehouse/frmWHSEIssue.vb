@@ -26,7 +26,7 @@ Public Class frmWHSEIssue
     Private Sub Display()
 
 
-        reload("select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from whsestockmast", gvStockBf)
+        reload("select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from whsestockmast where whsename='" + ComboBox1.Text + "' and whseno='" + whseno + "'", gvStockBf)
         'where baseqty*packsize<>1
 
     End Sub
@@ -272,7 +272,7 @@ Public Class frmWHSEIssue
 
 
                 For Each row As DataGridViewRow In gvStockBatch.Rows
-                    MsgBox(whseno)
+                    'MsgBox(whseno)
 
                     insertd("update whsestockmast set prodqty=prodqty - " + row.Cells(3).Value + " where Prodcode= '" & row.Cells(6).Value.ToString & "' and whsename='" + ComboBox1.Text + "' and whseno='" + whseno + "'")
                     'End While
@@ -299,7 +299,7 @@ Public Class frmWHSEIssue
     End Sub
     Private Sub printreciept(valuetosearch As String)
         Try
-            Dim query = "select * from IssueStock where InvoiceNo ='" + valuetosearch + "'"
+            Dim query = "select * from whseIssueStock where InvoiceNo ='" + valuetosearch + "'"
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
@@ -476,7 +476,7 @@ Public Class frmWHSEIssue
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
-        cmd = New SqlCommand("select max(invoiceno) from Whseissuestock", Poscon)
+        cmd = New SqlCommand("select max(goodsid) from Whseissuestock", Poscon)
         result = cmd.ExecuteScalar.ToString
 
         If String.IsNullOrEmpty(result) Then
@@ -508,7 +508,7 @@ Public Class frmWHSEIssue
                 Poscon.Open()
             End If
 
-            Dim query = "select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from StockMast where itemname like '%" + valueTosearch + "%' "
+            Dim query = "select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from whseStockMast where itemname like '%" + valueTosearch + "%' and whsename='" + ComboBox1.Text + "' and whseno='" + whseno + "' "
             'and baseqty*packsize<>1
             cmd = New SqlCommand(query, Poscon)
             da = New SqlDataAdapter(cmd)
@@ -612,7 +612,7 @@ Public Class frmWHSEIssue
     End Sub
 
     Private Sub frmRetailIssueing_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
-        Display()
+        'Display()
     End Sub
 
     Private Sub txtItemPrice_DoubleClick(sender As Object, e As EventArgs) Handles txtItemPrice.DoubleClick
@@ -647,11 +647,13 @@ Public Class frmWHSEIssue
         Else
 
             whseno = tbl.Rows(0)(0).ToString
-            MsgBox(whseno)
+            ' MsgBox(whseno)
 
             ' lblCustBal.Text = dblValue.ToString("N", CultureInfo.InvariantCulture)
         End If
 
         Poscon.Close()
     End Sub
+
+
 End Class

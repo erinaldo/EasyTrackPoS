@@ -21,7 +21,7 @@ Public Class frmWarehouseRecieve
         End Sub
     Private Sub Display()
 
-        reload("select itemname,ProdQty,ProdCat,packprice as CtnPrice,Prodcode,packsize,baseqty,retailprice from whsestockmast", gvStockBf)
+        reload("select itemname,ProdQty,ProdCat,packprice as CtnPrice,Prodcode,packsize,baseqty,retailprice from whsestockmast where whsename='" + ComboBox1.Text + "' and whseno='" + whseno + "'", gvStockBf)
 
         ComboFeed("select itemname from stockmast", cbSearchItem, 0)
 
@@ -403,7 +403,7 @@ Public Class frmWarehouseRecieve
                     tbl = New DataTable()
                     da.Fill(tbl)
                 If tbl.Rows.Count = 0 Then
-                    MsgBox("Write")
+                    ' MsgBox("Write")
                     cmd = New SqlCommand("Select * from StockMast where Prodcode='" & row.Cells(6).Value.ToString & "'", Poscon)
                     dr = cmd.ExecuteReader()
                     While dr.Read
@@ -431,7 +431,7 @@ Public Class frmWarehouseRecieve
                         End With
                     End While
                 Else
-                    MsgBox("Update")
+                    ' MsgBox("Update")
                     'cmd = New SqlCommand("Select * from whseStockMast where Prodcode='" + row.Cells(6).Value + "' and whsename='" + ComboBox1.Text + "' and whseno='" + whseno + "'", Poscon)
                     'dr = cmd.ExecuteReader()
                     '    While dr.Read
@@ -448,7 +448,7 @@ Public Class frmWarehouseRecieve
                     Display()
                 End If
             Next
-            reload("select * from whseStockmast", DataGridView1)
+            'reload("select * from whseStockmast", DataGridView1)
 
             Poscon.Close()
             insertd("update Supplier set Balance = '" & lblNewBal.Text & "' where SupplierNo= " & whseno & "")
@@ -514,13 +514,13 @@ Public Class frmWarehouseRecieve
             adapter.Fill(table)
             If e.KeyCode = Keys.Enter Then
                 If gvStockBf.Rows.Count > 1 Then
-                    gvStockBf.DataSource = table
+                    'gvStockBf.DataSource = table
                 End If
 
             End If
-            MsgBox(table.Rows.Count)
+            'MsgBox(table.Rows.Count)
 
-            cmd = New SqlCommand("select itemname,ProdQty,ProdCat,packprice as ctnprice,Prodcode,packsize,baseqty,retailprice from whseStockMast where concat(itemname,prodcode) like '%" + valueTosearch + "%' and whsename='" + ComboBox1.Text + "'", Poscon)
+            cmd = New SqlCommand("select itemname,ProdQty,ProdCat,packprice as ctnprice,Prodcode,packsize,baseqty,retailprice from whseStockMast where concat(itemname,prodcode) like '%" + valueTosearch + "%'  and whsename='" + ComboBox1.Text + "' and whseno='" + whseno + "'", Poscon)
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable()
             da.Fill(tbl)
@@ -623,7 +623,7 @@ Public Class frmWarehouseRecieve
     End Sub
     Private Sub printreciept(valuetosearch As String)
         Try
-            Dim query = "select * from Recievestock where InvoiceNo ='" + valuetosearch + "'"
+            Dim query = "select * from whseRecievestock where InvoiceNo ='" + valuetosearch + "'"
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
@@ -687,7 +687,7 @@ Public Class frmWarehouseRecieve
         Else
 
             whseno = tbl.Rows(0)(0).ToString
-            MsgBox(whseno)
+
 
             ' lblCustBal.Text = dblValue.ToString("N", CultureInfo.InvariantCulture)
         End If
@@ -763,30 +763,27 @@ Public Class frmWarehouseRecieve
             ComboFeed("select distinct(prodline) from stockmast", cbProdlineSort, 0)
         End Sub
 
-        Private Sub gvStockBf_CellClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles gvStockBf.CellClick
-
-
-
+    Private Sub gvStockBf_CellClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles gvStockBf.CellClick
 
         Try
-                        Dim row As DataGridViewRow = gvStockBf.Rows(e.RowIndex)
-                        txtItemName.Text = row.Cells(0).Value.ToString()
-                        txtItemPrice.Text = row.Cells(3).Value.ToString()
-                        txtActualStock.Text = row.Cells(1).Value.ToString()
-                        lblProdcode.Text = row.Cells(4).Value.ToString()
-                        txtCat.Text = row.Cells(2).Value.ToString()
-                        txtbaseQty.Text = row.Cells(5).Value.ToString()
-                        txtPackSize.Text = row.Cells(6).Value.ToString()
-                        txtunitprice.Text = row.Cells(6).Value.ToString()
-                        Dim pckvol As New Decimal
-                        Dim a = Val(txtPackSize.Text)
-                        Dim b = Val(txtbaseQty.Text)
-                        pckvol = a * b
-                        txtPackVolume.Text = pckvol
-                        txtQtyRecieved.Focus()
-                    Catch ex As Exception
-                        MsgBox(ex.Message)
-                    End Try
+            Dim row As DataGridViewRow = gvStockBf.Rows(e.RowIndex)
+            txtItemName.Text = row.Cells(0).Value.ToString()
+            txtItemPrice.Text = row.Cells(3).Value.ToString()
+            txtActualStock.Text = row.Cells(1).Value.ToString()
+            lblProdcode.Text = row.Cells(4).Value.ToString()
+            txtCat.Text = row.Cells(2).Value.ToString()
+            txtbaseQty.Text = row.Cells(5).Value.ToString()
+            txtPackSize.Text = row.Cells(6).Value.ToString()
+            txtunitprice.Text = row.Cells(6).Value.ToString()
+            Dim pckvol As New Decimal
+            Dim a = Val(txtPackSize.Text)
+            Dim b = Val(txtbaseQty.Text)
+            pckvol = a * b
+            txtPackVolume.Text = pckvol
+            txtQtyRecieved.Focus()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
 
 
 
@@ -794,7 +791,7 @@ Public Class frmWarehouseRecieve
 
     End Sub
 
-        Private Sub Label16_Click(sender As Object, e As EventArgs) Handles Label16.Click
+    Private Sub Label16_Click(sender As Object, e As EventArgs) Handles Label16.Click
             For Each row As DataGridViewRow In gvStockBatch.Rows
                 dt.Tables("Recievestock").Rows.Clear()
                 dt.Tables("Recievestock").Rows.Add("Preview", row.Cells(0).Value, row.Cells(2).Value, row.Cells(5).Value, 0, 0, row.Cells(3).Value)

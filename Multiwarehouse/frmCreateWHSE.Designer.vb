@@ -55,7 +55,6 @@ Partial Class frmCreateWHSE
         '
         Me.cbWHSEType.Font = New System.Drawing.Font("Segoe UI", 14.25!)
         Me.cbWHSEType.FormattingEnabled = True
-        Me.cbWHSEType.Items.AddRange(New Object() {"Branch Customer", "Credit Customer", "Depositor", "Warehouse"})
         Me.cbWHSEType.Location = New System.Drawing.Point(204, 273)
         Me.cbWHSEType.Name = "cbWHSEType"
         Me.cbWHSEType.Size = New System.Drawing.Size(282, 33)
@@ -82,7 +81,8 @@ Partial Class frmCreateWHSE
         DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(255, Byte), Integer))
         DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
         Me.gvStockMast.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
-        Me.gvStockMast.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.gvStockMast.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gvStockMast.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.gvStockMast.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
@@ -383,6 +383,7 @@ Partial Class frmCreateWHSE
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmCreateWHSE"
         Me.Text = "frmCreateWHSE"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.gvStockMast, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
