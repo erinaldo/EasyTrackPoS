@@ -523,7 +523,6 @@ Partial Class PfrmUserSetup
         Me.ClientSize = New System.Drawing.Size(860, 577)
         Me.Controls.Add(Me.PUserProfile)
         Me.Controls.Add(Me.Panel1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "PfrmUserSetup"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -173,6 +173,7 @@ Partial Class Login
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 142
         Me.PictureBox1.TabStop = False
+        Me.PictureBox1.Visible = False
         '
         'Label4
         '
@@ -241,7 +242,6 @@ Partial Class Login
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtUserID)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

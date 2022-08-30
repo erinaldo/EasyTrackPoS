@@ -306,7 +306,10 @@ Public Class frmWarehouseRecieve
     End Sub
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles BunifuThinButton22.Click
-
+        If ComboBox1.Text = "" Then
+            MsgBox("Kindly select a warehouse")
+            Exit Sub
+        End If
         If cbSuppName.Text = "" Or lblCustNo.Text = "CustNo" Then
             MsgBox("Choose supplier")
             Exit Sub
@@ -469,17 +472,17 @@ Public Class frmWarehouseRecieve
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
-        cmd = New SqlCommand("select max(Goodsid) from RecieveStock", Poscon)
+        cmd = New SqlCommand("select max(Goodsid) from whseRecieveStock", Poscon)
         result = cmd.ExecuteScalar.ToString
 
         If String.IsNullOrEmpty(result) Then
-            result = "SIR0001"
+            result = "WSIR0001"
             txtinvoiceno.Text = result
         Else
             result = result.Substring(0)
             Int32.TryParse(result, digit)
             digit = digit + 1
-            result = "SIR" + digit.ToString("D4")
+            result = "WSIR" + digit.ToString("D4")
             txtinvoiceno.Text = result
         End If
         'txtinvoiceno.Text = "SRV" + Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss")
@@ -503,7 +506,7 @@ Public Class frmWarehouseRecieve
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            MsgBox(gvStockBf.Rows.Count)
+
             Dim query = "select itemname,ProdQty,ProdCat,packprice as ctnprice,Prodcode,packsize,baseqty,retailprice from StockMast where concat(itemname,prodcode) like '%" + valueTosearch + "%'"
             cmd = New SqlCommand(query, Poscon)
             Dim adapter As New SqlDataAdapter(cmd)
@@ -516,20 +519,37 @@ Public Class frmWarehouseRecieve
 
             End If
             MsgBox(table.Rows.Count)
-            If table.Rows.Count = 1 Then
-                txtItemName.Text = table.Rows(0)(0).ToString
-                txtItemPrice.Text = table.Rows(0)(3).ToString
-                txtActualStock.Text = table.Rows(0)(1).ToString
-                lblProdcode.Text = table.Rows(0)(4).ToString
-                txtCat.Text = table.Rows(0)(2).ToString
-                txtbaseQty.Text = table.Rows(0)(5).ToString
-                txtPackSize.Text = table.Rows(0)(6).ToString
-                txtunitprice.Text = table.Rows(0)(7).ToString
+
+            cmd = New SqlCommand("select itemname,ProdQty,ProdCat,packprice as ctnprice,Prodcode,packsize,baseqty,retailprice from whseStockMast where concat(itemname,prodcode) like '%" + valueTosearch + "%' and whsename='" + ComboBox1.Text + "'", Poscon)
+            da = New SqlDataAdapter(cmd)
+            tbl = New DataTable()
+            da.Fill(tbl)
+            If tbl.Rows.Count = 1 Then
+                If table.Rows.Count = 1 Then
+                    txtItemName.Text = table.Rows(0)(0).ToString
+                    txtItemPrice.Text = table.Rows(0)(3).ToString
+                    txtActualStock.Text = tbl.Rows(0)(1).ToString
+                    lblProdcode.Text = table.Rows(0)(4).ToString
+                    txtCat.Text = table.Rows(0)(2).ToString
+                    txtbaseQty.Text = table.Rows(0)(5).ToString
+                    txtPackSize.Text = table.Rows(0)(6).ToString
+                    txtunitprice.Text = table.Rows(0)(7).ToString
+
+                End If
+            Else
+                If table.Rows.Count = 1 Then
+                    txtItemName.Text = table.Rows(0)(0).ToString
+                    txtItemPrice.Text = table.Rows(0)(3).ToString
+                    txtActualStock.Text = 0
+                    lblProdcode.Text = table.Rows(0)(4).ToString
+                    txtCat.Text = table.Rows(0)(2).ToString
+                    txtbaseQty.Text = table.Rows(0)(5).ToString
+                    txtPackSize.Text = table.Rows(0)(6).ToString
+                    txtunitprice.Text = table.Rows(0)(7).ToString
+
+                End If
 
             End If
-
-
-
             Dim pckvol As New Decimal
             Dim a = Val(txtPackSize.Text)
             Dim b = Val(txtbaseQty.Text)
@@ -689,7 +709,7 @@ Public Class frmWarehouseRecieve
             If Poscon.State = ConnectionState.Closed Then
                 Poscon.Open()
             End If
-            cmd = New SqlCommand("select prodqty from Stockmast where prodcode='" + row.Cells(6).Value.ToString() + "'", Poscon)
+            cmd = New SqlCommand("select prodqty from whseStockmast where prodcode='" + row.Cells(6).Value.ToString() + "' and whsename='" + ComboBox1.Text + "'", Poscon)
             da = New SqlDataAdapter(cmd)
             tbl = New DataTable
             da.Fill(tbl)

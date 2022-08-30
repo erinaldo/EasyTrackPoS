@@ -456,6 +456,7 @@ Partial Class frmRecieveGoods
         Me.gvStockBatch.AllowUserToResizeRows = False
         Me.gvStockBatch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gvStockBatch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.gvStockBatch.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.gvStockBatch.BackgroundColor = System.Drawing.Color.White
         Me.gvStockBatch.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -496,60 +497,70 @@ Partial Class frmRecieveGoods
         Me.Column1.HeaderText = "Itemname"
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
+        Me.Column1.Width = 93
         '
         'Column2
         '
         Me.Column2.HeaderText = "Old Stock"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
+        Me.Column2.Width = 89
         '
         'clPrice
         '
         Me.clPrice.HeaderText = "Price"
         Me.clPrice.Name = "clPrice"
         Me.clPrice.ReadOnly = True
+        Me.clPrice.Width = 63
         '
         'Column3
         '
         Me.Column3.HeaderText = "QtyRecieved"
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
+        Me.Column3.Width = 110
         '
         'Column4
         '
         Me.Column4.HeaderText = "New Stock"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
+        Me.Column4.Width = 95
         '
         'Column5
         '
         Me.Column5.HeaderText = "Amount"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
+        Me.Column5.Width = 78
         '
         'Column6
         '
         Me.Column6.HeaderText = "ProductCode"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
+        Me.Column6.Width = 111
         '
         'Column7
         '
         Me.Column7.HeaderText = "Category"
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
+        Me.Column7.Width = 88
         '
         'Column8
         '
         Me.Column8.HeaderText = "PackVolume"
         Me.Column8.Name = "Column8"
         Me.Column8.ReadOnly = True
+        Me.Column8.Width = 108
         '
         'Column9
         '
         Me.Column9.HeaderText = "OderQty"
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
+        Me.Column9.Width = 83
         '
         'clItemName
         '

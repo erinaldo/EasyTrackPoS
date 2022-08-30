@@ -114,6 +114,8 @@ Partial Class frmWHSEIssue
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gvStockBatch = New System.Windows.Forms.DataGridView()
         Me.clItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label27 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -861,7 +863,6 @@ Partial Class frmWHSEIssue
         Me.cbSuppName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbSuppName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbSuppName.FormattingEnabled = True
-        Me.cbSuppName.Items.AddRange(New Object() {"CASH"})
         Me.cbSuppName.Location = New System.Drawing.Point(21, 30)
         Me.cbSuppName.Name = "cbSuppName"
         Me.cbSuppName.Size = New System.Drawing.Size(216, 29)
@@ -1404,11 +1405,39 @@ Partial Class frmWHSEIssue
         Me.clItemName.Name = "clItemName"
         Me.clItemName.ReadOnly = True
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.ComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(52, 95)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(790, 29)
+        Me.ComboBox1.TabIndex = 242
+        '
+        'Label27
+        '
+        Me.Label27.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label27.AutoSize = True
+        Me.Label27.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Label27.Location = New System.Drawing.Point(65, 75)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(113, 17)
+        Me.Label27.TabIndex = 243
+        Me.Label27.Text = "Select warehouse"
+        '
         'frmWHSEIssue
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1159, 671)
+        Me.Controls.Add(Me.Label27)
+        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.BunifuThinButton21)
         Me.Controls.Add(Me.Label20)
@@ -1547,4 +1576,6 @@ Partial Class frmWHSEIssue
     Friend WithEvents Label1 As Label
     Friend WithEvents gvStockBatch As DataGridView
     Friend WithEvents clItemName As DataGridViewTextBoxColumn
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Label27 As Label
 End Class

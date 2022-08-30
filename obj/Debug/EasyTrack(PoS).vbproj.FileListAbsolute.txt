@@ -918,3 +918,4 @@ D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmWarehouseRecieve.resources
 D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.PfrmWHSEManagement.resources
 D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmCreateWHSE.resources
 D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmWHSEIssue.resources
+D:\Daakye\FoodApplication\obj\Debug\HardSoft_PoS.frmWarehouseReportMenu.resources

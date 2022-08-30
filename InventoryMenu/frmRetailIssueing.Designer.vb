@@ -711,6 +711,7 @@ Partial Class frmRetailIssueing
         Me.gvStockBatch.AllowUserToResizeRows = False
         Me.gvStockBatch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.gvStockBatch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.gvStockBatch.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.gvStockBatch.BackgroundColor = System.Drawing.Color.White
         Me.gvStockBatch.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -752,54 +753,63 @@ Partial Class frmRetailIssueing
         Me.clItemName.HeaderText = "Item Name"
         Me.clItemName.Name = "clItemName"
         Me.clItemName.ReadOnly = True
+        Me.clItemName.Width = 98
         '
         'clOldStock
         '
         Me.clOldStock.HeaderText = "Old Stock"
         Me.clOldStock.Name = "clOldStock"
         Me.clOldStock.ReadOnly = True
+        Me.clOldStock.Width = 89
         '
         'clPrice
         '
         Me.clPrice.HeaderText = "Price"
         Me.clPrice.Name = "clPrice"
         Me.clPrice.ReadOnly = True
+        Me.clPrice.Width = 63
         '
         'clQtyRecieved
         '
         Me.clQtyRecieved.HeaderText = "Qty Issueing"
         Me.clQtyRecieved.Name = "clQtyRecieved"
         Me.clQtyRecieved.ReadOnly = True
+        Me.clQtyRecieved.Width = 103
         '
         'clNewStock
         '
         Me.clNewStock.HeaderText = "New Stock"
         Me.clNewStock.Name = "clNewStock"
         Me.clNewStock.ReadOnly = True
+        Me.clNewStock.Width = 95
         '
         'clAmount
         '
         Me.clAmount.HeaderText = "Amount"
         Me.clAmount.Name = "clAmount"
         Me.clAmount.ReadOnly = True
+        Me.clAmount.Width = 78
         '
         'ProdCode
         '
         Me.ProdCode.HeaderText = "ProductCode"
         Me.ProdCode.Name = "ProdCode"
         Me.ProdCode.ReadOnly = True
+        Me.ProdCode.Width = 111
         '
         'ItemCat
         '
         Me.ItemCat.HeaderText = "Category"
         Me.ItemCat.Name = "ItemCat"
         Me.ItemCat.ReadOnly = True
+        Me.ItemCat.Width = 88
         '
         'packVolume
         '
         Me.packVolume.HeaderText = "PackVolume"
         Me.packVolume.Name = "packVolume"
         Me.packVolume.ReadOnly = True
+        Me.packVolume.Width = 108
         '
         'txtItemAmount
         '

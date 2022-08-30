@@ -4,7 +4,7 @@ Module DBConnection
 
     Public Function PosConnection() As SqlConnection
 
-        Return New SqlConnection(My.Settings.PoSConnectionString)
+        Return New SqlConnection(My.Settings.Poscon)
 
     End Function
     Public Poscon As SqlConnection = PosConnection()

@@ -114,9 +114,9 @@ Partial Class frmReportMenu
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label6.Location = New System.Drawing.Point(489, 307)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(196, 32)
+        Me.Label6.Size = New System.Drawing.Size(227, 32)
         Me.Label6.TabIndex = 112
-        Me.Label6.Text = "Sesssion Report"
+        Me.Label6.Text = "Warehouse Report"
         '
         'Label7
         '

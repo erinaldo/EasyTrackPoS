@@ -673,11 +673,35 @@
     <Compile Include="Multiwarehouse\frmWarehouseRecieve.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Multiwarehouse\frmWarehouseReportMenu.Designer.vb">
+      <DependentUpon>frmWarehouseReportMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Multiwarehouse\frmWarehouseReportMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Multiwarehouse\frmWHSEIssue.Designer.vb">
       <DependentUpon>frmWHSEIssue.vb</DependentUpon>
     </Compile>
     <Compile Include="Multiwarehouse\frmWHSEIssue.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Multiwarehouse\rptRecieveStockWHSE.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptRecieveStockWHSE.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Multiwarehouse\rptStockIssuedWHSE.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStockIssuedWHSE.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Multiwarehouse\rptStockMovementpItemWHSE.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStockMovementpItemWHSE.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Odering System\frmAddwaiter.Designer.vb">
       <DependentUpon>frmAddwaiter.vb</DependentUpon>
@@ -954,6 +978,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptStockBalpBrandpck.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportMenu\rptStockBalpBrandWHSE.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStockBalpBrandWHSE.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReportMenu\rptStockBalPositive.vb">
@@ -1604,8 +1634,23 @@
     <EmbeddedResource Include="Multiwarehouse\frmWarehouseRecieve.resx">
       <DependentUpon>frmWarehouseRecieve.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Multiwarehouse\frmWarehouseReportMenu.resx">
+      <DependentUpon>frmWarehouseReportMenu.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Multiwarehouse\frmWHSEIssue.resx">
       <DependentUpon>frmWHSEIssue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multiwarehouse\rptRecieveStockWHSE.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptRecieveStockWHSE.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multiwarehouse\rptStockIssuedWHSE.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStockIssuedWHSE.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multiwarehouse\rptStockMovementpItemWHSE.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStockMovementpItemWHSE.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="Odering System\frmAddwaiter.resx">
@@ -1751,6 +1796,10 @@
     <EmbeddedResource Include="ReportMenu\rptStockBalpBrandpck.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptStockBalpBrandpck.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportMenu\rptStockBalpBrandWHSE.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStockBalpBrandWHSE.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportMenu\rptStockBalPositive.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

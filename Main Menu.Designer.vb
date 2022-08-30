@@ -118,6 +118,7 @@ Partial Class frmMain
         Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox2.TabIndex = 143
         Me.Guna2PictureBox2.TabStop = False
+        Me.Guna2PictureBox2.Visible = False
         '
         'Guna2PictureBox1
         '
@@ -131,6 +132,7 @@ Partial Class frmMain
         Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox1.TabIndex = 142
         Me.Guna2PictureBox1.TabStop = False
+        Me.Guna2PictureBox1.Visible = False
         '
         'Label7
         '
@@ -620,7 +622,7 @@ Partial Class frmMain
         Me.btnaccmenu.BackColor1 = System.Drawing.Color.White
         Me.btnaccmenu.BackgroundImage = CType(resources.GetObject("btnaccmenu.BackgroundImage"), System.Drawing.Image)
         Me.btnaccmenu.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid
-        Me.btnaccmenu.ButtonText = "Multi-Warehouse"
+        Me.btnaccmenu.ButtonText = "Warehouse Mangement"
         Me.btnaccmenu.ButtonTextMarginLeft = 0
         Me.btnaccmenu.ColorContrastOnClick = 45
         Me.btnaccmenu.ColorContrastOnHover = 45
@@ -689,7 +691,7 @@ Partial Class frmMain
         Me.btnaccmenu.OnPressedState.ForeColor = System.Drawing.Color.White
         Me.btnaccmenu.OnPressedState.IconLeftImage = Nothing
         Me.btnaccmenu.OnPressedState.IconRightImage = Nothing
-        Me.btnaccmenu.Size = New System.Drawing.Size(350, 83)
+        Me.btnaccmenu.Size = New System.Drawing.Size(403, 83)
         Me.btnaccmenu.TabIndex = 182
         Me.btnaccmenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.btnaccmenu.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
@@ -992,10 +994,9 @@ Partial Class frmMain
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMain"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Main Menu"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()

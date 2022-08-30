@@ -41,8 +41,27 @@ Public Class frmCustomerbalanceRevaluation
 
     End Sub
     Private Sub BunifuThinButton21_Click(sender As Object, e As EventArgs) Handles BunifuThinButton21.Click
+        If My.Settings.CustBalReEva = False Then
+            MsgBox("Sorry you are do not have access this feature")
+            Exit Sub
+        End If
+        If txtAmtPaid.Text = "" Then
+            MsgBox("Kindly Enter Difference")
+            Exit Sub
+        End If
+        If cbCustName.SelectedIndex = -1 Then
+            MsgBox("Kindly select a customer")
+            Exit Sub
+        End If
         updates("update Customer set CurrentBalance = '" + lblnewbalance.Text + "' where customerno ='" & lblcustid.Text & "'")
         insertd("insert into customerledger (customername,Oldbal,narration,newbal,Creditrecieved,daterecieved,customerno) 
-        values ( '" + cbCustName.Text + "','" & lblCustBal.Text & "','" + txtnarration.Text + "','" & lblnewbalance.Text & "','" + txtAmtPaid.Text + "','" + txtdatepaid.Text + "','" + lblcustid.Text + "')")
+        values ( '" + cbCustName.Text + "','" & lblCustBal.Text & "','" + txtNarration.Text + "','" & lblnewbalance.Text & "','" + txtAmtPaid.Text + "','" + txtdatepaid.Text + "','" + lblcustid.Text + "')")
+        clear()
+    End Sub
+    Public Sub clear()
+        txtAmtPaid.Text = ""
+        txtNarration.Text = ""
+        cbCustName.SelectedIndex = -1
+        lblCustBal.Text = 0
     End Sub
 End Class

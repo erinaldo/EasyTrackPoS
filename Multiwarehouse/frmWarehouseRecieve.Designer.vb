@@ -507,7 +507,6 @@ Partial Class frmWarehouseRecieve
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Items", "Oders"})
         Me.ComboBox1.Location = New System.Drawing.Point(107, 74)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(768, 25)
@@ -785,10 +784,10 @@ Partial Class frmWarehouseRecieve
         Me.BunifuThinButton23.IdleFillColor = System.Drawing.Color.White
         Me.BunifuThinButton23.IdleForecolor = System.Drawing.Color.SeaGreen
         Me.BunifuThinButton23.IdleLineColor = System.Drawing.Color.SeaGreen
-        Me.BunifuThinButton23.Location = New System.Drawing.Point(530, -7)
+        Me.BunifuThinButton23.Location = New System.Drawing.Point(530, 0)
         Me.BunifuThinButton23.Margin = New System.Windows.Forms.Padding(5)
         Me.BunifuThinButton23.Name = "BunifuThinButton23"
-        Me.BunifuThinButton23.Size = New System.Drawing.Size(52, 63)
+        Me.BunifuThinButton23.Size = New System.Drawing.Size(52, 46)
         Me.BunifuThinButton23.TabIndex = 148
         Me.BunifuThinButton23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '

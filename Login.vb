@@ -150,7 +150,7 @@ Public Class Login
                 My.Settings.delprod = dr.Item("delprod").ToString
                 My.Settings.TempPriceChange = dr.Item("Temppricechange").ToString
                 My.Settings.changeprice = dr.Item("changeprice").ToString
-
+                My.Settings.CustBalReEva = dr.Item("custbalreeva").ToString
                 'Sales management
                 My.Settings.opensession = dr.Item("opensession").ToString
                 My.Settings.sell = dr.Item("sell").ToString

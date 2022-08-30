@@ -903,7 +903,6 @@ Partial Class pfrmProductManagement
         Me.ClientSize = New System.Drawing.Size(973, 715)
         Me.Controls.Add(Me.PCreateProd)
         Me.Controls.Add(Me.Panel1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "pfrmProductManagement"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

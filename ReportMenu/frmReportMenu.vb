@@ -41,8 +41,10 @@ Public Class frmReportMenu
     End Sub
 
     Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-        Dim f2 As New frmSessionLedger
-        f2.Show()
+        'Dim f2 As New frmSessionLedger
+        'f2.Show()
+        frmWarehouseReportMenu.Show()
+        Me.Hide()
     End Sub
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click

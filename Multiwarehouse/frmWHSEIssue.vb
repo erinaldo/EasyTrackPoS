@@ -6,6 +6,7 @@ Public Class frmWHSEIssue
     Dim da As SqlDataAdapter
     Dim dr As SqlDataReader
     Dim dt As New dsGoodsRecieved
+    Dim whseno As String = ""
 
     Private Sub frmRetailIssueing_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MaximumSize = Screen.FromRectangle(Me.Bounds).WorkingArea.Size
@@ -27,7 +28,7 @@ Public Class frmWHSEIssue
 
         reload("select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from whsestockmast", gvStockBf)
         'where baseqty*packsize<>1
-        ComboFeed("select itemname from Stockmast", cbSearchItem, 0)
+
     End Sub
 
     Private Sub txtQtyRecieved_TextChanged(sender As Object, e As EventArgs) Handles txtQtyRecieved.TextChanged
@@ -173,7 +174,10 @@ Public Class frmWHSEIssue
 
     Private Sub BunifuThinButton22_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Newshowconfig()
-
+        If ComboBox1.Text = "" Then
+            MsgBox("Kindly select a warehouse")
+            Exit Sub
+        End If
         If cbSuppName.Text = "" Or lblCustNo.Text = "CustNo" Then
             MsgBox("Choose Customer")
             Exit Sub
@@ -191,7 +195,7 @@ Public Class frmWHSEIssue
                     If Poscon.State = ConnectionState.Closed Then
                         Poscon.Open()
                     End If
-                    Dim query = "insert into Issuestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyIssued,Issuedby,itemcat,CustomerName,CustomerID,PackVolume,Customeroldbal,totalbalance,customerpayment,newbalance,narration,dateissued,time,paymode,TranxRef,totalissued) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + My.Settings.ActiveUser + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packVolume,'" + lblOldBal.Text + "','" + lbltotalbal.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + txtNarration.Text + "','" + txtdate.Text + "','" + tstime.Text + "','" + cbPaymentMode.Text + "','" + txtREfNo.Text + "','" + lblTotal.Text + "')"
+                    Dim query = "insert into whseIssuestock (invoiceno,ItemName,Price,Amount,OldStock,NewStock,QtyIssued,Issuedby,itemcat,CustomerName,CustomerID,PackVolume,Customeroldbal,totalbalance,customerpayment,newbalance,narration,dateissued,time,paymode,TranxRef,totalissued,whsename) values('" + txtinvoiceno.Text + "',@Itemname,@Price,@amount,@oldStock,@newstock,@qtyrecieved,'" + My.Settings.ActiveUser + "',@itemCat,'" + cbSuppName.Text + "','" + lblCustNo.Text + "',@packVolume,'" + lblOldBal.Text + "','" + lbltotalbal.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + txtNarration.Text + "','" + txtdate.Text + "','" + tstime.Text + "','" + cbPaymentMode.Text + "','" + txtREfNo.Text + "','" + lblTotal.Text + "','" + ComboBox1.Text + "')"
                     cmd = New SqlCommand(query, Poscon)
                     With cmd
                         .Parameters.AddWithValue("@Itemname", gvStockBatch.Rows(i).Cells(0).Value)
@@ -209,15 +213,15 @@ Public Class frmWHSEIssue
                 If Poscon.State = ConnectionState.Closed Then
                     Poscon.Open()
                 End If
-                Dim sql = "insert into CustomerLedger (issueno,Recievedby,CustomerName,CustomerNo,creditrecieved,oldbal,narration,newbal,daterecieved,timerecieved,amtpaid) values('" + txtinvoiceno.Text + "','" + My.Settings.ActiveUser + "','" + cbSuppName.Text + "','" + lblCustNo.Text + "','" + lblTotal.Text + "','" + lblOldBal.Text + "','" + txtNarration.Text + "','" + lblNewBal.Text + "','" + txtdate.Text + "','" + tstime.Text + "','" + txtAmtPaid.Text + "')"
+                Dim sql = "insert into CustomerLedger (issueno,Recievedby,CustomerName,CustomerNo,creditrecieved,oldbal,narration,newbal,daterecieved,timerecieved,amtpaid,whsename) values('" + txtinvoiceno.Text + "','" + My.Settings.ActiveUser + "','" + cbSuppName.Text + "','" + lblCustNo.Text + "','" + lblTotal.Text + "','" + lblOldBal.Text + "','" + txtNarration.Text + "','" + lblNewBal.Text + "','" + txtdate.Text + "','" + tstime.Text + "','" + txtAmtPaid.Text + "','" + ComboBox1.Text + "')"
                 cmd = New SqlCommand(sql, Poscon)
                 cmd.ExecuteNonQuery()
                 For Each row As DataGridViewRow In gvStockBatch.Rows
-                    cmd = New SqlCommand("Select * from StockMast where Prodcode='" + row.Cells(6).Value + "'", Poscon)
+                    cmd = New SqlCommand("Select * from whseStockMast where Prodcode='" + row.Cells(6).Value + "'", Poscon)
                     dr = cmd.ExecuteReader
                     While dr.Read
 
-                        Dim quer = "insert into InventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date,qtyrecieved,Customername) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyissued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date,@qtyrecieved,'" + cbSuppName.Text + "')"
+                        Dim quer = "insert into whseInventoryLedger (ItemCode,itemname,tranxtype,TranxSource,TranxGroup,oldqty,QtyIssued,StockBalance,Userid,RetailPrice,CostPrice,RetailAmt,CostAmt,Narration,time,date,qtyrecieved,Customername) values(@ItemCode,@Itemname,@Tranxtype,@tranxsource,@TranxGroup,@oldqty,@qtyissued,@balance,@userid,@Rprice,@cprice,@ramt,@camt,@nar,@time,@date,@qtyrecieved,'" + cbSuppName.Text + "')"
                         cmd = New SqlCommand(quer, Poscon)
                         With cmd
                             .Parameters.AddWithValue("@ItemCode", row.Cells(6).Value)
@@ -241,13 +245,13 @@ Public Class frmWHSEIssue
                         End With
                         'MsgBox("Succesfully Wrintten into ledger")
                     End While
-                    cmd = New SqlCommand("Select * from StockMast where Prodcode='" & row.Cells(6).Value.ToString & "'", Poscon)
-                    dr = cmd.ExecuteReader
-                    While dr.Read
-                        Dim query = "update StockMast set prodqty = '" & dr.Item("ProdQty") - row.Cells(3).Value & "' where Prodcode= '" & row.Cells(6).Value.ToString & "'"
-                        cmd = New SqlCommand(query, Poscon)
-                        cmd.ExecuteNonQuery()
-                    End While
+                    'cmd = New SqlCommand("Select * from StockMast where Prodcode='" & row.Cells(6).Value.ToString & "'", Poscon)
+                    'dr = cmd.ExecuteReader
+                    'While dr.Read
+                    '    Dim query = "update whseStockMast set prodqty = '" & dr.Item("ProdQty") - row.Cells(3).Value & "' where Prodcode= '" & row.Cells(6).Value.ToString & "' and whsename='" + ComboBox1.Text + "' and whseno='" + whseno + "'"
+                    '    cmd = New SqlCommand(query, Poscon)
+                    '    cmd.ExecuteNonQuery()
+                    'End While
                 Next
                 If Val(txtAmtPaid.Text) > 0 Then
                     Dim query = "insert into customerpayment(Customername,oldbal,datepaid,amtpaid,newbal,Paymentmode,Recievedby) values('" + cbSuppName.Text + "','" + lblOldBal.Text + "','" + txtdate.Text + "','" + txtAmtPaid.Text + "','" + lblNewBal.Text + "','" + cbPaymentMode.Text + "','" + My.Settings.ActiveUser + "') "
@@ -266,58 +270,17 @@ Public Class frmWHSEIssue
                 cmd.ExecuteNonQuery()
 
 
-                If lblCustType.Text = "Branch Customer" Then
-                    For Each row As DataGridViewRow In gvStockBatch.Rows
-                        cmd = New SqlCommand("Select * from whsestockmast where Prodcode='" & row.Cells(6).Value.ToString & "' and whsename='" + cbSuppName.Text + "' and whseno='" + lblCustNo.Text + "'", Poscon)
-                        da = New SqlDataAdapter(cmd)
-                        tbl = New DataTable()
-                        da.Fill(tbl)
-                        If tbl.Rows.Count = 0 Then
-                            'MsgBox("Write")
-                            cmd = New SqlCommand("Select * from StockMast where Prodcode='" & row.Cells(6).Value.ToString & "'", Poscon)
-                            dr = cmd.ExecuteReader()
-                            While dr.Read
 
-                                cmd = New SqlCommand("insert into whsestockmast (prodcode,prodname,prodline,prodsize,prodcolour,prodcat,prodqty,retailprice,wholesaleprice,itemname,brandname,uniqueid,leastqtyReminder,distributorprice,packsize,baseqty,Packprice,whsename,whseno) values (@prodcode,@prodname,@prodline,@prodsize,@prodcolour,@prodcat,@prodqty,@retailprice,@wholesaleprice,@itemname,@brandname,@uniqueid,@leastqtyReminder,@distributorprice,@packsize,@baseqty,@Packprice,'" + cbSuppName.Text + "','" + lblCustNo.Text + "')", Poscon)
-                                With cmd
-                                    .Parameters.AddWithValue("@prodcode", dr.Item("Prodcode"))
-                                    .Parameters.AddWithValue("@prodname", dr.Item("itemname"))
-                                    .Parameters.AddWithValue("@prodline", dr.Item("Prodline"))
-                                    .Parameters.AddWithValue("@prodsize", dr.Item("Prodsize"))
-                                    .Parameters.AddWithValue("@prodcolour", dr.Item("Prodcolour"))
-                                    .Parameters.AddWithValue("@prodcat", dr.Item("Prodcat"))
-                                    .Parameters.AddWithValue("@prodqty", row.Cells(3).Value)
-                                    .Parameters.AddWithValue("@itemname", dr.Item("itemname"))
-                                    .Parameters.AddWithValue("@retailprice", dr.Item("Retailprice"))
-                                    .Parameters.AddWithValue("@wholesaleprice", dr.Item("Wholesaleprice"))
-                                    .Parameters.AddWithValue("@brandname", dr.Item("Brandname"))
-                                    .Parameters.AddWithValue("@uniqueid", dr.Item("uniqueid"))
-                                    .Parameters.AddWithValue("@leastqtyReminder", dr.Item("leastqtyreminder"))
-                                    .Parameters.AddWithValue("@distributorprice", dr.Item("distributorprice"))
-                                    .Parameters.AddWithValue("@packsize", dr.Item("packsize"))
-                                    .Parameters.AddWithValue("@baseqty", dr.Item("baseqty"))
-                                    .Parameters.AddWithValue("@Packprice", dr.Item("packprice"))
-                                    .ExecuteNonQuery()
-                                End With
-                            End While
-                        Else
-                            'MsgBox("Update")
-                            'cmd = New SqlCommand("Select * from whsestockmast where Prodcode='" + row.Cells(6).Value + "' and whsename='" + cbSuppName.Text + "' and whseno='" + lblCustNo.Text + "'", Poscon)
-                            'dr = cmd.ExecuteReader()
-                            'While dr.Read
-                            '    cmd = New SqlCommand("update whsestockmast set prodqty=@Prodqty where Prodcode= '" & row.Cells(6).Value.ToString & "' and whsename='" + cbSuppName.Text + "' and whseno='" + lblCustNo.Text + "'", Poscon)
-                            '    With cmd
-                            '        .Parameters.AddWithValue("@prodcode", dr.Item("Prodcode"))
-                            '        .Parameters.AddWithValue("@prodqty", dr.Item("ProdQty") + row.Cells(3).Value)
-                            '        .ExecuteNonQuery()
-                            '    End With
-                            insertd("update whsestockmast set prodqty=prodqty - " + row.Cells(3).Value + " where Prodcode= '" & row.Cells(6).Value.ToString & "' and whsename='" + cbSuppName.Text + "' and whseno='" + lblCustNo.Text + "'")
-                            'End While
-                        End If
+                For Each row As DataGridViewRow In gvStockBatch.Rows
+                    MsgBox(whseno)
 
-                    Next
-                    reload("select * from whsestockmast", DataGridView1)
-                End If
+                    insertd("update whsestockmast set prodqty=prodqty - " + row.Cells(3).Value + " where Prodcode= '" & row.Cells(6).Value.ToString & "' and whsename='" + ComboBox1.Text + "' and whseno='" + whseno + "'")
+                    'End While
+                Next
+
+
+                '' reload("select * from whsestockmast", DataGridView1)
+
                 Poscon.Close()
 
                 'Display()
@@ -513,17 +476,17 @@ Public Class frmWHSEIssue
         If Poscon.State = ConnectionState.Closed Then
             Poscon.Open()
         End If
-        cmd = New SqlCommand("select max(issuecount) from issueconfig", Poscon)
+        cmd = New SqlCommand("select max(invoiceno) from Whseissuestock", Poscon)
         result = cmd.ExecuteScalar.ToString
 
         If String.IsNullOrEmpty(result) Then
-            result = "SIV00001"
+            result = "WSIV00001"
             txtinvoiceno.Text = result
         Else
             result = result.Substring(0)
             Int32.TryParse(result, digit)
             digit = digit + 1
-            result = "SIV" + digit.ToString("D5")
+            result = "WSIV" + digit.ToString("D5")
             txtinvoiceno.Text = result
         End If
         'txtinvoiceno.Text = "SIV" + Date.Now.ToString("dd") + Date.Now.ToString("MM") + Date.Now.ToString("yy") + Date.Now.ToString("HH") + Date.Now.ToString("mm") + Date.Now.ToString("ss")
@@ -633,7 +596,7 @@ Public Class frmWHSEIssue
     End Sub
 
     Private Sub cbSearchItem_Click(sender As Object, e As EventArgs) Handles cbSearchItem.Click
-
+        ComboFeed("select itemname from whseStockmast where whsename='" + ComboBox1.Text + "'", cbSearchItem, 0)
     End Sub
 
     Private Sub cbSuppName_Click(sender As Object, e As EventArgs) Handles cbSuppName.Click
@@ -661,5 +624,34 @@ Public Class frmWHSEIssue
             txtItemPrice.Enabled = True
             txtItemPrice.ReadOnly = False
         End If
+    End Sub
+
+    Private Sub ComboBox1_Click(sender As Object, e As EventArgs) Handles ComboBox1.Click
+        ComboFeed("Select whsename from warehouse", ComboBox1, 0)
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        reload("select itemname,prodqty,ProdCat,retailprice,packprice,packsize,baseqty,Prodcode from whsestockmast where whsename='" + ComboBox1.Text + "' ", gvStockBf)
+
+
+        If Poscon.State = ConnectionState.Closed Then
+            Poscon.Open()
+        End If
+        Dim query = "select whseno from warehouse where whsename = '" + ComboBox1.Text + "'"
+        cmd = New SqlCommand(query, Poscon)
+        da = New SqlDataAdapter(cmd)
+        tbl = New DataTable()
+        da.Fill(tbl)
+        If tbl.Rows.Count() = 0 Then
+        Else
+
+            whseno = tbl.Rows(0)(0).ToString
+            MsgBox(whseno)
+
+            ' lblCustBal.Text = dblValue.ToString("N", CultureInfo.InvariantCulture)
+        End If
+
+        Poscon.Close()
     End Sub
 End Class

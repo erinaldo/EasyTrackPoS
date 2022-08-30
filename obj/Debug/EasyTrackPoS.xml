@@ -772,6 +772,26 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsInventory.WHSEInventoryLedgerDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.WHSEStockMastDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.WHSEIssueStockDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.WHSERecieveStockDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsInventory.ClientRegRow">
 <summary>
 Represents strongly named DataRow class.
@@ -788,6 +808,26 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsInventory.ProformaInvoicesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.WHSEInventoryLedgerRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.WHSEStockMastRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.WHSEIssueStockRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.WHSERecieveStockRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -812,6 +852,26 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsInventory.WHSEInventoryLedgerRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.WHSEStockMastRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.WHSEIssueStockRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventory.WHSERecieveStockRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsInventoryTableAdapters.ClientRegTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -828,6 +888,26 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsInventoryTableAdapters.ProformaInvoicesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.WHSEInventoryLedgerTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.WHSEStockMastTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.WHSEIssueStockTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsInventoryTableAdapters.WHSERecieveStockTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -897,6 +977,11 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsStockMast.WHSEStockMastDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsStockMast.TotalStockDataTable">
 <summary>
 Represents the strongly named DataTable class.
@@ -922,6 +1007,11 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
+<member name="T:HardSoft_PoS.dsStockMast.WHSEStockMastRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
 <member name="T:HardSoft_PoS.dsStockMast.TotalStockRow">
 <summary>
 Represents strongly named DataRow class.
@@ -943,6 +1033,11 @@ Row event argument class
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsStockMast.StockMastRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMast.WHSEStockMastRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -1128,6 +1223,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:HardSoft_PoS.dsStockMastTableAdapters.StockMastTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HardSoft_PoS.dsStockMastTableAdapters.WHSEStockMastTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
